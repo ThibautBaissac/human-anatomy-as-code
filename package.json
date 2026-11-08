@@ -1,0 +1,15 @@
+{
+  "name": "human-anatomy-as-code",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "workspaces": ["tools/atlas", "tools/assets", "app"],
+  "scripts": {
+    "data": "npm run -w tools/atlas build",
+    "assets": "npm run -w tools/assets build",
+    "dev": "npm run -w app dev",
+    "test": "npm test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "e2e": "npm run -w app e2e"
+  }
+}

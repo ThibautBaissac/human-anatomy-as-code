@@ -1,0 +1,6 @@
+{
+  "name": "@haac/app",
+  "private": true,
+  "type": "module",
+  "scripts": {}
+}
