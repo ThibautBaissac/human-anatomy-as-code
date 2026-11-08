@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: arcade veineuse plantaire
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Arcus venosus plantaris
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: tronc thyro-cervical
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: truncus thyrocervicalis
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

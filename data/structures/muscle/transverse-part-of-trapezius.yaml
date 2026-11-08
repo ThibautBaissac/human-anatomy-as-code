@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: partie transverse du muscle trapèze
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

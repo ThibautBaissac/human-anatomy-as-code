@@ -14,6 +14,8 @@ labels:
     status: draft
   la:
     text: Appendix vermiformis
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

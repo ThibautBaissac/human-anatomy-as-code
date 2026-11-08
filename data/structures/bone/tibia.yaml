@@ -13,10 +13,14 @@ labels:
     status: draft
   fr:
     text: tibia
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Tibia
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

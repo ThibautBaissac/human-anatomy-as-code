@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: épiglotte
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Epiglottis
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

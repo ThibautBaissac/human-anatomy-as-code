@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: système endocrinien
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: systema endocrinum
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

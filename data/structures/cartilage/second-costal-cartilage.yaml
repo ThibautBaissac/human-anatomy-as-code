@@ -12,6 +12,8 @@ labels:
     status: draft
   fr:
     text: deuxième cartilage costal
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

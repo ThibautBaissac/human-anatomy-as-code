@@ -13,6 +13,8 @@ labels:
     status: draft
   fr:
     text: humérus
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:

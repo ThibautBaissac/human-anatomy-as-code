@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: partie postcommunicante de l'artère cérébrale postérieure
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

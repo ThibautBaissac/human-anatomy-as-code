@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: chef superficiel du muscle court fléchisseur du pouce
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

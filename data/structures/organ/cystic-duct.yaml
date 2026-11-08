@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: Conduit cystique
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Ductus cysticus
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: aorte abdominale
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Aorta abdominalis
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: rein
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: ren
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

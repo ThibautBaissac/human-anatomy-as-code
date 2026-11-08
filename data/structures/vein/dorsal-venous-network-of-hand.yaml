@@ -13,6 +13,8 @@ labels:
     status: draft
   la:
     text: Rete venosum dorsale manus
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

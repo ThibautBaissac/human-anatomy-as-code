@@ -10,6 +10,8 @@ labels:
     status: draft
   fr:
     text: grande veine du cœur
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:

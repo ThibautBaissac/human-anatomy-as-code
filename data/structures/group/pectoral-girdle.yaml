@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: ceinture scapulaire
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Cingulum membri superiores
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

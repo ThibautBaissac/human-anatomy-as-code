@@ -16,6 +16,8 @@ labels:
     status: draft
   la:
     text: Axis, vertebra cervicalis II
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

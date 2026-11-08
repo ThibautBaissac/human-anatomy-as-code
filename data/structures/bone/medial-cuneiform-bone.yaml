@@ -17,6 +17,8 @@ labels:
     status: draft
   la:
     text: Cuneiforme mediale
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

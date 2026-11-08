@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: membrane thyro-hyoïdienne
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

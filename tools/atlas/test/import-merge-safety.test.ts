@@ -99,15 +99,16 @@ test('curator additions to draft labels and ids survive a re-import', () => {
   text = text.replace(/(  fr:\n    text: artère fémorale\n)/, '$1    synonyms:\n      - artère fémorale commune\n');
   text = text.replace('ids:\n', 'ids:\n  uberon: "0002060"\n');
   write(d, 'structures/artery/femoral-artery.yaml', text);
-  let femur = read(d, 'structures/bone/femur.yaml').replace('text: fémur\n', 'text: fémur\n    gender: m\n');
-  write(d, 'structures/bone/femur.yaml', femur);
+  const skin = read(d, 'structures/skin/skin.yaml');
+  assert.doesNotMatch(skin, /text: Cutis\n    gender/, 'the import knows no gender for Cutis');
+  write(d, 'structures/skin/skin.yaml', skin.replace('text: Cutis\n', 'text: Cutis\n    gender: f\n'));
   run(d);
   const { atlas, errors } = compileAtlas(d);
   assert.deepEqual(errors, []);
   const s = Object.fromEntries(atlas!.structures.map((x) => [x.slug, x]));
   assert.deepEqual(s['femoral-artery'].labels.fr!.synonyms, ['artère fémorale commune']);
   assert.equal(s['femoral-artery'].ids!.uberon, '0002060');
-  assert.equal(s.femur.labels.fr!.gender, 'm');
+  assert.equal(s.skin.labels.la!.gender, 'f');
 });
 
 test('reviewed side labels block a laterality change instead of being deleted', () => {

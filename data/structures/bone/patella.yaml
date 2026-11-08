@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: patella
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Patella
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

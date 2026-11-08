@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: système reproductif humain
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Systemata genitalia
+    gender: n
+    number: pl
     source: wikidata
     status: draft
 ids:

@@ -12,6 +12,8 @@ labels:
     status: draft
   fr:
     text: onzième côte
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

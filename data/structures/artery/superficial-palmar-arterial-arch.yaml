@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: arcade palmaire superficielle
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Arcus palmaris superficialis
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

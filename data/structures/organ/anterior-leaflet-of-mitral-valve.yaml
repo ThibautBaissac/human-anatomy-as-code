@@ -12,6 +12,8 @@ labels:
     status: draft
   fr:
     text: cuspide antérieure de la valve atrio-ventriculaire gauche
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: grande artère pancréatique
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:

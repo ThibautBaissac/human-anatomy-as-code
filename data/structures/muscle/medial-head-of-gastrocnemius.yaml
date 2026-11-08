@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: chef médial du muscle gastrocnémien
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: caput mediale musculi gastrocnemii
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

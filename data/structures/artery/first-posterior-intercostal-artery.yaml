@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: première artère intercostale postérieure
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

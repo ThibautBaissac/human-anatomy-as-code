@@ -12,6 +12,8 @@ labels:
     status: draft
   fr:
     text: pied
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:

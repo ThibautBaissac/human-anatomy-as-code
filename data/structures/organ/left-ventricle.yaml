@@ -12,6 +12,8 @@ labels:
     status: draft
   fr:
     text: ventricule gauche
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

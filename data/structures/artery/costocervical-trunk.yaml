@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: tronc costo-cervical
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Truncus costocervicalis
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

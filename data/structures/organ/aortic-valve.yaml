@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: valve aortique
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Valva aortae
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

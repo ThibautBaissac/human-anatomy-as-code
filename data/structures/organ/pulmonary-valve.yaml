@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: valve du tronc pulmonaire
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Valva trunci pulmonalis
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

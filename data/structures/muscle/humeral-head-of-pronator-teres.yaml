@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: chef huméral du muscle rond pronateur
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

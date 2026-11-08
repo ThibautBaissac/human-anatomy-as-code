@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: Conduit hépatique
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Ductus hepaticus communis
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

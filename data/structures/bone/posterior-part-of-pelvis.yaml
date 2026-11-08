@@ -13,6 +13,8 @@ labels:
     status: draft
   fr:
     text: partie postérieure du bassin
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

@@ -33,26 +33,88 @@ const table = (entries: [string, string | null, 'm' | 'f' | 'n'][]): Map<string,
   return m;
 };
 
-/** First word → grammatical gender and number. "os" is singular in French. */
+/**
+ * Head noun → grammatical gender and number, with explicit singular and plural forms
+ * (null when the plural is the same word). "os" is singular in French.
+ * Extended from the spec's initial table with the most frequent head nouns of the real labels.
+ */
 export const GENDER: Record<'fr' | 'la', Map<string, GN>> = {
   fr: table([
+    // masculine
     ['muscle', 'muscles', 'm'], ['nerf', 'nerfs', 'm'], ['os', null, 'm'], ['ligament', 'ligaments', 'm'],
     ['tendon', 'tendons', 'm'], ['cartilage', 'cartilages', 'm'], ['ganglion', 'ganglions', 'm'],
-    ['rameau', 'rameaux', 'm'], ['lobe', 'lobes', 'm'],
+    ['rameau', 'rameaux', 'm'], ['lobe', 'lobes', 'm'], ['chef', 'chefs', 'm'], ['gyrus', null, 'm'],
+    ['appareil', 'appareils', 'm'], ['corps', null, 'm'], ['tronc', 'troncs', 'm'], ['système', 'systèmes', 'm'],
+    ['rachis', null, 'm'], ['côlon', 'côlons', 'm'], ['canal', 'canaux', 'm'], ['conduit', 'conduits', 'm'],
+    ['segment', 'segments', 'm'], ['squelette', 'squelettes', 'm'], ['membre', 'membres', 'm'],
+    ['lobule', 'lobules', 'm'], ['tractus', null, 'm'], ['colliculus', null, 'm'], ['cortex', null, 'm'],
+    ['processus', null, 'm'], ['atrium', 'atriums', 'm'], ['ventricule', 'ventricules', 'm'], ['péritoine', null, 'm'],
+    ['cœur', null, 'm'], ['foie', null, 'm'], ['rein', 'reins', 'm'], ['poumon', 'poumons', 'm'],
+    ['cerveau', null, 'm'], ['cervelet', null, 'm'], ['encéphale', null, 'm'], ['estomac', null, 'm'],
+    ['œsophage', null, 'm'], ['duodénum', null, 'm'], ['iléon', null, 'm'], ['jéjunum', null, 'm'],
+    ['cæcum', null, 'm'], ['rectum', null, 'm'], ['pancréas', null, 'm'], ['diaphragme', null, 'm'],
+    ['larynx', null, 'm'], ['pharynx', null, 'm'], ['disque', 'disques', 'm'], ['ménisque', 'ménisques', 'm'],
+    ['sinus', null, 'm'], ['sillon', 'sillons', 'm'], ['noyau', 'noyaux', 'm'], ['plexus', null, 'm'],
+    ['fascia', 'fascias', 'm'], ['sternum', null, 'm'], ['sacrum', null, 'm'], ['coccyx', null, 'm'],
+    ['crâne', null, 'm'], ['fémur', 'fémurs', 'm'], ['tibia', 'tibias', 'm'], ['humérus', null, 'm'],
+    ['radius', null, 'm'], ['thorax', null, 'm'], ['abdomen', null, 'm'], ['bassin', null, 'm'],
+    ['pied', 'pieds', 'm'], ['doigt', 'doigts', 'm'], ['orteil', 'orteils', 'm'], ['tubercule', 'tubercules', 'm'],
+    ['condyle', 'condyles', 'm'], ['premier', 'premiers', 'm'], ['grand', 'grands', 'm'], ['petit', 'petits', 'm'],
+    // feminine
     ['artère', 'artères', 'f'], ['veine', 'veines', 'f'], ['glande', 'glandes', 'f'], ['vertèbre', 'vertèbres', 'f'],
     ['côte', 'côtes', 'f'], ['articulation', 'articulations', 'f'], ['phalange', 'phalanges', 'f'],
+    ['partie', 'parties', 'f'], ['arcade', 'arcades', 'f'], ['cuspide', 'cuspides', 'f'], ['aorte', null, 'f'],
+    ['valve', 'valves', 'f'], ['branche', 'branches', 'f'], ['membrane', 'membranes', 'f'],
+    ['commissure', 'commissures', 'f'], ['valvule', 'valvules', 'f'], ['vésicule', 'vésicules', 'f'],
+    ['voie', 'voies', 'f'], ['ceinture', 'ceintures', 'f'], ['rate', null, 'f'], ['vessie', null, 'f'],
+    ['trachée', null, 'f'], ['bronche', 'bronches', 'f'], ['plèvre', 'plèvres', 'f'], ['moelle', null, 'f'],
+    ['cavité', 'cavités', 'f'], ['paroi', 'parois', 'f'], ['face', 'faces', 'f'], ['tête', 'têtes', 'f'],
+    ['main', 'mains', 'f'], ['jambe', 'jambes', 'f'], ['cuisse', 'cuisses', 'f'], ['clavicule', 'clavicules', 'f'],
+    ['scapula', 'scapulas', 'f'], ['mandibule', null, 'f'], ['patella', null, 'f'], ['fibula', null, 'f'],
+    ['ulna', null, 'f'], ['capsule', 'capsules', 'f'], ['couche', 'couches', 'f'], ['dent', 'dents', 'f'],
+    ['langue', null, 'f'], ['peau', null, 'f'], ['lèvre', 'lèvres', 'f'], ['cornée', null, 'f'], ['rétine', null, 'f'],
+    ['épiglotte', null, 'f'], ['prostate', null, 'f'], ['première', 'premières', 'f'], ['grande', 'grandes', 'f'],
+    ['petite', 'petites', 'f'],
   ]),
   la: table([
+    // masculine
     ['musculus', 'musculi', 'm'], ['nervus', 'nervi', 'm'], ['ramus', 'rami', 'm'], ['lobus', 'lobi', 'm'],
+    ['arcus', null, 'm'], ['truncus', 'trunci', 'm'], ['ductus', null, 'm'], ['digitus', 'digiti', 'm'],
+    ['nucleus', 'nuclei', 'm'], ['circulus', 'circuli', 'm'], ['sinus', null, 'm'], ['calcaneus', null, 'm'],
+    ['oesophagus', null, 'm'], ['ventriculus', 'ventriculi', 'm'], ['lobulus', 'lobuli', 'm'], ['plexus', null, 'm'],
+    ['canalis', 'canales', 'm'], ['sulcus', 'sulci', 'm'], ['gyrus', 'gyri', 'm'], ['colliculus', 'colliculi', 'm'],
+    ['processus', null, 'm'], ['tractus', null, 'm'], ['cortex', null, 'm'], ['pulmo', 'pulmones', 'm'],
+    ['ren', 'renes', 'm'], ['atlas', null, 'm'], ['axis', null, 'm'], ['epithalamus', null, 'm'], ['lumbus', 'lumbi', 'm'],
+    // feminine
     ['arteria', 'arteriae', 'f'], ['vena', 'venae', 'f'], ['vertebra', 'vertebrae', 'f'], ['costa', 'costae', 'f'],
     ['glandula', 'glandulae', 'f'], ['cartilago', 'cartilagines', 'f'], ['phalanx', 'phalanges', 'f'],
-    ['os', 'ossa', 'n'], ['ligamentum', 'ligamenta', 'n'],
+    ['aorta', null, 'f'], ['valva', 'valvae', 'f'], ['vesica', 'vesicae', 'f'], ['membrana', 'membranae', 'f'],
+    ['clavicula', 'claviculae', 'f'], ['cornea', null, 'f'], ['choroidea', null, 'f'], ['mala', null, 'f'],
+    ['scapula', 'scapulae', 'f'], ['mandibula', null, 'f'], ['maxilla', 'maxillae', 'f'], ['patella', null, 'f'],
+    ['tibia', null, 'f'], ['fibula', null, 'f'], ['ulna', null, 'f'], ['pleura', 'pleurae', 'f'],
+    ['trachea', null, 'f'], ['lingua', null, 'f'], ['basis', null, 'f'], ['appendix', null, 'f'],
+    ['epiglottis', null, 'f'], ['epididymis', null, 'f'], ['facies', null, 'f'], ['fossa', 'fossae', 'f'],
+    ['capsula', 'capsulae', 'f'], ['pars', 'partes', 'f'],
+    // neuter
+    ['os', 'ossa', 'n'], ['ligamentum', 'ligamenta', 'n'], ['systema', 'systemata', 'n'], ['caput', 'capita', 'n'],
+    ['corpus', 'corpora', 'n'], ['colon', null, 'n'], ['cuneiforme', 'cuneiformia', 'n'],
+    ['intestinum', 'intestina', 'n'], ['cingulum', 'cingula', 'n'], ['abdomen', null, 'n'], ['encephalon', null, 'n'],
+    ['cerebellum', null, 'n'], ['caecum', null, 'n'], ['rete', null, 'n'], ['duodenum', null, 'n'],
+    ['diencephalon', null, 'n'], ['diaphragma', null, 'n'], ['vas', 'vasa', 'n'], ['ganglion', 'ganglia', 'n'],
+    ['cerebrum', null, 'n'], ['sternum', null, 'n'], ['sacrum', null, 'n'], ['cor', null, 'n'], ['hepar', null, 'n'],
+    ['pericardium', null, 'n'], ['peritoneum', null, 'n'], ['femur', null, 'n'], ['septum', 'septa', 'n'],
+    ['foramen', 'foramina', 'n'], ['ileum', null, 'n'], ['jejunum', null, 'n'], ['rectum', null, 'n'],
   ]),
 };
 
+/** French ordinals in -ième agree with nothing: the gender comes from the next word. */
+const EPICENE_FR = /^\p{L}+ième$/u;
+
 export function genderOf(text: string, lang: 'fr' | 'la'): GN | undefined {
-  const first = text.trim().split(/[\s,]+/)[0]?.toLowerCase() ?? '';
-  return GENDER[lang].get(first);
+  const words = text.trim().toLowerCase().split(/[\s,]+/);
+  let i = 0;
+  while (lang === 'fr' && i < words.length - 1 && EPICENE_FR.test(words[i])) i++;
+  return GENDER[lang].get(words[i] ?? '');
 }
 
 /** Part-of ancestor name (side word removed) → regions. */

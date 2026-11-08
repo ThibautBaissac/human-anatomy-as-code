@@ -10,6 +10,8 @@ labels:
     status: draft
   fr:
     text: péritoine viscéral
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

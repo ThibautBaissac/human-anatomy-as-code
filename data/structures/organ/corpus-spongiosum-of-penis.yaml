@@ -9,6 +9,8 @@ labels:
     status: draft
   la:
     text: corpus spongiosum penis
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

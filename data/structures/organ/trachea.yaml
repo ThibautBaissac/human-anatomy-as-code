@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: trachée
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Trachea
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

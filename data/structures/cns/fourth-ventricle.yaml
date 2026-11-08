@@ -10,6 +10,8 @@ labels:
     status: draft
   fr:
     text: quatrième ventricule
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

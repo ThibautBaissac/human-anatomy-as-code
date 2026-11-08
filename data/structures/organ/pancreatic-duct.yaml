@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: canal pancréatique
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Ductus pancreaticus
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

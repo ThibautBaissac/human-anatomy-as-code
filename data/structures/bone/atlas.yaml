@@ -16,6 +16,8 @@ labels:
     status: draft
   la:
     text: Atlas, vertebra cervicalis I
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

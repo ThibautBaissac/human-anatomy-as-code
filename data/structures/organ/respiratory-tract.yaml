@@ -10,6 +10,8 @@ labels:
     status: draft
   fr:
     text: voies respiratoires
+    gender: f
+    number: pl
     source: wikidata
     status: draft
   la:

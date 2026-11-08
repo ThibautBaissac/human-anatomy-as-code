@@ -12,6 +12,8 @@ labels:
     status: draft
   fr:
     text: quatrième vertèbre cervicale
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

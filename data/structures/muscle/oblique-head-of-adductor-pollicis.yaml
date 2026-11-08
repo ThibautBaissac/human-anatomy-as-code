@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: chef oblique du muscle adducteur du pouce
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

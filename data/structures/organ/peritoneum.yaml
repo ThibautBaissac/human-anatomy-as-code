@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: péritoine
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: peritoneum
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

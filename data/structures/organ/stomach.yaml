@@ -10,6 +10,8 @@ labels:
     status: draft
   fr:
     text: estomac
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:

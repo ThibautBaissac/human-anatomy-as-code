@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: partie acromiale du muscle deltoïde
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

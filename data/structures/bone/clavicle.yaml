@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: clavicule
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Clavicula
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: tronc brachiocéphalique
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Truncus brachiocephalicus
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

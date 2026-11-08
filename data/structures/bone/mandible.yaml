@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: mandibule
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Mandibula
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

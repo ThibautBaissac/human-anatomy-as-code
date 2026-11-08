@@ -12,6 +12,8 @@ labels:
     status: draft
   fr:
     text: processus latéral du cartilage du septum nasal
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

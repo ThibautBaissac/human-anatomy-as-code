@@ -12,6 +12,8 @@ labels:
     status: draft
   fr:
     text: squelette fibreux du cœur
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

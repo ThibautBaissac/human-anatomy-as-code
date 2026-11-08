@@ -185,7 +185,7 @@ test('regions come from part-of ancestors, sub-regions add their region', () => 
 test('labels: en from FMA, fr/la from the preferred Wikidata item, gender and number from the first word', () => {
   const s = compiled(runImport().dataDir);
   assert.deepEqual(s.femur.labels.en, { text: 'femur', source: 'fma', status: 'draft' });
-  assert.deepEqual(s.femur.labels.fr, { text: 'fémur', source: 'wikidata', status: 'draft' });
+  assert.deepEqual(s.femur.labels.fr, { text: 'fémur', gender: 'm', number: 'sg', source: 'wikidata', status: 'draft' });
   assert.deepEqual(s.femur.labels.la, { text: 'Os femoris', gender: 'n', number: 'sg', source: 'wikidata', status: 'draft' });
   assert.deepEqual(s['biceps-brachii'].labels.fr, { text: 'muscle biceps brachial', gender: 'm', number: 'sg', source: 'wikidata', status: 'draft' });
   assert.deepEqual(s['femoral-artery'].labels.fr, { text: 'artère fémorale', gender: 'f', number: 'sg', source: 'wikidata', status: 'draft' });
@@ -225,7 +225,7 @@ test('a reviewed label is never touched, a draft label is refreshed, a missing l
   const { dataDir } = runImport();
   const file = join(dataDir, 'structures/bone/femur.yaml');
   let text = readFileSync(file, 'utf8');
-  text = text.replace('text: fémur\n', 'text: fémur (relu)\n    gender: m\n');
+  text = text.replace('text: fémur\n', 'text: fémur (relu)\n');
   text = text.replace(/(text: fémur \(relu\)\n(?:.*\n)*?\s+status: )draft/, '$1reviewed');
   text = text.replace('text: Os femoris', 'text: Os femoris (ancien)');
   writeFileSync(file, text);

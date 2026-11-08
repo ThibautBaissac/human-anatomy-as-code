@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: arcade veineuse palmaire profonde
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Arcus venosus palmaris profundus
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

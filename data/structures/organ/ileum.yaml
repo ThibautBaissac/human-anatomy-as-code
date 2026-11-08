@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: iléon
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Ileum
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

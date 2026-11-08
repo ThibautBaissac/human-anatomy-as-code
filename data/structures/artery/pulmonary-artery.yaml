@@ -16,6 +16,8 @@ labels:
     status: draft
   la:
     text: Truncus pulmonalis arteria pulmonalis
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: partie ascendante du muscle trapèze
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

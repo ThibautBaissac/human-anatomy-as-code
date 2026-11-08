@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: tractus ilio-tibial
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Tractus iliotibialis
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

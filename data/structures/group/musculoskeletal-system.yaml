@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: appareil locomoteur humain
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Systema musculosceletalis humanum
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

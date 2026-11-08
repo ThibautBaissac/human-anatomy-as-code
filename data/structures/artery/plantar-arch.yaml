@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: arcade plantaire profonde
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Arcus plantaris profundus
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

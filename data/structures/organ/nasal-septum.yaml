@@ -16,6 +16,8 @@ labels:
     status: draft
   la:
     text: Septum nasi
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: chef latéral du muscle triceps brachial
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

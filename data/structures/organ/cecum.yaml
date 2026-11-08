@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: cæcum
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: caecum
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

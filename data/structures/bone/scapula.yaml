@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: scapula
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Scapula
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

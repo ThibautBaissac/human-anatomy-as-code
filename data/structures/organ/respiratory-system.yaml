@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: appareil respiratoire
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Systema respiratorium
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

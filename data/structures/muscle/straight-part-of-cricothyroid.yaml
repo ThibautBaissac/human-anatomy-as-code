@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: partie droite du muscle cricothyroïdien
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

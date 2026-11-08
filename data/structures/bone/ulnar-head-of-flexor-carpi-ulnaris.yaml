@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: chef ulnaire du muscle fléchisseur ulnaire du carpe
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

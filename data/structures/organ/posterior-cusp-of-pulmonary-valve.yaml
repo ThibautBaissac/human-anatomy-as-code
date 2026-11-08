@@ -10,6 +10,8 @@ labels:
     status: draft
   fr:
     text: valvule semi-lunaire gauche de la valve du tronc pulmonaire
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

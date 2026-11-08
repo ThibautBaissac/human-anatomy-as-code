@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: système tégumentaire
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Systema integumentarium
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

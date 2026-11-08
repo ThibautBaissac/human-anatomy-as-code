@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: processus xiphoïde
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Processus xiphoideus
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

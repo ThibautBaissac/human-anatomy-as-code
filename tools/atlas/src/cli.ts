@@ -4,10 +4,12 @@ import { dirname, join } from 'node:path';
 import { parse } from 'yaml';
 import { importBp3d, type ImportReport, type Overrides } from './import-bp3d.ts';
 import { compileAtlas, type CompileResult, type Diagnostic } from './compile-atlas.ts';
+import { coverage, coverageMarkdown } from './coverage.ts';
 
 const USAGE = `usage:
   atlas validate <dataDir>
   atlas build <dataDir> <out.json>
+  atlas coverage <dataDir>
   atlas import-bp3d <bp3dDir> <wikidata.csv> <dataDir>   (overrides : <dataDir>/import/bp3d-overrides.yaml)`;
 
 const line = (d: Diagnostic) => `${d.file}:${d.pointer} ${d.rule} ${d.message}`;
@@ -53,6 +55,12 @@ function main(argv: string[]): number {
     mkdirSync(dirname(args[1]), { recursive: true });
     writeFileSync(args[1], JSON.stringify(result.atlas, null, 2) + '\n');
     console.error(`écrit : ${args[1]} (${result.atlas.structures.length} structures)`);
+    return 0;
+  }
+  if (cmd === 'coverage' && args.length === 1) {
+    const result = compileAtlas(args[0]);
+    if (!result.atlas) { report(result); return 1; }
+    process.stdout.write(coverageMarkdown(coverage(result.atlas)));
     return 0;
   }
   if (cmd === 'import-bp3d' && args.length === 3) {

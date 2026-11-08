@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: système nerveux central
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Systema nervosum centrale
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

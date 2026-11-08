@@ -12,6 +12,8 @@ labels:
     status: draft
   fr:
     text: première vertèbre thoracique
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

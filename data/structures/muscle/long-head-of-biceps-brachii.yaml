@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: chef long du muscle biceps brachial
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: caput longum biceps brachii
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: aorte descendante
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Aorta descendens
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

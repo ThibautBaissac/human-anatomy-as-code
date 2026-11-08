@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: valve atrio-ventriculaire gauche
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Valva atrioventricularis sinistra
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

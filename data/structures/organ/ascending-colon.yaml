@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: côlon ascendant
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: colon ascendens
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

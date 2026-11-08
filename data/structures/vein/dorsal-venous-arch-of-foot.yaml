@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: arcade veineuse dorsale du pied
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Arcus venosus dorsalis pedis
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

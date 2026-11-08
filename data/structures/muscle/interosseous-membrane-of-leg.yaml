@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: membrane interosseuse de la jambe
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Membrana interossea cruris
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

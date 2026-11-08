@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: corps calleux
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Corpus callosum
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

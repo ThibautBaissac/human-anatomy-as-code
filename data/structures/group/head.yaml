@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: tête
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: caput
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

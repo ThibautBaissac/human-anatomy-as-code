@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: branche descendante de l'artère colique gauche
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

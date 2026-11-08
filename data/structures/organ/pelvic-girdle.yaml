@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: ceinture pelvienne
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: cingulum pelvicum
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

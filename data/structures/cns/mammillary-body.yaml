@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: corps mamillaires
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Corpus mammillare
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

@@ -84,3 +84,12 @@ Effet sur les données réelles :
 - **À curer :** 62 conflits de parent au repli.
 
 Ces chiffres remplacent ceux de la section « Résultat sur les données réelles ».
+
+## Curation : table des genres et rapport de couverture (2026-11-08)
+
+- **Table des genres étendue au-delà de la liste initiale de la spec.** Elle couvre désormais environ 110 noms français et 90 noms latins, choisis parmi les premiers mots les plus fréquents des labels réels qui n'avaient pas de genre (chef, partie, gyrus, *caput*, *systema*, *arcus*…). C'est le code (`import/rules.ts`) qui fait foi pour son contenu.
+- **Ordinaux en français.** Les ordinaux en « -ième » sont épicènes : le genre est pris sur le mot suivant (« deuxième côte » → f). « premier », « première », « grand(e) » et « petit(e) » portent eux-mêmes leur genre.
+- **Effet sur les données réelles :**
+  - labels sans genre : 491 → 192 ;
+  - avertissements : 2 508 → 2 155.
+- **Commande `coverage`.** Elle produit un tableau Markdown par kind : nombre de structures, structures avec meshes, labels fr et la présents, labels sans genre. Elle sert à prioriser la curation. Ce n'est pas dans la spec : c'est un outil de curation, sans effet sur le modèle.

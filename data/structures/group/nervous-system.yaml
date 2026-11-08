@@ -10,10 +10,14 @@ labels:
     status: draft
   fr:
     text: système nerveux
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: systema nervosum
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

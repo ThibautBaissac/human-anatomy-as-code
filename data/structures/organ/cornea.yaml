@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: cornée
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Cornea
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:

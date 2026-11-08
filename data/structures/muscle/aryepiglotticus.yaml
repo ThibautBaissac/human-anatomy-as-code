@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: partie aryépiglottique du muscle aryténoïdien oblique
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:

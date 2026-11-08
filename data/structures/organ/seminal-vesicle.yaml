@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: vésicule séminale
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:

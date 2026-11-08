@@ -9,10 +9,14 @@ labels:
     status: draft
   fr:
     text: noyau caudé
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Nucleus caudatus
+    gender: m
+    number: sg
     source: wikidata
     status: draft
 ids:

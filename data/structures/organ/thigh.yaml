@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: cuisse
+    gender: f
+    number: sg
     source: wikidata
     status: draft
   la:
     text: femur
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

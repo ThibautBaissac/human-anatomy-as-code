@@ -12,10 +12,14 @@ labels:
     status: draft
   fr:
     text: corps vitré
+    gender: m
+    number: sg
     source: wikidata
     status: draft
   la:
     text: Corpus vitreum
+    gender: n
+    number: sg
     source: wikidata
     status: draft
 ids:

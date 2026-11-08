@@ -9,6 +9,8 @@ labels:
     status: draft
   fr:
     text: arcade tendineuse du muscle élévateur de l'anus
+    gender: f
+    number: sg
     source: wikidata
     status: draft
 ids:
