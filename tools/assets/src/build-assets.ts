@@ -1,6 +1,6 @@
 // atlas.json + BodyParts3D OBJ files → one meshopt-compressed GLB per kind, one node per structure-side.
 import { createHash } from 'node:crypto';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Document, Logger, NodeIO } from '@gltf-transform/core';
 import { EXTMeshoptCompression, KHRMeshQuantization } from '@gltf-transform/extensions';
@@ -28,8 +28,9 @@ export interface Instance {
 }
 
 export interface Manifest {
-  kinds: Record<string, { file: string; bytes: number; sha256: string; instances: number }>;
+  kinds: Record<string, { bytes: number; file: string; instances: number; sha256: string }>;
   source: 'bodyparts3d';
+  totalBytes: number;
 }
 
 const PREFIX = 'bp3d:';
@@ -95,13 +96,17 @@ export async function buildAssets({ atlas, objDir, outDir }: { atlas: AtlasInput
     outputs.push([kind, await io.writeBinary(doc), byKind.get(kind)!.length]);
   }
 
-  const manifest: Manifest = { kinds: {}, source: 'bodyparts3d' };
-  mkdirSync(outDir, { recursive: true });
+  // Content-addressed names: a file changes name exactly when its content changes.
+  const manifest: Manifest = { kinds: {}, source: 'bodyparts3d', totalBytes: 0 };
   for (const [kind, bytes, count] of outputs) {
-    const file = `${kind}.glb`;
-    writeFileSync(join(outDir, file), bytes);
-    manifest.kinds[kind] = { bytes: bytes.length, file, instances: count, sha256: createHash('sha256').update(bytes).digest('hex') };
+    const sha256 = createHash('sha256').update(bytes).digest('hex');
+    manifest.kinds[kind] = { bytes: bytes.length, file: `${kind}.${sha256.slice(0, 8)}.glb`, instances: count, sha256 };
+    manifest.totalBytes += bytes.length;
   }
+  mkdirSync(outDir, { recursive: true });
+  const keep = new Set(Object.values(manifest.kinds).map((k) => k.file));
+  for (const f of readdirSync(outDir)) if (f.endsWith('.glb') && !keep.has(f)) rmSync(join(outDir, f));
+  for (const [kind, bytes] of outputs) writeFileSync(join(outDir, manifest.kinds[kind].file), bytes);
   writeFileSync(join(outDir, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
   return manifest;
 }

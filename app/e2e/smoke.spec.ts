@@ -73,12 +73,15 @@ test('in ghost mode, clicks go through the ghosted layers', async ({ page }, inf
 test('performance budget: full load (atlas, GLB, BVH) under 3 s, mean frame under 16.7 ms (WebGPU)', async ({ page }, info) => {
   test.skip(info.project.name !== 'webgpu', 'budget measured on WebGPU only');
   await open(page, '');
-  await page.waitForTimeout(3000);
-  const { loadMs, frameMs } = await page.evaluate(() => {
-    const v = (window as unknown as { __viewer: ViewerHandle }).__viewer;
-    return { loadMs: v.loadMs, frameMs: v.meanFrameMs() };
+  await page.waitForFunction(() => (window as unknown as { __viewer: { pickReadyMs: number } }).__viewer.pickReadyMs > 0);
+  // Rendering is on demand: frame cost is measured while orbiting, which redraws every frame.
+  const { loadMs, firstFrameMs, frameMs } = await page.evaluate(async () => {
+    const v = (window as unknown as { __viewer: ViewerHandle & { firstFrameMs: number; orbitFor(ms: number): Promise<number[]> } }).__viewer;
+    const times = await v.orbitFor(3000);
+    return { loadMs: v.loadMs, firstFrameMs: v.firstFrameMs, frameMs: times.reduce((a, b) => a + b, 0) / times.length };
   });
-  console.log(`[budget] load ${Math.round(loadMs)} ms · mean frame ${frameMs.toFixed(2)} ms`);
+  console.log(`[budget] first frame ${Math.round(firstFrameMs)} ms · pick ready ${Math.round(loadMs)} ms · mean frame ${frameMs.toFixed(2)} ms`);
+  expect(firstFrameMs).toBeLessThan(loadMs + 1);
   expect(loadMs).toBeLessThan(3000);
   expect(frameMs).toBeLessThan(16.7);
 });

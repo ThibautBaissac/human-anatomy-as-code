@@ -7,3 +7,4 @@ build/
 app/dist/
 app/test-results/
 app/playwright-report/
+app/.certs/

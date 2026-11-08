@@ -19,6 +19,8 @@ export interface Manifest {
 
 export interface ViewerEvents {
   select: Selection | null;
+  /** a selection made by clicking or tapping the 3D view */
+  pick: Selection | null;
   hover: Selection | null;
   change: ViewerSnapshot;
 }
@@ -40,6 +42,8 @@ interface Batch {
   globalOf: number[];
   /** current alpha per batch instance (0 = hidden) */
   alpha: Float32Array;
+  /** picking index built (deferred after the first frame) */
+  bvh: boolean;
 }
 
 /** Section planes; each keeps the side n·p + c ≥ 0 (axial keeps below, coronal keeps behind, sagittal keeps the left half). */
@@ -57,7 +61,7 @@ export class Viewer {
   /** global instance index → [batch, batch instance id] */
   private location: [Batch, number][] = [];
   private box = new THREE.Box3();
-  private listeners: { [K in keyof ViewerEvents]: Set<(v: ViewerEvents[K]) => void> } = { select: new Set(), hover: new Set(), change: new Set() };
+  private listeners: { [K in keyof ViewerEvents]: Set<(v: ViewerEvents[K]) => void> } = { select: new Set(), pick: new Set(), hover: new Set(), change: new Set() };
   private view: ViewState = { ...DEFAULT_VIEW };
   private snapshot: ViewerSnapshot = { view: this.view, loading: null, failedKinds: [], backend: null, ready: false };
   private raycaster = new THREE.Raycaster();
@@ -67,8 +71,21 @@ export class Viewer {
   private hoverPending: PointerEvent | null = null;
   private lastHover: string | null = null;
   catalog: Catalog | null = null;
+  /** where the models came from on this load (bench page) */
+  loadSource: 'network' | 'partial-cache' | 'cache' = 'network';
   atlas: Atlas | null = null;
+  /** from markLoadStart (or load) to the end of loading: first frame drawn and picking ready */
   loadMs = 0;
+  /** from the load start to the first frame drawn with every model */
+  firstFrameMs = 0;
+  /** from the load start to every picking index built */
+  pickReadyMs = 0;
+  private loadT0 = 0;
+  private awaitingFirstFrame = false;
+  private orbit: ((t: number) => void) | null = null;
+  /** Render on demand: only when something changed (saves battery, leaves the CPU to loading). */
+  private dirty = true;
+  markDirty(): void { this.dirty = true; }
 
   readonly canvas: HTMLCanvasElement;
 
@@ -88,10 +105,11 @@ export class Viewer {
     this.controls = new OrbitControls(this.camera, canvas);
     this.controls.enableDamping = true;
     this.controls.addEventListener('end', () => this.emitChange());
+    this.controls.addEventListener('change', () => this.markDirty());
     this.resize = new ResizeObserver(() => this.fit());
     this.resize.observe(canvas);
     // A click selects, a drag (orbit) does not.
-    canvas.addEventListener('pointerdown', (e) => { this.downAt = [e.clientX, e.clientY]; });
+    canvas.addEventListener('pointerdown', (e) => { this.downAt = [e.clientX, e.clientY]; this.downTouch = e.pointerType === 'touch'; });
     canvas.addEventListener('click', (e) => this.onClick(e));
     canvas.addEventListener('pointermove', (e) => { this.hoverPending = e; });
     canvas.addEventListener('pointerleave', () => { this.hoverPending = null; this.setHover(null); });
@@ -150,7 +168,7 @@ export class Viewer {
       const material = new THREE.MeshStandardNodeMaterial({ color: 0xffffff, roughness: 0.6, metalness: 0 });
       const mesh = new THREE.BatchedMesh(meshes.length, vCount, iCount, material);
       mesh.name = kind;
-      const batch: Batch = { kind, mesh, material, globalOf: [], alpha: new Float32Array(meshes.length).fill(1) };
+      const batch: Batch = { kind, mesh, material, globalOf: [], alpha: new Float32Array(meshes.length).fill(1), bvh: false };
       for (const m of meshes) {
         const id = mesh.addInstance(mesh.addGeometry(m.geometry));
         mesh.setMatrixAt(id, m.matrixWorld);
@@ -160,13 +178,13 @@ export class Viewer {
         this.location[global] = [batch, id];
         m.geometry.dispose();
       }
-      (mesh as unknown as { computeBoundsTree(): void }).computeBoundsTree();
       this.clip.add(mesh);
       this.batches.push(batch);
     }
     this.catalog = buildCatalog(atlas, names);
     this.box.setFromObject(this.clip);
-    this.loadMs = performance.now() - t0;
+    this.loadT0 = t0;
+    this.awaitingFirstFrame = true;
     if (!this.view.camera) this.frameAll();
     this.applySections();
     this.applyAppearance();
@@ -220,6 +238,7 @@ export class Viewer {
   // --- applying state -------------------------------------------------------------------
   private applyAppearance() {
     if (!this.catalog) return;
+    this.dirty = true;
     const sel = this.view.selection;
     const state: AppearanceState = {
       hiddenKinds: new Set(this.view.hiddenKinds),
@@ -244,6 +263,7 @@ export class Viewer {
   }
 
   private applySections() {
+    this.dirty = true;
     const active = AXES.filter((a) => this.view.sections[a] !== undefined);
     for (const a of active) {
       const axis = PLANE_AXIS[a];
@@ -265,6 +285,7 @@ export class Viewer {
   }
 
   private applyCamera(cam: Camera) {
+    this.dirty = true;
     this.camera.position.set(...cam.position);
     this.controls.target.set(...cam.target);
     this.controls.update();
@@ -279,6 +300,7 @@ export class Viewer {
   }
 
   private frameBox(box: THREE.Box3) {
+    this.dirty = true;
     const center = box.getCenter(new THREE.Vector3());
     const radius = Math.max(box.getSize(new THREE.Vector3()).length() / 2, 20);
     const dist = radius / Math.sin(THREE.MathUtils.degToRad(this.camera.fov / 2)) * 1.1;
@@ -295,6 +317,8 @@ export class Viewer {
     const r = this.canvas.getBoundingClientRect();
     this.raycaster.setFromCamera(new THREE.Vector2(((clientX - r.left) / r.width) * 2 - 1, -((clientY - r.top) / r.height) * 2 + 1), this.camera);
     const planes = this.clip.clippingPlanes;
+    // A pick before the deferred indexes are done builds those of the visible kinds now.
+    for (const b of this.batches) if (b.mesh.visible) this.ensureBvh(b);
     const hits = this.raycaster.intersectObjects(this.batches.map((b) => b.mesh), false);
     for (const h of hits) {
       if (planes.some((p) => p.distanceToPoint(h.point) < 0)) continue;
@@ -308,10 +332,14 @@ export class Viewer {
   }
 
   private downAt: [number, number] | null = null;
+  private downTouch = false;
+  /** A click or tap selects; a drag beyond 4 px (mouse) or 8 px (touch) orbits instead. */
   private onClick(e: MouseEvent) {
     const d = this.downAt;
-    if (d && Math.hypot(e.clientX - d[0], e.clientY - d[1]) > 4) return;
-    this.select(this.pick(e.clientX, e.clientY));
+    if (d && Math.hypot(e.clientX - d[0], e.clientY - d[1]) > (this.downTouch ? 8 : 4)) return;
+    const sel = this.pick(e.clientX, e.clientY);
+    this.select(sel);
+    this.emit('pick', sel);
   }
 
   private setHover(s: Selection | null) {
@@ -328,14 +356,71 @@ export class Viewer {
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(w, h, false);
+    this.dirty = true;
   }
 
   private frame(t: number) {
+    // Hover waits for the picking indexes rather than building them on a mouse move.
+    if (this.hoverPending && this.pickReadyMs) { const e = this.hoverPending; this.hoverPending = null; this.setHover(this.pick(e.clientX, e.clientY)); }
+    this.orbit?.(t);
+    if (this.controls.update()) this.dirty = true; // damping still moving
+    if (!this.dirty) { this.lastFrame = 0; return; }
+    this.dirty = false;
     if (this.lastFrame) { this.frameTimes.push(t - this.lastFrame); if (this.frameTimes.length > 300) this.frameTimes.shift(); }
     this.lastFrame = t;
-    if (this.hoverPending) { const e = this.hoverPending; this.hoverPending = null; this.setHover(this.pick(e.clientX, e.clientY)); }
-    this.controls.update();
     this.renderer.render(this.scene, this.camera);
+    if (this.awaitingFirstFrame) {
+      this.awaitingFirstFrame = false;
+      this.firstFrameMs = performance.now() - this.loadT0;
+      this.scheduleBvh();
+    }
+  }
+
+  private ensureBvh(b: Batch) {
+    if (b.bvh) return;
+    // Larger leaves and indirect mode: cheaper to build, picking stays well under a millisecond.
+    (b.mesh as unknown as { computeBoundsTree(i: number, o: object): void }).computeBoundsTree(-1, { targetLeafSize: 24, indirect: true });
+    b.bvh = true;
+  }
+
+  /**
+   * Builds the picking indexes after the first frame, one kind per task so frames can interleave.
+   * (requestIdleCallback rarely fires while the render loop runs: it made picking ready later.)
+   */
+  private scheduleBvh() {
+    const idle = (cb: () => void) => { setTimeout(cb, 0); };
+    const next = () => {
+      // Several kinds per task (50 ms slice): fewer yields, fewer frames competing with the build.
+      const sliceEnd = performance.now() + 50;
+      for (let b = this.batches.find((x) => !x.bvh); b; b = this.batches.find((x) => !x.bvh)) {
+        this.ensureBvh(b);
+        if (performance.now() > sliceEnd) return idle(next);
+      }
+      this.pickReadyMs = performance.now() - this.loadT0;
+      this.loadMs = this.pickReadyMs;
+      this.emitChange();
+    };
+    idle(next);
+  }
+
+  /** Orbits the camera around its target for `ms` and returns the frame times (bench page). */
+  orbitFor(ms: number): Promise<number[]> {
+    return new Promise((resolve) => {
+      const times: number[] = [];
+      const start = performance.now();
+      const target = this.controls.target.clone();
+      const offset = this.camera.position.clone().sub(target);
+      const radius = Math.hypot(offset.x, offset.y), z = offset.z, a0 = Math.atan2(offset.y, offset.x);
+      let last = 0;
+      this.orbit = (t) => {
+        if (last) times.push(t - last);
+        last = t;
+        const a = a0 + ((performance.now() - start) / ms) * Math.PI * 2;
+        this.camera.position.set(target.x + Math.cos(a) * radius, target.y + Math.sin(a) * radius, target.z + z);
+        this.dirty = true;
+        if (performance.now() - start >= ms) { this.orbit = null; resolve(times); }
+      };
+    });
   }
 
   /** Mean frame time over the last frames, in ms (for the smoke test budget). */

@@ -1,4 +1,4 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 // Smoke test on the production build, real assets, system Chrome headless, WebGPU then WebGL2.
 export default defineConfig({
@@ -15,8 +15,10 @@ export default defineConfig({
     },
   },
   projects: [
-    { name: 'webgpu', metadata: { query: '' } },
-    { name: 'webgl', metadata: { query: '?backend=webgl' } },
+    { name: 'webgpu', metadata: { query: '' }, testIgnore: /mobile/ },
+    { name: 'webgl', metadata: { query: '?backend=webgl' }, testIgnore: /mobile|offline/ },
+    // Phone emulation (touch, narrow viewport), WebGL2 like a phone without WebGPU.
+    { name: 'mobile', metadata: { query: '?backend=webgl' }, testMatch: /mobile/, use: { ...devices['Pixel 7'], channel: 'chrome' } },
   ],
   webServer: {
     command: 'npm run build && npm run preview',

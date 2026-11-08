@@ -2,24 +2,30 @@
   "name": "@haac/app",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
+    "preview:https": "node scripts/preview-https.mjs",
     "test": "node --test \"test/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
     "e2e": "playwright test"
   },
   "dependencies": {
+    "@serwist/window": "^9.5.13",
     "@tanstack/react-virtual": "^3.14.26",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "serwist": "^9.5.13",
     "three": "0.187.0",
     "three-mesh-bvh": "0.9.18"
   },
   "devDependencies": {
     "@playwright/test": "1.65.0",
+    "@serwist/vite": "^9.5.13",
     "@types/node": "^24.19.2",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",

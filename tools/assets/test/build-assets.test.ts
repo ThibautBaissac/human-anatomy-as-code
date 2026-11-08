@@ -54,21 +54,25 @@ async function readGlb(path: string) {
 test('one GLB per kind with instances, none for group', async () => {
   const { objDir, outDir } = fixture();
   await buildAssets({ atlas: ATLAS, objDir, outDir });
-  assert.deepEqual(readdirSync(outDir).sort(), ['artery.glb', 'bone.glb', 'manifest.json', 'muscle.glb', 'organ.glb']);
+  const files = readdirSync(outDir).sort();
+  assert.equal(files.length, 5);
+  assert.ok(files.includes('manifest.json'));
+  for (const k of ['artery', 'bone', 'muscle', 'organ']) assert.ok(files.some((f) => new RegExp(`^${k}\\.[0-9a-f]{8}\\.glb$`).test(f)), k);
 });
 
 test('nodes are named slug or slug@side, sorted, with extras; meshes of one side are merged', async () => {
   const { objDir, outDir } = fixture();
   await buildAssets({ atlas: ATLAS, objDir, outDir });
-  const artery = await readGlb(join(outDir, 'artery.glb'));
+  const m = JSON.parse(readFileSync(join(outDir, 'manifest.json'), 'utf8'));
+  const artery = await readGlb(join(outDir, m.kinds.artery.file));
   assert.deepEqual(artery.map((n) => n.name), ['common-carotid-artery@left', 'common-carotid-artery@right']);
   assert.deepEqual(artery[0].extras, { slug: 'common-carotid-artery', side: 'left', meshes: ['bp3d:FJ2M', 'bp3d:FJ3M'] });
   assert.equal(artery[0].vertices, 8);
   assert.equal(artery[0].triangles, 8);
   assert.equal(artery[1].triangles, 4);
-  const organ = await readGlb(join(outDir, 'organ.glb'));
+  const organ = await readGlb(join(outDir, m.kinds.organ.file));
   assert.deepEqual(organ.map((n) => [n.name, n.extras]), [['heart', { slug: 'heart', side: null, meshes: ['bp3d:FJ4'] }]]);
-  const muscle = await readGlb(join(outDir, 'muscle.glb'));
+  const muscle = await readGlb(join(outDir, m.kinds.muscle.file));
   assert.deepEqual(muscle.map((n) => n.name), ['biceps-brachii@left']);
 });
 
@@ -80,8 +84,10 @@ test('the manifest lists file, bytes, sha256 and instance count per kind, keys s
   assert.deepEqual(Object.keys(manifest.kinds), ['artery', 'bone', 'muscle', 'organ']);
   assert.equal(manifest.source, 'bodyparts3d');
   const bone = manifest.kinds.bone;
-  const bytes = readFileSync(join(outDir, 'bone.glb'));
-  assert.deepEqual(bone, { file: 'bone.glb', bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex'), instances: 2 });
+  const bytes = readFileSync(join(outDir, bone.file));
+  const sha256 = createHash('sha256').update(bytes).digest('hex');
+  assert.deepEqual(bone, { file: `bone.${sha256.slice(0, 8)}.glb`, bytes: bytes.length, sha256, instances: 2 });
+  assert.equal(manifest.totalBytes, Object.values(manifest.kinds).reduce((n, k) => n + k.bytes, 0));
 });
 
 test('two builds of the same inputs give identical bytes', async () => {
@@ -101,4 +107,14 @@ test('an OBJ without triangles is an error too', async () => {
   const { objDir, outDir } = fixture([], ['FJ1']);
   await assert.rejects(buildAssets({ atlas: ATLAS, objDir, outDir }), /FJ1\b/);
   assert.equal(existsSync(outDir), false);
+});
+
+test('a rebuild after one OBJ changed renames only that kind and removes the old file', async () => {
+  const { objDir, outDir } = fixture();
+  const before = await buildAssets({ atlas: ATLAS, objDir, outDir });
+  writeFileSync(join(objDir, 'nested', 'FJ4.obj'), tetra(7)); // heart → organ
+  const after = await buildAssets({ atlas: ATLAS, objDir, outDir });
+  assert.notEqual(after.kinds.organ.file, before.kinds.organ.file);
+  for (const k of ['artery', 'bone', 'muscle']) assert.equal(after.kinds[k].file, before.kinds[k].file);
+  assert.deepEqual(readdirSync(outDir).filter((f) => f.endsWith('.glb')).sort(), Object.values(after.kinds).map((k) => k.file).sort());
 });

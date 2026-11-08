@@ -35,6 +35,12 @@ export function useViewer() {
         getJson<Manifest>(`${base}assets/manifest.json`, 'assets/manifest.json'),
       ]);
       if (disposed) return;
+      // Models already in the offline cache before this load? (transferSize cannot tell: service worker responses report 0)
+      const files = Object.values(manifest.kinds).map((k) => `${base}assets/${k.file}`);
+      const cached = 'caches' in window && (await caches.has('haac-assets'))
+        ? new Set((await (await caches.open('haac-assets')).keys()).map((r) => new URL(r.url).pathname)) : new Set<string>();
+      const hits = files.filter((f) => cached.has(f)).length;
+      v.loadSource = hits === files.length ? 'cache' : hits ? 'partial-cache' : 'network';
       const bilateral = new Set(atlas.structures.filter((s) => s.sides).map((s) => s.slug));
       const slugs = new Set(atlas.structures.map((s) => s.slug));
       const ctx = { hasSlug: (s: string) => slugs.has(s), hasSides: (s: string) => bilateral.has(s), kinds: Object.keys(manifest.kinds), maxLayer: Math.max(0, ...atlas.structures.map((s) => s.layer ?? 0)) };
