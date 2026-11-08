@@ -1,0 +1,62 @@
+// View ⇄ URL hash, for deep links. Pure. Unknown or invalid values are dropped one by one.
+import { AXES, LANGS, type Axis, type Lang, type Side, type ViewState } from './types.ts';
+
+export interface DecodeContext {
+  hasSlug(slug: string): boolean;
+  kinds: string[];
+  maxLayer: number;
+}
+
+const round = (n: number) => Math.round(n);
+
+export function encodeView(v: ViewState): string {
+  const p: string[] = [];
+  if (v.selection) p.push(`sel=${v.selection.slug}${v.selection.side ? `@${v.selection.side}` : ''}`);
+  if (v.layerCut) p.push(`layer=${v.layerCut}`);
+  if (v.ghost) p.push('ghost=1');
+  if (v.hiddenKinds.length) p.push(`hide=${[...v.hiddenKinds].sort().join(',')}`);
+  const cuts = AXES.filter((a) => v.sections[a] !== undefined).map((a) => `${a}:${v.sections[a]!.toFixed(3)}`);
+  if (cuts.length) p.push(`cut=${cuts.join(',')}`);
+  if (v.lang !== 'fr') p.push(`lang=${v.lang}`);
+  if (v.camera) p.push(`cam=${[...v.camera.position, ...v.camera.target].map(round).join(',')}`);
+  return p.join('&');
+}
+
+export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState> {
+  const params = new URLSearchParams(hash.replace(/^#/, ''));
+  const out: Partial<ViewState> = {};
+
+  const sel = params.get('sel');
+  if (sel) {
+    const [slug, side, extra] = sel.split('@');
+    if (ctx.hasSlug(slug) && extra === undefined && (side === undefined || side === 'left' || side === 'right')) {
+      out.selection = { slug, side: (side as Side | undefined) ?? null };
+    }
+  }
+  const layer = Number(params.get('layer'));
+  if (params.has('layer') && Number.isInteger(layer) && layer >= 0 && layer <= ctx.maxLayer) out.layerCut = layer;
+  if (params.get('ghost') === '1') out.ghost = true;
+  const hide = params.get('hide');
+  if (hide) {
+    const kinds = hide.split(',').filter((k) => ctx.kinds.includes(k));
+    if (kinds.length) out.hiddenKinds = kinds;
+  }
+  const cut = params.get('cut');
+  if (cut) {
+    const sections: Partial<Record<Axis, number>> = {};
+    for (const part of cut.split(',')) {
+      const [axis, pos] = part.split(':');
+      const n = Number(pos);
+      if (AXES.includes(axis as Axis) && pos !== undefined && Number.isFinite(n) && n >= 0 && n <= 1) sections[axis as Axis] = n;
+    }
+    if (Object.keys(sections).length) out.sections = sections;
+  }
+  const lang = params.get('lang');
+  if (lang && LANGS.includes(lang as Lang)) out.lang = lang as Lang;
+  const cam = params.get('cam')?.split(',').map(Number);
+  if (cam && cam.length === 6 && cam.every(Number.isFinite)) {
+    const r = cam.map(round);
+    out.camera = { position: [r[0], r[1], r[2]], target: [r[3], r[4], r[5]] };
+  }
+  return out;
+}

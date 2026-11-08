@@ -1,0 +1,68 @@
+// Shapes shared by the viewer and the UI. Pure: no three.js, no React, no DOM.
+export type Lang = 'fr' | 'en' | 'la';
+export type Side = 'left' | 'right';
+export type Axis = 'axial' | 'coronal' | 'sagittal';
+export const AXES: Axis[] = ['axial', 'coronal', 'sagittal'];
+export const LANGS: Lang[] = ['fr', 'en', 'la'];
+
+export interface AtlasLabel {
+  text: string;
+  source: string;
+  status: 'draft' | 'reviewed';
+  gender?: string;
+  number?: string;
+  synonyms?: string[];
+}
+
+export interface AtlasSide {
+  ids?: Record<string, unknown>;
+  meshes?: string[];
+  labels: Partial<Record<Lang, string>>;
+}
+
+export interface AtlasStructure {
+  slug: string;
+  kind: string;
+  laterality: 'bilateral' | 'midline' | 'unpaired-left' | 'unpaired-right';
+  status: 'draft' | 'reviewed';
+  parent?: string;
+  regions?: string[];
+  layer: number | null;
+  children: string[];
+  aliases?: string[];
+  labels: Partial<Record<Lang, AtlasLabel>>;
+  ids?: Record<string, unknown>;
+  meshes?: string[];
+  sides?: Record<Side, AtlasSide>;
+}
+
+export interface Atlas {
+  structures: AtlasStructure[];
+  meshIndex: Record<string, { slug: string; side: Side | null }>;
+  attributions: { source: string; name: string; licence: string; attribution: string; url: string }[];
+}
+
+export interface Selection {
+  slug: string;
+  side: Side | null;
+}
+
+export interface Camera {
+  position: [number, number, number];
+  target: [number, number, number];
+}
+
+/** Everything a view is made of: what the URL encodes and what the UI renders from. */
+export interface ViewState {
+  selection: Selection | null;
+  layerCut: number;
+  ghost: boolean;
+  hiddenKinds: string[];
+  sections: Partial<Record<Axis, number>>;
+  lang: Lang;
+  camera: Camera | null;
+}
+
+export const DEFAULT_VIEW: ViewState = {
+  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], sections: {}, lang: 'fr', camera: null,
+};
