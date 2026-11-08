@@ -20,7 +20,7 @@ export function usePwa() {
     // Reload once the update the user accepted takes control of the page.
     const onControllerChange = () => { if (accepted.current) location.reload(); };
     navigator.serviceWorker.addEventListener('controllerchange', onControllerChange);
-    void s.register();
+    s.register().catch((e) => console.error('[sw] registration failed', e));
     sw.current = s;
     return () => navigator.serviceWorker.removeEventListener('controllerchange', onControllerChange);
   }, [supported]);

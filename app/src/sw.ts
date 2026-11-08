@@ -1,13 +1,12 @@
 /// <reference lib="webworker" />
 // Service worker: precaches the app shell only; models and data are cached at run time.
 import { CacheFirst, NetworkFirst, Serwist, type PrecacheEntry } from 'serwist';
+import { ASSETS_CACHE as ASSETS, DATA_CACHE as DATA, DATA_URLS, MANIFEST_URL, isModelPath, modelUrl } from './offline/urls.ts';
 
 declare const self: ServiceWorkerGlobalScope & { __SW_MANIFEST: (PrecacheEntry | string)[] };
 
-const ASSETS = 'haac-assets';
-const DATA = 'haac-data';
-const isModel = (url: URL) => url.origin === self.location.origin && /^\/assets\/[^/]+\.glb$/.test(url.pathname);
-const isData = (url: URL) => url.origin === self.location.origin && (url.pathname === '/atlas.json' || url.pathname === '/assets/manifest.json');
+const isModel = (url: URL) => url.origin === self.location.origin && isModelPath(url.pathname);
+const isData = (url: URL) => url.origin === self.location.origin && DATA_URLS.includes(url.pathname);
 
 const serwist = new Serwist({
   precacheEntries: self.__SW_MANIFEST,
@@ -25,11 +24,11 @@ serwist.addEventListeners();
 
 /** Removes cached models that the current manifest no longer lists. */
 async function cleanupModels(): Promise<void> {
-  let res = await fetch('/assets/manifest.json').catch(() => undefined);
-  if (!res?.ok) res = await (await caches.open(DATA)).match('/assets/manifest.json');
+  let res = await fetch(MANIFEST_URL).catch(() => undefined);
+  if (!res?.ok) res = await (await caches.open(DATA)).match(MANIFEST_URL);
   if (!res) return;
   const manifest = (await res.json()) as { kinds: Record<string, { file: string }> };
-  const keep = new Set(Object.values(manifest.kinds).map((k) => `/assets/${k.file}`));
+  const keep = new Set(Object.values(manifest.kinds).map((k) => modelUrl(k.file)));
   const cache = await caches.open(ASSETS);
   for (const req of await cache.keys()) if (!keep.has(new URL(req.url).pathname)) await cache.delete(req);
 }

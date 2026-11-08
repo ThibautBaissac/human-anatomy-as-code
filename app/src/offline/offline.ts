@@ -1,7 +1,8 @@
 // Offline manager (browser): reads what the service worker cached, downloads what is missing.
 import { offlineStatus, type AssetManifest, type OfflineStatus } from './offline-state.ts';
+import { ASSETS_CACHE, DATA_CACHE, modelUrl } from './urls.ts';
 
-export const CACHE_NAMES = ['haac-assets', 'haac-data'];
+const CACHE_NAMES = [ASSETS_CACHE, DATA_CACHE];
 
 async function cachedUrls(): Promise<string[]> {
   const out: string[] = [];
@@ -17,11 +18,14 @@ export async function readStatus(manifest: AssetManifest): Promise<OfflineStatus
   return offlineStatus(manifest, await cachedUrls(), persisted);
 }
 
-/** Resolves once a service worker controls the page (its fetches are what fills the caches). */
+export class NoControllerError extends Error {}
+
+/** Resolves once a service worker controls the page (its fetches are what fills the caches); fails after 10 s. */
 async function controlled(): Promise<void> {
-  await navigator.serviceWorker.ready;
+  const timeout = new Promise<never>((_, reject) => setTimeout(() => reject(new NoControllerError('no service worker')), 10_000));
+  await Promise.race([navigator.serviceWorker.ready, timeout]);
   if (navigator.serviceWorker.controller) return;
-  await new Promise((resolve) => navigator.serviceWorker.addEventListener('controllerchange', resolve, { once: true }));
+  await Promise.race([new Promise((resolve) => navigator.serviceWorker.addEventListener('controllerchange', resolve, { once: true })), timeout]);
 }
 
 export class DownloadError extends Error {
@@ -34,10 +38,11 @@ export async function makeAvailableOffline(manifest: AssetManifest, onProgress: 
   await controlled();
   await navigator.storage?.persist?.().catch(() => false);
   const before = await readStatus(manifest);
-  const sizes = new Map(Object.values(manifest.kinds).map((k) => [`/assets/${k.file}`, k.bytes]));
+  const sizes = new Map(Object.values(manifest.kinds).map((k) => [modelUrl(k.file), k.bytes]));
   let done = before.cachedBytes;
   onProgress(done, manifest.totalBytes);
   const queue = [...before.missing];
+  const fetched: string[] = [];
   let failed = false;
   const worker = async () => {
     for (let url = queue.shift(); url; url = queue.shift()) {
@@ -45,6 +50,7 @@ export async function makeAvailableOffline(manifest: AssetManifest, onProgress: 
         const res = await fetch(url);
         if (!res.ok) throw new Error(String(res.status));
         await res.arrayBuffer();
+        fetched.push(url);
         done += sizes.get(url) ?? 0;
         onProgress(done, manifest.totalBytes);
       } catch {
@@ -53,7 +59,9 @@ export async function makeAvailableOffline(manifest: AssetManifest, onProgress: 
     }
   };
   await Promise.all([worker(), worker()]);
-  const after = await readStatus(manifest);
+  // The service worker stores a response after handing it over: count what was fetched, not only what the cache lists yet.
+  const persisted = (await navigator.storage?.persisted?.().catch(() => false)) ?? false;
+  const after = offlineStatus(manifest, [...(await cachedUrls()), ...fetched], persisted);
   if (failed || after.state !== 'complete') throw new DownloadError(after);
   return after;
 }

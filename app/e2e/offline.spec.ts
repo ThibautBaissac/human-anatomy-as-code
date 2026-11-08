@@ -10,16 +10,18 @@ test('after "make available offline", the app reloads and works without network'
   await ready(page);
   await page.waitForFunction(() => !!navigator.serviceWorker?.controller, null, { timeout: 30_000 });
 
+  // Force a real download of every model: empty the model cache first.
+  await page.evaluate(() => caches.delete('haac-assets'));
   await page.getByRole('button', { name: 'Hors ligne…' }).click();
   const dialog = page.getByRole('dialog', { name: 'Utiliser l’atlas hors ligne' });
   await expect(dialog).toBeVisible();
-  // Models loaded after the service worker took control are already cached (automatic caching):
-  // the button is then disabled and the state already complete. Either way, the end state must be complete.
   const state = dialog.getByTestId('offline-state');
   await expect(state).not.toHaveText(/Vérification/);
   const button = dialog.getByRole('button', { name: 'Rendre disponible hors ligne' });
-  if (await button.isEnabled()) await button.click();
+  await expect(button).toBeEnabled();
+  await button.click();
   await expect(state).toContainText('Disponible hors ligne', { timeout: 90_000 });
+  await expect(dialog.getByRole('alert')).toHaveCount(0); // no "download interrupted" after a successful download
   await dialog.getByRole('button', { name: 'Fermer' }).click();
   await expect(page.getByRole('button', { name: 'Hors ligne…' })).toBeFocused();
 

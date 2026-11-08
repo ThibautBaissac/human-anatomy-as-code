@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { DownloadError, makeAvailableOffline, readStatus } from '../offline/offline.ts';
+import { DownloadError, NoControllerError, makeAvailableOffline, readStatus } from '../offline/offline.ts';
 import type { AssetManifest, OfflineStatus } from '../offline/offline-state.ts';
 import { S } from './strings.ts';
 
@@ -14,6 +14,8 @@ export function OfflineDialog({ open, onClose, supported, canInstall, install, i
   const [status, setStatus] = useState<OfflineStatus | null>(null);
   const [progress, setProgress] = useState<[number, number] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const busy = useRef(false);
+  const closeButton = useRef<HTMLButtonElement>(null);
   const [hideIos, setHideIos] = useState(() => { try { return localStorage.getItem(IOS_HINT_KEY) === '1'; } catch { return false; } });
 
   useEffect(() => {
@@ -32,14 +34,17 @@ export function OfflineDialog({ open, onClose, supported, canInstall, install, i
   }, [open, supported]);
 
   const download = async () => {
-    if (!manifest) return;
+    if (!manifest || busy.current) return; // one download at a time, even on repeated clicks
+    busy.current = true;
     setError(null);
+    setProgress([0, manifest.totalBytes]);
     try {
       setStatus(await makeAvailableOffline(manifest, (d, t) => setProgress([d, t])));
     } catch (e) {
       if (e instanceof DownloadError) setStatus(e.status);
-      setError(S.offlineDownloadError);
+      setError(e instanceof NoControllerError ? S.offlineNoController : S.offlineDownloadError);
     } finally {
+      busy.current = false;
       setProgress(null);
     }
   };
@@ -49,9 +54,10 @@ export function OfflineDialog({ open, onClose, supported, canInstall, install, i
       <h2 id="offline-title">{S.offlineTitle}</h2>
       {!supported ? <p>{S.offlineUnsupported}</p> : (
         <>
-          <p data-testid="offline-state">
+          <p data-testid="offline-state" role="status">
             {!status ? S.offlineChecking
               : status.state === 'complete' ? S.offlineComplete(mb(status.totalBytes))
+              : status.state === 'partial' && status.cachedBytes === status.totalBytes ? S.offlineDataMissing
               : status.state === 'partial' ? S.offlinePartial(mb(status.cachedBytes), mb(status.totalBytes))
               : S.offlineNone(mb(status.totalBytes))}
           </p>
@@ -70,12 +76,12 @@ export function OfflineDialog({ open, onClose, supported, canInstall, install, i
           {iosHint && !hideIos && (
             <div className="ios-hint">
               <p>{S.iosHint}</p>
-              <button type="button" className="link" onClick={() => { setHideIos(true); try { localStorage.setItem(IOS_HINT_KEY, '1'); } catch { /* private mode */ } }}>{S.iosHintDismiss}</button>
+              <button type="button" className="link" onClick={() => { setHideIos(true); closeButton.current?.focus(); try { localStorage.setItem(IOS_HINT_KEY, '1'); } catch { /* private mode */ } }}>{S.iosHintDismiss}</button>
             </div>
           )}
         </>
       )}
-      <div className="dialog-actions"><button type="button" onClick={onClose}>{S.close}</button></div>
+      <div className="dialog-actions"><button ref={closeButton} type="button" onClick={onClose}>{S.close}</button></div>
     </dialog>
   );
 }

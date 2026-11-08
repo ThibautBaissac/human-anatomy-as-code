@@ -22,3 +22,30 @@ Décisions prises là où la spec `2026-11-08-offline-mobile.md` est muette, ou 
 ## Mesures sur appareils réels
 
 Protocole et tableau dans `spikes/04-mobile/RESULTS.md`. La mesure de référence sur Mac est faite. **Les mesures sur iPhone et Android restent à faire par l'utilisateur** : elles demandent mkcert (mot de passe) et les appareils.
+
+## Corrections issues de la revue de code (2026-11-08)
+
+- **État après téléchargement.** Serwist confie la réponse à la page avant d'avoir fini de l'écrire en cache. L'état final est donc calculé avec les fichiers effectivement téléchargés, et pas seulement avec ce que le cache liste déjà. Sans cela, un téléchargement réussi pouvait s'afficher comme interrompu. Le test de fumée vide désormais le cache des modèles avant le clic, pour forcer un vrai téléchargement des 36,5 MB. La course elle-même n'a pas pu être reproduite de façon fiable (3 essais verts sans la correction) : aucun test ne l'isole.
+- **Téléchargement bloqué ou lancé deux fois.**
+  - Le téléchargement échoue après 10 s si aucun service worker ne contrôle la page (rechargement forcé, enregistrement en échec). Le message en français invite alors à recharger la page normalement.
+  - Un verrou posé dès le clic empêche deux téléchargements simultanés.
+  - Un échec d'enregistrement du service worker est journalisé.
+- **Clic avant que les index soient prêts.** Seuls les index des kinds qui ont au moins une instance sélectionnable (visible et opaque) sont construits, et la recherche du point cliqué ne porte que sur ces kinds. Avant la correction, `mesh.visible`, toujours vrai, déclenchait la construction de tous les index au premier tap.
+- **Annonces.** Le bandeau de mise à jour, l'indicateur « Hors ligne » et l'état du panneau hors ligne sont des régions `role="status"` toujours présentes : seul leur texte change, pour que les lecteurs d'écran les annoncent.
+- **État partiel.** Quand tous les modèles sont en cache mais qu'il manque `atlas.json`, le panneau le dit en clair, au lieu d'afficher « 36,5 MB sur 36,5 MB ».
+- **Divers.**
+  - Fermer l'encart iOS renvoie le focus sur « Fermer ».
+  - La page `/bench` ne plante plus si aucune image n'a été dessinée (onglet masqué).
+  - `dispose()` arrête la construction des index et la rotation de la caméra.
+  - Les chaînes de `/bench` sont dans `strings.ts`.
+  - Les règles CSS en double sont supprimées.
+- **Constantes partagées.** Les noms de cache et la disposition des URL (`offline/urls.ts`) sont partagés par le service worker, le gestionnaire offline et le viewer.
+- **Versions figées.** `serwist`, `@serwist/vite` et `@serwist/window` sont épinglés en 9.5.13 exact.
+
+## Écarts déclarés après la revue
+
+- **Navigation : précache d'abord, pas NetworkFirst.** `navigateFallback` sert le `index.html` précaché, qui référence les fichiers JS et CSS de la même version : l'application reste cohérente. Une mise à jour passe par le bandeau. Servir le réseau d'abord pourrait charger un `index.html` qui pointe vers des fichiers absents du précache.
+- **Nom du script.** C'est `preview:https`, et non `dev:https` : il sert le build de production, seul cas où le service worker et les budgets ont un sens.
+- **Bouton d'installation.** Il s'intitule « Installer l'application » plutôt que « Installer », pour un intitulé explicite hors contexte (RGAA 6.1).
+- **Limite connue.** Les modèles périmés ne sont retirés du cache qu'à l'activation d'un nouveau service worker. Un rebuild qui ne touche que les assets laisse les anciens fichiers en cache jusqu'à la prochaine version de l'application. Ce n'est pas bloquant, puisque les noms sont versionnés ; une correction est à prévoir dans une spec ultérieure.
+- **US 18.** Elle reste ouverte jusqu'aux mesures sur iPhone et Android (`spikes/04-mobile/RESULTS.md`).

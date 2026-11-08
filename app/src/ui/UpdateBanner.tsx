@@ -1,11 +1,16 @@
 import { S } from './strings.ts';
 
-export function UpdateBanner({ onReload, onLater }: { onReload: () => void; onLater: () => void }) {
+/** The live region stays mounted so screen readers announce the banner when it appears. */
+export function UpdateBanner({ visible, onReload, onLater }: { visible: boolean; onReload: () => void; onLater: () => void }) {
   return (
-    <div className="update-banner" role="status">
-      <span>{S.updateReady}</span>
-      <button type="button" onClick={onReload}>{S.reload}</button>
-      <button type="button" onClick={onLater}>{S.later}</button>
+    <div role="status" className={visible ? 'update-banner' : 'visually-hidden'}>
+      {visible && (
+        <>
+          <span>{S.updateReady}</span>
+          <button type="button" onClick={onReload}>{S.reload}</button>
+          <button type="button" onClick={onLater}>{S.later}</button>
+        </>
+      )}
     </div>
   );
 }

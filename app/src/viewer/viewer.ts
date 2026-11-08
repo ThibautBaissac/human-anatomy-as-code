@@ -317,9 +317,10 @@ export class Viewer {
     const r = this.canvas.getBoundingClientRect();
     this.raycaster.setFromCamera(new THREE.Vector2(((clientX - r.left) / r.width) * 2 - 1, -((clientY - r.top) / r.height) * 2 + 1), this.camera);
     const planes = this.clip.clippingPlanes;
-    // A pick before the deferred indexes are done builds those of the visible kinds now.
-    for (const b of this.batches) if (b.mesh.visible) this.ensureBvh(b);
-    const hits = this.raycaster.intersectObjects(this.batches.map((b) => b.mesh), false);
+    // A pick before the deferred indexes are done builds only those of kinds with pickable (opaque, visible) instances.
+    const pickable = this.batches.filter((b) => b.alpha.some((a) => a === 1));
+    for (const b of pickable) this.ensureBvh(b);
+    const hits = this.raycaster.intersectObjects(pickable.map((b) => b.mesh), false);
     for (const h of hits) {
       if (planes.some((p) => p.distanceToPoint(h.point) < 0)) continue;
       const batch = this.batches.find((b) => b.mesh === h.object);
@@ -384,23 +385,23 @@ export class Viewer {
   }
 
   /**
-   * Builds the picking indexes after the first frame, one kind per task so frames can interleave.
+   * Builds the picking indexes after the first frame, in 50 ms slices so frames can interleave.
    * (requestIdleCallback rarely fires while the render loop runs: it made picking ready later.)
    */
   private scheduleBvh() {
-    const idle = (cb: () => void) => { setTimeout(cb, 0); };
+    const yieldThen = (cb: () => void) => { if (!this.disposed) setTimeout(cb, 0); };
     const next = () => {
       // Several kinds per task (50 ms slice): fewer yields, fewer frames competing with the build.
       const sliceEnd = performance.now() + 50;
       for (let b = this.batches.find((x) => !x.bvh); b; b = this.batches.find((x) => !x.bvh)) {
         this.ensureBvh(b);
-        if (performance.now() > sliceEnd) return idle(next);
+        if (performance.now() > sliceEnd) return yieldThen(next);
       }
       this.pickReadyMs = performance.now() - this.loadT0;
       this.loadMs = this.pickReadyMs;
       this.emitChange();
     };
-    idle(next);
+    yieldThen(next);
   }
 
   /** Orbits the camera around its target for `ms` and returns the frame times (bench page). */
@@ -429,7 +430,11 @@ export class Viewer {
     return t.length ? t.reduce((a, b) => a + b, 0) / t.length : 0;
   }
 
+  private disposed = false;
+
   dispose(): void {
+    this.disposed = true;
+    this.orbit = null;
     this.renderer.setAnimationLoop(null);
     this.resize.disconnect();
     this.controls.dispose();

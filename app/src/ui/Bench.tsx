@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 import type { Viewer } from '../viewer/viewer.ts';
+import { S } from './strings.ts';
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 /** ?bench=1: waits for picking to be ready, orbits 10 s, shows a JSON report to copy (nothing is sent anywhere). */
 export function Bench({ viewer }: { viewer: Viewer }) {
-  const [report, setReport] = useState<string>('Mesure en cours…');
+  const [report, setReport] = useState<string>(S.benchRunning);
   useEffect(() => {
     let cancelled = false;
     (async () => {
       while (!viewer.pickReadyMs) await wait(100);
       await wait(2000);
       const times = (await viewer.orbitFor(10_000)).sort((a, b) => a - b);
+      if (!times.length) { setReport(S.benchRunning); return; } // tab hidden: no frame was drawn
       const memory = (performance as unknown as { memory?: { usedJSHeapSize: number } }).memory;
       const out = {
         userAgent: navigator.userAgent,
@@ -33,9 +35,9 @@ export function Bench({ viewer }: { viewer: Viewer }) {
     return () => { cancelled = true; };
   }, [viewer]);
   return (
-    <section className="bench" aria-label="Mesure de performance">
+    <section className="bench" aria-label={S.benchLabel}>
       <pre data-testid="bench">{report}</pre>
-      <button type="button" onClick={() => navigator.clipboard?.writeText(report)}>Copier</button>
+      <button type="button" onClick={() => navigator.clipboard?.writeText(report)}>{S.copy}</button>
     </section>
   );
 }

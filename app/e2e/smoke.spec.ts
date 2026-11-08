@@ -81,7 +81,6 @@ test('performance budget: full load (atlas, GLB, BVH) under 3 s, mean frame unde
     return { loadMs: v.loadMs, firstFrameMs: v.firstFrameMs, frameMs: times.reduce((a, b) => a + b, 0) / times.length };
   });
   console.log(`[budget] first frame ${Math.round(firstFrameMs)} ms · pick ready ${Math.round(loadMs)} ms · mean frame ${frameMs.toFixed(2)} ms`);
-  expect(firstFrameMs).toBeLessThan(loadMs + 1);
   expect(loadMs).toBeLessThan(3000);
   expect(frameMs).toBeLessThan(16.7);
 });

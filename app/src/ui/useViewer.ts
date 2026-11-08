@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from '
 import { Viewer, type Manifest, type ViewerSnapshot } from '../viewer/viewer.ts';
 import { decodeView, encodeView, viewFromHash } from '../viewer/view-hash.ts';
 import { S } from './strings.ts';
+import { ASSETS_CACHE } from '../offline/urls.ts';
 import type { Atlas, Selection } from '../viewer/types.ts';
 
 const EMPTY: ViewerSnapshot = { view: { selection: null, layerCut: 0, ghost: false, hiddenKinds: [], sections: {}, lang: 'fr', camera: null }, loading: null, failedKinds: [], backend: null, ready: false };
@@ -37,8 +38,8 @@ export function useViewer() {
       if (disposed) return;
       // Models already in the offline cache before this load? (transferSize cannot tell: service worker responses report 0)
       const files = Object.values(manifest.kinds).map((k) => `${base}assets/${k.file}`);
-      const cached = 'caches' in window && (await caches.has('haac-assets'))
-        ? new Set((await (await caches.open('haac-assets')).keys()).map((r) => new URL(r.url).pathname)) : new Set<string>();
+      const cached = 'caches' in window && (await caches.has(ASSETS_CACHE))
+        ? new Set((await (await caches.open(ASSETS_CACHE)).keys()).map((r) => new URL(r.url).pathname)) : new Set<string>();
       const hits = files.filter((f) => cached.has(f)).length;
       v.loadSource = hits === files.length ? 'cache' : hits ? 'partial-cache' : 'network';
       const bilateral = new Set(atlas.structures.filter((s) => s.sides).map((s) => s.slug));

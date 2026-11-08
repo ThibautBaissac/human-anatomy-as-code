@@ -42,7 +42,7 @@ export function App() {
 
   return (
     <div className={`app${narrow ? ' is-narrow' : ''}`}>
-      {pwa.updateReady && <UpdateBanner onReload={pwa.applyUpdate} onLater={pwa.dismissUpdate} />}
+      <UpdateBanner visible={pwa.updateReady} onReload={pwa.applyUpdate} onLater={pwa.dismissUpdate} />
       <header className="header">
         <h1>{S.appTitle}</h1>
         {index && <Search index={index} lang={view.lang} onSelect={pick} />}
@@ -52,7 +52,7 @@ export function App() {
             {LANGS.map((l) => <option key={l} value={l}>{S.langs[l]}</option>)}
           </select>
         </label>
-        {!pwa.online && <span className="offline-tag">{S.offlineTag}</span>}
+        <span role="status" className={pwa.online ? 'visually-hidden' : 'offline-tag'}>{pwa.online ? '' : S.offlineTag}</span>
         <button ref={offlineButton} type="button" onClick={() => setOfflineOpen(true)}>{S.offlineButton}</button>
       </header>
       <main className="stage">
