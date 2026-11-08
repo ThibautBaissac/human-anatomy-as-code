@@ -1,0 +1,439 @@
+FMA45875	abdominal part of left pectoralis major
+FMA45874	abdominal part of right pectoralis major
+FMA15421	anterior inferior segmental branch of right portal vein
+FMA70443	anterior inferior segmental hepatic artery
+FMA71868	anterior inferior tributary of right hepatic biliary tree
+FMA73056	anterior part of left knee
+FMA72801	anterior part of left superior temporal gyrus
+FMA73055	anterior part of right knee
+FMA72800	anterior part of right superior temporal gyrus
+FMA15420	anterior superior segmental branch of right portal vein
+FMA70442	anterior superior segmental hepatic artery
+FMA15798	anterior superior segmental tributary of right hepatic vein
+FMA71867	anterior superior tributary of right hepatic biliary tree
+FMA50679	anterior temporal branch of left lateral occipital artery
+FMA50678	anterior temporal branch of right lateral occipital artery
+FMA9553	anterior wall of right ventricle
+FMA7265	anterolateral head of lateral papillary muscle of left ventricle
+FMA73464	brachium of left inferior colliculus
+FMA73462	brachium of left superior colliculus
+FMA73463	brachium of right inferior colliculus
+FMA73461	brachium of right superior colliculus
+FMA50147	branch of left anterior choroidal artery to posterior limb of left internal capsule
+FMA50146	branch of right anterior choroidal artery to posterior limb of right internal capsule
+FMA14177	bronchial branch of arch of aorta
+FMA59838	cartilaginous part of nasal septum
+FMA82706	caudate lobe branch of right portal vein
+FMA13365	caudate lobe of liver
+FMA71889	caudate lobe tributary of left hepatic biliary tree
+FMA20194	cavernous organ
+FMA9465	cavity of left atrium
+FMA9466	cavity of left ventricle
+FMA75007	cavity of neuraxis
+FMA11359	cavity of right atrium
+FMA9291	cavity of right ventricle
+FMA14812	celiac trunk
+FMA49148	check ligament of left medial rectus
+FMA49147	check ligament of right medial rectus
+FMA34691	clavicular part of left pectoralis major
+FMA34690	clavicular part of right pectoralis major
+FMA62445	commissure of diencephalon
+FMA61970	commissure of fornix of forebrain
+FMA85031	compartment of abdomen
+FMA259248	content of abdomen
+FMA19617	corpus spongiosum of penis
+FMA87217	descending thoracic aorta
+FMA32651	distal phalanx of left big toe
+FMA32657	distal phalanx of left fourth toe
+FMA32659	distal phalanx of left little toe
+FMA32653	distal phalanx of left second toe
+FMA32655	distal phalanx of left third toe
+FMA32650	distal phalanx of right big toe
+FMA32656	distal phalanx of right fourth toe
+FMA32658	distal phalanx of right little toe
+FMA32652	distal phalanx of right second toe
+FMA32654	distal phalanx of right third toe
+FMA26100	eighth thoracic intervertebral symphysis
+FMA26103	eleventh thoracic intervertebral symphysis
+FMA51045	fascia lata of left thigh
+FMA51044	fascia lata of right thigh
+FMA59992	faucial part of mouth
+FMA26084	fifth cervical intervertebral symphysis
+FMA26109	fifth lumbar intervertebral symphysis
+FMA26097	fifth thoracic intervertebral symphysis
+FMA26105	first lumbar intervertebral symphysis
+FMA37718	first lumbrical of left foot
+FMA37717	first lumbrical of right foot
+FMA37746	first plantar interosseous of left foot
+FMA37745	first plantar interosseous of right foot
+FMA3847	first septal branch of right posterior interventricular artery
+FMA26089	first thoracic intervertebral symphysis
+FMA26083	fourth cervical intervertebral symphysis
+FMA26108	fourth lumbar intervertebral symphysis
+FMA37484	fourth lumbrical of left foot
+FMA37483	fourth lumbrical of right foot
+FMA26096	fourth thoracic intervertebral symphysis
+FMA59764	gingiva of lower jaw
+FMA59763	gingiva of upper jaw
+FMA54241	hair of head
+FMA54250	hair of trunk
+FMA15739	hepatovenous segment ii
+FMA15741	hepatovenous segment iii
+FMA15742	hepatovenous segment iv
+FMA15747	hepatovenous segment ix
+FMA15743	hepatovenous segment v
+FMA15744	hepatovenous segment vi
+FMA15745	hepatovenous segment vii
+FMA50429	hypothalamic branch of left posterior communicating artery
+FMA50428	hypothalamic branch of right posterior communicating artery
+FMA14809	ileal artery
+FMA15405	ileal vein
+FMA11338	ileocecal junction
+FMA52577	inferior branch of left oculomotor nerve
+FMA52576	inferior branch of right oculomotor nerve
+FMA46288	inferior oblique part of left longus colli
+FMA46281	inferior oblique part of longus colli
+FMA8693	inferior part of anterior segmental vein
+FMA68928	inferior part of right anterior segmental vein
+FMA86347	inferior segmental branch of left renal artery
+FMA86346	inferior segmental branch of right renal artery
+FMA9561	inferior wall of left ventricle
+FMA9555	inferior wall of right ventricle
+FMA25058	intervertebral disk of axis
+FMA13505	intervertebral disk of eighth thoracic vertebra
+FMA13508	intervertebral disk of eleventh thoracic vertebra
+FMA13898	intervertebral disk of fifth cervical vertebra
+FMA16037	intervertebral disk of fifth lumbar vertebra
+FMA13502	intervertebral disk of fifth thoracic vertebra
+FMA16033	intervertebral disk of first lumbar vertebra
+FMA10458	intervertebral disk of first thoracic vertebra
+FMA13897	intervertebral disk of fourth cervical vertebra
+FMA16036	intervertebral disk of fourth lumbar vertebra
+FMA13501	intervertebral disk of fourth thoracic vertebra
+FMA13506	intervertebral disk of ninth thoracic vertebra
+FMA16034	intervertebral disk of second lumbar vertebra
+FMA13495	intervertebral disk of second thoracic vertebra
+FMA13900	intervertebral disk of seventh cervical vertebra
+FMA13504	intervertebral disk of seventh thoracic vertebra
+FMA13899	intervertebral disk of sixth cervical vertebra
+FMA13503	intervertebral disk of sixth thoracic vertebra
+FMA13507	intervertebral disk of tenth thoracic vertebra
+FMA13896	intervertebral disk of third cervical vertebra
+FMA16035	intervertebral disk of third lumbar vertebra
+FMA13500	intervertebral disk of third thoracic vertebra
+FMA25511	intervertebral symphysis
+FMA25571	intervertebral symphysis of axis
+FMA58576	investing fascia of left forearm
+FMA58430	investing fascia of left free lower limb
+FMA58406	investing fascia of left free upper limb
+FMA58419	investing fascia of left lower limb
+FMA58743	investing fascia of left thigh
+FMA58449	investing fascia of left wrist
+FMA58575	investing fascia of right forearm
+FMA58429	investing fascia of right free lower limb
+FMA58405	investing fascia of right free upper limb
+FMA58418	investing fascia of right lower limb
+FMA58742	investing fascia of right thigh
+FMA58401	investing fascia of right upper limb
+FMA58448	investing fascia of right wrist
+FMA68721	lateral branch of anterior basal segmental artery
+FMA50569	lateral branch of left pontine artery
+FMA50579	lateral branch of left superior cerebellar artery
+FMA68725	lateral branch of right anterior basal segmental artery
+FMA50568	lateral branch of right pontine artery
+FMA50578	lateral branch of right superior cerebellar artery
+FMA15432	lateral inferior segmental branch of left portal vein
+FMA70453	lateral inferior segmental hepatic artery
+FMA71888	lateral inferior tributary of left hepatic biliary tree
+FMA23055	lateral proper palmar digital artery of left little finger
+FMA22860	lateral proper palmar digital artery of left middle finger
+FMA85116	lateral proper palmar digital artery of left ring finger
+FMA23054	lateral proper palmar digital artery of right little finger
+FMA22858	lateral proper palmar digital artery of right middle finger
+FMA85115	lateral proper palmar digital artery of right ring finger
+FMA15431	lateral superior segmental branch of left portal vein
+FMA15803	lateral superior segmental tributary of left hepatic vein
+FMA58484	left corona ciliaris
+FMA76903	left duct of caudate lobe of liver
+FMA8112	left fifth costal cartilage
+FMA85118	left first common palmar digital artery
+FMA85124	left fourth common palmar digital artery
+FMA8167	left fourth costal cartilage
+FMA14670	left hepatic duct
+FMA18913	left inferior gluteal vein
+FMA22891	left interspinalis thoracis
+FMA59583	left lacrimal canaliculus
+FMA59542	left lacrimal lake
+FMA25559	left lateral chest wall
+FMA44922	left lateral circumflex femoral vein
+FMA18907	left lateral sacral vein
+FMA50072	left lateral superficial chest wall
+FMA22589	left lateral superior genicular artery
+FMA78450	left lateral ventricle
+FMA59672	left lateral wall of internal nose
+FMA71710	left lobe branch of left hepatic artery
+FMA71195	left lobe of thymus
+FMA57143	left lower central secondary incisor tooth
+FMA54444	left lower eyelid
+FMA55704	left lower first secondary molar tooth
+FMA55693	left lower first secondary premolar tooth
+FMA57141	left lower lateral secondary incisor tooth
+FMA55703	left lower second secondary molar tooth
+FMA55692	left lower second secondary premolar tooth
+FMA55687	left lower secondary canine tooth
+FMA7396	left main bronchus
+FMA22936	left medial brachial vein
+FMA44919	left medial circumflex femoral vein
+FMA73310	left medial geniculate body
+FMA22587	left medial superior genicular artery
+FMA4786	left musculophrenic vein
+FMA18916	left obturator vein
+FMA22865	left palmar metacarpal artery
+FMA50659	left posterior choroidal artery
+FMA50673	left posterior medial choroidal artery
+FMA22949	left radial vein
+FMA85120	left second common palmar digital artery
+FMA8275	left seventh costal cartilage
+FMA20227	left side of bony pelvis
+FMA8221	left sixth costal cartilage
+FMA21386	left superficial dorsal vein of penis
+FMA18910	left superior gluteal vein
+FMA4088	left superior intercostal artery
+FMA52657	left supra-orbital nerve
+FMA52644	left supratrochlear nerve
+FMA85122	left third common palmar digital artery
+FMA8058	left third costal cartilage
+FMA22952	left ulnar vein
+FMA55682	left upper central secondary incisor tooth
+FMA55699	left upper first secondary molar tooth
+FMA55690	left upper first secondary premolar tooth
+FMA55683	left upper lateral secondary incisor tooth
+FMA55700	left upper second secondary molar tooth
+FMA55691	left upper second secondary premolar tooth
+FMA55799	left upper secondary canine tooth
+FMA82494	lobular segment
+FMA7405	main bronchus
+FMA14831	marginal artery of colon
+FMA59399	maxillary part of mouth
+FMA50567	medial branch of left pontine artery
+FMA50582	medial branch of left superior cerebellar artery
+FMA50566	medial branch of right pontine artery
+FMA50581	medial branch of right superior cerebellar artery
+FMA15429	medial inferior segmental branch of left portal vein
+FMA70450	medial inferior segmental hepatic artery
+FMA71886	medial inferior tributary of left hepatic biliary tree
+FMA23051	medial proper palmar digital artery of left index finger
+FMA85111	medial proper palmar digital artery of middle finger
+FMA23050	medial proper palmar digital artery of right index finger
+FMA85112	medial proper palmar digital artery of right middle finger
+FMA23052	medial proper palmar digital artery of right ring finger
+FMA23046	medial proper palmar digital artery of ring finger
+FMA15428	medial superior segmental branch of left portal vein
+FMA70449	medial superior segmental hepatic artery
+FMA15802	medial superior segmental tributary of left hepatic vein
+FMA14643	mesentery of small intestine
+FMA23125	middle collateral branch of left deep brachial artery
+FMA23124	middle collateral branch of right deep brachial artery
+FMA32647	middle phalanx of left fourth toe
+FMA230988	middle phalanx of left little toe
+FMA32643	middle phalanx of left second toe
+FMA32645	middle phalanx of left third toe
+FMA32646	middle phalanx of right fourth toe
+FMA230986	middle phalanx of right little toe
+FMA32642	middle phalanx of right second toe
+FMA32644	middle phalanx of right third toe
+FMA50681	middle temporal branch of left lateral occipital artery
+FMA50680	middle temporal branch of right lateral occipital artery
+FMA86064	myocardial zone 12
+FMA86056	myocardial zone 4
+FMA87179	myocardium of inferior wall of left ventricle
+FMA26101	ninth thoracic intervertebral symphysis
+FMA58608	optic part of left retina
+FMA58607	optic part of right retina
+FMA63120	parenchyma of pancreas
+FMA79066	patellar part of left knee
+FMA79065	patellar part of right knee
+FMA15424	posterior inferior segmental branch of right portal vein
+FMA70446	posterior inferior segmental hepatic artery
+FMA71870	posterior inferior tributary of right hepatic biliary tree
+FMA72805	posterior part of left superior temporal gyrus
+FMA72804	posterior part of right superior temporal gyrus
+FMA15751	posterior sector of left liver
+FMA86348	posterior segmental branch of right renal artery
+FMA15796	posterior superior segmental tributary of right hepatic vein
+FMA50661	posteromedial central branch of left posterior cerebral artery
+FMA50660	posteromedial central branch of right posterior cerebral artery
+FMA71904	pre-hepatic portal vein
+FMA50362	precuneal branch of left pericallosal artery
+FMA50361	precuneal branch of right pericallosal artery
+FMA67601	process of organ
+FMA43254	proximal phalanx of left big toe
+FMA32639	proximal phalanx of left fourth toe
+FMA32635	proximal phalanx of left second toe
+FMA32637	proximal phalanx of left third toe
+FMA43253	proximal phalanx of right big toe
+FMA32638	proximal phalanx of right fourth toe
+FMA32634	proximal phalanx of right second toe
+FMA32636	proximal phalanx of right third toe
+FMA8615	pulmonary arterial trunk
+FMA23127	radial collateral branch of left deep brachial artery
+FMA23126	radial collateral branch of right deep brachial artery
+FMA71235	region of dura mater
+FMA86566	region of lateral papillary muscle of left ventricle
+FMA86565	region of papillary muscle of left ventricle
+FMA58483	right corona ciliaris
+FMA8070	right fifth costal cartilage
+FMA22856	right first common palmar digital artery
+FMA85123	right fourth common palmar digital artery
+FMA7976	right fourth costal cartilage
+FMA14669	right hepatic duct
+FMA18912	right inferior gluteal vein
+FMA22890	right interspinalis thoracis
+FMA59582	right lacrimal canaliculus
+FMA59541	right lacrimal lake
+FMA25558	right lateral chest wall
+FMA44920	right lateral circumflex femoral vein
+FMA18906	right lateral sacral vein
+FMA50071	right lateral superficial chest wall
+FMA22588	right lateral superior genicular artery
+FMA78449	right lateral ventricle
+FMA59671	right lateral wall of internal nose
+FMA71194	right lobe of thymus
+FMA57142	right lower central secondary incisor tooth
+FMA54443	right lower eyelid
+FMA55705	right lower first secondary molar tooth
+FMA55694	right lower first secondary premolar tooth
+FMA57140	right lower lateral secondary incisor tooth
+FMA55706	right lower second secondary molar tooth
+FMA55695	right lower second secondary premolar tooth
+FMA55686	right lower secondary canine tooth
+FMA7395	right main bronchus
+FMA68418	right main bronchus proper
+FMA22935	right medial brachial vein
+FMA44918	right medial circumflex femoral vein
+FMA73309	right medial geniculate body
+FMA22586	right medial superior genicular artery
+FMA4772	right musculophrenic vein
+FMA18915	right obturator vein
+FMA22864	right palmar metacarpal artery
+FMA50658	right posterior choroidal artery
+FMA50672	right posterior medial choroidal artery
+FMA22948	right radial vein
+FMA85119	right second common palmar digital artery
+FMA8248	right seventh costal cartilage
+FMA20226	right side of bony pelvis
+FMA8194	right sixth costal cartilage
+FMA21385	right superficial dorsal vein of penis
+FMA18909	right superior gluteal vein
+FMA5042	right superior intercostal artery
+FMA52656	right supra-orbital nerve
+FMA52643	right supratrochlear nerve
+FMA85121	right third common palmar digital artery
+FMA7913	right third costal cartilage
+FMA22951	right ulnar vein
+FMA55681	right upper central secondary incisor tooth
+FMA55698	right upper first secondary molar tooth
+FMA55689	right upper first secondary premolar tooth
+FMA55680	right upper lateral secondary incisor tooth
+FMA55697	right upper second secondary molar tooth
+FMA55688	right upper second secondary premolar tooth
+FMA55798	right upper secondary canine tooth
+FMA26106	second lumbar intervertebral symphysis
+FMA37720	second lumbrical of left foot
+FMA37719	second lumbrical of right foot
+FMA37744	second plantar interosseous of left foot
+FMA37743	second plantar interosseous of right foot
+FMA3874	second right anterior branch of anterior interventricular branch of left coronary artery
+FMA3848	second septal branch of right posterior interventricular artery
+FMA26094	second thoracic intervertebral symphysis
+FMA14495	segment of liver
+FMA59665	septum of internal nose
+FMA83904	septum of neuraxis
+FMA61842	septum of telencephalon
+FMA42405	set of dorsal interossei of left hand
+FMA42404	set of dorsal interossei of right hand
+FMA70741	set of facial hairs
+FMA42399	set of lumbricals of left hand
+FMA42398	set of lumbricals of right hand
+FMA42403	set of palmar interossei of left hand
+FMA42402	set of palmar interossei of right hand
+FMA26086	seventh cervical intervertebral symphysis
+FMA26099	seventh thoracic intervertebral symphysis
+FMA15395	sigmoid vein
+FMA26085	sixth cervical intervertebral symphysis
+FMA26098	sixth thoracic intervertebral symphysis
+FMA61670	skeleton of mouth
+FMA79980	sternocostal part of left pectoralis major
+FMA79979	sternocostal part of right pectoralis major
+FMA61708	subdivision of auriculotemporal part of head
+FMA266054	subdivision of cranial dura mater
+FMA58817	subdivision of head proper
+FMA55053	subdivision of laryngopharynx
+FMA46490	subdivision of mouth
+FMA52575	superior branch of left oculomotor nerve
+FMA52574	superior branch of right oculomotor nerve
+FMA46284	superior oblique part of left longus colli
+FMA46280	superior oblique part of longus colli
+FMA8683	superior part of anterior segmental vein
+FMA68982	superior part of medial segmental vein
+FMA68926	superior part of right anterior segmental vein
+FMA86341	superior segmental branch of left renal artery
+FMA86340	superior segmental branch of right renal artery
+FMA50697	superior vermian branch of medial branch of left superior cerebellar artery
+FMA50696	superior vermian branch of medial branch of right superior cerebellar artery
+FMA15044	taenia libera
+FMA15042	taenia mesocolica
+FMA15043	taenia omentalis
+FMA59090	tarsal plate of left lower eyelid
+FMA59092	tarsal plate of left upper eyelid
+FMA59089	tarsal plate of right lower eyelid
+FMA59091	tarsal plate of right upper eyelid
+FMA54158	tendon of levator palpebrae superioris
+FMA54159	tendon of right levator palpebrae superioris
+FMA26102	tenth thoracic intervertebral symphysis
+FMA26078	third cervical intervertebral symphysis
+FMA26107	third lumbar intervertebral symphysis
+FMA37486	third lumbrical of left foot
+FMA37485	third lumbrical of right foot
+FMA37742	third plantar interosseous of left foot
+FMA37741	third plantar interosseous of right foot
+FMA26095	third thoracic intervertebral symphysis
+FMA74912	trunk of anterior interventricular branch of left coronary artery
+FMA68879	trunk of apical segmental vein
+FMA4677	trunk of branch of coronary artery
+FMA76574	trunk of gastroduodenal artery
+FMA76129	trunk of inferior terminal branch of left middle cerebral artery
+FMA76128	trunk of inferior terminal branch of right middle cerebral artery
+FMA24551	trunk of intrapulmonary vein
+FMA3855	trunk of left coronary artery
+FMA70457	trunk of left hepatic artery
+FMA69567	trunk of left lateral plantar artery
+FMA82697	trunk of left portal vein
+FMA66364	trunk of left renal artery
+FMA66564	trunk of left thoraco-acromial artery
+FMA8648	trunk of pulmonary vein
+FMA68880	trunk of right apical segmental vein
+FMA3802	trunk of right coronary artery
+FMA70456	trunk of right hepatic artery
+FMA69566	trunk of right lateral plantar artery
+FMA61991	trunk of right middle cerebral artery
+FMA82695	trunk of right portal vein
+FMA66363	trunk of right renal artery
+FMA66563	trunk of right thoraco-acromial artery
+FMA68878	trunk of segmental pulmonary vein
+FMA66358	trunk of superior mesenteric artery
+FMA54397	upper jaw
+FMA70493	ureteric segment of left renal artery
+FMA3714	variant artery
+FMA10704	variant bronchial artery
+FMA66267	variant systemic artery
+FMA46286	vertical intermediate part of left longus colli
+FMA46282	vertical intermediate part of longus colli
+FMA17181	wall of distal part of ileum
+FMA14618	wall of ileum
+FMA9531	wall of left atrium
+FMA9457	wall of right atrium
+FMA14615	wall of small intestine
+FMA13884	wall of ventricle
+FMA20247	zone of corpus spongiosum of penis
+FMA12215	zone of sternum

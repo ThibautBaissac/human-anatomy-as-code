@@ -1,0 +1,163 @@
+[
+  {
+    "variant": "batched",
+    "gpu": "apple metal-3 ",
+    "backend": "WebGPU",
+    "mode": "batched",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "dpr": 2,
+    "canvas": "2560x1600",
+    "structures": 2234,
+    "triangles": 6681030,
+    "loadMs": 2698,
+    "pickMedianMs": 0.5,
+    "pickP95Ms": 0.7,
+    "results": [
+      {
+        "scenario": "all opaque",
+        "fps": 262.8,
+        "avgMs": 3.81,
+        "p95Ms": 7.6,
+        "cpuMedian": 3.2,
+        "cpuP95": 7.5,
+        "drawCalls": 2235
+      },
+      {
+        "scenario": "50 % structures hidden",
+        "fps": 476.2,
+        "avgMs": 2.1,
+        "p95Ms": 3.1,
+        "cpuMedian": 1.8,
+        "cpuP95": 3,
+        "drawCalls": 1129
+      },
+      {
+        "scenario": "x-ray (muscle+organ alpha 0.25)",
+        "fps": 242.3,
+        "avgMs": 4.13,
+        "p95Ms": 8.3,
+        "cpuMedian": 3.6,
+        "cpuP95": 7.9,
+        "drawCalls": 2235
+      },
+      {
+        "scenario": "skeleton only",
+        "fps": 1003.8,
+        "avgMs": 1,
+        "p95Ms": 1.3,
+        "cpuMedian": 0.7,
+        "cpuP95": 1,
+        "drawCalls": 421
+      }
+    ],
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ]
+  },
+  {
+    "variant": "batched&backend=webgl",
+    "gpu": "apple metal-3 ",
+    "backend": "WebGL2",
+    "mode": "batched",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "dpr": 2,
+    "canvas": "2560x1600",
+    "structures": 2234,
+    "triangles": 6681030,
+    "loadMs": 2630,
+    "pickMedianMs": 0.6,
+    "pickP95Ms": 0.7,
+    "results": [
+      {
+        "scenario": "all opaque",
+        "fps": 120.9,
+        "avgMs": 8.27,
+        "p95Ms": 10.3,
+        "cpuMedian": 8.1,
+        "cpuP95": 9.9,
+        "drawCalls": 9
+      },
+      {
+        "scenario": "50 % structures hidden",
+        "fps": 140.6,
+        "avgMs": 7.11,
+        "p95Ms": 9.5,
+        "cpuMedian": 7,
+        "cpuP95": 9.3,
+        "drawCalls": 9
+      },
+      {
+        "scenario": "x-ray (muscle+organ alpha 0.25)",
+        "fps": 123.8,
+        "avgMs": 8.08,
+        "p95Ms": 10.9,
+        "cpuMedian": 8.4,
+        "cpuP95": 10.4,
+        "drawCalls": 9
+      },
+      {
+        "scenario": "skeleton only",
+        "fps": 229.1,
+        "avgMs": 4.37,
+        "p95Ms": 8.1,
+        "cpuMedian": 3.8,
+        "cpuP95": 8.3,
+        "drawCalls": 3
+      }
+    ],
+    "errors": []
+  },
+  {
+    "variant": "meshes",
+    "gpu": "apple metal-3 ",
+    "backend": "WebGPU",
+    "mode": "meshes",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "dpr": 2,
+    "canvas": "2560x1600",
+    "structures": 2234,
+    "triangles": 6681030,
+    "loadMs": 228,
+    "pickMedianMs": 8.9,
+    "pickP95Ms": 25.2,
+    "results": [
+      {
+        "scenario": "all opaque",
+        "fps": 137.4,
+        "avgMs": 7.28,
+        "p95Ms": 8.2,
+        "cpuMedian": 7,
+        "cpuP95": 8,
+        "drawCalls": 2235
+      },
+      {
+        "scenario": "50 % structures hidden",
+        "fps": 245.3,
+        "avgMs": 4.08,
+        "p95Ms": 4.7,
+        "cpuMedian": 3.8,
+        "cpuP95": 4.5,
+        "drawCalls": 1136
+      },
+      {
+        "scenario": "x-ray (muscle+organ alpha 0.25)",
+        "fps": 139.5,
+        "avgMs": 7.17,
+        "p95Ms": 7.9,
+        "cpuMedian": 6.9,
+        "cpuP95": 7.7,
+        "drawCalls": 2235
+      },
+      {
+        "scenario": "skeleton only",
+        "fps": 709.9,
+        "avgMs": 1.41,
+        "p95Ms": 1.8,
+        "cpuMedian": 1.2,
+        "cpuP95": 1.6,
+        "drawCalls": 421
+      }
+    ],
+    "errors": []
+  }
+]

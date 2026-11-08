@@ -1,0 +1,110 @@
+[
+  {
+    "variant": "batched",
+    "gpu": "apple metal-3 ",
+    "backend": "WebGPU",
+    "mode": "batched",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "dpr": 2,
+    "canvas": "2560x1600",
+    "structures": 1258,
+    "triangles": 3138996,
+    "loadMs": 5201,
+    "pickMedianMs": 1.6,
+    "pickP95Ms": 2.4,
+    "results": [
+      {
+        "scenario": "all opaque",
+        "fps": 418.8,
+        "avgMs": 2.39,
+        "p95Ms": 3.6,
+        "cpuMedian": 1.7,
+        "cpuP95": 2.5,
+        "drawCalls": 1259
+      },
+      {
+        "scenario": "50 % structures hidden",
+        "fps": 519.3,
+        "avgMs": 1.93,
+        "p95Ms": 2.9,
+        "cpuMedian": 1,
+        "cpuP95": 1.6,
+        "drawCalls": 619
+      },
+      {
+        "scenario": "x-ray (muscle+organ alpha 0.25)",
+        "fps": 536.4,
+        "avgMs": 1.86,
+        "p95Ms": 2.9,
+        "cpuMedian": 1.3,
+        "cpuP95": 2,
+        "drawCalls": 1259
+      },
+      {
+        "scenario": "skeleton only",
+        "fps": 468.5,
+        "avgMs": 2.13,
+        "p95Ms": 3.2,
+        "cpuMedian": 0.7,
+        "cpuP95": 1.3,
+        "drawCalls": 286
+      }
+    ],
+    "errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ]
+  },
+  {
+    "variant": "batched&backend=webgl",
+    "gpu": "apple metal-3 ",
+    "backend": "WebGL2",
+    "mode": "batched",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "dpr": 2,
+    "canvas": "2560x1600",
+    "structures": 1258,
+    "triangles": 3138996,
+    "loadMs": 5465,
+    "pickMedianMs": 2.5,
+    "pickP95Ms": 4.3,
+    "results": [
+      {
+        "scenario": "all opaque",
+        "fps": 182.1,
+        "avgMs": 5.49,
+        "p95Ms": 6.9,
+        "cpuMedian": 3.5,
+        "cpuP95": 4.8,
+        "drawCalls": 9
+      },
+      {
+        "scenario": "50 % structures hidden",
+        "fps": 177.5,
+        "avgMs": 5.63,
+        "p95Ms": 7.4,
+        "cpuMedian": 3.2,
+        "cpuP95": 5.3,
+        "drawCalls": 9
+      },
+      {
+        "scenario": "x-ray (muscle+organ alpha 0.25)",
+        "fps": 186,
+        "avgMs": 5.38,
+        "p95Ms": 6.9,
+        "cpuMedian": 3.5,
+        "cpuP95": 4.5,
+        "drawCalls": 9
+      },
+      {
+        "scenario": "skeleton only",
+        "fps": 262.8,
+        "avgMs": 3.81,
+        "p95Ms": 5.1,
+        "cpuMedian": 1.6,
+        "cpuP95": 2.4,
+        "drawCalls": 3
+      }
+    ],
+    "errors": []
+  }
+]

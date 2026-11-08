@@ -1,0 +1,6 @@
+node_modules/
+data/raw/
+spikes/viewer/public/assets/
+spikes/viewer/dist/
+.DS_Store
+build/

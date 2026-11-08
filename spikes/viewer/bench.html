@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HAaC bench</title>
+<style>
+html,body{margin:0;height:100%;background:#1d2026;color:#eee;font:13px system-ui;overflow:hidden}
+#app{position:fixed;inset:0}
+#hud{position:fixed;top:8px;left:8px;right:8px;background:#0009;padding:6px 8px;border-radius:6px;pointer-events:none}
+#panel{position:fixed;top:44px;left:8px;background:#0009;padding:8px;border-radius:6px;display:flex;flex-direction:column;gap:4px;max-width:60vw}
+#pick{position:fixed;bottom:8px;left:8px;background:#0009;padding:6px 8px;border-radius:6px}
+#result{position:fixed;bottom:44px;right:8px;max-height:50vh;overflow:auto;background:#000b;padding:8px;border-radius:6px;font:11px ui-monospace;margin:0;max-width:90vw}
+#result:empty{display:none}
+</style></head>
+<body><div id="app"></div><div id="hud">Chargement…</div>
+<div id="panel"><button id="run">Lancer le benchmark</button></div>
+<div id="pick"></div><pre id="result"></pre>
+<script type="module" src="/src/bench.ts"></script></body></html>
