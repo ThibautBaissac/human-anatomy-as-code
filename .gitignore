@@ -4,3 +4,6 @@ spikes/viewer/public/assets/
 spikes/viewer/dist/
 .DS_Store
 build/
+app/dist/
+app/test-results/
+app/playwright-report/
