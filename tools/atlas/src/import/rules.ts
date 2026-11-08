@@ -1,6 +1,11 @@
 // Fixed tables used by the BodyParts3D import (see spec "Module d'import").
 
 /** Kind rules, tested in order against a name; first match wins. */
+/**
+ * Kind rules, tested in order against a name; first match wins.
+ * Vessels and nerves come before bones and muscles: many are named after one
+ * ("anterior tibial artery", "dorsal metacarpal arteries", "radial nerve").
+ */
 export const KIND_RULES: [string, RegExp][] = [
   ['skin', /^skin$|integument/],
   ['cartilage', /cartilage|intervertebral dis[ck]|symphysis|meniscus/],
@@ -8,13 +13,13 @@ export const KIND_RULES: [string, RegExp][] = [
   ['ligament', /ligament/],
   ['tendon', /tendon/],
   ['joint', /\bjoint\b|articulation/],
-  ['bone', /\bbone\b|vertebra|phalanx|femur|tibia|fibula|humerus|radius|ulna|\brib\b|sternum|skull|cranium|mandible|maxilla|patella|scapula|clavicle|pelvis|sacrum|coccyx|tooth|carpal|tarsal|calcaneus|talus/],
-  ['muscle', /muscle|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps/],
   ['artery', /arter|aorta|arterial/],
   ['vein', /vein|venous|\bsinus\b|vena/],
   ['lymphatic', /lymph/],
   ['cns', /brain|cerebr|cerebell|spinal cord|gyrus|sulcus|thalam|colliculus|pons|medulla|ventricle of brain|lateral ventricle/],
   ['nerve', /nerve|ganglion|plexus/],
+  ['bone', /\bbone\b|vertebra|phalanx|femur|tibia|fibula|humerus|radius|ulna|\brib\b|sternum|skull|cranium|mandible|maxilla|patella|scapula|clavicle|pelvis|sacrum|coccyx|tooth|carpal|tarsal|calcaneus|talus/],
+  ['muscle', /muscle|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps/],
 ];
 
 export function kindOfName(name: string): string | undefined {

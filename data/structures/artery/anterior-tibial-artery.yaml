@@ -1,0 +1,40 @@
+slug: anterior-tibial-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: external-iliac-artery
+labels:
+  en:
+    text: anterior tibial artery
+    source: fma
+    status: draft
+  fr:
+    text: artère tibiale antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria tibialis anterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 43894
+  ta2: 4708
+  ta98: A12.2.16.042
+  wikidata: Q707651
+sides:
+  left:
+    ids:
+      fma: 43897
+      wikidata: Q66533814
+    meshes:
+      - bp3d:FJ2065
+  right:
+    ids:
+      fma: 43896
+      wikidata: Q66533813
+    meshes:
+      - bp3d:FJ2130

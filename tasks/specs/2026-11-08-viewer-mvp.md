@@ -205,7 +205,7 @@ Un paramètre absent prend sa valeur par défaut. Une valeur invalide (slug inco
   - os `#e8dcc0`, cartilage `#9ec9d6`, ligament `#d8d0a0` ;
   - muscle `#b5443b`, tendon `#e0d6c8`, fascia `#c9b8a8`, peau `#e8b89a` ;
   - artère `#d0302a`, veine `#3456b0`, lymphatique `#7fbf7f` ;
-  - nerf `#f0d040`, SNC `#e8c8a0`, organe `#c58a7a`.
+  - nerf `#f0d040`, SNC `#e8c8a0`, organe `#c58a7a`, articulation `#a8b8d8` (ajoutée après la revue).
 
   Surbrillance de sélection : `#3ad06a`.
 - Interface en français ; noms anatomiques en FR, EN ou LA selon le choix de l'utilisateur.

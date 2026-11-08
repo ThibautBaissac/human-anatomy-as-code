@@ -41,7 +41,7 @@ export function Toolbar({ viewer, view, kinds, maxLayer }: { viewer: Viewer; vie
                 {S.axes[a]}
               </label>
               <input type="range" min={0} max={1} step={0.005} value={view.sections[a] ?? 0.5} disabled={!on}
-                aria-label={S.sectionPos(S.axes[a])} aria-valuetext={`${Math.round((view.sections[a] ?? 0.5) * 100)} %`}
+                aria-label={S.sectionPos(S.axes[a])} aria-valuetext={S.percent(Math.round((view.sections[a] ?? 0.5) * 100))}
                 onChange={(e) => viewer.setSection(a, Number(e.target.value))} />
             </div>
           );

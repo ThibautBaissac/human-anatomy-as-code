@@ -1,0 +1,43 @@
+slug: inferior-ulnar-collateral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+regions:
+  - arm
+  - upper-limb
+labels:
+  en:
+    text: inferior ulnar collateral artery
+    source: fma
+    status: draft
+  fr:
+    text: artère collatérale ulnaire inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria collateralis ulnaris inferior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22710
+  ta2: 4640
+  ta98: A12.2.09.026
+  wikidata: Q707121
+sides:
+  left:
+    ids:
+      fma: 22713
+      wikidata: Q66514741
+    meshes:
+      - bp3d:FJ2215
+  right:
+    ids:
+      fma: 22712
+      wikidata: Q66514740
+    meshes:
+      - bp3d:FJ2267

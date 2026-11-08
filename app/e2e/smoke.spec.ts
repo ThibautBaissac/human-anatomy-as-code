@@ -50,7 +50,27 @@ test('loads, selects by click and by search, cuts, and restores the view from th
   expect([...errors, ...errors2]).toEqual([]);
 });
 
-test('performance budget: full load under 3 s, mean frame under 16.7 ms (WebGPU)', async ({ page }, info) => {
+test('in ghost mode, clicks go through the ghosted layers', async ({ page }, info) => {
+  await open(page, info.project.metadata.query as string);
+  type V = { setLayerCut(n: number): void; setGhost(b: boolean): void; select(s: null): void; getSnapshot(): { view: { selection: { slug: string } | null } }; catalog: { structure(s: string): { layer: number } } };
+  const box = (await page.locator('canvas').boundingBox())!;
+  const at = { x: box.x + box.width / 2, y: box.y + box.height * 0.4 };
+  const selected = () => page.evaluate(() => (window as unknown as { __viewer: V }).__viewer.getSnapshot().view.selection?.slug ?? null);
+  // What is on top at that point, and its layer.
+  await page.mouse.click(at.x, at.y);
+  const top = await selected();
+  expect(top).not.toBeNull();
+  // Ghost that layer: the same click must now reach something deeper.
+  await page.evaluate((slug) => {
+    const v = (window as unknown as { __viewer: V }).__viewer;
+    v.select(null); v.setGhost(true); v.setLayerCut(v.catalog.structure(slug!).layer + 1);
+  }, top);
+  await page.mouse.click(at.x, at.y);
+  await page.waitForTimeout(300);
+  expect(await selected()).not.toBe(top); // something deeper, or nothing — never the ghost
+});
+
+test('performance budget: full load (atlas, GLB, BVH) under 3 s, mean frame under 16.7 ms (WebGPU)', async ({ page }, info) => {
   test.skip(info.project.name !== 'webgpu', 'budget measured on WebGPU only');
   await open(page, '');
   await page.waitForTimeout(3000);

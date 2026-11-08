@@ -1,0 +1,40 @@
+slug: dorsal-carpal-branch-of-ulnar-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: ulnar-artery
+labels:
+  en:
+    text: dorsal carpal branch of ulnar artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau carpien dorsal de l'artère ulnaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ramus carpalis dorsalis arteriae ulnaris
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22820
+  ta2: 4668
+  ta98: A12.2.09.053
+  wikidata: Q5298768
+sides:
+  left:
+    ids:
+      fma: 22822
+      wikidata: Q66514824
+    meshes:
+      - bp3d:FJ2236
+  right:
+    ids:
+      fma: 22821
+      wikidata: Q66514823
+    meshes:
+      - bp3d:FJ2288

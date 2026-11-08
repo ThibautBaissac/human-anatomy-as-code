@@ -1,8 +1,10 @@
 // View ⇄ URL hash, for deep links. Pure. Unknown or invalid values are dropped one by one.
-import { AXES, LANGS, type Axis, type Lang, type Side, type ViewState } from './types.ts';
+import { AXES, DEFAULT_VIEW, LANGS, type Axis, type Lang, type Side, type ViewState } from './types.ts';
 
 export interface DecodeContext {
   hasSlug(slug: string): boolean;
+  /** true when the structure is bilateral; when given, a side on any other structure is invalid */
+  hasSides?(slug: string): boolean;
   kinds: string[];
   maxLayer: number;
 }
@@ -29,7 +31,8 @@ export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState>
   const sel = params.get('sel');
   if (sel) {
     const [slug, side, extra] = sel.split('@');
-    if (ctx.hasSlug(slug) && extra === undefined && (side === undefined || side === 'left' || side === 'right')) {
+    const sideOk = side === undefined || ((side === 'left' || side === 'right') && (ctx.hasSides?.(slug) ?? true));
+    if (ctx.hasSlug(slug) && extra === undefined && sideOk) {
       out.selection = { slug, side: (side as Side | undefined) ?? null };
     }
   }
@@ -59,4 +62,9 @@ export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState>
     out.camera = { position: [r[0], r[1], r[2]], target: [r[3], r[4], r[5]] };
   }
   return out;
+}
+
+/** The full view a hash describes: absent parameters take their defaults; an absent camera keeps the current one. */
+export function viewFromHash(decoded: Partial<ViewState>, current: ViewState): ViewState {
+  return { ...DEFAULT_VIEW, camera: current.camera, ...decoded };
 }

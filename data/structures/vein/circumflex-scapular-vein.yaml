@@ -1,0 +1,33 @@
+slug: circumflex-scapular-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: circumflex scapular vein
+    source: fma
+    status: draft
+  fr:
+    text: veine circonflexe scapulaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 77498
+  ta2: 4973
+  ta98: A12.3.08.007
+  wikidata: Q66575135
+sides:
+  left:
+    ids:
+      fma: 77950
+      wikidata: Q66575630
+    meshes:
+      - bp3d:FJ2222
+  right:
+    ids:
+      fma: 77949
+      wikidata: Q66575629
+    meshes:
+      - bp3d:FJ2274

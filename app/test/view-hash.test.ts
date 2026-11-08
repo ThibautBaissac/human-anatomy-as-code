@@ -34,3 +34,18 @@ test('invalid values are ignored one by one, the rest still applies', () => {
 test('a side other than left/right invalidates the selection', () => {
   assert.equal(decodeView('sel=femur@middle', ctx).selection, undefined);
 });
+
+test('viewFromHash: absent parameters fall back to defaults, the camera is kept when absent', async () => {
+  const { viewFromHash } = await import('../src/viewer/view-hash.ts');
+  const current: ViewState = { ...DEFAULT_VIEW, selection: { slug: 'heart', side: null }, layerCut: 3, sections: { axial: 0.4 }, lang: 'la',
+    camera: { position: [1, 2, 3], target: [4, 5, 6] } };
+  assert.deepEqual(viewFromHash({ ghost: true }, current), { ...DEFAULT_VIEW, ghost: true, camera: current.camera });
+  const cam = { position: [9, 9, 9] as [number, number, number], target: [0, 0, 0] as [number, number, number] };
+  assert.deepEqual(viewFromHash({ camera: cam }, current).camera, cam);
+});
+
+test('a side on a structure that has no sides is ignored', () => {
+  const withSides = { ...ctx, hasSides: (s: string) => s === 'femur' };
+  assert.equal(decodeView('sel=heart@left', withSides).selection, undefined);
+  assert.deepEqual(decodeView('sel=femur@right', withSides).selection, { slug: 'femur', side: 'right' });
+});

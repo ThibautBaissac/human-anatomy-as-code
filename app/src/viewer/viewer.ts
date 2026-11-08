@@ -38,6 +38,8 @@ interface Batch {
   material: THREE.MeshStandardNodeMaterial;
   /** batch instance id → global instance index */
   globalOf: number[];
+  /** current alpha per batch instance (0 = hidden) */
+  alpha: Float32Array;
 }
 
 /** Section planes; each keeps the side n·p + c ≥ 0 (axial keeps below, coronal keeps behind, sagittal keeps the left half). */
@@ -92,7 +94,7 @@ export class Viewer {
     canvas.addEventListener('pointerdown', (e) => { this.downAt = [e.clientX, e.clientY]; });
     canvas.addEventListener('click', (e) => this.onClick(e));
     canvas.addEventListener('pointermove', (e) => { this.hoverPending = e; });
-    canvas.addEventListener('pointerleave', () => this.setHover(null));
+    canvas.addEventListener('pointerleave', () => { this.hoverPending = null; this.setHover(null); });
   }
 
   static async create(canvas: HTMLCanvasElement, opts: { backend: 'auto' | 'webgl' }): Promise<Viewer> {
@@ -119,8 +121,12 @@ export class Viewer {
   getSnapshot = (): ViewerSnapshot => this.snapshot;
 
   // --- loading ------------------------------------------------------------------------
+  /** Call before fetching atlas.json so that loadMs covers the whole load (atlas, GLB, BVH). */
+  markLoadStart(): void { this.loadStart = performance.now(); }
+  private loadStart: number | null = null;
+
   async load(atlas: Atlas, manifest: Manifest, baseUrl: string): Promise<void> {
-    const t0 = performance.now();
+    const t0 = this.loadStart ?? performance.now();
     this.atlas = atlas;
     const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
     const kinds = Object.keys(manifest.kinds).sort();
@@ -144,7 +150,7 @@ export class Viewer {
       const material = new THREE.MeshStandardNodeMaterial({ color: 0xffffff, roughness: 0.6, metalness: 0 });
       const mesh = new THREE.BatchedMesh(meshes.length, vCount, iCount, material);
       mesh.name = kind;
-      const batch: Batch = { kind, mesh, material, globalOf: [] };
+      const batch: Batch = { kind, mesh, material, globalOf: [], alpha: new Float32Array(meshes.length).fill(1) };
       for (const m of meshes) {
         const id = mesh.addInstance(mesh.addGeometry(m.geometry));
         mesh.setMatrixAt(id, m.matrixWorld);
@@ -228,6 +234,7 @@ export class Viewer {
       for (let id = 0; id < batch.globalOf.length; id++) {
         const a = appearance(state, this.catalog.instance(batch.globalOf[id]));
         batch.mesh.setVisibleAt(id, a.visible);
+        batch.alpha[id] = a.visible ? a.alpha : 0;
         c.copy(a.highlighted ? hl : base);
         batch.mesh.setColorAt(id, v4.set(c.r, c.g, c.b, a.alpha));
         if (a.visible && a.alpha < 1) transparent = true;
@@ -292,7 +299,8 @@ export class Viewer {
     for (const h of hits) {
       if (planes.some((p) => p.distanceToPoint(h.point) < 0)) continue;
       const batch = this.batches.find((b) => b.mesh === h.object);
-      if (!batch || h.batchId === undefined) continue;
+      // Ghosted layers are only context: clicks go through them.
+      if (!batch || h.batchId === undefined || batch.alpha[h.batchId] < 1) continue;
       const info = this.catalog.instance(batch.globalOf[h.batchId]);
       return { slug: info.slug, side: info.side };
     }

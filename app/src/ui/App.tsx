@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { buildSearchIndex, labelText } from '../viewer/search.ts';
+import { buildSearchIndex, structureName } from '../viewer/search.ts';
 import { LANGS, type Lang, type Selection } from '../viewer/types.ts';
 import { InfoPanel } from './InfoPanel.tsx';
 import { Search } from './Search.tsx';
@@ -19,8 +19,7 @@ export function App() {
 
   const nameOf = (sel: Selection | null) => {
     const s = sel && catalog?.structure(sel.slug);
-    if (!s || !sel) return '';
-    return (sel.side && (s.sides?.[sel.side]?.labels[view.lang] ?? s.sides?.[sel.side]?.labels.en)) || labelText(s, view.lang);
+    return s && sel ? structureName(s, sel.side, view.lang) : '';
   };
   const pick = (slug: string) => selectAndFocus({ slug, side: null });
 
@@ -40,18 +39,19 @@ export function App() {
         {catalog && <Tree catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick} />}
       </nav>
       <main className="stage">
-        <canvas ref={canvasRef} className="canvas" aria-label={S.canvasLabel} aria-describedby="canvas-help" />
+        <canvas ref={canvasRef} className="canvas" role="img" aria-label={S.canvasLabel} aria-describedby="canvas-help" />
         <p id="canvas-help" className="visually-hidden">{S.canvasHelp}</p>
       </main>
       <aside className="info" aria-labelledby="info-title">
         <h2 id="info-title" className="visually-hidden">{S.panelTitle}</h2>
         <InfoPanel catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick} />
       </aside>
-      <section className="controls" aria-label="Commandes">
+      <section className="controls" aria-label={S.controlsLabel}>
         {viewer && catalog && <Toolbar viewer={viewer} view={view} kinds={catalog.kinds} maxLayer={catalog.maxLayer} />}
       </section>
       <footer className="statusbar">
-        <span>{error ?? (loading ? S.loading(loading.loaded, loading.total) : hover ? `${S.hover} : ${nameOf(hover)}` : ' ')}</span>
+        <span>{loading ? S.loading(loading.loaded, loading.total) : hover ? `${S.hover} : ${nameOf(hover)}` : ' '}</span>
+        {error && <span role="alert" className="error">{error}</span>}
         {failedKinds.length > 0 && <span role="alert">{S.failed(failedKinds.join(', '))}</span>}
         <span className="credits">{S.credits} : {atlas?.attributions.map((a) => a.name).join(', ')} · {snapshot.backend ?? ''}</span>
       </footer>

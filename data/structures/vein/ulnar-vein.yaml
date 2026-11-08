@@ -1,0 +1,25 @@
+slug: ulnar-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: ulnar vein
+    source: fma
+    status: draft
+ids:
+  fma: 22950
+  wikidata: Q66514923
+sides:
+  left:
+    ids:
+      fma: 22952
+      wikidata: Q66514925
+    meshes:
+      - bp3d:FJ2260
+  right:
+    ids:
+      fma: 22951
+      wikidata: Q66514924
+    meshes:
+      - bp3d:FJ2312

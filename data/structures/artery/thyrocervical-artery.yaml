@@ -1,0 +1,22 @@
+slug: thyrocervical-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+labels:
+  en:
+    text: thyrocervical artery
+    source: fma
+    status: draft
+ids:
+  fma: 70346
+  wikidata: Q66568354
+sides:
+  left:
+    ids:
+      fma: 70348
+      wikidata: Q66568356
+  right:
+    ids:
+      fma: 70347
+      wikidata: Q66568355

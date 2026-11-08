@@ -1,0 +1,13 @@
+slug: systemic-arterial-tree
+kind: artery
+laterality: midline
+status: draft
+parent: cardiovascular-system
+labels:
+  en:
+    text: systemic arterial tree
+    source: fma
+    status: draft
+ids:
+  fma: 49894
+  wikidata: Q66539130

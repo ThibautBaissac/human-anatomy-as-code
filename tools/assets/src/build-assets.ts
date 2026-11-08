@@ -100,7 +100,7 @@ export async function buildAssets({ atlas, objDir, outDir }: { atlas: AtlasInput
   for (const [kind, bytes, count] of outputs) {
     const file = `${kind}.glb`;
     writeFileSync(join(outDir, file), bytes);
-    manifest.kinds[kind] = { file, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex'), instances: count };
+    manifest.kinds[kind] = { bytes: bytes.length, file, instances: count, sha256: createHash('sha256').update(bytes).digest('hex') };
   }
   writeFileSync(join(outDir, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
   return manifest;

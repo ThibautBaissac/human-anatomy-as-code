@@ -1,0 +1,16 @@
+slug: plantar-metatarsal-artery
+kind: artery
+laterality: midline
+status: draft
+parent: posterior-tibial-artery
+labels:
+  en:
+    text: plantar metatarsal artery
+    source: fma
+    status: draft
+ids:
+  fma: 43956
+  wikidata: Q66533861
+meshes:
+  - bp3d:FJ2096
+  - bp3d:FJ2206

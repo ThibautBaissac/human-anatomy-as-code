@@ -1,0 +1,40 @@
+slug: anterior-interosseous-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: common-interosseous-artery
+labels:
+  en:
+    text: anterior interosseous artery
+    source: fma
+    status: draft
+  fr:
+    text: artère interosseuse antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria interossea anterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22810
+  ta2: 4662
+  ta98: A12.2.09.048
+  wikidata: Q3391674
+sides:
+  left:
+    ids:
+      fma: 22813
+      wikidata: Q66514817
+    meshes:
+      - bp3d:FJ2214
+  right:
+    ids:
+      fma: 22812
+      wikidata: Q66514816
+    meshes:
+      - bp3d:FJ2266

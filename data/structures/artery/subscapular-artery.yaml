@@ -1,0 +1,40 @@
+slug: subscapular-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+labels:
+  en:
+    text: subscapular artery
+    source: fma
+    status: draft
+  fr:
+    text: artère subscapulaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria subscapularis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22677
+  ta2: 4627
+  ta98: A12.2.09.013
+  wikidata: Q707588
+sides:
+  left:
+    ids:
+      fma: 22679
+      wikidata: Q66514724
+    meshes:
+      - bp3d:FJ2246
+  right:
+    ids:
+      fma: 22678
+      wikidata: Q66514723
+    meshes:
+      - bp3d:FJ2298

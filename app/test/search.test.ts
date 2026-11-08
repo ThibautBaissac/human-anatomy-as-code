@@ -56,3 +56,13 @@ test('exact beats prefix beats substring, then slug order', () => {
 test('results are capped at the limit', () => {
   assert.equal(search(index, 'er', 'en', 1).length, 1);
 });
+
+test('structureName: side name in the language, else fr, else en; whole structure otherwise', async () => {
+  const { structureName } = await import('../src/viewer/search.ts');
+  const femur = ATLAS.structures.find((s) => s.slug === 'femur')!;
+  assert.equal(structureName(femur, 'left', 'fr'), 'fémur gauche');
+  assert.equal(structureName(femur, 'left', 'la'), 'fémur gauche'); // no la side name: fr
+  const thigh = ATLAS.structures.find((s) => s.slug === 'thigh-muscle')!;
+  assert.equal(structureName(thigh, 'right', 'la'), 'right thigh muscle'); // neither la nor fr: en
+  assert.equal(structureName(femur, null, 'la'), 'Os femoris');
+});

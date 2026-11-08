@@ -93,3 +93,7 @@ Ces chiffres remplacent ceux de la section « Résultat sur les données réelle
   - labels sans genre : 491 → 192 ;
   - avertissements : 2 508 → 2 155.
 - **Commande `coverage`.** Elle produit un tableau Markdown par kind : nombre de structures, structures avec meshes, labels fr et la présents, labels sans genre. Elle sert à prioriser la curation. Ce n'est pas dans la spec : c'est un outil de curation, sans effet sur le modèle.
+
+## Ordre des règles de kind (2026-11-08, revue du viewer)
+
+Écart par rapport à l'ordre de la spec, étape 7 de l'import. Les règles `artery`, `vein`, `lymphatic`, `cns` et `nerve` passent avant `bone` et `muscle`, parce que beaucoup de vaisseaux et de nerfs portent le nom d'un os (« anterior tibial artery », « dorsal metacarpal arteries », « radial nerve »). Effet sur les données : 35 structures en `draft` sont reclassées, et le nombre d'os passe de 210 à 180. Des tests couvrent ce cas (`test/kind.test.ts`).

@@ -1,0 +1,15 @@
+slug: dorsal-metacarpal-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: dorsal metacarpal vein
+    source: fma
+    status: draft
+ids:
+  fma: 22954
+  wikidata: Q66514927
+meshes:
+  - bp3d:FJ2186
+  - bp3d:FJ2199

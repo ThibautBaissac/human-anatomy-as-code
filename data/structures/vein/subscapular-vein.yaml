@@ -1,0 +1,33 @@
+slug: subscapular-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: subscapular vein
+    source: fma
+    status: draft
+  fr:
+    text: veine subscapulaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23113
+  ta2: 4972
+  ta98: A12.3.08.006
+  wikidata: Q66515042
+sides:
+  left:
+    ids:
+      fma: 23115
+      wikidata: Q66515044
+    meshes:
+      - bp3d:FJ2247
+  right:
+    ids:
+      fma: 23114
+      wikidata: Q66515043
+    meshes:
+      - bp3d:FJ2299

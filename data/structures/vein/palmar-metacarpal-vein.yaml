@@ -1,0 +1,29 @@
+slug: palmar-metacarpal-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: palmar metacarpal vein
+    source: fma
+    status: draft
+ids:
+  fma: 22919
+  wikidata: Q66514899
+sides:
+  left:
+    ids:
+      fma: 22921
+      wikidata: Q66514901
+    meshes:
+      - bp3d:FJ2238
+      - bp3d:FJ2320
+      - bp3d:FJ2323
+  right:
+    ids:
+      fma: 22920
+      wikidata: Q66514900
+    meshes:
+      - bp3d:FJ2290
+      - bp3d:FJ2350
+      - bp3d:FJ2353

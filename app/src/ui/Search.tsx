@@ -3,7 +3,6 @@ import { search, type SearchIndex, type SearchResult } from '../viewer/search.ts
 import type { Lang } from '../viewer/types.ts';
 import { S } from './strings.ts';
 
-const LANG_NAME: Record<string, string> = { fr: 'fr', en: 'en', la: 'la', slug: 'identifiant' };
 
 /** ARIA APG combobox with a listbox popup. */
 export function Search({ index, lang, onSelect }: { index: SearchIndex; lang: Lang; onSelect: (slug: string) => void }) {
@@ -33,7 +32,7 @@ export function Search({ index, lang, onSelect }: { index: SearchIndex; lang: La
       <label htmlFor={`${id}-input`}>{S.searchLabel}</label>
       <input
         id={`${id}-input`}
-        type="search"
+        type="text"
         role="combobox"
         autoComplete="off"
         aria-autocomplete="list"
@@ -57,7 +56,7 @@ export function Search({ index, lang, onSelect }: { index: SearchIndex; lang: La
             onMouseDown={(e) => { e.preventDefault(); choose(r); }}
           >
             {r.name}
-            {r.matchedText !== r.name && <span className="match"> — {LANG_NAME[r.matchedLang]} : {r.matchedText}</span>}
+            <span className="match"> — {r.matchedLang === 'slug' ? S.matchSlug : S.langs[r.matchedLang]}{r.matchedText !== r.name ? ` : ${r.matchedText}` : ''}</span>
           </li>
         ))}
       </ul>

@@ -1,0 +1,50 @@
+slug: dorsal-carpal-branch-of-radial-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: radial-artery
+labels:
+  en:
+    text: dorsal carpal branch of radial artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau carpien dorsal de l'artère radiale
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ramus carpalis dorsalis arteriae radialis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22755
+  ta2: 4646
+  ta98: A12.2.09.032
+  wikidata: Q3329385
+sides:
+  left:
+    ids:
+      fma: 22773
+      wikidata: Q66514787
+    meshes:
+      - bp3d:FJ2231
+    labels:
+      en:
+        text: dorsal carpal branch of left radial artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 22772
+      wikidata: Q66514786
+    meshes:
+      - bp3d:FJ2283
+    labels:
+      en:
+        text: dorsal carpal branch of right radial artery
+        source: fma
+        status: draft

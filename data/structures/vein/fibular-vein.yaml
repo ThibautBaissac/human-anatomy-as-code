@@ -1,0 +1,28 @@
+slug: fibular-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: fibular vein
+    source: fma
+    status: draft
+ids:
+  fma: 44558
+  wikidata: Q66534767
+sides:
+  left:
+    ids:
+      fma: 44886
+      wikidata: Q66535342
+    meshes:
+      - bp3d:FJ2184
+      - bp3d:FJ2187
+  right:
+    ids:
+      fma: 44885
+      wikidata: Q66535341
+    meshes:
+      - bp3d:FJ2190
+      - bp3d:FJ2194
+      - bp3d:FJ2200

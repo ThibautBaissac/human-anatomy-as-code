@@ -1,5 +1,5 @@
 // Name search across fr/en/la labels, synonyms and slugs. Pure.
-import type { Atlas, AtlasStructure, Lang } from './types.ts';
+import type { Atlas, AtlasStructure, Lang, Side } from './types.ts';
 
 export type MatchLang = Lang | 'slug';
 
@@ -28,6 +28,12 @@ export function normalize(s: string): string {
 /** Label in the requested language, else fr, else en, else the slug. */
 export function labelText(s: Pick<AtlasStructure, 'slug' | 'labels'>, lang: Lang): string {
   return s.labels[lang]?.text ?? s.labels.fr?.text ?? s.labels.en?.text ?? s.slug;
+}
+
+/** Display name of a structure, or of one of its sides: requested language, else fr, else en. */
+export function structureName(s: Pick<AtlasStructure, 'slug' | 'labels' | 'sides'>, side: Side | null, lang: Lang): string {
+  const names = side ? s.sides?.[side]?.labels : undefined;
+  return (names && (names[lang] ?? names.fr ?? names.en)) || labelText(s, lang);
 }
 
 const nameIn = (names: Partial<Record<Lang, string>> | undefined, slug: string, lang: Lang) =>

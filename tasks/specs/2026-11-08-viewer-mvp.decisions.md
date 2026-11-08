@@ -23,3 +23,33 @@ Décisions prises là où la spec `2026-11-08-viewer-mvp.md` est muette ou admet
 - Chargement complet (GLB et BVH) : 2 728 ms, sous le budget de 3 s, mais avec peu de marge.
 - Frame moyenne : 3,42 ms, scène complète opaque.
 - Test de fumée vert en WebGPU et en WebGL2 (`?backend=webgl`).
+
+## Corrections issues de la revue de code (2026-11-08)
+
+- **Noms des côtés.** Un nom de côté (« fémur gauche ») absent dans la langue choisie se replie sur fr, puis sur en. Le calcul est fait par une seule fonction pure, `structureName`, couverte par des tests et utilisée par le panneau, le survol et l'annonce ARIA.
+- **`hashchange`.** Un paramètre absent du hash reprend sa valeur par défaut (`viewFromHash`, testée). Seule la caméra est conservée quand le hash ne la donne pas.
+- **`sel=<slug>@<côté>`.** Le paramètre est ignoré si la structure n'est pas bilatérale.
+- **Budget de chargement.** Il couvre désormais aussi le téléchargement d'`atlas.json` (`markLoadStart()` avant les requêtes) : 2 640 ms mesurées.
+- **Mode fantôme.** Les couches en transparence ne captent plus le clic ni le survol. L'alpha courant de chaque instance est conservé dans un `Float32Array` par batch. Un test de fumée le vérifie : il passe une couche en fantôme et constate que le même clic sélectionne une structure plus profonde.
+- **Panneau.** Il affiche le statut de relecture de la structure (US 19).
+- **Glossaire.** L'interface dit « Nature » pour *kind* (CONTEXT.md : « nature tissulaire », à éviter : « type ») et « Slug » pour le slug.
+- **Erreurs de chargement.** Les réponses HTTP non 2xx sont vérifiées. L'erreur est affichée en français, avec les commandes à lancer, dans une zone `role="alert"`.
+- **Accessibilité.** Le canevas a `role="img"`, ce qui expose son nom accessible. La recherche est en `type="text"` : Échap ferme d'abord la liste, sans être court-circuité par le comportement natif des champs de recherche.
+- **Résultats de recherche.** Chaque résultat indique la langue de la correspondance (spec : « Chaque résultat indique… »).
+- **Chaînes.** Toutes les chaînes de l'interface sont dans `strings.ts`.
+- **Nettoyage.** Les écouteurs `hashchange` et `change` et le minuteur du hash sont retirés au démontage. Le chargement s'interrompt si le composant est démonté.
+- **Manifeste.** Les clés internes sont triées (`bytes`, `file`, `instances`, `sha256`).
+- **Kind `joint`.** Il reçoit la couleur `#a8b8d8` : la spec n'en prévoyait pas. La table de la spec est complétée.
+
+## Écarts d'API déclarés
+
+- **Création.** `Viewer.create(canvas, opts)`, une fabrique asynchrone (l'initialisation du renderer WebGPU est asynchrone), au lieu de `createViewer`.
+- **Progression.** `load(atlas, manifest, baseUrl)` ne prend pas de callback : la progression passe par l'événement `change` (`snapshot.loading`).
+- **Paramètres explicites.** `decodeView(hash, ctx)` reçoit un contexte de validation (slugs, kinds, couche maximale, structures bilatérales), et `search(index, query, lang, limit)` reçoit la langue d'affichage.
+- **Typed arrays.** L'état est porté par l'état de vue sérialisable, et le rendu applique `appearance()` instance par instance. Seul l'alpha courant est en typed array, pour le picking. Un tableau par propriété n'apporterait rien à 1 657 instances.
+- **Point de clic du test de fumée.** Il est à 40 % de la hauteur du canevas, au niveau du thorax, et non au centre, où se trouve le bassin.
+- **Hook de test.** `window.__viewer` reste dans le build de production, parce que le test de fumée tourne sur ce build. Il n'expose que l'API publique du viewer.
+
+## Défaut de données trouvé par la revue
+
+- La classification des kinds de l'import testait les mots-clés des os avant ceux des vaisseaux et des nerfs. « anterior tibial artery » et « set of dorsal metacarpal arteries » étaient donc classés `bone`, et le clic au thorax sélectionnait une « artère » rangée parmi les os. L'ordre a été corrigé dans `tools/atlas`, voir `2026-11-08-modele-de-donnees.decisions.md`. 35 structures en `draft` ont été reclassées (os : 210 → 180).
