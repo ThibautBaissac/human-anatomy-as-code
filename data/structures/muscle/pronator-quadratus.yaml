@@ -1,0 +1,39 @@
+slug: pronator-quadratus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: pronator quadratus
+    source: fma
+    status: draft
+  fr:
+    text: muscle carré pronateur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus pronator quadratus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38453
+  ta2: 2493
+  ta98: A04.6.02.038
+  wikidata: Q840572
+sides:
+  left:
+    ids:
+      fma: 38455
+      wikidata: Q66527638
+    meshes:
+      - bp3d:FJ1503M
+  right:
+    ids:
+      fma: 38454
+      wikidata: Q66527637
+    meshes:
+      - bp3d:FJ1503

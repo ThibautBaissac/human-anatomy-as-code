@@ -1,0 +1,21 @@
+slug: lung
+kind: group
+laterality: bilateral
+status: draft
+parent: pulmopleural-compartment
+labels:
+  en:
+    text: lung
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 7310
+      ta98: A06.5.01.003
+      wikidata: Q18088285
+  right:
+    ids:
+      fma: 7309
+      ta98: A06.5.01.002
+      wikidata: Q5938041

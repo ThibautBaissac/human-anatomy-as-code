@@ -1,0 +1,41 @@
+slug: extensor-carpi-ulnaris
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor carpi ulnaris
+    source: fma
+    status: draft
+  fr:
+    text: muscle extenseur ulnaire du carpe
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor carpi ulnaris
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38506
+  ta2: 2507
+  ta98: A04.6.02.045
+  wikidata: Q527634
+sides:
+  left:
+    ids:
+      fma: 38508
+      wikidata: Q66527668
+    meshes:
+      - bp3d:FJ1472M
+      - bp3d:FJ1517M
+  right:
+    ids:
+      fma: 38507
+      wikidata: Q66527667
+    meshes:
+      - bp3d:FJ1472
+      - bp3d:FJ1517

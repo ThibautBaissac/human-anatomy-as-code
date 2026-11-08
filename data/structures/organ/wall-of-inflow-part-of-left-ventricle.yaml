@@ -1,0 +1,15 @@
+slug: wall-of-inflow-part-of-left-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: wall-of-left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: wall of inflow part of left ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 49214
+  wikidata: Q66538565

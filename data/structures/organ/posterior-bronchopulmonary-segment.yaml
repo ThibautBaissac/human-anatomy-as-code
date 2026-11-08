@@ -1,0 +1,22 @@
+slug: posterior-bronchopulmonary-segment
+kind: organ
+laterality: bilateral
+status: draft
+parent: upper-lobe-of-lung
+labels:
+  en:
+    text: posterior bronchopulmonary segment
+    source: fma
+    status: draft
+ids:
+  fma: 13189
+  wikidata: Q66507916
+sides:
+  left:
+    ids:
+      fma: 7386
+      wikidata: Q66502936
+  right:
+    ids:
+      fma: 7339
+      wikidata: Q66502912

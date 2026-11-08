@@ -1,0 +1,29 @@
+slug: frontal-bone
+kind: bone
+laterality: midline
+status: draft
+parent: neurocranium
+labels:
+  en:
+    text: frontal bone
+    source: fma
+    status: draft
+  fr:
+    text: os frontal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os frontale
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52734
+  ta2: 520
+  ta98: A02.1.03.001
+  wikidata: Q16295
+meshes:
+  - bp3d:FJ3200

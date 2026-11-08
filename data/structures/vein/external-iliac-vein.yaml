@@ -1,0 +1,43 @@
+slug: external-iliac-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: inferior-systemic-venous-tree
+labels:
+  en:
+    text: external iliac vein
+    source: fma
+    status: draft
+  fr:
+    text: veine iliaque externe
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena iliaca externa
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 18883
+  ta2: 5050
+  ta98: A12.3.10.024
+  wikidata: Q3090687
+sides:
+  left:
+    ids:
+      fma: 18886
+      wikidata: Q66510115
+    meshes:
+      - bp3d:FJ3484
+      - bp3d:FJ3522
+      - bp3d:FJ3523
+      - bp3d:FJ3524
+  right:
+    ids:
+      fma: 18885
+      wikidata: Q66510114
+    meshes:
+      - bp3d:FJ3568

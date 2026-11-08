@@ -1,0 +1,25 @@
+slug: prostate
+kind: organ
+laterality: midline
+status: draft
+parent: genital-system
+labels:
+  en:
+    text: prostate
+    source: fma
+    status: draft
+  fr:
+    text: prostate
+    source: wikidata
+    status: draft
+  la:
+    text: Prostata
+    source: wikidata
+    status: draft
+ids:
+  fma: 9600
+  ta2: 3637
+  ta98: A09.3.08.001
+  wikidata: Q9625
+meshes:
+  - bp3d:FJ3139

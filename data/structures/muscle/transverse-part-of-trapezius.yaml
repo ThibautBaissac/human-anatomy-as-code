@@ -1,0 +1,41 @@
+slug: transverse-part-of-trapezius
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: transverse part of trapezius
+    source: fma
+    status: draft
+  fr:
+    text: partie transverse du muscle trapèze
+    source: wikidata
+    status: draft
+ids:
+  fma: 32556
+  ta2: 2228
+  ta98: A04.3.01.003
+  wikidata: Q66523041
+sides:
+  left:
+    ids:
+      fma: 33585
+      wikidata: Q66523851
+    meshes:
+      - bp3d:FJ1554M
+    labels:
+      en:
+        text: transverse part of left trapezius
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 33584
+      wikidata: Q66523850
+    meshes:
+      - bp3d:FJ1554
+    labels:
+      en:
+        text: transverse part of right trapezius
+        source: fma
+        status: draft

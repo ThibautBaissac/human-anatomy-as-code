@@ -1,0 +1,16 @@
+slug: posterior-branch-of-lateral-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: lateral-segmental-artery
+labels:
+  en:
+    text: posterior branch of lateral segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68690
+  wikidata: Q66564241
+meshes:
+  - bp3d:FJ2983
+  - bp3d:FJ2984

@@ -1,0 +1,22 @@
+slug: mons-pubis
+kind: organ
+laterality: midline
+status: draft
+parent: pelvis
+regions:
+  - abdomen
+  - pelvis
+labels:
+  en:
+    text: mons pubis
+    source: fma
+    status: draft
+  fr:
+    text: mont du pubis
+    source: wikidata
+    status: draft
+ids:
+  fma: 20218
+  ta2: 3548
+  ta98: A09.2.01.002
+  wikidata: Q11722446

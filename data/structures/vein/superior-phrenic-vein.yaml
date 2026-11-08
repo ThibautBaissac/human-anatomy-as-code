@@ -1,0 +1,21 @@
+slug: superior-phrenic-vein
+kind: vein
+laterality: midline
+status: draft
+parent: superior-systemic-venous-tree
+labels:
+  en:
+    text: superior phrenic vein
+    source: fma
+    status: draft
+ids:
+  fma: 78121
+  wikidata: Q66575880
+meshes:
+  - bp3d:FJ3648
+  - bp3d:FJ3649
+  - bp3d:FJ3650
+  - bp3d:FJ3651
+  - bp3d:FJ3652
+  - bp3d:FJ3653
+  - bp3d:FJ3654

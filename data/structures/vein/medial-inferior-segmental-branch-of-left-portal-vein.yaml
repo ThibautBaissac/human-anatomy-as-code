@@ -1,0 +1,15 @@
+slug: medial-inferior-segmental-branch-of-left-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: medial-branch-of-left-portal-vein
+labels:
+  en:
+    text: medial inferior segmental branch of left portal vein
+    source: fma
+    status: draft
+ids:
+  fma: 15429
+  wikidata: Q66512019
+meshes:
+  - bp3d:FJ3128

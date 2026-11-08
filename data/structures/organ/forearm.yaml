@@ -1,0 +1,34 @@
+slug: forearm
+kind: organ
+laterality: bilateral
+status: draft
+parent: free-upper-limb
+regions:
+  - upper-limb
+labels:
+  en:
+    text: forearm
+    source: fma
+    status: draft
+  fr:
+    text: avant-bras
+    source: wikidata
+    status: draft
+  la:
+    text: antebrachium
+    source: wikidata
+    status: draft
+ids:
+  fma: 9663
+  ta2: 146
+  ta98: A01.1.00.024
+  wikidata: Q228537
+sides:
+  left:
+    ids:
+      fma: 11346
+      wikidata: Q66506359
+  right:
+    ids:
+      fma: 11345
+      wikidata: Q66506358

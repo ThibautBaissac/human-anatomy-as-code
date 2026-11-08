@@ -1,0 +1,22 @@
+slug: middle-hepatic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: middle hepatic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine hépatique intermédiaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14340
+  ta2: 4996
+  ta98: A12.3.09.007
+  wikidata: Q66509396
+meshes:
+  - bp3d:FJ2414

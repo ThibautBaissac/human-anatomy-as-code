@@ -1,0 +1,15 @@
+slug: lateral-inferior-segmental-branch-of-left-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: lateral-branch-of-left-portal-vein
+labels:
+  en:
+    text: lateral inferior segmental branch of left portal vein
+    source: fma
+    status: draft
+ids:
+  fma: 15432
+  wikidata: Q66512024
+meshes:
+  - bp3d:FJ3125

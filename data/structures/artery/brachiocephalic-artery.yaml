@@ -1,0 +1,25 @@
+slug: brachiocephalic-artery
+kind: artery
+laterality: midline
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: brachiocephalic artery
+    source: fma
+    status: draft
+  fr:
+    text: tronc brachiocéphalique
+    source: wikidata
+    status: draft
+  la:
+    text: Truncus brachiocephalicus
+    source: wikidata
+    status: draft
+ids:
+  fma: 3932
+  ta2: 4179
+  ta98: A12.2.04.004
+  wikidata: Q515917
+meshes:
+  - bp3d:FJ3417

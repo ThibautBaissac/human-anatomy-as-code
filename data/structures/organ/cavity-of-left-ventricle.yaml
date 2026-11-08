@@ -1,0 +1,17 @@
+slug: cavity-of-left-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: heart
+regions:
+  - thorax
+labels:
+  en:
+    text: cavity of left ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 9466
+  wikidata: Q66504921
+meshes:
+  - bp3d:FJ2422

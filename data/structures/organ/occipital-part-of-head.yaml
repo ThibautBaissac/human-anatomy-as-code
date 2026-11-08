@@ -1,0 +1,27 @@
+slug: occipital-part-of-head
+kind: organ
+laterality: midline
+status: draft
+parent: head-proper
+regions:
+  - head
+labels:
+  en:
+    text: occipital part of head
+    source: fma
+    status: draft
+  fr:
+    text: occiput
+    source: wikidata
+    status: draft
+  la:
+    text: occiput
+    source: wikidata
+    status: draft
+ids:
+  fma: 49187
+  ta2: 102
+  ta98: A02.1.00.014
+  wikidata: Q3321315
+meshes:
+  - bp3d:FJ3309

@@ -1,0 +1,25 @@
+slug: coronary-sinus
+kind: vein
+laterality: midline
+status: draft
+parent: coronary-sinus-tree
+labels:
+  en:
+    text: coronary sinus
+    source: fma
+    status: draft
+  fr:
+    text: sinus coronaire
+    source: wikidata
+    status: draft
+  la:
+    text: Sinus coronarius
+    source: wikidata
+    status: draft
+ids:
+  fma: 4706
+  ta2: 4158
+  ta98: A12.3.01.002
+  wikidata: Q629460
+meshes:
+  - bp3d:FJ2655

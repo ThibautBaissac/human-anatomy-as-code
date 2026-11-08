@@ -1,0 +1,23 @@
+slug: epithalamus
+kind: cns
+laterality: midline
+status: draft
+parent: diencephalon
+labels:
+  en:
+    text: epithalamus
+    source: fma
+    status: draft
+  fr:
+    text: épithalamus
+    source: wikidata
+    status: draft
+  la:
+    text: Epithalamus
+    source: wikidata
+    status: draft
+ids:
+  fma: 62009
+  ta2: 5675
+  ta98: A14.1.08.501
+  wikidata: Q849277

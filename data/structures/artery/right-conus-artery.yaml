@@ -1,0 +1,24 @@
+slug: right-conus-artery
+kind: artery
+laterality: unpaired-right
+status: draft
+parent: right-coronary-artery
+labels:
+  en:
+    text: right conus artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau du cône artériel de l'artère coronaire droite
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 3807
+  ta2: 4132
+  ta98: A12.2.03.203
+  wikidata: Q55091813
+meshes:
+  - bp3d:FJ2670
+  - bp3d:FJ2676

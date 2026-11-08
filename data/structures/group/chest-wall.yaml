@@ -1,0 +1,15 @@
+slug: chest-wall
+kind: group
+laterality: midline
+status: draft
+parent: thorax
+regions:
+  - thorax
+labels:
+  en:
+    text: chest wall
+    source: fma
+    status: draft
+ids:
+  fma: 50060
+  wikidata: Q66539261

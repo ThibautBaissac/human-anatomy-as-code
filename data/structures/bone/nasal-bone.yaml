@@ -1,0 +1,40 @@
+slug: nasal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: nasal bone
+    source: fma
+    status: draft
+  fr:
+    text: os nasal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os nasale
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52745
+  ta2: 748
+  ta98: A02.1.10.001
+  wikidata: Q38155
+sides:
+  left:
+    ids:
+      fma: 53648
+      wikidata: Q66543691
+    meshes:
+      - bp3d:FJ3272
+  right:
+    ids:
+      fma: 53647
+      wikidata: Q66543690
+    meshes:
+      - bp3d:FJ3378

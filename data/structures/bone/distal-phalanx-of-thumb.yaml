@@ -1,0 +1,45 @@
+slug: distal-phalanx-of-thumb
+kind: bone
+laterality: bilateral
+status: draft
+parent: thumb
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: distal phalanx of thumb
+    source: fma
+    status: draft
+  fr:
+    text: phalange distale du pouce
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23945
+  wikidata: Q66515617
+sides:
+  left:
+    ids:
+      fma: 23951
+      wikidata: Q66515622
+    meshes:
+      - bp3d:FJ3188
+    labels:
+      en:
+        text: distal phalanx of left thumb
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24459
+      wikidata: Q66515985
+    meshes:
+      - bp3d:FJ3198
+    labels:
+      en:
+        text: distal phalanx of right thumb
+        source: fma
+        status: draft

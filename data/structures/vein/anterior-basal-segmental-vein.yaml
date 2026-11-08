@@ -1,0 +1,30 @@
+slug: anterior-basal-segmental-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: superior-basal-vein
+labels:
+  en:
+    text: anterior basal segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 13290
+  wikidata: Q66507999
+sides:
+  left:
+    ids:
+      fma: 8678
+      wikidata: Q66504245
+    meshes:
+      - bp3d:FJ2956
+      - bp3d:FJ2957
+      - bp3d:FJ2959
+      - bp3d:FJ2960
+  right:
+    ids:
+      fma: 8673
+      wikidata: Q66504240
+    meshes:
+      - bp3d:FJ3049
+      - bp3d:FJ3056

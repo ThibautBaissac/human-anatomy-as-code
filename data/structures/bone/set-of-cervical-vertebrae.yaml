@@ -1,0 +1,18 @@
+slug: set-of-cervical-vertebrae
+kind: bone
+laterality: midline
+status: draft
+parent: vertebral-column
+labels:
+  en:
+    text: set of cervical vertebrae
+    source: fma
+    status: draft
+  fr:
+    text: rachis cervical
+    source: wikidata
+    status: draft
+ids:
+  fma: 72063
+  ta2: 1031
+  wikidata: Q1572320

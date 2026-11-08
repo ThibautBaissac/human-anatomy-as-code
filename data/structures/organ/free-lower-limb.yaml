@@ -1,0 +1,21 @@
+slug: free-lower-limb
+kind: organ
+laterality: bilateral
+status: draft
+parent: lower-limb
+regions:
+  - lower-limb
+labels:
+  en:
+    text: free lower limb
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 24883
+      wikidata: Q66516264
+  right:
+    ids:
+      fma: 24882
+      wikidata: Q66516263

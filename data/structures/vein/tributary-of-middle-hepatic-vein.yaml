@@ -1,0 +1,14 @@
+slug: tributary-of-middle-hepatic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: tributary of middle hepatic vein
+    source: fma
+    status: draft
+ids:
+  fma: 15793
+  wikidata: Q66512544
+meshes:
+  - bp3d:FJ1867

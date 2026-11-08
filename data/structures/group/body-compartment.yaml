@@ -1,0 +1,13 @@
+slug: body-compartment
+kind: group
+laterality: midline
+status: draft
+parent: body-proper
+labels:
+  en:
+    text: body compartment
+    source: fma
+    status: draft
+ids:
+  fma: 7563
+  wikidata: Q66503067

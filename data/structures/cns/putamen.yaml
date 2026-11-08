@@ -1,0 +1,31 @@
+slug: putamen
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: putamen
+    source: fma
+    status: draft
+  fr:
+    text: putamen
+    source: wikidata
+    status: draft
+ids:
+  fma: 61834
+  ta2: 5566
+  ta98: A14.1.09.507
+  wikidata: Q550934
+sides:
+  left:
+    ids:
+      fma: 72829
+      wikidata: Q66570324
+    meshes:
+      - bp3d:FJ1776
+  right:
+    ids:
+      fma: 72828
+      wikidata: Q66570323
+    meshes:
+      - bp3d:FJ1823

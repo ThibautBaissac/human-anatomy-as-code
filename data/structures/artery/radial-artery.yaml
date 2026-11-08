@@ -1,0 +1,40 @@
+slug: radial-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+labels:
+  en:
+    text: radial artery
+    source: fma
+    status: draft
+  fr:
+    text: artère radiale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria radialis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22730
+  ta2: 4641
+  ta98: A12.2.09.027
+  wikidata: Q662857
+sides:
+  left:
+    ids:
+      fma: 22734
+      wikidata: Q66514761
+    meshes:
+      - bp3d:FJ2242
+  right:
+    ids:
+      fma: 22733
+      wikidata: Q66514760
+    meshes:
+      - bp3d:FJ2294

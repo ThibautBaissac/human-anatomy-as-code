@@ -1,0 +1,42 @@
+slug: rhomboid-major
+kind: muscle
+laterality: bilateral
+status: draft
+parent: scapular-part-of-pectoral-girdle
+regions:
+  - upper-limb
+labels:
+  en:
+    text: rhomboid major
+    source: fma
+    status: draft
+  fr:
+    text: muscle grand rhomboïde
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: musculus rhomboideus major
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13379
+  ta2: 2232
+  ta98: A04.3.01.007
+  wikidata: Q617389
+sides:
+  left:
+    ids:
+      fma: 13382
+      wikidata: Q66508059
+    meshes:
+      - bp3d:FJ1536M
+  right:
+    ids:
+      fma: 13381
+      wikidata: Q66508058
+    meshes:
+      - bp3d:FJ1536

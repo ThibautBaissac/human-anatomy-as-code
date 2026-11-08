@@ -1,0 +1,39 @@
+slug: lacrimal-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lacrimal nerve
+    source: fma
+    status: draft
+  fr:
+    text: nerf lacrymal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Nervus lacrimalis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52628
+  ta2: 6198
+  ta98: A14.2.01.018
+  wikidata: Q3270318
+sides:
+  left:
+    ids:
+      fma: 52630
+      wikidata: Q66542852
+    meshes:
+      - bp3d:FJ1300
+  right:
+    ids:
+      fma: 52629
+      wikidata: Q66542851
+    meshes:
+      - bp3d:FJ1351

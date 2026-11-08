@@ -1,0 +1,34 @@
+slug: scapular-part-of-pectoral-girdle
+kind: group
+laterality: bilateral
+status: draft
+parent: pectoral-girdle
+regions:
+  - upper-limb
+labels:
+  en:
+    text: scapular part of pectoral girdle
+    source: fma
+    status: draft
+ids:
+  fma: 25200
+  wikidata: Q66516524
+sides:
+  left:
+    ids:
+      fma: 33647
+      wikidata: Q66523903
+    labels:
+      en:
+        text: scapular part of left pectoral girdle
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 33646
+      wikidata: Q66523902
+    labels:
+      en:
+        text: scapular part of right pectoral girdle
+        source: fma
+        status: draft

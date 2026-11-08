@@ -1,0 +1,34 @@
+slug: investing-fascia-of-thigh
+kind: fascia
+laterality: bilateral
+status: draft
+parent: investing-fascia-of-free-lower-limb
+regions:
+  - lower-limb
+labels:
+  en:
+    text: investing fascia of thigh
+    source: fma
+    status: draft
+ids:
+  fma: 45184
+  wikidata: Q66535615
+sides:
+  left:
+    ids:
+      fma: 58743
+      wikidata: Q66555269
+    labels:
+      en:
+        text: investing fascia of left thigh
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58742
+      wikidata: Q66555268
+    labels:
+      en:
+        text: investing fascia of right thigh
+        source: fma
+        status: draft

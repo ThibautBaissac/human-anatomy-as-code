@@ -1,0 +1,49 @@
+slug: opponens-digiti-minimi-of-hand
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: opponens digiti minimi of hand
+    source: fma
+    status: draft
+  fr:
+    text: muscle opposant du petit doigt de la main
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus opponens digiti minimi manus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37384
+  ta2: 2531
+  ta98: A04.6.02.064
+  wikidata: Q1064676
+sides:
+  left:
+    ids:
+      fma: 37401
+      wikidata: Q66526745
+    meshes:
+      - bp3d:FJ1482M
+    labels:
+      en:
+        text: opponens digiti minimi of left hand
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37400
+      wikidata: Q66526744
+    meshes:
+      - bp3d:FJ1482
+    labels:
+      en:
+        text: opponens digiti minimi of right hand
+        source: fma
+        status: draft

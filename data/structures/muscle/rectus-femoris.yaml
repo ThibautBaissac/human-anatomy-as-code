@@ -1,0 +1,39 @@
+slug: rectus-femoris
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: rectus femoris
+    source: fma
+    status: draft
+  fr:
+    text: muscle droit fémoral
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus rectus femoris
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22430
+  ta2: 2614
+  ta98: A04.7.02.018
+  wikidata: Q1633822
+sides:
+  left:
+    ids:
+      fma: 38929
+      wikidata: Q66527884
+    meshes:
+      - bp3d:FJ1433M
+  right:
+    ids:
+      fma: 38928
+      wikidata: Q66527883
+    meshes:
+      - bp3d:FJ1433

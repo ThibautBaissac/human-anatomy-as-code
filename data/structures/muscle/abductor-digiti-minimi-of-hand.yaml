@@ -1,0 +1,49 @@
+slug: abductor-digiti-minimi-of-hand
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: abductor digiti minimi of hand
+    source: fma
+    status: draft
+  fr:
+    text: muscle abducteur du petit doigt
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus abductor digiti minimi manus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37382
+  ta2: 2529
+  ta98: A04.6.02.062
+  wikidata: Q659744
+sides:
+  left:
+    ids:
+      fma: 37397
+      wikidata: Q66526741
+    meshes:
+      - bp3d:FJ1466M
+    labels:
+      en:
+        text: abductor digiti minimi of left hand
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37396
+      wikidata: Q66526740
+    meshes:
+      - bp3d:FJ1466
+    labels:
+      en:
+        text: abductor digiti minimi of right hand
+        source: fma
+        status: draft

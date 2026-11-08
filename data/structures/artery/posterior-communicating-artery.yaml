@@ -1,0 +1,40 @@
+slug: posterior-communicating-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: cerebral-arterial-circle
+labels:
+  en:
+    text: posterior communicating artery
+    source: fma
+    status: draft
+  fr:
+    text: artère communicante postérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria cerebri communicans posterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50084
+  ta2: 4521
+  ta98: A12.2.06.018
+  wikidata: Q185438
+sides:
+  left:
+    ids:
+      fma: 50086
+      wikidata: Q66539281
+    meshes:
+      - bp3d:FJ1713M
+  right:
+    ids:
+      fma: 50085
+      wikidata: Q66539280
+    meshes:
+      - bp3d:FJ1713

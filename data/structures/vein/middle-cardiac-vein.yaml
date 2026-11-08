@@ -1,0 +1,42 @@
+slug: middle-cardiac-vein
+kind: vein
+laterality: midline
+status: draft
+parent: coronary-sinus-tree
+labels:
+  en:
+    text: middle cardiac vein
+    source: fma
+    status: draft
+  fr:
+    text: veine cardiaque moyenne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena cardiaca media
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4713
+  ta2: 4165
+  ta98: A12.3.01.009
+  wikidata: Q6841662
+meshes:
+  - bp3d:FJ2678
+  - bp3d:FJ2679
+  - bp3d:FJ2680
+  - bp3d:FJ2681
+  - bp3d:FJ2682
+  - bp3d:FJ2683
+  - bp3d:FJ2684
+  - bp3d:FJ2685
+  - bp3d:FJ2686
+  - bp3d:FJ2687
+  - bp3d:FJ2688
+  - bp3d:FJ2689
+  - bp3d:FJ2690
+  - bp3d:FJ2691

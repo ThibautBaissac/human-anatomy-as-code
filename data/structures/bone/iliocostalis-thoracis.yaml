@@ -1,0 +1,35 @@
+slug: iliocostalis-thoracis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: iliocostalis thoracis
+    source: fma
+    status: draft
+  fr:
+    text: partie thoracique du muscle ilio-costal
+    source: wikidata
+    status: draft
+  la:
+    text: iliocostalis thoracis
+    source: wikidata
+    status: draft
+ids:
+  fma: 22703
+  ta2: 2260
+  ta98: A04.3.02.008
+  wikidata: Q66514734
+sides:
+  left:
+    ids:
+      fma: 22743
+      wikidata: Q66514768
+    meshes:
+      - bp3d:FJ1528M
+  right:
+    ids:
+      fma: 22742
+      wikidata: Q66514767
+    meshes:
+      - bp3d:FJ1528

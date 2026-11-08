@@ -1,0 +1,42 @@
+slug: hip-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: pelvic-skeleton
+regions:
+  - lower-limb
+labels:
+  en:
+    text: hip bone
+    source: fma
+    status: draft
+  fr:
+    text: os coxal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os coxae
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 16585
+  ta2: 1307
+  ta98: A02.5.01.001
+  wikidata: Q3356933
+sides:
+  left:
+    ids:
+      fma: 16587
+      wikidata: Q66514141
+    meshes:
+      - bp3d:FJ3288
+  right:
+    ids:
+      fma: 16586
+      wikidata: Q66514139
+    meshes:
+      - bp3d:FJ3152

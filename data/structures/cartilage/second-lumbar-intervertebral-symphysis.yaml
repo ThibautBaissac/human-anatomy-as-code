@@ -1,0 +1,13 @@
+slug: second-lumbar-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: lumbar-vertebral-column
+labels:
+  en:
+    text: second lumbar intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26106
+  wikidata: Q66517334

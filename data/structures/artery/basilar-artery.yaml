@@ -1,0 +1,30 @@
+slug: basilar-artery
+kind: artery
+laterality: midline
+status: draft
+parent: vertebral-artery
+labels:
+  en:
+    text: basilar artery
+    source: fma
+    status: draft
+  fr:
+    text: artère basilaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: arteria basilaris
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50542
+  ta2: 4548
+  ta98: A12.2.07.081
+  wikidata: Q500339
+meshes:
+  - bp3d:FJ1672
+  - bp3d:FJ1844

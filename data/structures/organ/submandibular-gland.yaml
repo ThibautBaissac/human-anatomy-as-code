@@ -1,0 +1,40 @@
+slug: submandibular-gland
+kind: organ
+laterality: bilateral
+status: draft
+parent: mandibular-part-of-mouth
+labels:
+  en:
+    text: submandibular gland
+    source: fma
+    status: draft
+  fr:
+    text: glande submandibulaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Glandula submandibularis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 55093
+  ta2: 2810
+  ta98: A05.1.02.011
+  wikidata: Q579886
+sides:
+  left:
+    ids:
+      fma: 59803
+      wikidata: Q66556218
+    meshes:
+      - bp3d:FJ2766
+  right:
+    ids:
+      fma: 59802
+      wikidata: Q66556217
+    meshes:
+      - bp3d:FJ2768

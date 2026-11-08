@@ -1,0 +1,35 @@
+slug: deep-palmar-venous-arch
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: deep palmar venous arch
+    source: fma
+    status: draft
+  fr:
+    text: arcade veineuse palmaire profonde
+    source: wikidata
+    status: draft
+  la:
+    text: Arcus venosus palmaris profundus
+    source: wikidata
+    status: draft
+ids:
+  fma: 22911
+  ta2: 4989
+  ta98: A12.3.08.034
+  wikidata: Q3320884
+sides:
+  left:
+    ids:
+      fma: 22913
+      wikidata: Q66514895
+    meshes:
+      - bp3d:FJ2229
+  right:
+    ids:
+      fma: 22912
+      wikidata: Q66514894
+    meshes:
+      - bp3d:FJ2281

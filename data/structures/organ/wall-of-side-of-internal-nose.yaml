@@ -1,0 +1,31 @@
+slug: wall-of-side-of-internal-nose
+kind: organ
+laterality: bilateral
+status: draft
+parent: side-of-internal-nose
+regions:
+  - head
+labels:
+  en:
+    text: wall of side of internal nose
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 59755
+      wikidata: Q66556182
+    labels:
+      en:
+        text: wall of left side of internal nose
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 59754
+      wikidata: Q66556181
+    labels:
+      en:
+        text: wall of right side of internal nose
+        source: fma
+        status: draft

@@ -1,0 +1,19 @@
+slug: outflow-part-of-right-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: right-ventricle
+labels:
+  en:
+    text: outflow part of right ventricle
+    source: fma
+    status: draft
+  fr:
+    text: infundibulum pulmonaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 7216
+  ta2: 4041
+  ta98: A12.1.02.008
+  wikidata: Q2307505

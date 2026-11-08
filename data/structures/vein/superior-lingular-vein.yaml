@@ -1,0 +1,24 @@
+slug: superior-lingular-vein
+kind: vein
+laterality: midline
+status: draft
+parent: superior-lingular-bronchopulmonary-segment
+labels:
+  en:
+    text: superior lingular vein
+    source: fma
+    status: draft
+  fr:
+    text: rameau supérieur de la veine lingulaire de la veine pulmonaire supérieure gauche
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8668
+  ta2: 4123
+  ta98: A12.3.02.309
+  wikidata: Q66504235
+meshes:
+  - bp3d:FJ2937
+  - bp3d:FJ2938

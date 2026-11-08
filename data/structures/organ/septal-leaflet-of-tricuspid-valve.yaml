@@ -1,0 +1,21 @@
+slug: septal-leaflet-of-tricuspid-valve
+kind: organ
+laterality: midline
+status: draft
+parent: tricuspid-valve
+labels:
+  en:
+    text: septal leaflet of tricuspid valve
+    source: fma
+    status: draft
+  fr:
+    text: cuspide septale de la valve atrio-ventriculaire droite
+    source: wikidata
+    status: draft
+ids:
+  fma: 7240
+  ta2: 3986
+  ta98: A12.1.02.006
+  wikidata: Q66502844
+meshes:
+  - bp3d:FJ2436

@@ -1,0 +1,23 @@
+slug: aorta
+kind: artery
+laterality: midline
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: aorta
+    source: fma
+    status: draft
+  fr:
+    text: aorte
+    source: wikidata
+    status: draft
+  la:
+    text: Aorta arteria maxima
+    source: wikidata
+    status: draft
+ids:
+  fma: 3734
+  ta2: 4175
+  ta98: A12.2.02.001
+  wikidata: Q101004

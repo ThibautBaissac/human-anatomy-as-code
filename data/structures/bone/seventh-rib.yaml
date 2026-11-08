@@ -1,0 +1,32 @@
+slug: seventh-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: seventh rib
+    source: fma
+    status: draft
+  fr:
+    text: septième côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 7830
+  wikidata: Q51079017
+sides:
+  left:
+    ids:
+      fma: 8256
+      wikidata: Q66503755
+    meshes:
+      - bp3d:FJ3234
+  right:
+    ids:
+      fma: 8229
+      wikidata: Q66503727
+    meshes:
+      - bp3d:FJ3346

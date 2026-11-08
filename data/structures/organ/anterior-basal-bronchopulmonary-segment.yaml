@@ -1,0 +1,22 @@
+slug: anterior-basal-bronchopulmonary-segment
+kind: organ
+laterality: bilateral
+status: draft
+parent: lower-lobe-of-lung
+labels:
+  en:
+    text: anterior basal bronchopulmonary segment
+    source: fma
+    status: draft
+ids:
+  fma: 13193
+  wikidata: Q66507920
+sides:
+  left:
+    ids:
+      fma: 7378
+      wikidata: Q66502931
+  right:
+    ids:
+      fma: 7364
+      wikidata: Q66502919

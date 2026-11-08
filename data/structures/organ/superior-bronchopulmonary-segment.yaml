@@ -1,0 +1,22 @@
+slug: superior-bronchopulmonary-segment
+kind: organ
+laterality: bilateral
+status: draft
+parent: lower-lobe-of-lung
+labels:
+  en:
+    text: superior bronchopulmonary segment
+    source: fma
+    status: draft
+ids:
+  fma: 13191
+  wikidata: Q66507918
+sides:
+  left:
+    ids:
+      fma: 7376
+      wikidata: Q66502929
+  right:
+    ids:
+      fma: 7366
+      wikidata: Q66502921

@@ -1,0 +1,23 @@
+slug: head
+kind: group
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: head
+    source: fma
+    status: draft
+  fr:
+    text: tête
+    source: wikidata
+    status: draft
+  la:
+    text: caput
+    source: wikidata
+    status: draft
+ids:
+  fma: 7154
+  ta2: 98
+  ta98: A01.1.00.001
+  wikidata: Q23640

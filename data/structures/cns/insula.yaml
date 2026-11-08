@@ -1,0 +1,36 @@
+slug: insula
+kind: cns
+laterality: bilateral
+status: draft
+parent: cerebral-hemisphere
+labels:
+  en:
+    text: insula
+    source: fma
+    status: draft
+  fr:
+    text: Cortex insulaire
+    source: wikidata
+    status: draft
+  la:
+    text: insula
+    source: wikidata
+    status: draft
+ids:
+  fma: 67329
+  ta2: 5502
+  ta98: A14.1.09.149
+  wikidata: Q1422654
+sides:
+  left:
+    ids:
+      fma: 72978
+      wikidata: Q66570460
+    meshes:
+      - bp3d:FJ1748
+  right:
+    ids:
+      fma: 72977
+      wikidata: Q66570458
+    meshes:
+      - bp3d:FJ1749

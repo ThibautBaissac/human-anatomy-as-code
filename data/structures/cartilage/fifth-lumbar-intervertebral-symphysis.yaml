@@ -1,0 +1,13 @@
+slug: fifth-lumbar-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: lumbar-vertebral-column
+labels:
+  en:
+    text: fifth lumbar intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26109
+  wikidata: Q66517337

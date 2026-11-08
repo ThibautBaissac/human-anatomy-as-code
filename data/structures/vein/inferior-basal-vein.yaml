@@ -1,0 +1,19 @@
+slug: inferior-basal-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: common-basal-vein
+labels:
+  en:
+    text: inferior basal vein
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 8679
+      wikidata: Q66504246
+  right:
+    ids:
+      fma: 8674
+      wikidata: Q66504241

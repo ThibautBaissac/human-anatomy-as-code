@@ -1,0 +1,25 @@
+slug: hand-proper
+kind: organ
+laterality: bilateral
+status: draft
+parent: hand
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: hand proper
+    source: fma
+    status: draft
+ids:
+  fma: 61067
+  wikidata: Q66557418
+sides:
+  left:
+    ids:
+      fma: 61069
+      wikidata: Q66557420
+  right:
+    ids:
+      fma: 61068
+      wikidata: Q66557419

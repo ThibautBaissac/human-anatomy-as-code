@@ -1,0 +1,23 @@
+slug: tendinous-arch-of-levator-ani
+kind: muscle
+laterality: midline
+status: draft
+labels:
+  en:
+    text: tendinous arch of levator ani
+    source: fma
+    status: draft
+  fr:
+    text: arcade tendineuse du muscle élévateur de l'anus
+    source: wikidata
+    status: draft
+ids:
+  fma: 46442
+  ta2: 2434
+  ta98: A04.5.04.009
+  wikidata: Q66536527
+meshes:
+  - bp3d:FJ1465
+  - bp3d:FJ1465M
+  - bp3d:FJ2552
+  - bp3d:FJ2553

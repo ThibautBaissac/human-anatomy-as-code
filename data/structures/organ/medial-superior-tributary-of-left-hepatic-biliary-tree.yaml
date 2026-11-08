@@ -1,0 +1,16 @@
+slug: medial-superior-tributary-of-left-hepatic-biliary-tree
+kind: organ
+laterality: midline
+status: draft
+parent: medial-tributary-of-left-hepatic-biliary-tree
+labels:
+  en:
+    text: medial superior tributary of left hepatic biliary tree
+    source: fma
+    status: draft
+ids:
+  fma: 71885
+  wikidata: Q66569576
+meshes:
+  - bp3d:FJ3104
+  - bp3d:FJ3105

@@ -1,0 +1,23 @@
+slug: right-hepatic-vein
+kind: vein
+laterality: midline
+status: draft
+parent: right-lobe-of-liver
+labels:
+  en:
+    text: right hepatic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine hépatique droite
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14338
+  ta2: 4995
+  ta98: A12.3.09.006
+  wikidata: Q66509392
+meshes:
+  - bp3d:FJ2416

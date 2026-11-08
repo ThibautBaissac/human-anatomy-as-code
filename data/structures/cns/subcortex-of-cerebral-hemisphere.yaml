@@ -1,0 +1,29 @@
+slug: subcortex-of-cerebral-hemisphere
+kind: cns
+laterality: bilateral
+status: draft
+parent: cerebral-hemisphere
+labels:
+  en:
+    text: subcortex of cerebral hemisphere
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 242186
+      wikidata: Q66599011
+    labels:
+      en:
+        text: subcortex of left cerebral hemisphere
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 242184
+      wikidata: Q66599010
+    labels:
+      en:
+        text: subcortex of right cerebral hemisphere
+        source: fma
+        status: draft

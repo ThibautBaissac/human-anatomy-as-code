@@ -1,0 +1,36 @@
+slug: upper-lobe-of-lung
+kind: group
+laterality: bilateral
+status: draft
+parent: lung
+labels:
+  en:
+    text: upper lobe of lung
+    source: fma
+    status: draft
+ids:
+  fma: 7334
+  wikidata: Q28656741
+sides:
+  left:
+    ids:
+      fma: 7370
+      ta2: 3300
+      ta98: A06.5.02.015
+      wikidata: Q28656761
+    labels:
+      en:
+        text: upper lobe of left lung
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 7333
+      ta2: 3284
+      ta98: A06.5.02.002
+      wikidata: Q28656757
+    labels:
+      en:
+        text: upper lobe of right lung
+        source: fma
+        status: draft

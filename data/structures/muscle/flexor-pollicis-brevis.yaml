@@ -1,0 +1,39 @@
+slug: flexor-pollicis-brevis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor pollicis brevis
+    source: fma
+    status: draft
+  fr:
+    text: muscle court fléchisseur du pouce
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus flexor pollicis brevis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37378
+  ta2: 2522
+  ta98: A04.6.02.055
+  wikidata: Q257609
+sides:
+  left:
+    ids:
+      fma: 37389
+      wikidata: Q66526733
+    meshes:
+      - bp3d:FJ1469
+  right:
+    ids:
+      fma: 37388
+      wikidata: Q66526732
+    meshes:
+      - bp3d:FJ1469M

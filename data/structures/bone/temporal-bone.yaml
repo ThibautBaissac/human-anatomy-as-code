@@ -1,0 +1,40 @@
+slug: temporal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: temporal bone
+    source: fma
+    status: draft
+  fr:
+    text: os temporal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ossa temporalia
+    gender: n
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 52737
+  ta2: 641
+  ta98: A02.1.06.001
+  wikidata: Q16313
+sides:
+  left:
+    ids:
+      fma: 52739
+      wikidata: Q66542944
+    meshes:
+      - bp3d:FJ3281
+  right:
+    ids:
+      fma: 52738
+      wikidata: Q66542943
+    meshes:
+      - bp3d:FJ3386

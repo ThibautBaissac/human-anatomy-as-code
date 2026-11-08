@@ -1,0 +1,23 @@
+slug: midbrain
+kind: cns
+laterality: midline
+status: draft
+parent: brain
+labels:
+  en:
+    text: midbrain
+    source: fma
+    status: draft
+  fr:
+    text: mésencéphale
+    source: wikidata
+    status: draft
+  la:
+    text: Mesencephalon
+    source: wikidata
+    status: draft
+ids:
+  fma: 61993
+  ta2: 5874
+  ta98: A14.1.03.005
+  wikidata: Q185080

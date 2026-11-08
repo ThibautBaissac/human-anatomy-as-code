@@ -1,0 +1,19 @@
+slug: thoraco-acromial-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+labels:
+  en:
+    text: thoraco-acromial artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 22673
+      wikidata: Q66514720
+  right:
+    ids:
+      fma: 22672
+      wikidata: Q66514719

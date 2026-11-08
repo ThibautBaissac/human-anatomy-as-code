@@ -1,0 +1,29 @@
+slug: left-colic-artery
+kind: artery
+laterality: midline
+status: draft
+parent: inferior-mesenteric-artery
+labels:
+  en:
+    text: left colic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère colique gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria colica sinistra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14826
+  ta2: 4292
+  ta98: A12.2.12.071
+  wikidata: Q1816515
+meshes:
+  - bp3d:FJ3494

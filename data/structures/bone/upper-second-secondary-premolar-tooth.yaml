@@ -1,0 +1,25 @@
+slug: upper-second-secondary-premolar-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: upper second secondary premolar tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55802
+  wikidata: Q3273777
+sides:
+  left:
+    ids:
+      fma: 55691
+      wikidata: Q66545310
+    meshes:
+      - bp3d:FJ1264
+  right:
+    ids:
+      fma: 55688
+      wikidata: Q66545307
+    meshes:
+      - bp3d:FJ1278

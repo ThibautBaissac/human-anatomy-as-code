@@ -1,0 +1,32 @@
+slug: eleventh-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: eleventh rib
+    source: fma
+    status: draft
+  fr:
+    text: onzième côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 8499
+  wikidata: Q5359828
+sides:
+  left:
+    ids:
+      fma: 8532
+      wikidata: Q66504014
+    meshes:
+      - bp3d:FJ3226
+  right:
+    ids:
+      fma: 8531
+      wikidata: Q66504013
+    meshes:
+      - bp3d:FJ3331

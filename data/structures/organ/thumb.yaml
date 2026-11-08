@@ -1,0 +1,35 @@
+slug: thumb
+kind: organ
+laterality: bilateral
+status: draft
+parent: hand
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: thumb
+    source: fma
+    status: draft
+  fr:
+    text: pouce
+    source: wikidata
+    status: draft
+  la:
+    text: pollex
+    source: wikidata
+    status: draft
+ids:
+  fma: 24938
+  ta2: 151
+  ta98: A01.1.00.053
+  wikidata: Q83360
+sides:
+  left:
+    ids:
+      fma: 60326
+      wikidata: Q66556694
+  right:
+    ids:
+      fma: 60325
+      wikidata: Q66556693

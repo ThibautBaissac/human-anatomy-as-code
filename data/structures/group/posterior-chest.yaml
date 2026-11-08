@@ -1,0 +1,15 @@
+slug: posterior-chest
+kind: group
+laterality: midline
+status: draft
+parent: thorax
+regions:
+  - thorax
+labels:
+  en:
+    text: posterior chest
+    source: fma
+    status: draft
+ids:
+  fma: 87552
+  wikidata: Q66593332

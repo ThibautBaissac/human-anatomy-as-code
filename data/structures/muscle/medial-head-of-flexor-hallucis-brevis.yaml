@@ -1,0 +1,41 @@
+slug: medial-head-of-flexor-hallucis-brevis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: medial head of flexor hallucis brevis
+    source: fma
+    status: draft
+  fr:
+    text: chef médial du muscle court fléchisseur de l'hallux
+    source: wikidata
+    status: draft
+ids:
+  fma: 45969
+  ta2: 2674
+  ta98: A04.7.02.058
+  wikidata: Q66536186
+sides:
+  left:
+    ids:
+      fma: 45972
+      wikidata: Q66536189
+    meshes:
+      - bp3d:FJ1396M
+    labels:
+      en:
+        text: medial head of left flexor hallucis brevis
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 45971
+      wikidata: Q66536188
+    meshes:
+      - bp3d:FJ1396
+    labels:
+      en:
+        text: medial head of right flexor hallucis brevis
+        source: fma
+        status: draft

@@ -1,0 +1,31 @@
+slug: optic-tract
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: optic tract
+    source: fma
+    status: draft
+  fr:
+    text: tractus optique
+    source: wikidata
+    status: draft
+ids:
+  fma: 62046
+  ta2: 5669
+  ta98: A14.1.08.404
+  wikidata: Q1079316
+sides:
+  left:
+    ids:
+      fma: 67936
+      wikidata: Q66563600
+    meshes:
+      - bp3d:FJ1773
+  right:
+    ids:
+      fma: 62382
+      wikidata: Q66558680
+    meshes:
+      - bp3d:FJ1820

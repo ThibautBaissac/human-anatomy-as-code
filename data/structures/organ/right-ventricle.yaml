@@ -1,0 +1,19 @@
+slug: right-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: side-of-heart
+labels:
+  en:
+    text: right ventricle
+    source: fma
+    status: draft
+  fr:
+    text: ventricule droit
+    source: wikidata
+    status: draft
+ids:
+  fma: 7098
+  ta2: 4038
+  ta98: A12.1.02.001
+  wikidata: Q1308310

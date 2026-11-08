@@ -1,0 +1,32 @@
+slug: fourth-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: fourth rib
+    source: fma
+    status: draft
+  fr:
+    text: quatrième côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 7749
+  wikidata: Q51077998
+sides:
+  left:
+    ids:
+      fma: 8148
+      wikidata: Q66503640
+    meshes:
+      - bp3d:FJ3231
+  right:
+    ids:
+      fma: 7957
+      wikidata: Q66503449
+    meshes:
+      - bp3d:FJ3340

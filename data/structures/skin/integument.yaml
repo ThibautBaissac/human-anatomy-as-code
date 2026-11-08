@@ -1,0 +1,19 @@
+slug: integument
+kind: skin
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: integument
+    source: fma
+    status: draft
+  fr:
+    text: intégument
+    source: wikidata
+    status: draft
+ids:
+  fma: 74657
+  ta2: 7040
+  ta98: A16.0.00.001
+  wikidata: Q1214385

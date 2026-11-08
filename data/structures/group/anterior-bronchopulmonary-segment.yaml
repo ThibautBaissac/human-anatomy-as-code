@@ -1,0 +1,22 @@
+slug: anterior-bronchopulmonary-segment
+kind: group
+laterality: bilateral
+status: draft
+parent: upper-lobe-of-lung
+labels:
+  en:
+    text: anterior bronchopulmonary segment
+    source: fma
+    status: draft
+ids:
+  fma: 13190
+  wikidata: Q66507917
+sides:
+  left:
+    ids:
+      fma: 7373
+      wikidata: Q66502926
+  right:
+    ids:
+      fma: 7359
+      wikidata: Q66502914

@@ -1,0 +1,23 @@
+slug: thoracic-rotator
+kind: muscle
+laterality: midline
+status: draft
+labels:
+  en:
+    text: thoracic rotator
+    source: fma
+    status: draft
+  fr:
+    text: muscle rotateur du thorax
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23083
+  ta2: 2286
+  ta98: A04.3.02.212
+  wikidata: Q66515024
+meshes:
+  - bp3d:FJ1525
+  - bp3d:FJ1525M

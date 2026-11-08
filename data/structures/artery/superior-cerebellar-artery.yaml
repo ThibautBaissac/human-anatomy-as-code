@@ -1,0 +1,40 @@
+slug: superior-cerebellar-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: basilar-artery
+labels:
+  en:
+    text: superior cerebellar artery
+    source: fma
+    status: draft
+  fr:
+    text: artère cérébelleuse supérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria cerebelli superior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50573
+  ta2: 4563
+  ta98: A12.2.08.025
+  wikidata: Q707592
+sides:
+  left:
+    ids:
+      fma: 50575
+      wikidata: Q66539710
+    meshes:
+      - bp3d:FJ1726M
+  right:
+    ids:
+      fma: 50574
+      wikidata: Q66539709
+    meshes:
+      - bp3d:FJ1726

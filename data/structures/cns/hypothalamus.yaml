@@ -1,0 +1,26 @@
+slug: hypothalamus
+kind: cns
+laterality: midline
+status: draft
+parent: diencephalon
+labels:
+  en:
+    text: hypothalamus
+    source: fma
+    status: draft
+  fr:
+    text: hypothalamus
+    source: wikidata
+    status: draft
+  la:
+    text: Hypothalamus
+    source: wikidata
+    status: draft
+ids:
+  fma: 62008
+  ta2: 5714
+  ta98: A14.1.08.901
+  wikidata: Q164386
+meshes:
+  - bp3d:FJ1760
+  - bp3d:FJ1808

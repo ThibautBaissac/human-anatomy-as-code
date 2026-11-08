@@ -1,0 +1,13 @@
+slug: ileocecal-junction
+kind: organ
+laterality: midline
+status: draft
+parent: wall-of-distal-part-of-ileum
+labels:
+  en:
+    text: ileocecal junction
+    source: fma
+    status: draft
+ids:
+  fma: 11338
+  wikidata: Q33126544

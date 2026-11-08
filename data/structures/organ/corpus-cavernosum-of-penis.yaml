@@ -1,0 +1,20 @@
+slug: corpus-cavernosum-of-penis
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: corpus cavernosum of penis
+    source: fma
+    status: draft
+  fr:
+    text: corps caverneux
+    source: wikidata
+    status: draft
+ids:
+  fma: 19618
+  ta2: 3678
+  ta98: A09.4.01.014
+  wikidata: Q1455226
+meshes:
+  - bp3d:FJ3132

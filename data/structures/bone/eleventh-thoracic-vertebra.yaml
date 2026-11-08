@@ -1,0 +1,21 @@
+slug: eleventh-thoracic-vertebra
+kind: bone
+laterality: midline
+status: draft
+parent: posterior-thoracic-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: eleventh thoracic vertebra
+    source: fma
+    status: draft
+  fr:
+    text: onzième vertèbre thoracique
+    source: wikidata
+    status: draft
+ids:
+  fma: 10059
+  wikidata: Q46992882
+meshes:
+  - bp3d:FJ3155

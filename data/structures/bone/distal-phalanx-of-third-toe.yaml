@@ -1,0 +1,39 @@
+slug: distal-phalanx-of-third-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: third-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: distal phalanx of third toe
+    source: fma
+    status: draft
+ids:
+  fma: 32629
+  wikidata: Q66523097
+sides:
+  left:
+    ids:
+      fma: 32655
+      wikidata: Q66523120
+    meshes:
+      - bp3d:FJ3180
+    labels:
+      en:
+        text: distal phalanx of left third toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32654
+      wikidata: Q66523118
+    meshes:
+      - bp3d:FJ3190
+    labels:
+      en:
+        text: distal phalanx of right third toe
+        source: fma
+        status: draft

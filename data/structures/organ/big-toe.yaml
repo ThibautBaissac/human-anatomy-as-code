@@ -1,0 +1,22 @@
+slug: big-toe
+kind: organ
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: big toe
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 60336
+      wikidata: Q66556704
+  right:
+    ids:
+      fma: 60335
+      wikidata: Q66556703

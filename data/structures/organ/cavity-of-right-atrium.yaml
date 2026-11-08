@@ -1,0 +1,15 @@
+slug: cavity-of-right-atrium
+kind: organ
+laterality: midline
+status: draft
+parent: right-atrium
+labels:
+  en:
+    text: cavity of right atrium
+    source: fma
+    status: draft
+ids:
+  fma: 11359
+  wikidata: Q66506369
+meshes:
+  - bp3d:FJ2424

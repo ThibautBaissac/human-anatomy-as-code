@@ -1,0 +1,18 @@
+slug: anterior-part-of-right-apical-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: apical-segmental-artery
+labels:
+  en:
+    text: anterior part of right apical segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68665
+  wikidata: Q66564211
+meshes:
+  - bp3d:FJ2978
+  - bp3d:FJ2989
+  - bp3d:FJ3000
+  - bp3d:FJ3011

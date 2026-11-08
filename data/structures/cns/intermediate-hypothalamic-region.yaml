@@ -1,0 +1,13 @@
+slug: intermediate-hypothalamic-region
+kind: cns
+laterality: midline
+status: draft
+parent: hypothalamus
+labels:
+  en:
+    text: intermediate hypothalamic region
+    source: fma
+    status: draft
+ids:
+  fma: 62028
+  wikidata: Q66558197

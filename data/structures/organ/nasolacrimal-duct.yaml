@@ -1,0 +1,34 @@
+slug: nasolacrimal-duct
+kind: organ
+laterality: bilateral
+status: draft
+parent: lacrimal-duct
+regions:
+  - head
+labels:
+  en:
+    text: nasolacrimal duct
+    source: fma
+    status: draft
+  fr:
+    text: conduit lacrymo-nasal
+    source: wikidata
+    status: draft
+ids:
+  fma: 9703
+  ta2: 6859
+  ta98: A15.2.07.070
+  wikidata: Q526920
+sides:
+  left:
+    ids:
+      fma: 59556
+      wikidata: Q66555983
+    meshes:
+      - bp3d:FJ1302
+  right:
+    ids:
+      fma: 59555
+      wikidata: Q66555982
+    meshes:
+      - bp3d:FJ1353

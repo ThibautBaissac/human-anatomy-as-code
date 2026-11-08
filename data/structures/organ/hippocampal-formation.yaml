@@ -1,0 +1,26 @@
+slug: hippocampal-formation
+kind: organ
+laterality: bilateral
+status: draft
+parent: archicortex
+labels:
+  en:
+    text: hippocampal formation
+    source: fma
+    status: draft
+  fr:
+    text: Formation hippocampique
+    source: wikidata
+    status: draft
+ids:
+  fma: 74038
+  wikidata: Q3748185
+sides:
+  left:
+    ids:
+      fma: 261141
+      wikidata: Q66601546
+  right:
+    ids:
+      fma: 261139
+      wikidata: Q66601545

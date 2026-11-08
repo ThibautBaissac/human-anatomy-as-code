@@ -1,0 +1,29 @@
+slug: ileocolic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: ileocolic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine iléocolique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena ileocolica
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15408
+  ta2: 5119
+  ta98: A12.3.12.024
+  wikidata: Q4115339
+meshes:
+  - bp3d:FJ3415
+  - bp3d:FJ3440

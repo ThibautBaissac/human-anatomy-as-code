@@ -1,0 +1,36 @@
+slug: ureter
+kind: organ
+laterality: bilateral
+status: draft
+parent: upper-urinary-tract
+labels:
+  en:
+    text: ureter
+    source: fma
+    status: draft
+  fr:
+    text: uretère
+    source: wikidata
+    status: draft
+  la:
+    text: Ureter
+    source: wikidata
+    status: draft
+ids:
+  fma: 9704
+  ta2: 3394
+  ta98: A08.2.01.001
+  wikidata: Q9385
+sides:
+  left:
+    ids:
+      fma: 15572
+      wikidata: Q66512240
+    meshes:
+      - bp3d:FJ3144
+  right:
+    ids:
+      fma: 15571
+      wikidata: Q66512237
+    meshes:
+      - bp3d:FJ3146

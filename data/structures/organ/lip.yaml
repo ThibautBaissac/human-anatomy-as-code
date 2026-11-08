@@ -1,0 +1,24 @@
+slug: lip
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: lip
+    source: fma
+    status: draft
+  fr:
+    text: lèvre
+    source: wikidata
+    status: draft
+  la:
+    text: labrum
+    source: wikidata
+    status: draft
+ids:
+  fma: 59816
+  ta2: 2775
+  ta98: A05.1.01.005
+  wikidata: Q15173
+meshes:
+  - bp3d:FJ2814

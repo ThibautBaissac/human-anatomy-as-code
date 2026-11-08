@@ -1,0 +1,14 @@
+slug: first-septal-branch-of-right-posterior-interventricular-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: first septal branch of right posterior interventricular artery
+    source: fma
+    status: draft
+ids:
+  fma: 3847
+  wikidata: Q66499458
+meshes:
+  - bp3d:FJ2735

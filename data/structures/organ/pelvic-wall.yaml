@@ -1,0 +1,15 @@
+slug: pelvic-wall
+kind: organ
+laterality: midline
+status: draft
+parent: wall-of-abdomen
+regions:
+  - abdomen
+labels:
+  en:
+    text: pelvic wall
+    source: fma
+    status: draft
+ids:
+  fma: 10430
+  wikidata: Q66505645

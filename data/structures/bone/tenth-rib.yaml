@@ -1,0 +1,32 @@
+slug: tenth-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: tenth rib
+    source: fma
+    status: draft
+  fr:
+    text: dixième côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 8418
+  wikidata: Q7700897
+sides:
+  left:
+    ids:
+      fma: 8472
+      wikidata: Q66503958
+    meshes:
+      - bp3d:FJ3225
+  right:
+    ids:
+      fma: 8445
+      wikidata: Q66503935
+    meshes:
+      - bp3d:FJ3330

@@ -1,0 +1,34 @@
+slug: dorsal-scapular-artery
+kind: bone
+laterality: bilateral
+status: draft
+parent: transverse-cervical-artery
+labels:
+  en:
+    text: dorsal scapular artery
+    source: fma
+    status: draft
+  fr:
+    text: artère scapulaire dorsale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 79658
+  ta2: 4606
+  ta98: A12.2.08.058
+  wikidata: Q3324269
+sides:
+  left:
+    ids:
+      fma: 10552
+      wikidata: Q66505727
+    meshes:
+      - bp3d:FJ2232
+  right:
+    ids:
+      fma: 4057
+      wikidata: Q66499636
+    meshes:
+      - bp3d:FJ2284

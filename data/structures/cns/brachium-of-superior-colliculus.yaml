@@ -1,0 +1,35 @@
+slug: brachium-of-superior-colliculus
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: brachium of superior colliculus
+    source: fma
+    status: draft
+ids:
+  fma: 72417
+  wikidata: Q66569986
+sides:
+  left:
+    ids:
+      fma: 73462
+      wikidata: Q66570913
+    meshes:
+      - bp3d:FJ1735
+    labels:
+      en:
+        text: brachium of left superior colliculus
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 73461
+      wikidata: Q66570912
+    meshes:
+      - bp3d:FJ1736
+    labels:
+      en:
+        text: brachium of right superior colliculus
+        source: fma
+        status: draft

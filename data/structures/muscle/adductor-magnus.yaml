@@ -1,0 +1,39 @@
+slug: adductor-magnus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: adductor magnus
+    source: fma
+    status: draft
+  fr:
+    text: muscle troisième adducteur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus adductor magnus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22443
+  ta2: 2630
+  ta98: A04.7.02.028
+  wikidata: Q478040
+sides:
+  left:
+    ids:
+      fma: 22460
+      wikidata: Q66514504
+    meshes:
+      - bp3d:FJ1403M
+  right:
+    ids:
+      fma: 22459
+      wikidata: Q66514503
+    meshes:
+      - bp3d:FJ1403

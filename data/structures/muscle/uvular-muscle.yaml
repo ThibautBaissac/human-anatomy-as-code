@@ -1,0 +1,23 @@
+slug: uvular-muscle
+kind: muscle
+laterality: midline
+status: draft
+parent: uvula
+labels:
+  en:
+    text: uvular muscle
+    source: fma
+    status: draft
+  fr:
+    text: muscle uvulaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46733
+  ta2: 2130
+  ta98: A05.2.01.104
+  wikidata: Q1417662
+meshes:
+  - bp3d:FJ2762

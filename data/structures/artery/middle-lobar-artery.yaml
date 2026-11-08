@@ -1,0 +1,21 @@
+slug: middle-lobar-artery
+kind: artery
+laterality: midline
+status: draft
+parent: inferomedial-branch-of-right-pulmonary-artery
+labels:
+  en:
+    text: middle lobar artery
+    source: fma
+    status: draft
+  fr:
+    text: artère lobaire moyenne de l'artère pulmonaire droite
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 68196
+  ta2: 4082
+  ta98: A12.2.01.110
+  wikidata: Q66563799

@@ -1,0 +1,22 @@
+slug: medial-superior-genicular-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: medial superior genicular artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 22587
+      wikidata: Q66514600
+    meshes:
+      - bp3d:FJ2083
+  right:
+    ids:
+      fma: 22586
+      wikidata: Q66514598
+    meshes:
+      - bp3d:FJ2166

@@ -1,0 +1,27 @@
+slug: distal-part-of-ileum
+kind: organ
+laterality: midline
+status: draft
+parent: ileum
+labels:
+  en:
+    text: distal part of ileum
+    source: fma
+    status: draft
+ids:
+  fma: 14966
+  ta2: 2961
+  ta98: A05.6.04.002
+  wikidata: Q7702734
+meshes:
+  - bp3d:FJ2587
+  - bp3d:FJ2588
+  - bp3d:FJ2589
+  - bp3d:FJ2590
+  - bp3d:FJ2591
+  - bp3d:FJ2592
+  - bp3d:FJ2593
+  - bp3d:FJ2594
+  - bp3d:FJ2595
+  - bp3d:FJ2597
+  - bp3d:FJ2598

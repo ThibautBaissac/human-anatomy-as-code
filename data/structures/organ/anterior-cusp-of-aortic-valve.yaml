@@ -1,0 +1,23 @@
+slug: anterior-cusp-of-aortic-valve
+kind: organ
+laterality: midline
+status: draft
+parent: aortic-valve
+regions:
+  - thorax
+labels:
+  en:
+    text: anterior cusp of aortic valve
+    source: fma
+    status: draft
+  fr:
+    text: valvule coronaire droite de la valve aortique
+    source: wikidata
+    status: draft
+ids:
+  fma: 7253
+  ta2: 3995
+  ta98: A12.1.04.013
+  wikidata: Q66502855
+meshes:
+  - bp3d:FJ2435

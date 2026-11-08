@@ -1,0 +1,38 @@
+slug: tarsal-plate-of-lower-eyelid
+kind: bone
+laterality: bilateral
+status: draft
+parent: lower-eyelid
+regions:
+  - head
+labels:
+  en:
+    text: tarsal plate of lower eyelid
+    source: fma
+    status: draft
+ids:
+  fma: 59088
+  wikidata: Q66555562
+sides:
+  left:
+    ids:
+      fma: 59090
+      wikidata: Q66555565
+    meshes:
+      - bp3d:FJ1328
+    labels:
+      en:
+        text: tarsal plate of left lower eyelid
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 59089
+      wikidata: Q66555564
+    meshes:
+      - bp3d:FJ1379
+    labels:
+      en:
+        text: tarsal plate of right lower eyelid
+        source: fma
+        status: draft

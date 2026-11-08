@@ -1,0 +1,41 @@
+slug: humeral-head-of-flexor-carpi-ulnaris
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: humeral head of flexor carpi ulnaris
+    source: fma
+    status: draft
+  fr:
+    text: chef huméral du muscle fléchisseur ulnaire du carpe
+    source: wikidata
+    status: draft
+ids:
+  fma: 38615
+  ta2: 2484
+  ta98: A04.6.02.031
+  wikidata: Q66527732
+sides:
+  left:
+    ids:
+      fma: 38618
+      wikidata: Q66527735
+    meshes:
+      - bp3d:FJ1473M
+    labels:
+      en:
+        text: humeral head of left flexor carpi ulnaris
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 38617
+      wikidata: Q66527734
+    meshes:
+      - bp3d:FJ1473
+    labels:
+      en:
+        text: humeral head of right flexor carpi ulnaris
+        source: fma
+        status: draft

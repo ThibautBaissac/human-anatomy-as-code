@@ -1,0 +1,15 @@
+slug: anterior-wall-of-left-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: wall-of-left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: anterior wall of left ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 9560
+  wikidata: Q66504998

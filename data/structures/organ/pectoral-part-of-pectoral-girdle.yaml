@@ -1,0 +1,31 @@
+slug: pectoral-part-of-pectoral-girdle
+kind: organ
+laterality: bilateral
+status: draft
+parent: pectoral-girdle
+regions:
+  - upper-limb
+labels:
+  en:
+    text: pectoral part of pectoral girdle
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 33645
+      wikidata: Q66523901
+    labels:
+      en:
+        text: pectoral part of left pectoral girdle
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 33644
+      wikidata: Q66523900
+    labels:
+      en:
+        text: pectoral part of right pectoral girdle
+        source: fma
+        status: draft

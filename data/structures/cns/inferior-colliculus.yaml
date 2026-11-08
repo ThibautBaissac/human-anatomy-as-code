@@ -1,0 +1,32 @@
+slug: inferior-colliculus
+kind: cns
+laterality: bilateral
+status: draft
+parent: midbrain-tectum
+labels:
+  en:
+    text: inferior colliculus
+    source: fma
+    status: draft
+  fr:
+    text: colliculus inférieur
+    source: wikidata
+    status: draft
+ids:
+  fma: 62404
+  ta2: 5916
+  ta98: A14.1.06.014
+  wikidata: Q358512
+sides:
+  left:
+    ids:
+      fma: 73435
+      wikidata: Q66570886
+    meshes:
+      - bp3d:FJ1762
+  right:
+    ids:
+      fma: 73434
+      wikidata: Q66570885
+    meshes:
+      - bp3d:FJ1810

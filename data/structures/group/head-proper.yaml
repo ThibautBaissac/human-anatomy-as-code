@@ -1,0 +1,15 @@
+slug: head-proper
+kind: group
+laterality: midline
+status: draft
+parent: head
+regions:
+  - head
+labels:
+  en:
+    text: head proper
+    source: fma
+    status: draft
+ids:
+  fma: 54545
+  wikidata: Q66544363

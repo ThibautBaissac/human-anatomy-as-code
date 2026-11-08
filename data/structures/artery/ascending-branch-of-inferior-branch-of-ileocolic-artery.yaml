@@ -1,0 +1,29 @@
+slug: ascending-branch-of-inferior-branch-of-ileocolic-artery
+kind: artery
+laterality: midline
+status: draft
+parent: inferior-branch-of-ileocolic-artery
+labels:
+  en:
+    text: ascending branch of inferior branch of ileocolic artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau colique de l'artère iléocolique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ramus colicus arteriae ileocolicae
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14820
+  ta2: 4263
+  ta98: A12.2.12.064
+  wikidata: Q5144814
+meshes:
+  - bp3d:FJ3414

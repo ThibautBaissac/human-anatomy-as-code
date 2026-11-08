@@ -1,0 +1,31 @@
+slug: hemiazygos-vein
+kind: vein
+laterality: midline
+status: draft
+parent: content-of-posterior-mediastinum
+regions:
+  - thorax
+labels:
+  en:
+    text: hemiazygos vein
+    source: fma
+    status: draft
+  fr:
+    text: veine hémiazygos
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena hemiazygos
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4944
+  ta2: 4764
+  ta98: A12.3.07.004
+  wikidata: Q2214048
+meshes:
+  - bp3d:FJ3434

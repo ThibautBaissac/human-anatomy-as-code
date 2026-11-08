@@ -1,0 +1,39 @@
+slug: longus-capitis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: longus capitis
+    source: fma
+    status: draft
+  fr:
+    text: muscle long de la tête
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus longus capitis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46308
+  ta2: 2149
+  ta98: A04.2.01.003
+  wikidata: Q1055786
+sides:
+  left:
+    ids:
+      fma: 46310
+      wikidata: Q66536465
+    meshes:
+      - bp3d:FJ1561
+  right:
+    ids:
+      fma: 46309
+      wikidata: Q66536464
+    meshes:
+      - bp3d:FJ1582

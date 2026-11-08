@@ -1,0 +1,28 @@
+slug: internal-thoracic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: internal thoracic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine thoracique interne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena thoracica interna
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4729
+  ta2: 4786
+  ta98: A12.3.04.018
+  wikidata: Q3509884
+meshes:
+  - bp3d:FJ1993

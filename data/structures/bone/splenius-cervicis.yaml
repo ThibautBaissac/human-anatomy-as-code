@@ -1,0 +1,39 @@
+slug: splenius-cervicis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: splenius cervicis
+    source: fma
+    status: draft
+  fr:
+    text: Muscle splénius du cou
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus splenius cervicis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22681
+  ta2: 2274
+  ta98: A04.3.02.104
+  wikidata: Q1076423
+sides:
+  left:
+    ids:
+      fma: 22727
+      wikidata: Q66514755
+    meshes:
+      - bp3d:FJ1546M
+  right:
+    ids:
+      fma: 22726
+      wikidata: Q66514754
+    meshes:
+      - bp3d:FJ1546

@@ -1,0 +1,27 @@
+slug: axis
+kind: bone
+laterality: midline
+status: draft
+parent: neck
+regions:
+  - neck
+labels:
+  en:
+    text: axis
+    source: fma
+    status: draft
+  fr:
+    text: axis
+    source: wikidata
+    status: draft
+  la:
+    text: Axis, vertebra cervicalis II
+    source: wikidata
+    status: draft
+ids:
+  fma: 12520
+  ta2: 1050
+  ta98: A02.2.02.201
+  wikidata: Q792567
+meshes:
+  - bp3d:FJ3177

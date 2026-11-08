@@ -1,0 +1,35 @@
+slug: fourth-lumbrical-of-foot
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: fourth lumbrical of foot
+    source: fma
+    status: draft
+ids:
+  fma: 37482
+  wikidata: Q66526801
+sides:
+  left:
+    ids:
+      fma: 37484
+      wikidata: Q66526803
+    meshes:
+      - bp3d:FJ1389M
+    labels:
+      en:
+        text: fourth lumbrical of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37483
+      wikidata: Q66526802
+    meshes:
+      - bp3d:FJ1389
+    labels:
+      en:
+        text: fourth lumbrical of right foot
+        source: fma
+        status: draft

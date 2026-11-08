@@ -1,0 +1,27 @@
+slug: corona-ciliaris
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: corona ciliaris
+    source: fma
+    status: draft
+ids:
+  fma: 58431
+  ta2: 6766
+  ta98: A15.2.03.010
+  wikidata: Q7139916
+sides:
+  left:
+    ids:
+      fma: 58484
+      wikidata: Q66555050
+    meshes:
+      - bp3d:FJ1287
+  right:
+    ids:
+      fma: 58483
+      wikidata: Q66555049
+    meshes:
+      - bp3d:FJ1338

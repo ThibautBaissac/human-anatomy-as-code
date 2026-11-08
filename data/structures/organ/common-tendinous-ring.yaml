@@ -1,0 +1,31 @@
+slug: common-tendinous-ring
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: common tendinous ring
+    source: fma
+    status: draft
+  fr:
+    text: anneau de Zinn
+    source: wikidata
+    status: draft
+ids:
+  fma: 49071
+  ta2: 2047
+  ta98: A15.2.07.015
+  wikidata: Q612431
+sides:
+  left:
+    ids:
+      fma: 49073
+      wikidata: Q66538483
+    meshes:
+      - bp3d:FJ1291
+  right:
+    ids:
+      fma: 49072
+      wikidata: Q66538482
+    meshes:
+      - bp3d:FJ1342

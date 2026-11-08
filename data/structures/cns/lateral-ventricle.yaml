@@ -1,0 +1,28 @@
+slug: lateral-ventricle
+kind: cns
+laterality: bilateral
+status: draft
+parent: cerebral-hemisphere
+labels:
+  en:
+    text: lateral ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 78448
+  ta2: 5639
+  ta98: A14.1.09.272
+  wikidata: Q1929623
+sides:
+  left:
+    ids:
+      fma: 78450
+      wikidata: Q66576369
+    meshes:
+      - bp3d:FJ1767
+  right:
+    ids:
+      fma: 78449
+      wikidata: Q66576367
+    meshes:
+      - bp3d:FJ1814

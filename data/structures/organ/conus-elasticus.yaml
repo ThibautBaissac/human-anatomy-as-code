@@ -1,0 +1,31 @@
+slug: conus-elasticus
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: conus elasticus
+    source: fma
+    status: draft
+  fr:
+    text: cône élastique
+    source: wikidata
+    status: draft
+ids:
+  fma: 55250
+  ta2: 1660
+  ta98: A06.2.09.024
+  wikidata: Q5166068
+sides:
+  left:
+    ids:
+      fma: 55252
+      wikidata: Q66544951
+    meshes:
+      - bp3d:FJ2777
+  right:
+    ids:
+      fma: 55251
+      wikidata: Q66544950
+    meshes:
+      - bp3d:FJ2794

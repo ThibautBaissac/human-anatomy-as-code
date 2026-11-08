@@ -1,0 +1,23 @@
+slug: perineum
+kind: organ
+laterality: midline
+status: draft
+parent: trunk
+labels:
+  en:
+    text: perineum
+    source: fma
+    status: draft
+  fr:
+    text: périnée
+    source: wikidata
+    status: draft
+  la:
+    text: Perineum
+    source: wikidata
+    status: draft
+ids:
+  fma: 9579
+  ta2: 131
+  ta98: A09.5.00.001
+  wikidata: Q105499

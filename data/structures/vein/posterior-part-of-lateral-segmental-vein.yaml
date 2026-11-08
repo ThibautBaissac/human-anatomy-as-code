@@ -1,0 +1,17 @@
+slug: posterior-part-of-lateral-segmental-vein
+kind: vein
+laterality: midline
+status: draft
+parent: lateral-segmental-vein
+labels:
+  en:
+    text: posterior part of lateral segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 68944
+  wikidata: Q66564485
+meshes:
+  - bp3d:FJ3037
+  - bp3d:FJ3038
+  - bp3d:FJ3039

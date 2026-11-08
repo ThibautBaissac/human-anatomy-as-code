@@ -1,0 +1,29 @@
+slug: set-of-common-plantar-digital-arteries
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of common plantar digital arteries
+    source: fma
+    status: draft
+  fr:
+    text: artère digitale plantaire commune
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteriae digitales plantares communes
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 70821
+  ta2: 4741
+  ta98: A12.2.16.068
+  wikidata: Q5153594
+meshes:
+  - bp3d:FJ2092
+  - bp3d:FJ2196

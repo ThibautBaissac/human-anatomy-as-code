@@ -1,0 +1,31 @@
+slug: superior-pulmonary-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: vasculature-of-body
+labels:
+  en:
+    text: superior pulmonary vein
+    source: fma
+    status: draft
+ids:
+  fma: 49908
+  wikidata: Q66539134
+sides:
+  left:
+    ids:
+      fma: 49916
+      ta2: 4119
+      ta98: A12.3.02.301
+      wikidata: Q30126467
+    meshes:
+      - bp3d:FJ2925
+      - bp3d:FJ2933
+  right:
+    ids:
+      fma: 49914
+      ta2: 4108
+      ta98: A12.3.02.101
+      wikidata: Q30126465
+    meshes:
+      - bp3d:FJ3020

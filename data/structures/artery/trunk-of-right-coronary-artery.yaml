@@ -1,0 +1,15 @@
+slug: trunk-of-right-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: right-coronary-artery
+labels:
+  en:
+    text: trunk of right coronary artery
+    source: fma
+    status: draft
+ids:
+  fma: 3802
+  wikidata: Q66499428
+meshes:
+  - bp3d:FJ2723

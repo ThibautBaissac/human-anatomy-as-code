@@ -1,0 +1,42 @@
+slug: psoas-major
+kind: bone
+laterality: bilateral
+status: draft
+parent: posterior-abdominal-wall
+regions:
+  - abdomen
+labels:
+  en:
+    text: psoas major
+    source: fma
+    status: draft
+  fr:
+    text: muscle grand psoas
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus psoas major
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 18060
+  ta2: 2595
+  ta98: A04.7.02.004
+  wikidata: Q1550323
+sides:
+  left:
+    ids:
+      fma: 22343
+      wikidata: Q66514410
+    meshes:
+      - bp3d:FJ1431M
+  right:
+    ids:
+      fma: 22342
+      wikidata: Q66514409
+    meshes:
+      - bp3d:FJ1431

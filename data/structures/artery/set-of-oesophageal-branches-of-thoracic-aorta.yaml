@@ -1,0 +1,28 @@
+slug: set-of-oesophageal-branches-of-thoracic-aorta
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of oesophageal branches of thoracic aorta
+    source: fma
+    status: draft
+  fr:
+    text: rameau œsophagien de l'aorte thoracique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Rami oesophageales partis thoracicae aortae
+    gender: m
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 71537
+  ta2: 4188
+  ta98: A12.2.11.003
+  wikidata: Q9066221
+meshes:
+  - bp3d:FJ3431

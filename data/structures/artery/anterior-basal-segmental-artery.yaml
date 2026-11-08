@@ -1,0 +1,36 @@
+slug: anterior-basal-segmental-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: antero-medial-basal-segmental-artery
+labels:
+  en:
+    text: anterior basal segmental artery
+    source: fma
+    status: draft
+  fr:
+    text: artère segmentaire basale antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8717
+  wikidata: Q66504274
+sides:
+  left:
+    ids:
+      fma: 8645
+      ta2: 4103
+      ta98: A12.2.01.217
+      wikidata: Q66504108
+    meshes:
+      - bp3d:FJ2883
+      - bp3d:FJ2886
+      - bp3d:FJ2887
+  right:
+    ids:
+      fma: 8630
+      ta2: 4087
+      ta98: A12.2.01.116
+      wikidata: Q66504093

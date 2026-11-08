@@ -1,0 +1,25 @@
+slug: habenula
+kind: organ
+laterality: midline
+status: draft
+parent: epithalamus
+labels:
+  en:
+    text: habenula
+    source: fma
+    status: draft
+  fr:
+    text: habenula
+    source: wikidata
+    status: draft
+  la:
+    text: Habenula
+    source: wikidata
+    status: draft
+ids:
+  fma: 62032
+  ta2: 5662
+  ta98: A14.1.08.003
+  wikidata: Q267641
+meshes:
+  - bp3d:FJ1743

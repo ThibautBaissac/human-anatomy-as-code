@@ -1,0 +1,40 @@
+slug: femoral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: external-iliac-artery
+labels:
+  en:
+    text: femoral artery
+    source: fma
+    status: draft
+  fr:
+    text: artère fémorale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria femoralis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 70248
+  ta2: 4674
+  ta98: A12.2.16.010
+  wikidata: Q707174
+sides:
+  left:
+    ids:
+      fma: 70250
+      wikidata: Q66568268
+    meshes:
+      - bp3d:FJ2074
+  right:
+    ids:
+      fma: 70249
+      wikidata: Q66568267
+    meshes:
+      - bp3d:FJ2143

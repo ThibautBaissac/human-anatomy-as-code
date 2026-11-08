@@ -1,0 +1,13 @@
+slug: vasculature-of-body
+kind: organ
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: vasculature of body
+    source: fma
+    status: draft
+ids:
+  fma: 228642
+  wikidata: Q66595243

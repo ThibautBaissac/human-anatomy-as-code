@@ -1,0 +1,34 @@
+slug: superficial-medial-plantar-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: medial-plantar-artery
+labels:
+  en:
+    text: superficial medial plantar artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau superficiel de l'artère plantaire médiale
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 43933
+  ta2: 4736
+  ta98: A12.2.16.063
+  wikidata: Q66533842
+sides:
+  left:
+    ids:
+      fma: 43938
+      wikidata: Q66533847
+    meshes:
+      - bp3d:FJ2089
+  right:
+    ids:
+      fma: 43937
+      wikidata: Q66533846
+    meshes:
+      - bp3d:FJ2179

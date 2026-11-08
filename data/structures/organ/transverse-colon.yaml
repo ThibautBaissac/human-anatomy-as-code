@@ -1,0 +1,25 @@
+slug: transverse-colon
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: transverse colon
+    source: fma
+    status: draft
+  fr:
+    text: côlon transverse
+    source: wikidata
+    status: draft
+  la:
+    text: colon transversum
+    source: wikidata
+    status: draft
+ids:
+  fma: 14546
+  ta2: 2984
+  ta98: A05.7.03.004
+  wikidata: Q2619732
+meshes:
+  - bp3d:FJ2572

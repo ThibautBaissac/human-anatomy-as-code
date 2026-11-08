@@ -1,0 +1,13 @@
+slug: wall-of-ileum
+kind: organ
+laterality: midline
+status: draft
+parent: wall-of-small-intestine
+labels:
+  en:
+    text: wall of ileum
+    source: fma
+    status: draft
+ids:
+  fma: 14618
+  wikidata: Q66510538

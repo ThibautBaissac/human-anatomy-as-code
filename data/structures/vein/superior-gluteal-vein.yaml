@@ -1,0 +1,25 @@
+slug: superior-gluteal-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superior gluteal vein
+    source: fma
+    status: draft
+ids:
+  fma: 18908
+  wikidata: Q66510136
+sides:
+  left:
+    ids:
+      fma: 18910
+      wikidata: Q66510138
+    meshes:
+      - bp3d:FJ3531
+  right:
+    ids:
+      fma: 18909
+      wikidata: Q66510137
+    meshes:
+      - bp3d:FJ3616

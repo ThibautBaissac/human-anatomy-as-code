@@ -1,0 +1,20 @@
+slug: fibrous-skeleton-of-heart
+kind: organ
+laterality: midline
+status: draft
+parent: heart
+regions:
+  - thorax
+labels:
+  en:
+    text: fibrous skeleton of heart
+    source: fma
+    status: draft
+  fr:
+    text: squelette fibreux du cœur
+    source: wikidata
+    status: draft
+ids:
+  fma: 9496
+  ta2: 3974
+  wikidata: Q1474138

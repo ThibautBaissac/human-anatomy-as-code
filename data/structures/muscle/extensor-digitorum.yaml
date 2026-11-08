@@ -1,0 +1,39 @@
+slug: extensor-digitorum
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor digitorum
+    source: fma
+    status: draft
+  fr:
+    text: muscle extenseur des doigts de la main
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor digitorum
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38500
+  ta2: 2500
+  ta98: A04.6.02.042
+  wikidata: Q901101
+sides:
+  left:
+    ids:
+      fma: 38502
+      wikidata: Q66527664
+    meshes:
+      - bp3d:FJ1492M
+  right:
+    ids:
+      fma: 38501
+      wikidata: Q66527663
+    meshes:
+      - bp3d:FJ1492

@@ -1,0 +1,40 @@
+slug: pisiform
+kind: bone
+laterality: bilateral
+status: draft
+parent: wrist
+regions:
+  - upper-limb
+labels:
+  en:
+    text: pisiform
+    source: fma
+    status: draft
+  fr:
+    text: pisiforme
+    source: wikidata
+    status: draft
+  la:
+    text: Os pisiforme
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23718
+  ta2: 1254
+  ta98: A02.4.08.007
+  wikidata: Q691942
+sides:
+  left:
+    ids:
+      fma: 24442
+      wikidata: Q66515967
+    meshes:
+      - bp3d:FJ3276
+  right:
+    ids:
+      fma: 24441
+      wikidata: Q66515966
+    meshes:
+      - bp3d:FJ3382

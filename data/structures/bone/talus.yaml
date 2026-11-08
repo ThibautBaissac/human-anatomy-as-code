@@ -1,0 +1,39 @@
+slug: talus
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: talus
+    source: fma
+    status: draft
+  fr:
+    text: talus
+    source: wikidata
+    status: draft
+  la:
+    text: astragalus
+    source: wikidata
+    status: draft
+ids:
+  fma: 9708
+  ta2: 1448
+  ta98: A02.5.10.001
+  wikidata: Q13100
+sides:
+  left:
+    ids:
+      fma: 24483
+      wikidata: Q66516008
+    meshes:
+      - bp3d:FJ3280
+  right:
+    ids:
+      fma: 24482
+      wikidata: Q66516007
+    meshes:
+      - bp3d:FJ3385

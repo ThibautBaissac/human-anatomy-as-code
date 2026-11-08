@@ -1,0 +1,21 @@
+slug: anterior-segmental-hepatic-artery
+kind: artery
+laterality: midline
+status: draft
+parent: hepatic-artery
+labels:
+  en:
+    text: anterior segmental hepatic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère du segment antérieur hépatique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 70441
+  ta2: 4232
+  ta98: A12.2.12.033
+  wikidata: Q66568409

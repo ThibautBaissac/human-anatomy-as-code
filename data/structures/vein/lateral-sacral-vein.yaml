@@ -1,0 +1,25 @@
+slug: lateral-sacral-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral sacral vein
+    source: fma
+    status: draft
+ids:
+  fma: 18905
+  wikidata: Q66510133
+sides:
+  left:
+    ids:
+      fma: 18907
+      wikidata: Q66510135
+    meshes:
+      - bp3d:FJ3526
+  right:
+    ids:
+      fma: 18906
+      wikidata: Q66510134
+    meshes:
+      - bp3d:FJ3611

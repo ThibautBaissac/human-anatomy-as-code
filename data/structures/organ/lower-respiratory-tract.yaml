@@ -1,0 +1,17 @@
+slug: lower-respiratory-tract
+kind: organ
+laterality: midline
+status: draft
+parent: respiratory-tract
+labels:
+  en:
+    text: lower respiratory tract
+    source: fma
+    status: draft
+  fr:
+    text: arbre bronchique
+    source: wikidata
+    status: draft
+ids:
+  fma: 45662
+  wikidata: Q2859739

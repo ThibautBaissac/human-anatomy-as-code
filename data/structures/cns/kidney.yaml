@@ -1,0 +1,36 @@
+slug: kidney
+kind: cns
+laterality: bilateral
+status: draft
+parent: upper-urinary-tract
+labels:
+  en:
+    text: kidney
+    source: fma
+    status: draft
+  fr:
+    text: rein
+    source: wikidata
+    status: draft
+  la:
+    text: ren
+    source: wikidata
+    status: draft
+ids:
+  fma: 7203
+  ta2: 3358
+  ta98: A08.1.01.001
+  wikidata: Q9377
+sides:
+  left:
+    ids:
+      fma: 7205
+      wikidata: Q66502828
+    meshes:
+      - bp3d:FJ3145
+  right:
+    ids:
+      fma: 7204
+      wikidata: Q66502827
+    meshes:
+      - bp3d:FJ3147

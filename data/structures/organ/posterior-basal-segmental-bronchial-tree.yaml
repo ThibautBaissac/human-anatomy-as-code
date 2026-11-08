@@ -1,0 +1,36 @@
+slug: posterior-basal-segmental-bronchial-tree
+kind: organ
+laterality: bilateral
+status: draft
+parent: posterior-basal-bronchopulmonary-segment
+labels:
+  en:
+    text: posterior basal segmental bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68229
+  wikidata: Q66563825
+sides:
+  left:
+    ids:
+      fma: 68233
+      wikidata: Q66563829
+    meshes:
+      - bp3d:FJ2446
+      - bp3d:FJ2527
+      - bp3d:FJ2528
+      - bp3d:FJ2529
+      - bp3d:FJ2530
+      - bp3d:FJ2531
+  right:
+    ids:
+      fma: 68221
+      wikidata: Q66563817
+    meshes:
+      - bp3d:FJ2457
+      - bp3d:FJ2470
+      - bp3d:FJ2481
+      - bp3d:FJ2486
+      - bp3d:FJ2487
+      - bp3d:FJ2489

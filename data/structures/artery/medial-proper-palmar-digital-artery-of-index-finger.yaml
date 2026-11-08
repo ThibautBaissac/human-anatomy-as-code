@@ -1,0 +1,35 @@
+slug: medial-proper-palmar-digital-artery-of-index-finger
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: medial proper palmar digital artery of index finger
+    source: fma
+    status: draft
+ids:
+  fma: 23047
+  wikidata: Q66514994
+sides:
+  left:
+    ids:
+      fma: 23051
+      wikidata: Q66514997
+    meshes:
+      - bp3d:FJ2333
+    labels:
+      en:
+        text: medial proper palmar digital artery of left index finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 23050
+      wikidata: Q66514996
+    meshes:
+      - bp3d:FJ2364
+    labels:
+      en:
+        text: medial proper palmar digital artery of right index finger
+        source: fma
+        status: draft

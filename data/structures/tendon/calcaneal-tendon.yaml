@@ -1,0 +1,33 @@
+slug: calcaneal-tendon
+kind: tendon
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: calcaneal tendon
+    source: fma
+    status: draft
+  fr:
+    text: tendon calcanéen
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 51061
+  ta2: 2662
+  ta98: A04.7.02.048
+  wikidata: Q223172
+sides:
+  left:
+    ids:
+      fma: 264844
+      wikidata: Q66603457
+    meshes:
+      - bp3d:FJ1405M
+  right:
+    ids:
+      fma: 258847
+      wikidata: Q66600601
+    meshes:
+      - bp3d:FJ1405

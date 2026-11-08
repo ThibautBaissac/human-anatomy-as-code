@@ -1,0 +1,39 @@
+slug: fibularis-brevis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: fibularis brevis
+    source: fma
+    status: draft
+  fr:
+    text: muscle court fibulaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus fibularis brevis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22540
+  ta2: 2653
+  ta98: A04.7.02.042
+  wikidata: Q1723682
+sides:
+  left:
+    ids:
+      fma: 22555
+      wikidata: Q66514572
+    meshes:
+      - bp3d:FJ1409M
+  right:
+    ids:
+      fma: 22554
+      wikidata: Q66514571
+    meshes:
+      - bp3d:FJ1409

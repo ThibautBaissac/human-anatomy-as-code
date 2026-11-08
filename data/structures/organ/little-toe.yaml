@@ -1,0 +1,22 @@
+slug: little-toe
+kind: organ
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: little toe
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 60344
+      wikidata: Q66556712
+  right:
+    ids:
+      fma: 60343
+      wikidata: Q66556711

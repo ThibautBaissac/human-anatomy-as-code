@@ -1,0 +1,31 @@
+slug: marginal-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: coronary-sinus-tree
+labels:
+  en:
+    text: marginal vein
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 4708
+      ta2: 4161
+      ta98: A12.3.01.005
+      wikidata: Q6516978
+    meshes:
+      - bp3d:FJ2703
+      - bp3d:FJ2704
+      - bp3d:FJ2705
+  right:
+    ids:
+      fma: 4716
+      ta2: 4167
+      ta98: A12.3.01.011
+      wikidata: Q7333621
+    meshes:
+      - bp3d:FJ2727
+      - bp3d:FJ2728
+      - bp3d:FJ2729

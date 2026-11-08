@@ -1,0 +1,39 @@
+slug: middle-phalanx-of-fourth-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: fourth-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: middle phalanx of fourth toe
+    source: fma
+    status: draft
+ids:
+  fma: 32625
+  wikidata: Q66523094
+sides:
+  left:
+    ids:
+      fma: 32647
+      wikidata: Q66523113
+    meshes:
+      - bp3d:FJ3295
+    labels:
+      en:
+        text: middle phalanx of left fourth toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32646
+      wikidata: Q66523112
+    meshes:
+      - bp3d:FJ3302
+    labels:
+      en:
+        text: middle phalanx of right fourth toe
+        source: fma
+        status: draft

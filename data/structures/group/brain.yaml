@@ -1,0 +1,23 @@
+slug: brain
+kind: group
+laterality: midline
+status: draft
+parent: neuraxis
+labels:
+  en:
+    text: brain
+    source: fma
+    status: draft
+  fr:
+    text: cerveau humain
+    source: wikidata
+    status: draft
+  la:
+    text: Encephalon humanum
+    source: wikidata
+    status: draft
+ids:
+  fma: 50801
+  ta2: 5415
+  ta98: A14.1.03.001
+  wikidata: Q492038

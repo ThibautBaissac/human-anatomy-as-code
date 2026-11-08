@@ -1,0 +1,35 @@
+slug: iliocostalis-lumborum
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: iliocostalis lumborum
+    source: fma
+    status: draft
+  fr:
+    text: partie lombaire du muscle ilio-costal
+    source: wikidata
+    status: draft
+  la:
+    text: iliocostalis lumborum
+    source: wikidata
+    status: draft
+ids:
+  fma: 22702
+  ta2: 2258
+  ta98: A04.3.02.007
+  wikidata: Q1180020
+sides:
+  left:
+    ids:
+      fma: 22741
+      wikidata: Q66514766
+    meshes:
+      - bp3d:FJ1527M
+  right:
+    ids:
+      fma: 22740
+      wikidata: Q66514765
+    meshes:
+      - bp3d:FJ1527

@@ -1,0 +1,36 @@
+slug: lacrimal-gland
+kind: organ
+laterality: bilateral
+status: draft
+parent: lacrimal-apparatus
+regions:
+  - head
+labels:
+  en:
+    text: lacrimal gland
+    source: fma
+    status: draft
+  fr:
+    text: glande lacrymale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 59101
+  ta2: 6846
+  ta98: A15.2.07.057
+  wikidata: Q913628
+sides:
+  left:
+    ids:
+      fma: 59103
+      wikidata: Q66555576
+    meshes:
+      - bp3d:FJ1299
+  right:
+    ids:
+      fma: 59102
+      wikidata: Q66555575
+    meshes:
+      - bp3d:FJ1350

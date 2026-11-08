@@ -1,0 +1,32 @@
+slug: superior-colliculus
+kind: cns
+laterality: bilateral
+status: draft
+parent: midbrain-tectum
+labels:
+  en:
+    text: superior colliculus
+    source: fma
+    status: draft
+  fr:
+    text: colliculus supérieur
+    source: wikidata
+    status: draft
+ids:
+  fma: 62403
+  ta2: 5912
+  ta98: A14.1.06.015
+  wikidata: Q1109417
+sides:
+  left:
+    ids:
+      fma: 73423
+      wikidata: Q66570874
+    meshes:
+      - bp3d:FJ1779
+  right:
+    ids:
+      fma: 73422
+      wikidata: Q66570873
+    meshes:
+      - bp3d:FJ1826

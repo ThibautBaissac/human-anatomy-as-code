@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-third-lumbar-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: third-lumbar-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of third lumbar vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 16035
+  wikidata: Q66513047
+meshes:
+  - bp3d:FJ3215

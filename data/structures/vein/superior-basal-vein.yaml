@@ -1,0 +1,19 @@
+slug: superior-basal-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: common-basal-vein
+labels:
+  en:
+    text: superior basal vein
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 8677
+      wikidata: Q66504244
+  right:
+    ids:
+      fma: 8672
+      wikidata: Q66504239

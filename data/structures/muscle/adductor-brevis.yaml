@@ -1,0 +1,39 @@
+slug: adductor-brevis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: adductor brevis
+    source: fma
+    status: draft
+  fr:
+    text: muscle court adducteur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus adductor brevis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22442
+  ta2: 2629
+  ta98: A04.7.02.027
+  wikidata: Q1551135
+sides:
+  left:
+    ids:
+      fma: 22454
+      wikidata: Q66514500
+    meshes:
+      - bp3d:FJ1401M
+  right:
+    ids:
+      fma: 22452
+      wikidata: Q66514499
+    meshes:
+      - bp3d:FJ1401

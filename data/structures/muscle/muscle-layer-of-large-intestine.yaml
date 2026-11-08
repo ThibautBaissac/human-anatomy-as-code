@@ -1,0 +1,13 @@
+slug: muscle-layer-of-large-intestine
+kind: muscle
+laterality: midline
+status: draft
+parent: wall-of-large-intestine
+labels:
+  en:
+    text: muscle layer of large intestine
+    source: fma
+    status: draft
+ids:
+  fma: 14971
+  wikidata: Q66511119

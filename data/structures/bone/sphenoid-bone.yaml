@@ -1,0 +1,29 @@
+slug: sphenoid-bone
+kind: bone
+laterality: midline
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: sphenoid bone
+    source: fma
+    status: draft
+  fr:
+    text: os sphénoïde
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os sphenoidale
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52736
+  ta2: 584
+  ta98: A02.1.05.001
+  wikidata: Q16321
+meshes:
+  - bp3d:FJ3394

@@ -1,0 +1,39 @@
+slug: mylohyoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: mylohyoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle mylo-hyoïdien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus mylohyoideus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46320
+  ta2: 2165
+  ta98: A04.2.03.006
+  wikidata: Q927901
+sides:
+  left:
+    ids:
+      fma: 46322
+      wikidata: Q66536471
+    meshes:
+      - bp3d:FJ1562
+  right:
+    ids:
+      fma: 46321
+      wikidata: Q66536470
+    meshes:
+      - bp3d:FJ1583

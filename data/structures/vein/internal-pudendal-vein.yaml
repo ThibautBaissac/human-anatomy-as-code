@@ -1,0 +1,39 @@
+slug: internal-pudendal-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: internal pudendal vein
+    source: fma
+    status: draft
+  fr:
+    text: veine pudendale interne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena pudenda interna
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 18917
+  ta2: 5032
+  ta98: A12.3.10.019
+  wikidata: Q4116893
+sides:
+  left:
+    ids:
+      fma: 18919
+      wikidata: Q66510146
+    meshes:
+      - bp3d:FJ3525
+  right:
+    ids:
+      fma: 18918
+      wikidata: Q66510145
+    meshes:
+      - bp3d:FJ3610

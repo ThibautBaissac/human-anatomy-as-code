@@ -1,0 +1,21 @@
+slug: central-canal-of-spinal-cord
+kind: cns
+laterality: midline
+status: draft
+parent: spinal-cord
+labels:
+  en:
+    text: central canal of spinal cord
+    source: fma
+    status: draft
+  fr:
+    text: canal de l'épendyme
+    source: wikidata
+    status: draft
+ids:
+  fma: 78497
+  ta2: 6127
+  ta98: A14.1.02.019
+  wikidata: Q190634
+meshes:
+  - bp3d:FJ1737

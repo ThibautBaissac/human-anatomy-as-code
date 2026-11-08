@@ -1,0 +1,22 @@
+slug: caudal-pancreatic-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: caudal pancreatic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère de la queue du pancréas
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14793
+  ta2: 4245
+  ta98: A12.2.12.046
+  wikidata: Q66510820
+meshes:
+  - bp3d:FJ3419

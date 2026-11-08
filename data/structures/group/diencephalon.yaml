@@ -1,0 +1,23 @@
+slug: diencephalon
+kind: group
+laterality: midline
+status: draft
+parent: forebrain
+labels:
+  en:
+    text: diencephalon
+    source: fma
+    status: draft
+  fr:
+    text: diencéphale
+    source: wikidata
+    status: draft
+  la:
+    text: Diencephalon
+    source: wikidata
+    status: draft
+ids:
+  fma: 62001
+  ta2: 5661
+  ta98: A14.1.08.001
+  wikidata: Q192419

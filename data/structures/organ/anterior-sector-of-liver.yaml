@@ -1,0 +1,29 @@
+slug: anterior-sector-of-liver
+kind: organ
+laterality: bilateral
+status: draft
+parent: hemiliver
+labels:
+  en:
+    text: anterior sector of liver
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 15750
+      wikidata: Q66512453
+    labels:
+      en:
+        text: anterior sector of left liver
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 15748
+      wikidata: Q66512450
+    labels:
+      en:
+        text: anterior sector of right liver
+        source: fma
+        status: draft

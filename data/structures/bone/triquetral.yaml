@@ -1,0 +1,40 @@
+slug: triquetral
+kind: bone
+laterality: bilateral
+status: draft
+parent: wrist
+regions:
+  - upper-limb
+labels:
+  en:
+    text: triquetral
+    source: fma
+    status: draft
+  fr:
+    text: triquétrum
+    source: wikidata
+    status: draft
+  la:
+    text: os triquetrum
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23715
+  ta2: 1253
+  ta98: A02.4.08.006
+  wikidata: Q278417
+sides:
+  left:
+    ids:
+      fma: 24440
+      wikidata: Q66515965
+    meshes:
+      - bp3d:FJ3285
+  right:
+    ids:
+      fma: 24439
+      wikidata: Q66515964
+    meshes:
+      - bp3d:FJ3390

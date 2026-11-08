@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-ninth-thoracic-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: ninth-thoracic-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of ninth thoracic vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13506
+  wikidata: Q66508189
+meshes:
+  - bp3d:FJ3208

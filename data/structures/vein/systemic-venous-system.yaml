@@ -1,0 +1,13 @@
+slug: systemic-venous-system
+kind: vein
+laterality: midline
+status: draft
+parent: cardiovascular-system
+labels:
+  en:
+    text: systemic venous system
+    source: fma
+    status: draft
+ids:
+  fma: 45626
+  wikidata: Q66535993

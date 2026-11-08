@@ -1,0 +1,42 @@
+slug: suprarenal-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: inferior-systemic-venous-tree
+labels:
+  en:
+    text: suprarenal vein
+    source: fma
+    status: draft
+  fr:
+    text: veine suprarénale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Venae suprarenales
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 14348
+  wikidata: Q7644746
+sides:
+  left:
+    ids:
+      fma: 14349
+      ta2: 5012
+      ta98: A12.3.09.011
+      wikidata: Q66509409
+    meshes:
+      - bp3d:FJ3480
+  right:
+    ids:
+      fma: 14343
+      ta2: 4998
+      ta98: A12.3.09.013
+      wikidata: Q66509403
+    meshes:
+      - bp3d:FJ3580

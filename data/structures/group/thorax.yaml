@@ -1,0 +1,23 @@
+slug: thorax
+kind: group
+laterality: midline
+status: draft
+parent: thoracic-segment-of-trunk
+labels:
+  en:
+    text: thorax
+    source: fma
+    status: draft
+  fr:
+    text: torse
+    source: wikidata
+    status: draft
+  la:
+    text: Pectus
+    source: wikidata
+    status: draft
+ids:
+  fma: 9576
+  ta2: 125
+  ta98: A01.1.00.014
+  wikidata: Q9645

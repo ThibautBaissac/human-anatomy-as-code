@@ -1,0 +1,22 @@
+slug: apical-bronchopulmonary-segment
+kind: group
+laterality: bilateral
+status: draft
+parent: upper-lobe-of-lung
+labels:
+  en:
+    text: apical bronchopulmonary segment
+    source: fma
+    status: draft
+ids:
+  fma: 13188
+  wikidata: Q66507915
+sides:
+  left:
+    ids:
+      fma: 7385
+      wikidata: Q66502935
+  right:
+    ids:
+      fma: 7338
+      wikidata: Q66502911

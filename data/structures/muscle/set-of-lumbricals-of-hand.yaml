@@ -1,0 +1,35 @@
+slug: set-of-lumbricals-of-hand
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: set of lumbricals of hand
+    source: fma
+    status: draft
+ids:
+  fma: 71318
+  wikidata: Q66569106
+sides:
+  left:
+    ids:
+      fma: 42399
+      wikidata: Q66530441
+    meshes:
+      - bp3d:FJ1510M
+    labels:
+      en:
+        text: set of lumbricals of left hand
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 42398
+      wikidata: Q66530440
+    meshes:
+      - bp3d:FJ1510
+    labels:
+      en:
+        text: set of lumbricals of right hand
+        source: fma
+        status: draft

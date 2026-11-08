@@ -1,0 +1,16 @@
+slug: right-medial-basal-segmental-vein
+kind: vein
+laterality: unpaired-right
+status: draft
+parent: inferior-basal-vein
+labels:
+  en:
+    text: right medial basal segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 9422
+  wikidata: Q66504886
+meshes:
+  - bp3d:FJ3054
+  - bp3d:FJ3055

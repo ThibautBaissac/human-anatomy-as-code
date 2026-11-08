@@ -1,0 +1,13 @@
+slug: fourth-thoracic-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: thoracic-vertebral-column
+labels:
+  en:
+    text: fourth thoracic intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26096
+  wikidata: Q66517324

@@ -1,0 +1,41 @@
+slug: lateral-head-of-flexor-hallucis-brevis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral head of flexor hallucis brevis
+    source: fma
+    status: draft
+  fr:
+    text: chef latéral du muscle court fléchisseur de l'hallux
+    source: wikidata
+    status: draft
+ids:
+  fma: 45970
+  ta2: 2675
+  ta98: A04.7.02.059
+  wikidata: Q66536187
+sides:
+  left:
+    ids:
+      fma: 45974
+      wikidata: Q66536191
+    meshes:
+      - bp3d:FJ1393M
+    labels:
+      en:
+        text: lateral head of left flexor hallucis brevis
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 45973
+      wikidata: Q66536190
+    meshes:
+      - bp3d:FJ1393
+    labels:
+      en:
+        text: lateral head of right flexor hallucis brevis
+        source: fma
+        status: draft

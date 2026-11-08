@@ -1,0 +1,23 @@
+slug: superior-intercostal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: costocervical-artery
+labels:
+  en:
+    text: superior intercostal artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 4088
+      wikidata: Q66499686
+    meshes:
+      - bp3d:FJ1970
+  right:
+    ids:
+      fma: 5042
+      wikidata: Q66501890
+    meshes:
+      - bp3d:FJ1935

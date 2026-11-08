@@ -1,0 +1,35 @@
+slug: brachium-of-inferior-colliculus
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: brachium of inferior colliculus
+    source: fma
+    status: draft
+ids:
+  fma: 71114
+  wikidata: Q66568953
+sides:
+  left:
+    ids:
+      fma: 73464
+      wikidata: Q66570915
+    meshes:
+      - bp3d:FJ1761
+    labels:
+      en:
+        text: brachium of left inferior colliculus
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 73463
+      wikidata: Q66570914
+    meshes:
+      - bp3d:FJ1809
+    labels:
+      en:
+        text: brachium of right inferior colliculus
+        source: fma
+        status: draft

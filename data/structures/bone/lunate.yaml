@@ -1,0 +1,40 @@
+slug: lunate
+kind: bone
+laterality: bilateral
+status: draft
+parent: wrist
+regions:
+  - upper-limb
+labels:
+  en:
+    text: lunate
+    source: fma
+    status: draft
+  fr:
+    text: lunatum
+    source: wikidata
+    status: draft
+  la:
+    text: Os lunatum
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23712
+  ta2: 1252
+  ta98: A02.4.08.005
+  wikidata: Q13141
+sides:
+  left:
+    ids:
+      fma: 24438
+      wikidata: Q66515963
+    meshes:
+      - bp3d:FJ3268
+  right:
+    ids:
+      fma: 24437
+      wikidata: Q66515962
+    meshes:
+      - bp3d:FJ3374

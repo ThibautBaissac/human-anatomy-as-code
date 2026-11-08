@@ -1,0 +1,39 @@
+slug: opponens-pollicis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: opponens pollicis
+    source: fma
+    status: draft
+  fr:
+    text: Muscle opposant du pouce
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus opponens pollicis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37379
+  ta2: 2525
+  ta98: A04.6.02.058
+  wikidata: Q931622
+sides:
+  left:
+    ids:
+      fma: 37391
+      wikidata: Q66526735
+    meshes:
+      - bp3d:FJ1501M
+  right:
+    ids:
+      fma: 37390
+      wikidata: Q66526734
+    meshes:
+      - bp3d:FJ1501

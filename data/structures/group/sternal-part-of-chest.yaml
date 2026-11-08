@@ -1,0 +1,15 @@
+slug: sternal-part-of-chest
+kind: group
+laterality: midline
+status: draft
+parent: anterior-chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: sternal part of chest
+    source: fma
+    status: draft
+ids:
+  fma: 24866
+  wikidata: Q66516260

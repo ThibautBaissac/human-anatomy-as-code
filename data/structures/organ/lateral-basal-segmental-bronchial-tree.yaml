@@ -1,0 +1,32 @@
+slug: lateral-basal-segmental-bronchial-tree
+kind: organ
+laterality: bilateral
+status: draft
+parent: lateral-basal-bronchopulmonary-segment
+labels:
+  en:
+    text: lateral basal segmental bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68322
+  wikidata: Q66563924
+sides:
+  left:
+    ids:
+      fma: 68232
+      wikidata: Q66563828
+    meshes:
+      - bp3d:FJ2445
+      - bp3d:FJ2532
+      - bp3d:FJ2533
+      - bp3d:FJ2534
+  right:
+    ids:
+      fma: 68220
+      wikidata: Q66563816
+    meshes:
+      - bp3d:FJ2455
+      - bp3d:FJ2490
+      - bp3d:FJ2491
+      - bp3d:FJ2492

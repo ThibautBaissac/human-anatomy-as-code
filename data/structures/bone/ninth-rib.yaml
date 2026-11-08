@@ -1,0 +1,32 @@
+slug: ninth-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: ninth rib
+    source: fma
+    status: draft
+  fr:
+    text: neuvième côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 8337
+  wikidata: Q51094520
+sides:
+  left:
+    ids:
+      fma: 8391
+      wikidata: Q66503887
+    meshes:
+      - bp3d:FJ3236
+  right:
+    ids:
+      fma: 8364
+      wikidata: Q66503861
+    meshes:
+      - bp3d:FJ3348

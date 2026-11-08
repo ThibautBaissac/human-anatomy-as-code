@@ -1,0 +1,40 @@
+slug: internal-iliac-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: common-iliac-artery
+labels:
+  en:
+    text: internal iliac artery
+    source: fma
+    status: draft
+  fr:
+    text: artère iliaque interne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria iliaca interna
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 18808
+  ta2: 4302
+  ta98: A12.2.15.001
+  wikidata: Q532558
+sides:
+  left:
+    ids:
+      fma: 18810
+      wikidata: Q66510060
+    meshes:
+      - bp3d:FJ3468
+  right:
+    ids:
+      fma: 18809
+      wikidata: Q66510059
+    meshes:
+      - bp3d:FJ3569

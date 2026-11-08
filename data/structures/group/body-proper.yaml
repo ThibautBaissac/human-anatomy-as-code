@@ -1,0 +1,13 @@
+slug: body-proper
+kind: group
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: body proper
+    source: fma
+    status: draft
+ids:
+  fma: 231424
+  wikidata: Q66596061

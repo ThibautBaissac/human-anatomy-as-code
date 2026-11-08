@@ -1,0 +1,15 @@
+slug: myocardial-zone-4
+kind: organ
+laterality: midline
+status: draft
+parent: myocardium-of-inferior-wall-of-left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: myocardial zone 4
+    source: fma
+    status: draft
+ids:
+  fma: 86056
+  wikidata: Q66592030

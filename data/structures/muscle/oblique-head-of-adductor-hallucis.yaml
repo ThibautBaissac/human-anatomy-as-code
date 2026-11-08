@@ -1,0 +1,41 @@
+slug: oblique-head-of-adductor-hallucis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: oblique head of adductor hallucis
+    source: fma
+    status: draft
+  fr:
+    text: chef oblique du muscle adducteur de l'hallux
+    source: wikidata
+    status: draft
+ids:
+  fma: 46014
+  ta2: 2677
+  ta98: A04.7.02.061
+  wikidata: Q66536227
+sides:
+  left:
+    ids:
+      fma: 46019
+      wikidata: Q66536230
+    meshes:
+      - bp3d:FJ1398M
+    labels:
+      en:
+        text: oblique head of left adductor hallucis
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 46018
+      wikidata: Q66536229
+    meshes:
+      - bp3d:FJ1398
+    labels:
+      en:
+        text: oblique head of right adductor hallucis
+        source: fma
+        status: draft

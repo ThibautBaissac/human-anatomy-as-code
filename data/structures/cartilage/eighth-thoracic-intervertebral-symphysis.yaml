@@ -1,0 +1,13 @@
+slug: eighth-thoracic-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: thoracic-vertebral-column
+labels:
+  en:
+    text: eighth thoracic intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26100
+  wikidata: Q66517328

@@ -1,0 +1,41 @@
+slug: transverse-head-of-adductor-hallucis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: transverse head of adductor hallucis
+    source: fma
+    status: draft
+  fr:
+    text: chef transverse du muscle adducteur de l'hallux
+    source: wikidata
+    status: draft
+ids:
+  fma: 46015
+  ta2: 2678
+  ta98: A04.7.02.062
+  wikidata: Q66536228
+sides:
+  left:
+    ids:
+      fma: 46021
+      wikidata: Q66536232
+    meshes:
+      - bp3d:FJ1445M
+    labels:
+      en:
+        text: transverse head of left adductor hallucis
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 46020
+      wikidata: Q66536231
+    meshes:
+      - bp3d:FJ1445
+    labels:
+      en:
+        text: transverse head of right adductor hallucis
+        source: fma
+        status: draft

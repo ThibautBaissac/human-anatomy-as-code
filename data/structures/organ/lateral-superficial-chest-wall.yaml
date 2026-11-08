@@ -1,0 +1,24 @@
+slug: lateral-superficial-chest-wall
+kind: organ
+laterality: bilateral
+status: draft
+parent: lateral-chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: lateral superficial chest wall
+    source: fma
+    status: draft
+ids:
+  fma: 50068
+  wikidata: Q66539265
+sides:
+  left:
+    ids:
+      fma: 50072
+      wikidata: Q66539269
+  right:
+    ids:
+      fma: 50071
+      wikidata: Q66539268

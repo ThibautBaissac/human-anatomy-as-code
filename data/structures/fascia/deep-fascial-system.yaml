@@ -1,0 +1,13 @@
+slug: deep-fascial-system
+kind: fascia
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: deep fascial system
+    source: fma
+    status: draft
+ids:
+  fma: 79063
+  wikidata: Q66577044

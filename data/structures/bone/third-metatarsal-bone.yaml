@@ -1,0 +1,33 @@
+slug: third-metatarsal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot-proper
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: third metatarsal bone
+    source: fma
+    status: draft
+  fr:
+    text: troisième métatarsien
+    source: wikidata
+    status: draft
+ids:
+  fma: 24504
+  wikidata: Q7785071
+sides:
+  left:
+    ids:
+      fma: 24512
+      wikidata: Q66516025
+    meshes:
+      - bp3d:FJ3247
+  right:
+    ids:
+      fma: 24511
+      wikidata: Q66516024
+    meshes:
+      - bp3d:FJ3355

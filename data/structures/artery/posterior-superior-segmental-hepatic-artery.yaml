@@ -1,0 +1,16 @@
+slug: posterior-superior-segmental-hepatic-artery
+kind: artery
+laterality: midline
+status: draft
+parent: posterior-segmental-hepatic-artery
+labels:
+  en:
+    text: posterior superior segmental hepatic artery
+    source: fma
+    status: draft
+ids:
+  fma: 70445
+  wikidata: Q66568413
+meshes:
+  - bp3d:FJ3115
+  - bp3d:FJ3116

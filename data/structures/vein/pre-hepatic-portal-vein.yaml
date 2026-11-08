@@ -1,0 +1,15 @@
+slug: pre-hepatic-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: portal-venous-tree
+labels:
+  en:
+    text: pre-hepatic portal vein
+    source: fma
+    status: draft
+ids:
+  fma: 71904
+  wikidata: Q66569594
+meshes:
+  - bp3d:FJ3082

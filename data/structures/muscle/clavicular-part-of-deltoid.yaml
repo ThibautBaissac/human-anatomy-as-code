@@ -1,0 +1,41 @@
+slug: clavicular-part-of-deltoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: clavicular part of deltoid
+    source: fma
+    status: draft
+  fr:
+    text: partie claviculaire du muscle deltoïde
+    source: wikidata
+    status: draft
+ids:
+  fma: 34677
+  ta2: 2453
+  ta98: A04.6.02.003
+  wikidata: Q66524646
+sides:
+  left:
+    ids:
+      fma: 34681
+      wikidata: Q66524650
+    meshes:
+      - bp3d:FJ1468M
+    labels:
+      en:
+        text: clavicular part of left deltoid
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 34680
+      wikidata: Q66524649
+    meshes:
+      - bp3d:FJ1468
+    labels:
+      en:
+        text: clavicular part of right deltoid
+        source: fma
+        status: draft

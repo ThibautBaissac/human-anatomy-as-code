@@ -1,0 +1,48 @@
+slug: flexor-retinaculum-of-wrist
+kind: fascia
+laterality: bilateral
+status: draft
+parent: investing-fascia-of-wrist
+regions:
+  - upper-limb
+labels:
+  en:
+    text: flexor retinaculum of wrist
+    source: fma
+    status: draft
+  fr:
+    text: rétinaculum des fléchisseurs
+    source: wikidata
+    status: draft
+  la:
+    text: retinaculum musculorum flexorum manus
+    source: wikidata
+    status: draft
+ids:
+  fma: 39988
+  ta2: 2550
+  ta98: A04.6.03.013
+  wikidata: Q449457
+sides:
+  left:
+    ids:
+      fma: 40121
+      wikidata: Q66528888
+    meshes:
+      - bp3d:FJ1471M
+    labels:
+      en:
+        text: flexor retinaculum of left wrist
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 40120
+      wikidata: Q66528887
+    meshes:
+      - bp3d:FJ1471
+    labels:
+      en:
+        text: flexor retinaculum of right wrist
+        source: fma
+        status: draft

@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-tenth-thoracic-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: tenth-thoracic-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of tenth thoracic vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13507
+  wikidata: Q66508191
+meshes:
+  - bp3d:FJ3209

@@ -1,0 +1,20 @@
+slug: pharyngeal-raphe
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: pharyngeal raphe
+    source: fma
+    status: draft
+  fr:
+    text: raphé pharyngien
+    source: wikidata
+    status: draft
+ids:
+  fma: 55077
+  ta2: 2177
+  ta98: A05.3.01.101
+  wikidata: Q7180892
+meshes:
+  - bp3d:FJ2749

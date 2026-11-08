@@ -1,0 +1,20 @@
+slug: anterior-commissure
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: anterior commissure
+    source: fma
+    status: draft
+  fr:
+    text: commissure antérieure
+    source: wikidata
+    status: draft
+ids:
+  fma: 61961
+  ta2: 5613
+  ta98: A14.1.08.421
+  wikidata: Q203800
+meshes:
+  - bp3d:FJ1734

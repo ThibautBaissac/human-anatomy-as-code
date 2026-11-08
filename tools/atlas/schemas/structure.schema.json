@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://haac.example/schemas/structure.schema.json",
+  "title": "Structure anatomique",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "kind",
+    "laterality",
+    "status",
+    "labels"
+  ],
+  "properties": {
+    "slug": {
+      "$ref": "#/$defs/slug"
+    },
+    "kind": {
+      "enum": [
+        "skin",
+        "fascia",
+        "muscle",
+        "tendon",
+        "ligament",
+        "artery",
+        "vein",
+        "lymphatic",
+        "nerve",
+        "organ",
+        "cns",
+        "cartilage",
+        "joint",
+        "bone",
+        "group"
+      ]
+    },
+    "laterality": {
+      "enum": [
+        "bilateral",
+        "midline",
+        "unpaired-left",
+        "unpaired-right"
+      ]
+    },
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "parent": {
+      "$ref": "#/$defs/slug"
+    },
+    "regions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "head",
+          "neck",
+          "thorax",
+          "abdomen",
+          "pelvis",
+          "back",
+          "upper-limb",
+          "lower-limb",
+          "arm",
+          "forearm",
+          "hand",
+          "thigh",
+          "leg",
+          "foot"
+        ]
+      }
+    },
+    "layer": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/slug"
+      }
+    },
+    "labels": {
+      "type": "object",
+      "$ref": "#/$defs/labels",
+      "required": [
+        "en"
+      ]
+    },
+    "ids": {
+      "$ref": "#/$defs/ids"
+    },
+    "sides": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "left",
+        "right"
+      ],
+      "properties": {
+        "left": {
+          "$ref": "#/$defs/side"
+        },
+        "right": {
+          "$ref": "#/$defs/side"
+        }
+      }
+    },
+    "meshes": {
+      "$ref": "#/$defs/meshes"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "laterality": {
+            "const": "bilateral"
+          }
+        },
+        "required": [
+          "laterality"
+        ]
+      },
+      "then": {
+        "required": [
+          "sides"
+        ],
+        "not": {
+          "required": [
+            "meshes"
+          ]
+        }
+      },
+      "else": {
+        "not": {
+          "required": [
+            "sides"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "group"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "meshes"
+              ]
+            },
+            {
+              "required": [
+                "layer"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 120
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "reviewed"
+      ]
+    },
+    "meshes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+:[^\\s:]+$"
+      }
+    },
+    "ids": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fma": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "ta2": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "ta98": {
+          "type": "string",
+          "pattern": "^A\\d{2}\\.\\d\\.\\d{2}\\.\\d{3}[A-Z]?$"
+        },
+        "uberon": {
+          "type": "string",
+          "pattern": "^\\d{7}$"
+        },
+        "wikidata": {
+          "type": "string",
+          "pattern": "^Q\\d+$"
+        }
+      }
+    },
+    "labelBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "source",
+        "status"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "gender": {
+          "enum": [
+            "m",
+            "f",
+            "n"
+          ]
+        },
+        "number": {
+          "enum": [
+            "sg",
+            "pl"
+          ]
+        },
+        "synonyms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "labelEn": {
+      "type": "object",
+      "$ref": "#/$defs/labelBase",
+      "not": {
+        "required": [
+          "gender"
+        ]
+      }
+    },
+    "labelFr": {
+      "type": "object",
+      "$ref": "#/$defs/labelBase",
+      "properties": {
+        "gender": {
+          "enum": [
+            "m",
+            "f"
+          ]
+        }
+      }
+    },
+    "labelLa": {
+      "type": "object",
+      "$ref": "#/$defs/labelBase"
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "en": {
+          "$ref": "#/$defs/labelEn"
+        },
+        "fr": {
+          "$ref": "#/$defs/labelFr"
+        },
+        "la": {
+          "$ref": "#/$defs/labelLa"
+        }
+      }
+    },
+    "side": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ids": {
+          "$ref": "#/$defs/ids"
+        },
+        "meshes": {
+          "$ref": "#/$defs/meshes"
+        },
+        "labels": {
+          "$ref": "#/$defs/labels"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+slug: plantaris
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: plantaris
+    source: fma
+    status: draft
+  fr:
+    text: muscle plantaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus plantaris
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22543
+  ta2: 2663
+  ta98: A04.7.02.049
+  wikidata: Q526239
+sides:
+  left:
+    ids:
+      fma: 22561
+      wikidata: Q66514578
+    meshes:
+      - bp3d:FJ1429M
+  right:
+    ids:
+      fma: 22560
+      wikidata: Q66514577
+    meshes:
+      - bp3d:FJ1429

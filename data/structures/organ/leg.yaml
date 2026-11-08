@@ -1,0 +1,32 @@
+slug: leg
+kind: organ
+laterality: bilateral
+status: draft
+parent: free-lower-limb
+regions:
+  - lower-limb
+labels:
+  en:
+    text: leg
+    source: fma
+    status: draft
+  fr:
+    text: jambe
+    source: wikidata
+    status: draft
+  la:
+    text: crus
+    source: wikidata
+    status: draft
+ids:
+  fma: 24879
+  wikidata: Q133105
+sides:
+  left:
+    ids:
+      fma: 24981
+      wikidata: Q66516333
+  right:
+    ids:
+      fma: 24980
+      wikidata: Q61725748

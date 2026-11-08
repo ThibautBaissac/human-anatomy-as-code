@@ -1,0 +1,21 @@
+slug: choroid-plexus-of-cerebral-hemisphere
+kind: cns
+laterality: midline
+status: draft
+labels:
+  en:
+    text: choroid plexus of cerebral hemisphere
+    source: fma
+    status: draft
+  fr:
+    text: plexus choroïdes
+    source: wikidata
+    status: draft
+ids:
+  fma: 61934
+  ta2: 5786
+  ta98: A14.1.09.279
+  wikidata: Q926250
+meshes:
+  - bp3d:FJ1755
+  - bp3d:FJ1803

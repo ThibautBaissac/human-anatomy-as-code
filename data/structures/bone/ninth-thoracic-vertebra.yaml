@@ -1,0 +1,21 @@
+slug: ninth-thoracic-vertebra
+kind: bone
+laterality: midline
+status: draft
+parent: posterior-thoracic-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: ninth thoracic vertebra
+    source: fma
+    status: draft
+  fr:
+    text: neuvième vertèbre thoracique
+    source: wikidata
+    status: draft
+ids:
+  fma: 10014
+  wikidata: Q46992880
+meshes:
+  - bp3d:FJ3175

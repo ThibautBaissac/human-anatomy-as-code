@@ -1,0 +1,28 @@
+slug: main-bronchus
+kind: organ
+laterality: bilateral
+status: draft
+parent: bronchial-tree
+labels:
+  en:
+    text: main bronchus
+    source: fma
+    status: draft
+ids:
+  fma: 7405
+  wikidata: Q4139178
+sides:
+  left:
+    ids:
+      fma: 7396
+      ta2: 3252
+      ta98: A06.4.01.004
+      wikidata: Q12232936
+    meshes:
+      - bp3d:FJ2450
+  right:
+    ids:
+      fma: 7395
+      ta2: 3237
+      ta98: A06.4.01.003
+      wikidata: Q4116831

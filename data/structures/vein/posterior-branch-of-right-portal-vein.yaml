@@ -1,0 +1,20 @@
+slug: posterior-branch-of-right-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: portal-vein
+labels:
+  en:
+    text: posterior branch of right portal vein
+    source: fma
+    status: draft
+  fr:
+    text: rameau postérieur du rameau droit de la veine porte hépatique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15422
+  ta2: 5096
+  wikidata: Q66512007

@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-third-thoracic-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: third-thoracic-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of third thoracic vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13500
+  wikidata: Q66508178
+meshes:
+  - bp3d:FJ3224

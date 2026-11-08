@@ -1,0 +1,13 @@
+slug: parenchyma-of-pancreas
+kind: organ
+laterality: midline
+status: draft
+parent: pancreas
+labels:
+  en:
+    text: parenchyma of pancreas
+    source: fma
+    status: draft
+ids:
+  fma: 63120
+  wikidata: Q66559615

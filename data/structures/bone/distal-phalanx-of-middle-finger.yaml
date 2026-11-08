@@ -1,0 +1,45 @@
+slug: distal-phalanx-of-middle-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: middle-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: distal phalanx of middle finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange distale du médius
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23947
+  wikidata: Q66515619
+sides:
+  left:
+    ids:
+      fma: 23955
+      wikidata: Q66515624
+    meshes:
+      - bp3d:FJ3186
+    labels:
+      en:
+        text: distal phalanx of left middle finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24461
+      wikidata: Q66515987
+    meshes:
+      - bp3d:FJ3196
+    labels:
+      en:
+        text: distal phalanx of right middle finger
+        source: fma
+        status: draft

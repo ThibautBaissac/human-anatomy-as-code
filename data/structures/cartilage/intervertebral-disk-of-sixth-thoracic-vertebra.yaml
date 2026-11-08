@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-sixth-thoracic-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: sixth-thoracic-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of sixth thoracic vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13503
+  wikidata: Q66508184
+meshes:
+  - bp3d:FJ3205

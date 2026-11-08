@@ -1,0 +1,37 @@
+slug: recurrent-interosseous-artery
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: recurrent interosseous artery
+    source: fma
+    status: draft
+  fr:
+    text: artère interosseuse récurrente
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria interossea recurrens
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 77144
+  ta2: 4666
+  ta98: A12.2.09.052
+  wikidata: Q6056249
+sides:
+  left:
+    ids:
+      fma: 268669
+    meshes:
+      - bp3d:FJ2245
+  right:
+    ids:
+      fma: 268667
+    meshes:
+      - bp3d:FJ2297

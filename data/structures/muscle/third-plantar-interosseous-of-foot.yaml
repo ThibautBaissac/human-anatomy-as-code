@@ -1,0 +1,35 @@
+slug: third-plantar-interosseous-of-foot
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: third plantar interosseous of foot
+    source: fma
+    status: draft
+ids:
+  fma: 37740
+  wikidata: Q66527004
+sides:
+  left:
+    ids:
+      fma: 37742
+      wikidata: Q66527006
+    meshes:
+      - bp3d:FJ1388M
+    labels:
+      en:
+        text: third plantar interosseous of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37741
+      wikidata: Q66527005
+    meshes:
+      - bp3d:FJ1388
+    labels:
+      en:
+        text: third plantar interosseous of right foot
+        source: fma
+        status: draft

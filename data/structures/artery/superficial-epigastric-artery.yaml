@@ -1,0 +1,40 @@
+slug: superficial-epigastric-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: femoral-artery
+labels:
+  en:
+    text: superficial epigastric artery
+    source: fma
+    status: draft
+  fr:
+    text: artère épigastrique superficielle
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria epigastrica superficialis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 20734
+  ta2: 4675
+  ta98: A12.2.16.011
+  wikidata: Q707145
+sides:
+  left:
+    ids:
+      fma: 20736
+      wikidata: Q66512472
+    meshes:
+      - bp3d:FJ3529
+  right:
+    ids:
+      fma: 20735
+      wikidata: Q66512471
+    meshes:
+      - bp3d:FJ3614

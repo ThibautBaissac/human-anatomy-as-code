@@ -1,0 +1,15 @@
+slug: descending-thoracic-aorta
+kind: artery
+laterality: midline
+status: draft
+parent: descending-aorta
+labels:
+  en:
+    text: descending thoracic aorta
+    source: fma
+    status: draft
+ids:
+  fma: 87217
+  wikidata: Q66592966
+meshes:
+  - bp3d:FJ1931

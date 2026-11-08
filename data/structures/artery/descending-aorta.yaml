@@ -1,0 +1,25 @@
+slug: descending-aorta
+kind: artery
+laterality: midline
+status: draft
+parent: aorta
+labels:
+  en:
+    text: descending aorta
+    source: fma
+    status: draft
+  fr:
+    text: aorte descendante
+    source: wikidata
+    status: draft
+  la:
+    text: Aorta descendens
+    source: wikidata
+    status: draft
+ids:
+  fma: 3784
+  ta2: 4185
+  ta98: A12.2.10.001
+  wikidata: Q3270170
+meshes:
+  - bp3d:FJ3427

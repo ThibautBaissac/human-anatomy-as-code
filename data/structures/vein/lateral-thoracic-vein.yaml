@@ -1,0 +1,39 @@
+slug: lateral-thoracic-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral thoracic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine thoracique latérale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena thoracica lateralis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 71210
+  ta2: 4971
+  ta98: A12.3.08.011
+  wikidata: Q1311339
+sides:
+  left:
+    ids:
+      fma: 71212
+      wikidata: Q66569041
+    meshes:
+      - bp3d:FJ2233
+  right:
+    ids:
+      fma: 71211
+      wikidata: Q66569040
+    meshes:
+      - bp3d:FJ2285

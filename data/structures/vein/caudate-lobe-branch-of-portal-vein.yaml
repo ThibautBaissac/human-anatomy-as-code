@@ -1,0 +1,34 @@
+slug: caudate-lobe-branch-of-portal-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: portal-vein
+labels:
+  en:
+    text: caudate lobe branch of portal vein
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 15425
+      ta2: 5099
+      wikidata: Q66512012
+    meshes:
+      - bp3d:FJ3124
+    labels:
+      en:
+        text: caudate lobe branch of left portal vein
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 82706
+      wikidata: Q66589506
+    meshes:
+      - bp3d:FJ1914
+    labels:
+      en:
+        text: caudate lobe branch of right portal vein
+        source: fma
+        status: draft

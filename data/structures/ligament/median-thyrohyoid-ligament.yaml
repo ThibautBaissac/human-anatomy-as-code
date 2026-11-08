@@ -1,0 +1,22 @@
+slug: median-thyrohyoid-ligament
+kind: ligament
+laterality: midline
+status: draft
+labels:
+  en:
+    text: median thyrohyoid ligament
+    source: fma
+    status: draft
+  fr:
+    text: ligament thyro-hyoïdien médian
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 55138
+  ta2: 1652
+  ta98: A06.2.02.014
+  wikidata: Q966616
+meshes:
+  - bp3d:FJ2790

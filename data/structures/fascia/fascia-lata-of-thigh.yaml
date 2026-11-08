@@ -1,0 +1,31 @@
+slug: fascia-lata-of-thigh
+kind: fascia
+laterality: bilateral
+status: draft
+parent: investing-fascia-of-thigh
+regions:
+  - lower-limb
+labels:
+  en:
+    text: fascia lata of thigh
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 51045
+      wikidata: Q66540357
+    labels:
+      en:
+        text: fascia lata of left thigh
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 51044
+      wikidata: Q66540355
+    labels:
+      en:
+        text: fascia lata of right thigh
+        source: fma
+        status: draft

@@ -1,0 +1,42 @@
+slug: intermediomedial-branch-of-callosomarginal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: intermediomedial branch of callosomarginal artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau frontal intermédio-médial de l'artère calloso-marginale
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50333
+  ta98: A12.2.07.039
+  wikidata: Q66539479
+sides:
+  left:
+    ids:
+      fma: 50352
+      wikidata: Q66539498
+    meshes:
+      - bp3d:FJ1681M
+    labels:
+      en:
+        text: intermediomedial branch of left callosomarginal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50351
+      wikidata: Q66539497
+    meshes:
+      - bp3d:FJ1681
+    labels:
+      en:
+        text: intermediomedial branch of right callosomarginal artery
+        source: fma
+        status: draft

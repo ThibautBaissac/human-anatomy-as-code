@@ -1,0 +1,15 @@
+slug: myocardium-of-left-ventricle-proper
+kind: organ
+laterality: midline
+status: draft
+parent: myocardium-of-left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: myocardium of left ventricle proper
+    source: fma
+    status: draft
+ids:
+  fma: 83448
+  wikidata: Q66590146

@@ -1,0 +1,34 @@
+slug: foot
+kind: organ
+laterality: bilateral
+status: draft
+parent: free-lower-limb
+regions:
+  - lower-limb
+labels:
+  en:
+    text: foot
+    source: fma
+    status: draft
+  fr:
+    text: pied
+    source: wikidata
+    status: draft
+  la:
+    text: pes
+    source: wikidata
+    status: draft
+ids:
+  fma: 9664
+  ta2: 166
+  ta98: A01.1.00.040
+  wikidata: Q15807
+sides:
+  left:
+    ids:
+      fma: 11344
+      wikidata: Q66506357
+  right:
+    ids:
+      fma: 11343
+      wikidata: Q66506356

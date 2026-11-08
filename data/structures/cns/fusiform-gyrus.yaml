@@ -1,0 +1,32 @@
+slug: fusiform-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: temporal-lobe
+labels:
+  en:
+    text: fusiform gyrus
+    source: fma
+    status: draft
+  fr:
+    text: lobule fusiforme
+    source: wikidata
+    status: draft
+ids:
+  fma: 61908
+  ta2: 5500
+  ta98: A14.1.09.227
+  wikidata: Q1464932
+sides:
+  left:
+    ids:
+      fma: 72690
+      wikidata: Q66570193
+    meshes:
+      - bp3d:FJ1783
+  right:
+    ids:
+      fma: 72689
+      wikidata: Q66570192
+    meshes:
+      - bp3d:FJ1784

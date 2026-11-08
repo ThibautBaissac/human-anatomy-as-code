@@ -1,0 +1,32 @@
+slug: lower-lobar-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: pulmonary-artery
+labels:
+  en:
+    text: lower lobar artery
+    source: fma
+    status: draft
+  fr:
+    text: artère lobaire inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 68199
+  wikidata: Q66563802
+sides:
+  left:
+    ids:
+      fma: 68201
+      ta2: 4101
+      ta98: A12.2.01.214
+      wikidata: Q66563804
+  right:
+    ids:
+      fma: 68200
+      ta2: 4085
+      ta98: A12.2.01.113
+      wikidata: Q66563803

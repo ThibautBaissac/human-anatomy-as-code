@@ -1,0 +1,39 @@
+slug: semimembranosus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: semimembranosus
+    source: fma
+    status: draft
+  fr:
+    text: muscle semi-membraneux
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus semimembranosus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22438
+  ta2: 2642
+  ta98: A04.7.02.036
+  wikidata: Q1270633
+sides:
+  left:
+    ids:
+      fma: 22449
+      wikidata: Q66514496
+    meshes:
+      - bp3d:FJ1435M
+  right:
+    ids:
+      fma: 22448
+      wikidata: Q66514495
+    meshes:
+      - bp3d:FJ1435

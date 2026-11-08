@@ -1,0 +1,22 @@
+slug: parenchyma
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: parenchyma
+    source: fma
+    status: draft
+  fr:
+    text: parenchyme
+    source: wikidata
+    status: draft
+  la:
+    text: Parenchyma
+    source: wikidata
+    status: draft
+ids:
+  fma: 45732
+  wikidata: Q270524
+meshes:
+  - bp3d:FJ2629

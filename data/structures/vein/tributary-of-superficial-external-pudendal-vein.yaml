@@ -1,0 +1,18 @@
+slug: tributary-of-superficial-external-pudendal-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: tributary of superficial external pudendal vein
+    source: fma
+    status: draft
+  fr:
+    text: affluent de la veine pudendale superficielle
+    source: wikidata
+    status: draft
+ids:
+  fma: 21383
+  wikidata: Q66513349
+meshes:
+  - bp3d:FJ2208

@@ -1,0 +1,14 @@
+slug: left-stria-terminalis
+kind: organ
+laterality: unpaired-left
+status: draft
+labels:
+  en:
+    text: left stria terminalis
+    source: fma
+    status: draft
+ids:
+  fma: 72940
+  wikidata: Q66570427
+meshes:
+  - bp3d:FJ1778

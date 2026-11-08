@@ -1,0 +1,32 @@
+slug: upper-lobe-part-of-bronchial-tree
+kind: organ
+laterality: bilateral
+status: draft
+parent: upper-lobe-of-lung
+labels:
+  en:
+    text: upper lobe part of bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 31740
+  wikidata: Q66522378
+sides:
+  left:
+    ids:
+      fma: 31746
+      wikidata: Q66522384
+    labels:
+      en:
+        text: upper lobe part of left bronchial tree
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 31744
+      wikidata: Q66522382
+    labels:
+      en:
+        text: upper lobe part of right bronchial tree
+        source: fma
+        status: draft

@@ -1,0 +1,31 @@
+slug: skeleton-of-pectoral-girdle
+kind: organ
+laterality: bilateral
+status: draft
+parent: bony-pectoral-girdle
+regions:
+  - upper-limb
+labels:
+  en:
+    text: skeleton of pectoral girdle
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 24164
+      wikidata: Q66515761
+    labels:
+      en:
+        text: skeleton of left pectoral girdle
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24163
+      wikidata: Q66515760
+    labels:
+      en:
+        text: skeleton of right pectoral girdle
+        source: fma
+        status: draft

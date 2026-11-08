@@ -1,0 +1,33 @@
+slug: lateral-thyrohyoid-ligament
+kind: ligament
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral thyrohyoid ligament
+    source: fma
+    status: draft
+  fr:
+    text: ligament thyro-hyoïdien latéral
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 55139
+  ta2: 1653
+  ta98: A06.2.02.017
+  wikidata: Q428090
+sides:
+  left:
+    ids:
+      fma: 55141
+      wikidata: Q66544860
+    meshes:
+      - bp3d:FJ2779
+  right:
+    ids:
+      fma: 55140
+      wikidata: Q66544859
+    meshes:
+      - bp3d:FJ2797

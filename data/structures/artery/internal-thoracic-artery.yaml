@@ -1,0 +1,40 @@
+slug: internal-thoracic-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+labels:
+  en:
+    text: internal thoracic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère thoracique interne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria thoracica interna
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 3960
+  ta2: 4576
+  ta98: A12.2.08.029
+  wikidata: Q497563
+sides:
+  left:
+    ids:
+      fma: 4068
+      wikidata: Q66499649
+    meshes:
+      - bp3d:FJ1972
+  right:
+    ids:
+      fma: 3969
+      wikidata: Q66499540
+    meshes:
+      - bp3d:FJ1937

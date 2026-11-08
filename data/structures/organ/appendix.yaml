@@ -1,0 +1,25 @@
+slug: appendix
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: appendix
+    source: fma
+    status: draft
+  fr:
+    text: appendice iléo-cæcal
+    source: wikidata
+    status: draft
+  la:
+    text: Appendix vermiformis
+    source: wikidata
+    status: draft
+ids:
+  fma: 14542
+  ta2: 2976
+  ta98: A05.7.02.007
+  wikidata: Q9656
+meshes:
+  - bp3d:FJ2565

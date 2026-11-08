@@ -1,0 +1,23 @@
+slug: forebrain
+kind: group
+laterality: midline
+status: draft
+parent: brain
+labels:
+  en:
+    text: forebrain
+    source: fma
+    status: draft
+  fr:
+    text: prosencéphale
+    source: wikidata
+    status: draft
+  la:
+    text: Prosencephalon
+    source: wikidata
+    status: draft
+ids:
+  fma: 61992
+  ta2: 5416
+  ta98: A14.1.03.006
+  wikidata: Q507027

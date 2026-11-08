@@ -1,0 +1,13 @@
+slug: superior-lingular-bronchopulmonary-segment
+kind: group
+laterality: midline
+status: draft
+parent: upper-lobe-of-lung
+labels:
+  en:
+    text: superior lingular bronchopulmonary segment
+    source: fma
+    status: draft
+ids:
+  fma: 7374
+  wikidata: Q66502927

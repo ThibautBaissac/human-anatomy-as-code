@@ -1,0 +1,40 @@
+slug: levator-veli-palatini
+kind: muscle
+laterality: bilateral
+status: draft
+parent: soft-palate
+labels:
+  en:
+    text: levator veli palatini
+    source: fma
+    status: draft
+  fr:
+    text: Muscle élévateur du voile du palais
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus levator veli palatini
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46727
+  ta2: 2128
+  ta98: A05.2.01.102
+  wikidata: Q1091321
+sides:
+  left:
+    ids:
+      fma: 46729
+      wikidata: Q66536706
+    meshes:
+      - bp3d:FJ2741
+  right:
+    ids:
+      fma: 46728
+      wikidata: Q66536705
+    meshes:
+      - bp3d:FJ2753

@@ -1,0 +1,26 @@
+slug: posterior-medial-choroidal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: posterior-choroidal-artery
+labels:
+  en:
+    text: posterior medial choroidal artery
+    source: fma
+    status: draft
+ids:
+  fma: 50630
+  wikidata: Q66539759
+sides:
+  left:
+    ids:
+      fma: 50673
+      wikidata: Q66539834
+    meshes:
+      - bp3d:FJ1727M
+  right:
+    ids:
+      fma: 50672
+      wikidata: Q66539832
+    meshes:
+      - bp3d:FJ1727

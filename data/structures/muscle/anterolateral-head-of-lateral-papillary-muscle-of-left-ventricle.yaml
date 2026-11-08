@@ -1,0 +1,17 @@
+slug: anterolateral-head-of-lateral-papillary-muscle-of-left-ventricle
+kind: muscle
+laterality: midline
+status: draft
+parent: lateral-wall-of-left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: anterolateral head of lateral papillary muscle of left ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 7265
+  wikidata: Q66502862
+meshes:
+  - bp3d:FJ2418

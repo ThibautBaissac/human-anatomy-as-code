@@ -1,0 +1,45 @@
+slug: middle-phalanx-of-little-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: little-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: middle phalanx of little finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange moyenne de l'auriculaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23936
+  wikidata: Q66515612
+sides:
+  left:
+    ids:
+      fma: 23944
+      wikidata: Q66515616
+    meshes:
+      - bp3d:FJ3297
+    labels:
+      en:
+        text: middle phalanx of left little finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24458
+      wikidata: Q66515984
+    meshes:
+      - bp3d:FJ3304
+    labels:
+      en:
+        text: middle phalanx of right little finger
+        source: fma
+        status: draft

@@ -1,0 +1,28 @@
+slug: superior-mesenteric-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: superior mesenteric vein
+    source: fma
+    status: draft
+  fr:
+    text: veine mésentérique supérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena mesenterica superior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14332
+  ta2: 5113
+  ta98: A12.3.12.018
+  wikidata: Q751322
+meshes:
+  - bp3d:FJ3647

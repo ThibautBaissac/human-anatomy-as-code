@@ -1,0 +1,28 @@
+slug: median-sacral-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: median sacral vein
+    source: fma
+    status: draft
+  fr:
+    text: veine sacrée médiane
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena sacralis mediana
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 77168
+  ta2: 5022
+  ta98: A12.3.10.002
+  wikidata: Q4116983
+meshes:
+  - bp3d:FJ3541

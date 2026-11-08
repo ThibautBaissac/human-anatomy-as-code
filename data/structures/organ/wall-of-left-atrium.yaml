@@ -1,0 +1,17 @@
+slug: wall-of-left-atrium
+kind: organ
+laterality: midline
+status: draft
+parent: wall-of-side-of-heart
+regions:
+  - thorax
+labels:
+  en:
+    text: wall of left atrium
+    source: fma
+    status: draft
+ids:
+  fma: 9531
+  wikidata: Q66504971
+meshes:
+  - bp3d:FJ2438

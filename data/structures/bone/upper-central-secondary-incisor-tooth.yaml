@@ -1,0 +1,25 @@
+slug: upper-central-secondary-incisor-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: upper central secondary incisor tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55722
+  wikidata: Q66545341
+sides:
+  left:
+    ids:
+      fma: 55682
+      wikidata: Q66545303
+    meshes:
+      - bp3d:FJ1265
+  right:
+    ids:
+      fma: 55681
+      wikidata: Q66545302
+    meshes:
+      - bp3d:FJ1279

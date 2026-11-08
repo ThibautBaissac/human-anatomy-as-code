@@ -1,0 +1,25 @@
+slug: basicranium
+kind: bone
+laterality: midline
+status: draft
+parent: basicranial-part-of-head-proper
+regions:
+  - head
+labels:
+  en:
+    text: basicranium
+    source: fma
+    status: draft
+  fr:
+    text: base du crâne
+    source: wikidata
+    status: draft
+  la:
+    text: Basis cranii
+    source: wikidata
+    status: draft
+ids:
+  fma: 52801
+  ta2: 447
+  ta98: A02.1.00.044
+  wikidata: Q1423729

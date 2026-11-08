@@ -1,0 +1,23 @@
+slug: septal-papillary-muscle-of-right-ventricle
+kind: muscle
+laterality: midline
+status: draft
+parent: papillary-muscle-of-right-ventricle
+labels:
+  en:
+    text: septal papillary muscle of right ventricle
+    source: fma
+    status: draft
+  fr:
+    text: muscle papillaire septal du ventricule droit
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 7262
+  ta2: 4046
+  ta98: A12.1.02.019
+  wikidata: Q66502860
+meshes:
+  - bp3d:FJ2437

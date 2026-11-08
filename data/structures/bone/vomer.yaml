@@ -1,0 +1,25 @@
+slug: vomer
+kind: bone
+laterality: midline
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: vomer
+    source: fma
+    status: draft
+  fr:
+    text: vomer
+    source: wikidata
+    status: draft
+  la:
+    text: Vomer (anatomia)
+    source: wikidata
+    status: draft
+ids:
+  fma: 9710
+  ta2: 751
+  ta98: A02.1.11.001
+  wikidata: Q193527
+meshes:
+  - bp3d:FJ3395

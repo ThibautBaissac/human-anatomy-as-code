@@ -1,0 +1,31 @@
+slug: lateral-geniculate-body
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral geniculate body
+    source: fma
+    status: draft
+  fr:
+    text: corps géniculé latéral
+    source: wikidata
+    status: draft
+ids:
+  fma: 62209
+  ta2: 5666
+  ta98: A14.1.08.302
+  wikidata: Q719179
+sides:
+  left:
+    ids:
+      fma: 73304
+      wikidata: Q66570760
+    meshes:
+      - bp3d:FJ1766
+  right:
+    ids:
+      fma: 73303
+      wikidata: Q66570759
+    meshes:
+      - bp3d:FJ1813

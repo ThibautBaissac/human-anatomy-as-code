@@ -1,0 +1,23 @@
+slug: soft-palate
+kind: organ
+laterality: midline
+status: draft
+parent: mouth
+labels:
+  en:
+    text: soft palate
+    source: fma
+    status: draft
+  fr:
+    text: voile du palais
+    source: wikidata
+    status: draft
+  la:
+    text: palatum molle
+    source: wikidata
+    status: draft
+ids:
+  fma: 55021
+  ta2: 2780
+  ta98: A05.2.01.003
+  wikidata: Q1056395

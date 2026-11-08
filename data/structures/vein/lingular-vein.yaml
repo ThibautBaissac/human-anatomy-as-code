@@ -1,0 +1,21 @@
+slug: lingular-vein
+kind: vein
+laterality: midline
+status: draft
+parent: intrapulmonary-part-of-superior-pulmonary-vein
+labels:
+  en:
+    text: lingular vein
+    source: fma
+    status: draft
+  fr:
+    text: veine lingulaire de la veine pulmonaire supérieure gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8658
+  ta2: 4122
+  ta98: A12.3.02.308
+  wikidata: Q66504115

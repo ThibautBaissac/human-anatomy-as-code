@@ -1,0 +1,25 @@
+slug: pancreatic-duct
+kind: organ
+laterality: midline
+status: draft
+parent: pancreatic-duct-tree
+labels:
+  en:
+    text: pancreatic duct
+    source: fma
+    status: draft
+  fr:
+    text: canal pancréatique
+    source: wikidata
+    status: draft
+  la:
+    text: Ductus pancreaticus
+    source: wikidata
+    status: draft
+ids:
+  fma: 10419
+  ta2: 3129
+  ta98: A05.9.01.015
+  wikidata: Q668063
+meshes:
+  - bp3d:FJ1896

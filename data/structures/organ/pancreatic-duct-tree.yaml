@@ -1,0 +1,15 @@
+slug: pancreatic-duct-tree
+kind: organ
+laterality: midline
+status: draft
+parent: pancreas
+labels:
+  en:
+    text: pancreatic duct tree
+    source: fma
+    status: draft
+ids:
+  fma: 63103
+  wikidata: Q66559586
+meshes:
+  - bp3d:FJ2630

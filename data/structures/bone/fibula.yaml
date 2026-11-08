@@ -1,0 +1,39 @@
+slug: fibula
+kind: bone
+laterality: bilateral
+status: draft
+parent: leg
+regions:
+  - leg
+  - lower-limb
+labels:
+  en:
+    text: fibula
+    source: fma
+    status: draft
+  fr:
+    text: fibula
+    source: wikidata
+    status: draft
+  la:
+    text: Fibula
+    source: wikidata
+    status: draft
+ids:
+  fma: 24479
+  ta2: 1427
+  ta98: A02.5.07.001
+  wikidata: Q302896
+sides:
+  left:
+    ids:
+      fma: 24481
+      wikidata: Q66516006
+    meshes:
+      - bp3d:FJ3260
+  right:
+    ids:
+      fma: 24480
+      wikidata: Q66516005
+    meshes:
+      - bp3d:FJ3366

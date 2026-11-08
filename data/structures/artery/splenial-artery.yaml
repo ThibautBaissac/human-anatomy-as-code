@@ -1,0 +1,35 @@
+slug: splenial-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: medial-occipital-artery
+labels:
+  en:
+    text: splenial artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau dorsal du corps calleux
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50652
+  ta98: A12.2.07.099
+  wikidata: Q66539792
+sides:
+  left:
+    ids:
+      fma: 50685
+      wikidata: Q66539859
+    meshes:
+      - bp3d:FJ1677M
+      - bp3d:FJ1678M
+  right:
+    ids:
+      fma: 50684
+      wikidata: Q66539857
+    meshes:
+      - bp3d:FJ1677
+      - bp3d:FJ1678

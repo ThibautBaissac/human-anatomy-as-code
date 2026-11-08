@@ -1,0 +1,26 @@
+slug: celiac-artery
+kind: artery
+laterality: midline
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: celiac artery
+    source: fma
+    status: draft
+  fr:
+    text: tronc cœliaque
+    source: wikidata
+    status: draft
+  la:
+    text: truncus coeliacus
+    source: wikidata
+    status: draft
+ids:
+  fma: 50737
+  ta2: 4211
+  ta98: A12.2.12.012
+  wikidata: Q519368
+meshes:
+  - bp3d:FJ1846
+  - bp3d:FJ2013

@@ -1,0 +1,32 @@
+slug: posterior-parietal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: posterior parietal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère pariétale postérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50488
+  ta98: A12.2.07.068
+  wikidata: Q66539629
+sides:
+  left:
+    ids:
+      fma: 50490
+      wikidata: Q66539631
+    meshes:
+      - bp3d:FJ1716M
+  right:
+    ids:
+      fma: 50489
+      wikidata: Q66539630
+    meshes:
+      - bp3d:FJ1716

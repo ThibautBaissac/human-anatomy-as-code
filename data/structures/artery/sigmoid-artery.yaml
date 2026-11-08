@@ -1,0 +1,29 @@
+slug: sigmoid-artery
+kind: artery
+laterality: midline
+status: draft
+parent: inferior-mesenteric-artery
+labels:
+  en:
+    text: sigmoid artery
+    source: fma
+    status: draft
+  fr:
+    text: artère sigmoïdienne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteriae sigmoideae
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 14830
+  ta2: 4295
+  ta98: A12.2.12.072
+  wikidata: Q707709
+meshes:
+  - bp3d:FJ3638

@@ -1,0 +1,25 @@
+slug: obturator-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: obturator vein
+    source: fma
+    status: draft
+ids:
+  fma: 18914
+  wikidata: Q66510142
+sides:
+  left:
+    ids:
+      fma: 18916
+      wikidata: Q66510144
+    meshes:
+      - bp3d:FJ3527
+  right:
+    ids:
+      fma: 18915
+      wikidata: Q66510143
+    meshes:
+      - bp3d:FJ3612

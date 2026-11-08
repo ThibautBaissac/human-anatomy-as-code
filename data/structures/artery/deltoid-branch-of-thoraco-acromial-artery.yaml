@@ -1,0 +1,50 @@
+slug: deltoid-branch-of-thoraco-acromial-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: thoraco-acromial-artery
+labels:
+  en:
+    text: deltoid branch of thoraco-acromial artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau deltoïdien de l’artère thoraco-acromiale
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ramus deltoideus arteriae thoracoacromialis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23067
+  ta2: 4623
+  ta98: A12.2.09.009
+  wikidata: Q5254857
+sides:
+  left:
+    ids:
+      fma: 23073
+      wikidata: Q66515016
+    meshes:
+      - bp3d:FJ2230
+    labels:
+      en:
+        text: deltoid branch of left thoraco-acromial artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 23072
+      wikidata: Q66515015
+    meshes:
+      - bp3d:FJ2282
+    labels:
+      en:
+        text: deltoid branch of right thoraco-acromial artery
+        source: fma
+        status: draft

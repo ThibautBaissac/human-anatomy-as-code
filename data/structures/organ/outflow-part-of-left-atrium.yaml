@@ -1,0 +1,15 @@
+slug: outflow-part-of-left-atrium
+kind: organ
+laterality: midline
+status: draft
+parent: left-atrium
+regions:
+  - thorax
+labels:
+  en:
+    text: outflow part of left atrium
+    source: fma
+    status: draft
+ids:
+  fma: 9551
+  wikidata: Q66504989

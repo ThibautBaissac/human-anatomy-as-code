@@ -1,0 +1,26 @@
+slug: superior-lingular-artery
+kind: artery
+laterality: midline
+status: draft
+parent: superior-lingular-bronchopulmonary-segment
+labels:
+  en:
+    text: superior lingular artery
+    source: fma
+    status: draft
+  fr:
+    text: artère lingulaire supérieure de l'artère pulmonaire gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8639
+  ta2: 4100
+  ta98: A12.2.01.213
+  wikidata: Q66504102
+meshes:
+  - bp3d:FJ2898
+  - bp3d:FJ2899
+  - bp3d:FJ2900
+  - bp3d:FJ2901

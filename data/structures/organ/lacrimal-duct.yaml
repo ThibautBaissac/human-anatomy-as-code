@@ -1,0 +1,24 @@
+slug: lacrimal-duct
+kind: organ
+laterality: bilateral
+status: draft
+parent: lacrimal-apparatus
+regions:
+  - head
+labels:
+  en:
+    text: lacrimal duct
+    source: fma
+    status: draft
+ids:
+  fma: 61063
+  wikidata: Q66557415
+sides:
+  left:
+    ids:
+      fma: 61065
+      wikidata: Q66557417
+  right:
+    ids:
+      fma: 61064
+      wikidata: Q66557416

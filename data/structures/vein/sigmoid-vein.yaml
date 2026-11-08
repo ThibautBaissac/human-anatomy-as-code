@@ -1,0 +1,14 @@
+slug: sigmoid-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: sigmoid vein
+    source: fma
+    status: draft
+ids:
+  fma: 15395
+  wikidata: Q66511971
+meshes:
+  - bp3d:FJ3639

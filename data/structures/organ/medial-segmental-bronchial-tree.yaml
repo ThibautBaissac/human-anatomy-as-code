@@ -1,0 +1,18 @@
+slug: medial-segmental-bronchial-tree
+kind: organ
+laterality: midline
+status: draft
+parent: medial-bronchopulmonary-segment
+labels:
+  en:
+    text: medial segmental bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68214
+  wikidata: Q66563811
+meshes:
+  - bp3d:FJ2451
+  - bp3d:FJ2506
+  - bp3d:FJ2507
+  - bp3d:FJ2508

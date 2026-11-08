@@ -1,0 +1,15 @@
+slug: medial-inferior-tributary-of-left-hepatic-biliary-tree
+kind: organ
+laterality: midline
+status: draft
+parent: medial-tributary-of-left-hepatic-biliary-tree
+labels:
+  en:
+    text: medial inferior tributary of left hepatic biliary tree
+    source: fma
+    status: draft
+ids:
+  fma: 71886
+  wikidata: Q66569577
+meshes:
+  - bp3d:FJ3103

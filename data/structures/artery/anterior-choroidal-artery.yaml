@@ -1,0 +1,40 @@
+slug: anterior-choroidal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: internal-carotid-artery
+labels:
+  en:
+    text: anterior choroidal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère choroïdienne antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria chorioidea anterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50087
+  ta2: 4501
+  ta98: A12.2.06.019
+  wikidata: Q518616
+sides:
+  left:
+    ids:
+      fma: 50089
+      wikidata: Q66539283
+    meshes:
+      - bp3d:FJ1658M
+  right:
+    ids:
+      fma: 50088
+      wikidata: Q66539282
+    meshes:
+      - bp3d:FJ1658

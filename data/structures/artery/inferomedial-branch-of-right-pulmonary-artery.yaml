@@ -1,0 +1,13 @@
+slug: inferomedial-branch-of-right-pulmonary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: intrapulmonary-part-of-pulmonary-artery
+labels:
+  en:
+    text: inferomedial branch of right pulmonary artery
+    source: fma
+    status: draft
+ids:
+  fma: 68658
+  wikidata: Q66564204

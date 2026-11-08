@@ -1,0 +1,14 @@
+slug: left-duct-of-caudate-lobe-of-liver
+kind: organ
+laterality: unpaired-left
+status: draft
+labels:
+  en:
+    text: left duct of caudate lobe of liver
+    source: fma
+    status: draft
+ids:
+  fma: 76903
+  wikidata: Q66574374
+meshes:
+  - bp3d:FJ3094

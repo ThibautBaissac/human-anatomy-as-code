@@ -1,0 +1,15 @@
+slug: middle-mediastinum
+kind: group
+laterality: midline
+status: draft
+parent: anterior-chest
+regions:
+  - thorax
+labels:
+  en:
+    text: middle mediastinum
+    source: fma
+    status: draft
+ids:
+  fma: 9839
+  wikidata: Q66505137

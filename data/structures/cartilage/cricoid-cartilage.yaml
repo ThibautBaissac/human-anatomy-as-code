@@ -1,0 +1,23 @@
+slug: cricoid-cartilage
+kind: cartilage
+laterality: midline
+status: draft
+labels:
+  en:
+    text: cricoid cartilage
+    source: fma
+    status: draft
+  fr:
+    text: cartilage cricoïde
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 9615
+  ta2: 978
+  ta98: A06.2.03.001
+  wikidata: Q638244
+meshes:
+  - bp3d:FJ2440
+  - bp3d:FJ2769

@@ -1,0 +1,39 @@
+slug: popliteus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: popliteus
+    source: fma
+    status: draft
+  fr:
+    text: muscle poplité
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus popliteus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22590
+  ta2: 2665
+  ta98: A04.7.02.050
+  wikidata: Q1308051
+sides:
+  left:
+    ids:
+      fma: 22592
+      wikidata: Q66514607
+    meshes:
+      - bp3d:FJ1430M
+  right:
+    ids:
+      fma: 22591
+      wikidata: Q66514606
+    meshes:
+      - bp3d:FJ1430

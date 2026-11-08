@@ -1,0 +1,32 @@
+slug: cortex-of-frontal-lobe
+kind: organ
+laterality: bilateral
+status: draft
+parent: frontal-lobe
+labels:
+  en:
+    text: cortex of frontal lobe
+    source: fma
+    status: draft
+ids:
+  fma: 242199
+  wikidata: Q66599016
+sides:
+  left:
+    ids:
+      fma: 242209
+      wikidata: Q66599022
+    labels:
+      en:
+        text: cortex of left frontal lobe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 242207
+      wikidata: Q66599020
+    labels:
+      en:
+        text: cortex of right frontal lobe
+        source: fma
+        status: draft

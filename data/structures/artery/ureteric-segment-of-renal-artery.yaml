@@ -1,0 +1,37 @@
+slug: ureteric-segment-of-renal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: renal-artery
+labels:
+  en:
+    text: ureteric segment of renal artery
+    source: fma
+    status: draft
+ids:
+  fma: 70491
+  wikidata: Q66568455
+sides:
+  left:
+    ids:
+      fma: 70493
+      wikidata: Q66568457
+    meshes:
+      - bp3d:FJ3481
+    labels:
+      en:
+        text: ureteric segment of left renal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 70492
+      wikidata: Q66568456
+    meshes:
+      - bp3d:FJ3581
+      - bp3d:FJ3582
+    labels:
+      en:
+        text: ureteric segment of right renal artery
+        source: fma
+        status: draft

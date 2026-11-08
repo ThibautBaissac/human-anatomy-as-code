@@ -1,0 +1,45 @@
+slug: short-head-of-biceps-brachii
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: short head of biceps brachii
+    source: fma
+    status: draft
+  fr:
+    text: chef court du muscle biceps brachial
+    source: wikidata
+    status: draft
+  la:
+    text: caput breve biceps brachii
+    source: wikidata
+    status: draft
+ids:
+  fma: 37682
+  ta2: 2466
+  ta98: A04.6.02.015
+  wikidata: Q28792038
+sides:
+  left:
+    ids:
+      fma: 37685
+      wikidata: Q66526961
+    meshes:
+      - bp3d:FJ1512M
+    labels:
+      en:
+        text: short head of left biceps brachii
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37684
+      wikidata: Q66526960
+    meshes:
+      - bp3d:FJ1512
+    labels:
+      en:
+        text: short head of right biceps brachii
+        source: fma
+        status: draft

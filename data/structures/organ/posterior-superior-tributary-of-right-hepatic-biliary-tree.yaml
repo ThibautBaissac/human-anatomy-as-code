@@ -1,0 +1,16 @@
+slug: posterior-superior-tributary-of-right-hepatic-biliary-tree
+kind: organ
+laterality: midline
+status: draft
+parent: posterior-tributary-of-right-hepatic-biliary-tree
+labels:
+  en:
+    text: posterior superior tributary of right hepatic biliary tree
+    source: fma
+    status: draft
+ids:
+  fma: 71869
+  wikidata: Q66569561
+meshes:
+  - bp3d:FJ3109
+  - bp3d:FJ3110

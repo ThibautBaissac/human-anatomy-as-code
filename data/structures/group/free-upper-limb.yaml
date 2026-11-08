@@ -1,0 +1,33 @@
+slug: free-upper-limb
+kind: group
+laterality: bilateral
+status: draft
+parent: upper-limb
+regions:
+  - upper-limb
+labels:
+  en:
+    text: free upper limb
+    source: fma
+    status: draft
+  fr:
+    text: membre supérieur libre
+    source: wikidata
+    status: draft
+  la:
+    text: brachium humanum
+    source: wikidata
+    status: draft
+ids:
+  fma: 24878
+  ta2: 143
+  wikidata: Q24517852
+sides:
+  left:
+    ids:
+      fma: 24881
+      wikidata: Q24577252
+  right:
+    ids:
+      fma: 24880
+      wikidata: Q24577244

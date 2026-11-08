@@ -1,0 +1,25 @@
+slug: abdominal-aorta
+kind: artery
+laterality: midline
+status: draft
+parent: descending-aorta
+labels:
+  en:
+    text: abdominal aorta
+    source: fma
+    status: draft
+  fr:
+    text: aorte abdominale
+    source: wikidata
+    status: draft
+  la:
+    text: Aorta abdominalis
+    source: wikidata
+    status: draft
+ids:
+  fma: 3789
+  ta2: 4205
+  ta98: A12.2.12.001
+  wikidata: Q2264329
+meshes:
+  - bp3d:FJ1932

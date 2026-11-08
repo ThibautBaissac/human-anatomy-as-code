@@ -1,0 +1,34 @@
+slug: pelvic-girdle
+kind: organ
+laterality: bilateral
+status: draft
+parent: lower-limb
+regions:
+  - lower-limb
+labels:
+  en:
+    text: pelvic girdle
+    source: fma
+    status: draft
+  fr:
+    text: ceinture pelvienne
+    source: wikidata
+    status: draft
+  la:
+    text: cingulum pelvicum
+    source: wikidata
+    status: draft
+ids:
+  fma: 16581
+  ta2: 364
+  ta98: A01.1.00.032
+  wikidata: Q2943862
+sides:
+  left:
+    ids:
+      fma: 16583
+      wikidata: Q66514137
+  right:
+    ids:
+      fma: 16582
+      wikidata: Q66514135

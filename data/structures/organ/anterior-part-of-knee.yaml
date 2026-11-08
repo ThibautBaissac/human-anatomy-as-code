@@ -1,0 +1,34 @@
+slug: anterior-part-of-knee
+kind: organ
+laterality: bilateral
+status: draft
+parent: knee
+regions:
+  - lower-limb
+labels:
+  en:
+    text: anterior part of knee
+    source: fma
+    status: draft
+ids:
+  fma: 24975
+  wikidata: Q66516328
+sides:
+  left:
+    ids:
+      fma: 73056
+      wikidata: Q66570527
+    labels:
+      en:
+        text: anterior part of left knee
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 73055
+      wikidata: Q66570526
+    labels:
+      en:
+        text: anterior part of right knee
+        source: fma
+        status: draft

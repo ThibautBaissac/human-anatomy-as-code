@@ -1,0 +1,39 @@
+slug: proximal-phalanx-of-second-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: second-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: proximal phalanx of second toe
+    source: fma
+    status: draft
+ids:
+  fma: 32618
+  wikidata: Q66523088
+sides:
+  left:
+    ids:
+      fma: 32635
+      wikidata: Q66523101
+    meshes:
+      - bp3d:FJ3328
+    labels:
+      en:
+        text: proximal phalanx of left second toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32634
+      wikidata: Q66523100
+    meshes:
+      - bp3d:FJ3319
+    labels:
+      en:
+        text: proximal phalanx of right second toe
+        source: fma
+        status: draft

@@ -1,0 +1,29 @@
+slug: anterior-cecal-artery
+kind: artery
+laterality: midline
+status: draft
+parent: inferior-branch-of-ileocolic-artery
+labels:
+  en:
+    text: anterior cecal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère cæcale antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria caecalis anterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14816
+  ta2: 4259
+  ta98: A12.2.12.060
+  wikidata: Q707052
+meshes:
+  - bp3d:FJ3406

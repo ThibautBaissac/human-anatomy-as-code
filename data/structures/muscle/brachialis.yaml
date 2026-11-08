@@ -1,0 +1,43 @@
+slug: brachialis
+kind: muscle
+laterality: bilateral
+status: draft
+parent: arm
+regions:
+  - arm
+  - upper-limb
+labels:
+  en:
+    text: brachialis
+    source: fma
+    status: draft
+  fr:
+    text: muscle brachial
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus brachialis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37667
+  ta2: 2469
+  ta98: A04.6.02.018
+  wikidata: Q752441
+sides:
+  left:
+    ids:
+      fma: 37669
+      wikidata: Q66526949
+    meshes:
+      - bp3d:FJ1486M
+  right:
+    ids:
+      fma: 37668
+      wikidata: Q66526948
+    meshes:
+      - bp3d:FJ1486

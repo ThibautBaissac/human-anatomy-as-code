@@ -1,0 +1,33 @@
+slug: cervical-rotator
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: cervical rotator
+    source: fma
+    status: draft
+  fr:
+    text: muscle rotateur du cou
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23082
+  ta2: 2289
+  ta98: A04.3.02.213
+  wikidata: Q66515023
+sides:
+  left:
+    ids:
+      fma: 81753
+      wikidata: Q66588598
+    meshes:
+      - bp3d:FJ1524M
+  right:
+    ids:
+      fma: 81752
+      wikidata: Q66588597
+    meshes:
+      - bp3d:FJ1524

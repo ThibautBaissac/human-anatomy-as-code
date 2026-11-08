@@ -1,0 +1,46 @@
+slug: artery-of-precentral-sulcus
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: artery of precentral sulcus
+    source: fma
+    status: draft
+  fr:
+    text: artère du sillon précentral
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50479
+  ta98: A12.2.07.064
+  wikidata: Q66539618
+sides:
+  left:
+    ids:
+      fma: 50481
+      wikidata: Q66539620
+    meshes:
+      - bp3d:FJ1668M
+      - bp3d:FJ1669M
+      - bp3d:FJ1670M
+    labels:
+      en:
+        text: artery of left precentral sulcus
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50480
+      wikidata: Q66539619
+    meshes:
+      - bp3d:FJ1668
+      - bp3d:FJ1669
+      - bp3d:FJ1670
+    labels:
+      en:
+        text: artery of right precentral sulcus
+        source: fma
+        status: draft

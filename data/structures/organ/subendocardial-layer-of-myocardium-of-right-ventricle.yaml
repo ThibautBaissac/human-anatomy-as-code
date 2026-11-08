@@ -1,0 +1,13 @@
+slug: subendocardial-layer-of-myocardium-of-right-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: myocardium-of-free-wall-of-right-ventricle
+labels:
+  en:
+    text: subendocardial layer of myocardium of right ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 84856
+  wikidata: Q66591274

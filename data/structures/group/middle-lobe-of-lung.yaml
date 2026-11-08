@@ -1,0 +1,15 @@
+slug: middle-lobe-of-lung
+kind: group
+laterality: midline
+status: draft
+parent: lung
+labels:
+  en:
+    text: middle lobe of lung
+    source: fma
+    status: draft
+ids:
+  fma: 7383
+  ta2: 3289
+  ta98: A06.5.02.006
+  wikidata: Q28656758

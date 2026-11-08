@@ -1,0 +1,22 @@
+slug: upper-urinary-tract
+kind: group
+laterality: bilateral
+status: draft
+parent: urinary-system
+labels:
+  en:
+    text: upper urinary tract
+    source: fma
+    status: draft
+ids:
+  fma: 45658
+  wikidata: Q28015725
+sides:
+  left:
+    ids:
+      fma: 71103
+      wikidata: Q66568947
+  right:
+    ids:
+      fma: 71102
+      wikidata: Q66568946

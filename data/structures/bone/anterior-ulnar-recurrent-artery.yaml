@@ -1,0 +1,40 @@
+slug: anterior-ulnar-recurrent-artery
+kind: bone
+laterality: bilateral
+status: draft
+parent: ulnar-artery
+labels:
+  en:
+    text: anterior ulnar recurrent artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau antérieur de l’artère récurrente ulnaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ramus anterior arteriae recurrentis ulnaris
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22800
+  ta2: 4657
+  ta98: A12.2.09.043
+  wikidata: Q4771418
+sides:
+  left:
+    ids:
+      fma: 22802
+      wikidata: Q66514810
+    meshes:
+      - bp3d:FJ2259
+  right:
+    ids:
+      fma: 22801
+      wikidata: Q66514809
+    meshes:
+      - bp3d:FJ2311

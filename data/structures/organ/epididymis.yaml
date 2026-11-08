@@ -1,0 +1,35 @@
+slug: epididymis
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: epididymis
+    source: fma
+    status: draft
+  fr:
+    text: épididyme
+    source: wikidata
+    status: draft
+  la:
+    text: Epidydimis
+    source: wikidata
+    status: draft
+ids:
+  fma: 18255
+  ta2: 3603
+  ta98: A09.3.02.001
+  wikidata: Q1973610
+sides:
+  left:
+    ids:
+      fma: 18257
+      wikidata: Q66509439
+    meshes:
+      - bp3d:FJ3136
+  right:
+    ids:
+      fma: 18256
+      wikidata: Q66509437
+    meshes:
+      - bp3d:FJ3141

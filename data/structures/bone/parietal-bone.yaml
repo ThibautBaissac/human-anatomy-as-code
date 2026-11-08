@@ -1,0 +1,42 @@
+slug: parietal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: neurocranium
+regions:
+  - head
+labels:
+  en:
+    text: parietal bone
+    source: fma
+    status: draft
+  fr:
+    text: os pariétal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os parietale
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 9613
+  ta2: 504
+  ta98: A02.1.02.001
+  wikidata: Q16298
+sides:
+  left:
+    ids:
+      fma: 52789
+      wikidata: Q66542978
+    meshes:
+      - bp3d:FJ3274
+  right:
+    ids:
+      fma: 52788
+      wikidata: Q66542977
+    meshes:
+      - bp3d:FJ3380

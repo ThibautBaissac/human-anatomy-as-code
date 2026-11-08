@@ -1,0 +1,15 @@
+slug: lumbar-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: lumbar vein
+    source: fma
+    status: draft
+ids:
+  fma: 15370
+  wikidata: Q66511935
+meshes:
+  - bp3d:FJ3631
+  - bp3d:FJ3635

@@ -1,0 +1,25 @@
+slug: lower-second-secondary-premolar-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lower second secondary premolar tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55804
+  wikidata: Q2051839
+sides:
+  left:
+    ids:
+      fma: 55692
+      wikidata: Q66545311
+    meshes:
+      - bp3d:FJ1257
+  right:
+    ids:
+      fma: 55695
+      wikidata: Q66545314
+    meshes:
+      - bp3d:FJ1271

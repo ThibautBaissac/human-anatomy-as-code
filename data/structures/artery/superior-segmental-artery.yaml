@@ -1,0 +1,40 @@
+slug: superior-segmental-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: lower-lobar-artery
+labels:
+  en:
+    text: superior segmental artery
+    source: fma
+    status: draft
+  fr:
+    text: artère segmentaire supérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8714
+  wikidata: Q66504271
+sides:
+  left:
+    ids:
+      fma: 8642
+      ta2: 4102
+      ta98: A12.2.01.215
+      wikidata: Q66504105
+    meshes:
+      - bp3d:FJ2888
+      - bp3d:FJ2889
+      - bp3d:FJ2890
+      - bp3d:FJ2891
+      - bp3d:FJ2893
+      - bp3d:FJ2894
+      - bp3d:FJ2895
+  right:
+    ids:
+      fma: 8627
+      ta2: 4086
+      ta98: A12.2.01.114
+      wikidata: Q66504090

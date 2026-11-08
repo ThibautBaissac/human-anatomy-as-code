@@ -1,0 +1,24 @@
+slug: stria-terminalis
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: stria terminalis
+    source: fma
+    status: draft
+  fr:
+    text: strie terminale
+    source: wikidata
+    status: draft
+  la:
+    text: Stria terminalis
+    source: wikidata
+    status: draft
+ids:
+  fma: 61974
+  ta2: 5592
+  ta98: A14.1.09.275
+  wikidata: Q3122152
+meshes:
+  - bp3d:FJ1825

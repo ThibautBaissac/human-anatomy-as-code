@@ -1,0 +1,36 @@
+slug: middle-temporal-branch-of-lateral-occipital-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: lateral-occipital-artery
+labels:
+  en:
+    text: middle temporal branch of lateral occipital artery
+    source: fma
+    status: draft
+ids:
+  fma: 50649
+  wikidata: Q66539786
+sides:
+  left:
+    ids:
+      fma: 50681
+      wikidata: Q66539850
+    meshes:
+      - bp3d:FJ1680M
+    labels:
+      en:
+        text: middle temporal branch of left lateral occipital artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50680
+      wikidata: Q66539848
+    meshes:
+      - bp3d:FJ1680
+    labels:
+      en:
+        text: middle temporal branch of right lateral occipital artery
+        source: fma
+        status: draft

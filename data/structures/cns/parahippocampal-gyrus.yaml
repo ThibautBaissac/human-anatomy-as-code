@@ -1,0 +1,32 @@
+slug: parahippocampal-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: temporal-lobe
+labels:
+  en:
+    text: parahippocampal gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus parahippocampique
+    source: wikidata
+    status: draft
+ids:
+  fma: 61918
+  ta2: 5515
+  ta98: A14.1.09.234
+  wikidata: Q1545429
+sides:
+  left:
+    ids:
+      fma: 72706
+      wikidata: Q66570209
+    meshes:
+      - bp3d:FJ1785
+  right:
+    ids:
+      fma: 72705
+      wikidata: Q66570208
+    meshes:
+      - bp3d:FJ1786

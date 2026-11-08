@@ -1,0 +1,29 @@
+slug: inferior-pancreaticoduodenal-artery
+kind: artery
+laterality: midline
+status: draft
+parent: superior-mesenteric-artery
+labels:
+  en:
+    text: inferior pancreaticoduodenal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère pancréatico-duodénale inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteriae pancreaticoduodenales inferiores
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 14805
+  ta2: 4253
+  ta98: A12.2.12.054
+  wikidata: Q707436
+meshes:
+  - bp3d:FJ3446

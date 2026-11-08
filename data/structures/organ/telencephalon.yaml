@@ -1,0 +1,23 @@
+slug: telencephalon
+kind: organ
+laterality: midline
+status: draft
+parent: forebrain
+labels:
+  en:
+    text: telencephalon
+    source: fma
+    status: draft
+  fr:
+    text: télencéphale
+    source: wikidata
+    status: draft
+  la:
+    text: Telencephalon
+    source: wikidata
+    status: draft
+ids:
+  fma: 62000
+  ta2: 5416
+  ta98: A14.1.09.001
+  wikidata: Q75855

@@ -1,0 +1,16 @@
+slug: posterior-superior-segmental-branch-of-right-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: posterior-branch-of-right-portal-vein
+labels:
+  en:
+    text: posterior superior segmental branch of right portal vein
+    source: fma
+    status: draft
+ids:
+  fma: 15423
+  wikidata: Q66512008
+meshes:
+  - bp3d:FJ3112
+  - bp3d:FJ3113

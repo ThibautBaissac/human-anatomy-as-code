@@ -1,0 +1,19 @@
+slug: second-lumbar-vertebra
+kind: bone
+laterality: midline
+status: draft
+parent: set-of-lumbar-vertebrae
+labels:
+  en:
+    text: second lumbar vertebra
+    source: fma
+    status: draft
+  fr:
+    text: deuxième vertèbre lombaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 13073
+  wikidata: Q46993006
+meshes:
+  - bp3d:FJ3159

@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-fifth-thoracic-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: fifth-thoracic-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of fifth thoracic vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13502
+  wikidata: Q66508182
+meshes:
+  - bp3d:FJ3204

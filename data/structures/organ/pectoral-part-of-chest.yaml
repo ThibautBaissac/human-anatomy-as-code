@@ -1,0 +1,24 @@
+slug: pectoral-part-of-chest
+kind: organ
+laterality: bilateral
+status: draft
+parent: anterior-chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: pectoral part of chest
+    source: fma
+    status: draft
+ids:
+  fma: 61471
+  wikidata: Q66557751
+sides:
+  left:
+    ids:
+      fma: 61473
+      wikidata: Q66557753
+  right:
+    ids:
+      fma: 61472
+      wikidata: Q66557752

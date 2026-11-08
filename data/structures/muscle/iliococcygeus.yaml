@@ -1,0 +1,40 @@
+slug: iliococcygeus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: iliococcygeus
+    source: fma
+    status: draft
+  fr:
+    text: muscle ilio-coccygien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus iliococcygeus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 19092
+  ta2: 2404
+  ta98: A04.5.04.008
+  wikidata: Q383359
+sides:
+  left:
+    ids:
+      fma: 45859
+      wikidata: Q66536123
+    meshes:
+      - bp3d:FJ1453M
+      - bp3d:FJ2544
+  right:
+    ids:
+      fma: 45858
+      wikidata: Q66536122
+    meshes:
+      - bp3d:FJ2549

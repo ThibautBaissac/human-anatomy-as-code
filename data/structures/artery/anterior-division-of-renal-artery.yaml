@@ -1,0 +1,53 @@
+slug: anterior-division-of-renal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: anterior division of renal artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau antérieur de l'artère rénale
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 70485
+  ta2: 4272
+  ta98: A12.2.12.078
+  wikidata: Q66568449
+sides:
+  left:
+    ids:
+      fma: 70487
+      wikidata: Q66568451
+    meshes:
+      - bp3d:FJ3458
+      - bp3d:FJ3459
+      - bp3d:FJ3460
+      - bp3d:FJ3461
+      - bp3d:FJ3462
+      - bp3d:FJ3463
+    labels:
+      en:
+        text: anterior division of left renal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 70486
+      wikidata: Q66568450
+    meshes:
+      - bp3d:FJ3558
+      - bp3d:FJ3559
+      - bp3d:FJ3560
+      - bp3d:FJ3561
+      - bp3d:FJ3562
+      - bp3d:FJ3563
+    labels:
+      en:
+        text: anterior division of right renal artery
+        source: fma
+        status: draft

@@ -1,0 +1,45 @@
+slug: interosseous-membrane-of-leg
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: interosseous membrane of leg
+    source: fma
+    status: draft
+  fr:
+    text: membrane interosseuse de la jambe
+    source: wikidata
+    status: draft
+  la:
+    text: Membrana interossea cruris
+    source: wikidata
+    status: draft
+ids:
+  fma: 35187
+  ta2: 1867
+  ta98: A03.6.05.002
+  wikidata: Q12636757
+sides:
+  left:
+    ids:
+      fma: 35193
+      wikidata: Q66525125
+    meshes:
+      - bp3d:FJ1392M
+    labels:
+      en:
+        text: interosseous membrane of left leg
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 35192
+      wikidata: Q66525124
+    meshes:
+      - bp3d:FJ1392
+    labels:
+      en:
+        text: interosseous membrane of right leg
+        source: fma
+        status: draft

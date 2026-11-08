@@ -1,0 +1,28 @@
+slug: middle-colic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: middle colic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine colique moyenne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena colica media
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15406
+  ta2: 5122
+  ta98: A12.3.12.027
+  wikidata: Q4115373
+meshes:
+  - bp3d:FJ3543

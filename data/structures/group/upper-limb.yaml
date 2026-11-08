@@ -1,0 +1,19 @@
+slug: upper-limb
+kind: group
+laterality: bilateral
+status: draft
+parent: human-body
+labels:
+  en:
+    text: upper limb
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 7186
+      wikidata: Q24577234
+  right:
+    ids:
+      fma: 7185
+      wikidata: Q24577231

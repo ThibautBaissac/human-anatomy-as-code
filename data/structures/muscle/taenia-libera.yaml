@@ -1,0 +1,15 @@
+slug: taenia-libera
+kind: muscle
+laterality: midline
+status: draft
+parent: muscle-layer-of-large-intestine
+labels:
+  en:
+    text: taenia libera
+    source: fma
+    status: draft
+ids:
+  fma: 15044
+  wikidata: Q66511269
+meshes:
+  - bp3d:FJ2568

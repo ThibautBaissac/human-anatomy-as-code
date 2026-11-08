@@ -1,0 +1,29 @@
+slug: middle-colic-artery
+kind: artery
+laterality: midline
+status: draft
+parent: superior-mesenteric-artery
+labels:
+  en:
+    text: middle colic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère colique moyenne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria colica media
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14810
+  ta2: 4265
+  ta98: A12.2.12.067
+  wikidata: Q707115
+meshes:
+  - bp3d:FJ3542

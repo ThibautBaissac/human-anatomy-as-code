@@ -1,0 +1,15 @@
+slug: myocardium-of-free-wall-of-left-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: myocardium-of-left-ventricle-proper
+regions:
+  - thorax
+labels:
+  en:
+    text: myocardium of free wall of left ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 84932
+  wikidata: Q66591345

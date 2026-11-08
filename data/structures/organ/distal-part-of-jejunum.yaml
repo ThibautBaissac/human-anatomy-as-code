@@ -1,0 +1,24 @@
+slug: distal-part-of-jejunum
+kind: organ
+laterality: midline
+status: draft
+parent: jejunum
+labels:
+  en:
+    text: distal part of jejunum
+    source: fma
+    status: draft
+ids:
+  fma: 16983
+  wikidata: Q66713503
+meshes:
+  - bp3d:FJ2611
+  - bp3d:FJ2612
+  - bp3d:FJ2613
+  - bp3d:FJ2614
+  - bp3d:FJ2615
+  - bp3d:FJ2616
+  - bp3d:FJ2618
+  - bp3d:FJ2619
+  - bp3d:FJ2620
+  - bp3d:FJ2621

@@ -1,0 +1,31 @@
+slug: genicular-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: genicular vein
+    source: fma
+    status: draft
+ids:
+  fma: 44559
+  wikidata: Q66534770
+sides:
+  left:
+    ids:
+      fma: 44888
+      wikidata: Q66535344
+    meshes:
+      - bp3d:FJ2107
+      - bp3d:FJ2108
+      - bp3d:FJ2124
+      - bp3d:FJ2125
+  right:
+    ids:
+      fma: 44887
+      wikidata: Q66535343
+    meshes:
+      - bp3d:FJ2151
+      - bp3d:FJ2153
+      - bp3d:FJ2181
+      - bp3d:FJ2182

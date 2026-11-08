@@ -1,0 +1,35 @@
+slug: first-lumbrical-of-foot
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: first lumbrical of foot
+    source: fma
+    status: draft
+ids:
+  fma: 37479
+  wikidata: Q66526798
+sides:
+  left:
+    ids:
+      fma: 37718
+      wikidata: Q66526984
+    meshes:
+      - bp3d:FJ1383M
+    labels:
+      en:
+        text: first lumbrical of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37717
+      wikidata: Q66526983
+    meshes:
+      - bp3d:FJ1383
+    labels:
+      en:
+        text: first lumbrical of right foot
+        source: fma
+        status: draft

@@ -1,0 +1,26 @@
+slug: lower-eyelid
+kind: organ
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: lower eyelid
+    source: fma
+    status: draft
+ids:
+  fma: 54442
+  ta2: 115
+  ta98: A15.2.07.026
+  wikidata: Q30348960
+sides:
+  left:
+    ids:
+      fma: 54444
+      wikidata: Q66544293
+  right:
+    ids:
+      fma: 54443
+      wikidata: Q66544292

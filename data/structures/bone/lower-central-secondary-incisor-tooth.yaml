@@ -1,0 +1,25 @@
+slug: lower-central-secondary-incisor-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lower central secondary incisor tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55723
+  wikidata: Q66545342
+sides:
+  left:
+    ids:
+      fma: 57143
+      wikidata: Q66553874
+    meshes:
+      - bp3d:FJ1258
+  right:
+    ids:
+      fma: 57142
+      wikidata: Q66553873
+    meshes:
+      - bp3d:FJ1272

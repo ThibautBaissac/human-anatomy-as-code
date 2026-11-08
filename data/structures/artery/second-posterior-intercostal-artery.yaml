@@ -1,0 +1,31 @@
+slug: second-posterior-intercostal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: second posterior intercostal artery
+    source: fma
+    status: draft
+  fr:
+    text: deuxième artère intercostale postérieure
+    source: wikidata
+    status: draft
+ids:
+  fma: 3994
+  ta2: 4613
+  ta98: A12.2.08.063
+  wikidata: Q66499563
+sides:
+  left:
+    ids:
+      fma: 4112
+      wikidata: Q66499731
+    meshes:
+      - bp3d:FJ1974
+  right:
+    ids:
+      fma: 5041
+      wikidata: Q66501889
+    meshes:
+      - bp3d:FJ1950

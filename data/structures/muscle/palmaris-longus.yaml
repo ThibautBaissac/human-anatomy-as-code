@@ -1,0 +1,39 @@
+slug: palmaris-longus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: palmaris longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle long palmaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus palmaris longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38462
+  ta2: 2482
+  ta98: A04.6.02.029
+  wikidata: Q672854
+sides:
+  left:
+    ids:
+      fma: 38464
+      wikidata: Q66527643
+    meshes:
+      - bp3d:FJ1502M
+  right:
+    ids:
+      fma: 38463
+      wikidata: Q66527642
+    meshes:
+      - bp3d:FJ1502

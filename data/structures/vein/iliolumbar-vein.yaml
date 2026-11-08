@@ -1,0 +1,39 @@
+slug: iliolumbar-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: iliolumbar vein
+    source: fma
+    status: draft
+  fr:
+    text: veine ilio-lombaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena iliolumbalis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 18902
+  ta2: 5023
+  ta98: A12.3.10.003
+  wikidata: Q5998326
+sides:
+  left:
+    ids:
+      fma: 18904
+      wikidata: Q66510132
+    meshes:
+      - bp3d:FJ3510
+  right:
+    ids:
+      fma: 18903
+      wikidata: Q66510131
+    meshes:
+      - bp3d:FJ3603

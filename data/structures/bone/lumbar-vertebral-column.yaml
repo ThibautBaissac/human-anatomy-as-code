@@ -1,0 +1,18 @@
+slug: lumbar-vertebral-column
+kind: bone
+laterality: midline
+status: draft
+parent: vertebral-column
+labels:
+  en:
+    text: lumbar vertebral column
+    source: fma
+    status: draft
+  fr:
+    text: rachis lombaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 16203
+  ta2: 1067
+  wikidata: Q66513438

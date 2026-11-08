@@ -1,0 +1,39 @@
+slug: proximal-phalanx-of-fourth-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: fourth-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: proximal phalanx of fourth toe
+    source: fma
+    status: draft
+ids:
+  fma: 32620
+  wikidata: Q66523090
+sides:
+  left:
+    ids:
+      fma: 32639
+      wikidata: Q66523105
+    meshes:
+      - bp3d:FJ3312
+    labels:
+      en:
+        text: proximal phalanx of left fourth toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32638
+      wikidata: Q66523104
+    meshes:
+      - bp3d:FJ3321
+    labels:
+      en:
+        text: proximal phalanx of right fourth toe
+        source: fma
+        status: draft

@@ -1,0 +1,23 @@
+slug: respiratory-system
+kind: organ
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: respiratory system
+    source: fma
+    status: draft
+  fr:
+    text: appareil respiratoire
+    source: wikidata
+    status: draft
+  la:
+    text: Systema respiratorium
+    source: wikidata
+    status: draft
+ids:
+  fma: 7158
+  ta2: 3133
+  ta98: A06.0.00.000
+  wikidata: Q7891

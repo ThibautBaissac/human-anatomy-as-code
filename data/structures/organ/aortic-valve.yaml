@@ -1,0 +1,25 @@
+slug: aortic-valve
+kind: organ
+laterality: midline
+status: draft
+parent: outflow-part-of-left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: aortic valve
+    source: fma
+    status: draft
+  fr:
+    text: valve aortique
+    source: wikidata
+    status: draft
+  la:
+    text: Valva aortae
+    source: wikidata
+    status: draft
+ids:
+  fma: 7236
+  ta2: 3993
+  ta98: A12.1.04.012
+  wikidata: Q616071

@@ -1,0 +1,42 @@
+slug: artery-of-postcentral-sulcus
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: artery of postcentral sulcus
+    source: fma
+    status: draft
+  fr:
+    text: artère du sillon postcentral
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50482
+  ta98: A12.2.07.066
+  wikidata: Q66539621
+sides:
+  left:
+    ids:
+      fma: 50484
+      wikidata: Q66539624
+    meshes:
+      - bp3d:FJ1666M
+    labels:
+      en:
+        text: artery of left postcentral sulcus
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50483
+      wikidata: Q66539623
+    meshes:
+      - bp3d:FJ1666
+    labels:
+      en:
+        text: artery of right postcentral sulcus
+        source: fma
+        status: draft

@@ -1,0 +1,23 @@
+slug: set-of-posterior-cervical-intertransversarii
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of posterior cervical intertransversarii
+    source: fma
+    status: draft
+  fr:
+    text: muscle intertransversaire latéral postérieur du cou
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 71443
+  ta2: 2238
+  ta98: A04.3.01.013
+  wikidata: Q66515018
+meshes:
+  - bp3d:FJ1553
+  - bp3d:FJ1553M

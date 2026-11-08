@@ -1,0 +1,41 @@
+slug: humeral-head-of-pronator-teres
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: humeral head of pronator teres
+    source: fma
+    status: draft
+  fr:
+    text: chef huméral du muscle rond pronateur
+    source: wikidata
+    status: draft
+ids:
+  fma: 38558
+  ta2: 2479
+  ta98: A04.6.02.026
+  wikidata: Q66527690
+sides:
+  left:
+    ids:
+      fma: 38561
+      wikidata: Q66527693
+    meshes:
+      - bp3d:FJ1474M
+    labels:
+      en:
+        text: humeral head of left pronator teres
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 38560
+      wikidata: Q66527692
+    meshes:
+      - bp3d:FJ1474
+    labels:
+      en:
+        text: humeral head of right pronator teres
+        source: fma
+        status: draft

@@ -1,0 +1,39 @@
+slug: infratrochlear-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: infratrochlear nerve
+    source: fma
+    status: draft
+  fr:
+    text: nerf infra-trochléaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Nervus infratrochlearis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52693
+  ta2: 6214
+  ta98: A14.2.01.035
+  wikidata: Q6031619
+sides:
+  left:
+    ids:
+      fma: 52699
+      wikidata: Q66542912
+    meshes:
+      - bp3d:FJ1296
+  right:
+    ids:
+      fma: 52698
+      wikidata: Q66542911
+    meshes:
+      - bp3d:FJ1347

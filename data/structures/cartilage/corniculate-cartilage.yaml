@@ -1,0 +1,33 @@
+slug: corniculate-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: corniculate cartilage
+    source: fma
+    status: draft
+  fr:
+    text: cartilage corniculé
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 55110
+  ta2: 997
+  ta98: A06.2.05.001
+  wikidata: Q2940600
+sides:
+  left:
+    ids:
+      fma: 55116
+      wikidata: Q66544836
+    meshes:
+      - bp3d:FJ2776
+  right:
+    ids:
+      fma: 55115
+      wikidata: Q66544835
+    meshes:
+      - bp3d:FJ2793

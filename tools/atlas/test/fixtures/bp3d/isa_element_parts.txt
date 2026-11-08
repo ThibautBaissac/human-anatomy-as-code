@@ -1,0 +1,12 @@
+concept id	name	element file id
+FMA3939	common carotid artery	FJ7001
+FMA3939	common carotid artery	FJ7001M
+FMA5018	bone organ	FJ3259
+FMA5018	bone organ	FJ3259M
+FMA5018	bone organ	FJ5001
+FMA5018	bone organ	FJ5002
+FMA7161	integument	FJ2810
+FMA7163	skin	FJ2810
+FMA9611	femur	FJ3259
+FMA9611	femur	FJ3259M
+FMA99999	first cervical vertebra	FJ5002

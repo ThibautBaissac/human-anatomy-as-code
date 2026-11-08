@@ -1,0 +1,31 @@
+slug: wall-of-side-of-heart
+kind: group
+laterality: bilateral
+status: draft
+parent: side-of-heart
+regions:
+  - thorax
+labels:
+  en:
+    text: wall of side of heart
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 73704
+      wikidata: Q66571130
+    labels:
+      en:
+        text: wall of left side of heart
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 73703
+      wikidata: Q66571129
+    labels:
+      en:
+        text: wall of right side of heart
+        source: fma
+        status: draft

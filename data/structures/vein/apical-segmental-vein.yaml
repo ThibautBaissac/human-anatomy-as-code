@@ -1,0 +1,38 @@
+slug: apical-segmental-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: apicoposterior-segmental-vein
+labels:
+  en:
+    text: apical segmental vein
+    source: fma
+    status: draft
+  fr:
+    text: veine apicale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13444
+  ta2: 4109
+  ta98: A12.3.02.102
+  wikidata: Q66508104
+sides:
+  left:
+    ids:
+      fma: 9437
+      wikidata: Q66504897
+    meshes:
+      - bp3d:FJ2936
+      - bp3d:FJ2947
+      - bp3d:FJ2958
+      - bp3d:FJ2961
+      - bp3d:FJ2962
+      - bp3d:FJ2963
+      - bp3d:FJ2964
+  right:
+    ids:
+      fma: 8661
+      wikidata: Q66504119

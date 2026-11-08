@@ -1,0 +1,39 @@
+slug: intermediate-cuneiform-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: intermediate cuneiform bone
+    source: fma
+    status: draft
+  fr:
+    text: cunéiforme intermédiaire
+    source: wikidata
+    status: draft
+  la:
+    text: Cuneiforme intermedium
+    source: wikidata
+    status: draft
+ids:
+  fma: 24519
+  ta2: 1487
+  ta98: A02.5.14.001
+  wikidata: Q3493614
+sides:
+  left:
+    ids:
+      fma: 24524
+      wikidata: Q66516034
+    meshes:
+      - bp3d:FJ3264
+  right:
+    ids:
+      fma: 24523
+      wikidata: Q66516033
+    meshes:
+      - bp3d:FJ3370

@@ -1,0 +1,22 @@
+slug: pons
+kind: cns
+laterality: midline
+status: draft
+parent: metencephalon
+labels:
+  en:
+    text: pons
+    source: fma
+    status: draft
+  fr:
+    text: pont
+    source: wikidata
+    status: draft
+ids:
+  fma: 67943
+  ta2: 5921
+  ta98: A14.1.03.010
+  wikidata: Q192570
+meshes:
+  - bp3d:FJ1775
+  - bp3d:FJ1822

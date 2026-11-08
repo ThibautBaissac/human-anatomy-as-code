@@ -1,0 +1,27 @@
+slug: diaphragm
+kind: muscle
+laterality: midline
+status: draft
+parent: thorax
+regions:
+  - thorax
+labels:
+  en:
+    text: diaphragm
+    source: fma
+    status: draft
+  fr:
+    text: diaphragme
+    source: wikidata
+    status: draft
+  la:
+    text: Diaphragma
+    source: wikidata
+    status: draft
+ids:
+  fma: 13295
+  ta2: 2327
+  ta98: A04.4.02.001
+  wikidata: Q9654
+meshes:
+  - bp3d:FJ3131

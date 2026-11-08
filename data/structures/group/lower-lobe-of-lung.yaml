@@ -1,0 +1,42 @@
+slug: lower-lobe-of-lung
+kind: group
+laterality: bilateral
+status: draft
+parent: lung
+labels:
+  en:
+    text: lower lobe of lung
+    source: fma
+    status: draft
+  fr:
+    text: lobe inférieur du poumon
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 7335
+  wikidata: Q28656743
+sides:
+  left:
+    ids:
+      fma: 7371
+      ta2: 3308
+      ta98: A06.5.02.020
+      wikidata: Q28656763
+    labels:
+      en:
+        text: lower lobe of left lung
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 7337
+      ta2: 3293
+      ta98: A06.5.02.009
+      wikidata: Q28656759
+    labels:
+      en:
+        text: lower lobe of right lung
+        source: fma
+        status: draft

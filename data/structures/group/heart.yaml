@@ -1,0 +1,25 @@
+slug: heart
+kind: group
+laterality: midline
+status: draft
+parent: content-of-middle-mediastinum
+regions:
+  - thorax
+labels:
+  en:
+    text: heart
+    source: fma
+    status: draft
+  fr:
+    text: cœur humain
+    source: wikidata
+    status: draft
+  la:
+    text: cor humanus
+    source: wikidata
+    status: draft
+ids:
+  fma: 7088
+  ta2: 3932
+  ta98: A12.1.00.001
+  wikidata: Q2419844

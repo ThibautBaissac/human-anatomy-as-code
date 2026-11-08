@@ -1,0 +1,29 @@
+slug: hepatic-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: portal-venous-tree
+labels:
+  en:
+    text: hepatic portal vein
+    source: fma
+    status: draft
+  fr:
+    text: veine porte
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: vena portae hepatis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50735
+  ta2: 5092
+  ta98: A12.3.12.001
+  wikidata: Q464543
+meshes:
+  - bp3d:FJ1853

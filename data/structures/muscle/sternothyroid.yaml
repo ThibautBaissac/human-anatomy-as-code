@@ -1,0 +1,39 @@
+slug: sternothyroid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: sternothyroid
+    source: fma
+    status: draft
+  fr:
+    text: muscle sterno-thyroïdien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus sternothyreoideus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13343
+  ta2: 2173
+  ta98: A04.2.04.006
+  wikidata: Q545171
+sides:
+  left:
+    ids:
+      fma: 13351
+      wikidata: Q66508039
+    meshes:
+      - bp3d:FJ1575
+  right:
+    ids:
+      fma: 13350
+      wikidata: Q66508038
+    meshes:
+      - bp3d:FJ1597

@@ -1,0 +1,42 @@
+slug: lateral-rectus
+kind: muscle
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: lateral rectus
+    source: fma
+    status: draft
+  fr:
+    text: muscle droit latéral du bulbe de l'œil
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus pterygoideus externus"
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 49038
+  ta2: 2045
+  ta98: A15.2.07.013
+  wikidata: Q1051835
+sides:
+  left:
+    ids:
+      fma: 49055
+      wikidata: Q66538469
+    meshes:
+      - bp3d:FJ1304
+  right:
+    ids:
+      fma: 49054
+      wikidata: Q66538468
+    meshes:
+      - bp3d:FJ1355

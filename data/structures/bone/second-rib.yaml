@@ -1,0 +1,34 @@
+slug: second-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: second rib
+    source: fma
+    status: draft
+  fr:
+    text: deuxième côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 7620
+  ta2: 1111
+  ta98: A02.3.02.018
+  wikidata: Q12068630
+sides:
+  left:
+    ids:
+      fma: 8012
+      wikidata: Q66503503
+    meshes:
+      - bp3d:FJ3229
+  right:
+    ids:
+      fma: 7882
+      wikidata: Q66503374
+    meshes:
+      - bp3d:FJ3336

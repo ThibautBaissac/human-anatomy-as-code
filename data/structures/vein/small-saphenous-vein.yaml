@@ -1,0 +1,39 @@
+slug: small-saphenous-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: small saphenous vein
+    source: fma
+    status: draft
+  fr:
+    text: veine petite saphène
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena saphena parva
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 44333
+  ta2: 5085
+  ta98: A12.3.11.010
+  wikidata: Q2736974
+sides:
+  left:
+    ids:
+      fma: 44335
+      wikidata: Q66534261
+    meshes:
+      - bp3d:FJ2121
+  right:
+    ids:
+      fma: 44334
+      wikidata: Q66534258
+    meshes:
+      - bp3d:FJ2176

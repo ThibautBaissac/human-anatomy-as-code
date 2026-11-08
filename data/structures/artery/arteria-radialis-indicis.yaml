@@ -1,0 +1,41 @@
+slug: arteria-radialis-indicis
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: arteria radialis indicis
+    source: fma
+    status: draft
+  fr:
+    text: artère radiale de l'index
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria radialis indicis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22763
+  ta2: 4651
+  ta98: A12.2.09.037
+  wikidata: Q3328741
+sides:
+  left:
+    ids:
+      fma: 22778
+      wikidata: Q66514792
+    meshes:
+      - bp3d:FJ2314
+      - bp3d:FJ2332
+  right:
+    ids:
+      fma: 22777
+      wikidata: Q66514791
+    meshes:
+      - bp3d:FJ2342
+      - bp3d:FJ2363

@@ -1,0 +1,25 @@
+slug: superficial-dorsal-vein-of-penis
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superficial dorsal vein of penis
+    source: fma
+    status: draft
+ids:
+  fma: 21384
+  wikidata: Q66513350
+sides:
+  left:
+    ids:
+      fma: 21386
+      wikidata: Q66513352
+    meshes:
+      - bp3d:FJ3426
+  right:
+    ids:
+      fma: 21385
+      wikidata: Q66513351
+    meshes:
+      - bp3d:FJ3637

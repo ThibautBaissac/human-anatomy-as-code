@@ -1,0 +1,13 @@
+slug: content-of-anterior-mediastinum
+kind: organ
+laterality: midline
+status: draft
+parent: content-of-inferior-mediastinum
+labels:
+  en:
+    text: content of anterior mediastinum
+    source: fma
+    status: draft
+ids:
+  fma: 79276
+  wikidata: Q66577351

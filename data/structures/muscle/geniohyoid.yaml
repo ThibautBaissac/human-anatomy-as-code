@@ -1,0 +1,39 @@
+slug: geniohyoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: geniohyoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle génio-hyoïdien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus geniohyoideus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46325
+  ta2: 2166
+  ta98: A04.2.03.007
+  wikidata: Q1072007
+sides:
+  left:
+    ids:
+      fma: 46327
+      wikidata: Q66536473
+    meshes:
+      - bp3d:FJ1559
+  right:
+    ids:
+      fma: 46326
+      wikidata: Q66536472
+    meshes:
+      - bp3d:FJ1580

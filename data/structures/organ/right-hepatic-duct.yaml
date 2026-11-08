@@ -1,0 +1,15 @@
+slug: right-hepatic-duct
+kind: organ
+laterality: midline
+status: draft
+parent: hepatic-biliary-tree
+labels:
+  en:
+    text: right hepatic duct
+    source: fma
+    status: draft
+ids:
+  fma: 14669
+  wikidata: Q66510630
+meshes:
+  - bp3d:FJ3123

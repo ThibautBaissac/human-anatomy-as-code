@@ -1,0 +1,13 @@
+slug: third-thoracic-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: thoracic-vertebral-column
+labels:
+  en:
+    text: third thoracic intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26095
+  wikidata: Q66517323

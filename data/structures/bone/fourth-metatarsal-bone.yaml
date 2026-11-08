@@ -1,0 +1,39 @@
+slug: fourth-metatarsal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot-proper
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: fourth metatarsal bone
+    source: fma
+    status: draft
+  fr:
+    text: quatrième métatarsien
+    source: wikidata
+    status: draft
+  la:
+    text: Os metatarsale IV
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 24505
+  wikidata: Q5476258
+sides:
+  left:
+    ids:
+      fma: 24514
+      wikidata: Q66516027
+    meshes:
+      - bp3d:FJ3250
+  right:
+    ids:
+      fma: 24513
+      wikidata: Q66516026
+    meshes:
+      - bp3d:FJ3357

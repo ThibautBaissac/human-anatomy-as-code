@@ -1,0 +1,15 @@
+slug: anterior-cardiac-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: anterior cardiac vein
+    source: fma
+    status: draft
+ids:
+  fma: 76767
+  wikidata: Q66574181
+meshes:
+  - bp3d:FJ2725
+  - bp3d:FJ2730

@@ -1,0 +1,39 @@
+slug: supinator
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: supinator
+    source: fma
+    status: draft
+  fr:
+    text: muscle supinateur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus supinator
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38512
+  ta2: 2512
+  ta98: A04.6.02.048
+  wikidata: Q524064
+sides:
+  left:
+    ids:
+      fma: 38514
+      wikidata: Q66527671
+    meshes:
+      - bp3d:FJ1505M
+  right:
+    ids:
+      fma: 38513
+      wikidata: Q66527670
+    meshes:
+      - bp3d:FJ1505

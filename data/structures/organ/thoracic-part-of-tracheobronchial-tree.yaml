@@ -1,0 +1,13 @@
+slug: thoracic-part-of-tracheobronchial-tree
+kind: organ
+laterality: midline
+status: draft
+parent: content-of-thorax
+labels:
+  en:
+    text: thoracic part of tracheobronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 26572
+  wikidata: Q66517745

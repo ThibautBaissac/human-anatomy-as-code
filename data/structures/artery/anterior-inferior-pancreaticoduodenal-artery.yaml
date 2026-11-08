@@ -1,0 +1,22 @@
+slug: anterior-inferior-pancreaticoduodenal-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: anterior inferior pancreaticoduodenal artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau antérieur de l'artère pancréatico-duodénale inférieure
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 70479
+  ta2: 4254
+  ta98: A12.2.12.055
+  wikidata: Q38042008
+meshes:
+  - bp3d:FJ3401

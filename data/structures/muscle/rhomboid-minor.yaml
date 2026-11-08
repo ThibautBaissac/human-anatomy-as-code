@@ -1,0 +1,42 @@
+slug: rhomboid-minor
+kind: muscle
+laterality: bilateral
+status: draft
+parent: scapular-part-of-pectoral-girdle
+regions:
+  - upper-limb
+labels:
+  en:
+    text: rhomboid minor
+    source: fma
+    status: draft
+  fr:
+    text: Muscle petit rhomboïde
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus rhomboideus minor
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13380
+  ta2: 2233
+  ta98: A04.3.01.008
+  wikidata: Q901538
+sides:
+  left:
+    ids:
+      fma: 13384
+      wikidata: Q66508061
+    meshes:
+      - bp3d:FJ1537M
+  right:
+    ids:
+      fma: 13383
+      wikidata: Q66508060
+    meshes:
+      - bp3d:FJ1537

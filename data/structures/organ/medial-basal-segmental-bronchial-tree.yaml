@@ -1,0 +1,28 @@
+slug: medial-basal-segmental-bronchial-tree
+kind: organ
+laterality: bilateral
+status: draft
+parent: lower-lobe-part-of-bronchial-tree
+labels:
+  en:
+    text: medial basal segmental bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68320
+  wikidata: Q66563922
+sides:
+  left:
+    ids:
+      fma: 68230
+      wikidata: Q66563826
+    meshes:
+      - bp3d:FJ2442
+      - bp3d:FJ2537
+  right:
+    ids:
+      fma: 68218
+      wikidata: Q66563814
+    meshes:
+      - bp3d:FJ2456
+      - bp3d:FJ2488

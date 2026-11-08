@@ -1,0 +1,37 @@
+slug: ascending-lumbar-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: ascending lumbar vein
+    source: fma
+    status: draft
+  fr:
+    text: veine lombaire ascendante
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena lumbalis ascendens
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 12858
+  wikidata: Q4803822
+sides:
+  left:
+    ids:
+      fma: 4950
+      wikidata: Q66501813
+    meshes:
+      - bp3d:FJ3493
+  right:
+    ids:
+      fma: 4843
+      wikidata: Q66501713
+    meshes:
+      - bp3d:FJ3589

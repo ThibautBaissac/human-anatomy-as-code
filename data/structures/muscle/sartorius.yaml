@@ -1,0 +1,39 @@
+slug: sartorius
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: sartorius
+    source: fma
+    status: draft
+  fr:
+    text: muscle sartorius
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus sartorius
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22353
+  ta2: 2610
+  ta98: A04.7.02.015
+  wikidata: Q740337
+sides:
+  left:
+    ids:
+      fma: 22355
+      wikidata: Q66514420
+    meshes:
+      - bp3d:FJ1434M
+  right:
+    ids:
+      fma: 22354
+      wikidata: Q66514419
+    meshes:
+      - bp3d:FJ1434

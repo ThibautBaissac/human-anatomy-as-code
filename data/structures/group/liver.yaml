@@ -1,0 +1,23 @@
+slug: liver
+kind: group
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: liver
+    source: fma
+    status: draft
+  fr:
+    text: foie
+    source: wikidata
+    status: draft
+  la:
+    text: iecur
+    source: wikidata
+    status: draft
+ids:
+  fma: 7197
+  ta2: 3023
+  ta98: A05.8.01.001
+  wikidata: Q9368

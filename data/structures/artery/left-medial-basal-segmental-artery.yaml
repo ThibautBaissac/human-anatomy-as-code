@@ -1,0 +1,24 @@
+slug: left-medial-basal-segmental-artery
+kind: artery
+laterality: unpaired-left
+status: draft
+parent: antero-medial-basal-segmental-artery
+labels:
+  en:
+    text: left medial basal segmental artery
+    source: fma
+    status: draft
+  fr:
+    text: artère segmentaire basale médiale de l'artère pulmonaire gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8644
+  ta2: 4105
+  ta98: A12.2.01.219
+  wikidata: Q66504107
+meshes:
+  - bp3d:FJ2884
+  - bp3d:FJ2885

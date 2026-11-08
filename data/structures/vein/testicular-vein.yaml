@@ -1,0 +1,42 @@
+slug: testicular-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: inferior-systemic-venous-tree
+labels:
+  en:
+    text: testicular vein
+    source: fma
+    status: draft
+  fr:
+    text: veine testiculaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena testicularis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14344
+  wikidata: Q585624
+sides:
+  left:
+    ids:
+      fma: 14345
+      ta2: 5015
+      ta98: A12.3.09.012M
+      wikidata: Q66509405
+    meshes:
+      - bp3d:FJ3533
+  right:
+    ids:
+      fma: 14341
+      ta2: 5018
+      ta98: A12.3.09.014M
+      wikidata: Q66509399
+    meshes:
+      - bp3d:FJ3618

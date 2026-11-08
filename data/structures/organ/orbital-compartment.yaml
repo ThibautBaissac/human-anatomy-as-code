@@ -1,0 +1,22 @@
+slug: orbital-compartment
+kind: organ
+laterality: bilateral
+status: draft
+parent: orbit
+labels:
+  en:
+    text: orbital compartment
+    source: fma
+    status: draft
+ids:
+  fma: 54379
+  wikidata: Q66544238
+sides:
+  left:
+    ids:
+      fma: 54668
+      wikidata: Q66544457
+  right:
+    ids:
+      fma: 54667
+      wikidata: Q66544456

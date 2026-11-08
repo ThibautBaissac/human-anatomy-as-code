@@ -1,0 +1,45 @@
+slug: distal-phalanx-of-little-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: little-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: distal phalanx of little finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange distale de l'auriculaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23949
+  wikidata: Q66515621
+sides:
+  left:
+    ids:
+      fma: 23959
+      wikidata: Q66515626
+    meshes:
+      - bp3d:FJ3184
+    labels:
+      en:
+        text: distal phalanx of left little finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24463
+      wikidata: Q66515990
+    meshes:
+      - bp3d:FJ3194
+    labels:
+      en:
+        text: distal phalanx of right little finger
+        source: fma
+        status: draft

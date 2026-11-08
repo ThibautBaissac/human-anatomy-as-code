@@ -1,0 +1,13 @@
+slug: sixth-thoracic-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: thoracic-vertebral-column
+labels:
+  en:
+    text: sixth thoracic intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26098
+  wikidata: Q66517326

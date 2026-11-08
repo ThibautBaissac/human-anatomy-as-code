@@ -1,0 +1,39 @@
+slug: middle-pharyngeal-constrictor
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: middle pharyngeal constrictor
+    source: fma
+    status: draft
+  fr:
+    text: muscle constricteur moyen du pharynx
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus constrictor pharyngis medius
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46622
+  ta2: 2184
+  ta98: A05.3.01.108
+  wikidata: Q254855
+sides:
+  left:
+    ids:
+      fma: 46634
+      wikidata: Q66536635
+    meshes:
+      - bp3d:FJ2754
+  right:
+    ids:
+      fma: 46633
+      wikidata: Q66536634
+    meshes:
+      - bp3d:FJ2742

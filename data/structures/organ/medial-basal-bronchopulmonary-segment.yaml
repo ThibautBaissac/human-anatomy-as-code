@@ -1,0 +1,22 @@
+slug: medial-basal-bronchopulmonary-segment
+kind: organ
+laterality: bilateral
+status: draft
+parent: lower-lobe-of-lung
+labels:
+  en:
+    text: medial basal bronchopulmonary segment
+    source: fma
+    status: draft
+ids:
+  fma: 13192
+  wikidata: Q66507919
+sides:
+  left:
+    ids:
+      fma: 7377
+      wikidata: Q66502930
+  right:
+    ids:
+      fma: 7365
+      wikidata: Q66502920

@@ -1,0 +1,41 @@
+slug: acromial-part-of-deltoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: acromial part of deltoid
+    source: fma
+    status: draft
+  fr:
+    text: partie acromiale du muscle deltoïde
+    source: wikidata
+    status: draft
+ids:
+  fma: 34678
+  ta2: 2454
+  ta98: A04.6.02.004
+  wikidata: Q66524647
+sides:
+  left:
+    ids:
+      fma: 34683
+      wikidata: Q66524652
+    meshes:
+      - bp3d:FJ1467M
+    labels:
+      en:
+        text: acromial part of left deltoid
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 34682
+      wikidata: Q66524651
+    meshes:
+      - bp3d:FJ1467
+    labels:
+      en:
+        text: acromial part of right deltoid
+        source: fma
+        status: draft

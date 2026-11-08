@@ -1,0 +1,32 @@
+slug: lower-limb
+kind: organ
+laterality: bilateral
+status: draft
+parent: human-body
+labels:
+  en:
+    text: lower limb
+    source: fma
+    status: draft
+  fr:
+    text: membre inférieur
+    source: wikidata
+    status: draft
+  la:
+    text: membrum inferius
+    source: wikidata
+    status: draft
+ids:
+  fma: 7184
+  ta2: 156
+  ta98: A01.1.00.031
+  wikidata: Q62513663
+sides:
+  left:
+    ids:
+      fma: 7188
+      wikidata: Q66502820
+  right:
+    ids:
+      fma: 7187
+      wikidata: Q66502819

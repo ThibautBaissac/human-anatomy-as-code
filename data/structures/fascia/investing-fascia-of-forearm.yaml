@@ -1,0 +1,35 @@
+slug: investing-fascia-of-forearm
+kind: fascia
+laterality: bilateral
+status: draft
+parent: forearm
+regions:
+  - forearm
+  - upper-limb
+labels:
+  en:
+    text: investing fascia of forearm
+    source: fma
+    status: draft
+ids:
+  fma: 58434
+  wikidata: Q66555009
+sides:
+  left:
+    ids:
+      fma: 58576
+      wikidata: Q66555130
+    labels:
+      en:
+        text: investing fascia of left forearm
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58575
+      wikidata: Q66555129
+    labels:
+      en:
+        text: investing fascia of right forearm
+        source: fma
+        status: draft

@@ -1,0 +1,13 @@
+slug: portal-venous-tree
+kind: vein
+laterality: midline
+status: draft
+parent: cardiovascular-system
+labels:
+  en:
+    text: portal venous tree
+    source: fma
+    status: draft
+ids:
+  fma: 45847
+  wikidata: Q66536116

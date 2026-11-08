@@ -1,0 +1,42 @@
+slug: pectoralis-minor
+kind: muscle
+laterality: bilateral
+status: draft
+parent: superficial-chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: pectoralis minor
+    source: fma
+    status: draft
+  fr:
+    text: muscle petit pectoral
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus pectoralis minor
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13109
+  ta2: 2305
+  ta98: A04.4.01.006
+  wikidata: Q757083
+sides:
+  left:
+    ids:
+      fma: 13376
+      wikidata: Q66508055
+    meshes:
+      - bp3d:FJ1456M
+  right:
+    ids:
+      fma: 13375
+      wikidata: Q66508054
+    meshes:
+      - bp3d:FJ1456

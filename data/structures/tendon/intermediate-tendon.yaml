@@ -1,0 +1,22 @@
+slug: intermediate-tendon
+kind: tendon
+laterality: midline
+status: draft
+labels:
+  en:
+    text: intermediate tendon
+    source: fma
+    status: draft
+  fr:
+    text: tendon intermédiaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 65410
+  ta2: 2011
+  ta98: A04.0.00.045
+  wikidata: Q66561709
+meshes:
+  - bp3d:FJ1581

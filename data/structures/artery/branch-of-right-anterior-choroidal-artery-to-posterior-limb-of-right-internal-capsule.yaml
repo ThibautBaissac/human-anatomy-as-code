@@ -1,0 +1,14 @@
+slug: branch-of-right-anterior-choroidal-artery-to-posterior-limb-of-right-internal-capsule
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: branch of right anterior choroidal artery to posterior limb of right internal capsule
+    source: fma
+    status: draft
+ids:
+  fma: 50146
+  wikidata: Q66539341
+meshes:
+  - bp3d:FJ1674

@@ -1,0 +1,23 @@
+slug: first-posterior-ventricular-branch-of-right-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: right-coronary-artery
+labels:
+  en:
+    text: first posterior ventricular branch of right coronary artery
+    source: fma
+    status: draft
+ids:
+  fma: 3837
+  wikidata: Q66499452
+meshes:
+  - bp3d:FJ2714
+  - bp3d:FJ2715
+  - bp3d:FJ2716
+  - bp3d:FJ2717
+  - bp3d:FJ2718
+  - bp3d:FJ2719
+  - bp3d:FJ2720
+  - bp3d:FJ2721
+  - bp3d:FJ2722

@@ -1,0 +1,25 @@
+slug: urinary-bladder
+kind: organ
+laterality: midline
+status: draft
+parent: lower-urinary-tract
+labels:
+  en:
+    text: urinary bladder
+    source: fma
+    status: draft
+  fr:
+    text: vessie
+    source: wikidata
+    status: draft
+  la:
+    text: Vesica
+    source: wikidata
+    status: draft
+ids:
+  fma: 15900
+  ta2: 3401
+  ta98: A08.3.01.001
+  wikidata: Q9382
+meshes:
+  - bp3d:FJ3149

@@ -1,0 +1,40 @@
+slug: postcommunicating-part-of-posterior-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: postcommunicating part of posterior cerebral artery
+    source: fma
+    status: draft
+  fr:
+    text: partie postcommunicante de l'artère cérébrale postérieure
+    source: wikidata
+    status: draft
+ids:
+  fma: 50591
+  ta98: A12.2.07.088
+  wikidata: Q66539725
+sides:
+  left:
+    ids:
+      fma: 50642
+      wikidata: Q66539772
+    meshes:
+      - bp3d:FJ1714M
+    labels:
+      en:
+        text: postcommunicating part of left posterior cerebral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50641
+      wikidata: Q66539771
+    meshes:
+      - bp3d:FJ1714
+    labels:
+      en:
+        text: postcommunicating part of right posterior cerebral artery
+        source: fma
+        status: draft

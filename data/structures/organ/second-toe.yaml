@@ -1,0 +1,27 @@
+slug: second-toe
+kind: organ
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: second toe
+    source: fma
+    status: draft
+ids:
+  fma: 25048
+  ta2: 172
+  ta98: A01.1.00.059
+  wikidata: Q6673547
+sides:
+  left:
+    ids:
+      fma: 60338
+      wikidata: Q66556706
+  right:
+    ids:
+      fma: 60337
+      wikidata: Q66556705

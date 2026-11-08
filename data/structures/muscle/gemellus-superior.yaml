@@ -1,0 +1,39 @@
+slug: gemellus-superior
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: gemellus superior
+    source: fma
+    status: draft
+  fr:
+    text: muscle jumeau supérieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus gemellus superior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22318
+  ta2: 2606
+  ta98: A04.7.02.013
+  wikidata: Q1732695
+sides:
+  left:
+    ids:
+      fma: 22335
+      wikidata: Q66514402
+    meshes:
+      - bp3d:FJ1417M
+  right:
+    ids:
+      fma: 22334
+      wikidata: Q66514401
+    meshes:
+      - bp3d:FJ1417

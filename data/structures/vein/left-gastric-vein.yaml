@@ -1,0 +1,28 @@
+slug: left-gastric-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: left gastric vein
+    source: fma
+    status: draft
+  fr:
+    text: veine gastrique gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena gastrica sinistra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15399
+  ta2: 5110
+  ta98: A12.3.12.015
+  wikidata: Q730403
+meshes:
+  - bp3d:FJ3500

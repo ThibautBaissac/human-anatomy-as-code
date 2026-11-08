@@ -1,0 +1,40 @@
+slug: palatine-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: palatine bone
+    source: fma
+    status: draft
+  fr:
+    text: os palatin
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os palatinum
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52746
+  ta2: 798
+  ta98: A02.1.13.001
+  wikidata: Q237632
+sides:
+  left:
+    ids:
+      fma: 53656
+      wikidata: Q66543699
+    meshes:
+      - bp3d:FJ3273
+  right:
+    ids:
+      fma: 53655
+      wikidata: Q66543698
+    meshes:
+      - bp3d:FJ3379

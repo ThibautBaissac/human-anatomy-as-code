@@ -1,0 +1,40 @@
+slug: internal-jugular-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: brachiocephalic-vein
+labels:
+  en:
+    text: internal jugular vein
+    source: fma
+    status: draft
+  fr:
+    text: veine jugulaire interne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena jugularis interna
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4724
+  ta2: 4800
+  ta98: A12.3.05.001
+  wikidata: Q540598
+sides:
+  left:
+    ids:
+      fma: 4762
+      wikidata: Q66501634
+    meshes:
+      - bp3d:FJ3485
+  right:
+    ids:
+      fma: 4754
+      wikidata: Q66500713
+    meshes:
+      - bp3d:FJ3585

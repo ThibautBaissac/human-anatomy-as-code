@@ -1,0 +1,39 @@
+slug: femoral-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: femoral vein
+    source: fma
+    status: draft
+  fr:
+    text: veine fémorale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena femoralis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 21185
+  ta2: 5055
+  ta98: A12.3.11.023
+  wikidata: Q368521
+sides:
+  left:
+    ids:
+      fma: 21189
+      wikidata: Q66513067
+    meshes:
+      - bp3d:FJ2102
+  right:
+    ids:
+      fma: 21188
+      wikidata: Q66513066
+    meshes:
+      - bp3d:FJ2144

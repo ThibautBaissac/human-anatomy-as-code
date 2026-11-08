@@ -1,0 +1,19 @@
+slug: cardiovascular-system
+kind: group
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: cardiovascular system
+    source: fma
+    status: draft
+  fr:
+    text: appareil cardiovasculaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 7161
+  ta2: 3891
+  ta98: A12.0.00.000
+  wikidata: Q13168533

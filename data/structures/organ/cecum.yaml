@@ -1,0 +1,25 @@
+slug: cecum
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: cecum
+    source: fma
+    status: draft
+  fr:
+    text: cæcum
+    source: wikidata
+    status: draft
+  la:
+    text: caecum
+    source: wikidata
+    status: draft
+ids:
+  fma: 14541
+  ta2: 2970
+  ta98: A05.7.02.001
+  wikidata: Q185317
+meshes:
+  - bp3d:FJ2599

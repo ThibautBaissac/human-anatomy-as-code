@@ -1,0 +1,42 @@
+slug: obturator-internus
+kind: muscle
+laterality: bilateral
+status: draft
+parent: pelvic-wall
+regions:
+  - abdomen
+labels:
+  en:
+    text: obturator internus
+    source: fma
+    status: draft
+  fr:
+    text: muscle obturateur interne
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus obturatorius internus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22298
+  ta2: 2605
+  ta98: A04.7.02.012
+  wikidata: Q1500758
+sides:
+  left:
+    ids:
+      fma: 22325
+      wikidata: Q66514392
+    meshes:
+      - bp3d:FJ1426M
+  right:
+    ids:
+      fma: 22324
+      wikidata: Q66514391
+    meshes:
+      - bp3d:FJ1426

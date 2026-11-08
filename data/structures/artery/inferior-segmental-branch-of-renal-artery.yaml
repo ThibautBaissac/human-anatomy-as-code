@@ -1,0 +1,32 @@
+slug: inferior-segmental-branch-of-renal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: inferior segmental branch of renal artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 86347
+      wikidata: Q66592288
+    meshes:
+      - bp3d:FJ2049
+    labels:
+      en:
+        text: inferior segmental branch of left renal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 86346
+      wikidata: Q66592287
+    meshes:
+      - bp3d:FJ2043
+    labels:
+      en:
+        text: inferior segmental branch of right renal artery
+        source: fma
+        status: draft

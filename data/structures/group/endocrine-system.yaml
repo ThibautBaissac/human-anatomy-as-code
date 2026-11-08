@@ -1,0 +1,21 @@
+slug: endocrine-system
+kind: group
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: endocrine system
+    source: fma
+    status: draft
+  fr:
+    text: système endocrinien
+    source: wikidata
+    status: draft
+  la:
+    text: systema endocrinum
+    source: wikidata
+    status: draft
+ids:
+  fma: 9668
+  wikidata: Q11078

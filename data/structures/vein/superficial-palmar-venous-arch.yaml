@@ -1,0 +1,35 @@
+slug: superficial-palmar-venous-arch
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superficial palmar venous arch
+    source: fma
+    status: draft
+  fr:
+    text: arcade veineuse palmaire superficielle
+    source: wikidata
+    status: draft
+  la:
+    text: Arcus venosus palmaris superficialis
+    source: wikidata
+    status: draft
+ids:
+  fma: 22914
+  ta2: 4986
+  ta98: A12.3.08.026
+  wikidata: Q629692
+sides:
+  left:
+    ids:
+      fma: 22916
+      wikidata: Q66514897
+    meshes:
+      - bp3d:FJ2249
+  right:
+    ids:
+      fma: 22915
+      wikidata: Q66514896
+    meshes:
+      - bp3d:FJ2301

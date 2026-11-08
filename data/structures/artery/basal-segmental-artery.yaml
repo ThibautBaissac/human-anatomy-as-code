@@ -1,0 +1,30 @@
+slug: basal-segmental-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: lower-lobar-artery
+labels:
+  en:
+    text: basal segmental artery
+    source: fma
+    status: draft
+  fr:
+    text: artère segmentaire basale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8715
+  wikidata: Q66504272
+sides:
+  left:
+    ids:
+      fma: 68846
+      ta98: A12.2.01.216
+      wikidata: Q66564396
+  right:
+    ids:
+      fma: 68845
+      ta98: A12.2.01.115
+      wikidata: Q66564395

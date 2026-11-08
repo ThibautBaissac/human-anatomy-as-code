@@ -1,0 +1,39 @@
+slug: trochlear-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: trochlear nerve
+    source: fma
+    status: draft
+  fr:
+    text: nerf trochléaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Nervus trochlearis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50865
+  ta2: 6191
+  ta98: A14.2.01.011
+  wikidata: Q319584
+sides:
+  left:
+    ids:
+      fma: 50882
+      wikidata: Q66540067
+    meshes:
+      - bp3d:FJ1330
+  right:
+    ids:
+      fma: 50881
+      wikidata: Q66540065
+    meshes:
+      - bp3d:FJ1381

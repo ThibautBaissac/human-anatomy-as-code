@@ -1,0 +1,21 @@
+slug: apicoposterior-segmental-vein
+kind: vein
+laterality: midline
+status: draft
+parent: apicoposterior-bronchopulmonary-segment
+labels:
+  en:
+    text: apicoposterior segmental vein
+    source: fma
+    status: draft
+  fr:
+    text: veine apicopostérieure du poumon gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8666
+  ta2: 4120
+  ta98: A12.3.02.302
+  wikidata: Q66504233

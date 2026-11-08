@@ -1,0 +1,27 @@
+slug: third-toe
+kind: organ
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: third toe
+    source: fma
+    status: draft
+ids:
+  fma: 25051
+  ta2: 173
+  ta98: A01.1.00.060
+  wikidata: Q7785092
+sides:
+  left:
+    ids:
+      fma: 60340
+      wikidata: Q66556708
+  right:
+    ids:
+      fma: 60339
+      wikidata: Q66556707

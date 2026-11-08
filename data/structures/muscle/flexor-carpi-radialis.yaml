@@ -1,0 +1,39 @@
+slug: flexor-carpi-radialis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor carpi radialis
+    source: fma
+    status: draft
+  fr:
+    text: muscle fléchisseur radial du carpe
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus flexor carpi radialis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38459
+  ta2: 2481
+  ta98: A04.6.02.028
+  wikidata: Q914475
+sides:
+  left:
+    ids:
+      fma: 38461
+      wikidata: Q66527641
+    meshes:
+      - bp3d:FJ1496M
+  right:
+    ids:
+      fma: 38460
+      wikidata: Q66527640
+    meshes:
+      - bp3d:FJ1496

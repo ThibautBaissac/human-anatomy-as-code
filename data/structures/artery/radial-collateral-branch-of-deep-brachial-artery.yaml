@@ -1,0 +1,32 @@
+slug: radial-collateral-branch-of-deep-brachial-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: radial collateral branch of deep brachial artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 23127
+      wikidata: Q66515053
+    meshes:
+      - bp3d:FJ2261
+    labels:
+      en:
+        text: radial collateral branch of left deep brachial artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 23126
+      wikidata: Q66515052
+    meshes:
+      - bp3d:FJ2262
+    labels:
+      en:
+        text: radial collateral branch of right deep brachial artery
+        source: fma
+        status: draft

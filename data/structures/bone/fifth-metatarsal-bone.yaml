@@ -1,0 +1,40 @@
+slug: fifth-metatarsal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot-proper
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: fifth metatarsal bone
+    source: fma
+    status: draft
+  fr:
+    text: cinquième métatarsien
+    source: wikidata
+    status: draft
+  la:
+    text: Os metatarsale V
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 24506
+  ta2: 1502
+  wikidata: Q5447591
+sides:
+  left:
+    ids:
+      fma: 24516
+      wikidata: Q66516029
+    meshes:
+      - bp3d:FJ3253
+  right:
+    ids:
+      fma: 24515
+      wikidata: Q66516028
+    meshes:
+      - bp3d:FJ3359

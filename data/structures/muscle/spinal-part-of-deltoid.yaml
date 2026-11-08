@@ -1,0 +1,41 @@
+slug: spinal-part-of-deltoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: spinal part of deltoid
+    source: fma
+    status: draft
+  fr:
+    text: partie spinale du muscle deltoïde
+    source: wikidata
+    status: draft
+ids:
+  fma: 34679
+  ta2: 2455
+  ta98: A04.6.02.005
+  wikidata: Q66524648
+sides:
+  left:
+    ids:
+      fma: 34685
+      wikidata: Q66524654
+    meshes:
+      - bp3d:FJ1513M
+    labels:
+      en:
+        text: spinal part of left deltoid
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 34684
+      wikidata: Q66524653
+    meshes:
+      - bp3d:FJ1513
+    labels:
+      en:
+        text: spinal part of right deltoid
+        source: fma
+        status: draft

@@ -1,0 +1,32 @@
+slug: prefrontal-cortex
+kind: organ
+laterality: bilateral
+status: draft
+parent: cortex-of-frontal-lobe
+labels:
+  en:
+    text: prefrontal cortex
+    source: fma
+    status: draft
+  fr:
+    text: cortex préfrontal
+    source: wikidata
+    status: draft
+  la:
+    text: Os praefrontale
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 224850
+  wikidata: Q18680
+sides:
+  left:
+    ids:
+      fma: 242627
+      wikidata: Q66599164
+  right:
+    ids:
+      fma: 242625
+      wikidata: Q66599163

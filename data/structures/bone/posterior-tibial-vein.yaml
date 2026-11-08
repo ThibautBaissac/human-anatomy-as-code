@@ -1,0 +1,39 @@
+slug: posterior-tibial-vein
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: posterior tibial vein
+    source: fma
+    status: draft
+  fr:
+    text: veine tibiale postérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Venae tibiales posteriores
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 44332
+  ta2: 5077
+  ta98: A12.3.11.032
+  wikidata: Q3448931
+sides:
+  left:
+    ids:
+      fma: 44339
+      wikidata: Q66534270
+    meshes:
+      - bp3d:FJ2118
+  right:
+    ids:
+      fma: 44338
+      wikidata: Q66534267
+    meshes:
+      - bp3d:FJ2173

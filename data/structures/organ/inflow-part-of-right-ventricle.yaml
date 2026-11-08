@@ -1,0 +1,13 @@
+slug: inflow-part-of-right-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: right-ventricle
+labels:
+  en:
+    text: inflow part of right ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 9552
+  wikidata: Q66504990

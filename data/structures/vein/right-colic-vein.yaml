@@ -1,0 +1,28 @@
+slug: right-colic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: right colic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine colique droite
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena colica dextra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15407
+  ta2: 5121
+  ta98: A12.3.12.026
+  wikidata: Q4115294
+meshes:
+  - bp3d:FJ3591

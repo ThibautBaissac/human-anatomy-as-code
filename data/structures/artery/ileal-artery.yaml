@@ -1,0 +1,15 @@
+slug: ileal-artery
+kind: artery
+laterality: midline
+status: draft
+parent: superior-mesenteric-artery
+labels:
+  en:
+    text: ileal artery
+    source: fma
+    status: draft
+ids:
+  fma: 14809
+  wikidata: Q66510843
+meshes:
+  - bp3d:FJ3437

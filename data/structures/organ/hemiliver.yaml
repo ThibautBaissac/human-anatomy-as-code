@@ -1,0 +1,22 @@
+slug: hemiliver
+kind: organ
+laterality: bilateral
+status: draft
+parent: liver
+labels:
+  en:
+    text: hemiliver
+    source: fma
+    status: draft
+ids:
+  fma: 15808
+  wikidata: Q66512583
+sides:
+  left:
+    ids:
+      fma: 15810
+      wikidata: Q66715673
+  right:
+    ids:
+      fma: 15809
+      wikidata: Q66512586

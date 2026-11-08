@@ -1,0 +1,40 @@
+slug: anterior-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: internal-carotid-artery
+labels:
+  en:
+    text: anterior cerebral artery
+    source: fma
+    status: draft
+  fr:
+    text: artère cérébrale antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria cerebri anterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50028
+  ta2: 4502
+  ta98: A12.2.07.022
+  wikidata: Q498935
+sides:
+  left:
+    ids:
+      fma: 50030
+      wikidata: Q66539243
+    meshes:
+      - bp3d:FJ1654M
+  right:
+    ids:
+      fma: 50029
+      wikidata: Q66539242
+    meshes:
+      - bp3d:FJ1654

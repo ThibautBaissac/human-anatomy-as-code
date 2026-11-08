@@ -1,0 +1,13 @@
+slug: superior-division-of-upper-lobe-part-of-left-bronchial-tree
+kind: organ
+laterality: midline
+status: draft
+parent: upper-lobe-part-of-bronchial-tree
+labels:
+  en:
+    text: superior division of upper lobe part of left bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68317
+  wikidata: Q66563919

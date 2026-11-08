@@ -1,0 +1,30 @@
+slug: lacrimal-apparatus
+kind: organ
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: lacrimal apparatus
+    source: fma
+    status: draft
+  fr:
+    text: appareil lacrymal
+    source: wikidata
+    status: draft
+ids:
+  fma: 55605
+  ta2: 6845
+  ta98: A15.2.07.056
+  wikidata: Q573181
+sides:
+  left:
+    ids:
+      fma: 59369
+      wikidata: Q66555820
+  right:
+    ids:
+      fma: 59368
+      wikidata: Q66555819

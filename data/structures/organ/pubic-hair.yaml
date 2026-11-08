@@ -1,0 +1,24 @@
+slug: pubic-hair
+kind: organ
+laterality: midline
+status: draft
+parent: mons-pubis
+regions:
+  - abdomen
+  - pelvis
+labels:
+  en:
+    text: pubic hair
+    source: fma
+    status: draft
+  fr:
+    text: pilosité pubienne
+    source: wikidata
+    status: draft
+ids:
+  fma: 54319
+  ta2: 7062
+  ta98: A16.0.00.022
+  wikidata: Q54795
+meshes:
+  - bp3d:FJ2815

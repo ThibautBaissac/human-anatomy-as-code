@@ -1,0 +1,30 @@
+slug: eyeball
+kind: group
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: eyeball
+    source: fma
+    status: draft
+  fr:
+    text: globe oculaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 12513
+  ta2: 6735
+  ta98: A15.2.01.001
+  wikidata: Q17486816
+sides:
+  left:
+    ids:
+      fma: 12515
+      wikidata: Q66507329
+  right:
+    ids:
+      fma: 12514
+      wikidata: Q66507328

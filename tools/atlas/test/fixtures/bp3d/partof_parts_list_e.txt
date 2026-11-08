@@ -1,0 +1,30 @@
+concept id	representation id	en
+FMA10427	BP0	body wall
+FMA12519	BP1	First cervical vertebra
+FMA13335	BP2	external oblique
+FMA20394	BP3	human body
+FMA24474	BP4	right femur
+FMA24475	BP5	left femur
+FMA24895	BP6	right arm
+FMA24896	BP7	left arm
+FMA24980	BP8	right lower limb
+FMA24981	BP9	left lower limb
+FMA37671	BP10	right biceps brachii
+FMA37672	BP11	left biceps brachii
+FMA37689	BP12	long head of right biceps brachii
+FMA37690	BP13	long head of left biceps brachii
+FMA3941	BP14	right common carotid artery
+FMA4058	BP15	left common carotid artery
+FMA5028	BP16	right lymphatic duct
+FMA70247	BP17	right femoral artery
+FMA70248	BP18	left femoral artery
+FMA7088	BP19	heart
+FMA7096	BP20	right atrium
+FMA7097	BP21	left atrium
+FMA7184	BP22	lower limb
+FMA7185	BP23	right upper limb
+FMA7186	BP24	left upper limb
+FMA7333	BP25	superior lobe of left lung
+FMA9300	BP26	anterior wall of left ventricle
+FMA9301	BP27	anterior wall of right ventricle
+FMA9576	BP28	thorax

@@ -1,0 +1,21 @@
+slug: brainstem
+kind: cns
+laterality: midline
+status: draft
+parent: basicranial-part-of-head-proper
+regions:
+  - head
+labels:
+  en:
+    text: brainstem
+    source: fma
+    status: draft
+  fr:
+    text: tronc cérébral
+    source: wikidata
+    status: draft
+ids:
+  fma: 79876
+  ta2: 5856
+  ta98: A14.1.03.009
+  wikidata: Q182228

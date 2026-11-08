@@ -1,0 +1,21 @@
+slug: respiratory-tract
+kind: organ
+laterality: midline
+status: draft
+parent: respiratory-system
+labels:
+  en:
+    text: respiratory tract
+    source: fma
+    status: draft
+  fr:
+    text: voies respiratoires
+    source: wikidata
+    status: draft
+  la:
+    text: Apparatus respiratorius
+    source: wikidata
+    status: draft
+ids:
+  fma: 265130
+  wikidata: Q13400765

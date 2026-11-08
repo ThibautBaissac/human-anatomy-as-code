@@ -1,0 +1,13 @@
+slug: fifth-thoracic-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: thoracic-vertebral-column
+labels:
+  en:
+    text: fifth thoracic intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26097
+  wikidata: Q66517325

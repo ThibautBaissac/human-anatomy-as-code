@@ -1,0 +1,13 @@
+slug: osseous-skeleton-of-nose
+kind: organ
+laterality: midline
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: osseous skeleton of nose
+    source: fma
+    status: draft
+ids:
+  fma: 59654
+  wikidata: Q66556078

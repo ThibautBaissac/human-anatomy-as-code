@@ -1,0 +1,35 @@
+slug: anterior-part-of-superior-temporal-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: anterior part of superior temporal gyrus
+    source: fma
+    status: draft
+ids:
+  fma: 70701
+  wikidata: Q66568646
+sides:
+  left:
+    ids:
+      fma: 72801
+      wikidata: Q66570296
+    meshes:
+      - bp3d:FJ1837
+    labels:
+      en:
+        text: anterior part of left superior temporal gyrus
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 72800
+      wikidata: Q66570295
+    meshes:
+      - bp3d:FJ1838
+    labels:
+      en:
+        text: anterior part of right superior temporal gyrus
+        source: fma
+        status: draft

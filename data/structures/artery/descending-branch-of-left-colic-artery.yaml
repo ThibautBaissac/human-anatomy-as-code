@@ -1,0 +1,19 @@
+slug: descending-branch-of-left-colic-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: descending branch of left colic artery
+    source: fma
+    status: draft
+  fr:
+    text: branche descendante de l'artère colique gauche
+    source: wikidata
+    status: draft
+ids:
+  fma: 14829
+  ta2: 4294
+  wikidata: Q38047668
+meshes:
+  - bp3d:FJ3428

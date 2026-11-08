@@ -1,0 +1,35 @@
+slug: second-lumbrical-of-foot
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: second lumbrical of foot
+    source: fma
+    status: draft
+ids:
+  fma: 37480
+  wikidata: Q66526799
+sides:
+  left:
+    ids:
+      fma: 37720
+      wikidata: Q66526986
+    meshes:
+      - bp3d:FJ1385M
+    labels:
+      en:
+        text: second lumbrical of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37719
+      wikidata: Q66526985
+    meshes:
+      - bp3d:FJ1385
+    labels:
+      en:
+        text: second lumbrical of right foot
+        source: fma
+        status: draft

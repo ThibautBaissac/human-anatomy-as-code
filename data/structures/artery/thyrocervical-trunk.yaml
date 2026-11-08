@@ -1,0 +1,36 @@
+slug: thyrocervical-trunk
+kind: artery
+laterality: bilateral
+status: draft
+parent: thyrocervical-artery
+labels:
+  en:
+    text: thyrocervical trunk
+    source: fma
+    status: draft
+  fr:
+    text: tronc thyro-cervical
+    source: wikidata
+    status: draft
+  la:
+    text: truncus thyrocervicalis
+    source: wikidata
+    status: draft
+ids:
+  fma: 3990
+  ta2: 4590
+  ta98: A12.2.08.042
+  wikidata: Q2456456
+sides:
+  left:
+    ids:
+      fma: 4084
+      wikidata: Q66499681
+    meshes:
+      - bp3d:FJ2255
+  right:
+    ids:
+      fma: 3992
+      wikidata: Q66499559
+    meshes:
+      - bp3d:FJ2307

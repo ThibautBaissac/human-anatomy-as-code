@@ -1,0 +1,40 @@
+slug: common-iliac-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: common iliac artery
+    source: fma
+    status: draft
+  fr:
+    text: artère iliaque commune
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria iliaca communis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14764
+  ta2: 4301
+  ta98: A12.2.14.001
+  wikidata: Q707257
+sides:
+  left:
+    ids:
+      fma: 14766
+      wikidata: Q66510796
+    meshes:
+      - bp3d:FJ3464
+  right:
+    ids:
+      fma: 14765
+      wikidata: Q66510793
+    meshes:
+      - bp3d:FJ3565

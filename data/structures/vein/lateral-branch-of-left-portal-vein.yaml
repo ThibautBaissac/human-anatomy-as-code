@@ -1,0 +1,20 @@
+slug: lateral-branch-of-left-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: portal-vein
+labels:
+  en:
+    text: lateral branch of left portal vein
+    source: fma
+    status: draft
+  fr:
+    text: rameau latéral de la partie ombilicale du rameau gauche de la veine porte hépatique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15430
+  ta2: 5102
+  wikidata: Q66512020

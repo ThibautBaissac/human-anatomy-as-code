@@ -1,0 +1,13 @@
+slug: compartment-of-thorax
+kind: group
+laterality: midline
+status: draft
+parent: body-compartment
+labels:
+  en:
+    text: compartment of thorax
+    source: fma
+    status: draft
+ids:
+  fma: 85008
+  wikidata: Q66591410

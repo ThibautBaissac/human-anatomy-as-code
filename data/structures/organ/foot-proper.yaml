@@ -1,0 +1,25 @@
+slug: foot-proper
+kind: organ
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: foot proper
+    source: fma
+    status: draft
+ids:
+  fma: 73084
+  wikidata: Q66570556
+sides:
+  left:
+    ids:
+      fma: 73087
+      wikidata: Q66570559
+  right:
+    ids:
+      fma: 73086
+      wikidata: Q66570558

@@ -1,0 +1,40 @@
+slug: superior-epigastric-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: internal-thoracic-artery
+labels:
+  en:
+    text: superior epigastric artery
+    source: fma
+    status: draft
+  fr:
+    text: artère épigastrique supérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria epigastrica superior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 10646
+  ta2: 4588
+  ta98: A12.2.08.041
+  wikidata: Q707152
+sides:
+  left:
+    ids:
+      fma: 4083
+      wikidata: Q66499678
+    meshes:
+      - bp3d:FJ1971
+  right:
+    ids:
+      fma: 3988
+      wikidata: Q66499558
+    meshes:
+      - bp3d:FJ1936

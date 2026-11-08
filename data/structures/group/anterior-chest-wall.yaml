@@ -1,0 +1,15 @@
+slug: anterior-chest-wall
+kind: group
+laterality: midline
+status: draft
+parent: chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: anterior chest wall
+    source: fma
+    status: draft
+ids:
+  fma: 87543
+  wikidata: Q66593322

@@ -1,0 +1,35 @@
+slug: set-of-dorsal-interossei-of-hand
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: set of dorsal interossei of hand
+    source: fma
+    status: draft
+ids:
+  fma: 71319
+  wikidata: Q66569107
+sides:
+  left:
+    ids:
+      fma: 42405
+      wikidata: Q66530445
+    meshes:
+      - bp3d:FJ1509M
+    labels:
+      en:
+        text: set of dorsal interossei of left hand
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 42404
+      wikidata: Q66530444
+    meshes:
+      - bp3d:FJ1509
+    labels:
+      en:
+        text: set of dorsal interossei of right hand
+        source: fma
+        status: draft

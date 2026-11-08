@@ -1,0 +1,39 @@
+slug: superficial-epigastric-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superficial epigastric vein
+    source: fma
+    status: draft
+  fr:
+    text: veine épigastrique superficielle
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena epigastrica superficialis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 44318
+  ta2: 5067
+  ta98: A12.3.11.006
+  wikidata: Q7643313
+sides:
+  left:
+    ids:
+      fma: 44341
+      wikidata: Q66534275
+    meshes:
+      - bp3d:FJ2122
+  right:
+    ids:
+      fma: 44340
+      wikidata: Q66534272
+    meshes:
+      - bp3d:FJ2178

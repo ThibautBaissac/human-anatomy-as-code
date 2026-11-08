@@ -1,0 +1,15 @@
+slug: hepatovenous-segment-vi
+kind: vein
+laterality: midline
+status: draft
+parent: posterior-sector-of-liver
+labels:
+  en:
+    text: hepatovenous segment vi
+    source: fma
+    status: draft
+ids:
+  fma: 15744
+  wikidata: Q66512441
+meshes:
+  - bp3d:FJ2822

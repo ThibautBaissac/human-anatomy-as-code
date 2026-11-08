@@ -1,0 +1,28 @@
+slug: splenic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: splenic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine splénique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena lienalis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14331
+  ta2: 5123
+  ta98: A12.3.12.028
+  wikidata: Q3091615
+meshes:
+  - bp3d:FJ3641

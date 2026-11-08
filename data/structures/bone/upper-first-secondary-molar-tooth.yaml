@@ -1,0 +1,25 @@
+slug: upper-first-secondary-molar-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: upper first secondary molar tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55811
+  wikidata: Q66545416
+sides:
+  left:
+    ids:
+      fma: 55699
+      wikidata: Q66545318
+    meshes:
+      - bp3d:FJ1261
+  right:
+    ids:
+      fma: 55698
+      wikidata: Q66545317
+    meshes:
+      - bp3d:FJ1276

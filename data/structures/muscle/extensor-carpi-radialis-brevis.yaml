@@ -1,0 +1,39 @@
+slug: extensor-carpi-radialis-brevis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor carpi radialis brevis
+    source: fma
+    status: draft
+  fr:
+    text: muscle court extenseur radial du carpe
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor carpi radialis brevis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38497
+  ta2: 2499
+  ta98: A04.6.02.041
+  wikidata: Q847458
+sides:
+  left:
+    ids:
+      fma: 38499
+      wikidata: Q66527662
+    meshes:
+      - bp3d:FJ1489M
+  right:
+    ids:
+      fma: 38498
+      wikidata: Q66527661
+    meshes:
+      - bp3d:FJ1489

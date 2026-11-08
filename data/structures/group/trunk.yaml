@@ -1,0 +1,23 @@
+slug: trunk
+kind: group
+laterality: midline
+status: draft
+parent: body-proper
+labels:
+  en:
+    text: trunk
+    source: fma
+    status: draft
+  fr:
+    text: tronc
+    source: wikidata
+    status: draft
+  la:
+    text: Truncus
+    source: wikidata
+    status: draft
+ids:
+  fma: 7181
+  ta2: 124
+  ta98: A14.2.03.003
+  wikidata: Q160695

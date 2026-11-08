@@ -1,0 +1,15 @@
+slug: second-right-anterior-branch-of-anterior-interventricular-branch-of-left-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: anterior-interventricular-branch-of-left-coronary-artery
+labels:
+  en:
+    text: second right anterior branch of anterior interventricular branch of left coronary artery
+    source: fma
+    status: draft
+ids:
+  fma: 3874
+  wikidata: Q66499474
+meshes:
+  - bp3d:FJ2646

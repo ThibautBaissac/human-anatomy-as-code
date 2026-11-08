@@ -1,0 +1,15 @@
+slug: subaortic-curtain-of-left-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: outflow-part-of-left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: subaortic curtain of left ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 9348
+  wikidata: Q66504825

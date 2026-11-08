@@ -1,0 +1,15 @@
+slug: trunk-of-gastroduodenal-artery
+kind: artery
+laterality: midline
+status: draft
+parent: gastroduodenal-artery
+labels:
+  en:
+    text: trunk of gastroduodenal artery
+    source: fma
+    status: draft
+ids:
+  fma: 76574
+  wikidata: Q66573963
+meshes:
+  - bp3d:FJ3432

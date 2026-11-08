@@ -1,0 +1,22 @@
+slug: bronchial-tree
+kind: organ
+laterality: bilateral
+status: draft
+parent: tracheobronchial-tree
+labels:
+  en:
+    text: bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 26660
+  wikidata: Q66517812
+sides:
+  left:
+    ids:
+      fma: 26662
+      wikidata: Q66517814
+  right:
+    ids:
+      fma: 26661
+      wikidata: Q66517813

@@ -1,0 +1,34 @@
+slug: hand
+kind: organ
+laterality: bilateral
+status: draft
+parent: free-upper-limb
+regions:
+  - upper-limb
+labels:
+  en:
+    text: hand
+    source: fma
+    status: draft
+  fr:
+    text: main
+    source: wikidata
+    status: draft
+  la:
+    text: manus
+    source: wikidata
+    status: draft
+ids:
+  fma: 9712
+  ta2: 148
+  ta98: A01.1.00.025
+  wikidata: Q33767
+sides:
+  left:
+    ids:
+      fma: 9714
+      wikidata: Q24206676
+  right:
+    ids:
+      fma: 9713
+      wikidata: Q24206677

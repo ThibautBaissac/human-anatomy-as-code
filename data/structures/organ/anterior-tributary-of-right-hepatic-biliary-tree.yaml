@@ -1,0 +1,13 @@
+slug: anterior-tributary-of-right-hepatic-biliary-tree
+kind: organ
+laterality: midline
+status: draft
+parent: hepatic-biliary-tree
+labels:
+  en:
+    text: anterior tributary of right hepatic biliary tree
+    source: fma
+    status: draft
+ids:
+  fma: 71861
+  wikidata: Q66569553

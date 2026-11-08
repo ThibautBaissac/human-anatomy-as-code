@@ -1,0 +1,17 @@
+slug: superior-branch-of-right-superior-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: superior-segmental-artery
+labels:
+  en:
+    text: superior branch of right superior segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68709
+  wikidata: Q66564259
+meshes:
+  - bp3d:FJ2997
+  - bp3d:FJ2998
+  - bp3d:FJ2999

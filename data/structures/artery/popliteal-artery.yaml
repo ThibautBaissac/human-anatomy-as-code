@@ -1,0 +1,40 @@
+slug: popliteal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: external-iliac-artery
+labels:
+  en:
+    text: popliteal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère poplitée
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria poplitea
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 77155
+  ta2: 4699
+  ta98: A12.2.16.033
+  wikidata: Q707468
+sides:
+  left:
+    ids:
+      fma: 77381
+      wikidata: Q66574997
+    meshes:
+      - bp3d:FJ2086
+  right:
+    ids:
+      fma: 77380
+      wikidata: Q66574996
+    meshes:
+      - bp3d:FJ2170

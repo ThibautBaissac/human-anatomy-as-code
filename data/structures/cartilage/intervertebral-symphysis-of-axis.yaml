@@ -1,0 +1,13 @@
+slug: intervertebral-symphysis-of-axis
+kind: cartilage
+laterality: midline
+status: draft
+parent: cervical-vertebral-column
+labels:
+  en:
+    text: intervertebral symphysis of axis
+    source: fma
+    status: draft
+ids:
+  fma: 25571
+  wikidata: Q66516860

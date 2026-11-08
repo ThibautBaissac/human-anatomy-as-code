@@ -1,0 +1,25 @@
+slug: upper-lateral-secondary-incisor-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: upper lateral secondary incisor tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55724
+  wikidata: Q66545343
+sides:
+  left:
+    ids:
+      fma: 55683
+      wikidata: Q66545304
+    meshes:
+      - bp3d:FJ1266
+  right:
+    ids:
+      fma: 55680
+      wikidata: Q66545301
+    meshes:
+      - bp3d:FJ1280

@@ -1,0 +1,34 @@
+slug: cheek
+kind: organ
+laterality: bilateral
+status: draft
+parent: face
+regions:
+  - head
+labels:
+  en:
+    text: cheek
+    source: fma
+    status: draft
+  fr:
+    text: joue
+    source: wikidata
+    status: draft
+  la:
+    text: mala
+    source: wikidata
+    status: draft
+ids:
+  fma: 46476
+  ta2: 116
+  ta98: A05.1.01.014
+  wikidata: Q47038
+sides:
+  left:
+    ids:
+      fma: 53638
+      wikidata: Q66543681
+  right:
+    ids:
+      fma: 53637
+      wikidata: Q66543680

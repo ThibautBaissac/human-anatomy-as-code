@@ -1,0 +1,19 @@
+slug: deep-femoral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: femoral-artery
+labels:
+  en:
+    text: deep femoral artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 20797
+      wikidata: Q66512559
+  right:
+    ids:
+      fma: 20796
+      wikidata: Q66512557

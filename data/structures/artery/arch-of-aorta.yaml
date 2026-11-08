@@ -1,0 +1,25 @@
+slug: arch-of-aorta
+kind: artery
+laterality: midline
+status: draft
+parent: aorta
+labels:
+  en:
+    text: arch of aorta
+    source: fma
+    status: draft
+  fr:
+    text: arc de l'aorte
+    source: wikidata
+    status: draft
+  la:
+    text: Arcus aortae
+    source: wikidata
+    status: draft
+ids:
+  fma: 3768
+  ta2: 4177
+  ta98: A12.2.04.001
+  wikidata: Q616032
+meshes:
+  - bp3d:FJ3411

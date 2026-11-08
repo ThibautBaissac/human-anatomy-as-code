@@ -1,0 +1,39 @@
+slug: middle-genicular-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: middle genicular artery
+    source: fma
+    status: draft
+  fr:
+    text: artère moyenne du genou
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria media genus
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22536
+  ta2: 4702
+  ta98: A12.2.16.036
+  wikidata: Q707208
+sides:
+  left:
+    ids:
+      fma: 22563
+      wikidata: Q66514580
+    meshes:
+      - bp3d:FJ2084
+  right:
+    ids:
+      fma: 22562
+      wikidata: Q66514579
+    meshes:
+      - bp3d:FJ2167

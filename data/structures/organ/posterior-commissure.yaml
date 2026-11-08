@@ -1,0 +1,20 @@
+slug: posterior-commissure
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: posterior commissure
+    source: fma
+    status: draft
+  fr:
+    text: commissure postérieure
+    source: wikidata
+    status: draft
+ids:
+  fma: 62072
+  ta2: 5749
+  ta98: A14.1.08.416
+  wikidata: Q915729
+meshes:
+  - bp3d:FJ1799

@@ -1,0 +1,24 @@
+slug: spleen
+kind: cns
+laterality: midline
+status: draft
+labels:
+  en:
+    text: spleen
+    source: fma
+    status: draft
+  fr:
+    text: rate
+    source: wikidata
+    status: draft
+  la:
+    text: lien
+    source: wikidata
+    status: draft
+ids:
+  fma: 7196
+  ta2: 5159
+  ta98: A13.2.01.001
+  wikidata: Q9371
+meshes:
+  - bp3d:FJ2561

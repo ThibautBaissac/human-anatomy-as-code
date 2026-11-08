@@ -1,0 +1,34 @@
+slug: major-alar-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+parent: cartilaginous-skeleton-of-external-nose
+regions:
+  - head
+labels:
+  en:
+    text: major alar cartilage
+    source: fma
+    status: draft
+  fr:
+    text: grand cartilage alaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 59504
+  ta2: 940
+  ta98: A06.1.01.007
+  wikidata: Q5600832
+sides:
+  left:
+    ids:
+      fma: 59506
+      wikidata: Q66555940
+    meshes:
+      - bp3d:FJ2555
+  right:
+    ids:
+      fma: 59505
+      wikidata: Q66555939
+    meshes:
+      - bp3d:FJ2554

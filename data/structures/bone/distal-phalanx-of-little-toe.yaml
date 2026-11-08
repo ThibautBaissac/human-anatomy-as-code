@@ -1,0 +1,39 @@
+slug: distal-phalanx-of-little-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: little-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: distal phalanx of little toe
+    source: fma
+    status: draft
+ids:
+  fma: 32631
+  wikidata: Q66523099
+sides:
+  left:
+    ids:
+      fma: 32659
+      wikidata: Q66523124
+    meshes:
+      - bp3d:FJ3185
+    labels:
+      en:
+        text: distal phalanx of left little toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32658
+      wikidata: Q66523123
+    meshes:
+      - bp3d:FJ3195
+    labels:
+      en:
+        text: distal phalanx of right little toe
+        source: fma
+        status: draft

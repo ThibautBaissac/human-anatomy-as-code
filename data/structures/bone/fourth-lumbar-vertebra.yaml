@@ -1,0 +1,19 @@
+slug: fourth-lumbar-vertebra
+kind: bone
+laterality: midline
+status: draft
+parent: set-of-lumbar-vertebrae
+labels:
+  en:
+    text: fourth lumbar vertebra
+    source: fma
+    status: draft
+  fr:
+    text: quatrième vertèbre lombaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 13075
+  wikidata: Q46993008
+meshes:
+  - bp3d:FJ3165

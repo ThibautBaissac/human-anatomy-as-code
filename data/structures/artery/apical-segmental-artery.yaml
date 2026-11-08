@@ -1,0 +1,37 @@
+slug: apical-segmental-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: apical-bronchopulmonary-segment
+labels:
+  en:
+    text: apical segmental artery
+    source: fma
+    status: draft
+  fr:
+    text: artère segmentaire apicale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8707
+  wikidata: Q66504270
+sides:
+  left:
+    ids:
+      fma: 8634
+      ta2: 4095
+      ta98: A12.2.01.204
+      wikidata: Q66504097
+    meshes:
+      - bp3d:FJ2915
+      - bp3d:FJ2916
+      - bp3d:FJ2917
+      - bp3d:FJ2918
+  right:
+    ids:
+      fma: 8617
+      ta2: 4079
+      ta98: A12.2.01.103
+      wikidata: Q66504084

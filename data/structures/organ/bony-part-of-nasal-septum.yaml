@@ -1,0 +1,21 @@
+slug: bony-part-of-nasal-septum
+kind: organ
+laterality: midline
+status: draft
+parent: skeleton-of-nasal-septum
+regions:
+  - head
+labels:
+  en:
+    text: bony part of nasal septum
+    source: fma
+    status: draft
+  fr:
+    text: partie osseuse du septum nasal
+    source: wikidata
+    status: draft
+ids:
+  fma: 59837
+  ta2: 491
+  ta98: A06.1.02.007
+  wikidata: Q66556244

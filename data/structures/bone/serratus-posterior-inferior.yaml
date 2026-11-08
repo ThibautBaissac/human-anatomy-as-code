@@ -1,0 +1,39 @@
+slug: serratus-posterior-inferior
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: serratus posterior inferior
+    source: fma
+    status: draft
+  fr:
+    text: muscle dentelé postérieur et inférieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus serratus posterior inferior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13402
+  ta2: 2235
+  ta98: A04.3.01.010
+  wikidata: Q920567
+sides:
+  left:
+    ids:
+      fma: 13406
+      wikidata: Q66508076
+    meshes:
+      - bp3d:FJ1541M
+  right:
+    ids:
+      fma: 13405
+      wikidata: Q66508075
+    meshes:
+      - bp3d:FJ1541

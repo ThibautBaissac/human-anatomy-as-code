@@ -1,0 +1,23 @@
+slug: urinary-system
+kind: group
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: urinary system
+    source: fma
+    status: draft
+  fr:
+    text: appareil urinaire
+    source: wikidata
+    status: draft
+  la:
+    text: Systema urinarium
+    source: wikidata
+    status: draft
+ids:
+  fma: 7159
+  ta2: 3357
+  ta98: A08.0.00.000
+  wikidata: Q181100

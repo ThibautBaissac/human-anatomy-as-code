@@ -1,0 +1,39 @@
+slug: scalenus-anterior
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: scalenus anterior
+    source: fma
+    status: draft
+  fr:
+    text: muscle scalène antérieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus scalenus anterior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13385
+  ta2: 2152
+  ta98: A04.2.01.004
+  wikidata: Q914148
+sides:
+  left:
+    ids:
+      fma: 13393
+      wikidata: Q66508067
+    meshes:
+      - bp3d:FJ1570
+  right:
+    ids:
+      fma: 13392
+      wikidata: Q66508066
+    meshes:
+      - bp3d:FJ1592

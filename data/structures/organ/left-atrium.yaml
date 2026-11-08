@@ -1,0 +1,21 @@
+slug: left-atrium
+kind: organ
+laterality: midline
+status: draft
+parent: side-of-heart
+regions:
+  - thorax
+labels:
+  en:
+    text: left atrium
+    source: fma
+    status: draft
+  fr:
+    text: atrium gauche
+    source: wikidata
+    status: draft
+ids:
+  fma: 7097
+  ta2: 4054
+  ta98: A12.1.03.001
+  wikidata: Q1989441

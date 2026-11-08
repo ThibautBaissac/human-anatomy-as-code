@@ -1,0 +1,39 @@
+slug: thalamogeniculate-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: posterior-cerebral-artery
+labels:
+  en:
+    text: thalamogeniculate artery
+    source: fma
+    status: draft
+  fr:
+    text: artère thalamogéniculée
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria thalamogeniculata
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50629
+  ta98: A12.2.07.090
+  wikidata: Q7709513
+sides:
+  left:
+    ids:
+      fma: 50671
+      wikidata: Q66539830
+    meshes:
+      - bp3d:FJ1675M
+  right:
+    ids:
+      fma: 50670
+      wikidata: Q66539828
+    meshes:
+      - bp3d:FJ1675

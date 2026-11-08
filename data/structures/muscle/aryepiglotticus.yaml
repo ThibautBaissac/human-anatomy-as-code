@@ -1,0 +1,37 @@
+slug: aryepiglotticus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: aryepiglotticus
+    source: fma
+    status: draft
+  fr:
+    text: partie aryépiglottique du muscle aryténoïdien oblique
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus aryepiglotticus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46602
+  ta2: 2204
+  ta98: A06.2.08.011
+  wikidata: Q385089
+sides:
+  left:
+    ids:
+      fma: 46605
+      wikidata: Q66536617
+    meshes:
+      - bp3d:FJ2774
+  right:
+    ids:
+      fma: 46604
+      wikidata: Q66536616
+    meshes:
+      - bp3d:FJ2791

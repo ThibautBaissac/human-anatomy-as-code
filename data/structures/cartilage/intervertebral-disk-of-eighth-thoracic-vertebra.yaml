@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-eighth-thoracic-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: eighth-thoracic-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of eighth thoracic vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13505
+  wikidata: Q66508187
+meshes:
+  - bp3d:FJ3207

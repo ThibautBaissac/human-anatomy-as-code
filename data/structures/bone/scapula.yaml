@@ -1,0 +1,38 @@
+slug: scapula
+kind: bone
+laterality: bilateral
+status: draft
+parent: skeleton-of-pectoral-girdle
+regions:
+  - upper-limb
+labels:
+  en:
+    text: scapula
+    source: fma
+    status: draft
+  fr:
+    text: scapula
+    source: wikidata
+    status: draft
+  la:
+    text: Scapula
+    source: wikidata
+    status: draft
+ids:
+  fma: 13394
+  ta2: 1143
+  ta98: A02.4.01.001
+  wikidata: Q16336
+sides:
+  left:
+    ids:
+      fma: 13396
+      wikidata: Q66508069
+    meshes:
+      - bp3d:FJ3279
+  right:
+    ids:
+      fma: 13395
+      wikidata: Q66508068
+    meshes:
+      - bp3d:FJ3384

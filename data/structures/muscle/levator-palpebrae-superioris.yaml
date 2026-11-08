@@ -1,0 +1,42 @@
+slug: levator-palpebrae-superioris
+kind: muscle
+laterality: bilateral
+status: draft
+parent: upper-eyelid
+regions:
+  - head
+labels:
+  en:
+    text: levator palpebrae superioris
+    source: fma
+    status: draft
+  fr:
+    text: muscle releveur de la paupière supérieure
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus levator palpebrae superioris
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 49041
+  ta2: 2052
+  ta98: A15.2.07.020
+  wikidata: Q932908
+sides:
+  left:
+    ids:
+      fma: 49049
+      wikidata: Q66538463
+    meshes:
+      - bp3d:FJ1306
+  right:
+    ids:
+      fma: 49048
+      wikidata: Q66538462
+    meshes:
+      - bp3d:FJ1357

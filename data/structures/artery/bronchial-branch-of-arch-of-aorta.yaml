@@ -1,0 +1,14 @@
+slug: bronchial-branch-of-arch-of-aorta
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: bronchial branch of arch of aorta
+    source: fma
+    status: draft
+ids:
+  fma: 14177
+  wikidata: Q66509120
+meshes:
+  - bp3d:FJ3418

@@ -1,0 +1,39 @@
+slug: flexor-digitorum-longus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor digitorum longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle fléchisseur commun des orteils
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus flexor digitorum longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 51071
+  ta2: 2667
+  ta98: A04.7.02.052
+  wikidata: Q1892025
+sides:
+  left:
+    ids:
+      fma: 65017
+      wikidata: Q66561336
+    meshes:
+      - bp3d:FJ1414M
+  right:
+    ids:
+      fma: 65016
+      wikidata: Q66561334
+    meshes:
+      - bp3d:FJ1414

@@ -1,0 +1,39 @@
+slug: brachioradialis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: brachioradialis
+    source: fma
+    status: draft
+  fr:
+    text: muscle brachio-radial
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus brachioradialis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38485
+  ta2: 2496
+  ta98: A04.6.02.039
+  wikidata: Q385484
+sides:
+  left:
+    ids:
+      fma: 38487
+      wikidata: Q66527656
+    meshes:
+      - bp3d:FJ1487M
+  right:
+    ids:
+      fma: 38486
+      wikidata: Q66527655
+    meshes:
+      - bp3d:FJ1487

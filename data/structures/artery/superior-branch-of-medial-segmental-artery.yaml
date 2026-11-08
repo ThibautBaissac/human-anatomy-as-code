@@ -1,0 +1,16 @@
+slug: superior-branch-of-medial-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: medial-segmental-artery
+labels:
+  en:
+    text: superior branch of medial segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68693
+  wikidata: Q66564244
+meshes:
+  - bp3d:FJ2986
+  - bp3d:FJ2990

@@ -1,0 +1,15 @@
+slug: investing-fascia-of-right-upper-limb
+kind: fascia
+laterality: midline
+status: draft
+parent: upper-limb
+regions:
+  - upper-limb
+labels:
+  en:
+    text: investing fascia of right upper limb
+    source: fma
+    status: draft
+ids:
+  fma: 58401
+  wikidata: Q66554978

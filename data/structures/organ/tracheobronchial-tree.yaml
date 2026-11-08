@@ -1,0 +1,13 @@
+slug: tracheobronchial-tree
+kind: organ
+laterality: midline
+status: draft
+parent: lower-respiratory-tract
+labels:
+  en:
+    text: tracheobronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 7393
+  wikidata: Q66502939

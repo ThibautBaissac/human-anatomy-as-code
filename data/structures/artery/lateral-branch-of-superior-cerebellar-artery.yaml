@@ -1,0 +1,32 @@
+slug: lateral-branch-of-superior-cerebellar-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral branch of superior cerebellar artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 50579
+      wikidata: Q66539714
+    meshes:
+      - bp3d:FJ1683M
+    labels:
+      en:
+        text: lateral branch of left superior cerebellar artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50578
+      wikidata: Q66539713
+    meshes:
+      - bp3d:FJ1683
+    labels:
+      en:
+        text: lateral branch of right superior cerebellar artery
+        source: fma
+        status: draft

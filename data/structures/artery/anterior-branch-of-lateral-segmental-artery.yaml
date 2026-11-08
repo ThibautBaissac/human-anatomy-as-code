@@ -1,0 +1,16 @@
+slug: anterior-branch-of-lateral-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: lateral-segmental-artery
+labels:
+  en:
+    text: anterior branch of lateral segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68691
+  wikidata: Q66564242
+meshes:
+  - bp3d:FJ2982
+  - bp3d:FJ2985

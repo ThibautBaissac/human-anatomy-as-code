@@ -1,0 +1,19 @@
+slug: vertebral-column
+kind: group
+laterality: midline
+status: draft
+parent: axial-skeleton
+labels:
+  en:
+    text: vertebral column
+    source: fma
+    status: draft
+  fr:
+    text: colonne vertébrale humaine
+    source: wikidata
+    status: draft
+ids:
+  fma: 13478
+  ta2: 1001
+  ta98: A02.2.00.001
+  wikidata: Q1979420

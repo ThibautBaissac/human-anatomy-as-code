@@ -1,0 +1,20 @@
+slug: linea-alba
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: linea alba
+    source: fma
+    status: draft
+  fr:
+    text: ligne blanche
+    source: wikidata
+    status: draft
+ids:
+  fma: 11336
+  ta2: 2377
+  ta98: A04.5.01.022
+  wikidata: Q942068
+meshes:
+  - bp3d:FJ1448

@@ -1,0 +1,29 @@
+slug: intrapulmonary-part-of-pulmonary-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: lung
+labels:
+  en:
+    text: intrapulmonary part of pulmonary artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 67995
+      wikidata: Q66563641
+    labels:
+      en:
+        text: intrapulmonary part of left pulmonary artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 67994
+      wikidata: Q66563640
+    labels:
+      en:
+        text: intrapulmonary part of right pulmonary artery
+        source: fma
+        status: draft

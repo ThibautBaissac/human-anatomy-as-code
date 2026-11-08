@@ -1,0 +1,25 @@
+slug: first-common-palmar-digital-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: first common palmar digital artery
+    source: fma
+    status: draft
+ids:
+  fma: 22854
+  wikidata: Q66514844
+sides:
+  left:
+    ids:
+      fma: 85118
+      wikidata: Q66591511
+    meshes:
+      - bp3d:FJ2315
+  right:
+    ids:
+      fma: 22856
+      wikidata: Q66514846
+    meshes:
+      - bp3d:FJ2343

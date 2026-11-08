@@ -1,0 +1,23 @@
+slug: alimentary-system
+kind: group
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: alimentary system
+    source: fma
+    status: draft
+  fr:
+    text: appareil digestif humain
+    source: wikidata
+    status: draft
+  la:
+    text: Apparatus digestorius humanum
+    source: wikidata
+    status: draft
+ids:
+  fma: 7152
+  ta2: 2773
+  ta98: A05.0.00.000
+  wikidata: Q9649

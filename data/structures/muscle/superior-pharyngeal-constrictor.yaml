@@ -1,0 +1,39 @@
+slug: superior-pharyngeal-constrictor
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superior pharyngeal constrictor
+    source: fma
+    status: draft
+  fr:
+    text: muscle constricteur supérieur du pharynx
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus constrictor pharyngis superior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46621
+  ta2: 2179
+  ta98: A05.3.01.103
+  wikidata: Q537486
+sides:
+  left:
+    ids:
+      fma: 46632
+      wikidata: Q66536633
+    meshes:
+      - bp3d:FJ2747
+  right:
+    ids:
+      fma: 46631
+      wikidata: Q66536632
+    meshes:
+      - bp3d:FJ2759

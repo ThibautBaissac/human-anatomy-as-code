@@ -1,0 +1,13 @@
+slug: skeleton-in-vivo
+kind: group
+laterality: midline
+status: draft
+parent: skeletal-system
+labels:
+  en:
+    text: skeleton (in vivo)
+    source: fma
+    status: draft
+ids:
+  fma: 23876
+  wikidata: Q66515589

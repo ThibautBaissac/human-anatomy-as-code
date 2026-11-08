@@ -1,0 +1,39 @@
+slug: salpingopharyngeus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: salpingopharyngeus
+    source: fma
+    status: draft
+  fr:
+    text: muscle salpingo-pharyngien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus salpingopharyngeus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46665
+  ta2: 2191
+  ta98: A05.3.01.115
+  wikidata: Q1075747
+sides:
+  left:
+    ids:
+      fma: 46670
+      wikidata: Q66536668
+    meshes:
+      - bp3d:FJ2745
+  right:
+    ids:
+      fma: 46669
+      wikidata: Q66536667
+    meshes:
+      - bp3d:FJ2757

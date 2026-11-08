@@ -1,0 +1,39 @@
+slug: abductor-pollicis-brevis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: abductor pollicis brevis
+    source: fma
+    status: draft
+  fr:
+    text: muscle court abducteur du pouce
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus abductor pollicis brevis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37373
+  ta2: 2521
+  ta98: A04.6.02.054
+  wikidata: Q337824
+sides:
+  left:
+    ids:
+      fma: 37387
+      wikidata: Q66526731
+    meshes:
+      - bp3d:FJ1483M
+  right:
+    ids:
+      fma: 37386
+      wikidata: Q66526730
+    meshes:
+      - bp3d:FJ1483

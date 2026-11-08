@@ -1,0 +1,22 @@
+slug: thyro-epiglottic-ligament
+kind: ligament
+laterality: midline
+status: draft
+labels:
+  en:
+    text: thyro-epiglottic ligament
+    source: fma
+    status: draft
+  fr:
+    text: ligament thyro-épiglottique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 55230
+  ta2: 1655
+  ta98: A06.2.07.005
+  wikidata: Q7799734
+meshes:
+  - bp3d:FJ2807

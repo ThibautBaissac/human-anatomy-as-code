@@ -1,0 +1,38 @@
+slug: posterior-vein-of-left-ventricle
+kind: vein
+laterality: midline
+status: draft
+parent: coronary-sinus-tree
+labels:
+  en:
+    text: posterior vein of left ventricle
+    source: fma
+    status: draft
+  fr:
+    text: veine postérieure du ventricule gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena ventriculi sinistri posterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4712
+  ta2: 4162
+  ta98: A12.3.01.006
+  wikidata: Q7234258
+meshes:
+  - bp3d:FJ2701
+  - bp3d:FJ2702
+  - bp3d:FJ2706
+  - bp3d:FJ2707
+  - bp3d:FJ2708
+  - bp3d:FJ2709
+  - bp3d:FJ2710
+  - bp3d:FJ2711
+  - bp3d:FJ2712
+  - bp3d:FJ2713

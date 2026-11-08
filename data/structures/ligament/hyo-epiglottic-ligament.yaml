@@ -1,0 +1,22 @@
+slug: hyo-epiglottic-ligament
+kind: ligament
+laterality: midline
+status: draft
+labels:
+  en:
+    text: hyo-epiglottic ligament
+    source: fma
+    status: draft
+  fr:
+    text: ligament hyo-épiglottique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 55227
+  ta2: 1656
+  ta98: A06.2.07.006
+  wikidata: Q1130000
+meshes:
+  - bp3d:FJ2771

@@ -1,0 +1,29 @@
+slug: superior-vena-cava
+kind: vein
+laterality: midline
+status: draft
+parent: superior-systemic-venous-tree
+labels:
+  en:
+    text: superior vena cava
+    source: fma
+    status: draft
+  fr:
+    text: veine cave supérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: vena cava superior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4720
+  ta2: 4745
+  ta98: A12.3.03.001
+  wikidata: Q736995
+meshes:
+  - bp3d:FJ3645

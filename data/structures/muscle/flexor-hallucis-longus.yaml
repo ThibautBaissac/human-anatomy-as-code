@@ -1,0 +1,39 @@
+slug: flexor-hallucis-longus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor hallucis longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle long fléchisseur de l'hallux
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus flexor hallucis longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22593
+  ta2: 2668
+  ta98: A04.7.02.053
+  wikidata: Q1500559
+sides:
+  left:
+    ids:
+      fma: 65015
+      wikidata: Q66561332
+    meshes:
+      - bp3d:FJ1415M
+  right:
+    ids:
+      fma: 65014
+      wikidata: Q66561330
+    meshes:
+      - bp3d:FJ1415

@@ -1,0 +1,23 @@
+slug: left-hepatic-vein
+kind: vein
+laterality: midline
+status: draft
+parent: left-lobe-of-liver
+labels:
+  en:
+    text: left hepatic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine hépatique gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14339
+  ta2: 4997
+  ta98: A12.3.09.008
+  wikidata: Q66509394
+meshes:
+  - bp3d:FJ2415

@@ -1,0 +1,13 @@
+slug: cervical-vertebral-column
+kind: bone
+laterality: midline
+status: draft
+parent: vertebral-column
+labels:
+  en:
+    text: cervical vertebral column
+    source: fma
+    status: draft
+ids:
+  fma: 24138
+  wikidata: Q66515736

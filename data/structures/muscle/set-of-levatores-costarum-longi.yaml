@@ -1,0 +1,43 @@
+slug: set-of-levatores-costarum-longi
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: set of levatores costarum longi
+    source: fma
+    status: draft
+  fr:
+    text: muscle long élévateur des côtes
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 71313
+  ta2: 2309
+  ta98: A04.4.01.010
+  wikidata: Q66569104
+sides:
+  left:
+    ids:
+      fma: 74076
+      wikidata: Q66571429
+    meshes:
+      - bp3d:FJ1463M
+    labels:
+      en:
+        text: set of left levatores costarum longi
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 74075
+      wikidata: Q66571428
+    meshes:
+      - bp3d:FJ1463
+    labels:
+      en:
+        text: set of right levatores costarum longi
+        source: fma
+        status: draft

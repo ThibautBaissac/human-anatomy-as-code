@@ -1,0 +1,20 @@
+slug: posterior-part-of-pelvis
+kind: bone
+laterality: midline
+status: draft
+parent: pelvis
+regions:
+  - abdomen
+  - pelvis
+labels:
+  en:
+    text: posterior part of pelvis
+    source: fma
+    status: draft
+  fr:
+    text: partie postérieure du bassin
+    source: wikidata
+    status: draft
+ids:
+  fma: 24228
+  wikidata: Q66515803

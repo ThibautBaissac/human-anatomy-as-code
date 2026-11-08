@@ -1,0 +1,39 @@
+slug: semitendinosus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: semitendinosus
+    source: fma
+    status: draft
+  fr:
+    text: muscle semi-tendineux
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus semitendinosus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22357
+  ta2: 2641
+  ta98: A04.7.02.035
+  wikidata: Q1163035
+sides:
+  left:
+    ids:
+      fma: 22359
+      wikidata: Q66514422
+    meshes:
+      - bp3d:FJ1436M
+  right:
+    ids:
+      fma: 22358
+      wikidata: Q66514421
+    meshes:
+      - bp3d:FJ1436

@@ -1,0 +1,41 @@
+slug: ulnar-head-of-pronator-teres
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: ulnar head of pronator teres
+    source: fma
+    status: draft
+  fr:
+    text: chef ulnaire du muscle rond pronateur
+    source: wikidata
+    status: draft
+ids:
+  fma: 38559
+  ta2: 2480
+  ta98: A04.6.02.027
+  wikidata: Q66527691
+sides:
+  left:
+    ids:
+      fma: 38563
+      wikidata: Q66527695
+    meshes:
+      - bp3d:FJ1516M
+    labels:
+      en:
+        text: ulnar head of left pronator teres
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 38562
+      wikidata: Q66527694
+    meshes:
+      - bp3d:FJ1516
+    labels:
+      en:
+        text: ulnar head of right pronator teres
+        source: fma
+        status: draft

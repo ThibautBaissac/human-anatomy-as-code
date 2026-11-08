@@ -1,0 +1,32 @@
+slug: inferior-frontal-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: prefrontal-cortex
+labels:
+  en:
+    text: inferior frontal gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus frontal inférieur
+    source: wikidata
+    status: draft
+ids:
+  fma: 61860
+  ta2: 5447
+  ta98: A15.2.07.058
+  wikidata: Q1558534
+sides:
+  left:
+    ids:
+      fma: 72658
+      wikidata: Q66570163
+    meshes:
+      - bp3d:FJ1744
+  right:
+    ids:
+      fma: 72657
+      wikidata: Q66570162
+    meshes:
+      - bp3d:FJ1745

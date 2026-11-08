@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-axis
+kind: cartilage
+laterality: midline
+status: draft
+parent: intervertebral-symphysis-of-axis
+labels:
+  en:
+    text: intervertebral disk of axis
+    source: fma
+    status: draft
+ids:
+  fma: 25058
+  wikidata: Q66516391
+meshes:
+  - bp3d:FJ3202

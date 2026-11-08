@@ -1,0 +1,22 @@
+slug: deep-dorsal-vein-of-penis
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: deep dorsal vein of penis
+    source: fma
+    status: draft
+  fr:
+    text: veine dorsale profonde du pénis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 21354
+  ta2: 5044
+  ta98: A12.3.10.014M
+  wikidata: Q66513307
+meshes:
+  - bp3d:FJ2056

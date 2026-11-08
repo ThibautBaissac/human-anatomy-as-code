@@ -1,0 +1,22 @@
+slug: common-basal-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: inferior-pulmonary-vein
+labels:
+  en:
+    text: common basal vein
+    source: fma
+    status: draft
+ids:
+  fma: 12861
+  wikidata: Q66507618
+sides:
+  left:
+    ids:
+      fma: 8676
+      wikidata: Q66504243
+  right:
+    ids:
+      fma: 8671
+      wikidata: Q66504238

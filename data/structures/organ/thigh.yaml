@@ -1,0 +1,34 @@
+slug: thigh
+kind: organ
+laterality: bilateral
+status: draft
+parent: free-lower-limb
+regions:
+  - lower-limb
+labels:
+  en:
+    text: thigh
+    source: fma
+    status: draft
+  fr:
+    text: cuisse
+    source: wikidata
+    status: draft
+  la:
+    text: femur
+    source: wikidata
+    status: draft
+ids:
+  fma: 24967
+  ta2: 160
+  ta98: A01.1.00.035
+  wikidata: Q129757
+sides:
+  left:
+    ids:
+      fma: 24969
+      wikidata: Q66516323
+  right:
+    ids:
+      fma: 24968
+      wikidata: Q66516322

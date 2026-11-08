@@ -1,0 +1,13 @@
+slug: anterior-wall-of-right-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: free-wall-of-right-ventricle
+labels:
+  en:
+    text: anterior wall of right ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 9553
+  wikidata: Q66504991

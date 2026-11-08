@@ -1,0 +1,33 @@
+slug: second-metatarsal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot-proper
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: second metatarsal bone
+    source: fma
+    status: draft
+  fr:
+    text: deuxième métatarsien
+    source: wikidata
+    status: draft
+ids:
+  fma: 24503
+  wikidata: Q7443737
+sides:
+  left:
+    ids:
+      fma: 24510
+      wikidata: Q66516023
+    meshes:
+      - bp3d:FJ3244
+  right:
+    ids:
+      fma: 24509
+      wikidata: Q66516022
+    meshes:
+      - bp3d:FJ3353

@@ -1,0 +1,35 @@
+slug: posteromedial-central-branch-of-posterior-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: posteromedial central branch of posterior cerebral artery
+    source: fma
+    status: draft
+ids:
+  fma: 50587
+  wikidata: Q66539721
+sides:
+  left:
+    ids:
+      fma: 50661
+      wikidata: Q66539810
+    meshes:
+      - bp3d:FJ1721M
+    labels:
+      en:
+        text: posteromedial central branch of left posterior cerebral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50660
+      wikidata: Q66539808
+    meshes:
+      - bp3d:FJ1721
+    labels:
+      en:
+        text: posteromedial central branch of right posterior cerebral artery
+        source: fma
+        status: draft

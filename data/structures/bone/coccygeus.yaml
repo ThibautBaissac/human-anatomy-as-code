@@ -1,0 +1,40 @@
+slug: coccygeus
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: coccygeus
+    source: fma
+    status: draft
+  fr:
+    text: muscle coccygien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus coccygeus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 19088
+  ta2: 2412
+  ta98: A04.5.04.011
+  wikidata: Q1059818
+sides:
+  left:
+    ids:
+      fma: 46444
+      wikidata: Q66536529
+    meshes:
+      - bp3d:FJ1449M
+      - bp3d:FJ2542
+  right:
+    ids:
+      fma: 46443
+      wikidata: Q66536528
+    meshes:
+      - bp3d:FJ2547

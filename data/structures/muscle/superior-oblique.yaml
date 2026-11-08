@@ -1,0 +1,42 @@
+slug: superior-oblique
+kind: muscle
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: superior oblique
+    source: fma
+    status: draft
+  fr:
+    text: muscle oblique supérieur du bulbe de l'œil
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus obliquus superior bulbi
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 49039
+  ta2: 2048
+  ta98: A15.2.07.016
+  wikidata: Q913366
+sides:
+  left:
+    ids:
+      fma: 49053
+      wikidata: Q66538467
+    meshes:
+      - bp3d:FJ1322
+  right:
+    ids:
+      fma: 49052
+      wikidata: Q66538466
+    meshes:
+      - bp3d:FJ1373

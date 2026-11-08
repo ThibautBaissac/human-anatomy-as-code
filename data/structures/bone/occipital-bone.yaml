@@ -1,0 +1,27 @@
+slug: occipital-bone
+kind: bone
+laterality: midline
+status: draft
+parent: neurocranium
+labels:
+  en:
+    text: occipital bone
+    source: fma
+    status: draft
+  fr:
+    text: os occipital
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os occipitale
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52735
+  ta2: 552
+  ta98: A02.1.04.001
+  wikidata: Q16317

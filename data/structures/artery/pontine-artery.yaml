@@ -1,0 +1,22 @@
+slug: pontine-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: basilar-artery
+labels:
+  en:
+    text: pontine artery
+    source: fma
+    status: draft
+ids:
+  fma: 50560
+  wikidata: Q66539696
+sides:
+  left:
+    ids:
+      fma: 50562
+      wikidata: Q66539698
+  right:
+    ids:
+      fma: 50561
+      wikidata: Q66539697

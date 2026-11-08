@@ -1,0 +1,16 @@
+slug: inferior-lingular-bronchial-tree
+kind: organ
+laterality: midline
+status: draft
+parent: inferior-division-of-upper-lobe-part-of-left-bronchial-tree
+labels:
+  en:
+    text: inferior lingular bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68227
+  wikidata: Q66563823
+meshes:
+  - bp3d:FJ2441
+  - bp3d:FJ2475

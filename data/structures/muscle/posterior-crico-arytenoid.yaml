@@ -1,0 +1,39 @@
+slug: posterior-crico-arytenoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: posterior crico-arytenoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle crico-aryténoïdien postérieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus cricoarytaenoideus posterior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46576
+  ta2: 2196
+  ta98: A06.2.08.004
+  wikidata: Q379007
+sides:
+  left:
+    ids:
+      fma: 46578
+      wikidata: Q66536599
+    meshes:
+      - bp3d:FJ2782
+  right:
+    ids:
+      fma: 46577
+      wikidata: Q66536598
+    meshes:
+      - bp3d:FJ2800

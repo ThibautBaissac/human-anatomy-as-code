@@ -1,0 +1,40 @@
+slug: capitate
+kind: bone
+laterality: bilateral
+status: draft
+parent: wrist
+regions:
+  - upper-limb
+labels:
+  en:
+    text: capitate
+    source: fma
+    status: draft
+  fr:
+    text: capitatum
+    source: wikidata
+    status: draft
+  la:
+    text: Os capitatum
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23727
+  ta2: 1258
+  ta98: A02.4.08.011
+  wikidata: Q752369
+sides:
+  left:
+    ids:
+      fma: 24447
+      wikidata: Q66515972
+    meshes:
+      - bp3d:FJ3257
+  right:
+    ids:
+      fma: 24446
+      wikidata: Q66515971
+    meshes:
+      - bp3d:FJ3361

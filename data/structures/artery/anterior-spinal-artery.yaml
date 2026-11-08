@@ -1,0 +1,40 @@
+slug: anterior-spinal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: vertebral-artery
+labels:
+  en:
+    text: anterior spinal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère spinale antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria spinalis anterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50531
+  ta2: 4525
+  ta98: A12.2.08.016
+  wikidata: Q490172
+sides:
+  left:
+    ids:
+      fma: 50533
+      wikidata: Q66539671
+    meshes:
+      - bp3d:FJ1657M
+  right:
+    ids:
+      fma: 50532
+      wikidata: Q66539670
+    meshes:
+      - bp3d:FJ1657

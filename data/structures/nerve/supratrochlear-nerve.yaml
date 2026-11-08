@@ -1,0 +1,33 @@
+slug: supratrochlear-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: supratrochlear nerve
+    source: fma
+    status: draft
+  la:
+    text: Nervus supratrochlearis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52642
+  ta2: 6203
+  ta98: A14.2.01.024
+  wikidata: Q4306347
+sides:
+  left:
+    ids:
+      fma: 52644
+      wikidata: Q66542864
+    meshes:
+      - bp3d:FJ1326
+  right:
+    ids:
+      fma: 52643
+      wikidata: Q66542863
+    meshes:
+      - bp3d:FJ1377

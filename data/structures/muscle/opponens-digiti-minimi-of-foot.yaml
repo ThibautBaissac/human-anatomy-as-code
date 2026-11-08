@@ -1,0 +1,49 @@
+slug: opponens-digiti-minimi-of-foot
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: opponens digiti minimi of foot
+    source: fma
+    status: draft
+  fr:
+    text: muscle opposant du petit orteil
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus opponens digiti minimi pedis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 86033
+  ta2: 2681
+  ta98: A04.7.02.065
+  wikidata: Q1954136
+sides:
+  left:
+    ids:
+      fma: 86035
+      wikidata: Q66592011
+    meshes:
+      - bp3d:FJ1399M
+    labels:
+      en:
+        text: opponens digiti minimi of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 86034
+      wikidata: Q66592010
+    meshes:
+      - bp3d:FJ1399
+    labels:
+      en:
+        text: opponens digiti minimi of right foot
+        source: fma
+        status: draft

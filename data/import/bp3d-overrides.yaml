@@ -1,0 +1,22 @@
+# Arbitrages manuels de l'import BodyParts3D (voir tasks/specs/2026-11-08-modele-de-donnees.md).
+
+# Noms canoniques (sans mot de côté) dont les concepts « left X » et « right X » sont
+# deux structures distinctes, pas deux côtés d'une même structure.
+noFold:
+  - atrium
+  - ventricle
+  - auricle
+  - coronary artery
+  - gastric artery
+  - gastric vein
+  - colic artery
+  - colic vein
+  - hepatic duct
+  - hepatic vein
+  - lobe of liver
+
+# Fichier mesh → concept propriétaire, quand la règle d'égalité se trompe.
+ties: {}
+
+# Nom anglais canonique → slug imposé.
+slugs: {}

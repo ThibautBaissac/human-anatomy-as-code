@@ -1,0 +1,40 @@
+slug: lateral-plantar-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: posterior-tibial-artery
+labels:
+  en:
+    text: lateral plantar artery
+    source: fma
+    status: draft
+  fr:
+    text: artère plantaire latérale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria plantaris lateralis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 43926
+  ta2: 4737
+  ta98: A12.2.16.064
+  wikidata: Q707450
+sides:
+  left:
+    ids:
+      fma: 43932
+      wikidata: Q66533841
+    meshes:
+      - bp3d:FJ2079
+  right:
+    ids:
+      fma: 43931
+      wikidata: Q66533840
+    meshes:
+      - bp3d:FJ2159

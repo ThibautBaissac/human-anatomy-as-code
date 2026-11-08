@@ -1,0 +1,17 @@
+slug: visceral-peritoneum
+kind: organ
+laterality: midline
+status: draft
+parent: peritoneum
+labels:
+  en:
+    text: visceral peritoneum
+    source: fma
+    status: draft
+  fr:
+    text: péritoine viscéral
+    source: wikidata
+    status: draft
+ids:
+  fma: 14703
+  wikidata: Q14625953

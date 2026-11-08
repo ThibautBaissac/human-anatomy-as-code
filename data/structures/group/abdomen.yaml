@@ -1,0 +1,23 @@
+slug: abdomen
+kind: group
+laterality: midline
+status: draft
+parent: abdominal-segment-of-trunk
+labels:
+  en:
+    text: abdomen
+    source: fma
+    status: draft
+  fr:
+    text: abdomen
+    source: wikidata
+    status: draft
+  la:
+    text: Abdomen
+    source: wikidata
+    status: draft
+ids:
+  fma: 9577
+  ta2: 127
+  ta98: A01.1.00.016
+  wikidata: Q9597

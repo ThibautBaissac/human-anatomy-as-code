@@ -1,0 +1,40 @@
+slug: brachiocephalic-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: superior-systemic-venous-tree
+labels:
+  en:
+    text: brachiocephalic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine brachiocéphalique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena brachiocephalica vena anonyma
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4723
+  ta2: 4772
+  ta98: A12.3.04.001
+  wikidata: Q2341350
+sides:
+  left:
+    ids:
+      fma: 4761
+      wikidata: Q66501490
+    meshes:
+      - bp3d:FJ3482
+  right:
+    ids:
+      fma: 4751
+      wikidata: Q66500712
+    meshes:
+      - bp3d:FJ3583

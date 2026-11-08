@@ -1,0 +1,39 @@
+slug: soleus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: soleus
+    source: fma
+    status: draft
+  fr:
+    text: muscle soléaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus soleus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22542
+  ta2: 2660
+  ta98: A04.7.02.047
+  wikidata: Q1954164
+sides:
+  left:
+    ids:
+      fma: 22559
+      wikidata: Q66514576
+    meshes:
+      - bp3d:FJ1437M
+  right:
+    ids:
+      fma: 22558
+      wikidata: Q66514575
+    meshes:
+      - bp3d:FJ1437

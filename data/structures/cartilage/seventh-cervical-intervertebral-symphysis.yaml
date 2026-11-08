@@ -1,0 +1,13 @@
+slug: seventh-cervical-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: cervical-vertebral-column
+labels:
+  en:
+    text: seventh cervical intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26086
+  wikidata: Q66517314

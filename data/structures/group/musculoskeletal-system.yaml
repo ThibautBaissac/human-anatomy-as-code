@@ -1,0 +1,22 @@
+slug: musculoskeletal-system
+kind: group
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: musculoskeletal system
+    source: fma
+    status: draft
+  fr:
+    text: appareil locomoteur humain
+    source: wikidata
+    status: draft
+  la:
+    text: Systema musculosceletalis humanum
+    source: wikidata
+    status: draft
+ids:
+  fma: 7482
+  ta2: 351
+  wikidata: Q726543

@@ -1,0 +1,34 @@
+slug: hip
+kind: organ
+laterality: bilateral
+status: draft
+parent: pelvic-girdle
+regions:
+  - lower-limb
+labels:
+  en:
+    text: hip
+    source: fma
+    status: draft
+  fr:
+    text: hanche
+    source: wikidata
+    status: draft
+  la:
+    text: coxa
+    source: wikidata
+    status: draft
+ids:
+  fma: 24964
+  ta2: 158
+  ta98: A01.2.08.005
+  wikidata: Q193818
+sides:
+  left:
+    ids:
+      fma: 24966
+      wikidata: Q66516321
+  right:
+    ids:
+      fma: 24965
+      wikidata: Q66516320

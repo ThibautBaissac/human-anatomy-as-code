@@ -1,0 +1,41 @@
+slug: ascending-part-of-trapezius
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: ascending part of trapezius
+    source: fma
+    status: draft
+  fr:
+    text: partie ascendante du muscle trapèze
+    source: wikidata
+    status: draft
+ids:
+  fma: 32555
+  ta2: 2229
+  ta98: A04.3.01.004
+  wikidata: Q66523040
+sides:
+  left:
+    ids:
+      fma: 33583
+      wikidata: Q66523849
+    meshes:
+      - bp3d:FJ1520M
+    labels:
+      en:
+        text: ascending part of left trapezius
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 33581
+      wikidata: Q66523847
+    meshes:
+      - bp3d:FJ1520
+    labels:
+      en:
+        text: ascending part of right trapezius
+        source: fma
+        status: draft

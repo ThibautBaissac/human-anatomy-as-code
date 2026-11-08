@@ -1,0 +1,32 @@
+slug: inferior-pulmonary-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: vasculature-of-body
+labels:
+  en:
+    text: inferior pulmonary vein
+    source: fma
+    status: draft
+ids:
+  fma: 49910
+  wikidata: Q66539136
+sides:
+  left:
+    ids:
+      fma: 49913
+      ta2: 4125
+      ta98: A12.3.02.401
+      wikidata: Q30126469
+    meshes:
+      - bp3d:FJ2944
+      - bp3d:FJ2950
+      - bp3d:FJ2955
+  right:
+    ids:
+      fma: 49911
+      ta2: 4115
+      ta98: A12.3.02.201
+      wikidata: Q30126466
+    meshes:
+      - bp3d:FJ3040

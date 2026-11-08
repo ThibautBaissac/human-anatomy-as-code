@@ -1,0 +1,15 @@
+slug: anterior-inferior-segmental-branch-of-right-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: anterior-branch-of-right-portal-vein
+labels:
+  en:
+    text: anterior inferior segmental branch of right portal vein
+    source: fma
+    status: draft
+ids:
+  fma: 15421
+  wikidata: Q66512004
+meshes:
+  - bp3d:FJ3074

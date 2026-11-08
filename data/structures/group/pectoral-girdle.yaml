@@ -1,0 +1,34 @@
+slug: pectoral-girdle
+kind: group
+laterality: bilateral
+status: draft
+parent: upper-limb
+regions:
+  - upper-limb
+labels:
+  en:
+    text: pectoral girdle
+    source: fma
+    status: draft
+  fr:
+    text: ceinture scapulaire
+    source: wikidata
+    status: draft
+  la:
+    text: Cingulum membri superiores
+    source: wikidata
+    status: draft
+ids:
+  fma: 23217
+  ta2: 361
+  ta98: A01.1.00.020
+  wikidata: Q756066
+sides:
+  left:
+    ids:
+      fma: 23219
+      wikidata: Q66515134
+  right:
+    ids:
+      fma: 23218
+      wikidata: Q66515133

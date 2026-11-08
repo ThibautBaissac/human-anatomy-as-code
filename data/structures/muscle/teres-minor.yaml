@@ -1,0 +1,39 @@
+slug: teres-minor
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: teres minor
+    source: fma
+    status: draft
+  fr:
+    text: muscle petit rond
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus teres minor
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 32550
+  ta2: 2459
+  ta98: A04.6.02.010
+  wikidata: Q74963
+sides:
+  left:
+    ids:
+      fma: 32554
+      wikidata: Q66523039
+    meshes:
+      - bp3d:FJ1508M
+  right:
+    ids:
+      fma: 32553
+      wikidata: Q66523038
+    meshes:
+      - bp3d:FJ1508

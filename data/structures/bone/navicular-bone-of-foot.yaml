@@ -1,0 +1,53 @@
+slug: navicular-bone-of-foot
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: navicular bone of foot
+    source: fma
+    status: draft
+  fr:
+    text: os naviculaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os naviculare
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 24499
+  ta2: 1484
+  ta98: A02.5.12.001
+  wikidata: Q958194
+sides:
+  left:
+    ids:
+      fma: 24501
+      wikidata: Q66516014
+    meshes:
+      - bp3d:FJ3307
+    labels:
+      en:
+        text: navicular bone of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24500
+      wikidata: Q66516013
+    meshes:
+      - bp3d:FJ3308
+    labels:
+      en:
+        text: navicular bone of right foot
+        source: fma
+        status: draft

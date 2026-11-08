@@ -1,0 +1,39 @@
+slug: flexor-digitorum-profundus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor digitorum profundus
+    source: fma
+    status: draft
+  fr:
+    text: muscle fléchisseur profond des doigts de la main
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus flexor digitorum profundus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38478
+  ta2: 2491
+  ta98: A04.6.02.036
+  wikidata: Q840592
+sides:
+  left:
+    ids:
+      fma: 38480
+      wikidata: Q66527652
+    meshes:
+      - bp3d:FJ1497M
+  right:
+    ids:
+      fma: 38479
+      wikidata: Q66527651
+    meshes:
+      - bp3d:FJ1497

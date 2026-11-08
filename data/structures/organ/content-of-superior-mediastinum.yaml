@@ -1,0 +1,13 @@
+slug: content-of-superior-mediastinum
+kind: organ
+laterality: midline
+status: draft
+parent: superior-mediastinum
+labels:
+  en:
+    text: content of superior mediastinum
+    source: fma
+    status: draft
+ids:
+  fma: 79274
+  wikidata: Q66577348

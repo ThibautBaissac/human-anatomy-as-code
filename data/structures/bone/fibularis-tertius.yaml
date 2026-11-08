@@ -1,0 +1,39 @@
+slug: fibularis-tertius
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: fibularis tertius
+    source: fma
+    status: draft
+  fr:
+    text: muscle troisième fibulaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus fibularis tertius
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22538
+  ta2: 2649
+  ta98: A04.7.02.039
+  wikidata: Q1757887
+sides:
+  left:
+    ids:
+      fma: 22551
+      wikidata: Q66514568
+    meshes:
+      - bp3d:FJ1411M
+  right:
+    ids:
+      fma: 22550
+      wikidata: Q66514567
+    meshes:
+      - bp3d:FJ1411

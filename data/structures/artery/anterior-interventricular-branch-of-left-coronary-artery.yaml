@@ -1,0 +1,27 @@
+slug: anterior-interventricular-branch-of-left-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: left-coronary-artery
+labels:
+  en:
+    text: anterior interventricular branch of left coronary artery
+    source: fma
+    status: draft
+  fr:
+    text: artère interventriculaire antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ramus interventricularis anterior arteriae coronariae sinistrae
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 3862
+  ta2: 4143
+  ta98: A12.2.03.202
+  wikidata: Q4771358

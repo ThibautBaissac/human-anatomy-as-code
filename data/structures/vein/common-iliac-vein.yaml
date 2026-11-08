@@ -1,0 +1,40 @@
+slug: common-iliac-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: inferior-systemic-venous-tree
+labels:
+  en:
+    text: common iliac vein
+    source: fma
+    status: draft
+  fr:
+    text: veine iliaque commune
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena iliaca communis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14333
+  ta2: 5021
+  ta98: A12.3.10.001
+  wikidata: Q3143036
+sides:
+  left:
+    ids:
+      fma: 21388
+      wikidata: Q66513356
+    meshes:
+      - bp3d:FJ3465
+  right:
+    ids:
+      fma: 21387
+      wikidata: Q66513354
+    meshes:
+      - bp3d:FJ3566

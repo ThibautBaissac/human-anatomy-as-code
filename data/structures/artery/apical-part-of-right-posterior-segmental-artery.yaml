@@ -1,0 +1,17 @@
+slug: apical-part-of-right-posterior-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: posterior-segmental-artery
+labels:
+  en:
+    text: apical part of right posterior segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68670
+  wikidata: Q66564218
+meshes:
+  - bp3d:FJ2968
+  - bp3d:FJ2969
+  - bp3d:FJ3018

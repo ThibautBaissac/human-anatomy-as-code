@@ -1,0 +1,27 @@
+slug: pituitary-gland
+kind: organ
+laterality: midline
+status: draft
+parent: endocrine-system
+labels:
+  en:
+    text: pituitary gland
+    source: fma
+    status: draft
+  fr:
+    text: hypophyse
+    source: wikidata
+    status: draft
+  la:
+    text: glandula pituitaria
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13889
+  ta2: 3853
+  ta98: A11.1.00.001
+  wikidata: Q156871
+meshes:
+  - bp3d:FJ1796

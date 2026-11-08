@@ -1,0 +1,32 @@
+slug: lateral-basal-segmental-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: lateral-basal-bronchopulmonary-segment
+labels:
+  en:
+    text: lateral basal segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 13291
+  wikidata: Q66508000
+sides:
+  left:
+    ids:
+      fma: 9450
+      wikidata: Q66504909
+    meshes:
+      - bp3d:FJ2951
+      - bp3d:FJ2952
+      - bp3d:FJ2953
+      - bp3d:FJ2954
+  right:
+    ids:
+      fma: 9425
+      wikidata: Q66504889
+    meshes:
+      - bp3d:FJ3059
+      - bp3d:FJ3060
+      - bp3d:FJ3061
+      - bp3d:FJ3062

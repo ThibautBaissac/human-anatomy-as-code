@@ -1,0 +1,27 @@
+slug: atlas
+kind: bone
+laterality: midline
+status: draft
+parent: neck
+regions:
+  - neck
+labels:
+  en:
+    text: atlas
+    source: fma
+    status: draft
+  fr:
+    text: atlas
+    source: wikidata
+    status: draft
+  la:
+    text: Atlas, vertebra cervicalis I
+    source: wikidata
+    status: draft
+ids:
+  fma: 12519
+  ta2: 1038
+  ta98: A02.2.02.101
+  wikidata: Q655357
+meshes:
+  - bp3d:FJ3176

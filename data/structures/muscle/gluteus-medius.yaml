@@ -1,0 +1,39 @@
+slug: gluteus-medius
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: gluteus medius
+    source: fma
+    status: draft
+  fr:
+    text: muscle moyen glutéal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus glutaeus medius
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22315
+  ta2: 2599
+  ta98: A04.7.02.007
+  wikidata: Q1126170
+sides:
+  left:
+    ids:
+      fma: 22331
+      wikidata: Q66514398
+    meshes:
+      - bp3d:FJ1419M
+  right:
+    ids:
+      fma: 22330
+      wikidata: Q66514397
+    meshes:
+      - bp3d:FJ1419

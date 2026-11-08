@@ -1,0 +1,24 @@
+slug: medulla-oblongata
+kind: cns
+laterality: midline
+status: draft
+parent: brainstem
+regions:
+  - head
+labels:
+  en:
+    text: medulla oblongata
+    source: fma
+    status: draft
+  fr:
+    text: bulbe rachidien
+    source: wikidata
+    status: draft
+ids:
+  fma: 62004
+  ta2: 5983
+  ta98: A14.1.03.003
+  wikidata: Q189033
+meshes:
+  - bp3d:FJ1769
+  - bp3d:FJ1831

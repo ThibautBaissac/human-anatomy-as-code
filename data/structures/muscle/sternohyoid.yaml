@@ -1,0 +1,39 @@
+slug: sternohyoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: sternohyoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle sterno-hyoïdien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus sternohyoideus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13341
+  ta2: 2168
+  ta98: A04.2.04.002
+  wikidata: Q925888
+sides:
+  left:
+    ids:
+      fma: 13347
+      wikidata: Q66508035
+    meshes:
+      - bp3d:FJ1574
+  right:
+    ids:
+      fma: 13346
+      wikidata: Q66508034
+    meshes:
+      - bp3d:FJ1596

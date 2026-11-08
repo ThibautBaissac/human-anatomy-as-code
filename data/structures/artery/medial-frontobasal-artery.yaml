@@ -1,0 +1,33 @@
+slug: medial-frontobasal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: medial frontobasal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère orbitofrontale médiale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50328
+  ta2: 4504
+  ta98: A12.2.07.035
+  wikidata: Q66539473
+sides:
+  left:
+    ids:
+      fma: 50344
+      wikidata: Q66539490
+    meshes:
+      - bp3d:FJ1690M
+  right:
+    ids:
+      fma: 50343
+      wikidata: Q66539489
+    meshes:
+      - bp3d:FJ1690

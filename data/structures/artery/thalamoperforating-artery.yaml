@@ -1,0 +1,32 @@
+slug: thalamoperforating-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: posterior-cerebral-artery
+labels:
+  en:
+    text: thalamoperforating artery
+    source: fma
+    status: draft
+  fr:
+    text: artère thalamoperforée
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50624
+  wikidata: Q66539755
+sides:
+  left:
+    ids:
+      fma: 50665
+      wikidata: Q66539818
+    meshes:
+      - bp3d:FJ1720M
+  right:
+    ids:
+      fma: 50664
+      wikidata: Q66539816
+    meshes:
+      - bp3d:FJ1720

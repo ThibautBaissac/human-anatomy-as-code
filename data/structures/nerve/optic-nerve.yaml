@@ -1,0 +1,41 @@
+slug: optic-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: optic nerve
+    source: fma
+    status: draft
+  fr:
+    text: nerf optique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Nervus opticus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50863
+  ta2: 6183
+  ta98: A15.2.04.024
+  wikidata: Q186029
+sides:
+  left:
+    ids:
+      fma: 50878
+      wikidata: Q66540059
+    meshes:
+      - bp3d:FJ1313
+      - bp3d:FJ1772
+  right:
+    ids:
+      fma: 50875
+      wikidata: Q66540053
+    meshes:
+      - bp3d:FJ1364
+      - bp3d:FJ1819

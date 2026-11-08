@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-first-thoracic-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: first-thoracic-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of first thoracic vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 10458
+  wikidata: Q66505663
+meshes:
+  - bp3d:FJ3222

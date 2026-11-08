@@ -1,0 +1,39 @@
+slug: arytenoid-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: arytenoid cartilage
+    source: fma
+    status: draft
+  fr:
+    text: cartilage aryténoïde
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Cartilagines arytaenoideae
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 55109
+  ta2: 983
+  ta98: A06.2.04.001
+  wikidata: Q1545154
+sides:
+  left:
+    ids:
+      fma: 55114
+      wikidata: Q66544834
+    meshes:
+      - bp3d:FJ2775
+  right:
+    ids:
+      fma: 55113
+      wikidata: Q66544833
+    meshes:
+      - bp3d:FJ2792

@@ -1,0 +1,40 @@
+slug: occipital-lobe
+kind: cns
+laterality: bilateral
+status: draft
+parent: cerebral-hemisphere
+labels:
+  en:
+    text: occipital lobe
+    source: fma
+    status: draft
+  fr:
+    text: lobe occipital
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Lobus occipitalis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 67325
+  ta2: 5480
+  ta98: A14.1.09.132
+  wikidata: Q848340
+sides:
+  left:
+    ids:
+      fma: 72976
+      wikidata: Q66570457
+    meshes:
+      - bp3d:FJ1791
+  right:
+    ids:
+      fma: 72975
+      wikidata: Q66570456
+    meshes:
+      - bp3d:FJ1792

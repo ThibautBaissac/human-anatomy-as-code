@@ -1,0 +1,22 @@
+slug: posterior-basal-bronchopulmonary-segment
+kind: organ
+laterality: bilateral
+status: draft
+parent: lower-lobe-of-lung
+labels:
+  en:
+    text: posterior basal bronchopulmonary segment
+    source: fma
+    status: draft
+ids:
+  fma: 13195
+  wikidata: Q66507922
+sides:
+  left:
+    ids:
+      fma: 7380
+      wikidata: Q66502933
+  right:
+    ids:
+      fma: 7362
+      wikidata: Q66502917

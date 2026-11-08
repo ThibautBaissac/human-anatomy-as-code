@@ -1,0 +1,45 @@
+slug: proximal-phalanx-of-little-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: little-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: proximal phalanx of little finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange proximale de l'auriculaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23922
+  wikidata: Q66515608
+sides:
+  left:
+    ids:
+      fma: 66791
+      wikidata: Q66562866
+    meshes:
+      - bp3d:FJ3314
+    labels:
+      en:
+        text: proximal phalanx of left little finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24454
+      wikidata: Q66515980
+    meshes:
+      - bp3d:FJ3323
+    labels:
+      en:
+        text: proximal phalanx of right little finger
+        source: fma
+        status: draft

@@ -1,0 +1,32 @@
+slug: internal-capsule
+kind: cns
+laterality: bilateral
+status: draft
+parent: white-matter-of-cerebral-hemisphere
+labels:
+  en:
+    text: internal capsule
+    source: fma
+    status: draft
+  fr:
+    text: capsule interne
+    source: wikidata
+    status: draft
+ids:
+  fma: 61950
+  ta2: 5576
+  ta98: A14.1.09.524
+  wikidata: Q604747
+sides:
+  left:
+    ids:
+      fma: 72907
+      wikidata: Q66570397
+    meshes:
+      - bp3d:FJ1750
+  right:
+    ids:
+      fma: 72906
+      wikidata: Q66570396
+    meshes:
+      - bp3d:FJ1751

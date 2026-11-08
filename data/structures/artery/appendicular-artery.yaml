@@ -1,0 +1,29 @@
+slug: appendicular-artery
+kind: artery
+laterality: midline
+status: draft
+parent: inferior-branch-of-ileocolic-artery
+labels:
+  en:
+    text: appendicular artery
+    source: fma
+    status: draft
+  fr:
+    text: Artère appendiculaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria appendicularis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14818
+  ta2: 4261
+  ta98: A12.2.12.062
+  wikidata: Q706969
+meshes:
+  - bp3d:FJ3410

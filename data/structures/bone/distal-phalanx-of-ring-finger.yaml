@@ -1,0 +1,45 @@
+slug: distal-phalanx-of-ring-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: ring-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: distal phalanx of ring finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange distale de l'annulaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23948
+  wikidata: Q66515620
+sides:
+  left:
+    ids:
+      fma: 23957
+      wikidata: Q66515625
+    meshes:
+      - bp3d:FJ3187
+    labels:
+      en:
+        text: distal phalanx of left ring finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24462
+      wikidata: Q66515988
+    meshes:
+      - bp3d:FJ3197
+    labels:
+      en:
+        text: distal phalanx of right ring finger
+        source: fma
+        status: draft

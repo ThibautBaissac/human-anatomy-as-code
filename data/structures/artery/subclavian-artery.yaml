@@ -1,0 +1,42 @@
+slug: subclavian-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: subclavian artery
+    source: fma
+    status: draft
+  fr:
+    text: artère subclavière
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria subclavia
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 3951
+  ta2: 4537
+  ta98: A12.2.08.001
+  wikidata: Q490059
+sides:
+  left:
+    ids:
+      fma: 4694
+      ta2: 4184
+      wikidata: Q30126941
+    meshes:
+      - bp3d:FJ3479
+  right:
+    ids:
+      fma: 3953
+      ta2: 4182
+      wikidata: Q30126940
+    meshes:
+      - bp3d:FJ3579

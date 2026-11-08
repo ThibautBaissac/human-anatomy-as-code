@@ -1,0 +1,15 @@
+slug: lateral-wall-of-left-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: wall-of-left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: lateral wall of left ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 9563
+  wikidata: Q66505001

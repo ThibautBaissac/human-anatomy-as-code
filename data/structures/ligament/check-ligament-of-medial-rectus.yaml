@@ -1,0 +1,35 @@
+slug: check-ligament-of-medial-rectus
+kind: ligament
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: check ligament of medial rectus
+    source: fma
+    status: draft
+ids:
+  fma: 49146
+  wikidata: Q66538517
+sides:
+  left:
+    ids:
+      fma: 49148
+      wikidata: Q66538519
+    meshes:
+      - bp3d:FJ1292
+    labels:
+      en:
+        text: check ligament of left medial rectus
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 49147
+      wikidata: Q66538518
+    meshes:
+      - bp3d:FJ1335
+    labels:
+      en:
+        text: check ligament of right medial rectus
+        source: fma
+        status: draft

@@ -1,0 +1,25 @@
+slug: third-common-palmar-digital-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: third common palmar digital artery
+    source: fma
+    status: draft
+ids:
+  fma: 85107
+  wikidata: Q66591499
+sides:
+  left:
+    ids:
+      fma: 85122
+      wikidata: Q66591515
+    meshes:
+      - bp3d:FJ2317
+  right:
+    ids:
+      fma: 85121
+      wikidata: Q66591514
+    meshes:
+      - bp3d:FJ2345

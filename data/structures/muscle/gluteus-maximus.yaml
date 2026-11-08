@@ -1,0 +1,39 @@
+slug: gluteus-maximus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: gluteus maximus
+    source: fma
+    status: draft
+  fr:
+    text: muscle grand glutéal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus glutaeus maximus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22314
+  ta2: 2598
+  ta98: A04.7.02.006
+  wikidata: Q637545
+sides:
+  left:
+    ids:
+      fma: 22329
+      wikidata: Q66514396
+    meshes:
+      - bp3d:FJ1418M
+  right:
+    ids:
+      fma: 22328
+      wikidata: Q66514395
+    meshes:
+      - bp3d:FJ1418

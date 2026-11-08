@@ -1,0 +1,20 @@
+slug: tentorium-cerebelli
+kind: cns
+laterality: midline
+status: draft
+labels:
+  en:
+    text: tentorium cerebelli
+    source: fma
+    status: draft
+  fr:
+    text: Tente du cervelet
+    source: wikidata
+    status: draft
+ids:
+  fma: 83966
+  ta2: 5375
+  ta98: A14.1.01.104
+  wikidata: Q1089501
+meshes:
+  - bp3d:FJ1843

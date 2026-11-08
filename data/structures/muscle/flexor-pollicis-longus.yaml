@@ -1,0 +1,39 @@
+slug: flexor-pollicis-longus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor pollicis longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle long fléchisseur du pouce
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus flexor pollicis longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38481
+  ta2: 2492
+  ta98: A04.6.02.037
+  wikidata: Q901571
+sides:
+  left:
+    ids:
+      fma: 38484
+      wikidata: Q66527654
+    meshes:
+      - bp3d:FJ1498M
+  right:
+    ids:
+      fma: 38482
+      wikidata: Q66527653
+    meshes:
+      - bp3d:FJ1498

@@ -1,0 +1,17 @@
+slug: posterior-part-of-right-posterior-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: posterior-segmental-artery
+labels:
+  en:
+    text: posterior part of right posterior segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68673
+  wikidata: Q66564221
+meshes:
+  - bp3d:FJ2970
+  - bp3d:FJ2971
+  - bp3d:FJ2972

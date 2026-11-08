@@ -1,0 +1,22 @@
+slug: proximal-part-of-jejunum
+kind: organ
+laterality: midline
+status: draft
+parent: jejunum
+labels:
+  en:
+    text: proximal part of jejunum
+    source: fma
+    status: draft
+ids:
+  fma: 16981
+  wikidata: Q66713494
+meshes:
+  - bp3d:FJ2606
+  - bp3d:FJ2617
+  - bp3d:FJ2622
+  - bp3d:FJ2623
+  - bp3d:FJ2624
+  - bp3d:FJ2625
+  - bp3d:FJ2626
+  - bp3d:FJ2627

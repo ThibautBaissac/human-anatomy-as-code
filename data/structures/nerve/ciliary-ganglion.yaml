@@ -1,0 +1,37 @@
+slug: ciliary-ganglion
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: ciliary ganglion
+    source: fma
+    status: draft
+  fr:
+    text: ganglion ciliaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ganglion ciliare
+    source: wikidata
+    status: draft
+ids:
+  fma: 6964
+  ta2: 6663
+  ta98: A14.3.02.003
+  wikidata: Q1493507
+sides:
+  left:
+    ids:
+      fma: 53550
+      wikidata: Q66543590
+    meshes:
+      - bp3d:FJ1288
+  right:
+    ids:
+      fma: 53549
+      wikidata: Q66543589
+    meshes:
+      - bp3d:FJ1339

@@ -1,0 +1,45 @@
+slug: proximal-phalanx-of-ring-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: little-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: proximal phalanx of ring finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange proximale de l'annulaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23921
+  wikidata: Q66515607
+sides:
+  left:
+    ids:
+      fma: 71916
+      wikidata: Q66569605
+    meshes:
+      - bp3d:FJ3317
+    labels:
+      en:
+        text: proximal phalanx of left ring finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24453
+      wikidata: Q66515979
+    meshes:
+      - bp3d:FJ3326
+    labels:
+      en:
+        text: proximal phalanx of right ring finger
+        source: fma
+        status: draft

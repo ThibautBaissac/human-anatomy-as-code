@@ -1,0 +1,25 @@
+slug: radial-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: radial vein
+    source: fma
+    status: draft
+ids:
+  fma: 22947
+  wikidata: Q66514920
+sides:
+  left:
+    ids:
+      fma: 22949
+      wikidata: Q66514922
+    meshes:
+      - bp3d:FJ2244
+  right:
+    ids:
+      fma: 22948
+      wikidata: Q66514921
+    meshes:
+      - bp3d:FJ2296

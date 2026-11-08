@@ -1,0 +1,39 @@
+slug: distal-phalanx-of-big-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: big-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: distal phalanx of big toe
+    source: fma
+    status: draft
+ids:
+  fma: 32627
+  wikidata: Q66523095
+sides:
+  left:
+    ids:
+      fma: 32651
+      wikidata: Q66523115
+    meshes:
+      - bp3d:FJ3182
+    labels:
+      en:
+        text: distal phalanx of left big toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32650
+      wikidata: Q66523114
+    meshes:
+      - bp3d:FJ3192
+    labels:
+      en:
+        text: distal phalanx of right big toe
+        source: fma
+        status: draft

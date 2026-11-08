@@ -1,0 +1,21 @@
+slug: optic-chiasm
+kind: nerve
+laterality: midline
+status: draft
+labels:
+  en:
+    text: optic chiasm
+    source: fma
+    status: draft
+  fr:
+    text: chiasma optique
+    source: wikidata
+    status: draft
+ids:
+  fma: 62045
+  ta2: 5668
+  ta98: A14.1.08.403
+  wikidata: Q1071710
+meshes:
+  - bp3d:FJ1771
+  - bp3d:FJ1818

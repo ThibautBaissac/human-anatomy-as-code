@@ -1,0 +1,32 @@
+slug: first-costal-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: first costal cartilage
+    source: fma
+    status: draft
+  fr:
+    text: premier cartilage costal
+    source: wikidata
+    status: draft
+ids:
+  fma: 7603
+  wikidata: Q51117992
+sides:
+  left:
+    ids:
+      fma: 8005
+      wikidata: Q66503495
+    meshes:
+      - bp3d:FJ3239
+  right:
+    ids:
+      fma: 7875
+      wikidata: Q66503367
+    meshes:
+      - bp3d:FJ3333

@@ -1,0 +1,25 @@
+slug: ascending-aorta
+kind: artery
+laterality: midline
+status: draft
+parent: aorta
+labels:
+  en:
+    text: ascending aorta
+    source: fma
+    status: draft
+  fr:
+    text: aorte ascendante
+    source: wikidata
+    status: draft
+  la:
+    text: Aorta ascendens
+    source: wikidata
+    status: draft
+ids:
+  fma: 3736
+  ta2: 4176
+  ta98: A12.2.03.001
+  wikidata: Q2349469
+meshes:
+  - bp3d:FJ3413

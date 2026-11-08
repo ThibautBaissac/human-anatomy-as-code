@@ -1,0 +1,23 @@
+slug: neck
+kind: organ
+laterality: midline
+status: draft
+parent: body-proper
+labels:
+  en:
+    text: neck
+    source: fma
+    status: draft
+  fr:
+    text: cou
+    source: wikidata
+    status: draft
+  la:
+    text: collum
+    source: wikidata
+    status: draft
+ids:
+  fma: 7155
+  ta2: 123
+  ta98: A01.1.00.012
+  wikidata: Q9633

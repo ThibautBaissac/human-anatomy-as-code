@@ -1,0 +1,40 @@
+slug: adrenal-gland
+kind: cns
+laterality: bilateral
+status: draft
+parent: endocrine-system
+labels:
+  en:
+    text: adrenal gland
+    source: fma
+    status: draft
+  fr:
+    text: glande surrénale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: glandula adrenalis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 9604
+  ta2: 3874
+  ta98: A11.5.00.001
+  wikidata: Q712294
+sides:
+  left:
+    ids:
+      fma: 15630
+      wikidata: Q66715643
+    meshes:
+      - bp3d:FJ3129
+  right:
+    ids:
+      fma: 15629
+      wikidata: Q66715642
+    meshes:
+      - bp3d:FJ3130

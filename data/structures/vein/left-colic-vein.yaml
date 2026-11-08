@@ -1,0 +1,30 @@
+slug: left-colic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: left colic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine colique gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena colica sinistra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15394
+  ta2: 5128
+  ta98: A12.3.12.033
+  wikidata: Q4115340
+meshes:
+  - bp3d:FJ3400
+  - bp3d:FJ3429
+  - bp3d:FJ3495

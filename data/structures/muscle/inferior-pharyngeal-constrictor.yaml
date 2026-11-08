@@ -1,0 +1,39 @@
+slug: inferior-pharyngeal-constrictor
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: inferior pharyngeal constrictor
+    source: fma
+    status: draft
+  fr:
+    text: muscle constricteur inférieur du pharynx
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus constrictor pharyngis inferior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46623
+  ta2: 2187
+  ta98: A05.3.01.111
+  wikidata: Q569097
+sides:
+  left:
+    ids:
+      fma: 46636
+      wikidata: Q66536637
+    meshes:
+      - bp3d:FJ2740
+  right:
+    ids:
+      fma: 46635
+      wikidata: Q66536636
+    meshes:
+      - bp3d:FJ2752

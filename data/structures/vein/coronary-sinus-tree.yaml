@@ -1,0 +1,13 @@
+slug: coronary-sinus-tree
+kind: vein
+laterality: midline
+status: draft
+parent: vasculature-of-body
+labels:
+  en:
+    text: coronary sinus tree
+    source: fma
+    status: draft
+ids:
+  fma: 50308
+  wikidata: Q66539456

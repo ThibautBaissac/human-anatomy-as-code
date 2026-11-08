@@ -1,0 +1,21 @@
+slug: anterior-leaflet-of-tricuspid-valve
+kind: organ
+laterality: midline
+status: draft
+parent: tricuspid-valve
+labels:
+  en:
+    text: anterior leaflet of tricuspid valve
+    source: fma
+    status: draft
+  fr:
+    text: cuspide antérieure de la valve atrio-ventriculaire droite
+    source: wikidata
+    status: draft
+ids:
+  fma: 7238
+  ta2: 3984
+  ta98: A12.1.02.004
+  wikidata: Q66502842
+meshes:
+  - bp3d:FJ2421

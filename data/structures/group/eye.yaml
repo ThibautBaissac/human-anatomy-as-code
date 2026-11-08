@@ -1,0 +1,21 @@
+slug: eye
+kind: group
+laterality: bilateral
+status: draft
+parent: face
+regions:
+  - head
+labels:
+  en:
+    text: eye
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 54450
+      wikidata: Q41890544
+  right:
+    ids:
+      fma: 54449
+      wikidata: Q41890532

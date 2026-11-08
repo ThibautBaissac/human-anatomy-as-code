@@ -1,0 +1,39 @@
+slug: middle-phalanx-of-third-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: third-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: middle phalanx of third toe
+    source: fma
+    status: draft
+ids:
+  fma: 32624
+  wikidata: Q66523093
+sides:
+  left:
+    ids:
+      fma: 32645
+      wikidata: Q66523111
+    meshes:
+      - bp3d:FJ3294
+    labels:
+      en:
+        text: middle phalanx of left third toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32644
+      wikidata: Q66523110
+    meshes:
+      - bp3d:FJ3301
+    labels:
+      en:
+        text: middle phalanx of right third toe
+        source: fma
+        status: draft

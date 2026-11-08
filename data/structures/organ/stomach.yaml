@@ -1,0 +1,25 @@
+slug: stomach
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: stomach
+    source: fma
+    status: draft
+  fr:
+    text: estomac
+    source: wikidata
+    status: draft
+  la:
+    text: stomachus
+    source: wikidata
+    status: draft
+ids:
+  fma: 7148
+  ta2: 2901
+  ta98: A05.5.01.001
+  wikidata: Q1029907
+meshes:
+  - bp3d:FJ2564

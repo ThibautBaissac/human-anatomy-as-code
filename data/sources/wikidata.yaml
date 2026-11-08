@@ -1,0 +1,8 @@
+id: wikidata
+name: Wikidata
+version: "2026-11-08"
+url: https://www.wikidata.org/
+licence: CC0-1.0
+attribution: "Wikidata, CC0"
+provides: [labels, ids]
+notes: Export SPARQL des items portant un FMA ID (P1402), requête dans import/wikidata-fma.rq, export dans import/wikidata-fma.csv.

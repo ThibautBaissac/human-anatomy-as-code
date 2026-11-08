@@ -1,0 +1,39 @@
+slug: vastus-medialis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: vastus medialis
+    source: fma
+    status: draft
+  fr:
+    text: muscle vaste médial
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus vastus medialis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22432
+  ta2: 2620
+  ta98: A04.7.02.023
+  wikidata: Q1590935
+sides:
+  left:
+    ids:
+      fma: 38933
+      wikidata: Q66527888
+    meshes:
+      - bp3d:FJ1443M
+  right:
+    ids:
+      fma: 38932
+      wikidata: Q66527887
+    meshes:
+      - bp3d:FJ1443

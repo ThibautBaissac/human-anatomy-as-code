@@ -1,0 +1,28 @@
+slug: archicortex
+kind: organ
+laterality: bilateral
+status: draft
+parent: limbic-lobe
+labels:
+  en:
+    text: archicortex
+    source: fma
+    status: draft
+  fr:
+    text: archipallium
+    source: wikidata
+    status: draft
+ids:
+  fma: 62424
+  ta2: 5530
+  ta98: A14.1.09.302
+  wikidata: Q2860196
+sides:
+  left:
+    ids:
+      fma: 242611
+      wikidata: Q66599158
+  right:
+    ids:
+      fma: 242609
+      wikidata: Q66599157

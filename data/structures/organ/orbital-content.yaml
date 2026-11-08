@@ -1,0 +1,22 @@
+slug: orbital-content
+kind: organ
+laterality: bilateral
+status: draft
+parent: orbital-compartment
+labels:
+  en:
+    text: orbital content
+    source: fma
+    status: draft
+ids:
+  fma: 260119
+  wikidata: Q66601138
+sides:
+  left:
+    ids:
+      fma: 260127
+      wikidata: Q66601140
+  right:
+    ids:
+      fma: 260124
+      wikidata: Q66601139

@@ -1,0 +1,35 @@
+slug: clavicular-part-of-pectoralis-major
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: clavicular part of pectoralis major
+    source: fma
+    status: draft
+ids:
+  fma: 34687
+  wikidata: Q66524656
+sides:
+  left:
+    ids:
+      fma: 34691
+      wikidata: Q66524660
+    meshes:
+      - bp3d:FJ1447M
+    labels:
+      en:
+        text: clavicular part of left pectoralis major
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 34690
+      wikidata: Q66524659
+    meshes:
+      - bp3d:FJ1447
+    labels:
+      en:
+        text: clavicular part of right pectoralis major
+        source: fma
+        status: draft

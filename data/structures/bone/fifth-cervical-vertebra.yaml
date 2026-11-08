@@ -1,0 +1,21 @@
+slug: fifth-cervical-vertebra
+kind: bone
+laterality: midline
+status: draft
+parent: neck
+regions:
+  - neck
+labels:
+  en:
+    text: fifth cervical vertebra
+    source: fma
+    status: draft
+  fr:
+    text: cinquième vertèbre cervicale
+    source: wikidata
+    status: draft
+ids:
+  fma: 12523
+  wikidata: Q5065363
+meshes:
+  - bp3d:FJ3167

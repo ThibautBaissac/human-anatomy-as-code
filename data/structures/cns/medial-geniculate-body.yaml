@@ -1,0 +1,27 @@
+slug: medial-geniculate-body
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: medial geniculate body
+    source: fma
+    status: draft
+ids:
+  fma: 62211
+  ta2: 5667
+  ta98: A14.1.08.808
+  wikidata: Q3694103
+sides:
+  left:
+    ids:
+      fma: 73310
+      wikidata: Q66570766
+    meshes:
+      - bp3d:FJ1816M
+  right:
+    ids:
+      fma: 73309
+      wikidata: Q66570765
+    meshes:
+      - bp3d:FJ1816

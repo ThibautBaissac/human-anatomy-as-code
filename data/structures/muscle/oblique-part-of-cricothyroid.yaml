@@ -1,0 +1,41 @@
+slug: oblique-part-of-cricothyroid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: oblique part of cricothyroid
+    source: fma
+    status: draft
+  fr:
+    text: partie oblique du muscle cricothyroïdien
+    source: wikidata
+    status: draft
+ids:
+  fma: 46610
+  ta2: 2195
+  ta98: A06.2.08.003
+  wikidata: Q66536622
+sides:
+  left:
+    ids:
+      fma: 46614
+      wikidata: Q66536626
+    meshes:
+      - bp3d:FJ2781
+    labels:
+      en:
+        text: oblique part of left cricothyroid
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 46613
+      wikidata: Q66536625
+    meshes:
+      - bp3d:FJ2799
+    labels:
+      en:
+        text: oblique part of right cricothyroid
+        source: fma
+        status: draft

@@ -1,0 +1,43 @@
+slug: brachial-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: arm
+regions:
+  - arm
+  - upper-limb
+labels:
+  en:
+    text: brachial artery
+    source: fma
+    status: draft
+  fr:
+    text: artère brachiale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria brachialis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22689
+  ta2: 4632
+  ta98: A12.2.09.018
+  wikidata: Q503643
+sides:
+  left:
+    ids:
+      fma: 22692
+      wikidata: Q66514729
+    meshes:
+      - bp3d:FJ2219
+  right:
+    ids:
+      fma: 22691
+      wikidata: Q66396274
+    meshes:
+      - bp3d:FJ2271

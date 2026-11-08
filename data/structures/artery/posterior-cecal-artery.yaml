@@ -1,0 +1,29 @@
+slug: posterior-cecal-artery
+kind: artery
+laterality: midline
+status: draft
+parent: inferior-branch-of-ileocolic-artery
+labels:
+  en:
+    text: posterior cecal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère cæcale postérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria caecalis posterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14817
+  ta2: 4260
+  ta98: A12.2.12.061
+  wikidata: Q707058
+meshes:
+  - bp3d:FJ3553

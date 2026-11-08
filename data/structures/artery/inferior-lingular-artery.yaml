@@ -1,0 +1,24 @@
+slug: inferior-lingular-artery
+kind: artery
+laterality: midline
+status: draft
+parent: inferior-lingular-bronchopulmonary-segment
+labels:
+  en:
+    text: inferior lingular artery
+    source: fma
+    status: draft
+  fr:
+    text: artère lingulaire inférieure de l'artère pulmonaire gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8640
+  ta2: 4099
+  ta98: A12.2.01.212
+  wikidata: Q66504103
+meshes:
+  - bp3d:FJ2896
+  - bp3d:FJ2897

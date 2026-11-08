@@ -1,0 +1,17 @@
+slug: dorsum-of-nose
+kind: organ
+laterality: midline
+status: draft
+parent: external-nose
+regions:
+  - head
+labels:
+  en:
+    text: dorsum of nose
+    source: fma
+    status: draft
+ids:
+  fma: 59517
+  ta2: 218
+  ta98: A06.1.01.003
+  wikidata: Q66555949

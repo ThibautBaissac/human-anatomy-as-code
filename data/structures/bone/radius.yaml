@@ -1,0 +1,39 @@
+slug: radius
+kind: bone
+laterality: bilateral
+status: draft
+parent: forearm
+regions:
+  - forearm
+  - upper-limb
+labels:
+  en:
+    text: radius
+    source: fma
+    status: draft
+  fr:
+    text: radius
+    source: wikidata
+    status: draft
+  la:
+    text: Radius
+    source: wikidata
+    status: draft
+ids:
+  fma: 23463
+  ta2: 1210
+  ta98: A02.4.05.001
+  wikidata: Q178492
+sides:
+  left:
+    ids:
+      fma: 23465
+      wikidata: Q66515318
+    meshes:
+      - bp3d:FJ3277
+  right:
+    ids:
+      fma: 23464
+      wikidata: Q66515317
+    meshes:
+      - bp3d:FJ3349

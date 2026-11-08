@@ -1,0 +1,24 @@
+slug: lateral-chest-wall
+kind: organ
+laterality: bilateral
+status: draft
+parent: chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: lateral chest wall
+    source: fma
+    status: draft
+ids:
+  fma: 24817
+  wikidata: Q66516232
+sides:
+  left:
+    ids:
+      fma: 25559
+      wikidata: Q66516849
+  right:
+    ids:
+      fma: 25558
+      wikidata: Q66516848

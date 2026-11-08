@@ -1,0 +1,20 @@
+slug: medial-branch-of-left-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: portal-vein
+labels:
+  en:
+    text: medial branch of left portal vein
+    source: fma
+    status: draft
+  fr:
+    text: rameau médial de la partie ombilicale du rameau gauche de la veine porte hépatique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15427
+  ta2: 5105
+  wikidata: Q66512016

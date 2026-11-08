@@ -1,0 +1,36 @@
+slug: trunk-of-renal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: renal-artery
+labels:
+  en:
+    text: trunk of renal artery
+    source: fma
+    status: draft
+ids:
+  fma: 66362
+  wikidata: Q66562464
+sides:
+  left:
+    ids:
+      fma: 66364
+      wikidata: Q66562466
+    meshes:
+      - bp3d:FJ3476
+    labels:
+      en:
+        text: trunk of left renal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 66363
+      wikidata: Q66562465
+    meshes:
+      - bp3d:FJ3576
+    labels:
+      en:
+        text: trunk of right renal artery
+        source: fma
+        status: draft

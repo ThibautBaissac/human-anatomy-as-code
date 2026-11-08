@@ -1,0 +1,33 @@
+slug: pericallosal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: pericallosal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère péricalleuse
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50337
+  ta2: 4507
+  ta98: A12.2.07.043
+  wikidata: Q66539483
+sides:
+  left:
+    ids:
+      fma: 50360
+      wikidata: Q66539506
+    meshes:
+      - bp3d:FJ1699M
+  right:
+    ids:
+      fma: 50359
+      wikidata: Q66539505
+    meshes:
+      - bp3d:FJ1699

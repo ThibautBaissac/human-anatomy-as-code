@@ -1,0 +1,22 @@
+slug: thyroid-cartilage
+kind: cartilage
+laterality: midline
+status: draft
+labels:
+  en:
+    text: thyroid cartilage
+    source: fma
+    status: draft
+  fr:
+    text: cartilage thyroïde
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 55099
+  ta2: 967
+  ta98: A06.2.02.002
+  wikidata: Q171093
+meshes:
+  - bp3d:FJ2808

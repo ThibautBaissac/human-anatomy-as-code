@@ -1,0 +1,18 @@
+slug: back-of-thorax
+kind: organ
+laterality: midline
+status: draft
+parent: thoracic-segment-of-trunk
+labels:
+  en:
+    text: back of thorax
+    source: fma
+    status: draft
+  fr:
+    text: arrière du thorax
+    source: wikidata
+    status: draft
+ids:
+  fma: 24217
+  ta2: 136
+  wikidata: Q25507830

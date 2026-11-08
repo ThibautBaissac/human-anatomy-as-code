@@ -1,0 +1,29 @@
+slug: anterior-communicating-artery
+kind: artery
+laterality: midline
+status: draft
+parent: cerebral-arterial-circle
+labels:
+  en:
+    text: anterior communicating artery
+    source: fma
+    status: draft
+  fr:
+    text: artère communicante antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria communicans anterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50169
+  ta2: 4517
+  ta98: A12.2.07.029
+  wikidata: Q598769
+meshes:
+  - bp3d:FJ1655

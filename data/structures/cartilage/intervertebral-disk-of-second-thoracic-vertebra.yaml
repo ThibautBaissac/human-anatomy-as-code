@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-second-thoracic-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: second-thoracic-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of second thoracic vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13495
+  wikidata: Q66508172
+meshes:
+  - bp3d:FJ3223

@@ -1,0 +1,22 @@
+slug: anterior-superior-pancreaticoduodenal-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: anterior superior pancreaticoduodenal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère pancréatico-duodénale supéro-antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14782
+  ta2: 4224
+  ta98: A12.2.12.025
+  wikidata: Q37947143
+meshes:
+  - bp3d:FJ3409

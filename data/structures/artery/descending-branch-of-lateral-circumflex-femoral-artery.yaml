@@ -1,0 +1,49 @@
+slug: descending-branch-of-lateral-circumflex-femoral-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: descending branch of lateral circumflex femoral artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau descendant de l'artère circonflexe fémorale latérale
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ramus descendens arteriae circumflexae femoris lateralis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 20805
+  ta2: 4695
+  ta98: A12.2.16.029
+  wikidata: Q5263717
+sides:
+  left:
+    ids:
+      fma: 21423
+      wikidata: Q66513406
+    meshes:
+      - bp3d:FJ2063
+    labels:
+      en:
+        text: descending branch of left lateral circumflex femoral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 21422
+      wikidata: Q66513404
+    meshes:
+      - bp3d:FJ2057
+    labels:
+      en:
+        text: descending branch of right lateral circumflex femoral artery
+        source: fma
+        status: draft

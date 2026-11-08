@@ -1,0 +1,42 @@
+slug: precommunicating-part-of-posterior-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: cerebral-arterial-circle
+labels:
+  en:
+    text: precommunicating part of posterior cerebral artery
+    source: fma
+    status: draft
+  fr:
+    text: partie précommunicante de l'artère cérébrale postérieure
+    source: wikidata
+    status: draft
+ids:
+  fma: 50590
+  ta2: 4523
+  ta98: A12.2.07.083
+  wikidata: Q66539724
+sides:
+  left:
+    ids:
+      fma: 50640
+      wikidata: Q66539769
+    meshes:
+      - bp3d:FJ1723M
+    labels:
+      en:
+        text: precommunicating part of left posterior cerebral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50639
+      wikidata: Q66539767
+    meshes:
+      - bp3d:FJ1723
+    labels:
+      en:
+        text: precommunicating part of right posterior cerebral artery
+        source: fma
+        status: draft

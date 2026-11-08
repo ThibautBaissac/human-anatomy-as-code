@@ -1,0 +1,35 @@
+slug: seminal-vesicle
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: seminal vesicle
+    source: fma
+    status: draft
+  fr:
+    text: vésicule séminale
+    source: wikidata
+    status: draft
+  la:
+    text: Vesicula seminalis
+    source: wikidata
+    status: draft
+ids:
+  fma: 19386
+  ta2: 3631
+  ta98: A09.3.06.001
+  wikidata: Q217259
+sides:
+  left:
+    ids:
+      fma: 19388
+      wikidata: Q66510592
+    meshes:
+      - bp3d:FJ3137
+  right:
+    ids:
+      fma: 19387
+      wikidata: Q66510590
+    meshes:
+      - bp3d:FJ3143

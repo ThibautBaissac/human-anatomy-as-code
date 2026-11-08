@@ -1,0 +1,35 @@
+slug: deferent-duct
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: deferent duct
+    source: fma
+    status: draft
+  fr:
+    text: canal déférent
+    source: wikidata
+    status: draft
+  la:
+    text: Vas deferens
+    source: wikidata
+    status: draft
+ids:
+  fma: 19234
+  ta2: 3621
+  ta98: A09.3.05.001
+  wikidata: Q735505
+sides:
+  left:
+    ids:
+      fma: 19236
+      wikidata: Q66510395
+    meshes:
+      - bp3d:FJ3135
+  right:
+    ids:
+      fma: 19235
+      wikidata: Q66510394
+    meshes:
+      - bp3d:FJ3140

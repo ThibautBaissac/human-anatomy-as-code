@@ -1,0 +1,40 @@
+slug: scaphoid
+kind: bone
+laterality: bilateral
+status: draft
+parent: wrist
+regions:
+  - upper-limb
+labels:
+  en:
+    text: scaphoid
+    source: fma
+    status: draft
+  fr:
+    text: scaphoïde
+    source: wikidata
+    status: draft
+  la:
+    text: Os scaphoideum
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23709
+  ta2: 1250
+  ta98: A02.4.08.003
+  wikidata: Q13143
+sides:
+  left:
+    ids:
+      fma: 24436
+      wikidata: Q66515961
+    meshes:
+      - bp3d:FJ3278
+  right:
+    ids:
+      fma: 24435
+      wikidata: Q66515960
+    meshes:
+      - bp3d:FJ3383

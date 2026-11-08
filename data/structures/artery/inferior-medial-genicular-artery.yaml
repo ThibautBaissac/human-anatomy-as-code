@@ -1,0 +1,39 @@
+slug: inferior-medial-genicular-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: inferior medial genicular artery
+    source: fma
+    status: draft
+  fr:
+    text: artère inféro-médiale du genou
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria inferior medialis genus
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 43889
+  ta2: 4705
+  ta98: A12.2.16.039
+  wikidata: Q2865986
+sides:
+  left:
+    ids:
+      fma: 43891
+      wikidata: Q66533810
+    meshes:
+      - bp3d:FJ2077
+  right:
+    ids:
+      fma: 43890
+      wikidata: Q66533809
+    meshes:
+      - bp3d:FJ2152

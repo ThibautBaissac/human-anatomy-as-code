@@ -1,0 +1,39 @@
+slug: medial-cuneiform-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: medial cuneiform bone
+    source: fma
+    status: draft
+  fr:
+    text: cunéiforme médial
+    source: wikidata
+    status: draft
+  la:
+    text: Cuneiforme mediale
+    source: wikidata
+    status: draft
+ids:
+  fma: 24518
+  ta2: 1486
+  ta98: A02.5.13.001
+  wikidata: Q1884889
+sides:
+  left:
+    ids:
+      fma: 24522
+      wikidata: Q66516032
+    meshes:
+      - bp3d:FJ3271
+  right:
+    ids:
+      fma: 24521
+      wikidata: Q66516031
+    meshes:
+      - bp3d:FJ3377

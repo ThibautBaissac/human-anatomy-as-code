@@ -1,0 +1,41 @@
+slug: superficial-head-of-flexor-pollicis-brevis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superficial head of flexor pollicis brevis
+    source: fma
+    status: draft
+  fr:
+    text: chef superficiel du muscle court fléchisseur du pouce
+    source: wikidata
+    status: draft
+ids:
+  fma: 46104
+  ta2: 2523
+  ta98: A04.6.02.056
+  wikidata: Q66536302
+sides:
+  left:
+    ids:
+      fma: 65199
+      wikidata: Q66561526
+    meshes:
+      - bp3d:FJ1514M
+    labels:
+      en:
+        text: superficial head of left flexor pollicis brevis
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 65198
+      wikidata: Q66561525
+    meshes:
+      - bp3d:FJ1514
+    labels:
+      en:
+        text: superficial head of right flexor pollicis brevis
+        source: fma
+        status: draft

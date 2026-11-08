@@ -1,0 +1,44 @@
+slug: suspensory-ligament-of-lens
+kind: ligament
+laterality: bilateral
+status: draft
+parent: eyeball
+regions:
+  - head
+labels:
+  en:
+    text: suspensory ligament of lens
+    source: fma
+    status: draft
+  fr:
+    text: zonule de Zinn
+    source: wikidata
+    status: draft
+ids:
+  fma: 58838
+  ta2: 6795
+  ta98: A15.2.05.015
+  wikidata: Q2409648
+sides:
+  left:
+    ids:
+      fma: 58840
+      wikidata: Q66555344
+    meshes:
+      - bp3d:FJ1320
+    labels:
+      en:
+        text: suspensory ligament of left lens
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58839
+      wikidata: Q66555343
+    meshes:
+      - bp3d:FJ1371
+    labels:
+      en:
+        text: suspensory ligament of right lens
+        source: fma
+        status: draft

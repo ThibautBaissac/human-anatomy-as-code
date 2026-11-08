@@ -1,0 +1,39 @@
+slug: popliteal-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: popliteal vein
+    source: fma
+    status: draft
+  fr:
+    text: veine poplitée
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena poplitea
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 44327
+  ta2: 5072
+  ta98: A12.3.11.028
+  wikidata: Q2746562
+sides:
+  left:
+    ids:
+      fma: 44329
+      wikidata: Q66534249
+    meshes:
+      - bp3d:FJ2117
+  right:
+    ids:
+      fma: 44328
+      wikidata: Q66534247
+    meshes:
+      - bp3d:FJ2171

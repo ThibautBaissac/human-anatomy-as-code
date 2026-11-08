@@ -1,0 +1,33 @@
+slug: marginal-branch-of-right-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: right-coronary-artery
+labels:
+  en:
+    text: marginal branch of right coronary artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau marginal droit de l'artère coronaire droite
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ramus marginalis dexter arteriae coronariae dextrae
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 3818
+  ta2: 4137
+  ta98: A12.2.03.106
+  wikidata: Q6382772
+meshes:
+  - bp3d:FJ2667
+  - bp3d:FJ2668
+  - bp3d:FJ2672
+  - bp3d:FJ2674
+  - bp3d:FJ2675

@@ -1,0 +1,45 @@
+slug: middle-phalanx-of-ring-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: ring-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: middle phalanx of ring finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange moyenne de l'annulaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23935
+  wikidata: Q66515611
+sides:
+  left:
+    ids:
+      fma: 23942
+      wikidata: Q66515615
+    meshes:
+      - bp3d:FJ3291
+    labels:
+      en:
+        text: middle phalanx of left ring finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24457
+      wikidata: Q66515983
+    meshes:
+      - bp3d:FJ3292
+    labels:
+      en:
+        text: middle phalanx of right ring finger
+        source: fma
+        status: draft

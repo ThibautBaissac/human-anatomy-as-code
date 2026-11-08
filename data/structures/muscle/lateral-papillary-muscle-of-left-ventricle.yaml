@@ -1,0 +1,25 @@
+slug: lateral-papillary-muscle-of-left-ventricle
+kind: muscle
+laterality: midline
+status: draft
+parent: myocardial-zone-11
+regions:
+  - thorax
+labels:
+  en:
+    text: lateral papillary muscle of left ventricle
+    source: fma
+    status: draft
+  fr:
+    text: muscle papillaire antérieur du ventricule gauche
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 7264
+  ta2: 4067
+  ta98: A12.1.04.007
+  wikidata: Q66502861
+meshes:
+  - bp3d:FJ2429

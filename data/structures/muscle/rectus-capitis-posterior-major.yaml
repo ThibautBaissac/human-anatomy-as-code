@@ -1,0 +1,39 @@
+slug: rectus-capitis-posterior-major
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: rectus capitis posterior major
+    source: fma
+    status: draft
+  fr:
+    text: muscle grand droit postérieur de la tête
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus rectus capitis posterior major
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 32525
+  ta2: 2249
+  ta98: A04.2.02.004
+  wikidata: Q762258
+sides:
+  left:
+    ids:
+      fma: 32531
+      wikidata: Q66523019
+    meshes:
+      - bp3d:FJ1567
+  right:
+    ids:
+      fma: 32530
+      wikidata: Q66523018
+    meshes:
+      - bp3d:FJ1589

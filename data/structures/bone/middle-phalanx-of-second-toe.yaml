@@ -1,0 +1,39 @@
+slug: middle-phalanx-of-second-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: second-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: middle phalanx of second toe
+    source: fma
+    status: draft
+ids:
+  fma: 32623
+  wikidata: Q66523092
+sides:
+  left:
+    ids:
+      fma: 32643
+      wikidata: Q66523109
+    meshes:
+      - bp3d:FJ3293
+    labels:
+      en:
+        text: middle phalanx of left second toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32642
+      wikidata: Q66523108
+    meshes:
+      - bp3d:FJ3300
+    labels:
+      en:
+        text: middle phalanx of right second toe
+        source: fma
+        status: draft

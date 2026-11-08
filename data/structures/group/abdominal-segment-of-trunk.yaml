@@ -1,0 +1,17 @@
+slug: abdominal-segment-of-trunk
+kind: group
+laterality: midline
+status: draft
+parent: trunk
+labels:
+  en:
+    text: abdominal segment of trunk
+    source: fma
+    status: draft
+  fr:
+    text: segment abdominal du tronc
+    source: wikidata
+    status: draft
+ids:
+  fma: 259211
+  wikidata: Q25506835

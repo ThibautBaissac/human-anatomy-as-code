@@ -1,0 +1,25 @@
+slug: esophagus
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: esophagus
+    source: fma
+    status: draft
+  fr:
+    text: œsophage
+    source: wikidata
+    status: draft
+  la:
+    text: Oesophagus
+    source: wikidata
+    status: draft
+ids:
+  fma: 7131
+  ta2: 2887
+  ta98: A05.4.01.001
+  wikidata: Q173710
+meshes:
+  - bp3d:FJ2563

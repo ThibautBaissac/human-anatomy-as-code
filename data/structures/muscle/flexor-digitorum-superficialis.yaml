@@ -1,0 +1,41 @@
+slug: flexor-digitorum-superficialis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor digitorum superficialis
+    source: fma
+    status: draft
+  fr:
+    text: muscle fléchisseur superficiel des doigts de la main
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus flexor digitorum superficialis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38469
+  ta2: 2486
+  ta98: A04.6.02.033
+  wikidata: Q847112
+sides:
+  left:
+    ids:
+      fma: 38471
+      wikidata: Q66527648
+    meshes:
+      - bp3d:FJ1475M
+      - bp3d:FJ1499M
+  right:
+    ids:
+      fma: 38470
+      wikidata: Q66527647
+    meshes:
+      - bp3d:FJ1475
+      - bp3d:FJ1499

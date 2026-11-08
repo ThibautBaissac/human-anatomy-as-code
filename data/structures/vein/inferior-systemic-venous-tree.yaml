@@ -1,0 +1,13 @@
+slug: inferior-systemic-venous-tree
+kind: vein
+laterality: midline
+status: draft
+parent: vasculature-of-body
+labels:
+  en:
+    text: inferior systemic venous tree
+    source: fma
+    status: draft
+ids:
+  fma: 82673
+  wikidata: Q66589479

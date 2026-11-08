@@ -1,0 +1,39 @@
+slug: rectus-capitis-anterior
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: rectus capitis anterior
+    source: fma
+    status: draft
+  fr:
+    text: muscle droit antérieur de la tête
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus rectus capitis anterior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46312
+  ta2: 2150
+  ta98: A04.2.02.002
+  wikidata: Q371122
+sides:
+  left:
+    ids:
+      fma: 46314
+      wikidata: Q66536467
+    meshes:
+      - bp3d:FJ1566
+  right:
+    ids:
+      fma: 46313
+      wikidata: Q66536466
+    meshes:
+      - bp3d:FJ1588

@@ -1,0 +1,42 @@
+slug: inferior-oblique
+kind: muscle
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: inferior oblique
+    source: fma
+    status: draft
+  fr:
+    text: muscle oblique inférieur du bulbe de l'œil
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus obliquus inferior bulbi
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 49040
+  ta2: 2051
+  ta98: A15.2.07.019
+  wikidata: Q1051437
+sides:
+  left:
+    ids:
+      fma: 49051
+      wikidata: Q66538465
+    meshes:
+      - bp3d:FJ1294
+  right:
+    ids:
+      fma: 49050
+      wikidata: Q66538464
+    meshes:
+      - bp3d:FJ1345

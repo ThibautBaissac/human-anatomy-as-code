@@ -1,0 +1,35 @@
+slug: testis
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: testis
+    source: fma
+    status: draft
+  fr:
+    text: testicule
+    source: wikidata
+    status: draft
+  la:
+    text: testis
+    source: wikidata
+    status: draft
+ids:
+  fma: 7210
+  ta2: 3576
+  ta98: A09.3.01.001
+  wikidata: Q9384
+sides:
+  left:
+    ids:
+      fma: 7212
+      wikidata: Q66502830
+    meshes:
+      - bp3d:FJ3138
+  right:
+    ids:
+      fma: 7211
+      wikidata: Q66502829
+    meshes:
+      - bp3d:FJ3142

@@ -1,0 +1,42 @@
+slug: middle-temporal-branch-of-middle-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: middle temporal branch of middle cerebral artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau temporal moyen de l'artère cérébrale moyenne
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50466
+  ta98: A12.2.07.057
+  wikidata: Q66539604
+sides:
+  left:
+    ids:
+      fma: 50468
+      wikidata: Q66539605
+    meshes:
+      - bp3d:FJ1693M
+    labels:
+      en:
+        text: middle temporal branch of left middle cerebral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50467
+      wikidata: Q66551017
+    meshes:
+      - bp3d:FJ1693
+    labels:
+      en:
+        text: middle temporal branch of right middle cerebral artery
+        source: fma
+        status: draft

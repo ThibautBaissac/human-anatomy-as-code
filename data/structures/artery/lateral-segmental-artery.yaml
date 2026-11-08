@@ -1,0 +1,21 @@
+slug: lateral-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: lateral-bronchopulmonary-segment
+labels:
+  en:
+    text: lateral segmental artery
+    source: fma
+    status: draft
+  fr:
+    text: artère segmentaire latérale du lobe moyen du poumon droit
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 68194
+  ta2: 4084
+  ta98: A12.2.01.112
+  wikidata: Q66563798

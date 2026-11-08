@@ -1,0 +1,25 @@
+slug: palmar-metacarpal-artery
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: palmar metacarpal artery
+    source: fma
+    status: draft
+ids:
+  fma: 22863
+  wikidata: Q66514851
+sides:
+  left:
+    ids:
+      fma: 22865
+      wikidata: Q66514853
+    meshes:
+      - bp3d:FJ2237
+  right:
+    ids:
+      fma: 22864
+      wikidata: Q66514852
+    meshes:
+      - bp3d:FJ2289

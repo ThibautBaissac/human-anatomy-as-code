@@ -1,0 +1,15 @@
+slug: lumbar-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: lumbar artery
+    source: fma
+    status: draft
+ids:
+  fma: 14735
+  wikidata: Q66510748
+meshes:
+  - bp3d:FJ3632
+  - bp3d:FJ3636

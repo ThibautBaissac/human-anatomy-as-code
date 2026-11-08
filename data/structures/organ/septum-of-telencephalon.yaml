@@ -1,0 +1,14 @@
+slug: septum-of-telencephalon
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: septum of telencephalon
+    source: fma
+    status: draft
+ids:
+  fma: 61842
+  wikidata: Q66558006
+meshes:
+  - bp3d:FJ1832

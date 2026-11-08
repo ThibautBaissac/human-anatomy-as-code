@@ -1,0 +1,33 @@
+slug: scalenus-posterior
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: scalenus posterior
+    source: fma
+    status: draft
+  fr:
+    text: muscle scalène postérieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13387
+  ta2: 2154
+  ta98: A04.2.01.006
+  wikidata: Q955110
+sides:
+  left:
+    ids:
+      fma: 13389
+      wikidata: Q66508063
+    meshes:
+      - bp3d:FJ1572
+  right:
+    ids:
+      fma: 13388
+      wikidata: Q66508062
+    meshes:
+      - bp3d:FJ1594

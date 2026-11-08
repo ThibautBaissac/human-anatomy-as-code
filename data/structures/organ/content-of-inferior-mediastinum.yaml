@@ -1,0 +1,13 @@
+slug: content-of-inferior-mediastinum
+kind: organ
+laterality: midline
+status: draft
+parent: content-of-mediastinum
+labels:
+  en:
+    text: content of inferior mediastinum
+    source: fma
+    status: draft
+ids:
+  fma: 79275
+  wikidata: Q66577350

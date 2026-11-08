@@ -1,0 +1,18 @@
+slug: metencephalon
+kind: organ
+laterality: midline
+status: draft
+parent: hindbrain
+labels:
+  en:
+    text: metencephalon
+    source: fma
+    status: draft
+  fr:
+    text: métencéphale
+    source: wikidata
+    status: draft
+ids:
+  fma: 62003
+  ta98: A14.1.03.004
+  wikidata: Q1500793

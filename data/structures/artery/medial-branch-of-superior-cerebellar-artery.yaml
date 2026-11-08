@@ -1,0 +1,35 @@
+slug: medial-branch-of-superior-cerebellar-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: medial branch of superior cerebellar artery
+    source: fma
+    status: draft
+ids:
+  fma: 50580
+  wikidata: Q66539715
+sides:
+  left:
+    ids:
+      fma: 50582
+      wikidata: Q66539717
+    meshes:
+      - bp3d:FJ1688M
+    labels:
+      en:
+        text: medial branch of left superior cerebellar artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50581
+      wikidata: Q66539716
+    meshes:
+      - bp3d:FJ1688
+    labels:
+      en:
+        text: medial branch of right superior cerebellar artery
+        source: fma
+        status: draft

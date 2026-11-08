@@ -1,0 +1,13 @@
+id: bodyparts3d
+name: BodyParts3D
+version: "4.0"
+url: https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html
+licence: CC-BY-4.0
+attribution: "BodyParts3D, © The Database Center for Life Science, licensed under CC Attribution 4.0 International"
+provides: [meshes, labels, ids]
+meshPrefix: bp3d
+meshPattern: "^FJ\\d+M?$"
+notes: >-
+  La page de licence DBCLS (mise à jour le 2025-02-27) indique CC BY 4.0, mais chaque fichier OBJ
+  porte encore l'en-tête « CC Attribution-Share Alike 2.1 Japan ». Confirmation écrite à demander
+  au DBCLS avant toute publication d'assets dérivés.

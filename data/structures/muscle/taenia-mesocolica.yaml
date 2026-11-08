@@ -1,0 +1,15 @@
+slug: taenia-mesocolica
+kind: muscle
+laterality: midline
+status: draft
+parent: muscle-layer-of-large-intestine
+labels:
+  en:
+    text: taenia mesocolica
+    source: fma
+    status: draft
+ids:
+  fma: 15042
+  wikidata: Q66511265
+meshes:
+  - bp3d:FJ2569

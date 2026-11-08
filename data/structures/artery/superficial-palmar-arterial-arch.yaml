@@ -1,0 +1,35 @@
+slug: superficial-palmar-arterial-arch
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superficial palmar arterial arch
+    source: fma
+    status: draft
+  fr:
+    text: arcade palmaire superficielle
+    source: wikidata
+    status: draft
+  la:
+    text: Arcus palmaris superficialis
+    source: wikidata
+    status: draft
+ids:
+  fma: 22834
+  ta2: 4671
+  ta98: A12.2.09.056
+  wikidata: Q7643328
+sides:
+  left:
+    ids:
+      fma: 22837
+      wikidata: Q66514831
+    meshes:
+      - bp3d:FJ2248
+  right:
+    ids:
+      fma: 22835
+      wikidata: Q66514830
+    meshes:
+      - bp3d:FJ2300

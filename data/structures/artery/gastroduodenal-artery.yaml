@@ -1,0 +1,27 @@
+slug: gastroduodenal-artery
+kind: artery
+laterality: midline
+status: draft
+parent: common-hepatic-artery
+labels:
+  en:
+    text: gastroduodenal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère gastro-duodénale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria gastroduodenalis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14775
+  ta2: 4215
+  ta98: A12.2.12.016
+  wikidata: Q707194

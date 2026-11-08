@@ -1,0 +1,28 @@
+slug: superior-rectal-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: superior rectal vein
+    source: fma
+    status: draft
+  fr:
+    text: veine rectale supérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena rectalis superior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15393
+  ta2: 5130
+  ta98: A12.3.12.035
+  wikidata: Q7643673
+meshes:
+  - bp3d:FJ3657

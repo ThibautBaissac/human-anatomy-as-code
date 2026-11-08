@@ -1,0 +1,14 @@
+slug: communicating-branch-of-left-nasociliary-nerve-with-left-ciliary-ganglion
+kind: nerve
+laterality: midline
+status: draft
+labels:
+  en:
+    text: communicating branch of left nasociliary nerve with left ciliary ganglion
+    source: fma
+    status: draft
+ids:
+  fma: 52674
+  wikidata: Q66542891
+meshes:
+  - bp3d:FJ1311

@@ -1,0 +1,25 @@
+slug: medial-circumflex-femoral-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: medial circumflex femoral vein
+    source: fma
+    status: draft
+ids:
+  fma: 44325
+  wikidata: Q66534242
+sides:
+  left:
+    ids:
+      fma: 44919
+      wikidata: Q66535375
+    meshes:
+      - bp3d:FJ2189
+  right:
+    ids:
+      fma: 44918
+      wikidata: Q66535374
+    meshes:
+      - bp3d:FJ2202

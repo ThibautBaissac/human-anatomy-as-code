@@ -1,0 +1,39 @@
+slug: ulna
+kind: bone
+laterality: bilateral
+status: draft
+parent: forearm
+regions:
+  - forearm
+  - upper-limb
+labels:
+  en:
+    text: ulna
+    source: fma
+    status: draft
+  fr:
+    text: ulna
+    source: wikidata
+    status: draft
+  la:
+    text: Ulna
+    source: wikidata
+    status: draft
+ids:
+  fma: 23466
+  ta2: 1230
+  ta98: A02.4.06.001
+  wikidata: Q199507
+sides:
+  left:
+    ids:
+      fma: 23468
+      wikidata: Q66515320
+    meshes:
+      - bp3d:FJ3286
+  right:
+    ids:
+      fma: 23467
+      wikidata: Q66515319
+    meshes:
+      - bp3d:FJ3391

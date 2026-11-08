@@ -1,0 +1,22 @@
+slug: posterior-choroidal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: posterior-cerebral-artery
+labels:
+  en:
+    text: posterior choroidal artery
+    source: fma
+    status: draft
+ids:
+  fma: 50657
+  wikidata: Q66539802
+sides:
+  left:
+    ids:
+      fma: 50659
+      wikidata: Q66539806
+  right:
+    ids:
+      fma: 50658
+      wikidata: Q66539804

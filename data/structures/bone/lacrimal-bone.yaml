@@ -1,0 +1,40 @@
+slug: lacrimal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: lacrimal bone
+    source: fma
+    status: draft
+  fr:
+    text: os lacrymal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os lacrimale
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52741
+  ta2: 744
+  ta98: A02.1.09.001
+  wikidata: Q212721
+sides:
+  left:
+    ids:
+      fma: 53646
+      wikidata: Q66543689
+    meshes:
+      - bp3d:FJ3265
+  right:
+    ids:
+      fma: 53645
+      wikidata: Q66543688
+    meshes:
+      - bp3d:FJ3371

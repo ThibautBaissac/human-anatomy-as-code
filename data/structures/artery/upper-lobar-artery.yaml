@@ -1,0 +1,34 @@
+slug: upper-lobar-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: upper-lobe-of-lung
+labels:
+  en:
+    text: upper lobar artery
+    source: fma
+    status: draft
+  fr:
+    text: artère lobaire supérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8702
+  wikidata: Q66504268
+sides:
+  left:
+    ids:
+      fma: 68198
+      ta2: 4094
+      ta98: A12.2.01.203
+      wikidata: Q66563801
+  right:
+    ids:
+      fma: 68197
+      ta2: 4078
+      ta98: A12.2.01.102
+      wikidata: Q66563800
+    meshes:
+      - bp3d:FJ2973

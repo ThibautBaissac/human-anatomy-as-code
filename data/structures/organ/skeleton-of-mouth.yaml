@@ -1,0 +1,13 @@
+slug: skeleton-of-mouth
+kind: organ
+laterality: midline
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: skeleton of mouth
+    source: fma
+    status: draft
+ids:
+  fma: 61670
+  wikidata: Q66557874

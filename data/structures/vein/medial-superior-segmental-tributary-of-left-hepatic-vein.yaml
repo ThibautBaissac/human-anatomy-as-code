@@ -1,0 +1,14 @@
+slug: medial-superior-segmental-tributary-of-left-hepatic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: medial superior segmental tributary of left hepatic vein
+    source: fma
+    status: draft
+ids:
+  fma: 15802
+  wikidata: Q66512568
+meshes:
+  - bp3d:FJ3101

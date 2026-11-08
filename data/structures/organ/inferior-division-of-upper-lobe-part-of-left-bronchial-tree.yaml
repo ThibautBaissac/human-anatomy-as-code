@@ -1,0 +1,13 @@
+slug: inferior-division-of-upper-lobe-part-of-left-bronchial-tree
+kind: organ
+laterality: midline
+status: draft
+parent: upper-lobe-part-of-bronchial-tree
+labels:
+  en:
+    text: inferior division of upper lobe part of left bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68318
+  wikidata: Q66563920

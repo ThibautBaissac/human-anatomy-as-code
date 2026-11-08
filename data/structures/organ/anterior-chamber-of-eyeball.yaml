@@ -1,0 +1,44 @@
+slug: anterior-chamber-of-eyeball
+kind: organ
+laterality: bilateral
+status: draft
+parent: eyeball
+regions:
+  - head
+labels:
+  en:
+    text: anterior chamber of eyeball
+    source: fma
+    status: draft
+  fr:
+    text: chambre antérieure de l'œil
+    source: wikidata
+    status: draft
+ids:
+  fma: 58078
+  ta2: 6792
+  ta98: A15.2.06.003
+  wikidata: Q5911033
+sides:
+  left:
+    ids:
+      fma: 58082
+      wikidata: Q66554727
+    meshes:
+      - bp3d:FJ1282
+    labels:
+      en:
+        text: anterior chamber of left eyeball
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58081
+      wikidata: Q66554726
+    meshes:
+      - bp3d:FJ1332
+    labels:
+      en:
+        text: anterior chamber of right eyeball
+        source: fma
+        status: draft

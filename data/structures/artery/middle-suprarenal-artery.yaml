@@ -1,0 +1,40 @@
+slug: middle-suprarenal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: middle suprarenal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère supra-rénale moyenne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria suprarenalis media
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14754
+  ta2: 4268
+  ta98: A12.2.12.074
+  wikidata: Q3507797
+sides:
+  left:
+    ids:
+      fma: 14756
+      wikidata: Q66510779
+    meshes:
+      - bp3d:FJ3472
+  right:
+    ids:
+      fma: 14755
+      wikidata: Q66510777
+    meshes:
+      - bp3d:FJ3586

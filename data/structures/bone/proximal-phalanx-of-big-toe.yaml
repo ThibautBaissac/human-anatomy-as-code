@@ -1,0 +1,39 @@
+slug: proximal-phalanx-of-big-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: big-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: proximal phalanx of big toe
+    source: fma
+    status: draft
+ids:
+  fma: 43252
+  wikidata: Q66532383
+sides:
+  left:
+    ids:
+      fma: 43254
+      wikidata: Q66532387
+    meshes:
+      - bp3d:FJ3329
+    labels:
+      en:
+        text: proximal phalanx of left big toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 43253
+      wikidata: Q66532386
+    meshes:
+      - bp3d:FJ3310
+    labels:
+      en:
+        text: proximal phalanx of right big toe
+        source: fma
+        status: draft

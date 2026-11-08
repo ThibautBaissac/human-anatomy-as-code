@@ -1,0 +1,35 @@
+slug: precuneal-branch-of-pericallosal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: precuneal branch of pericallosal artery
+    source: fma
+    status: draft
+ids:
+  fma: 50339
+  wikidata: Q66539485
+sides:
+  left:
+    ids:
+      fma: 50362
+      wikidata: Q66539508
+    meshes:
+      - bp3d:FJ1671M
+    labels:
+      en:
+        text: precuneal branch of left pericallosal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50361
+      wikidata: Q66539507
+    meshes:
+      - bp3d:FJ1671
+    labels:
+      en:
+        text: precuneal branch of right pericallosal artery
+        source: fma
+        status: draft

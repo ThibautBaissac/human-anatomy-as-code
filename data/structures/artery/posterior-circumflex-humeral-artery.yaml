@@ -1,0 +1,42 @@
+slug: posterior-circumflex-humeral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+labels:
+  en:
+    text: posterior circumflex humeral artery
+    source: fma
+    status: draft
+  fr:
+    text: artère circonflexe postérieure de l'humérus
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria circumflexa humeri posterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22684
+  ta2: 4631
+  ta98: A12.2.09.017
+  wikidata: Q707104
+sides:
+  left:
+    ids:
+      fma: 22687
+      wikidata: Q66514728
+    meshes:
+      - bp3d:FJ2239
+      - bp3d:FJ2240
+  right:
+    ids:
+      fma: 22685
+      wikidata: Q66514727
+    meshes:
+      - bp3d:FJ2291
+      - bp3d:FJ2292

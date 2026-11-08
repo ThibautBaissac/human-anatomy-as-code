@@ -1,0 +1,28 @@
+slug: seventh-costal-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: seventh costal cartilage
+    source: fma
+    status: draft
+ids:
+  fma: 7849
+  wikidata: Q51132147
+sides:
+  left:
+    ids:
+      fma: 8275
+      wikidata: Q66503774
+    meshes:
+      - bp3d:FJ3255
+  right:
+    ids:
+      fma: 8248
+      wikidata: Q66503747
+    meshes:
+      - bp3d:FJ3345

@@ -1,0 +1,20 @@
+slug: middle-lobar-vein
+kind: vein
+laterality: midline
+status: draft
+parent: middle-lobe-of-lung
+labels:
+  en:
+    text: middle lobar vein
+    source: fma
+    status: draft
+  fr:
+    text: veine du lobe moyen du poumon droit
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8656
+  ta2: 4112
+  wikidata: Q66504113

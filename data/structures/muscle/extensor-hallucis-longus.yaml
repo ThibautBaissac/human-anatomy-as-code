@@ -1,0 +1,39 @@
+slug: extensor-hallucis-longus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor hallucis longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle long extenseur de l'hallux
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor hallucis longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22533
+  ta2: 2650
+  ta98: A04.7.02.040
+  wikidata: Q1446138
+sides:
+  left:
+    ids:
+      fma: 22547
+      wikidata: Q66514564
+    meshes:
+      - bp3d:FJ1408M
+  right:
+    ids:
+      fma: 22546
+      wikidata: Q66514563
+    meshes:
+      - bp3d:FJ1408

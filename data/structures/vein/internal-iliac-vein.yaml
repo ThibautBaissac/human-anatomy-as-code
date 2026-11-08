@@ -1,0 +1,47 @@
+slug: internal-iliac-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: inferior-systemic-venous-tree
+labels:
+  en:
+    text: internal iliac vein
+    source: fma
+    status: draft
+  fr:
+    text: veine iliaque interne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena iliaca interna
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 18884
+  ta2: 5024
+  ta98: A12.3.10.004
+  wikidata: Q1165743
+sides:
+  left:
+    ids:
+      fma: 18888
+      wikidata: Q66510117
+    meshes:
+      - bp3d:FJ3469
+      - bp3d:FJ3470
+      - bp3d:FJ3471
+  right:
+    ids:
+      fma: 18887
+      wikidata: Q66510116
+    meshes:
+      - bp3d:FJ3570
+      - bp3d:FJ3571
+      - bp3d:FJ3572
+      - bp3d:FJ3607
+      - bp3d:FJ3608
+      - bp3d:FJ3609

@@ -1,0 +1,29 @@
+slug: spinalis
+kind: bone
+laterality: midline
+status: draft
+labels:
+  en:
+    text: spinalis
+    source: fma
+    status: draft
+  fr:
+    text: muscle épineux
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus spinalis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 77179
+  ta2: 2267
+  ta98: A04.3.02.015
+  wikidata: Q1088104
+meshes:
+  - bp3d:FJ1543
+  - bp3d:FJ1543M

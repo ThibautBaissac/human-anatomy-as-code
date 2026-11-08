@@ -1,0 +1,22 @@
+slug: human-body
+kind: group
+laterality: midline
+status: draft
+labels:
+  en:
+    text: human body
+    source: fma
+    status: draft
+  fr:
+    text: corps humain
+    source: wikidata
+    status: draft
+  la:
+    text: Corpus humanum
+    source: wikidata
+    status: draft
+ids:
+  fma: 20394
+  ta2: 96
+  ta98: A01.0.00.000
+  wikidata: Q23852

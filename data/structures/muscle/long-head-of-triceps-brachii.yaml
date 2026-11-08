@@ -1,0 +1,41 @@
+slug: long-head-of-triceps-brachii
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: long head of triceps brachii
+    source: fma
+    status: draft
+  fr:
+    text: chef long du muscle triceps brachial
+    source: wikidata
+    status: draft
+ids:
+  fma: 37692
+  ta2: 2472
+  ta98: A04.6.02.020
+  wikidata: Q28792063
+sides:
+  left:
+    ids:
+      fma: 37700
+      wikidata: Q66526976
+    meshes:
+      - bp3d:FJ1479M
+    labels:
+      en:
+        text: long head of left triceps brachii
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37699
+      wikidata: Q66526975
+    meshes:
+      - bp3d:FJ1479
+    labels:
+      en:
+        text: long head of right triceps brachii
+        source: fma
+        status: draft

@@ -1,0 +1,23 @@
+slug: set-of-interspinales-lumborum
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of interspinales lumborum
+    source: fma
+    status: draft
+  fr:
+    text: muscle interépineux lombaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 71307
+  ta2: 2291
+  ta98: A04.3.02.302
+  wikidata: Q66569099
+meshes:
+  - bp3d:FJ1550
+  - bp3d:FJ1550M

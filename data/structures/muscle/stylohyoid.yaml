@@ -1,0 +1,39 @@
+slug: stylohyoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: stylohyoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle stylo-hyoïdien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus stylohyoideus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 9625
+  ta2: 2164
+  ta98: A04.2.03.005
+  wikidata: Q899783
+sides:
+  left:
+    ids:
+      fma: 45827
+      wikidata: Q66536101
+    meshes:
+      - bp3d:FJ1576
+  right:
+    ids:
+      fma: 45826
+      wikidata: Q66536100
+    meshes:
+      - bp3d:FJ1598

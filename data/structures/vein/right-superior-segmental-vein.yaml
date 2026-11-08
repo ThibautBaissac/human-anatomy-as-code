@@ -1,0 +1,13 @@
+slug: right-superior-segmental-vein
+kind: vein
+laterality: unpaired-right
+status: draft
+parent: inferior-pulmonary-vein
+labels:
+  en:
+    text: right superior segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 8670
+  wikidata: Q66504237

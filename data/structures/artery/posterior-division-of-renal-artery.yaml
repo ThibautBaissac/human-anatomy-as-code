@@ -1,0 +1,47 @@
+slug: posterior-division-of-renal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: posterior division of renal artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau postérieur de l'artère rénale
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 70488
+  ta2: 4277
+  ta98: A12.2.12.083
+  wikidata: Q66568452
+sides:
+  left:
+    ids:
+      fma: 70490
+      wikidata: Q66568454
+    meshes:
+      - bp3d:FJ3473
+      - bp3d:FJ3474
+      - bp3d:FJ3475
+    labels:
+      en:
+        text: posterior division of left renal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 70489
+      wikidata: Q66568453
+    meshes:
+      - bp3d:FJ3573
+      - bp3d:FJ3574
+      - bp3d:FJ3575
+    labels:
+      en:
+        text: posterior division of right renal artery
+        source: fma
+        status: draft

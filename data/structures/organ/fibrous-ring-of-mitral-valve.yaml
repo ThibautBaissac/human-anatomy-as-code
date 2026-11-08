@@ -1,0 +1,15 @@
+slug: fibrous-ring-of-mitral-valve
+kind: organ
+laterality: midline
+status: draft
+parent: mitral-valve
+regions:
+  - thorax
+labels:
+  en:
+    text: fibrous ring of mitral valve
+    source: fma
+    status: draft
+ids:
+  fma: 9498
+  wikidata: Q66504943

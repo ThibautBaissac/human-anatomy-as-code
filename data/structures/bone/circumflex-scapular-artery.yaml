@@ -1,0 +1,40 @@
+slug: circumflex-scapular-artery
+kind: bone
+laterality: bilateral
+status: draft
+parent: subscapular-artery
+labels:
+  en:
+    text: circumflex scapular artery
+    source: fma
+    status: draft
+  fr:
+    text: artère circonflexe de la scapula
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria circumflexa scapulae
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23179
+  ta2: 4629
+  ta98: A12.2.09.015
+  wikidata: Q707112
+sides:
+  left:
+    ids:
+      fma: 23181
+      wikidata: Q66515101
+    meshes:
+      - bp3d:FJ2221
+  right:
+    ids:
+      fma: 23180
+      wikidata: Q66515100
+    meshes:
+      - bp3d:FJ2273

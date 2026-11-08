@@ -1,0 +1,15 @@
+slug: anterior-mediastinum
+kind: organ
+laterality: midline
+status: draft
+parent: anterior-chest
+regions:
+  - thorax
+labels:
+  en:
+    text: anterior mediastinum
+    source: fma
+    status: draft
+ids:
+  fma: 9838
+  wikidata: Q66505136

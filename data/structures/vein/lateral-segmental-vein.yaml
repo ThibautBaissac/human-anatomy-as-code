@@ -1,0 +1,13 @@
+slug: lateral-segmental-vein
+kind: vein
+laterality: midline
+status: draft
+parent: lateral-bronchopulmonary-segment
+labels:
+  en:
+    text: lateral segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 8664
+  wikidata: Q66504231

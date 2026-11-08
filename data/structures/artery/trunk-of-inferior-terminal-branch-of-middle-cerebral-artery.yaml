@@ -1,0 +1,35 @@
+slug: trunk-of-inferior-terminal-branch-of-middle-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: trunk of inferior terminal branch of middle cerebral artery
+    source: fma
+    status: draft
+ids:
+  fma: 76127
+  wikidata: Q66573274
+sides:
+  left:
+    ids:
+      fma: 76129
+      wikidata: Q66573277
+    meshes:
+      - bp3d:FJ1718M
+    labels:
+      en:
+        text: trunk of inferior terminal branch of left middle cerebral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 76128
+      wikidata: Q66573276
+    meshes:
+      - bp3d:FJ1718
+    labels:
+      en:
+        text: trunk of inferior terminal branch of right middle cerebral artery
+        source: fma
+        status: draft

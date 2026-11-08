@@ -1,0 +1,30 @@
+slug: anterior-interventricular-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: anterior interventricular vein
+    source: fma
+    status: draft
+  fr:
+    text: veine interventriculaire antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 66403
+  ta2: 4160
+  ta98: A12.3.01.004
+  wikidata: Q66562501
+meshes:
+  - bp3d:FJ2657
+  - bp3d:FJ2658
+  - bp3d:FJ2659
+  - bp3d:FJ2660
+  - bp3d:FJ2661
+  - bp3d:FJ2662
+  - bp3d:FJ2663
+  - bp3d:FJ2664
+  - bp3d:FJ2665

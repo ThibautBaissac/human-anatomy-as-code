@@ -1,0 +1,33 @@
+slug: cuneiform-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: cuneiform cartilage
+    source: fma
+    status: draft
+  fr:
+    text: cartilage cunéiforme
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 55111
+  ta2: 998
+  ta98: A06.2.06.001
+  wikidata: Q5194237
+sides:
+  left:
+    ids:
+      fma: 55118
+      wikidata: Q66544838
+    meshes:
+      - bp3d:FJ2773
+  right:
+    ids:
+      fma: 55117
+      wikidata: Q66544837
+    meshes:
+      - bp3d:FJ2795

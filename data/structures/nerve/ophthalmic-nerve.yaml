@@ -1,0 +1,37 @@
+slug: ophthalmic-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: ophthalmic nerve
+    source: fma
+    status: draft
+  fr:
+    text: nerf ophtalmique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: N Ophthalmicus
+    source: wikidata
+    status: draft
+ids:
+  fma: 52621
+  ta2: 6196
+  ta98: A14.2.01.016
+  wikidata: Q1420571
+sides:
+  left:
+    ids:
+      fma: 52623
+      wikidata: Q66542846
+    meshes:
+      - bp3d:FJ1312
+  right:
+    ids:
+      fma: 52622
+      wikidata: Q66542845
+    meshes:
+      - bp3d:FJ1363

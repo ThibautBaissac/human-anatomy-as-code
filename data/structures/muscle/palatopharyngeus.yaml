@@ -1,0 +1,39 @@
+slug: palatopharyngeus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: palatopharyngeus
+    source: fma
+    status: draft
+  fr:
+    text: muscle palatopharyngien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus palatopharyngeus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46666
+  ta2: 2132
+  ta98: A05.2.01.105
+  wikidata: Q932609
+sides:
+  left:
+    ids:
+      fma: 46672
+      wikidata: Q66536670
+    meshes:
+      - bp3d:FJ2743
+  right:
+    ids:
+      fma: 46671
+      wikidata: Q66536669
+    meshes:
+      - bp3d:FJ2755

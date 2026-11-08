@@ -1,0 +1,15 @@
+slug: taenia-omentalis
+kind: muscle
+laterality: midline
+status: draft
+parent: muscle-layer-of-large-intestine
+labels:
+  en:
+    text: taenia omentalis
+    source: fma
+    status: draft
+ids:
+  fma: 15043
+  wikidata: Q66511268
+meshes:
+  - bp3d:FJ2570

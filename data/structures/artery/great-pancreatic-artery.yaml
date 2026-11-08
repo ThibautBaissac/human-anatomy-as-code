@@ -1,0 +1,26 @@
+slug: great-pancreatic-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: great pancreatic artery
+    source: fma
+    status: draft
+  fr:
+    text: grande artère pancréatique
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria pancreatica magna
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14792
+  ta2: 4244
+  ta98: A12.2.12.045
+  wikidata: Q707433
+meshes:
+  - bp3d:FJ3433

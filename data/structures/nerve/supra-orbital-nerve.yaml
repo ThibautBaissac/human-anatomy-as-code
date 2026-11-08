@@ -1,0 +1,33 @@
+slug: supra-orbital-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: supra-orbital nerve
+    source: fma
+    status: draft
+  la:
+    text: Nervus supraorbitalis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52655
+  ta2: 6200
+  ta98: A14.2.01.021
+  wikidata: Q7644726
+sides:
+  left:
+    ids:
+      fma: 52657
+      wikidata: Q66542876
+    meshes:
+      - bp3d:FJ1325
+  right:
+    ids:
+      fma: 52656
+      wikidata: Q66542875
+    meshes:
+      - bp3d:FJ1376

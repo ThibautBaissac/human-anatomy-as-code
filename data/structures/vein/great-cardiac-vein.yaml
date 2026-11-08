@@ -1,0 +1,27 @@
+slug: great-cardiac-vein
+kind: vein
+laterality: midline
+status: draft
+parent: coronary-sinus-tree
+labels:
+  en:
+    text: great cardiac vein
+    source: fma
+    status: draft
+  fr:
+    text: grande veine du cœur
+    source: wikidata
+    status: draft
+  la:
+    text: Vena cordis magna
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4707
+  ta2: 4159
+  ta98: A12.3.01.003
+  wikidata: Q2886255
+meshes:
+  - bp3d:FJ2656

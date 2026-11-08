@@ -1,0 +1,81 @@
+concept id	name	element file id
+FMA10427	body wall	FJ9001
+FMA10427	body wall	FJ9002
+FMA10427	body wall	FJ9003
+FMA12519	First cervical vertebra	FJ5001
+FMA13335	external oblique	FJ9003
+FMA20394	human body	FJ1234
+FMA20394	human body	FJ1234M
+FMA20394	human body	FJ1300
+FMA20394	human body	FJ1300M
+FMA20394	human body	FJ2420
+FMA20394	human body	FJ2421
+FMA20394	human body	FJ2430
+FMA20394	human body	FJ2431
+FMA20394	human body	FJ3001
+FMA20394	human body	FJ3001M
+FMA20394	human body	FJ3259
+FMA20394	human body	FJ3259M
+FMA20394	human body	FJ4001
+FMA20394	human body	FJ4100
+FMA20394	human body	FJ5001
+FMA20394	human body	FJ7001
+FMA20394	human body	FJ7001M
+FMA20394	human body	FJ7101
+FMA20394	human body	FJ7101M
+FMA20394	human body	FJ7102
+FMA20394	human body	FJ7102M
+FMA20394	human body	FJ9001
+FMA20394	human body	FJ9002
+FMA20394	human body	FJ9003
+FMA24474	right femur	FJ3259
+FMA24475	left femur	FJ3259M
+FMA24895	right arm	FJ1300
+FMA24896	left arm	FJ1234M
+FMA24896	left arm	FJ1300M
+FMA24980	right lower limb	FJ3001
+FMA24980	right lower limb	FJ3259
+FMA24981	left lower limb	FJ3001M
+FMA24981	left lower limb	FJ3259M
+FMA37671	right biceps brachii	FJ1234
+FMA37672	left biceps brachii	FJ1234M
+FMA37689	long head of right biceps brachii	FJ1300
+FMA37690	long head of left biceps brachii	FJ1300M
+FMA3941	right common carotid artery	FJ7001
+FMA3941	right common carotid artery	FJ7101
+FMA3941	right common carotid artery	FJ7102
+FMA4058	left common carotid artery	FJ7001M
+FMA4058	left common carotid artery	FJ7101M
+FMA4058	left common carotid artery	FJ7102M
+FMA5028	right lymphatic duct	FJ4001
+FMA70247	right femoral artery	FJ3001
+FMA70248	left femoral artery	FJ3001M
+FMA7088	heart	FJ2420
+FMA7088	heart	FJ2421
+FMA7088	heart	FJ2430
+FMA7088	heart	FJ2431
+FMA7096	right atrium	FJ2421
+FMA7097	left atrium	FJ2420
+FMA7184	lower limb	FJ3001
+FMA7184	lower limb	FJ3001M
+FMA7184	lower limb	FJ3259
+FMA7184	lower limb	FJ3259M
+FMA7185	right upper limb	FJ1234
+FMA7185	right upper limb	FJ1300
+FMA7186	left upper limb	FJ1234M
+FMA7186	left upper limb	FJ1300M
+FMA7333	superior lobe of left lung	FJ4100
+FMA9300	anterior wall of left ventricle	FJ2430
+FMA9301	anterior wall of right ventricle	FJ2431
+FMA9576	thorax	FJ2420
+FMA9576	thorax	FJ2421
+FMA9576	thorax	FJ2430
+FMA9576	thorax	FJ2431
+FMA9576	thorax	FJ4001
+FMA9576	thorax	FJ4100
+FMA9576	thorax	FJ7001
+FMA9576	thorax	FJ7001M
+FMA9576	thorax	FJ7101
+FMA9576	thorax	FJ7101M
+FMA9576	thorax	FJ7102
+FMA9576	thorax	FJ7102M

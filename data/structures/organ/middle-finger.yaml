@@ -1,0 +1,35 @@
+slug: middle-finger
+kind: organ
+laterality: bilateral
+status: draft
+parent: hand
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: middle finger
+    source: fma
+    status: draft
+  fr:
+    text: majeur
+    source: wikidata
+    status: draft
+  la:
+    text: Digitus medius
+    source: wikidata
+    status: draft
+ids:
+  fma: 24947
+  ta2: 153
+  ta98: A01.1.00.055
+  wikidata: Q167131
+sides:
+  left:
+    ids:
+      fma: 60332
+      wikidata: Q66556700
+  right:
+    ids:
+      fma: 60331
+      wikidata: Q66556699

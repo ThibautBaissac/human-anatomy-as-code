@@ -1,0 +1,24 @@
+slug: glans-penis
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: glans penis
+    source: fma
+    status: draft
+  fr:
+    text: gland du pénis
+    source: wikidata
+    status: draft
+  la:
+    text: Glans penis
+    source: wikidata
+    status: draft
+ids:
+  fma: 18247
+  ta2: 3668
+  ta98: A09.4.01.007
+  wikidata: Q650891
+meshes:
+  - bp3d:FJ3134

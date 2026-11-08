@@ -1,0 +1,39 @@
+slug: stylopharyngeus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: stylopharyngeus
+    source: fma
+    status: draft
+  fr:
+    text: muscle stylopharyngien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus stylopharyngeus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46664
+  ta2: 2190
+  ta98: A05.3.01.114
+  wikidata: Q579449
+sides:
+  left:
+    ids:
+      fma: 46668
+      wikidata: Q66536666
+    meshes:
+      - bp3d:FJ2746
+  right:
+    ids:
+      fma: 46667
+      wikidata: Q66536665
+    meshes:
+      - bp3d:FJ2758

@@ -1,0 +1,29 @@
+slug: superior-rectal-artery
+kind: artery
+laterality: midline
+status: draft
+parent: inferior-mesenteric-artery
+labels:
+  en:
+    text: superior rectal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère rectale supérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria rectalis superior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14832
+  ta2: 4296
+  ta98: A12.2.12.073
+  wikidata: Q384950
+meshes:
+  - bp3d:FJ3656

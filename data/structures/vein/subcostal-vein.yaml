@@ -1,0 +1,38 @@
+slug: subcostal-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: subcostal vein
+    source: fma
+    status: draft
+  fr:
+    text: veine subcostale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena subcostalis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 12845
+  ta98: A12.3.07.013
+  wikidata: Q6545268
+sides:
+  left:
+    ids:
+      fma: 4951
+      wikidata: Q66501814
+    meshes:
+      - bp3d:FJ1987
+  right:
+    ids:
+      fma: 4844
+      wikidata: Q66501714
+    meshes:
+      - bp3d:FJ1995

@@ -1,0 +1,13 @@
+slug: right-internal-thoracic-vein
+kind: vein
+laterality: unpaired-right
+status: draft
+parent: brachiocephalic-vein
+labels:
+  en:
+    text: right internal thoracic vein
+    source: fma
+    status: draft
+ids:
+  fma: 4758
+  wikidata: Q66500719

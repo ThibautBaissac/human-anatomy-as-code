@@ -1,0 +1,15 @@
+slug: right-lobe-of-liver
+kind: organ
+laterality: midline
+status: draft
+parent: liver
+labels:
+  en:
+    text: right lobe of liver
+    source: fma
+    status: draft
+ids:
+  fma: 13362
+  ta2: 3049
+  ta98: A05.8.01.026
+  wikidata: Q6493472

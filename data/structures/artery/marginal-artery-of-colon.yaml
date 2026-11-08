@@ -1,0 +1,15 @@
+slug: marginal-artery-of-colon
+kind: artery
+laterality: midline
+status: draft
+parent: inferior-mesenteric-artery
+labels:
+  en:
+    text: marginal artery of colon
+    source: fma
+    status: draft
+ids:
+  fma: 14831
+  wikidata: Q66510852
+meshes:
+  - bp3d:FJ3534

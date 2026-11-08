@@ -1,0 +1,42 @@
+slug: renal-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: renal vein
+    source: fma
+    status: draft
+  fr:
+    text: veine rénale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Venae renales
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 14334
+  ta98: A12.3.09.009
+  wikidata: Q132318
+sides:
+  left:
+    ids:
+      fma: 14336
+      ta2: 5006
+      wikidata: Q66509390
+    meshes:
+      - bp3d:FJ3477
+      - bp3d:FJ3478
+  right:
+    ids:
+      fma: 14335
+      ta2: 5000
+      wikidata: Q66509389
+    meshes:
+      - bp3d:FJ3577
+      - bp3d:FJ3578

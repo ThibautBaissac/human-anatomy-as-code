@@ -1,0 +1,19 @@
+slug: viscerocranium
+kind: bone
+laterality: midline
+status: draft
+parent: skull
+labels:
+  en:
+    text: viscerocranium
+    source: fma
+    status: draft
+  fr:
+    text: splanchnocrâne
+    source: wikidata
+    status: draft
+ids:
+  fma: 53673
+  ta2: 355
+  ta98: A02.1.00.008
+  wikidata: Q3493641

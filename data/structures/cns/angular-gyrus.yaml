@@ -1,0 +1,32 @@
+slug: angular-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: parietal-lobe
+labels:
+  en:
+    text: angular gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus angulaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 61898
+  ta2: 5472
+  ta98: A14.1.09.124
+  wikidata: Q1038781
+sides:
+  left:
+    ids:
+      fma: 72670
+      wikidata: Q66570173
+    meshes:
+      - bp3d:FJ1732
+  right:
+    ids:
+      fma: 72669
+      wikidata: Q66570172
+    meshes:
+      - bp3d:FJ1733

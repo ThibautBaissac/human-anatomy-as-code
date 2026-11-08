@@ -1,0 +1,13 @@
+slug: medial-segmental-vein
+kind: vein
+laterality: midline
+status: draft
+parent: medial-bronchopulmonary-segment
+labels:
+  en:
+    text: medial segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 8665
+  wikidata: Q66504232

@@ -1,0 +1,28 @@
+slug: right-gastric-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: right gastric vein
+    source: fma
+    status: draft
+  fr:
+    text: veine gastrique droite
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena gastrica dextra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15400
+  ta2: 5111
+  ta98: A12.3.12.016
+  wikidata: Q4115303
+meshes:
+  - bp3d:FJ3595

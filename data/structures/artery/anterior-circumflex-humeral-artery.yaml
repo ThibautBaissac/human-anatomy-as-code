@@ -1,0 +1,40 @@
+slug: anterior-circumflex-humeral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+labels:
+  en:
+    text: anterior circumflex humeral artery
+    source: fma
+    status: draft
+  fr:
+    text: artère circonflexe antérieure de l'humérus
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria circumflexa humeri anterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22680
+  ta2: 4630
+  ta98: A12.2.09.016
+  wikidata: Q707098
+sides:
+  left:
+    ids:
+      fma: 22683
+      wikidata: Q66514726
+    meshes:
+      - bp3d:FJ2212
+  right:
+    ids:
+      fma: 22682
+      wikidata: Q66514725
+    meshes:
+      - bp3d:FJ2264

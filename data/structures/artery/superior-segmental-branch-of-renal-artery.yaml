@@ -1,0 +1,32 @@
+slug: superior-segmental-branch-of-renal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superior segmental branch of renal artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 86341
+      wikidata: Q66592282
+    meshes:
+      - bp3d:FJ2052
+    labels:
+      en:
+        text: superior segmental branch of left renal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 86340
+      wikidata: Q66592281
+    meshes:
+      - bp3d:FJ2042
+    labels:
+      en:
+        text: superior segmental branch of right renal artery
+        source: fma
+        status: draft

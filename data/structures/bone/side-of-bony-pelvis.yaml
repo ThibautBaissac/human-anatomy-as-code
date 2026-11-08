@@ -1,0 +1,22 @@
+slug: side-of-bony-pelvis
+kind: bone
+laterality: bilateral
+status: draft
+parent: bony-pelvis
+regions:
+  - abdomen
+  - pelvis
+labels:
+  en:
+    text: side of bony pelvis
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 20227
+      wikidata: Q66511617
+  right:
+    ids:
+      fma: 20226
+      wikidata: Q66511614

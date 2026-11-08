@@ -1,0 +1,39 @@
+slug: flexor-digitorum-brevis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor digitorum brevis
+    source: fma
+    status: draft
+  fr:
+    text: muscle court fléchisseur des orteils
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus flexor digitorum brevis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37450
+  ta2: 2683
+  ta98: A04.7.02.067
+  wikidata: Q1328793
+sides:
+  left:
+    ids:
+      fma: 37462
+      wikidata: Q66526787
+    meshes:
+      - bp3d:FJ1413M
+  right:
+    ids:
+      fma: 37461
+      wikidata: Q66526786
+    meshes:
+      - bp3d:FJ1413

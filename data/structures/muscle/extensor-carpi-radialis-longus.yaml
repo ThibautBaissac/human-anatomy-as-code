@@ -1,0 +1,39 @@
+slug: extensor-carpi-radialis-longus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor carpi radialis longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle long extenseur radial du carpe
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor carpi radialis longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38494
+  ta2: 2497
+  ta98: A04.6.02.040
+  wikidata: Q847092
+sides:
+  left:
+    ids:
+      fma: 38496
+      wikidata: Q66527660
+    meshes:
+      - bp3d:FJ1490M
+  right:
+    ids:
+      fma: 38495
+      wikidata: Q66527659
+    meshes:
+      - bp3d:FJ1490

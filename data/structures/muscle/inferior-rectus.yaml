@@ -1,0 +1,42 @@
+slug: inferior-rectus
+kind: muscle
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: inferior rectus
+    source: fma
+    status: draft
+  fr:
+    text: muscle droit inférieur du bulbe de l’œil
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus rectus inferior bulbi
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 49036
+  ta2: 2043
+  ta98: A15.2.07.011
+  wikidata: Q1090267
+sides:
+  left:
+    ids:
+      fma: 49047
+      wikidata: Q66538461
+    meshes:
+      - bp3d:FJ1295
+  right:
+    ids:
+      fma: 49046
+      wikidata: Q66538460
+    meshes:
+      - bp3d:FJ1346

@@ -1,0 +1,14 @@
+slug: left-lobe-branch-of-left-hepatic-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: left lobe branch of left hepatic artery
+    source: fma
+    status: draft
+ids:
+  fma: 71710
+  wikidata: Q66569409
+meshes:
+  - bp3d:FJ1874

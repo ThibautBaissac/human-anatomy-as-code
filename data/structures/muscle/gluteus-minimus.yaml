@@ -1,0 +1,39 @@
+slug: gluteus-minimus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: gluteus minimus
+    source: fma
+    status: draft
+  fr:
+    text: muscle petit glutéal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus glutaeus minimus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22317
+  ta2: 2600
+  ta98: A04.7.02.008
+  wikidata: Q523799
+sides:
+  left:
+    ids:
+      fma: 22333
+      wikidata: Q66514400
+    meshes:
+      - bp3d:FJ1420M
+  right:
+    ids:
+      fma: 22332
+      wikidata: Q66514399
+    meshes:
+      - bp3d:FJ1420

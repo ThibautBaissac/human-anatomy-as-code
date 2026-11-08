@@ -1,0 +1,25 @@
+slug: mandible
+kind: bone
+laterality: midline
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: mandible
+    source: fma
+    status: draft
+  fr:
+    text: mandibule
+    source: wikidata
+    status: draft
+  la:
+    text: Mandibula
+    source: wikidata
+    status: draft
+ids:
+  fma: 52748
+  ta2: 835
+  ta98: A02.1.15.001
+  wikidata: Q5283631
+meshes:
+  - bp3d:FJ3289

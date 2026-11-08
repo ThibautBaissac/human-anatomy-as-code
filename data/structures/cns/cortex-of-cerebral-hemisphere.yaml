@@ -1,0 +1,29 @@
+slug: cortex-of-cerebral-hemisphere
+kind: cns
+laterality: bilateral
+status: draft
+parent: cerebral-hemisphere
+labels:
+  en:
+    text: cortex of cerebral hemisphere
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 242182
+      wikidata: Q66599009
+    labels:
+      en:
+        text: cortex of left cerebral hemisphere
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 242180
+      wikidata: Q66599008
+    labels:
+      en:
+        text: cortex of right cerebral hemisphere
+        source: fma
+        status: draft

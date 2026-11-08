@@ -1,0 +1,23 @@
+slug: set-of-calcaneal-branches-of-posterior-tibial-artery
+kind: bone
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of calcaneal branches of posterior tibial artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau calcanéen de l'artère tibiale postérieure
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 71562
+  ta2: 4726
+  ta98: A12.2.16.059
+  wikidata: Q66569296
+meshes:
+  - bp3d:FJ2091
+  - bp3d:FJ2195

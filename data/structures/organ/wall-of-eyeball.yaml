@@ -1,0 +1,34 @@
+slug: wall-of-eyeball
+kind: organ
+laterality: bilateral
+status: draft
+parent: eyeball
+regions:
+  - head
+labels:
+  en:
+    text: wall of eyeball
+    source: fma
+    status: draft
+ids:
+  fma: 58098
+  wikidata: Q66554736
+sides:
+  left:
+    ids:
+      fma: 58100
+      wikidata: Q66554738
+    labels:
+      en:
+        text: wall of left eyeball
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58099
+      wikidata: Q66554737
+    labels:
+      en:
+        text: wall of right eyeball
+        source: fma
+        status: draft

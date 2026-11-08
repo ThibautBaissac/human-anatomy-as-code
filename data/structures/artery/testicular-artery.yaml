@@ -1,0 +1,40 @@
+slug: testicular-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: testicular artery
+    source: fma
+    status: draft
+  fr:
+    text: artère testiculaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria testicularis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14758
+  ta2: 4288
+  ta98: A12.2.12.086M
+  wikidata: Q707616
+sides:
+  left:
+    ids:
+      fma: 14760
+      wikidata: Q66510784
+    meshes:
+      - bp3d:FJ3532
+  right:
+    ids:
+      fma: 14759
+      wikidata: Q66510782
+    meshes:
+      - bp3d:FJ3617

@@ -1,0 +1,25 @@
+slug: skin
+kind: skin
+laterality: midline
+status: draft
+parent: integument
+labels:
+  en:
+    text: skin
+    source: fma
+    status: draft
+  fr:
+    text: peau humaine
+    source: wikidata
+    status: draft
+  la:
+    text: Cutis humanum
+    source: wikidata
+    status: draft
+ids:
+  fma: 7163
+  ta2: 7041
+  ta98: A16.0.00.002
+  wikidata: Q5259911
+meshes:
+  - bp3d:FJ2810

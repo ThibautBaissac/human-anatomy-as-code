@@ -1,0 +1,25 @@
+slug: musculophrenic-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: musculophrenic vein
+    source: fma
+    status: draft
+ids:
+  fma: 4732
+  wikidata: Q66500684
+sides:
+  left:
+    ids:
+      fma: 4786
+      wikidata: Q66501658
+    meshes:
+      - bp3d:FJ1988
+  right:
+    ids:
+      fma: 4772
+      wikidata: Q66501643
+    meshes:
+      - bp3d:FJ1996

@@ -1,0 +1,41 @@
+slug: trochlea-of-superior-oblique
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: trochlea of superior oblique
+    source: fma
+    status: draft
+  fr:
+    text: trochlée du muscle oblique supérieur
+    source: wikidata
+    status: draft
+ids:
+  fma: 49065
+  ta2: 2049
+  ta98: A15.2.07.017
+  wikidata: Q653284
+sides:
+  left:
+    ids:
+      fma: 49068
+      wikidata: Q66538479
+    meshes:
+      - bp3d:FJ1329
+    labels:
+      en:
+        text: trochlea of left superior oblique
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 49067
+      wikidata: Q66538478
+    meshes:
+      - bp3d:FJ1380
+    labels:
+      en:
+        text: trochlea of right superior oblique
+        source: fma
+        status: draft

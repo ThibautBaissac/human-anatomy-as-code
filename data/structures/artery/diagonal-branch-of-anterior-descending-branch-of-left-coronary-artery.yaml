@@ -1,0 +1,24 @@
+slug: diagonal-branch-of-anterior-descending-branch-of-left-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: anterior-interventricular-branch-of-left-coronary-artery
+labels:
+  en:
+    text: diagonal branch of anterior descending branch of left coronary artery
+    source: fma
+    status: draft
+ids:
+  fma: 3860
+  wikidata: Q66499465
+meshes:
+  - bp3d:FJ2633
+  - bp3d:FJ2634
+  - bp3d:FJ2635
+  - bp3d:FJ2636
+  - bp3d:FJ2637
+  - bp3d:FJ2638
+  - bp3d:FJ2639
+  - bp3d:FJ2640
+  - bp3d:FJ2642
+  - bp3d:FJ2648

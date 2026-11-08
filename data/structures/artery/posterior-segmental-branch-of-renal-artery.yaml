@@ -1,0 +1,33 @@
+slug: posterior-segmental-branch-of-renal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: posterior segmental branch of renal artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 86349
+      wikidata: Q66592290
+    meshes:
+      - bp3d:FJ2053
+      - bp3d:FJ2054
+    labels:
+      en:
+        text: posterior segmental branch of left renal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 86348
+      wikidata: Q66592289
+    meshes:
+      - bp3d:FJ2045
+    labels:
+      en:
+        text: posterior segmental branch of right renal artery
+        source: fma
+        status: draft

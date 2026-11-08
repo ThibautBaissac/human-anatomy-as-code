@@ -1,0 +1,20 @@
+slug: anterior-branch-of-right-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: portal-vein
+labels:
+  en:
+    text: anterior branch of right portal vein
+    source: fma
+    status: draft
+  fr:
+    text: rameau antérieur du rameau droit de la veine porte hépatique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15419
+  ta2: 5095
+  wikidata: Q66512000

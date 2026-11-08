@@ -1,0 +1,39 @@
+slug: abductor-hallucis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: abductor hallucis
+    source: fma
+    status: draft
+  fr:
+    text: muscle abducteur de l'hallux
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus abductor hallucis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37448
+  ta2: 2672
+  ta98: A04.7.02.056
+  wikidata: Q1475923
+sides:
+  left:
+    ids:
+      fma: 37460
+      wikidata: Q66526785
+    meshes:
+      - bp3d:FJ1400M
+  right:
+    ids:
+      fma: 37459
+      wikidata: Q66526784
+    meshes:
+      - bp3d:FJ1400

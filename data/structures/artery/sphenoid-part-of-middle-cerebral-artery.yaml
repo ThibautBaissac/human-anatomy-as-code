@@ -1,0 +1,41 @@
+slug: sphenoid-part-of-middle-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: trunk-of-right-middle-cerebral-artery
+labels:
+  en:
+    text: sphenoid part of middle cerebral artery
+    source: fma
+    status: draft
+  fr:
+    text: partie horizontale de l'artère cérébrale moyenne
+    source: wikidata
+    status: draft
+ids:
+  fma: 50365
+  ta98: A12.2.07.047
+  wikidata: Q66539511
+sides:
+  left:
+    ids:
+      fma: 50367
+      wikidata: Q66539513
+    meshes:
+      - bp3d:FJ1692M
+    labels:
+      en:
+        text: sphenoid part of left middle cerebral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50366
+      wikidata: Q66539512
+    meshes:
+      - bp3d:FJ1692
+    labels:
+      en:
+        text: sphenoid part of right middle cerebral artery
+        source: fma
+        status: draft

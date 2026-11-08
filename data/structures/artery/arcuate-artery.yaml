@@ -1,0 +1,40 @@
+slug: arcuate-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: dorsalis-pedis-artery
+labels:
+  en:
+    text: arcuate artery
+    source: fma
+    status: draft
+  fr:
+    text: artère arquée du pied
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria arcuata pedis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 44594
+  ta2: 4717
+  ta98: A12.2.16.051
+  wikidata: Q4787730
+sides:
+  left:
+    ids:
+      fma: 69495
+      wikidata: Q66567347
+    meshes:
+      - bp3d:FJ2067
+  right:
+    ids:
+      fma: 69494
+      wikidata: Q66567346
+    meshes:
+      - bp3d:FJ2133

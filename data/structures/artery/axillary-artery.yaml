@@ -1,0 +1,39 @@
+slug: axillary-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: axillary artery
+    source: fma
+    status: draft
+  fr:
+    text: artère axillaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: arteria axillaris
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22654
+  ta2: 4616
+  ta98: A12.2.09.002
+  wikidata: Q502164
+sides:
+  left:
+    ids:
+      fma: 22656
+      wikidata: Q66514706
+    meshes:
+      - bp3d:FJ2216
+  right:
+    ids:
+      fma: 22655
+      wikidata: Q66514705
+    meshes:
+      - bp3d:FJ2268

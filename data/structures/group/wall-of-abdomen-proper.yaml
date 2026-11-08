@@ -1,0 +1,19 @@
+slug: wall-of-abdomen-proper
+kind: group
+laterality: midline
+status: draft
+parent: wall-of-abdomen
+regions:
+  - abdomen
+labels:
+  en:
+    text: wall of abdomen proper
+    source: fma
+    status: draft
+  fr:
+    text: paroi abdominale
+    source: wikidata
+    status: draft
+ids:
+  fma: 10429
+  wikidata: Q354111

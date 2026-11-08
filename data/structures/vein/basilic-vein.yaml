@@ -1,0 +1,43 @@
+slug: basilic-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: arm
+regions:
+  - arm
+  - upper-limb
+labels:
+  en:
+    text: basilic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine basilique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena basilica
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22908
+  ta2: 4979
+  ta98: A12.3.08.018
+  wikidata: Q1601362
+sides:
+  left:
+    ids:
+      fma: 22910
+      wikidata: Q66514893
+    meshes:
+      - bp3d:FJ2218
+  right:
+    ids:
+      fma: 22909
+      wikidata: Q66514892
+    meshes:
+      - bp3d:FJ2270

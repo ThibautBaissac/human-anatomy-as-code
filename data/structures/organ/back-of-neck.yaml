@@ -1,0 +1,15 @@
+slug: back-of-neck
+kind: organ
+laterality: midline
+status: draft
+parent: neck
+regions:
+  - neck
+labels:
+  en:
+    text: back of neck
+    source: fma
+    status: draft
+ids:
+  fma: 24189
+  wikidata: Q66515781

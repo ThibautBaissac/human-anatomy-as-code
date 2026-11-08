@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-fourth-lumbar-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: fourth-lumbar-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of fourth lumbar vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 16036
+  wikidata: Q66513050
+meshes:
+  - bp3d:FJ3216

@@ -1,0 +1,39 @@
+slug: middle-phalanx-of-little-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: little-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: middle phalanx of little toe
+    source: fma
+    status: draft
+ids:
+  fma: 230984
+  wikidata: Q66595854
+sides:
+  left:
+    ids:
+      fma: 230988
+      wikidata: Q66595856
+    meshes:
+      - bp3d:FJ3298
+    labels:
+      en:
+        text: middle phalanx of left little toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 230986
+      wikidata: Q66595855
+    meshes:
+      - bp3d:FJ3305
+    labels:
+      en:
+        text: middle phalanx of right little toe
+        source: fma
+        status: draft

@@ -1,0 +1,23 @@
+slug: neuraxis
+kind: group
+laterality: midline
+status: draft
+parent: nervous-system
+labels:
+  en:
+    text: neuraxis
+    source: fma
+    status: draft
+  fr:
+    text: système nerveux central
+    source: wikidata
+    status: draft
+  la:
+    text: Systema nervosum centrale
+    source: wikidata
+    status: draft
+ids:
+  fma: 55675
+  ta2: 5364
+  ta98: A14.1.00.001
+  wikidata: Q47273

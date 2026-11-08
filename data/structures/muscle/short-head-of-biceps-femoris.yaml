@@ -1,0 +1,45 @@
+slug: short-head-of-biceps-femoris
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: short head of biceps femoris
+    source: fma
+    status: draft
+  fr:
+    text: chef court du muscle biceps fémoral
+    source: wikidata
+    status: draft
+  la:
+    text: caput breve biceps femoris
+    source: wikidata
+    status: draft
+ids:
+  fma: 45890
+  ta2: 2640
+  ta98: A04.7.02.034
+  wikidata: Q66536147
+sides:
+  left:
+    ids:
+      fma: 45892
+      wikidata: Q66536149
+    meshes:
+      - bp3d:FJ1444M
+    labels:
+      en:
+        text: short head of left biceps femoris
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 45891
+      wikidata: Q66536148
+    meshes:
+      - bp3d:FJ1444
+    labels:
+      en:
+        text: short head of right biceps femoris
+        source: fma
+        status: draft

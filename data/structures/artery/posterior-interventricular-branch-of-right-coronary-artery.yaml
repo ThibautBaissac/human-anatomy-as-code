@@ -1,0 +1,37 @@
+slug: posterior-interventricular-branch-of-right-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: right-coronary-artery
+labels:
+  en:
+    text: posterior interventricular branch of right coronary artery
+    source: fma
+    status: draft
+  fr:
+    text: artère interventriculaire postérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ramus interventricularis posterior arteriae coronariae dextrae
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 3840
+  ta2: 4138
+  ta98: A12.2.03.108
+  wikidata: Q6382778
+meshes:
+  - bp3d:FJ2692
+  - bp3d:FJ2693
+  - bp3d:FJ2694
+  - bp3d:FJ2695
+  - bp3d:FJ2696
+  - bp3d:FJ2697
+  - bp3d:FJ2698
+  - bp3d:FJ2699
+  - bp3d:FJ2700

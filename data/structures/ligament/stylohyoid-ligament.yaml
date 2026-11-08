@@ -1,0 +1,33 @@
+slug: stylohyoid-ligament
+kind: ligament
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: stylohyoid ligament
+    source: fma
+    status: draft
+  fr:
+    text: ligament stylo-hyoïdien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 72308
+  ta2: 1567
+  ta98: A03.1.01.003
+  wikidata: Q7629687
+sides:
+  left:
+    ids:
+      fma: 72311
+      wikidata: Q66569895
+    meshes:
+      - bp3d:FJ2763
+  right:
+    ids:
+      fma: 72309
+      wikidata: Q66569893
+    meshes:
+      - bp3d:FJ2764

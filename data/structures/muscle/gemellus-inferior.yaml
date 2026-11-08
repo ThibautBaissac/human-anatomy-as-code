@@ -1,0 +1,39 @@
+slug: gemellus-inferior
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: gemellus inferior
+    source: fma
+    status: draft
+  fr:
+    text: muscle jumeau inférieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus gemellus inferior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22320
+  ta2: 2607
+  ta98: A04.7.02.014
+  wikidata: Q1892060
+sides:
+  left:
+    ids:
+      fma: 22337
+      wikidata: Q66514404
+    meshes:
+      - bp3d:FJ1416M
+  right:
+    ids:
+      fma: 22336
+      wikidata: Q66514403
+    meshes:
+      - bp3d:FJ1416

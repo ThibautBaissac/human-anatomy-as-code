@@ -1,0 +1,40 @@
+slug: superior-segmental-bronchial-tree
+kind: organ
+laterality: bilateral
+status: draft
+parent: superior-bronchopulmonary-segment
+labels:
+  en:
+    text: superior segmental bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68237
+  wikidata: Q66563833
+sides:
+  left:
+    ids:
+      fma: 68228
+      wikidata: Q66563824
+    meshes:
+      - bp3d:FJ2448
+      - bp3d:FJ2479
+      - bp3d:FJ2480
+      - bp3d:FJ2482
+      - bp3d:FJ2483
+      - bp3d:FJ2484
+      - bp3d:FJ2485
+  right:
+    ids:
+      fma: 68216
+      wikidata: Q66563813
+    meshes:
+      - bp3d:FJ2459
+      - bp3d:FJ2495
+      - bp3d:FJ2496
+      - bp3d:FJ2497
+      - bp3d:FJ2498
+      - bp3d:FJ2499
+      - bp3d:FJ2500
+      - bp3d:FJ2501
+      - bp3d:FJ2502

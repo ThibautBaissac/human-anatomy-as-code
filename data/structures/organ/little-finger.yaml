@@ -1,0 +1,35 @@
+slug: little-finger
+kind: organ
+laterality: bilateral
+status: draft
+parent: hand
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: little finger
+    source: fma
+    status: draft
+  fr:
+    text: auriculaire
+    source: wikidata
+    status: draft
+  la:
+    text: Digitus minimus
+    source: wikidata
+    status: draft
+ids:
+  fma: 24949
+  ta2: 155
+  ta98: A01.1.00.057
+  wikidata: Q228027
+sides:
+  left:
+    ids:
+      fma: 60328
+      wikidata: Q66556696
+  right:
+    ids:
+      fma: 60327
+      wikidata: Q66556695

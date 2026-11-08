@@ -1,0 +1,35 @@
+slug: set-of-palmar-interossei-of-hand
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: set of palmar interossei of hand
+    source: fma
+    status: draft
+ids:
+  fma: 71320
+  wikidata: Q66569108
+sides:
+  left:
+    ids:
+      fma: 42403
+      wikidata: Q66530443
+    meshes:
+      - bp3d:FJ1511M
+    labels:
+      en:
+        text: set of palmar interossei of left hand
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 42402
+      wikidata: Q66530442
+    meshes:
+      - bp3d:FJ1511
+    labels:
+      en:
+        text: set of palmar interossei of right hand
+        source: fma
+        status: draft

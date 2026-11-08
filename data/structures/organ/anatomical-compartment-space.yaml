@@ -1,0 +1,19 @@
+slug: anatomical-compartment-space
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: anatomical compartment space
+    source: fma
+    status: draft
+  fr:
+    text: compartiment anatomique
+    source: wikidata
+    status: draft
+ids:
+  fma: 84926
+  wikidata: Q66591340
+meshes:
+  - bp3d:FJ1763
+  - bp3d:FJ1811

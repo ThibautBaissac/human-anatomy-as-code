@@ -1,0 +1,25 @@
+slug: upper-first-secondary-premolar-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: upper first secondary premolar tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55801
+  wikidata: Q3273774
+sides:
+  left:
+    ids:
+      fma: 55690
+      wikidata: Q66545309
+    meshes:
+      - bp3d:FJ1262
+  right:
+    ids:
+      fma: 55689
+      wikidata: Q66545308
+    meshes:
+      - bp3d:FJ1277

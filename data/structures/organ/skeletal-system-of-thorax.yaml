@@ -1,0 +1,13 @@
+slug: skeletal-system-of-thorax
+kind: organ
+laterality: midline
+status: draft
+parent: skeletal-system-of-trunk
+labels:
+  en:
+    text: skeletal system of thorax
+    source: fma
+    status: draft
+ids:
+  fma: 7481
+  wikidata: Q66503003

@@ -1,0 +1,39 @@
+slug: long-ciliary-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: long ciliary nerve
+    source: fma
+    status: draft
+  fr:
+    text: nerf ciliaire long
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Nervi ciliares longi
+    gender: m
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 52691
+  ta2: 6206
+  ta98: A14.2.01.027
+  wikidata: Q6673454
+sides:
+  left:
+    ids:
+      fma: 82735
+      wikidata: Q66589531
+    meshes:
+      - bp3d:FJ1318
+  right:
+    ids:
+      fma: 82734
+      wikidata: Q66589530
+    meshes:
+      - bp3d:FJ1369

@@ -1,0 +1,21 @@
+slug: posterior-leaflet-of-tricuspid-valve
+kind: organ
+laterality: midline
+status: draft
+parent: tricuspid-valve
+labels:
+  en:
+    text: posterior leaflet of tricuspid valve
+    source: fma
+    status: draft
+  fr:
+    text: cuspide postérieure de la valve atrio-ventriculaire droite
+    source: wikidata
+    status: draft
+ids:
+  fma: 7239
+  ta2: 3985
+  ta98: A12.1.02.005
+  wikidata: Q66502843
+meshes:
+  - bp3d:FJ2433

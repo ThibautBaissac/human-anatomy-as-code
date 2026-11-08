@@ -1,0 +1,43 @@
+slug: cephalic-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: arm
+regions:
+  - arm
+  - upper-limb
+labels:
+  en:
+    text: cephalic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine céphalique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena cephalica
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13324
+  ta2: 4964
+  ta98: A12.3.08.015
+  wikidata: Q1670335
+sides:
+  left:
+    ids:
+      fma: 13326
+      wikidata: Q66508025
+    meshes:
+      - bp3d:FJ2220
+  right:
+    ids:
+      fma: 13325
+      wikidata: Q66508024
+    meshes:
+      - bp3d:FJ2272

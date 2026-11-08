@@ -1,0 +1,45 @@
+slug: plantar-venous-arch-of-foot
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: plantar venous arch of foot
+    source: fma
+    status: draft
+  fr:
+    text: arcade veineuse plantaire
+    source: wikidata
+    status: draft
+  la:
+    text: Arcus venosus plantaris
+    source: wikidata
+    status: draft
+ids:
+  fma: 44489
+  ta2: 5082
+  ta98: A12.3.11.016
+  wikidata: Q7201592
+sides:
+  left:
+    ids:
+      fma: 44884
+      wikidata: Q66535340
+    meshes:
+      - bp3d:FJ2128
+    labels:
+      en:
+        text: plantar venous arch of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 44883
+      wikidata: Q66535339
+    meshes:
+      - bp3d:FJ2129
+    labels:
+      en:
+        text: plantar venous arch of right foot
+        source: fma
+        status: draft

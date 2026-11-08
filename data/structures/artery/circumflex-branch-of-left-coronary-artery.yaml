@@ -1,0 +1,34 @@
+slug: circumflex-branch-of-left-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: left-coronary-artery
+labels:
+  en:
+    text: circumflex branch of left coronary artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau circonflexe de l'artère coronaire gauche
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Ramus circumflexus arteriae coronariae sinistrae
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 3895
+  ta2: 4148
+  ta98: A12.2.03.206
+  wikidata: Q5121741
+meshes:
+  - bp3d:FJ2649
+  - bp3d:FJ2650
+  - bp3d:FJ2651
+  - bp3d:FJ2652
+  - bp3d:FJ2653
+  - bp3d:FJ2654

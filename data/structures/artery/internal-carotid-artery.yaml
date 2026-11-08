@@ -1,0 +1,40 @@
+slug: internal-carotid-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: common-carotid-artery
+labels:
+  en:
+    text: internal carotid artery
+    source: fma
+    status: draft
+  fr:
+    text: artère carotide interne
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria carotis interna
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 3947
+  ta2: 4463
+  ta98: A12.2.06.001
+  wikidata: Q515848
+sides:
+  left:
+    ids:
+      fma: 4062
+      wikidata: Q66499640
+    meshes:
+      - bp3d:FJ1682M
+  right:
+    ids:
+      fma: 3949
+      wikidata: Q66499533
+    meshes:
+      - bp3d:FJ1682

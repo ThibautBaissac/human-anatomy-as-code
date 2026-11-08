@@ -1,0 +1,45 @@
+slug: distal-phalanx-of-index-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: index-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: distal phalanx of index finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange distale de l'index
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23946
+  wikidata: Q66515618
+sides:
+  left:
+    ids:
+      fma: 23953
+      wikidata: Q66515623
+    meshes:
+      - bp3d:FJ3183
+    labels:
+      en:
+        text: distal phalanx of left index finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24460
+      wikidata: Q66515986
+    meshes:
+      - bp3d:FJ3193
+    labels:
+      en:
+        text: distal phalanx of right index finger
+        source: fma
+        status: draft

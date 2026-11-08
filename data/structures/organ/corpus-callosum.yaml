@@ -1,0 +1,24 @@
+slug: corpus-callosum
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: corpus callosum
+    source: fma
+    status: draft
+  fr:
+    text: corps calleux
+    source: wikidata
+    status: draft
+  la:
+    text: Corpus callosum
+    source: wikidata
+    status: draft
+ids:
+  fma: 86464
+  ta2: 5604
+  ta98: A14.1.09.241
+  wikidata: Q223851
+meshes:
+  - bp3d:FJ1742

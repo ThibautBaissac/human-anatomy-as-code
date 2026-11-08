@@ -1,0 +1,34 @@
+slug: lacrimal-sac
+kind: organ
+laterality: bilateral
+status: draft
+parent: lacrimal-duct
+regions:
+  - head
+labels:
+  en:
+    text: lacrimal sac
+    source: fma
+    status: draft
+  fr:
+    text: sac lacrymal
+    source: wikidata
+    status: draft
+ids:
+  fma: 20289
+  ta2: 6857
+  ta98: A15.2.07.068
+  wikidata: Q2517379
+sides:
+  left:
+    ids:
+      fma: 59546
+      wikidata: Q66555973
+    meshes:
+      - bp3d:FJ1309
+  right:
+    ids:
+      fma: 59545
+      wikidata: Q66555972
+    meshes:
+      - bp3d:FJ1360

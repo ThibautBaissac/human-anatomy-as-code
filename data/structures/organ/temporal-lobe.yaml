@@ -1,0 +1,30 @@
+slug: temporal-lobe
+kind: organ
+laterality: bilateral
+status: draft
+parent: cerebral-hemisphere
+labels:
+  en:
+    text: temporal lobe
+    source: fma
+    status: draft
+  fr:
+    text: lobe temporal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 61825
+  ta2: 5488
+  ta98: A14.1.09.136
+  wikidata: Q744385
+sides:
+  left:
+    ids:
+      fma: 72972
+      wikidata: Q66570453
+  right:
+    ids:
+      fma: 72971
+      wikidata: Q66570452

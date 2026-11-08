@@ -1,0 +1,29 @@
+slug: common-hepatic-artery
+kind: artery
+laterality: midline
+status: draft
+parent: celiac-artery
+labels:
+  en:
+    text: common hepatic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère hépatique commune
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: arteria hepatica communis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14771
+  ta2: 4214
+  ta98: A12.2.12.015
+  wikidata: Q707236
+meshes:
+  - bp3d:FJ3078

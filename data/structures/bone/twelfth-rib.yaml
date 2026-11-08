@@ -1,0 +1,32 @@
+slug: twelfth-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: twelfth rib
+    source: fma
+    status: draft
+  fr:
+    text: douzième côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 8515
+  wikidata: Q7857568
+sides:
+  left:
+    ids:
+      fma: 8534
+      wikidata: Q66504016
+    meshes:
+      - bp3d:FJ3227
+  right:
+    ids:
+      fma: 8533
+      wikidata: Q66504015
+    meshes:
+      - bp3d:FJ3332

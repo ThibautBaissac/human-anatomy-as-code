@@ -1,0 +1,33 @@
+slug: long-plantar-ligament
+kind: ligament
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: long plantar ligament
+    source: fma
+    status: draft
+  fr:
+    text: ligament plantaire long
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 44248
+  ta2: 1934
+  ta98: A03.6.10.517
+  wikidata: Q1704861
+sides:
+  left:
+    ids:
+      fma: 44250
+      wikidata: Q66534111
+    meshes:
+      - bp3d:FJ1424M
+  right:
+    ids:
+      fma: 44249
+      wikidata: Q66534110
+    meshes:
+      - bp3d:FJ1424

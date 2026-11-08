@@ -1,0 +1,16 @@
+slug: distal-perforating-artery
+kind: artery
+laterality: midline
+status: draft
+parent: plantar-metatarsal-artery
+labels:
+  en:
+    text: distal perforating artery
+    source: fma
+    status: draft
+ids:
+  fma: 69517
+  wikidata: Q66567385
+meshes:
+  - bp3d:FJ2058
+  - bp3d:FJ2064

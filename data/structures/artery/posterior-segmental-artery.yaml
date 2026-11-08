@@ -1,0 +1,36 @@
+slug: posterior-segmental-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: upper-lobar-artery
+labels:
+  en:
+    text: posterior segmental artery
+    source: fma
+    status: draft
+  fr:
+    text: artère segmentaire postérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13280
+  wikidata: Q66507994
+sides:
+  left:
+    ids:
+      fma: 8635
+      ta2: 4097
+      ta98: A12.2.01.208
+      wikidata: Q66504098
+    meshes:
+      - bp3d:FJ2911
+      - bp3d:FJ2912
+      - bp3d:FJ2913
+  right:
+    ids:
+      fma: 8619
+      ta2: 4081
+      ta98: A12.2.01.107
+      wikidata: Q66504086

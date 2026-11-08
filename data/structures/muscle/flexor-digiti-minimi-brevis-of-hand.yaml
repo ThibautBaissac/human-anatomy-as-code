@@ -1,0 +1,49 @@
+slug: flexor-digiti-minimi-brevis-of-hand
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor digiti minimi brevis of hand
+    source: fma
+    status: draft
+  fr:
+    text: muscle court fléchisseur du petit doigt
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus flexor digiti minimi brevis manus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37383
+  ta2: 2530
+  ta98: A04.6.02.063
+  wikidata: Q238607
+sides:
+  left:
+    ids:
+      fma: 37399
+      wikidata: Q66526743
+    meshes:
+      - bp3d:FJ1470M
+    labels:
+      en:
+        text: flexor digiti minimi brevis of left hand
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37398
+      wikidata: Q66526742
+    meshes:
+      - bp3d:FJ1470
+    labels:
+      en:
+        text: flexor digiti minimi brevis of right hand
+        source: fma
+        status: draft

@@ -1,0 +1,32 @@
+slug: third-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: third rib
+    source: fma
+    status: draft
+  fr:
+    text: troisième côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 7638
+  wikidata: Q51077755
+sides:
+  left:
+    ids:
+      fma: 8039
+      wikidata: Q66503530
+    meshes:
+      - bp3d:FJ3230
+  right:
+    ids:
+      fma: 7909
+      wikidata: Q66503401
+    meshes:
+      - bp3d:FJ3338

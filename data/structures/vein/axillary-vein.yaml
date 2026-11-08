@@ -1,0 +1,39 @@
+slug: axillary-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: axillary vein
+    source: fma
+    status: draft
+  fr:
+    text: veine axillaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: vena axillaris
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13329
+  ta2: 4963
+  ta98: A12.3.08.005
+  wikidata: Q682122
+sides:
+  left:
+    ids:
+      fma: 13331
+      wikidata: Q66508027
+    meshes:
+      - bp3d:FJ2217
+  right:
+    ids:
+      fma: 13330
+      wikidata: Q66508026
+    meshes:
+      - bp3d:FJ2269

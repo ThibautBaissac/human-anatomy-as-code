@@ -1,0 +1,21 @@
+slug: arm
+kind: group
+laterality: bilateral
+status: draft
+parent: free-upper-limb
+regions:
+  - upper-limb
+labels:
+  en:
+    text: arm
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 24896
+      wikidata: Q24577236
+  right:
+    ids:
+      fma: 24895
+      wikidata: Q24577241

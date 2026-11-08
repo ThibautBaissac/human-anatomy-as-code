@@ -1,0 +1,25 @@
+slug: duodenum
+kind: organ
+laterality: midline
+status: draft
+parent: small-intestine
+labels:
+  en:
+    text: duodenum
+    source: fma
+    status: draft
+  fr:
+    text: duodénum
+    source: wikidata
+    status: draft
+  la:
+    text: Duodenum
+    source: wikidata
+    status: draft
+ids:
+  fma: 7206
+  ta2: 2944
+  ta98: A05.6.02.001
+  wikidata: Q134955
+meshes:
+  - bp3d:FJ2573

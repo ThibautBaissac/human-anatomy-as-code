@@ -1,0 +1,34 @@
+slug: superficial-cervical-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: transverse-cervical-artery
+labels:
+  en:
+    text: superficial cervical artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau superficiel de l’artère transverse du cou
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 10665
+  ta2: 4602
+  ta98: A12.2.08.054
+  wikidata: Q2006862
+sides:
+  left:
+    ids:
+      fma: 10683
+      wikidata: Q66505833
+    meshes:
+      - bp3d:FJ2256
+  right:
+    ids:
+      fma: 10700
+      wikidata: Q66505844
+    meshes:
+      - bp3d:FJ2308

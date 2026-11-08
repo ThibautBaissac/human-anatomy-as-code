@@ -1,0 +1,25 @@
+slug: ascending-colon
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: ascending colon
+    source: fma
+    status: draft
+  fr:
+    text: côlon ascendant
+    source: wikidata
+    status: draft
+  la:
+    text: colon ascendens
+    source: wikidata
+    status: draft
+ids:
+  fma: 14545
+  ta2: 2982
+  ta98: A05.7.03.002
+  wikidata: Q2562556
+meshes:
+  - bp3d:FJ2566

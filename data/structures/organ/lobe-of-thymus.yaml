@@ -1,0 +1,26 @@
+slug: lobe-of-thymus
+kind: organ
+laterality: bilateral
+status: draft
+parent: thymus
+labels:
+  en:
+    text: lobe of thymus
+    source: fma
+    status: draft
+ids:
+  fma: 71193
+  wikidata: Q25506550
+sides:
+  left:
+    ids:
+      fma: 71195
+      wikidata: Q66569026
+    meshes:
+      - bp3d:FJ3150
+  right:
+    ids:
+      fma: 71194
+      wikidata: Q66569025
+    meshes:
+      - bp3d:FJ3151

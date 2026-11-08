@@ -1,0 +1,39 @@
+slug: tibialis-posterior
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: tibialis posterior
+    source: fma
+    status: draft
+  fr:
+    text: muscle tibial postérieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus tibialis posterior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 51099
+  ta2: 2666
+  ta98: A04.7.02.051
+  wikidata: Q1551145
+sides:
+  left:
+    ids:
+      fma: 65019
+      wikidata: Q66561340
+    meshes:
+      - bp3d:FJ1440M
+  right:
+    ids:
+      fma: 65018
+      wikidata: Q66561338
+    meshes:
+      - bp3d:FJ1440

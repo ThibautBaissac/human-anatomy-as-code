@@ -1,0 +1,25 @@
+slug: inferior-gluteal-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: inferior gluteal vein
+    source: fma
+    status: draft
+ids:
+  fma: 18911
+  wikidata: Q66510139
+sides:
+  left:
+    ids:
+      fma: 18913
+      wikidata: Q66510141
+    meshes:
+      - bp3d:FJ3513
+  right:
+    ids:
+      fma: 18912
+      wikidata: Q66510140
+    meshes:
+      - bp3d:FJ3606

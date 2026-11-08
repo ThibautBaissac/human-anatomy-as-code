@@ -1,0 +1,19 @@
+slug: intervertebral-disk
+kind: cartilage
+laterality: midline
+status: draft
+parent: intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk
+    source: fma
+    status: draft
+  fr:
+    text: disque intervertébral
+    source: wikidata
+    status: draft
+ids:
+  fma: 10446
+  ta2: 1684
+  ta98: A03.2.02.003
+  wikidata: Q502781

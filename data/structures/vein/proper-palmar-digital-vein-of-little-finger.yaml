@@ -1,0 +1,39 @@
+slug: proper-palmar-digital-vein-of-little-finger
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: proper palmar digital vein of little finger
+    source: fma
+    status: draft
+ids:
+  fma: 85095
+  wikidata: Q66591489
+sides:
+  left:
+    ids:
+      fma: 85103
+      wikidata: Q66591497
+    meshes:
+      - bp3d:FJ2319
+      - bp3d:FJ2321
+      - bp3d:FJ2329
+    labels:
+      en:
+        text: proper palmar digital vein of left little finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 85102
+      wikidata: Q66591496
+    meshes:
+      - bp3d:FJ2349
+      - bp3d:FJ2351
+      - bp3d:FJ2360
+    labels:
+      en:
+        text: proper palmar digital vein of right little finger
+        source: fma
+        status: draft

@@ -1,0 +1,15 @@
+slug: hepatovenous-segment-v
+kind: vein
+laterality: midline
+status: draft
+parent: anterior-sector-of-liver
+labels:
+  en:
+    text: hepatovenous segment v
+    source: fma
+    status: draft
+ids:
+  fma: 15743
+  wikidata: Q66512440
+meshes:
+  - bp3d:FJ2821

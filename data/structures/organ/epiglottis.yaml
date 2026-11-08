@@ -1,0 +1,24 @@
+slug: epiglottis
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: epiglottis
+    source: fma
+    status: draft
+  fr:
+    text: épiglotte
+    source: wikidata
+    status: draft
+  la:
+    text: Epiglottis
+    source: wikidata
+    status: draft
+ids:
+  fma: 55130
+  ta2: 3190
+  ta98: A06.2.07.001
+  wikidata: Q235378
+meshes:
+  - bp3d:FJ2770

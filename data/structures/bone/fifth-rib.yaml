@@ -1,0 +1,32 @@
+slug: fifth-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: fifth rib
+    source: fma
+    status: draft
+  fr:
+    text: cinquième côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 7776
+  wikidata: Q51078062
+sides:
+  left:
+    ids:
+      fma: 8093
+      wikidata: Q66503588
+    meshes:
+      - bp3d:FJ3232
+  right:
+    ids:
+      fma: 8066
+      wikidata: Q66503559
+    meshes:
+      - bp3d:FJ3342

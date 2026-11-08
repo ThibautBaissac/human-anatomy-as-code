@@ -1,0 +1,35 @@
+slug: superior-vermian-branch-of-medial-branch-of-superior-cerebellar-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superior vermian branch of medial branch of superior cerebellar artery
+    source: fma
+    status: draft
+ids:
+  fma: 50695
+  wikidata: Q66539879
+sides:
+  left:
+    ids:
+      fma: 50697
+      wikidata: Q66539883
+    meshes:
+      - bp3d:FJ1728M
+    labels:
+      en:
+        text: superior vermian branch of medial branch of left superior cerebellar artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50696
+      wikidata: Q66539881
+    meshes:
+      - bp3d:FJ1728
+    labels:
+      en:
+        text: superior vermian branch of medial branch of right superior cerebellar artery
+        source: fma
+        status: draft

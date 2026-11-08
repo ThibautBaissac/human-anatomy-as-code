@@ -1,0 +1,39 @@
+slug: great-saphenous-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: great saphenous vein
+    source: fma
+    status: draft
+  fr:
+    text: veine grande saphène
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena saphena magna
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 21376
+  ta2: 5058
+  ta98: A12.3.11.003
+  wikidata: Q543323
+sides:
+  left:
+    ids:
+      fma: 21380
+      wikidata: Q66513344
+    meshes:
+      - bp3d:FJ2103
+  right:
+    ids:
+      fma: 21379
+      wikidata: Q66513342
+    meshes:
+      - bp3d:FJ2145

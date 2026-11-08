@@ -1,0 +1,34 @@
+slug: lateral-occipital-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: posterior-cerebral-artery
+labels:
+  en:
+    text: lateral occipital artery
+    source: fma
+    status: draft
+  fr:
+    text: artère occipitale latérale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50633
+  ta2: 4572
+  ta98: A12.2.07.094
+  wikidata: Q66539762
+sides:
+  left:
+    ids:
+      fma: 50644
+      wikidata: Q66539776
+    meshes:
+      - bp3d:FJ1687M
+  right:
+    ids:
+      fma: 50643
+      wikidata: Q66539774
+    meshes:
+      - bp3d:FJ1687

@@ -1,0 +1,25 @@
+slug: mitral-valve
+kind: organ
+laterality: midline
+status: draft
+parent: outflow-part-of-left-atrium
+regions:
+  - thorax
+labels:
+  en:
+    text: mitral valve
+    source: fma
+    status: draft
+  fr:
+    text: valve atrio-ventriculaire gauche
+    source: wikidata
+    status: draft
+  la:
+    text: Valva atrioventricularis sinistra
+    source: wikidata
+    status: draft
+ids:
+  fma: 7235
+  ta2: 3987
+  ta98: A12.1.04.003
+  wikidata: Q369939

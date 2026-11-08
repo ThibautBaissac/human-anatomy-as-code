@@ -1,0 +1,13 @@
+slug: systemic-arterial-system
+kind: artery
+laterality: midline
+status: draft
+parent: cardiovascular-system
+labels:
+  en:
+    text: systemic arterial system
+    source: fma
+    status: draft
+ids:
+  fma: 45623
+  wikidata: Q66535992

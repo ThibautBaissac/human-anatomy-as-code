@@ -1,0 +1,25 @@
+slug: sternum
+kind: group
+laterality: midline
+status: draft
+parent: sternal-part-of-chest
+regions:
+  - thorax
+labels:
+  en:
+    text: sternum
+    source: fma
+    status: draft
+  fr:
+    text: sternum
+    source: wikidata
+    status: draft
+  la:
+    text: Sternum
+    source: wikidata
+    status: draft
+ids:
+  fma: 7485
+  ta2: 1129
+  ta98: A02.3.03.001
+  wikidata: Q8481

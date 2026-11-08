@@ -1,0 +1,30 @@
+slug: anterior-inferior-cerebellar-artery
+kind: artery
+laterality: midline
+status: draft
+parent: basilar-artery
+labels:
+  en:
+    text: anterior inferior cerebellar artery
+    source: fma
+    status: draft
+  fr:
+    text: artère cérébelleuse inféro-antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria cerebelli inferior anterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50544
+  ta2: 4550
+  ta98: A12.2.08.019
+  wikidata: Q707277
+meshes:
+  - bp3d:FJ1656
+  - bp3d:FJ1656M

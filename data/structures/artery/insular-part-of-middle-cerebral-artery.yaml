@@ -1,0 +1,42 @@
+slug: insular-part-of-middle-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: insular part of middle cerebral artery
+    source: fma
+    status: draft
+  fr:
+    text: partie insulaire de l'artère  cérébrale moyenne
+    source: wikidata
+    status: draft
+ids:
+  fma: 50368
+  ta98: A12.2.07.053
+  wikidata: Q66539514
+sides:
+  left:
+    ids:
+      fma: 50370
+      wikidata: Q66539516
+    meshes:
+      - bp3d:FJ1660M
+      - bp3d:FJ1694M
+    labels:
+      en:
+        text: insular part of left middle cerebral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50369
+      wikidata: Q66539515
+    meshes:
+      - bp3d:FJ1660
+      - bp3d:FJ1694
+    labels:
+      en:
+        text: insular part of right middle cerebral artery
+        source: fma
+        status: draft

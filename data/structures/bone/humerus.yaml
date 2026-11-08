@@ -1,0 +1,39 @@
+slug: humerus
+kind: bone
+laterality: bilateral
+status: draft
+parent: arm
+regions:
+  - arm
+  - upper-limb
+labels:
+  en:
+    text: humerus
+    source: fma
+    status: draft
+  fr:
+    text: humérus
+    source: wikidata
+    status: draft
+  la:
+    text: Humerus
+    source: wikidata
+    status: draft
+ids:
+  fma: 13303
+  ta2: 1180
+  ta98: A02.4.04.001
+  wikidata: Q162595
+sides:
+  left:
+    ids:
+      fma: 23131
+      wikidata: Q66515057
+    meshes:
+      - bp3d:FJ3262
+  right:
+    ids:
+      fma: 23130
+      wikidata: Q66515056
+    meshes:
+      - bp3d:FJ3368

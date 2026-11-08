@@ -1,0 +1,35 @@
+slug: optic-part-of-retina
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: optic part of retina
+    source: fma
+    status: draft
+ids:
+  fma: 58604
+  wikidata: Q66555156
+sides:
+  left:
+    ids:
+      fma: 58608
+      wikidata: Q66555160
+    meshes:
+      - bp3d:FJ1316
+    labels:
+      en:
+        text: optic part of left retina
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58607
+      wikidata: Q66555159
+    meshes:
+      - bp3d:FJ1367
+    labels:
+      en:
+        text: optic part of right retina
+        source: fma
+        status: draft

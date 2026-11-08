@@ -1,0 +1,20 @@
+slug: papillary-muscle-of-right-ventricle
+kind: muscle
+laterality: midline
+status: draft
+parent: wall-of-inflow-part-of-right-ventricle
+labels:
+  en:
+    text: papillary muscle of right ventricle
+    source: fma
+    status: draft
+  fr:
+    text: muscle papillaire du ventricule droit
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 7259
+  ta2: 4043
+  wikidata: Q66502857

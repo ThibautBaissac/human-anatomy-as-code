@@ -1,0 +1,39 @@
+slug: oblique-arytenoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: oblique arytenoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle aryténoïdien oblique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus arytenoideus obliquus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46583
+  ta2: 2203
+  ta98: A06.2.08.010
+  wikidata: Q3867495
+sides:
+  left:
+    ids:
+      fma: 46585
+      wikidata: Q66536603
+    meshes:
+      - bp3d:FJ2780
+  right:
+    ids:
+      fma: 46584
+      wikidata: Q66536602
+    meshes:
+      - bp3d:FJ2798

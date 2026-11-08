@@ -1,0 +1,26 @@
+slug: external-ear
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: external ear
+    source: fma
+    status: draft
+  fr:
+    text: oreille externe
+    source: wikidata
+    status: draft
+  la:
+    text: Musculi auriculares
+    gender: m
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 52781
+  ta2: 6862
+  ta98: A15.3.01.001
+  wikidata: Q609753
+meshes:
+  - bp3d:FJ2811

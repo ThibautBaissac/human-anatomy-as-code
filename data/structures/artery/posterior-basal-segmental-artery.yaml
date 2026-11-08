@@ -1,0 +1,39 @@
+slug: posterior-basal-segmental-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: basal-segmental-artery
+labels:
+  en:
+    text: posterior basal segmental artery
+    source: fma
+    status: draft
+  fr:
+    text: artère segmentaire basale postérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8719
+  wikidata: Q66504276
+sides:
+  left:
+    ids:
+      fma: 8647
+      ta2: 4106
+      ta98: A12.2.01.220
+      wikidata: Q66504110
+    meshes:
+      - bp3d:FJ2881
+      - bp3d:FJ2892
+      - bp3d:FJ2903
+      - bp3d:FJ2914
+      - bp3d:FJ2919
+      - bp3d:FJ2920
+  right:
+    ids:
+      fma: 8632
+      ta2: 4090
+      ta98: A12.2.01.119
+      wikidata: Q66504095

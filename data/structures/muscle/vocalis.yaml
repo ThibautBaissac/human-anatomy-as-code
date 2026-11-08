@@ -1,0 +1,39 @@
+slug: vocalis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: vocalis
+    source: fma
+    status: draft
+  fr:
+    text: muscle vocal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus vocalis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46591
+  ta2: 2202
+  ta98: A06.2.08.007
+  wikidata: Q1180067
+sides:
+  left:
+    ids:
+      fma: 46593
+      wikidata: Q66536607
+    meshes:
+      - bp3d:FJ2788
+  right:
+    ids:
+      fma: 46592
+      wikidata: Q66536606
+    meshes:
+      - bp3d:FJ2806

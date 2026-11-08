@@ -1,0 +1,42 @@
+slug: subclavius
+kind: muscle
+laterality: bilateral
+status: draft
+parent: superficial-chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: subclavius
+    source: fma
+    status: draft
+  fr:
+    text: muscle subclavier
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus subclavius
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13410
+  ta2: 2306
+  ta98: A04.4.01.007
+  wikidata: Q130086
+sides:
+  left:
+    ids:
+      fma: 13411
+      wikidata: Q66508079
+    meshes:
+      - bp3d:FJ1460M
+  right:
+    ids:
+      fma: 13412
+      wikidata: Q66508080
+    meshes:
+      - bp3d:FJ1460

@@ -1,0 +1,39 @@
+slug: obliquus-capitis-inferior
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: obliquus capitis inferior
+    source: fma
+    status: draft
+  fr:
+    text: muscle oblique inférieur de la tête
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus obliquus capitis inferior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 32528
+  ta2: 2252
+  ta98: A04.2.02.007
+  wikidata: Q1051430
+sides:
+  left:
+    ids:
+      fma: 32537
+      wikidata: Q66523026
+    meshes:
+      - bp3d:FJ1563
+  right:
+    ids:
+      fma: 32536
+      wikidata: Q66523024
+    meshes:
+      - bp3d:FJ1584

@@ -1,0 +1,41 @@
+slug: medial-head-of-triceps-brachii
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: medial head of triceps brachii
+    source: fma
+    status: draft
+  fr:
+    text: chef médial du muscle triceps brachial
+    source: wikidata
+    status: draft
+ids:
+  fma: 37693
+  ta2: 2474
+  ta98: A04.6.02.022
+  wikidata: Q66526969
+sides:
+  left:
+    ids:
+      fma: 37696
+      wikidata: Q66526972
+    meshes:
+      - bp3d:FJ1480M
+    labels:
+      en:
+        text: medial head of left triceps brachii
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37695
+      wikidata: Q66526971
+    meshes:
+      - bp3d:FJ1480
+    labels:
+      en:
+        text: medial head of right triceps brachii
+        source: fma
+        status: draft

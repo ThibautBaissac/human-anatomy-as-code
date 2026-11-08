@@ -1,0 +1,39 @@
+slug: sternocleidomastoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: sternocleidomastoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle sterno-cléido-mastoïdien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus sternocleidomastoideus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13407
+  ta2: 2156
+  ta98: A04.2.01.008
+  wikidata: Q272830
+sides:
+  left:
+    ids:
+      fma: 13409
+      wikidata: Q66508078
+    meshes:
+      - bp3d:FJ1573
+  right:
+    ids:
+      fma: 13408
+      wikidata: Q66508077
+    meshes:
+      - bp3d:FJ1595

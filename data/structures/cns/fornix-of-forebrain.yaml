@@ -1,0 +1,31 @@
+slug: fornix-of-forebrain
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: fornix of forebrain
+    source: fma
+    status: draft
+  fr:
+    text: fornix
+    source: wikidata
+    status: draft
+ids:
+  fma: 61965
+  ta2: 5633
+  ta98: A14.1.09.255
+  wikidata: Q1230047
+sides:
+  left:
+    ids:
+      fma: 72925
+      wikidata: Q66570415
+    meshes:
+      - bp3d:FJ1756
+  right:
+    ids:
+      fma: 72924
+      wikidata: Q66570414
+    meshes:
+      - bp3d:FJ1804

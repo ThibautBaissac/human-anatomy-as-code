@@ -1,0 +1,40 @@
+slug: zygomatic-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: zygomatic bone
+    source: fma
+    status: draft
+  fr:
+    text: os zygomatique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: os zygomaticum
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52747
+  ta2: 818
+  ta98: A02.1.14.001
+  wikidata: Q186102
+sides:
+  left:
+    ids:
+      fma: 52893
+      wikidata: Q66543047
+    meshes:
+      - bp3d:FJ3287
+  right:
+    ids:
+      fma: 52892
+      wikidata: Q66543046
+    meshes:
+      - bp3d:FJ3392

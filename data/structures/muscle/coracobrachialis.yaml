@@ -1,0 +1,43 @@
+slug: coracobrachialis
+kind: muscle
+laterality: bilateral
+status: draft
+parent: arm
+regions:
+  - arm
+  - upper-limb
+labels:
+  en:
+    text: coracobrachialis
+    source: fma
+    status: draft
+  fr:
+    text: muscle coraco-brachial
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus coracobrachialis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37664
+  ta2: 2468
+  ta98: A04.6.02.017
+  wikidata: Q730359
+sides:
+  left:
+    ids:
+      fma: 37666
+      wikidata: Q66526947
+    meshes:
+      - bp3d:FJ1488M
+  right:
+    ids:
+      fma: 37665
+      wikidata: Q66526946
+    meshes:
+      - bp3d:FJ1488

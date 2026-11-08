@@ -1,0 +1,28 @@
+slug: third-costal-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: third costal cartilage
+    source: fma
+    status: draft
+ids:
+  fma: 7741
+  wikidata: Q51127012
+sides:
+  left:
+    ids:
+      fma: 8058
+      wikidata: Q66503551
+    meshes:
+      - bp3d:FJ3245
+  right:
+    ids:
+      fma: 7913
+      wikidata: Q66503405
+    meshes:
+      - bp3d:FJ3337

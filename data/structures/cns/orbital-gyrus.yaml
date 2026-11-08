@@ -1,0 +1,15 @@
+slug: orbital-gyrus
+kind: cns
+laterality: midline
+status: draft
+labels:
+  en:
+    text: orbital gyrus
+    source: fma
+    status: draft
+ids:
+  fma: 256194
+  wikidata: Q66599495
+meshes:
+  - bp3d:FJ1793
+  - bp3d:FJ1794

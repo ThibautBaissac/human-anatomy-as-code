@@ -1,0 +1,15 @@
+slug: right-lobe-branch-of-right-hepatic-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: right lobe branch of right hepatic artery
+    source: fma
+    status: draft
+ids:
+  fma: 71708
+  wikidata: Q66569407
+meshes:
+  - bp3d:FJ1924
+  - bp3d:FJ2394

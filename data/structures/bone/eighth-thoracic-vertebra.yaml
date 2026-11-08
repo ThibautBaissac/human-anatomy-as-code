@@ -1,0 +1,21 @@
+slug: eighth-thoracic-vertebra
+kind: bone
+laterality: midline
+status: draft
+parent: posterior-thoracic-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: eighth thoracic vertebra
+    source: fma
+    status: draft
+  fr:
+    text: huitième vertèbre thoracique
+    source: wikidata
+    status: draft
+ids:
+  fma: 9991
+  wikidata: Q46992879
+meshes:
+  - bp3d:FJ3174

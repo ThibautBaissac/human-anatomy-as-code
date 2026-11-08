@@ -1,0 +1,40 @@
+slug: subcostal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: subcostal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère sous-costale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria subcostalis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4613
+  ta2: 4202
+  ta98: A12.2.11.020
+  wikidata: Q5645489
+sides:
+  left:
+    ids:
+      fma: 4654
+      wikidata: Q66500619
+    meshes:
+      - bp3d:FJ1977
+  right:
+    ids:
+      fma: 4634
+      wikidata: Q66500591
+    meshes:
+      - bp3d:FJ1967

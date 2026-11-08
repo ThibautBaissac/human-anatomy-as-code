@@ -1,0 +1,37 @@
+slug: spinalis-thoracis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: spinalis thoracis
+    source: fma
+    status: draft
+  fr:
+    text: muscle épineux du thorax
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: spinalis thoracis
+    source: wikidata
+    status: draft
+ids:
+  fma: 22765
+  ta2: 2268
+  ta98: A04.3.02.016
+  wikidata: Q66514780
+sides:
+  left:
+    ids:
+      fma: 22780
+      wikidata: Q66514794
+    meshes:
+      - bp3d:FJ1544M
+  right:
+    ids:
+      fma: 22779
+      wikidata: Q66514793
+    meshes:
+      - bp3d:FJ1544

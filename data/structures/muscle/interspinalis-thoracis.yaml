@@ -1,0 +1,25 @@
+slug: interspinalis-thoracis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: interspinalis thoracis
+    source: fma
+    status: draft
+ids:
+  fma: 22846
+  wikidata: Q66514838
+sides:
+  left:
+    ids:
+      fma: 22891
+      wikidata: Q66514877
+    meshes:
+      - bp3d:FJ1551M
+  right:
+    ids:
+      fma: 22890
+      wikidata: Q66514876
+    meshes:
+      - bp3d:FJ1551

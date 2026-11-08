@@ -1,0 +1,53 @@
+slug: inferior-phrenic-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: inferior phrenic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère phrénique inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteriae phrenicae inferiores
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 14734
+  ta2: 4206
+  ta98: A12.2.12.002
+  wikidata: Q3491693
+sides:
+  left:
+    ids:
+      fma: 14747
+      wikidata: Q66510771
+    meshes:
+      - bp3d:FJ3514
+      - bp3d:FJ3515
+      - bp3d:FJ3516
+      - bp3d:FJ3517
+      - bp3d:FJ3518
+      - bp3d:FJ3519
+      - bp3d:FJ3520
+  right:
+    ids:
+      fma: 14746
+      wikidata: Q66510768
+    meshes:
+      - bp3d:FJ3619
+      - bp3d:FJ3620
+      - bp3d:FJ3621
+      - bp3d:FJ3622
+      - bp3d:FJ3623
+      - bp3d:FJ3624
+      - bp3d:FJ3625
+      - bp3d:FJ3626

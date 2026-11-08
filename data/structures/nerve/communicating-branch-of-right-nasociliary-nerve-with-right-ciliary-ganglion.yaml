@@ -1,0 +1,14 @@
+slug: communicating-branch-of-right-nasociliary-nerve-with-right-ciliary-ganglion
+kind: nerve
+laterality: midline
+status: draft
+labels:
+  en:
+    text: communicating branch of right nasociliary nerve with right ciliary ganglion
+    source: fma
+    status: draft
+ids:
+  fma: 52673
+  wikidata: Q66542890
+meshes:
+  - bp3d:FJ1362

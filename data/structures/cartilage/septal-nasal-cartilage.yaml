@@ -1,0 +1,25 @@
+slug: septal-nasal-cartilage
+kind: cartilage
+laterality: midline
+status: draft
+parent: internal-nose
+regions:
+  - head
+labels:
+  en:
+    text: septal nasal cartilage
+    source: fma
+    status: draft
+  fr:
+    text: cartilage septal du nez
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 59503
+  ta2: 946
+  ta98: A06.1.01.013
+  wikidata: Q3482204
+meshes:
+  - bp3d:FJ2557

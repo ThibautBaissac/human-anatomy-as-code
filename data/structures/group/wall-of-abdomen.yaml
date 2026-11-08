@@ -1,0 +1,15 @@
+slug: wall-of-abdomen
+kind: group
+laterality: midline
+status: draft
+parent: abdomen
+regions:
+  - abdomen
+labels:
+  en:
+    text: wall of abdomen
+    source: fma
+    status: draft
+ids:
+  fma: 259054
+  wikidata: Q66600674

@@ -1,0 +1,40 @@
+slug: tensor-veli-palatini
+kind: muscle
+laterality: bilateral
+status: draft
+parent: soft-palate
+labels:
+  en:
+    text: tensor veli palatini
+    source: fma
+    status: draft
+  fr:
+    text: muscle tenseur du voile du palais
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus tensor veli palatini
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46730
+  ta2: 2129
+  ta98: A05.2.01.103
+  wikidata: Q1073869
+sides:
+  left:
+    ids:
+      fma: 46732
+      wikidata: Q66536708
+    meshes:
+      - bp3d:FJ2748
+  right:
+    ids:
+      fma: 46731
+      wikidata: Q66536707
+    meshes:
+      - bp3d:FJ2760

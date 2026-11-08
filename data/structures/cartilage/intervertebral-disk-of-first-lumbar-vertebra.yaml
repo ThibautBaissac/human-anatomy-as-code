@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-first-lumbar-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: first-lumbar-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of first lumbar vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 16033
+  wikidata: Q66513041
+meshes:
+  - bp3d:FJ3212

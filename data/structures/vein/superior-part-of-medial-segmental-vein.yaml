@@ -1,0 +1,15 @@
+slug: superior-part-of-medial-segmental-vein
+kind: vein
+laterality: midline
+status: draft
+parent: medial-segmental-vein
+labels:
+  en:
+    text: superior part of medial segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 68982
+  wikidata: Q66566543
+meshes:
+  - bp3d:FJ3030

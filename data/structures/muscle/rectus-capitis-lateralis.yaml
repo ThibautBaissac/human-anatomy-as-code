@@ -1,0 +1,39 @@
+slug: rectus-capitis-lateralis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: rectus capitis lateralis
+    source: fma
+    status: draft
+  fr:
+    text: muscle droit latéral de la tête
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus rectus capitis lateralis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46316
+  ta2: 2151
+  ta98: A04.2.02.003
+  wikidata: Q579641
+sides:
+  left:
+    ids:
+      fma: 46318
+      wikidata: Q66536469
+    meshes:
+      - bp3d:FJ1569
+  right:
+    ids:
+      fma: 46317
+      wikidata: Q66536468
+    meshes:
+      - bp3d:FJ1591

@@ -1,0 +1,19 @@
+slug: third-lumbar-vertebra
+kind: bone
+laterality: midline
+status: draft
+parent: set-of-lumbar-vertebrae
+labels:
+  en:
+    text: third lumbar vertebra
+    source: fma
+    status: draft
+  fr:
+    text: troisième vertèbre lombaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 13074
+  wikidata: Q46993007
+meshes:
+  - bp3d:FJ3162

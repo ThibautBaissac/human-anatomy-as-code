@@ -1,0 +1,38 @@
+slug: lens
+kind: organ
+laterality: bilateral
+status: draft
+parent: eyeball
+regions:
+  - head
+labels:
+  en:
+    text: lens
+    source: fma
+    status: draft
+  fr:
+    text: cristallin
+    source: wikidata
+    status: draft
+  la:
+    text: lens
+    source: wikidata
+    status: draft
+ids:
+  fma: 58241
+  ta2: 6798
+  ta98: A15.2.05.001
+  wikidata: Q146701
+sides:
+  left:
+    ids:
+      fma: 58243
+      wikidata: Q66554865
+    meshes:
+      - bp3d:FJ1305
+  right:
+    ids:
+      fma: 58242
+      wikidata: Q66554864
+    meshes:
+      - bp3d:FJ1356

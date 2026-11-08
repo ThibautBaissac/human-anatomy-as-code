@@ -1,0 +1,13 @@
+slug: myocardium-of-right-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: wall-of-side-of-heart
+labels:
+  en:
+    text: myocardium of right ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 9535
+  wikidata: Q66504975

@@ -1,0 +1,30 @@
+slug: limbic-lobe
+kind: organ
+laterality: bilateral
+status: draft
+parent: cerebral-hemisphere
+labels:
+  en:
+    text: limbic lobe
+    source: fma
+    status: draft
+  fr:
+    text: lobe limbique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 72719
+  ta2: 5507
+  ta98: A14.1.09.230
+  wikidata: Q11345481
+sides:
+  left:
+    ids:
+      fma: 72981
+      wikidata: Q66570462
+  right:
+    ids:
+      fma: 72980
+      wikidata: Q66570461

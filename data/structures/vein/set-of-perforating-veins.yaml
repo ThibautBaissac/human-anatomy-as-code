@@ -1,0 +1,32 @@
+slug: set-of-perforating-veins
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of perforating veins
+    source: fma
+    status: draft
+  fr:
+    text: veine perforante de la cuisse
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena perforans
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 70922
+  ta2: 5071
+  ta98: A12.3.11.027
+  wikidata: Q2512709
+meshes:
+  - bp3d:FJ2100
+  - bp3d:FJ2119
+  - bp3d:FJ2138
+  - bp3d:FJ2174
+  - bp3d:FJ2192

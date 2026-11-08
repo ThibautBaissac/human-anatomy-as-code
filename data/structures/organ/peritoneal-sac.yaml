@@ -1,0 +1,13 @@
+slug: peritoneal-sac
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: peritoneal sac
+    source: fma
+    status: draft
+ids:
+  fma: 9908
+  wikidata: Q66505179

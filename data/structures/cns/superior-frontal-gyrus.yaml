@@ -1,0 +1,32 @@
+slug: superior-frontal-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: prefrontal-cortex
+labels:
+  en:
+    text: superior frontal gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus frontal supérieur
+    source: wikidata
+    status: draft
+ids:
+  fma: 61857
+  ta2: 5456
+  ta98: A14.1.09.121
+  wikidata: Q3064113
+sides:
+  left:
+    ids:
+      fma: 72654
+      wikidata: Q66570159
+    meshes:
+      - bp3d:FJ1833
+  right:
+    ids:
+      fma: 72653
+      wikidata: Q66570158
+    meshes:
+      - bp3d:FJ1834

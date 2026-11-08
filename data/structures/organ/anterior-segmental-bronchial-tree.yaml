@@ -1,0 +1,39 @@
+slug: anterior-segmental-bronchial-tree
+kind: organ
+laterality: bilateral
+status: draft
+parent: anterior-bronchopulmonary-segment
+labels:
+  en:
+    text: anterior segmental bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68235
+  wikidata: Q66563831
+sides:
+  left:
+    ids:
+      fma: 68222
+      wikidata: Q66563818
+    meshes:
+      - bp3d:FJ2443
+      - bp3d:FJ2467
+      - bp3d:FJ2468
+      - bp3d:FJ2469
+      - bp3d:FJ2471
+      - bp3d:FJ2472
+      - bp3d:FJ2473
+      - bp3d:FJ2474
+  right:
+    ids:
+      fma: 68212
+      wikidata: Q66563809
+    meshes:
+      - bp3d:FJ2453
+      - bp3d:FJ2509
+      - bp3d:FJ2510
+      - bp3d:FJ2511
+      - bp3d:FJ2512
+      - bp3d:FJ2513
+      - bp3d:FJ2514

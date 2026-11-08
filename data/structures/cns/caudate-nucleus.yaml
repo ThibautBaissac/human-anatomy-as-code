@@ -1,0 +1,35 @@
+slug: caudate-nucleus
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: caudate nucleus
+    source: fma
+    status: draft
+  fr:
+    text: noyau caudé
+    source: wikidata
+    status: draft
+  la:
+    text: Nucleus caudatus
+    source: wikidata
+    status: draft
+ids:
+  fma: 61833
+  ta2: 5561
+  ta98: A14.1.09.502
+  wikidata: Q1132309
+sides:
+  left:
+    ids:
+      fma: 72827
+      wikidata: Q66570322
+    meshes:
+      - bp3d:FJ1754
+  right:
+    ids:
+      fma: 72826
+      wikidata: Q66570321
+    meshes:
+      - bp3d:FJ1802

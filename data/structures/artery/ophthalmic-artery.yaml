@@ -1,0 +1,40 @@
+slug: ophthalmic-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: internal-carotid-artery
+labels:
+  en:
+    text: ophthalmic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère ophtalmique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria ophthalmica
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 49868
+  ta2: 4469
+  ta98: A12.2.06.016
+  wikidata: Q497574
+sides:
+  left:
+    ids:
+      fma: 49870
+      wikidata: Q66539112
+    meshes:
+      - bp3d:FJ1695M
+  right:
+    ids:
+      fma: 49869
+      wikidata: Q66539111
+    meshes:
+      - bp3d:FJ1695

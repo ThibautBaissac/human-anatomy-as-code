@@ -1,0 +1,42 @@
+slug: levator-scapulae
+kind: bone
+laterality: bilateral
+status: draft
+parent: scapular-part-of-pectoral-girdle
+regions:
+  - upper-limb
+labels:
+  en:
+    text: levator scapulae
+    source: fma
+    status: draft
+  fr:
+    text: muscle élévateur de la scapula
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus levator scapulae
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 32519
+  ta2: 2234
+  ta98: A04.3.01.009
+  wikidata: Q755141
+sides:
+  left:
+    ids:
+      fma: 32541
+      wikidata: Q66523028
+    meshes:
+      - bp3d:FJ1532M
+  right:
+    ids:
+      fma: 32540
+      wikidata: Q66523027
+    meshes:
+      - bp3d:FJ1532

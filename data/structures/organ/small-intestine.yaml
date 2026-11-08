@@ -1,0 +1,23 @@
+slug: small-intestine
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: small intestine
+    source: fma
+    status: draft
+  fr:
+    text: intestin grêle
+    source: wikidata
+    status: draft
+  la:
+    text: Intestinum tenue
+    source: wikidata
+    status: draft
+ids:
+  fma: 7200
+  ta2: 2933
+  ta98: A05.6.01.001
+  wikidata: Q11090

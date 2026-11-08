@@ -1,0 +1,35 @@
+slug: posterior-part-of-superior-temporal-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: posterior part of superior temporal gyrus
+    source: fma
+    status: draft
+ids:
+  fma: 70703
+  wikidata: Q66568648
+sides:
+  left:
+    ids:
+      fma: 72805
+      wikidata: Q66570300
+    meshes:
+      - bp3d:FJ1839
+    labels:
+      en:
+        text: posterior part of left superior temporal gyrus
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 72804
+      wikidata: Q66570299
+    meshes:
+      - bp3d:FJ1840
+    labels:
+      en:
+        text: posterior part of right superior temporal gyrus
+        source: fma
+        status: draft

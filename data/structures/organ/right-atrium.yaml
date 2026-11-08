@@ -1,0 +1,19 @@
+slug: right-atrium
+kind: organ
+laterality: midline
+status: draft
+parent: side-of-heart
+labels:
+  en:
+    text: right atrium
+    source: fma
+    status: draft
+  fr:
+    text: atrium droit
+    source: wikidata
+    status: draft
+ids:
+  fma: 7096
+  ta2: 4022
+  ta98: A12.1.01.001
+  wikidata: Q1652353

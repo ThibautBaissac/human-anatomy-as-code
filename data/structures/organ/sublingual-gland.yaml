@@ -1,0 +1,39 @@
+slug: sublingual-gland
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: sublingual gland
+    source: fma
+    status: draft
+  fr:
+    text: glande sublinguale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Glandula sublingualis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 59791
+  ta2: 2807
+  ta98: A05.1.02.008
+  wikidata: Q692200
+sides:
+  left:
+    ids:
+      fma: 59805
+      wikidata: Q66556220
+    meshes:
+      - bp3d:FJ2765
+  right:
+    ids:
+      fma: 59804
+      wikidata: Q66556219
+    meshes:
+      - bp3d:FJ2767

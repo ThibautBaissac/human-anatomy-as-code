@@ -1,0 +1,14 @@
+slug: ileal-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: ileal vein
+    source: fma
+    status: draft
+ids:
+  fma: 15405
+  wikidata: Q66511983
+meshes:
+  - bp3d:FJ3438

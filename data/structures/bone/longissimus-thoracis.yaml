@@ -1,0 +1,37 @@
+slug: longissimus-thoracis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: longissimus thoracis
+    source: fma
+    status: draft
+  fr:
+    text: muscle longissimus du thorax
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: longissimus thoracis
+    source: wikidata
+    status: draft
+ids:
+  fma: 22709
+  ta2: 2263
+  ta98: A04.3.02.011
+  wikidata: Q2012698
+sides:
+  left:
+    ids:
+      fma: 22753
+      wikidata: Q66514773
+    meshes:
+      - bp3d:FJ1535M
+  right:
+    ids:
+      fma: 22751
+      wikidata: Q66514772
+    meshes:
+      - bp3d:FJ1535

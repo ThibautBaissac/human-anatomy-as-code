@@ -1,0 +1,47 @@
+slug: dorsal-venous-arch-of-foot
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: dorsal venous arch of foot
+    source: fma
+    status: draft
+  fr:
+    text: arcade veineuse dorsale du pied
+    source: wikidata
+    status: draft
+  la:
+    text: Arcus venosus dorsalis pedis
+    source: wikidata
+    status: draft
+ids:
+  fma: 44356
+  ta2: 5088
+  ta98: A12.3.11.012
+  wikidata: Q5298813
+sides:
+  left:
+    ids:
+      fma: 44882
+      wikidata: Q66535338
+    meshes:
+      - bp3d:FJ2059
+      - bp3d:FJ2060
+    labels:
+      en:
+        text: dorsal venous arch of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 44881
+      wikidata: Q66535337
+    meshes:
+      - bp3d:FJ2061
+      - bp3d:FJ2062
+    labels:
+      en:
+        text: dorsal venous arch of right foot
+        source: fma
+        status: draft

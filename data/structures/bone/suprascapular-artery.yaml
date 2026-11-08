@@ -1,0 +1,40 @@
+slug: suprascapular-artery
+kind: bone
+laterality: bilateral
+status: draft
+parent: thyrocervical-artery
+labels:
+  en:
+    text: suprascapular artery
+    source: fma
+    status: draft
+  fr:
+    text: artère supra-scapulaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria suprascapularis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 10663
+  ta2: 4599
+  ta98: A12.2.08.051
+  wikidata: Q493426
+sides:
+  left:
+    ids:
+      fma: 10681
+      wikidata: Q66505831
+    meshes:
+      - bp3d:FJ2251
+  right:
+    ids:
+      fma: 10698
+      wikidata: Q66505842
+    meshes:
+      - bp3d:FJ2303

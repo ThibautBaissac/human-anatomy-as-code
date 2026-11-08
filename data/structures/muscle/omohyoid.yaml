@@ -1,0 +1,39 @@
+slug: omohyoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: omohyoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle omo-hyoïdien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus omohyoideus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13342
+  ta2: 2169
+  ta98: A04.2.04.003
+  wikidata: Q1049279
+sides:
+  left:
+    ids:
+      fma: 13349
+      wikidata: Q66508037
+    meshes:
+      - bp3d:FJ1565
+  right:
+    ids:
+      fma: 13348
+      wikidata: Q66508036
+    meshes:
+      - bp3d:FJ1586

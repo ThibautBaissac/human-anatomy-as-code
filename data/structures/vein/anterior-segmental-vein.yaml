@@ -1,0 +1,37 @@
+slug: anterior-segmental-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: anterior-bronchopulmonary-segment
+labels:
+  en:
+    text: anterior segmental vein
+    source: fma
+    status: draft
+  fr:
+    text: veine antérieure du poumon droit
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13442
+  ta2: 4110
+  ta98: A12.3.02.105
+  wikidata: Q66508101
+sides:
+  left:
+    ids:
+      fma: 8667
+      wikidata: Q66504234
+    meshes:
+      - bp3d:FJ2930
+      - bp3d:FJ2931
+      - bp3d:FJ2932
+  right:
+    ids:
+      fma: 8662
+      wikidata: Q66504229
+    meshes:
+      - bp3d:FJ3028
+      - bp3d:FJ3029

@@ -1,0 +1,35 @@
+slug: lateral-frontobasal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral frontobasal artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau orbitofrontal de l'artère cérébrale moyenne
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50442
+  ta2: 4511
+  ta98: A12.2.07.062
+  wikidata: Q66539583
+sides:
+  left:
+    ids:
+      fma: 50444
+      wikidata: Q66539585
+    meshes:
+      - bp3d:FJ1685M
+      - bp3d:FJ1686M
+  right:
+    ids:
+      fma: 50443
+      wikidata: Q66539584
+    meshes:
+      - bp3d:FJ1685
+      - bp3d:FJ1686

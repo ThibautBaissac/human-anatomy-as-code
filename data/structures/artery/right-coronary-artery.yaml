@@ -1,0 +1,27 @@
+slug: right-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: right coronary artery
+    source: fma
+    status: draft
+  fr:
+    text: artère coronaire droite
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: arteria coronaria dextra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50039
+  ta2: 4131
+  ta98: A12.2.03.101
+  wikidata: Q429285

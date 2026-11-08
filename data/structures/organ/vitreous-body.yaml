@@ -1,0 +1,38 @@
+slug: vitreous-body
+kind: organ
+laterality: bilateral
+status: draft
+parent: eyeball
+regions:
+  - head
+labels:
+  en:
+    text: vitreous body
+    source: fma
+    status: draft
+  fr:
+    text: corps vitré
+    source: wikidata
+    status: draft
+  la:
+    text: Corpus vitreum
+    source: wikidata
+    status: draft
+ids:
+  fma: 58827
+  ta2: 6809
+  ta98: A15.2.06.014
+  wikidata: Q326710
+sides:
+  left:
+    ids:
+      fma: 58829
+      wikidata: Q66555342
+    meshes:
+      - bp3d:FJ1331
+  right:
+    ids:
+      fma: 58828
+      wikidata: Q66555341
+    meshes:
+      - bp3d:FJ1382

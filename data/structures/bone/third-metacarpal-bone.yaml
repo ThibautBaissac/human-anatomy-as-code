@@ -1,0 +1,34 @@
+slug: third-metacarpal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: skeleton-of-hand-proper
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: third metacarpal bone
+    source: fma
+    status: draft
+  fr:
+    text: troisième métacarpien
+    source: wikidata
+    status: draft
+ids:
+  fma: 23901
+  ta2: 1269
+  wikidata: Q836581
+sides:
+  left:
+    ids:
+      fma: 24469
+      wikidata: Q66515996
+    meshes:
+      - bp3d:FJ3246
+  right:
+    ids:
+      fma: 24468
+      wikidata: Q66515995
+    meshes:
+      - bp3d:FJ3354

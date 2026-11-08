@@ -1,0 +1,39 @@
+slug: calcaneus
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: calcaneus
+    source: fma
+    status: draft
+  fr:
+    text: calcanéus
+    source: wikidata
+    status: draft
+  la:
+    text: Calcaneus
+    source: wikidata
+    status: draft
+ids:
+  fma: 24496
+  ta2: 1468
+  ta98: A02.5.11.001
+  wikidata: Q13075
+sides:
+  left:
+    ids:
+      fma: 24498
+      wikidata: Q66516012
+    meshes:
+      - bp3d:FJ3256
+  right:
+    ids:
+      fma: 24497
+      wikidata: Q66516011
+    meshes:
+      - bp3d:FJ3360

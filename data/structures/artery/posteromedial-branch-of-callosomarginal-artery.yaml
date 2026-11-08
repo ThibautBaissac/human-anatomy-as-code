@@ -1,0 +1,42 @@
+slug: posteromedial-branch-of-callosomarginal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: posteromedial branch of callosomarginal artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau frontal postéro-médial de l'artère calloso-marginale
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50334
+  ta98: A12.2.07.040
+  wikidata: Q66539480
+sides:
+  left:
+    ids:
+      fma: 50354
+      wikidata: Q66539500
+    meshes:
+      - bp3d:FJ1722M
+    labels:
+      en:
+        text: posteromedial branch of left callosomarginal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50353
+      wikidata: Q66539499
+    meshes:
+      - bp3d:FJ1722
+    labels:
+      en:
+        text: posteromedial branch of right callosomarginal artery
+        source: fma
+        status: draft

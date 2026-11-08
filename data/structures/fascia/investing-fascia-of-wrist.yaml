@@ -1,0 +1,34 @@
+slug: investing-fascia-of-wrist
+kind: fascia
+laterality: bilateral
+status: draft
+parent: wrist
+regions:
+  - upper-limb
+labels:
+  en:
+    text: investing fascia of wrist
+    source: fma
+    status: draft
+ids:
+  fma: 58436
+  wikidata: Q66555011
+sides:
+  left:
+    ids:
+      fma: 58449
+      wikidata: Q66555023
+    labels:
+      en:
+        text: investing fascia of left wrist
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58448
+      wikidata: Q66555022
+    labels:
+      en:
+        text: investing fascia of right wrist
+        source: fma
+        status: draft

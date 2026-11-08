@@ -1,0 +1,41 @@
+slug: oblique-head-of-adductor-pollicis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: oblique head of adductor pollicis
+    source: fma
+    status: draft
+  fr:
+    text: chef oblique du muscle adducteur du pouce
+    source: wikidata
+    status: draft
+ids:
+  fma: 46119
+  ta2: 2527
+  ta98: A04.6.02.060
+  wikidata: Q66536311
+sides:
+  left:
+    ids:
+      fma: 46122
+      wikidata: Q66536314
+    meshes:
+      - bp3d:FJ1481M
+    labels:
+      en:
+        text: oblique head of left adductor pollicis
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 46121
+      wikidata: Q66536313
+    meshes:
+      - bp3d:FJ1481
+    labels:
+      en:
+        text: oblique head of right adductor pollicis
+        source: fma
+        status: draft

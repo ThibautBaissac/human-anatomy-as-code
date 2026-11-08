@@ -1,0 +1,14 @@
+slug: vertical-intermediate-part-of-left-longus-colli
+kind: muscle
+laterality: midline
+status: draft
+labels:
+  en:
+    text: vertical intermediate part of left longus colli
+    source: fma
+    status: draft
+ids:
+  fma: 46286
+  wikidata: Q66536449
+meshes:
+  - bp3d:FJ1601

@@ -1,0 +1,17 @@
+slug: anterior-part-of-lateral-segmental-vein
+kind: vein
+laterality: midline
+status: draft
+parent: lateral-segmental-vein
+labels:
+  en:
+    text: anterior part of lateral segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 68945
+  wikidata: Q66564486
+meshes:
+  - bp3d:FJ3034
+  - bp3d:FJ3035
+  - bp3d:FJ3036

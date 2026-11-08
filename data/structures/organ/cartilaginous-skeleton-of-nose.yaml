@@ -1,0 +1,15 @@
+slug: cartilaginous-skeleton-of-nose
+kind: organ
+laterality: midline
+status: draft
+parent: nasal-skeleton
+regions:
+  - head
+labels:
+  en:
+    text: cartilaginous skeleton of nose
+    source: fma
+    status: draft
+ids:
+  fma: 59538
+  wikidata: Q66555965

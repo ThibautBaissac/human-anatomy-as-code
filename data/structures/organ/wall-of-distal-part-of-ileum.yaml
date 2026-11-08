@@ -1,0 +1,13 @@
+slug: wall-of-distal-part-of-ileum
+kind: organ
+laterality: midline
+status: draft
+parent: distal-part-of-ileum
+labels:
+  en:
+    text: wall of distal part of ileum
+    source: fma
+    status: draft
+ids:
+  fma: 17181
+  wikidata: Q66713926

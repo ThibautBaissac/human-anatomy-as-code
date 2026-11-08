@@ -1,0 +1,30 @@
+slug: inferior-vena-cava
+kind: vein
+laterality: midline
+status: draft
+parent: inferior-systemic-venous-tree
+labels:
+  en:
+    text: inferior vena cava
+    source: fma
+    status: draft
+  fr:
+    text: veine cave inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: vena cava inferior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 10951
+  ta2: 4991
+  ta98: A12.3.09.001
+  wikidata: Q745438
+meshes:
+  - bp3d:FJ3441
+  - bp3d:FJ3659

@@ -1,0 +1,18 @@
+slug: set-of-thoracic-vertebrae
+kind: bone
+laterality: midline
+status: draft
+parent: vertebral-column
+labels:
+  en:
+    text: set of thoracic vertebrae
+    source: fma
+    status: draft
+  fr:
+    text: rachis thoracique
+    source: wikidata
+    status: draft
+ids:
+  fma: 72064
+  ta2: 1058
+  wikidata: Q994527

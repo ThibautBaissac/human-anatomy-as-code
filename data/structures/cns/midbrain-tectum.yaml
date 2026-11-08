@@ -1,0 +1,19 @@
+slug: midbrain-tectum
+kind: cns
+laterality: midline
+status: draft
+parent: midbrain
+labels:
+  en:
+    text: midbrain tectum
+    source: fma
+    status: draft
+  fr:
+    text: Tectum
+    source: wikidata
+    status: draft
+ids:
+  fma: 83902
+  ta2: 5911
+  ta98: A14.1.06.601
+  wikidata: Q4465020

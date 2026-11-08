@@ -1,0 +1,32 @@
+slug: precentral-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: frontal-lobe
+labels:
+  en:
+    text: precentral gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus précentral
+    source: wikidata
+    status: draft
+ids:
+  fma: 61894
+  ta2: 5458
+  ta98: A14.1.09.119
+  wikidata: Q5272263
+sides:
+  left:
+    ids:
+      fma: 72662
+      wikidata: Q66570167
+    meshes:
+      - bp3d:FJ1800
+  right:
+    ids:
+      fma: 72661
+      wikidata: Q66570166
+    meshes:
+      - bp3d:FJ1801

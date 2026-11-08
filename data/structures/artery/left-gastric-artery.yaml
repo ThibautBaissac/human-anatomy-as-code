@@ -1,0 +1,29 @@
+slug: left-gastric-artery
+kind: artery
+laterality: midline
+status: draft
+parent: celiac-artery
+labels:
+  en:
+    text: left gastric artery
+    source: fma
+    status: draft
+  fr:
+    text: artère gastrique gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria gastrica sinistra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14768
+  ta2: 4212
+  ta98: A12.2.12.013
+  wikidata: Q508792
+meshes:
+  - bp3d:FJ3499

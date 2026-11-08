@@ -1,0 +1,35 @@
+slug: amygdala
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: amygdala
+    source: fma
+    status: draft
+  fr:
+    text: amygdale
+    source: wikidata
+    status: draft
+  la:
+    text: Corpus amygdaloideum
+    source: wikidata
+    status: draft
+ids:
+  fma: 61841
+  ta2: 5549
+  ta98: A14.1.09.402
+  wikidata: Q338924
+sides:
+  left:
+    ids:
+      fma: 72833
+      wikidata: Q66570328
+    meshes:
+      - bp3d:FJ1753
+  right:
+    ids:
+      fma: 72832
+      wikidata: Q66570327
+    meshes:
+      - bp3d:FJ1829

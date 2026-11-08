@@ -1,0 +1,34 @@
+slug: patellar-part-of-knee
+kind: bone
+laterality: bilateral
+status: draft
+parent: anterior-part-of-knee
+regions:
+  - lower-limb
+labels:
+  en:
+    text: patellar part of knee
+    source: fma
+    status: draft
+ids:
+  fma: 79064
+  wikidata: Q66577045
+sides:
+  left:
+    ids:
+      fma: 79066
+      wikidata: Q66577048
+    labels:
+      en:
+        text: patellar part of left knee
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 79065
+      wikidata: Q66577047
+    labels:
+      en:
+        text: patellar part of right knee
+        source: fma
+        status: draft

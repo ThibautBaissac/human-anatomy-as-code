@@ -1,0 +1,14 @@
+slug: basicranial-part-of-head-proper
+kind: organ
+laterality: midline
+status: draft
+parent: head-proper
+regions:
+  - head
+labels:
+  en:
+    text: basicranial part of head proper
+    source: fma
+    status: draft
+ids:
+  fma: 270201

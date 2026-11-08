@@ -1,0 +1,40 @@
+slug: subclavian-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: brachiocephalic-vein
+labels:
+  en:
+    text: subclavian vein
+    source: fma
+    status: draft
+  fr:
+    text: veine subclavière
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena subclavia
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4725
+  ta2: 4953
+  ta98: A12.3.08.002
+  wikidata: Q493430
+sides:
+  left:
+    ids:
+      fma: 4763
+      wikidata: Q66501635
+    meshes:
+      - bp3d:FJ3486
+  right:
+    ids:
+      fma: 4755
+      wikidata: Q66500714
+    meshes:
+      - bp3d:FJ3587

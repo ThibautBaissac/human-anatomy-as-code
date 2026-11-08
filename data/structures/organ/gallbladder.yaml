@@ -1,0 +1,25 @@
+slug: gallbladder
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: gallbladder
+    source: fma
+    status: draft
+  fr:
+    text: vésicule biliaire
+    source: wikidata
+    status: draft
+  la:
+    text: Vesica biliaris
+    source: wikidata
+    status: draft
+ids:
+  fma: 7202
+  ta2: 3081
+  ta98: A05.8.02.001
+  wikidata: Q64386
+meshes:
+  - bp3d:FJ2817

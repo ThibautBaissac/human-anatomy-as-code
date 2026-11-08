@@ -1,0 +1,18 @@
+slug: apical-part-of-right-apical-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: apical-segmental-artery
+labels:
+  en:
+    text: apical part of right apical segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68662
+  wikidata: Q66564208
+meshes:
+  - bp3d:FJ2967
+  - bp3d:FJ3015
+  - bp3d:FJ3016
+  - bp3d:FJ3017

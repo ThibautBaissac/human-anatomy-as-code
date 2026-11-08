@@ -1,0 +1,33 @@
+slug: second-metacarpal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: skeleton-of-hand-proper
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: second metacarpal bone
+    source: fma
+    status: draft
+  fr:
+    text: deuxième métacarpien
+    source: wikidata
+    status: draft
+ids:
+  fma: 23900
+  wikidata: Q724555
+sides:
+  left:
+    ids:
+      fma: 24467
+      wikidata: Q66515994
+    meshes:
+      - bp3d:FJ3243
+  right:
+    ids:
+      fma: 24466
+      wikidata: Q66515993
+    meshes:
+      - bp3d:FJ3352

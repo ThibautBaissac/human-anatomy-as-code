@@ -1,0 +1,18 @@
+slug: lateral-branch-of-right-lateral-basal-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: lateral-basal-segmental-artery
+labels:
+  en:
+    text: lateral branch of right lateral basal segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68728
+  wikidata: Q66564278
+meshes:
+  - bp3d:FJ3004
+  - bp3d:FJ3005
+  - bp3d:FJ3006
+  - bp3d:FJ3007

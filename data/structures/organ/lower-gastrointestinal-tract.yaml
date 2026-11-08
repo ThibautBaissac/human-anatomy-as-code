@@ -1,0 +1,17 @@
+slug: lower-gastrointestinal-tract
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: lower gastrointestinal tract
+    source: fma
+    status: draft
+  fr:
+    text: appareil digestif bas
+    source: wikidata
+    status: draft
+ids:
+  fma: 49179
+  wikidata: Q31861950

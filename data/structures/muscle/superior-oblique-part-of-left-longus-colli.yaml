@@ -1,0 +1,14 @@
+slug: superior-oblique-part-of-left-longus-colli
+kind: muscle
+laterality: midline
+status: draft
+labels:
+  en:
+    text: superior oblique part of left longus colli
+    source: fma
+    status: draft
+ids:
+  fma: 46284
+  wikidata: Q66536447
+meshes:
+  - bp3d:FJ1600

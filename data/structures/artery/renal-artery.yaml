@@ -1,0 +1,40 @@
+slug: renal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: systemic-arterial-tree
+labels:
+  en:
+    text: renal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère rénale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria renalis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14751
+  ta2: 4269
+  ta98: A12.2.12.075
+  wikidata: Q707540
+sides:
+  left:
+    ids:
+      fma: 14753
+      wikidata: Q66510775
+    meshes:
+      - bp3d:FJ2046
+  right:
+    ids:
+      fma: 14752
+      wikidata: Q66510773
+    meshes:
+      - bp3d:FJ2038

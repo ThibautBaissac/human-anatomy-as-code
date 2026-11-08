@@ -1,0 +1,39 @@
+slug: thyrohyoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: thyrohyoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle thyro-hyoïdien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus thyreohyoideus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13344
+  ta2: 2174
+  ta98: A04.2.04.007
+  wikidata: Q1072039
+sides:
+  left:
+    ids:
+      fma: 13353
+      wikidata: Q66508041
+    meshes:
+      - bp3d:FJ1577
+  right:
+    ids:
+      fma: 13352
+      wikidata: Q66508040
+    meshes:
+      - bp3d:FJ1599

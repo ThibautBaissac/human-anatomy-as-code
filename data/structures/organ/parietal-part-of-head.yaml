@@ -1,0 +1,24 @@
+slug: parietal-part-of-head
+kind: organ
+laterality: bilateral
+status: draft
+parent: head-proper
+regions:
+  - head
+labels:
+  en:
+    text: parietal part of head
+    source: fma
+    status: draft
+ids:
+  fma: 61731
+  wikidata: Q66557927
+sides:
+  left:
+    ids:
+      fma: 61733
+      wikidata: Q66557930
+  right:
+    ids:
+      fma: 61732
+      wikidata: Q66557929

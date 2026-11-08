@@ -1,0 +1,25 @@
+slug: fourth-common-palmar-digital-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: fourth common palmar digital artery
+    source: fma
+    status: draft
+ids:
+  fma: 85108
+  wikidata: Q66591500
+sides:
+  left:
+    ids:
+      fma: 85124
+      wikidata: Q66591517
+    meshes:
+      - bp3d:FJ2337
+  right:
+    ids:
+      fma: 85123
+      wikidata: Q66591516
+    meshes:
+      - bp3d:FJ2370

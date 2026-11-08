@@ -1,0 +1,24 @@
+slug: artery-of-central-sulcus
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: artery of central sulcus
+    source: fma
+    status: draft
+  fr:
+    text: artère du sillon central
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 77439
+  ta98: A12.2.07.065
+  wikidata: Q66575066
+meshes:
+  - bp3d:FJ1664
+  - bp3d:FJ1664M
+  - bp3d:FJ1665
+  - bp3d:FJ1665M

@@ -1,0 +1,32 @@
+slug: intrapulmonary-part-of-inferior-pulmonary-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: lung
+labels:
+  en:
+    text: intrapulmonary part of inferior pulmonary vein
+    source: fma
+    status: draft
+ids:
+  fma: 67998
+  wikidata: Q66563644
+sides:
+  left:
+    ids:
+      fma: 68005
+      wikidata: Q66563651
+    labels:
+      en:
+        text: intrapulmonary part of left inferior pulmonary vein
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 68003
+      wikidata: Q66563649
+    labels:
+      en:
+        text: intrapulmonary part of right inferior pulmonary vein
+        source: fma
+        status: draft

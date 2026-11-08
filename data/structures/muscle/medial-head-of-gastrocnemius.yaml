@@ -1,0 +1,44 @@
+slug: medial-head-of-gastrocnemius
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: medial head of gastrocnemius
+    source: fma
+    status: draft
+  fr:
+    text: chef médial du muscle gastrocnémien
+    source: wikidata
+    status: draft
+  la:
+    text: caput mediale musculi gastrocnemii
+    source: wikidata
+    status: draft
+ids:
+  fma: 45956
+  ta2: 2659
+  wikidata: Q66536176
+sides:
+  left:
+    ids:
+      fma: 45958
+      wikidata: Q66536178
+    meshes:
+      - bp3d:FJ1397M
+    labels:
+      en:
+        text: medial head of left gastrocnemius
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 45957
+      wikidata: Q66536177
+    meshes:
+      - bp3d:FJ1397
+    labels:
+      en:
+        text: medial head of right gastrocnemius
+        source: fma
+        status: draft

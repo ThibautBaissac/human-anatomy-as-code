@@ -1,0 +1,42 @@
+slug: external-oblique
+kind: muscle
+laterality: bilateral
+status: draft
+parent: musculature-of-anterior-abdominal-wall
+regions:
+  - abdomen
+labels:
+  en:
+    text: external oblique
+    source: fma
+    status: draft
+  fr:
+    text: muscle oblique externe de l'abdomen
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus obliquus externus abdominis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13335
+  ta2: 2364
+  ta98: A04.5.01.008
+  wikidata: Q746123
+sides:
+  left:
+    ids:
+      fma: 13337
+      wikidata: Q66508032
+    meshes:
+      - bp3d:FJ1452M
+  right:
+    ids:
+      fma: 13336
+      wikidata: Q66508031
+    meshes:
+      - bp3d:FJ1452

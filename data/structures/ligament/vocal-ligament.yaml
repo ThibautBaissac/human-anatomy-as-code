@@ -1,0 +1,33 @@
+slug: vocal-ligament
+kind: ligament
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: vocal ligament
+    source: fma
+    status: draft
+  fr:
+    text: ligament vocal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 55244
+  ta2: 1661
+  ta98: A06.2.09.025
+  wikidata: Q852473
+sides:
+  left:
+    ids:
+      fma: 55246
+      wikidata: Q66544946
+    meshes:
+      - bp3d:FJ2787
+  right:
+    ids:
+      fma: 55245
+      wikidata: Q66544945
+    meshes:
+      - bp3d:FJ2805

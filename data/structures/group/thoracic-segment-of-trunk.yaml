@@ -1,0 +1,17 @@
+slug: thoracic-segment-of-trunk
+kind: group
+laterality: midline
+status: draft
+parent: trunk
+labels:
+  en:
+    text: thoracic segment of trunk
+    source: fma
+    status: draft
+  fr:
+    text: segment thoracique du tronc
+    source: wikidata
+    status: draft
+ids:
+  fma: 259209
+  wikidata: Q25507788

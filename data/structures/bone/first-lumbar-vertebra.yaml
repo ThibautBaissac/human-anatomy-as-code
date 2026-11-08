@@ -1,0 +1,19 @@
+slug: first-lumbar-vertebra
+kind: bone
+laterality: midline
+status: draft
+parent: set-of-lumbar-vertebrae
+labels:
+  en:
+    text: first lumbar vertebra
+    source: fma
+    status: draft
+  fr:
+    text: première vertèbre lombaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 13072
+  wikidata: Q46993005
+meshes:
+  - bp3d:FJ3157

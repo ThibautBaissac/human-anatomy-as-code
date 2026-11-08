@@ -1,0 +1,39 @@
+slug: proximal-phalanx-of-third-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: third-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: proximal phalanx of third toe
+    source: fma
+    status: draft
+ids:
+  fma: 32619
+  wikidata: Q66523089
+sides:
+  left:
+    ids:
+      fma: 32637
+      wikidata: Q66523103
+    meshes:
+      - bp3d:FJ3311
+    labels:
+      en:
+        text: proximal phalanx of left third toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32636
+      wikidata: Q66523102
+    meshes:
+      - bp3d:FJ3320
+    labels:
+      en:
+        text: proximal phalanx of right third toe
+        source: fma
+        status: draft

@@ -1,0 +1,32 @@
+slug: middle-collateral-branch-of-deep-brachial-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: middle collateral branch of deep brachial artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 23125
+      wikidata: Q66515051
+    meshes:
+      - bp3d:FJ2331
+    labels:
+      en:
+        text: middle collateral branch of left deep brachial artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 23124
+      wikidata: Q66515050
+    meshes:
+      - bp3d:FJ2362
+    labels:
+      en:
+        text: middle collateral branch of right deep brachial artery
+        source: fma
+        status: draft

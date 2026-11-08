@@ -1,0 +1,17 @@
+slug: pelvis
+kind: bone
+laterality: midline
+status: draft
+parent: abdomen
+regions:
+  - abdomen
+labels:
+  en:
+    text: pelvis
+    source: fma
+    status: draft
+ids:
+  fma: 9578
+  ta2: 129
+  ta98: A01.1.00.017
+  wikidata: Q11124070

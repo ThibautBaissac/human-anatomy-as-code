@@ -1,0 +1,25 @@
+slug: trachea
+kind: organ
+laterality: midline
+status: draft
+parent: tracheobronchial-tree
+labels:
+  en:
+    text: trachea
+    source: fma
+    status: draft
+  fr:
+    text: trachée
+    source: wikidata
+    status: draft
+  la:
+    text: Trachea
+    source: wikidata
+    status: draft
+ids:
+  fma: 7394
+  ta2: 3213
+  ta98: A06.3.01.001
+  wikidata: Q175449
+meshes:
+  - bp3d:FJ2541

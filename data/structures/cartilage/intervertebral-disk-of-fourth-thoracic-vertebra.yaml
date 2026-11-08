@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-fourth-thoracic-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: fourth-thoracic-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of fourth thoracic vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13501
+  wikidata: Q66508180
+meshes:
+  - bp3d:FJ3203

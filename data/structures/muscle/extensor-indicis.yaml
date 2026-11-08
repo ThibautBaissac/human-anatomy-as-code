@@ -1,0 +1,39 @@
+slug: extensor-indicis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor indicis
+    source: fma
+    status: draft
+  fr:
+    text: muscle extenseur de l'index
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor indicis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38524
+  ta2: 2515
+  ta98: A04.6.02.052
+  wikidata: Q932883
+sides:
+  left:
+    ids:
+      fma: 38526
+      wikidata: Q66527680
+    meshes:
+      - bp3d:FJ1493M
+  right:
+    ids:
+      fma: 38525
+      wikidata: Q66527679
+    meshes:
+      - bp3d:FJ1493

@@ -1,0 +1,22 @@
+slug: median-cricothyroid-ligament
+kind: ligament
+laterality: midline
+status: draft
+labels:
+  en:
+    text: median cricothyroid ligament
+    source: fma
+    status: draft
+  fr:
+    text: ligament crico-thyroïdien médian
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 55237
+  ta2: 1662
+  ta98: A06.2.03.009
+  wikidata: Q6806113
+meshes:
+  - bp3d:FJ2789

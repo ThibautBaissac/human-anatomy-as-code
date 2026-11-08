@@ -1,0 +1,49 @@
+slug: abductor-digiti-minimi-of-foot
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: abductor digiti minimi of foot
+    source: fma
+    status: draft
+  fr:
+    text: muscle abducteur du petit orteil
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus abductor digiti minimi pedis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37451
+  ta2: 2679
+  ta98: A04.7.02.063
+  wikidata: Q1089155
+sides:
+  left:
+    ids:
+      fma: 37464
+      wikidata: Q66526789
+    meshes:
+      - bp3d:FJ1390M
+    labels:
+      en:
+        text: abductor digiti minimi of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37463
+      wikidata: Q66526788
+    meshes:
+      - bp3d:FJ1390
+    labels:
+      en:
+        text: abductor digiti minimi of right foot
+        source: fma
+        status: draft

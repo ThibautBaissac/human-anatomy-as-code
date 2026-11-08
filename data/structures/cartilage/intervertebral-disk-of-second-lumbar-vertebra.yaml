@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-second-lumbar-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: second-lumbar-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of second lumbar vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 16034
+  wikidata: Q66513044
+meshes:
+  - bp3d:FJ3214

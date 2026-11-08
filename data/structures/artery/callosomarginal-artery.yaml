@@ -1,0 +1,33 @@
+slug: callosomarginal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: callosomarginal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère calloso-marginale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50330
+  ta2: 4505
+  ta98: A12.2.07.037
+  wikidata: Q66539476
+sides:
+  left:
+    ids:
+      fma: 50348
+      wikidata: Q66539494
+    meshes:
+      - bp3d:FJ1676M
+  right:
+    ids:
+      fma: 50347
+      wikidata: Q66539493
+    meshes:
+      - bp3d:FJ1676

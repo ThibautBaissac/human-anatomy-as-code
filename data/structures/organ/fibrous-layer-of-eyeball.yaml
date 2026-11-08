@@ -1,0 +1,36 @@
+slug: fibrous-layer-of-eyeball
+kind: organ
+laterality: bilateral
+status: draft
+parent: wall-of-eyeball
+regions:
+  - head
+labels:
+  en:
+    text: fibrous layer of eyeball
+    source: fma
+    status: draft
+ids:
+  fma: 58102
+  ta2: 6743
+  ta98: A15.2.02.001
+  wikidata: Q2713281
+sides:
+  left:
+    ids:
+      fma: 58106
+      wikidata: Q66554741
+    labels:
+      en:
+        text: fibrous layer of left eyeball
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58105
+      wikidata: Q66554740
+    labels:
+      en:
+        text: fibrous layer of right eyeball
+        source: fma
+        status: draft

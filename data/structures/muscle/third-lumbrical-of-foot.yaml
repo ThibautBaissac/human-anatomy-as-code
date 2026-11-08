@@ -1,0 +1,35 @@
+slug: third-lumbrical-of-foot
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: third lumbrical of foot
+    source: fma
+    status: draft
+ids:
+  fma: 37481
+  wikidata: Q66526800
+sides:
+  left:
+    ids:
+      fma: 37486
+      wikidata: Q66526805
+    meshes:
+      - bp3d:FJ1387M
+    labels:
+      en:
+        text: third lumbrical of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37485
+      wikidata: Q66526804
+    meshes:
+      - bp3d:FJ1387
+    labels:
+      en:
+        text: third lumbrical of right foot
+        source: fma
+        status: draft

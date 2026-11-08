@@ -1,0 +1,13 @@
+slug: anterior-cardiac-venous-tree
+kind: vein
+laterality: midline
+status: draft
+parent: vasculature-of-body
+labels:
+  en:
+    text: anterior cardiac venous tree
+    source: fma
+    status: draft
+ids:
+  fma: 4717
+  wikidata: Q66500671

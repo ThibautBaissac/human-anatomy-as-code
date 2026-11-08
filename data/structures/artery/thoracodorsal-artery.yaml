@@ -1,0 +1,40 @@
+slug: thoracodorsal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subscapular-artery
+labels:
+  en:
+    text: thoracodorsal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère thoraco-dorsale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria thoracodorsalis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 66320
+  ta2: 4628
+  ta98: A12.2.09.014
+  wikidata: Q707638
+sides:
+  left:
+    ids:
+      fma: 66322
+      wikidata: Q66562435
+    meshes:
+      - bp3d:FJ2253
+  right:
+    ids:
+      fma: 66321
+      wikidata: Q66562434
+    meshes:
+      - bp3d:FJ2305

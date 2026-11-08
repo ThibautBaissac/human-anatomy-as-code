@@ -1,0 +1,24 @@
+slug: eyebrow
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: eyebrow
+    source: fma
+    status: draft
+  fr:
+    text: sourcil
+    source: wikidata
+    status: draft
+  la:
+    text: supercilium
+    source: wikidata
+    status: draft
+ids:
+  fma: 54237
+  ta2: 181
+  ta98: A16.0.00.017
+  wikidata: Q43748
+meshes:
+  - bp3d:FJ2812

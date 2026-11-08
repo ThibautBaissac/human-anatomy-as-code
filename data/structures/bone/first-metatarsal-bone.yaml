@@ -1,0 +1,40 @@
+slug: first-metatarsal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot-proper
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: first metatarsal bone
+    source: fma
+    status: draft
+  fr:
+    text: premier métatarsien
+    source: wikidata
+    status: draft
+  la:
+    text: Os metatarsale I
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 24502
+  ta2: 1500
+  wikidata: Q5454211
+sides:
+  left:
+    ids:
+      fma: 24508
+      wikidata: Q66516021
+    meshes:
+      - bp3d:FJ3241
+  right:
+    ids:
+      fma: 24507
+      wikidata: Q66516020
+    meshes:
+      - bp3d:FJ3351

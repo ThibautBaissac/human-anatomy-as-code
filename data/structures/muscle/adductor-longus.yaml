@@ -1,0 +1,39 @@
+slug: adductor-longus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: adductor longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle long adducteur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus adductor longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22441
+  ta2: 2628
+  ta98: A04.7.02.026
+  wikidata: Q1428231
+sides:
+  left:
+    ids:
+      fma: 22457
+      wikidata: Q66514502
+    meshes:
+      - bp3d:FJ1402M
+  right:
+    ids:
+      fma: 22456
+      wikidata: Q66514501
+    meshes:
+      - bp3d:FJ1402

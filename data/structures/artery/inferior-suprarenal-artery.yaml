@@ -1,0 +1,40 @@
+slug: inferior-suprarenal-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: renal-artery
+labels:
+  en:
+    text: inferior suprarenal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère supra-rénale inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria suprarenalis inferior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 69264
+  ta2: 4271
+  ta98: A12.2.12.077
+  wikidata: Q2865999
+sides:
+  left:
+    ids:
+      fma: 69266
+      wikidata: Q66566999
+    meshes:
+      - bp3d:FJ3467
+  right:
+    ids:
+      fma: 69265
+      wikidata: Q66566997
+    meshes:
+      - bp3d:FJ3584

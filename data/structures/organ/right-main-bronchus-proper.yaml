@@ -1,0 +1,15 @@
+slug: right-main-bronchus-proper
+kind: organ
+laterality: unpaired-right
+status: draft
+parent: main-bronchus
+labels:
+  en:
+    text: right main bronchus proper
+    source: fma
+    status: draft
+ids:
+  fma: 68418
+  wikidata: Q66564020
+meshes:
+  - bp3d:FJ2539

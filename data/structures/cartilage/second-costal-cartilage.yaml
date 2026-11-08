@@ -1,0 +1,32 @@
+slug: second-costal-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: second costal cartilage
+    source: fma
+    status: draft
+  fr:
+    text: deuxième cartilage costal
+    source: wikidata
+    status: draft
+ids:
+  fma: 7703
+  wikidata: Q51123200
+sides:
+  left:
+    ids:
+      fma: 8031
+      wikidata: Q66503522
+    meshes:
+      - bp3d:FJ3242
+  right:
+    ids:
+      fma: 7886
+      wikidata: Q66503378
+    meshes:
+      - bp3d:FJ3335

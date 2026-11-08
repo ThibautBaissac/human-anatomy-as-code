@@ -1,0 +1,36 @@
+slug: posterior-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: basilar-artery
+labels:
+  en:
+    text: posterior cerebral artery
+    source: fma
+    status: draft
+  fr:
+    text: artère cérébrale postérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria cerebri posterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50583
+  ta2: 4565
+  ta98: A12.2.07.082
+  wikidata: Q492482
+sides:
+  left:
+    ids:
+      fma: 50585
+      wikidata: Q66539719
+  right:
+    ids:
+      fma: 50584
+      wikidata: Q66539718

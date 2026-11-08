@@ -1,0 +1,38 @@
+slug: iris
+kind: organ
+laterality: bilateral
+status: draft
+parent: eyeball
+regions:
+  - head
+labels:
+  en:
+    text: iris
+    source: fma
+    status: draft
+  fr:
+    text: iris
+    source: wikidata
+    status: draft
+  la:
+    text: Iris (anatomia)
+    source: wikidata
+    status: draft
+ids:
+  fma: 58235
+  ta2: 6753
+  ta98: A15.2.03.020
+  wikidata: Q178748
+sides:
+  left:
+    ids:
+      fma: 58237
+      wikidata: Q66554861
+    meshes:
+      - bp3d:FJ1297
+  right:
+    ids:
+      fma: 58236
+      wikidata: Q66554860
+    meshes:
+      - bp3d:FJ1348

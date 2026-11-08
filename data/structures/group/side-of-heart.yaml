@@ -1,0 +1,21 @@
+slug: side-of-heart
+kind: group
+laterality: bilateral
+status: draft
+parent: heart
+regions:
+  - thorax
+labels:
+  en:
+    text: side of heart
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 7166
+      wikidata: Q3536102
+  right:
+    ids:
+      fma: 7165
+      wikidata: Q3536081

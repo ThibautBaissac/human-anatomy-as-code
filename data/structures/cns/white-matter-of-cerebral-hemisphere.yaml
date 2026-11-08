@@ -1,0 +1,33 @@
+slug: white-matter-of-cerebral-hemisphere
+kind: cns
+laterality: bilateral
+status: draft
+parent: subcortex-of-cerebral-hemisphere
+labels:
+  en:
+    text: white matter of cerebral hemisphere
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 260794
+      wikidata: Q66601441
+    meshes:
+      - bp3d:FJ1758
+    labels:
+      en:
+        text: white matter of left cerebral hemisphere
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 260791
+      wikidata: Q66601439
+    meshes:
+      - bp3d:FJ1806
+    labels:
+      en:
+        text: white matter of right cerebral hemisphere
+        source: fma
+        status: draft

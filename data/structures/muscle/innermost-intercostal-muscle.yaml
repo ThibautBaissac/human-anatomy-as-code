@@ -1,0 +1,15 @@
+slug: innermost-intercostal-muscle
+kind: muscle
+laterality: midline
+status: draft
+labels:
+  en:
+    text: innermost intercostal muscle
+    source: fma
+    status: draft
+ids:
+  fma: 9758
+  wikidata: Q66505073
+meshes:
+  - bp3d:FJ1454
+  - bp3d:FJ1454M

@@ -1,0 +1,22 @@
+slug: inferior-pancreatic-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: inferior pancreatic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère pancréatique inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14790
+  ta2: 4242
+  ta98: A12.2.12.043
+  wikidata: Q66510815
+meshes:
+  - bp3d:FJ3444

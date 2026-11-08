@@ -1,0 +1,44 @@
+slug: acromial-branch-of-thoraco-acromial-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: thoraco-acromial-artery
+labels:
+  en:
+    text: acromial branch of thoraco-acromial artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau acromial de l’artère thoraco-acromiale
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23065
+  ta2: 4620
+  ta98: A12.2.09.006
+  wikidata: Q66515008
+sides:
+  left:
+    ids:
+      fma: 23069
+      wikidata: Q66515011
+    meshes:
+      - bp3d:FJ2211
+    labels:
+      en:
+        text: acromial branch of left thoraco-acromial artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 23068
+      wikidata: Q66515010
+    meshes:
+      - bp3d:FJ2263
+    labels:
+      en:
+        text: acromial branch of right thoraco-acromial artery
+        source: fma
+        status: draft

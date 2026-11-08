@@ -1,0 +1,13 @@
+slug: wall-of-large-intestine
+kind: organ
+laterality: midline
+status: draft
+parent: large-intestine
+labels:
+  en:
+    text: wall of large intestine
+    source: fma
+    status: draft
+ids:
+  fma: 14619
+  wikidata: Q66510539

@@ -1,0 +1,19 @@
+slug: skull
+kind: bone
+laterality: midline
+status: draft
+parent: skeleton-in-vivo
+labels:
+  en:
+    text: skull
+    source: fma
+    status: draft
+  fr:
+    text: crâne
+    source: wikidata
+    status: draft
+ids:
+  fma: 46565
+  ta2: 406
+  ta98: A02.1.00.001
+  wikidata: Q9604

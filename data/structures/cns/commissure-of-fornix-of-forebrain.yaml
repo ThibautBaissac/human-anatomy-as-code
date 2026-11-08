@@ -1,0 +1,16 @@
+slug: commissure-of-fornix-of-forebrain
+kind: cns
+laterality: midline
+status: draft
+labels:
+  en:
+    text: commissure of fornix of forebrain
+    source: fma
+    status: draft
+ids:
+  fma: 61970
+  ta2: 5616
+  ta98: A14.1.09.571
+  wikidata: Q41759310
+meshes:
+  - bp3d:FJ1741

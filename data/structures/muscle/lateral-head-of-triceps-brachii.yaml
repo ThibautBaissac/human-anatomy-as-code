@@ -1,0 +1,41 @@
+slug: lateral-head-of-triceps-brachii
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral head of triceps brachii
+    source: fma
+    status: draft
+  fr:
+    text: chef latéral du muscle triceps brachial
+    source: wikidata
+    status: draft
+ids:
+  fma: 37694
+  ta2: 2473
+  ta98: A04.6.02.021
+  wikidata: Q66526970
+sides:
+  left:
+    ids:
+      fma: 37698
+      wikidata: Q66526974
+    meshes:
+      - bp3d:FJ1477M
+    labels:
+      en:
+        text: lateral head of left triceps brachii
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37697
+      wikidata: Q66526973
+    meshes:
+      - bp3d:FJ1477
+    labels:
+      en:
+        text: lateral head of right triceps brachii
+        source: fma
+        status: draft

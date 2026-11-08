@@ -1,0 +1,28 @@
+slug: accessory-hemiazygos-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: accessory hemiazygos vein
+    source: fma
+    status: draft
+  fr:
+    text: veine hémiazygos accessoire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena hemiazygos accessoria
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 5011
+  ta2: 4758
+  ta98: A12.3.07.005
+  wikidata: Q4672537
+meshes:
+  - bp3d:FJ1981

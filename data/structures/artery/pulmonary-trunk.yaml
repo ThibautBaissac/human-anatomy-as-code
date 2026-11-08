@@ -1,0 +1,23 @@
+slug: pulmonary-trunk
+kind: artery
+laterality: midline
+status: draft
+parent: content-of-middle-mediastinum
+regions:
+  - thorax
+labels:
+  en:
+    text: pulmonary trunk
+    source: fma
+    status: draft
+  fr:
+    text: tronc pulmonaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 8612
+  ta2: 4075
+  ta98: A12.2.01.001
+  wikidata: Q999472
+meshes:
+  - bp3d:FJ2966

@@ -1,0 +1,38 @@
+slug: clavicle
+kind: bone
+laterality: bilateral
+status: draft
+parent: skeleton-of-pectoral-girdle
+regions:
+  - upper-limb
+labels:
+  en:
+    text: clavicle
+    source: fma
+    status: draft
+  fr:
+    text: clavicule
+    source: wikidata
+    status: draft
+  la:
+    text: Clavicula
+    source: wikidata
+    status: draft
+ids:
+  fma: 13321
+  ta2: 1168
+  ta98: A02.4.02.001
+  wikidata: Q16343
+sides:
+  left:
+    ids:
+      fma: 13323
+      wikidata: Q66508023
+    meshes:
+      - bp3d:FJ3237
+  right:
+    ids:
+      fma: 13322
+      wikidata: Q66508022
+    meshes:
+      - bp3d:FJ3362

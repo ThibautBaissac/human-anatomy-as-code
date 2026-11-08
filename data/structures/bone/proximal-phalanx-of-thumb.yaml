@@ -1,0 +1,45 @@
+slug: proximal-phalanx-of-thumb
+kind: bone
+laterality: bilateral
+status: draft
+parent: thumb
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: proximal phalanx of thumb
+    source: fma
+    status: draft
+  fr:
+    text: phalange proximale du pouce
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23918
+  wikidata: Q66515604
+sides:
+  left:
+    ids:
+      fma: 65470
+      wikidata: Q66561755
+    meshes:
+      - bp3d:FJ3318
+    labels:
+      en:
+        text: proximal phalanx of left thumb
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24450
+      wikidata: Q66515976
+    meshes:
+      - bp3d:FJ3327
+    labels:
+      en:
+        text: proximal phalanx of right thumb
+        source: fma
+        status: draft

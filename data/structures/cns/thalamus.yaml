@@ -1,0 +1,35 @@
+slug: thalamus
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: thalamus
+    source: fma
+    status: draft
+  fr:
+    text: thalamus
+    source: wikidata
+    status: draft
+  la:
+    text: Thalamus
+    source: wikidata
+    status: draft
+ids:
+  fma: 62007
+  ta2: 5678
+  ta98: A14.1.08.601
+  wikidata: Q184215
+sides:
+  left:
+    ids:
+      fma: 258716
+      wikidata: Q66600566
+    meshes:
+      - bp3d:FJ1782
+  right:
+    ids:
+      fma: 258714
+      wikidata: Q66600565
+    meshes:
+      - bp3d:FJ1827

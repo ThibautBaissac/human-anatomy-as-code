@@ -1,0 +1,39 @@
+slug: deep-femoral-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: deep femoral vein
+    source: fma
+    status: draft
+  fr:
+    text: veine fémorale profonde
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: vena profunda femoris
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 51041
+  ta2: 5070
+  ta98: A12.3.11.024
+  wikidata: Q6641978
+sides:
+  left:
+    ids:
+      fma: 51043
+      wikidata: Q66540353
+    meshes:
+      - bp3d:FJ2099
+  right:
+    ids:
+      fma: 51042
+      wikidata: Q66540351
+    meshes:
+      - bp3d:FJ2135

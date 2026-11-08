@@ -1,0 +1,14 @@
+slug: medial-proper-palmar-digital-artery-of-right-ring-finger
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: medial proper palmar digital artery of right ring finger
+    source: fma
+    status: draft
+ids:
+  fma: 23052
+  wikidata: Q66514998
+meshes:
+  - bp3d:FJ2369

@@ -1,0 +1,40 @@
+slug: pubococcygeus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: pubococcygeus
+    source: fma
+    status: draft
+  fr:
+    text: muscle pubo-coccygien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus pubococcygeus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 19090
+  ta2: 2405
+  ta98: A04.5.04.003
+  wikidata: Q1084757
+sides:
+  left:
+    ids:
+      fma: 45855
+      wikidata: Q66536119
+    meshes:
+      - bp3d:FJ1457M
+      - bp3d:FJ2545
+  right:
+    ids:
+      fma: 45854
+      wikidata: Q66536118
+    meshes:
+      - bp3d:FJ2550

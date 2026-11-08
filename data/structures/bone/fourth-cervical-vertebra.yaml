@@ -1,0 +1,21 @@
+slug: fourth-cervical-vertebra
+kind: bone
+laterality: midline
+status: draft
+parent: neck
+regions:
+  - neck
+labels:
+  en:
+    text: fourth cervical vertebra
+    source: fma
+    status: draft
+  fr:
+    text: quatrième vertèbre cervicale
+    source: wikidata
+    status: draft
+ids:
+  fma: 12522
+  wikidata: Q5065361
+meshes:
+  - bp3d:FJ3164

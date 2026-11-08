@@ -1,0 +1,40 @@
+slug: ulnar-artery
+kind: bone
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+labels:
+  en:
+    text: ulnar artery
+    source: fma
+    status: draft
+  fr:
+    text: artère ulnaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria Ulnaris
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22796
+  ta2: 4655
+  ta98: A12.2.09.041
+  wikidata: Q599817
+sides:
+  left:
+    ids:
+      fma: 22798
+      wikidata: Q66514807
+    meshes:
+      - bp3d:FJ2258
+  right:
+    ids:
+      fma: 22797
+      wikidata: Q66395588
+    meshes:
+      - bp3d:FJ2310

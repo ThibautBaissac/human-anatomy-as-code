@@ -1,0 +1,18 @@
+slug: anterior-branch-of-right-anterior-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: anterior-segmental-artery
+labels:
+  en:
+    text: anterior branch of right anterior segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68683
+  wikidata: Q66564233
+meshes:
+  - bp3d:FJ2975
+  - bp3d:FJ2976
+  - bp3d:FJ2977
+  - bp3d:FJ2979

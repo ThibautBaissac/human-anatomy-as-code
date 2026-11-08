@@ -1,0 +1,31 @@
+slug: first-posterior-intercostal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: first posterior intercostal artery
+    source: fma
+    status: draft
+  fr:
+    text: première artère intercostale postérieure
+    source: wikidata
+    status: draft
+ids:
+  fma: 66241
+  ta2: 4610
+  ta98: A12.2.08.062
+  wikidata: Q66562372
+sides:
+  left:
+    ids:
+      fma: 66243
+      wikidata: Q66562374
+    meshes:
+      - bp3d:FJ1973
+  right:
+    ids:
+      fma: 66242
+      wikidata: Q66562373
+    meshes:
+      - bp3d:FJ1939

@@ -1,0 +1,15 @@
+slug: compartment-of-abdomen
+kind: organ
+laterality: midline
+status: draft
+parent: abdomen
+regions:
+  - abdomen
+labels:
+  en:
+    text: compartment of abdomen
+    source: fma
+    status: draft
+ids:
+  fma: 85031
+  wikidata: Q66591433

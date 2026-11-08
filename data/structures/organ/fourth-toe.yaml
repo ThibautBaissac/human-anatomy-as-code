@@ -1,0 +1,27 @@
+slug: fourth-toe
+kind: organ
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: fourth toe
+    source: fma
+    status: draft
+ids:
+  fma: 25052
+  ta2: 174
+  ta98: A01.1.00.061
+  wikidata: Q15766620
+sides:
+  left:
+    ids:
+      fma: 60342
+      wikidata: Q66556710
+  right:
+    ids:
+      fma: 60341
+      wikidata: Q66556709

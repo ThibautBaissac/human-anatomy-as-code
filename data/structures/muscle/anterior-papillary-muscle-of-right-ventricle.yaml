@@ -1,0 +1,23 @@
+slug: anterior-papillary-muscle-of-right-ventricle
+kind: muscle
+laterality: midline
+status: draft
+parent: anterior-wall-of-right-ventricle
+labels:
+  en:
+    text: anterior papillary muscle of right ventricle
+    source: fma
+    status: draft
+  fr:
+    text: muscle papillaire antérieur du ventricule droit
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 7260
+  ta2: 4044
+  ta98: A12.1.02.017
+  wikidata: Q66502858
+meshes:
+  - bp3d:FJ2419

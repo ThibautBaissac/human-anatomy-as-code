@@ -1,0 +1,17 @@
+slug: cavity-of-left-atrium
+kind: organ
+laterality: midline
+status: draft
+parent: heart
+regions:
+  - thorax
+labels:
+  en:
+    text: cavity of left atrium
+    source: fma
+    status: draft
+ids:
+  fma: 9465
+  wikidata: Q66504920
+meshes:
+  - bp3d:FJ2425

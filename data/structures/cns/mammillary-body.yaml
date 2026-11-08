@@ -1,0 +1,25 @@
+slug: mammillary-body
+kind: cns
+laterality: midline
+status: draft
+labels:
+  en:
+    text: mammillary body
+    source: fma
+    status: draft
+  fr:
+    text: corps mamillaires
+    source: wikidata
+    status: draft
+  la:
+    text: Corpus mammillare
+    source: wikidata
+    status: draft
+ids:
+  fma: 74877
+  ta2: 5674
+  ta98: A14.1.08.402
+  wikidata: Q499802
+meshes:
+  - bp3d:FJ1768
+  - bp3d:FJ1815

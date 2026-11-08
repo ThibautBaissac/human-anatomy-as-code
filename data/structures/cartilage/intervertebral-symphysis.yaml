@@ -1,0 +1,19 @@
+slug: intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: vertebral-column
+labels:
+  en:
+    text: intervertebral symphysis
+    source: fma
+    status: draft
+  la:
+    text: symphysis intervertebralis
+    source: wikidata
+    status: draft
+ids:
+  fma: 25511
+  wikidata: Q11884438
+meshes:
+  - bp3d:FJ3211

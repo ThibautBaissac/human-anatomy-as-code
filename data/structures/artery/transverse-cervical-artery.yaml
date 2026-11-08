@@ -1,0 +1,40 @@
+slug: transverse-cervical-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: thyrocervical-artery
+labels:
+  en:
+    text: transverse cervical artery
+    source: fma
+    status: draft
+  fr:
+    text: artère transverse du cou
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria transversa cervicis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 10664
+  ta2: 4601
+  ta98: A12.2.08.053
+  wikidata: Q591706
+sides:
+  left:
+    ids:
+      fma: 10682
+      wikidata: Q66505832
+    meshes:
+      - bp3d:FJ2257
+  right:
+    ids:
+      fma: 10699
+      wikidata: Q66505843
+    meshes:
+      - bp3d:FJ2309

@@ -1,0 +1,31 @@
+slug: set-of-dorsal-digital-arteries
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of dorsal digital arteries
+    source: fma
+    status: draft
+  fr:
+    text: artère digitale dorsale du pied
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteriae digitales dorsales pedis
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 70801
+  ta2: 4719
+  ta98: A12.2.16.053
+  wikidata: Q5298777
+meshes:
+  - bp3d:FJ2093
+  - bp3d:FJ2197
+  - bp3d:FJ2318
+  - bp3d:FJ2346

@@ -1,0 +1,22 @@
+slug: lateral-superior-genicular-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral superior genicular artery
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 22589
+      wikidata: Q66514603
+    meshes:
+      - bp3d:FJ2080
+  right:
+    ids:
+      fma: 22588
+      wikidata: Q66514602
+    meshes:
+      - bp3d:FJ2162

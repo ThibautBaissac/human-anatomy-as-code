@@ -1,0 +1,45 @@
+slug: proximal-phalanx-of-little-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: little-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: proximal phalanx of little toe
+    source: fma
+    status: draft
+  fr:
+    text: phalange proximale du petit orteil
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 32621
+  wikidata: Q66523091
+sides:
+  left:
+    ids:
+      fma: 32641
+      wikidata: Q66523107
+    meshes:
+      - bp3d:FJ3315
+    labels:
+      en:
+        text: proximal phalanx of left little toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32640
+      wikidata: Q66523106
+    meshes:
+      - bp3d:FJ3324
+    labels:
+      en:
+        text: proximal phalanx of right little toe
+        source: fma
+        status: draft

@@ -1,0 +1,27 @@
+slug: xiphoid-process
+kind: organ
+laterality: midline
+status: draft
+parent: sternum
+regions:
+  - thorax
+labels:
+  en:
+    text: xiphoid process
+    source: fma
+    status: draft
+  fr:
+    text: processus xiphoïde
+    source: wikidata
+    status: draft
+  la:
+    text: Processus xiphoideus
+    source: wikidata
+    status: draft
+ids:
+  fma: 7488
+  ta2: 1135
+  ta98: A02.3.03.007
+  wikidata: Q16359
+meshes:
+  - bp3d:FJ3153

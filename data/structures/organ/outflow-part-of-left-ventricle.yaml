@@ -1,0 +1,21 @@
+slug: outflow-part-of-left-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: outflow part of left ventricle
+    source: fma
+    status: draft
+  fr:
+    text: vestibule aortique
+    source: wikidata
+    status: draft
+ids:
+  fma: 9473
+  ta2: 4064
+  ta98: A12.1.04.009
+  wikidata: Q4778765

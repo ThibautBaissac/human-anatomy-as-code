@@ -1,0 +1,35 @@
+slug: deep-palmar-arch
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: deep palmar arch
+    source: fma
+    status: draft
+  fr:
+    text: arcade palmaire profonde
+    source: wikidata
+    status: draft
+  la:
+    text: Arcus palmaris profundus
+    source: wikidata
+    status: draft
+ids:
+  fma: 22838
+  ta2: 4652
+  ta98: A12.2.09.038
+  wikidata: Q638316
+sides:
+  left:
+    ids:
+      fma: 22840
+      wikidata: Q66514833
+    meshes:
+      - bp3d:FJ2227
+  right:
+    ids:
+      fma: 22839
+      wikidata: Q66514832
+    meshes:
+      - bp3d:FJ2279

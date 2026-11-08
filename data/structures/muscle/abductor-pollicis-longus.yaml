@@ -1,0 +1,39 @@
+slug: abductor-pollicis-longus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: abductor pollicis longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle long abducteur du pouce
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus abductor pollicis longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38515
+  ta2: 2517
+  ta98: A04.6.02.049
+  wikidata: Q915948
+sides:
+  left:
+    ids:
+      fma: 38517
+      wikidata: Q66527673
+    meshes:
+      - bp3d:FJ1484M
+  right:
+    ids:
+      fma: 38516
+      wikidata: Q66527672
+    meshes:
+      - bp3d:FJ1484

@@ -1,0 +1,43 @@
+slug: anconeus
+kind: muscle
+laterality: bilateral
+status: draft
+parent: arm
+regions:
+  - arm
+  - upper-limb
+labels:
+  en:
+    text: anconeus
+    source: fma
+    status: draft
+  fr:
+    text: muscle anconé
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus anconeus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37704
+  ta2: 2510
+  ta98: A04.6.02.023
+  wikidata: Q526403
+sides:
+  left:
+    ids:
+      fma: 37706
+      wikidata: Q66526980
+    meshes:
+      - bp3d:FJ1485M
+  right:
+    ids:
+      fma: 37705
+      wikidata: Q66526979
+    meshes:
+      - bp3d:FJ1485

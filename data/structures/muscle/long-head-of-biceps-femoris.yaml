@@ -1,0 +1,45 @@
+slug: long-head-of-biceps-femoris
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: long head of biceps femoris
+    source: fma
+    status: draft
+  fr:
+    text: chef long du muscle biceps fémoral
+    source: wikidata
+    status: draft
+  la:
+    text: caput longum biceps femoris
+    source: wikidata
+    status: draft
+ids:
+  fma: 45887
+  ta2: 2639
+  ta98: A04.7.02.033
+  wikidata: Q66536143
+sides:
+  left:
+    ids:
+      fma: 45889
+      wikidata: Q66536146
+    meshes:
+      - bp3d:FJ1395M
+    labels:
+      en:
+        text: long head of left biceps femoris
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 45888
+      wikidata: Q66536144
+    meshes:
+      - bp3d:FJ1395
+    labels:
+      en:
+        text: long head of right biceps femoris
+        source: fma
+        status: draft

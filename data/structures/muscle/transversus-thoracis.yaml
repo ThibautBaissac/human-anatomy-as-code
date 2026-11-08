@@ -1,0 +1,42 @@
+slug: transversus-thoracis
+kind: muscle
+laterality: bilateral
+status: draft
+parent: anterior-thoracic-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: transversus thoracis
+    source: fma
+    status: draft
+  fr:
+    text: muscle transverse du thorax
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus transversus thoracis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 9760
+  ta2: 2315
+  ta98: A04.4.01.016
+  wikidata: Q936699
+sides:
+  left:
+    ids:
+      fma: 9762
+      wikidata: Q66505076
+    meshes:
+      - bp3d:FJ1461M
+  right:
+    ids:
+      fma: 9761
+      wikidata: Q66505075
+    meshes:
+      - bp3d:FJ1461

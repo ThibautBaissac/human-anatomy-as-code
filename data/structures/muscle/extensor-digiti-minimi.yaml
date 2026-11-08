@@ -1,0 +1,39 @@
+slug: extensor-digiti-minimi
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor digiti minimi
+    source: fma
+    status: draft
+  fr:
+    text: muscle extenseur du petit doigt
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor digiti minimi
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38503
+  ta2: 2506
+  ta98: A04.6.02.044
+  wikidata: Q19030
+sides:
+  left:
+    ids:
+      fma: 38505
+      wikidata: Q66527666
+    meshes:
+      - bp3d:FJ1491M
+  right:
+    ids:
+      fma: 38504
+      wikidata: Q66527665
+    meshes:
+      - bp3d:FJ1491

@@ -1,0 +1,40 @@
+slug: deep-cervical-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: costocervical-artery
+labels:
+  en:
+    text: deep cervical artery
+    source: fma
+    status: draft
+  fr:
+    text: artère cervicale profonde
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria cervicalis profunda
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 10659
+  ta2: 4608
+  ta98: A12.2.08.060
+  wikidata: Q485148
+sides:
+  left:
+    ids:
+      fma: 4134
+      wikidata: Q66499777
+    meshes:
+      - bp3d:FJ2226
+  right:
+    ids:
+      fma: 10660
+      wikidata: Q66505820
+    meshes:
+      - bp3d:FJ2278

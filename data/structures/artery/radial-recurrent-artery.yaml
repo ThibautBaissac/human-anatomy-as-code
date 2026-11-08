@@ -1,0 +1,40 @@
+slug: radial-recurrent-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: radial-artery
+labels:
+  en:
+    text: radial recurrent artery
+    source: fma
+    status: draft
+  fr:
+    text: artère récurrente radiale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria recurrens radialis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22748
+  ta2: 4642
+  ta98: A12.2.09.028
+  wikidata: Q543450
+sides:
+  left:
+    ids:
+      fma: 22766
+      wikidata: Q66514781
+    meshes:
+      - bp3d:FJ2243
+  right:
+    ids:
+      fma: 22764
+      wikidata: Q66514779
+    meshes:
+      - bp3d:FJ2295

@@ -1,0 +1,39 @@
+slug: fourth-metacarpal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: skeleton-of-hand-proper
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: fourth metacarpal bone
+    source: fma
+    status: draft
+  fr:
+    text: quatrième métacarpien
+    source: wikidata
+    status: draft
+  la:
+    text: Os metacarpale IV
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23902
+  wikidata: Q724569
+sides:
+  left:
+    ids:
+      fma: 24471
+      wikidata: Q66515998
+    meshes:
+      - bp3d:FJ3249
+  right:
+    ids:
+      fma: 24470
+      wikidata: Q66515997
+    meshes:
+      - bp3d:FJ3356

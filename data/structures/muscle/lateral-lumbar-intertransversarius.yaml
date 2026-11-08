@@ -1,0 +1,15 @@
+slug: lateral-lumbar-intertransversarius
+kind: muscle
+laterality: midline
+status: draft
+labels:
+  en:
+    text: lateral lumbar intertransversarius
+    source: fma
+    status: draft
+ids:
+  fma: 22850
+  wikidata: Q66514841
+meshes:
+  - bp3d:FJ1547
+  - bp3d:FJ1547M

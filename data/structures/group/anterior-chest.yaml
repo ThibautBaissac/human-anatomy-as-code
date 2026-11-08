@@ -1,0 +1,17 @@
+slug: anterior-chest
+kind: group
+laterality: midline
+status: draft
+parent: thorax
+regions:
+  - thorax
+labels:
+  en:
+    text: anterior chest
+    source: fma
+    status: draft
+ids:
+  fma: 24816
+  ta2: 245
+  ta98: A01.1.00.015
+  wikidata: Q21342622

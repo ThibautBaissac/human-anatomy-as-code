@@ -1,0 +1,23 @@
+slug: posterior-intercostal-arteries
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: posterior intercostal arteries
+    source: fma
+    status: draft
+  fr:
+    text: artère intercostale postérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 63822
+  ta2: 4191
+  ta98: A12.2.11.007
+  wikidata: Q707295
+meshes:
+  - bp3d:FJ1961
+  - bp3d:FJ1975

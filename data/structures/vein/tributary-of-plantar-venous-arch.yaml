@@ -1,0 +1,17 @@
+slug: tributary-of-plantar-venous-arch
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: tributary of plantar venous arch
+    source: fma
+    status: draft
+ids:
+  fma: 44499
+  wikidata: Q66534631
+meshes:
+  - bp3d:FJ2113
+  - bp3d:FJ2115
+  - bp3d:FJ2160
+  - bp3d:FJ2165

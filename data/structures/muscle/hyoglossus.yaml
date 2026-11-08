@@ -1,0 +1,39 @@
+slug: hyoglossus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: hyoglossus
+    source: fma
+    status: draft
+  fr:
+    text: muscle hyo-glosse
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus hyoglossus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46691
+  ta2: 2118
+  ta98: A05.1.04.102
+  wikidata: Q247359
+sides:
+  left:
+    ids:
+      fma: 46704
+      wikidata: Q66536681
+    meshes:
+      - bp3d:FJ2739
+  right:
+    ids:
+      fma: 46703
+      wikidata: Q66536680
+    meshes:
+      - bp3d:FJ2751

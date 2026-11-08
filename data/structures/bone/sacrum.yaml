@@ -1,0 +1,27 @@
+slug: sacrum
+kind: bone
+laterality: midline
+status: draft
+parent: vertebral-column
+labels:
+  en:
+    text: sacrum
+    source: fma
+    status: draft
+  fr:
+    text: sacrum
+    source: wikidata
+    status: draft
+  la:
+    text: Os sacrum
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 16202
+  ta2: 1071
+  ta98: A02.2.05.001
+  wikidata: Q233316
+meshes:
+  - bp3d:FJ3393

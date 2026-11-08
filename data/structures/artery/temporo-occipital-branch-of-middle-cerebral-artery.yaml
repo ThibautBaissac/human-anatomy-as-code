@@ -1,0 +1,42 @@
+slug: temporo-occipital-branch-of-middle-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: temporo-occipital branch of middle cerebral artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau temporo-occipital de l'artère cérébrale moyenne
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50472
+  ta98: A12.2.07.059
+  wikidata: Q66539609
+sides:
+  left:
+    ids:
+      fma: 50474
+      wikidata: Q66539611
+    meshes:
+      - bp3d:FJ1729M
+    labels:
+      en:
+        text: temporo-occipital branch of left middle cerebral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50473
+      wikidata: Q66539610
+    meshes:
+      - bp3d:FJ1729
+    labels:
+      en:
+        text: temporo-occipital branch of right middle cerebral artery
+        source: fma
+        status: draft

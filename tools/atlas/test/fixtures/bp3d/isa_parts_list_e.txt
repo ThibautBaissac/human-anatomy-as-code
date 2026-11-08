@@ -1,0 +1,7 @@
+concept id	representation id	en
+FMA3939	BPI0	common carotid artery
+FMA5018	BPI1	bone organ
+FMA7161	BPI2	integument
+FMA7163	BPI3	skin
+FMA9611	BPI4	femur
+FMA99999	BPI5	first cervical vertebra

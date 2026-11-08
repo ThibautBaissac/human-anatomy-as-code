@@ -1,0 +1,39 @@
+slug: lateral-crico-arytenoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral crico-arytenoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle crico-aryténoïdien latéral
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus cricoarytaenoideus lateralis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46579
+  ta2: 2198
+  ta98: A06.2.08.006
+  wikidata: Q730870
+sides:
+  left:
+    ids:
+      fma: 46581
+      wikidata: Q66536601
+    meshes:
+      - bp3d:FJ2778
+  right:
+    ids:
+      fma: 46580
+      wikidata: Q66536600
+    meshes:
+      - bp3d:FJ2796

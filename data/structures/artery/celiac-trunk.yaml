@@ -1,0 +1,15 @@
+slug: celiac-trunk
+kind: artery
+laterality: midline
+status: draft
+parent: celiac-artery
+labels:
+  en:
+    text: celiac trunk
+    source: fma
+    status: draft
+ids:
+  fma: 14812
+  wikidata: Q66539914
+meshes:
+  - bp3d:FJ3421

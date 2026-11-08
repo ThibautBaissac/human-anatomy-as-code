@@ -1,0 +1,13 @@
+slug: medial-bronchopulmonary-segment
+kind: group
+laterality: midline
+status: draft
+parent: middle-lobe-of-lung
+labels:
+  en:
+    text: medial bronchopulmonary segment
+    source: fma
+    status: draft
+ids:
+  fma: 7360
+  wikidata: Q66502915

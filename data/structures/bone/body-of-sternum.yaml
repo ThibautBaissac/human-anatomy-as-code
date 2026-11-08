@@ -1,0 +1,23 @@
+slug: body-of-sternum
+kind: bone
+laterality: midline
+status: draft
+parent: sternum
+regions:
+  - thorax
+labels:
+  en:
+    text: body of sternum
+    source: fma
+    status: draft
+  fr:
+    text: corps du sternum
+    source: wikidata
+    status: draft
+ids:
+  fma: 7487
+  ta2: 1134
+  ta98: A02.3.03.006
+  wikidata: Q16356
+meshes:
+  - bp3d:FJ3178

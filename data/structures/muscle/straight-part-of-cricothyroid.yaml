@@ -1,0 +1,41 @@
+slug: straight-part-of-cricothyroid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: straight part of cricothyroid
+    source: fma
+    status: draft
+  fr:
+    text: partie droite du muscle cricothyroïdien
+    source: wikidata
+    status: draft
+ids:
+  fma: 46609
+  ta2: 2194
+  ta98: A06.2.08.002
+  wikidata: Q66536621
+sides:
+  left:
+    ids:
+      fma: 46612
+      wikidata: Q66536624
+    meshes:
+      - bp3d:FJ2783
+    labels:
+      en:
+        text: straight part of left cricothyroid
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 46611
+      wikidata: Q66536623
+    meshes:
+      - bp3d:FJ2801
+    labels:
+      en:
+        text: straight part of right cricothyroid
+        source: fma
+        status: draft

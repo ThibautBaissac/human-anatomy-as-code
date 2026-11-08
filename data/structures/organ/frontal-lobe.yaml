@@ -1,0 +1,36 @@
+slug: frontal-lobe
+kind: organ
+laterality: bilateral
+status: draft
+parent: cerebral-hemisphere
+labels:
+  en:
+    text: frontal lobe
+    source: fma
+    status: draft
+  fr:
+    text: lobe frontal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Lobus frontalis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 61824
+  ta2: 5445
+  ta98: A14.1.09.110
+  wikidata: Q749520
+sides:
+  left:
+    ids:
+      fma: 72970
+      wikidata: Q66570451
+  right:
+    ids:
+      fma: 72969
+      wikidata: Q66570450

@@ -1,0 +1,15 @@
+slug: upper-jaw
+kind: organ
+laterality: midline
+status: draft
+parent: maxillary-part-of-mouth
+labels:
+  en:
+    text: upper jaw
+    source: fma
+    status: draft
+ids:
+  fma: 54397
+  wikidata: Q66544252
+meshes:
+  - bp3d:FJ1252

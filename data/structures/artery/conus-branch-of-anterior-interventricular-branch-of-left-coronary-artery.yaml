@@ -1,0 +1,24 @@
+slug: conus-branch-of-anterior-interventricular-branch-of-left-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: anterior-interventricular-branch-of-left-coronary-artery
+labels:
+  en:
+    text: conus branch of anterior interventricular branch of left coronary artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau du cône artériel de l'artère interventriculaire antérieure
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 3868
+  ta2: 4144
+  ta98: A12.2.03.203
+  wikidata: Q66499469
+meshes:
+  - bp3d:FJ2643
+  - bp3d:FJ2644

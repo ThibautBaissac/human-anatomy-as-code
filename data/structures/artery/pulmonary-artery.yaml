@@ -1,0 +1,41 @@
+slug: pulmonary-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: pulmonary-arterial-tree
+labels:
+  en:
+    text: pulmonary artery
+    source: fma
+    status: draft
+  fr:
+    text: artère pulmonaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Truncus pulmonalis arteria pulmonalis
+    source: wikidata
+    status: draft
+ids:
+  fma: 66326
+  ta2: 4074
+  wikidata: Q206280
+sides:
+  left:
+    ids:
+      fma: 50873
+      ta2: 4091
+      ta98: A12.2.01.201
+      wikidata: Q8205462
+    meshes:
+      - bp3d:FJ2924
+  right:
+    ids:
+      fma: 50872
+      ta2: 4077
+      ta98: A12.2.01.101
+      wikidata: Q2917413
+    meshes:
+      - bp3d:FJ3019

@@ -1,0 +1,15 @@
+slug: inferior-part-of-right-anterior-segmental-vein
+kind: vein
+laterality: midline
+status: draft
+parent: anterior-segmental-vein
+labels:
+  en:
+    text: inferior part of right anterior segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 68928
+  wikidata: Q66564469
+meshes:
+  - bp3d:FJ3021

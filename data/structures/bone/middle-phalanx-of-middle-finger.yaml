@@ -1,0 +1,45 @@
+slug: middle-phalanx-of-middle-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: middle-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: middle phalanx of middle finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange moyenne du médius
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23934
+  wikidata: Q66515610
+sides:
+  left:
+    ids:
+      fma: 23940
+      wikidata: Q66515614
+    meshes:
+      - bp3d:FJ3299
+    labels:
+      en:
+        text: middle phalanx of left middle finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24456
+      wikidata: Q66515982
+    meshes:
+      - bp3d:FJ3306
+    labels:
+      en:
+        text: middle phalanx of right middle finger
+        source: fma
+        status: draft

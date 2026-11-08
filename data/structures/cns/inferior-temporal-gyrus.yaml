@@ -1,0 +1,32 @@
+slug: inferior-temporal-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: temporal-lobe
+labels:
+  en:
+    text: inferior temporal gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus temporal inférieur
+    source: wikidata
+    status: draft
+ids:
+  fma: 61907
+  ta2: 5497
+  ta98: A14.1.09.148
+  wikidata: Q3063959
+sides:
+  left:
+    ids:
+      fma: 72688
+      wikidata: Q66570191
+    meshes:
+      - bp3d:FJ1746
+  right:
+    ids:
+      fma: 72687
+      wikidata: Q66570190
+    meshes:
+      - bp3d:FJ1747

@@ -1,0 +1,49 @@
+slug: posterior-segmental-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: apicoposterior-segmental-vein
+labels:
+  en:
+    text: posterior segmental vein
+    source: fma
+    status: draft
+  fr:
+    text: veine postérieure du poumon droit
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13443
+  ta2: 4111
+  ta98: A12.3.02.108
+  wikidata: Q66508103
+sides:
+  left:
+    ids:
+      fma: 9438
+      wikidata: Q66504898
+    meshes:
+      - bp3d:FJ2926
+      - bp3d:FJ2927
+      - bp3d:FJ2928
+      - bp3d:FJ2929
+      - bp3d:FJ2939
+      - bp3d:FJ2940
+      - bp3d:FJ2941
+      - bp3d:FJ2942
+      - bp3d:FJ2943
+      - bp3d:FJ2965
+  right:
+    ids:
+      fma: 8663
+      wikidata: Q66504230
+    meshes:
+      - bp3d:FJ3022
+      - bp3d:FJ3023
+      - bp3d:FJ3024
+      - bp3d:FJ3025
+      - bp3d:FJ3026
+      - bp3d:FJ3069
+      - bp3d:FJ3070

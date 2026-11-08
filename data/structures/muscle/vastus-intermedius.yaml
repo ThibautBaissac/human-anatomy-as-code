@@ -1,0 +1,39 @@
+slug: vastus-intermedius
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: vastus intermedius
+    source: fma
+    status: draft
+  fr:
+    text: muscle vaste intermédiaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus vastus intermedius
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22433
+  ta2: 2619
+  ta98: A04.7.02.022
+  wikidata: Q1812578
+sides:
+  left:
+    ids:
+      fma: 38935
+      wikidata: Q66527890
+    meshes:
+      - bp3d:FJ1441M
+  right:
+    ids:
+      fma: 38934
+      wikidata: Q66527889
+    meshes:
+      - bp3d:FJ1441

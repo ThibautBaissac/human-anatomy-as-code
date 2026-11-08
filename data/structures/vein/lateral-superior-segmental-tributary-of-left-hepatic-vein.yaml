@@ -1,0 +1,14 @@
+slug: lateral-superior-segmental-tributary-of-left-hepatic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: lateral superior segmental tributary of left hepatic vein
+    source: fma
+    status: draft
+ids:
+  fma: 15803
+  wikidata: Q66512571
+meshes:
+  - bp3d:FJ3098

@@ -1,0 +1,40 @@
+slug: lateral-thoracic-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+labels:
+  en:
+    text: lateral thoracic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère thoracique latérale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria thoracalis lateralis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22674
+  ta2: 4625
+  ta98: A12.2.09.011
+  wikidata: Q707624
+sides:
+  left:
+    ids:
+      fma: 22676
+      wikidata: Q66514722
+    meshes:
+      - bp3d:FJ1976
+  right:
+    ids:
+      fma: 22675
+      wikidata: Q66514721
+    meshes:
+      - bp3d:FJ1938

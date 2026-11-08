@@ -1,0 +1,13 @@
+slug: fourth-lumbar-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: lumbar-vertebral-column
+labels:
+  en:
+    text: fourth lumbar intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26108
+  wikidata: Q66517336

@@ -1,0 +1,25 @@
+slug: lower-lateral-secondary-incisor-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lower lateral secondary incisor tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55725
+  wikidata: Q66545344
+sides:
+  left:
+    ids:
+      fma: 57141
+      wikidata: Q66553872
+    meshes:
+      - bp3d:FJ1259
+  right:
+    ids:
+      fma: 57140
+      wikidata: Q66553871
+    meshes:
+      - bp3d:FJ1273

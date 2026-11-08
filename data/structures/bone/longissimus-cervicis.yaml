@@ -1,0 +1,33 @@
+slug: longissimus-cervicis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: longissimus cervicis
+    source: fma
+    status: draft
+  fr:
+    text: muscle longissimus du cou
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22711
+  ta2: 2265
+  ta98: A04.3.02.013
+  wikidata: Q66514739
+sides:
+  left:
+    ids:
+      fma: 22758
+      wikidata: Q66514777
+    meshes:
+      - bp3d:FJ1534M
+  right:
+    ids:
+      fma: 22757
+      wikidata: Q66514776
+    meshes:
+      - bp3d:FJ1534

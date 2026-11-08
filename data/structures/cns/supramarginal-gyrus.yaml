@@ -1,0 +1,32 @@
+slug: supramarginal-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: parietal-lobe
+labels:
+  en:
+    text: supramarginal gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus supramarginal
+    source: wikidata
+    status: draft
+ids:
+  fma: 61897
+  ta2: 5473
+  ta98: A14.1.09.131
+  wikidata: Q1528202
+sides:
+  left:
+    ids:
+      fma: 72668
+      wikidata: Q66570171
+    meshes:
+      - bp3d:FJ1841
+  right:
+    ids:
+      fma: 72667
+      wikidata: Q66570170
+    meshes:
+      - bp3d:FJ1842

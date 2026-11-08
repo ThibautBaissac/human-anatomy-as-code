@@ -1,0 +1,31 @@
+slug: thyrohyoid-membrane
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: thyrohyoid membrane
+    source: fma
+    status: draft
+  fr:
+    text: membrane thyro-hyoïdienne
+    source: wikidata
+    status: draft
+ids:
+  fma: 55132
+  ta2: 1651
+  ta98: A06.2.02.013
+  wikidata: Q7799740
+sides:
+  left:
+    ids:
+      fma: 55134
+      wikidata: Q66544853
+    meshes:
+      - bp3d:FJ2786
+  right:
+    ids:
+      fma: 55133
+      wikidata: Q66544852
+    meshes:
+      - bp3d:FJ2804

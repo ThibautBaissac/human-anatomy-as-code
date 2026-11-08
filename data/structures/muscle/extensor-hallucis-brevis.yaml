@@ -1,0 +1,39 @@
+slug: extensor-hallucis-brevis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor hallucis brevis
+    source: fma
+    status: draft
+  fr:
+    text: muscle court extenseur de l'hallux
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor hallucis brevis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 51141
+  ta2: 2670
+  ta98: A04.7.02.054
+  wikidata: Q1330812
+sides:
+  left:
+    ids:
+      fma: 51145
+      wikidata: Q66540504
+    meshes:
+      - bp3d:FJ1407M
+  right:
+    ids:
+      fma: 51144
+      wikidata: Q66540502
+    meshes:
+      - bp3d:FJ1407

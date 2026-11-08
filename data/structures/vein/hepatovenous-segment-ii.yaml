@@ -1,0 +1,15 @@
+slug: hepatovenous-segment-ii
+kind: vein
+laterality: midline
+status: draft
+parent: posterior-sector-of-liver
+labels:
+  en:
+    text: hepatovenous segment ii
+    source: fma
+    status: draft
+ids:
+  fma: 15739
+  wikidata: Q66512430
+meshes:
+  - bp3d:FJ2818

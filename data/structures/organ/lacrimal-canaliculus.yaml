@@ -1,0 +1,30 @@
+slug: lacrimal-canaliculus
+kind: organ
+laterality: bilateral
+status: draft
+parent: lacrimal-duct
+regions:
+  - head
+labels:
+  en:
+    text: lacrimal canaliculus
+    source: fma
+    status: draft
+ids:
+  fma: 58245
+  ta2: 6855
+  ta98: A15.2.07.066
+  wikidata: Q2076795
+sides:
+  left:
+    ids:
+      fma: 59583
+      wikidata: Q66556007
+    meshes:
+      - bp3d:FJ1298
+  right:
+    ids:
+      fma: 59582
+      wikidata: Q66556006
+    meshes:
+      - bp3d:FJ1349

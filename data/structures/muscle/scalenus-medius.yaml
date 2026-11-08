@@ -1,0 +1,33 @@
+slug: scalenus-medius
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: scalenus medius
+    source: fma
+    status: draft
+  fr:
+    text: muscle scalène moyen
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13386
+  ta2: 2153
+  ta98: A04.2.01.005
+  wikidata: Q1088115
+sides:
+  left:
+    ids:
+      fma: 13391
+      wikidata: Q66508065
+    meshes:
+      - bp3d:FJ1571
+  right:
+    ids:
+      fma: 13390
+      wikidata: Q66508064
+    meshes:
+      - bp3d:FJ1593

@@ -1,0 +1,34 @@
+slug: wrist
+kind: group
+laterality: bilateral
+status: draft
+parent: free-upper-limb
+regions:
+  - upper-limb
+labels:
+  en:
+    text: wrist
+    source: fma
+    status: draft
+  fr:
+    text: poignet
+    source: wikidata
+    status: draft
+  la:
+    text: Articulatio radiocarpea
+    source: wikidata
+    status: draft
+ids:
+  fma: 24922
+  ta2: 147
+  ta98: A01.1.00.026
+  wikidata: Q185706
+sides:
+  left:
+    ids:
+      fma: 24941
+      wikidata: Q66516306
+  right:
+    ids:
+      fma: 24940
+      wikidata: Q66516305

@@ -1,0 +1,23 @@
+slug: large-intestine
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: large intestine
+    source: fma
+    status: draft
+  fr:
+    text: gros intestin
+    source: wikidata
+    status: draft
+  la:
+    text: Intestinum crassum
+    source: wikidata
+    status: draft
+ids:
+  fma: 7201
+  ta2: 2963
+  ta98: A05.7.01.001
+  wikidata: Q11083

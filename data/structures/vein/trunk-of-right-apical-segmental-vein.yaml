@@ -1,0 +1,15 @@
+slug: trunk-of-right-apical-segmental-vein
+kind: vein
+laterality: midline
+status: draft
+parent: apical-segmental-vein
+labels:
+  en:
+    text: trunk of right apical segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 68880
+  wikidata: Q66564425
+meshes:
+  - bp3d:FJ3031

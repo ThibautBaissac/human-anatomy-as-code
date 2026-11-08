@@ -1,0 +1,39 @@
+slug: tibia
+kind: bone
+laterality: bilateral
+status: draft
+parent: leg
+regions:
+  - leg
+  - lower-limb
+labels:
+  en:
+    text: tibia
+    source: fma
+    status: draft
+  fr:
+    text: tibia
+    source: wikidata
+    status: draft
+  la:
+    text: Tibia
+    source: wikidata
+    status: draft
+ids:
+  fma: 24476
+  ta2: 1397
+  ta98: A02.5.06.001
+  wikidata: Q178366
+sides:
+  left:
+    ids:
+      fma: 24478
+      wikidata: Q66516004
+    meshes:
+      - bp3d:FJ3282
+  right:
+    ids:
+      fma: 24477
+      wikidata: Q66516003
+    meshes:
+      - bp3d:FJ3387

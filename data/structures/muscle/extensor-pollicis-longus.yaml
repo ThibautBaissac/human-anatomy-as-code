@@ -1,0 +1,39 @@
+slug: extensor-pollicis-longus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor pollicis longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle long extenseur du pouce
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor pollicis longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38521
+  ta2: 2516
+  ta98: A04.6.02.051
+  wikidata: Q574632
+sides:
+  left:
+    ids:
+      fma: 38523
+      wikidata: Q66527678
+    meshes:
+      - bp3d:FJ1495M
+  right:
+    ids:
+      fma: 38522
+      wikidata: Q66527677
+    meshes:
+      - bp3d:FJ1495

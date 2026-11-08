@@ -1,0 +1,39 @@
+slug: semispinalis-capitis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: semispinalis capitis
+    source: fma
+    status: draft
+  fr:
+    text: muscle semi-épineux de la tête
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus semispinalis capitis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22830
+  ta2: 2283
+  ta98: A04.3.02.209
+  wikidata: Q1071881
+sides:
+  left:
+    ids:
+      fma: 22877
+      wikidata: Q66514865
+    meshes:
+      - bp3d:FJ1538M
+  right:
+    ids:
+      fma: 22876
+      wikidata: Q66514864
+    meshes:
+      - bp3d:FJ1538

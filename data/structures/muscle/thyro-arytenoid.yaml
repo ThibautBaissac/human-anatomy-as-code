@@ -1,0 +1,41 @@
+slug: thyro-arytenoid
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: thyro-arytenoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle thyro-aryténoïdien
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus thyroarytenoideus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46588
+  ta2: 2199
+  ta98: A06.2.08.008
+  wikidata: Q932571
+sides:
+  left:
+    ids:
+      fma: 46590
+      wikidata: Q66536605
+    meshes:
+      - bp3d:FJ2784
+      - bp3d:FJ2785
+  right:
+    ids:
+      fma: 46589
+      wikidata: Q66536604
+    meshes:
+      - bp3d:FJ2802
+      - bp3d:FJ2803

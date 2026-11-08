@@ -1,0 +1,33 @@
+slug: anterior-circumflex-humeral-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: anterior circumflex humeral vein
+    source: fma
+    status: draft
+  fr:
+    text: veine circonflexe humérale antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 77499
+  ta2: 4976
+  ta98: A12.3.08.010
+  wikidata: Q66575137
+sides:
+  left:
+    ids:
+      fma: 77955
+      wikidata: Q66575638
+    meshes:
+      - bp3d:FJ2213
+  right:
+    ids:
+      fma: 77954
+      wikidata: Q66575636
+    meshes:
+      - bp3d:FJ2265

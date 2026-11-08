@@ -1,0 +1,45 @@
+slug: proximal-phalanx-of-middle-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: middle-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: proximal phalanx of middle finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange proximale du médius
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23920
+  wikidata: Q66515606
+sides:
+  left:
+    ids:
+      fma: 71908
+      wikidata: Q66569598
+    meshes:
+      - bp3d:FJ3316
+    labels:
+      en:
+        text: proximal phalanx of left middle finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24452
+      wikidata: Q66515978
+    meshes:
+      - bp3d:FJ3325
+    labels:
+      en:
+        text: proximal phalanx of right middle finger
+        source: fma
+        status: draft

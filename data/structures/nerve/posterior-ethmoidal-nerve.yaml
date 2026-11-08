@@ -1,0 +1,39 @@
+slug: posterior-ethmoidal-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: posterior ethmoidal nerve
+    source: fma
+    status: draft
+  fr:
+    text: nerf ethmoïdal postérieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Nervus ethmoidalis posterior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52714
+  ta2: 6207
+  ta98: A14.2.01.028
+  wikidata: Q780801
+sides:
+  left:
+    ids:
+      fma: 52716
+      wikidata: Q66542928
+    meshes:
+      - bp3d:FJ1315
+  right:
+    ids:
+      fma: 52715
+      wikidata: Q66542927
+    meshes:
+      - bp3d:FJ1366

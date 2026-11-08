@@ -1,0 +1,42 @@
+slug: digastric
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: digastric
+    source: fma
+    status: draft
+  fr:
+    text: muscle digastrique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus digastricus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46291
+  ta2: 2160
+  ta98: A04.2.03.002
+  wikidata: Q645694
+sides:
+  left:
+    ids:
+      fma: 46293
+      wikidata: Q66536454
+    meshes:
+      - bp3d:FJ1555
+      - bp3d:FJ1560
+      - bp3d:FJ1578
+  right:
+    ids:
+      fma: 46292
+      wikidata: Q66536453
+    meshes:
+      - bp3d:FJ1556
+      - bp3d:FJ1579

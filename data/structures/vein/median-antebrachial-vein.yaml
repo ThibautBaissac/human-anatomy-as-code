@@ -1,0 +1,39 @@
+slug: median-antebrachial-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: median antebrachial vein
+    source: fma
+    status: draft
+  fr:
+    text: veine médiane antébrachiale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena mediana antebrachii
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22967
+  ta2: 4981
+  ta98: A12.3.08.020
+  wikidata: Q3324292
+sides:
+  left:
+    ids:
+      fma: 22969
+      wikidata: Q66514937
+    meshes:
+      - bp3d:FJ2234
+  right:
+    ids:
+      fma: 22968
+      wikidata: Q66514936
+    meshes:
+      - bp3d:FJ2286

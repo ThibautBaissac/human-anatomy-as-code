@@ -1,0 +1,21 @@
+slug: left-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: side-of-heart
+regions:
+  - thorax
+labels:
+  en:
+    text: left ventricle
+    source: fma
+    status: draft
+  fr:
+    text: ventricule gauche
+    source: wikidata
+    status: draft
+ids:
+  fma: 7101
+  ta2: 4062
+  ta98: A12.1.04.001
+  wikidata: Q876089

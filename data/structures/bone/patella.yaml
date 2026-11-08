@@ -1,0 +1,38 @@
+slug: patella
+kind: bone
+laterality: bilateral
+status: draft
+parent: patellar-part-of-knee
+regions:
+  - lower-limb
+labels:
+  en:
+    text: patella
+    source: fma
+    status: draft
+  fr:
+    text: patella
+    source: wikidata
+    status: draft
+  la:
+    text: Patella
+    source: wikidata
+    status: draft
+ids:
+  fma: 24485
+  ta2: 1390
+  ta98: A02.5.05.001
+  wikidata: Q229081
+sides:
+  left:
+    ids:
+      fma: 24487
+      wikidata: Q66516010
+    meshes:
+      - bp3d:FJ3275
+  right:
+    ids:
+      fma: 24486
+      wikidata: Q66516009
+    meshes:
+      - bp3d:FJ3381

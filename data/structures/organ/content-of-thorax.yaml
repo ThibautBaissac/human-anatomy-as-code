@@ -1,0 +1,13 @@
+slug: content-of-thorax
+kind: organ
+laterality: midline
+status: draft
+parent: compartment-of-thorax
+labels:
+  en:
+    text: content of thorax
+    source: fma
+    status: draft
+ids:
+  fma: 79269
+  wikidata: Q66577340

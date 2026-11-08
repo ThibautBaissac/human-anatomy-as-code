@@ -1,0 +1,45 @@
+slug: proximal-phalanx-of-index-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: index-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: proximal phalanx of index finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange proximale de l'index
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23919
+  wikidata: Q66515605
+sides:
+  left:
+    ids:
+      fma: 71915
+      wikidata: Q66569604
+    meshes:
+      - bp3d:FJ3313
+    labels:
+      en:
+        text: proximal phalanx of left index finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24451
+      wikidata: Q66515977
+    meshes:
+      - bp3d:FJ3322
+    labels:
+      en:
+        text: proximal phalanx of right index finger
+        source: fma
+        status: draft

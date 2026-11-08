@@ -1,0 +1,29 @@
+slug: set-of-dorsal-metacarpal-arteries
+kind: bone
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of dorsal metacarpal arteries
+    source: fma
+    status: draft
+  fr:
+    text: artère métacarpienne dorsale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteriae metacarpales dorsales
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 70800
+  ta2: 4648
+  ta98: A12.2.09.034
+  wikidata: Q3328736
+meshes:
+  - bp3d:FJ2347
+  - bp3d:FJ2348

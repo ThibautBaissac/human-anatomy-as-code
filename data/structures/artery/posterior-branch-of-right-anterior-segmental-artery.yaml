@@ -1,0 +1,17 @@
+slug: posterior-branch-of-right-anterior-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: anterior-segmental-artery
+labels:
+  en:
+    text: posterior branch of right anterior segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68677
+  wikidata: Q66564226
+meshes:
+  - bp3d:FJ2974
+  - bp3d:FJ2980
+  - bp3d:FJ2981

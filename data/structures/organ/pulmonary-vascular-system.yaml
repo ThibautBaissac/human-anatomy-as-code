@@ -1,0 +1,13 @@
+slug: pulmonary-vascular-system
+kind: organ
+laterality: midline
+status: draft
+parent: cardiovascular-system
+labels:
+  en:
+    text: pulmonary vascular system
+    source: fma
+    status: draft
+ids:
+  fma: 45621
+  wikidata: Q66535991

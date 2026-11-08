@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-third-cervical-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: third-cervical-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of third cervical vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13896
+  wikidata: Q66508822
+meshes:
+  - bp3d:FJ3213

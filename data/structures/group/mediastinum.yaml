@@ -1,0 +1,23 @@
+slug: mediastinum
+kind: group
+laterality: midline
+status: draft
+parent: compartment-of-thorax
+labels:
+  en:
+    text: mediastinum
+    source: fma
+    status: draft
+  fr:
+    text: médiastin
+    source: wikidata
+    status: draft
+  la:
+    text: Mediastinum
+    source: wikidata
+    status: draft
+ids:
+  fma: 9826
+  ta2: 3333
+  ta98: A07.1.02.101
+  wikidata: Q337247

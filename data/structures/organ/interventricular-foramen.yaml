@@ -1,0 +1,20 @@
+slug: interventricular-foramen
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: interventricular foramen
+    source: fma
+    status: draft
+  fr:
+    text: trou de monro
+    source: wikidata
+    status: draft
+ids:
+  fma: 75351
+  ta2: 5641
+  ta98: A14.1.08.411
+  wikidata: Q3540833
+meshes:
+  - bp3d:FJ1752

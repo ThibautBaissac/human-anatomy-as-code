@@ -1,0 +1,25 @@
+slug: urethra
+kind: organ
+laterality: midline
+status: draft
+parent: lower-urinary-tract
+labels:
+  en:
+    text: urethra
+    source: fma
+    status: draft
+  fr:
+    text: urètre
+    source: wikidata
+    status: draft
+  la:
+    text: Urethra
+    source: wikidata
+    status: draft
+ids:
+  fma: 19667
+  ta2: 3442
+  ta98: A08.5.01.001M
+  wikidata: Q9386
+meshes:
+  - bp3d:FJ3148

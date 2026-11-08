@@ -1,0 +1,29 @@
+slug: pineal-body
+kind: organ
+laterality: midline
+status: draft
+parent: epithalamus
+labels:
+  en:
+    text: pineal body
+    source: fma
+    status: draft
+  fr:
+    text: glande pinéale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Glandula pinealis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 62033
+  ta2: 3862
+  ta98: A11.2.00.001
+  wikidata: Q198654
+meshes:
+  - bp3d:FJ1795

@@ -1,0 +1,37 @@
+slug: platysma
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: platysma
+    source: fma
+    status: draft
+  fr:
+    text: muscle platysma
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Platysma
+    source: wikidata
+    status: draft
+ids:
+  fma: 45738
+  ta2: 2147
+  ta98: A04.2.01.001
+  wikidata: Q841422
+sides:
+  left:
+    ids:
+      fma: 45740
+      wikidata: Q66536040
+    meshes:
+      - bp3d:FJ1558
+  right:
+    ids:
+      fma: 45739
+      wikidata: Q66536039
+    meshes:
+      - bp3d:FJ1587

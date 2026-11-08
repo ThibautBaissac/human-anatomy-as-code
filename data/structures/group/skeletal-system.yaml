@@ -1,0 +1,25 @@
+slug: skeletal-system
+kind: group
+laterality: midline
+status: draft
+parent: musculoskeletal-system
+labels:
+  en:
+    text: skeletal system
+    source: fma
+    status: draft
+  fr:
+    text: squelette humain
+    source: wikidata
+    status: draft
+  la:
+    text: Ossa humanum
+    gender: n
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 23881
+  ta2: 352
+  ta98: A02.0.00.000
+  wikidata: Q9621

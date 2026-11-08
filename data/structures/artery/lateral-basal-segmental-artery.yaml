@@ -1,0 +1,36 @@
+slug: lateral-basal-segmental-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: basal-segmental-artery
+labels:
+  en:
+    text: lateral basal segmental artery
+    source: fma
+    status: draft
+  fr:
+    text: artère segmentaire basale latérale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8718
+  wikidata: Q66504275
+sides:
+  left:
+    ids:
+      fma: 8646
+      ta2: 4104
+      wikidata: Q66504109
+    meshes:
+      - bp3d:FJ2882
+      - bp3d:FJ2921
+      - bp3d:FJ2922
+      - bp3d:FJ2923
+  right:
+    ids:
+      fma: 8631
+      ta2: 4088
+      ta98: A12.2.01.117
+      wikidata: Q66504094

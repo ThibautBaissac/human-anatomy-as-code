@@ -1,0 +1,39 @@
+slug: splenius-capitis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: splenius capitis
+    source: fma
+    status: draft
+  fr:
+    text: muscle splénius de la tête
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus splenius capitis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22653
+  ta2: 2273
+  ta98: A04.3.02.103
+  wikidata: Q1088126
+sides:
+  left:
+    ids:
+      fma: 22729
+      wikidata: Q66514757
+    meshes:
+      - bp3d:FJ1545M
+  right:
+    ids:
+      fma: 22728
+      wikidata: Q66514756
+    meshes:
+      - bp3d:FJ1545

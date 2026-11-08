@@ -1,0 +1,13 @@
+slug: thoracic-vertebral-column
+kind: bone
+laterality: midline
+status: draft
+parent: vertebral-column
+labels:
+  en:
+    text: thoracic vertebral column
+    source: fma
+    status: draft
+ids:
+  fma: 9140
+  wikidata: Q66504655

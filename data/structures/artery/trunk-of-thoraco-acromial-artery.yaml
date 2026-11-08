@@ -1,0 +1,36 @@
+slug: trunk-of-thoraco-acromial-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: thoraco-acromial-artery
+labels:
+  en:
+    text: trunk of thoraco-acromial artery
+    source: fma
+    status: draft
+ids:
+  fma: 66562
+  wikidata: Q66562640
+sides:
+  left:
+    ids:
+      fma: 66564
+      wikidata: Q66562642
+    meshes:
+      - bp3d:FJ2252
+    labels:
+      en:
+        text: trunk of left thoraco-acromial artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 66563
+      wikidata: Q66562641
+    meshes:
+      - bp3d:FJ2304
+    labels:
+      en:
+        text: trunk of right thoraco-acromial artery
+        source: fma
+        status: draft

@@ -1,0 +1,39 @@
+slug: serratus-posterior-superior
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: serratus posterior superior
+    source: fma
+    status: draft
+  fr:
+    text: muscle dentelé postérieur et supérieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus serratus posterior superior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13401
+  ta2: 2236
+  ta98: A04.3.01.011
+  wikidata: Q1085940
+sides:
+  left:
+    ids:
+      fma: 13404
+      wikidata: Q66508074
+    meshes:
+      - bp3d:FJ1542M
+  right:
+    ids:
+      fma: 13403
+      wikidata: Q66508073
+    meshes:
+      - bp3d:FJ1542

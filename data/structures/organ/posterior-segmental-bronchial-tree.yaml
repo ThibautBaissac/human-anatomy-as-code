@@ -1,0 +1,33 @@
+slug: posterior-segmental-bronchial-tree
+kind: organ
+laterality: bilateral
+status: draft
+parent: upper-lobe-part-of-bronchial-tree
+labels:
+  en:
+    text: posterior segmental bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68236
+  wikidata: Q66563832
+sides:
+  left:
+    ids:
+      fma: 68225
+      wikidata: Q66563821
+    meshes:
+      - bp3d:FJ2447
+      - bp3d:FJ2465
+      - bp3d:FJ2466
+  right:
+    ids:
+      fma: 68213
+      wikidata: Q66563810
+    meshes:
+      - bp3d:FJ2458
+      - bp3d:FJ2515
+      - bp3d:FJ2516
+      - bp3d:FJ2517
+      - bp3d:FJ2518
+      - bp3d:FJ2519

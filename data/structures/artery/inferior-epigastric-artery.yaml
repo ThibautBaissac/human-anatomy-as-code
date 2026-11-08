@@ -1,0 +1,40 @@
+slug: inferior-epigastric-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: external-iliac-artery
+labels:
+  en:
+    text: inferior epigastric artery
+    source: fma
+    status: draft
+  fr:
+    text: artère épigastrique inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria epigastrica inferior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 20686
+  ta2: 4358
+  ta98: A12.2.16.003
+  wikidata: Q305187
+sides:
+  left:
+    ids:
+      fma: 20689
+      wikidata: Q66512372
+    meshes:
+      - bp3d:FJ3511
+  right:
+    ids:
+      fma: 20688
+      wikidata: Q66512370
+    meshes:
+      - bp3d:FJ3604

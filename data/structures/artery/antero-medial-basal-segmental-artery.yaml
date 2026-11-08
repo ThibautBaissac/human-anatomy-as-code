@@ -1,0 +1,13 @@
+slug: antero-medial-basal-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: basal-segmental-artery
+labels:
+  en:
+    text: antero-medial basal segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68843
+  wikidata: Q66564393

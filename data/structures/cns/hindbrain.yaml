@@ -1,0 +1,18 @@
+slug: hindbrain
+kind: cns
+laterality: midline
+status: draft
+parent: brain
+labels:
+  en:
+    text: hindbrain
+    source: fma
+    status: draft
+  fr:
+    text: rhombencéphale
+    source: wikidata
+    status: draft
+ids:
+  fma: 67687
+  ta98: A14.1.03.002
+  wikidata: Q1137072

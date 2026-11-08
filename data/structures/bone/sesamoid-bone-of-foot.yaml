@@ -1,0 +1,37 @@
+slug: sesamoid-bone-of-foot
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: sesamoid bone of foot
+    source: fma
+    status: draft
+ids:
+  fma: 45096
+  wikidata: Q66535539
+sides:
+  left:
+    ids:
+      fma: 45098
+      wikidata: Q66535541
+    meshes:
+      - bp3d:FJ3266
+      - bp3d:FJ3270
+    labels:
+      en:
+        text: sesamoid bone of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 45097
+      wikidata: Q66535540
+    meshes:
+      - bp3d:FJ3372
+      - bp3d:FJ3376
+    labels:
+      en:
+        text: sesamoid bone of right foot
+        source: fma
+        status: draft

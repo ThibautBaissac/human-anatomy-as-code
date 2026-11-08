@@ -1,0 +1,32 @@
+slug: external-anal-sphincter
+kind: muscle
+laterality: midline
+status: draft
+parent: anal-part-of-perineum
+labels:
+  en:
+    text: external anal sphincter
+    source: fma
+    status: draft
+  fr:
+    text: muscle sphincter externe de l'anus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus sphincter ani externus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 21930
+  ta2: 2426
+  ta98: A04.5.04.012
+  wikidata: Q2379958
+meshes:
+  - bp3d:FJ1450
+  - bp3d:FJ1450M
+  - bp3d:FJ2543
+  - bp3d:FJ2548

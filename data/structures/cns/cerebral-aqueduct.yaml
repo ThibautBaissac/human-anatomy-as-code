@@ -1,0 +1,21 @@
+slug: cerebral-aqueduct
+kind: cns
+laterality: midline
+status: draft
+parent: midbrain
+labels:
+  en:
+    text: cerebral aqueduct
+    source: fma
+    status: draft
+  fr:
+    text: aqueduc de Sylvius
+    source: wikidata
+    status: draft
+ids:
+  fma: 78467
+  ta2: 5910
+  ta98: A14.1.06.501
+  wikidata: Q623016
+meshes:
+  - bp3d:FJ1738

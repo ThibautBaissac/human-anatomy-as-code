@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-eleventh-thoracic-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: eleventh-thoracic-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of eleventh thoracic vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13508
+  wikidata: Q66508193
+meshes:
+  - bp3d:FJ3210

@@ -1,0 +1,28 @@
+slug: small-cardiac-vein
+kind: vein
+laterality: midline
+status: draft
+parent: coronary-sinus-tree
+labels:
+  en:
+    text: small cardiac vein
+    source: fma
+    status: draft
+  fr:
+    text: petite veine cardiaque
+    source: wikidata
+    status: draft
+  la:
+    text: Vena cardiaca parva
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4714
+  ta2: 4166
+  ta98: A12.3.01.010
+  wikidata: Q7543026
+meshes:
+  - bp3d:FJ2724
+  - bp3d:FJ2731

@@ -1,0 +1,30 @@
+slug: parietal-lobe
+kind: organ
+laterality: bilateral
+status: draft
+parent: cerebral-hemisphere
+labels:
+  en:
+    text: parietal lobe
+    source: fma
+    status: draft
+  fr:
+    text: lobe pariétal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 61826
+  ta2: 5467
+  ta98: A14.1.09.123
+  wikidata: Q815334
+sides:
+  left:
+    ids:
+      fma: 72974
+      wikidata: Q66570455
+  right:
+    ids:
+      fma: 72973
+      wikidata: Q66570454

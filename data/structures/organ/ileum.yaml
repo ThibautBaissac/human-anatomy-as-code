@@ -1,0 +1,23 @@
+slug: ileum
+kind: organ
+laterality: midline
+status: draft
+parent: small-intestine
+labels:
+  en:
+    text: ileum
+    source: fma
+    status: draft
+  fr:
+    text: iléon
+    source: wikidata
+    status: draft
+  la:
+    text: Ileum
+    source: wikidata
+    status: draft
+ids:
+  fma: 7208
+  ta2: 2959
+  ta98: A05.6.04.001
+  wikidata: Q233345

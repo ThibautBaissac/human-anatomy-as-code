@@ -1,0 +1,27 @@
+slug: superior-intercostal-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: content-of-superior-mediastinum
+labels:
+  en:
+    text: superior intercostal vein
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 4797
+      ta2: 4798
+      ta98: A12.3.04.024
+      wikidata: Q136558443
+    meshes:
+      - bp3d:FJ1986
+  right:
+    ids:
+      fma: 4877
+      ta2: 4749
+      ta98: A12.3.07.003
+      wikidata: Q66501742
+    meshes:
+      - bp3d:FJ1991

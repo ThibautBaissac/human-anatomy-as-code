@@ -1,0 +1,32 @@
+slug: superior-parietal-lobule
+kind: cns
+laterality: bilateral
+status: draft
+parent: parietal-lobe
+labels:
+  en:
+    text: superior parietal lobule
+    source: fma
+    status: draft
+  fr:
+    text: lobule pariétal supérieur
+    source: wikidata
+    status: draft
+ids:
+  fma: 61899
+  ta2: 5476
+  ta98: A14.1.09.130
+  wikidata: Q1332793
+sides:
+  left:
+    ids:
+      fma: 72672
+      wikidata: Q66570175
+    meshes:
+      - bp3d:FJ1835
+  right:
+    ids:
+      fma: 72671
+      wikidata: Q66570174
+    meshes:
+      - bp3d:FJ1836

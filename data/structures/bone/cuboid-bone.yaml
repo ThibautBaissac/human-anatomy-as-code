@@ -1,0 +1,43 @@
+slug: cuboid-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: cuboid bone
+    source: fma
+    status: draft
+  fr:
+    text: os cuboïde
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os cuboideum
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 24527
+  ta2: 1489
+  ta98: A02.5.16.001
+  wikidata: Q658424
+sides:
+  left:
+    ids:
+      fma: 24529
+      wikidata: Q66516038
+    meshes:
+      - bp3d:FJ3258
+  right:
+    ids:
+      fma: 24528
+      wikidata: Q66516037
+    meshes:
+      - bp3d:FJ3364

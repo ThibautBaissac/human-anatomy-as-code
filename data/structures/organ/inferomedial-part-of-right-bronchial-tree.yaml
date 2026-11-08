@@ -1,0 +1,13 @@
+slug: inferomedial-part-of-right-bronchial-tree
+kind: organ
+laterality: midline
+status: draft
+parent: bronchial-tree
+labels:
+  en:
+    text: inferomedial part of right bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68319
+  wikidata: Q66563921

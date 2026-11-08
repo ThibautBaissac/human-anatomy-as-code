@@ -1,0 +1,34 @@
+slug: inferior-phrenic-vein
+kind: vein
+laterality: midline
+status: draft
+parent: inferior-systemic-venous-tree
+labels:
+  en:
+    text: inferior phrenic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine phrénique inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Venae phrenicae inferiores
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 68068
+  ta2: 4992
+  ta98: A12.3.09.002
+  wikidata: Q605523
+meshes:
+  - bp3d:FJ3447
+  - bp3d:FJ3448
+  - bp3d:FJ3449
+  - bp3d:FJ3450
+  - bp3d:FJ3451
+  - bp3d:FJ3452

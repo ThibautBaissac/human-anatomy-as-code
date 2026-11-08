@@ -1,0 +1,39 @@
+slug: flexor-accessorius
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor accessorius
+    source: fma
+    status: draft
+  fr:
+    text: muscle carré plantaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus quadratus plantae
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37452
+  ta2: 2684
+  ta98: A04.7.02.068
+  wikidata: Q1665277
+sides:
+  left:
+    ids:
+      fma: 37466
+      wikidata: Q66526791
+    meshes:
+      - bp3d:FJ1412M
+  right:
+    ids:
+      fma: 37465
+      wikidata: Q66526790
+    meshes:
+      - bp3d:FJ1412

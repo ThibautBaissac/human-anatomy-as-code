@@ -1,0 +1,15 @@
+slug: nasal-skeleton
+kind: organ
+laterality: midline
+status: draft
+parent: nose
+regions:
+  - head
+labels:
+  en:
+    text: nasal skeleton
+    source: fma
+    status: draft
+ids:
+  fma: 60116
+  wikidata: Q66556497

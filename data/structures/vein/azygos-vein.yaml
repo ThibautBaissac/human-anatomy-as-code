@@ -1,0 +1,31 @@
+slug: azygos-vein
+kind: vein
+laterality: midline
+status: draft
+parent: content-of-middle-mediastinum
+regions:
+  - thorax
+labels:
+  en:
+    text: azygos vein
+    source: fma
+    status: draft
+  fr:
+    text: veine azygos
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena azygos
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4838
+  ta2: 4747
+  ta98: A12.3.07.001
+  wikidata: Q591137
+meshes:
+  - bp3d:FJ3416

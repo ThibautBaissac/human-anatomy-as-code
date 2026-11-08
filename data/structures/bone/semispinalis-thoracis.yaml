@@ -1,0 +1,39 @@
+slug: semispinalis-thoracis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: semispinalis thoracis
+    source: fma
+    status: draft
+  fr:
+    text: muscle semi-épineux du thorax
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus semispinalis thoracis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22828
+  ta2: 2281
+  ta98: A04.3.02.207
+  wikidata: Q2799932
+sides:
+  left:
+    ids:
+      fma: 22873
+      wikidata: Q66514861
+    meshes:
+      - bp3d:FJ1540M
+  right:
+    ids:
+      fma: 22872
+      wikidata: Q66514860
+    meshes:
+      - bp3d:FJ1540

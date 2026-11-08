@@ -1,0 +1,15 @@
+slug: left-lobe-of-liver
+kind: group
+laterality: midline
+status: draft
+parent: liver
+labels:
+  en:
+    text: left lobe of liver
+    source: fma
+    status: draft
+ids:
+  fma: 13363
+  ta2: 3050
+  ta98: A05.8.01.027
+  wikidata: Q6493480

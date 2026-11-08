@@ -1,0 +1,35 @@
+slug: skeleton-of-hand-proper
+kind: organ
+laterality: bilateral
+status: draft
+parent: hand-proper
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: skeleton of hand proper
+    source: fma
+    status: draft
+ids:
+  fma: 79180
+  wikidata: Q66577229
+sides:
+  left:
+    ids:
+      fma: 79182
+      wikidata: Q66577232
+    labels:
+      en:
+        text: skeleton of left hand proper
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 79181
+      wikidata: Q66577231
+    labels:
+      en:
+        text: skeleton of right hand proper
+        source: fma
+        status: draft

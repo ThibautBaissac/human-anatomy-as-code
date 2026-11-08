@@ -1,0 +1,23 @@
+slug: pulmonary-valve
+kind: organ
+laterality: midline
+status: draft
+parent: outflow-part-of-right-ventricle
+labels:
+  en:
+    text: pulmonary valve
+    source: fma
+    status: draft
+  fr:
+    text: valve du tronc pulmonaire
+    source: wikidata
+    status: draft
+  la:
+    text: Valva trunci pulmonalis
+    source: wikidata
+    status: draft
+ids:
+  fma: 7246
+  ta2: 4008
+  ta98: A12.1.02.010
+  wikidata: Q1552748

@@ -1,0 +1,39 @@
+slug: semispinalis-cervicis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: semispinalis cervicis
+    source: fma
+    status: draft
+  fr:
+    text: muscle semi-épineux du cou
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus semispinalis cervicis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22829
+  ta2: 2282
+  ta98: A04.3.02.208
+  wikidata: Q225308
+sides:
+  left:
+    ids:
+      fma: 22875
+      wikidata: Q66514863
+    meshes:
+      - bp3d:FJ1539M
+  right:
+    ids:
+      fma: 22874
+      wikidata: Q66514862
+    meshes:
+      - bp3d:FJ1539

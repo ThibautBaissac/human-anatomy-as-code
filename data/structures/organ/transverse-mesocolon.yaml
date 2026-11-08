@@ -1,0 +1,21 @@
+slug: transverse-mesocolon
+kind: organ
+laterality: midline
+status: draft
+parent: visceral-peritoneum
+labels:
+  en:
+    text: transverse mesocolon
+    source: fma
+    status: draft
+  fr:
+    text: mésocôlon transverse
+    source: wikidata
+    status: draft
+ids:
+  fma: 14647
+  ta2: 3745
+  ta98: A10.1.02.010
+  wikidata: Q3333390
+meshes:
+  - bp3d:FJ3398

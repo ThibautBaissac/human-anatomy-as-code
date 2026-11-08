@@ -1,0 +1,39 @@
+slug: pectineus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: pectineus
+    source: fma
+    status: draft
+  fr:
+    text: Muscle pectiné
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus pectineus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22440
+  ta2: 2627
+  ta98: A04.7.02.025
+  wikidata: Q1501677
+sides:
+  left:
+    ids:
+      fma: 22451
+      wikidata: Q66514498
+    meshes:
+      - bp3d:FJ1427M
+  right:
+    ids:
+      fma: 22450
+      wikidata: Q66514497
+    meshes:
+      - bp3d:FJ1427

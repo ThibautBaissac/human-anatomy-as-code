@@ -1,0 +1,21 @@
+slug: peduncle-of-midbrain
+kind: cns
+laterality: midline
+status: draft
+labels:
+  en:
+    text: peduncle of midbrain
+    source: fma
+    status: draft
+  fr:
+    text: pédoncule cérébral
+    source: wikidata
+    status: draft
+ids:
+  fma: 62394
+  ta2: 5878
+  ta98: A14.1.06.004
+  wikidata: Q646944
+meshes:
+  - bp3d:FJ1774
+  - bp3d:FJ1821

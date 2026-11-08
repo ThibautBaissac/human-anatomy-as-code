@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-fourth-cervical-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: fourth-cervical-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of fourth cervical vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13897
+  wikidata: Q66508825
+meshes:
+  - bp3d:FJ3218

@@ -1,0 +1,25 @@
+slug: lower-second-secondary-molar-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lower second secondary molar tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55815
+  wikidata: Q66545420
+sides:
+  left:
+    ids:
+      fma: 55703
+      wikidata: Q66545323
+    meshes:
+      - bp3d:FJ1256
+  right:
+    ids:
+      fma: 55706
+      wikidata: Q66545326
+    meshes:
+      - bp3d:FJ1270

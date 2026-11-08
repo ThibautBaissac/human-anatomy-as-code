@@ -1,0 +1,39 @@
+slug: iliacus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: iliacus
+    source: fma
+    status: draft
+  fr:
+    text: muscle iliaque
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus iliacus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22310
+  ta2: 2594
+  ta98: A04.7.02.003
+  wikidata: Q1508879
+sides:
+  left:
+    ids:
+      fma: 22323
+      wikidata: Q66514390
+    meshes:
+      - bp3d:FJ1422M
+  right:
+    ids:
+      fma: 22322
+      wikidata: Q66514389
+    meshes:
+      - bp3d:FJ1422

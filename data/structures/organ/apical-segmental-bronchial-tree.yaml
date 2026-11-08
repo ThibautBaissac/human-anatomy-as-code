@@ -1,0 +1,38 @@
+slug: apical-segmental-bronchial-tree
+kind: organ
+laterality: bilateral
+status: draft
+parent: apical-bronchopulmonary-segment
+labels:
+  en:
+    text: apical segmental bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68234
+  wikidata: Q66563830
+sides:
+  left:
+    ids:
+      fma: 68223
+      wikidata: Q66563819
+    meshes:
+      - bp3d:FJ2444
+      - bp3d:FJ2460
+      - bp3d:FJ2461
+      - bp3d:FJ2462
+      - bp3d:FJ2463
+      - bp3d:FJ2464
+  right:
+    ids:
+      fma: 68211
+      wikidata: Q66563808
+    meshes:
+      - bp3d:FJ2454
+      - bp3d:FJ2520
+      - bp3d:FJ2521
+      - bp3d:FJ2522
+      - bp3d:FJ2523
+      - bp3d:FJ2524
+      - bp3d:FJ2525
+      - bp3d:FJ2526

@@ -1,0 +1,39 @@
+slug: nasociliary-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: nasociliary nerve
+    source: fma
+    status: draft
+  fr:
+    text: nerf naso-ciliaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Nervus nasociliaris
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52668
+  ta2: 6204
+  ta98: A14.2.01.025
+  wikidata: Q918513
+sides:
+  left:
+    ids:
+      fma: 52670
+      wikidata: Q66542888
+    meshes:
+      - bp3d:FJ1310
+  right:
+    ids:
+      fma: 52669
+      wikidata: Q66542887
+    meshes:
+      - bp3d:FJ1361

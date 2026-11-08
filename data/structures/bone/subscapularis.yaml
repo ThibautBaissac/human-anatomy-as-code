@@ -1,0 +1,39 @@
+slug: subscapularis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: subscapularis
+    source: fma
+    status: draft
+  fr:
+    text: muscle subscapulaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus subscapularis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13413
+  ta2: 2460
+  ta98: A04.6.02.012
+  wikidata: Q130050
+sides:
+  left:
+    ids:
+      fma: 13415
+      wikidata: Q66508082
+    meshes:
+      - bp3d:FJ1504M
+  right:
+    ids:
+      fma: 13414
+      wikidata: Q66508081
+    meshes:
+      - bp3d:FJ1504

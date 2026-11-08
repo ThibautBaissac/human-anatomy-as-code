@@ -1,0 +1,34 @@
+slug: lateral-nasal-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+parent: cartilaginous-skeleton-of-external-nose
+regions:
+  - head
+labels:
+  en:
+    text: lateral nasal cartilage
+    source: fma
+    status: draft
+  fr:
+    text: processus latéral du cartilage du septum nasal
+    source: wikidata
+    status: draft
+ids:
+  fma: 59511
+  ta2: 947
+  ta98: A06.1.01.014
+  wikidata: Q6495642
+sides:
+  left:
+    ids:
+      fma: 59513
+      wikidata: Q66555947
+    meshes:
+      - bp3d:FJ2556
+  right:
+    ids:
+      fma: 59512
+      wikidata: Q66555946
+    meshes:
+      - bp3d:FJ2558

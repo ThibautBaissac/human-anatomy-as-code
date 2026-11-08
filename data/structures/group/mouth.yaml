@@ -1,0 +1,25 @@
+slug: mouth
+kind: group
+laterality: midline
+status: draft
+parent: alimentary-system
+labels:
+  en:
+    text: mouth
+    source: fma
+    status: draft
+  fr:
+    text: bouche
+    source: wikidata
+    status: draft
+  la:
+    text: os
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 49184
+  ta2: 2774
+  ta98: A05.1.00.001
+  wikidata: Q9635

@@ -1,0 +1,25 @@
+slug: upper-second-secondary-molar-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: upper second secondary molar tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55812
+  wikidata: Q66545417
+sides:
+  left:
+    ids:
+      fma: 55700
+      wikidata: Q66545319
+    meshes:
+      - bp3d:FJ1263
+  right:
+    ids:
+      fma: 55697
+      wikidata: Q66545316
+    meshes:
+      - bp3d:FJ1275

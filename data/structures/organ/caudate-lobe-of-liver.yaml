@@ -1,0 +1,17 @@
+slug: caudate-lobe-of-liver
+kind: organ
+laterality: midline
+status: draft
+parent: left-lobe-of-liver
+labels:
+  en:
+    text: caudate lobe of liver
+    source: fma
+    status: draft
+ids:
+  fma: 13365
+  ta2: 3053
+  ta98: A05.8.01.030
+  wikidata: Q5054375
+meshes:
+  - bp3d:FJ2816

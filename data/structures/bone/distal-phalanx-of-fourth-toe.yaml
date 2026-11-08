@@ -1,0 +1,39 @@
+slug: distal-phalanx-of-fourth-toe
+kind: bone
+laterality: bilateral
+status: draft
+parent: fourth-toe
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: distal phalanx of fourth toe
+    source: fma
+    status: draft
+ids:
+  fma: 32630
+  wikidata: Q66523098
+sides:
+  left:
+    ids:
+      fma: 32657
+      wikidata: Q66523122
+    meshes:
+      - bp3d:FJ3181
+    labels:
+      en:
+        text: distal phalanx of left fourth toe
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 32656
+      wikidata: Q66523121
+    meshes:
+      - bp3d:FJ3191
+    labels:
+      en:
+        text: distal phalanx of right fourth toe
+        source: fma
+        status: draft

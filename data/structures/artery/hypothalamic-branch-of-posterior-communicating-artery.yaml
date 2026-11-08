@@ -1,0 +1,35 @@
+slug: hypothalamic-branch-of-posterior-communicating-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: hypothalamic branch of posterior communicating artery
+    source: fma
+    status: draft
+ids:
+  fma: 50427
+  wikidata: Q66539569
+sides:
+  left:
+    ids:
+      fma: 50429
+      wikidata: Q66539571
+    meshes:
+      - bp3d:FJ1679M
+    labels:
+      en:
+        text: hypothalamic branch of left posterior communicating artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50428
+      wikidata: Q66539570
+    meshes:
+      - bp3d:FJ1679
+    labels:
+      en:
+        text: hypothalamic branch of right posterior communicating artery
+        source: fma
+        status: draft

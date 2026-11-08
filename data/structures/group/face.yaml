@@ -1,0 +1,25 @@
+slug: face
+kind: group
+laterality: midline
+status: draft
+parent: head
+regions:
+  - head
+labels:
+  en:
+    text: face
+    source: fma
+    status: draft
+  fr:
+    text: visage
+    source: wikidata
+    status: draft
+  la:
+    text: facies
+    source: wikidata
+    status: draft
+ids:
+  fma: 24728
+  ta2: 112
+  ta98: A01.1.00.006
+  wikidata: Q37017

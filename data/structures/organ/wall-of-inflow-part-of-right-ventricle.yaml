@@ -1,0 +1,13 @@
+slug: wall-of-inflow-part-of-right-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: wall-of-right-ventricle
+labels:
+  en:
+    text: wall of inflow part of right ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 49207
+  wikidata: Q66538559

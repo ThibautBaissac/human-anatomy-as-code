@@ -1,0 +1,22 @@
+slug: bony-pectoral-girdle
+kind: organ
+laterality: bilateral
+status: draft
+parent: skeletal-system-of-thorax
+labels:
+  en:
+    text: bony pectoral girdle
+    source: fma
+    status: draft
+ids:
+  fma: 25570
+  wikidata: Q66516859
+sides:
+  left:
+    ids:
+      fma: 25573
+      wikidata: Q66516862
+  right:
+    ids:
+      fma: 25572
+      wikidata: Q66516861

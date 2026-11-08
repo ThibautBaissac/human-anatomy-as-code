@@ -1,0 +1,36 @@
+slug: plantar-arch
+kind: artery
+laterality: bilateral
+status: draft
+parent: trunk-of-lateral-plantar-artery
+labels:
+  en:
+    text: plantar arch
+    source: fma
+    status: draft
+  fr:
+    text: arcade plantaire profonde
+    source: wikidata
+    status: draft
+  la:
+    text: Arcus plantaris profundus
+    source: wikidata
+    status: draft
+ids:
+  fma: 43942
+  ta2: 4738
+  ta98: A12.2.16.065
+  wikidata: Q39075360
+sides:
+  left:
+    ids:
+      fma: 43944
+      wikidata: Q66533853
+    meshes:
+      - bp3d:FJ2085
+  right:
+    ids:
+      fma: 43943
+      wikidata: Q66533852
+    meshes:
+      - bp3d:FJ2169

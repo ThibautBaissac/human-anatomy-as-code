@@ -1,0 +1,39 @@
+slug: paracentral-branch-of-callosomarginal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: paracentral branch of callosomarginal artery
+    source: fma
+    status: draft
+ids:
+  fma: 50336
+  wikidata: Q66539482
+sides:
+  left:
+    ids:
+      fma: 50358
+      wikidata: Q66539504
+    meshes:
+      - bp3d:FJ1696M
+      - bp3d:FJ1697M
+      - bp3d:FJ1698M
+    labels:
+      en:
+        text: paracentral branch of left callosomarginal artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50357
+      wikidata: Q66539503
+    meshes:
+      - bp3d:FJ1696
+      - bp3d:FJ1697
+      - bp3d:FJ1698
+    labels:
+      en:
+        text: paracentral branch of right callosomarginal artery
+        source: fma
+        status: draft

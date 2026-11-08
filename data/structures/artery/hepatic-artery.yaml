@@ -1,0 +1,32 @@
+slug: hepatic-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: left-lobe-of-liver
+labels:
+  en:
+    text: hepatic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère hépatique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14769
+  wikidata: Q66510798
+sides:
+  left:
+    ids:
+      fma: 14779
+      ta2: 4234
+      ta98: A12.2.12.035
+      wikidata: Q66510808
+  right:
+    ids:
+      fma: 14778
+      ta2: 4229
+      ta98: A12.2.12.030
+      wikidata: Q66510804

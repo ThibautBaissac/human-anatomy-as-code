@@ -1,0 +1,40 @@
+slug: trapezium
+kind: bone
+laterality: bilateral
+status: draft
+parent: wrist
+regions:
+  - upper-limb
+labels:
+  en:
+    text: trapezium
+    source: fma
+    status: draft
+  fr:
+    text: trapèze
+    source: wikidata
+    status: draft
+  la:
+    text: Os trapezium
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23721
+  ta2: 1255
+  ta98: A02.4.08.008
+  wikidata: Q265617
+sides:
+  left:
+    ids:
+      fma: 24444
+      wikidata: Q66515969
+    meshes:
+      - bp3d:FJ3283
+  right:
+    ids:
+      fma: 24443
+      wikidata: Q66515968
+    meshes:
+      - bp3d:FJ3388

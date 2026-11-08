@@ -1,0 +1,15 @@
+slug: anal-part-of-perineum
+kind: organ
+laterality: midline
+status: draft
+parent: perineum
+labels:
+  en:
+    text: anal part of perineum
+    source: fma
+    status: draft
+ids:
+  fma: 20347
+  ta2: 278
+  ta98: A01.2.06.002
+  wikidata: Q4751012

@@ -1,0 +1,39 @@
+slug: extensor-pollicis-brevis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor pollicis brevis
+    source: fma
+    status: draft
+  fr:
+    text: muscle court extenseur du pouce
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor pollicis brevis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 38518
+  ta2: 2518
+  ta98: A04.6.02.050
+  wikidata: Q901116
+sides:
+  left:
+    ids:
+      fma: 38520
+      wikidata: Q66527676
+    meshes:
+      - bp3d:FJ1494M
+  right:
+    ids:
+      fma: 38519
+      wikidata: Q66527674
+    meshes:
+      - bp3d:FJ1494

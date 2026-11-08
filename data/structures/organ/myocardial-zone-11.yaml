@@ -1,0 +1,15 @@
+slug: myocardial-zone-11
+kind: organ
+laterality: midline
+status: draft
+parent: myocardium-of-lateral-wall-of-left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: myocardial zone 11
+    source: fma
+    status: draft
+ids:
+  fma: 86063
+  wikidata: Q66592037

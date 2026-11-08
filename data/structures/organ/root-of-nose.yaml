@@ -1,0 +1,17 @@
+slug: root-of-nose
+kind: organ
+laterality: midline
+status: draft
+parent: external-nose
+regions:
+  - head
+labels:
+  en:
+    text: root of nose
+    source: fma
+    status: draft
+ids:
+  fma: 59516
+  ta2: 217
+  ta98: A06.1.01.002
+  wikidata: Q66555948

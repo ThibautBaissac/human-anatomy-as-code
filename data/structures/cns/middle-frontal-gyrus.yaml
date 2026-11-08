@@ -1,0 +1,32 @@
+slug: middle-frontal-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: prefrontal-cortex
+labels:
+  en:
+    text: middle frontal gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus frontal moyen
+    source: wikidata
+    status: draft
+ids:
+  fma: 61859
+  ta2: 5454
+  ta98: A14.1.09.118
+  wikidata: Q3063753
+sides:
+  left:
+    ids:
+      fma: 72656
+      wikidata: Q66570161
+    meshes:
+      - bp3d:FJ1787
+  right:
+    ids:
+      fma: 72655
+      wikidata: Q66570160
+    meshes:
+      - bp3d:FJ1788

@@ -1,0 +1,23 @@
+slug: posterior-leaflet-of-mitral-valve
+kind: organ
+laterality: midline
+status: draft
+parent: mitral-valve
+regions:
+  - thorax
+labels:
+  en:
+    text: posterior leaflet of mitral valve
+    source: fma
+    status: draft
+  fr:
+    text: cuspide postérieure de la valve atrio-ventriculaire gauche
+    source: wikidata
+    status: draft
+ids:
+  fma: 7243
+  ta2: 3990
+  ta98: A12.1.04.005
+  wikidata: Q66502847
+meshes:
+  - bp3d:FJ2432

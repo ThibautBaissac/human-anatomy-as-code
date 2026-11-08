@@ -1,0 +1,38 @@
+slug: sclera
+kind: organ
+laterality: bilateral
+status: draft
+parent: fibrous-layer-of-eyeball
+regions:
+  - head
+labels:
+  en:
+    text: sclera
+    source: fma
+    status: draft
+  fr:
+    text: sclère
+    source: wikidata
+    status: draft
+  la:
+    text: sclirotica
+    source: wikidata
+    status: draft
+ids:
+  fma: 58269
+  ta2: 6750
+  ta98: A15.2.02.002
+  wikidata: Q193107
+sides:
+  left:
+    ids:
+      fma: 58272
+      wikidata: Q66554884
+    meshes:
+      - bp3d:FJ1317
+  right:
+    ids:
+      fma: 58271
+      wikidata: Q66554883
+    meshes:
+      - bp3d:FJ1368

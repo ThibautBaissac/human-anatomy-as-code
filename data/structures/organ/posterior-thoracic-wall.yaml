@@ -1,0 +1,15 @@
+slug: posterior-thoracic-wall
+kind: organ
+laterality: midline
+status: draft
+parent: posterior-chest
+regions:
+  - thorax
+labels:
+  en:
+    text: posterior thoracic wall
+    source: fma
+    status: draft
+ids:
+  fma: 73103
+  wikidata: Q66570573

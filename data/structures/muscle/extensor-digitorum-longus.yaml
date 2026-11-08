@@ -1,0 +1,39 @@
+slug: extensor-digitorum-longus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: extensor digitorum longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle long extenseur des orteils
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus extensor digitorum longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22534
+  ta2: 2645
+  ta98: A04.7.02.038
+  wikidata: Q1684283
+sides:
+  left:
+    ids:
+      fma: 22549
+      wikidata: Q66514566
+    meshes:
+      - bp3d:FJ1406M
+  right:
+    ids:
+      fma: 22548
+      wikidata: Q66514565
+    meshes:
+      - bp3d:FJ1406

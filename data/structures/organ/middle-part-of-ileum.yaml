@@ -1,0 +1,24 @@
+slug: middle-part-of-ileum
+kind: organ
+laterality: midline
+status: draft
+parent: ileum
+labels:
+  en:
+    text: middle part of ileum
+    source: fma
+    status: draft
+ids:
+  fma: 14965
+  wikidata: Q66511111
+meshes:
+  - bp3d:FJ2576
+  - bp3d:FJ2577
+  - bp3d:FJ2578
+  - bp3d:FJ2579
+  - bp3d:FJ2580
+  - bp3d:FJ2581
+  - bp3d:FJ2582
+  - bp3d:FJ2583
+  - bp3d:FJ2584
+  - bp3d:FJ2586

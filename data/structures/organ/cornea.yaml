@@ -1,0 +1,38 @@
+slug: cornea
+kind: organ
+laterality: bilateral
+status: draft
+parent: fibrous-layer-of-eyeball
+regions:
+  - head
+labels:
+  en:
+    text: cornea
+    source: fma
+    status: draft
+  fr:
+    text: cornée
+    source: wikidata
+    status: draft
+  la:
+    text: Cornea
+    source: wikidata
+    status: draft
+ids:
+  fma: 58238
+  ta2: 6744
+  ta98: A15.2.02.012
+  wikidata: Q168291
+sides:
+  left:
+    ids:
+      fma: 58240
+      wikidata: Q66554863
+    meshes:
+      - bp3d:FJ1289
+  right:
+    ids:
+      fma: 58239
+      wikidata: Q66554862
+    meshes:
+      - bp3d:FJ1340

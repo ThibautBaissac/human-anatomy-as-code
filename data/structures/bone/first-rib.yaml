@@ -1,0 +1,33 @@
+slug: first-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: first rib
+    source: fma
+    status: draft
+  fr:
+    text: première côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 7597
+  ta2: 1107
+  wikidata: Q5454239
+sides:
+  left:
+    ids:
+      fma: 7987
+      wikidata: Q66503478
+    meshes:
+      - bp3d:FJ3228
+  right:
+    ids:
+      fma: 7857
+      wikidata: Q66503349
+    meshes:
+      - bp3d:FJ3334

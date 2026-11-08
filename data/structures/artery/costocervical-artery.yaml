@@ -1,0 +1,22 @@
+slug: costocervical-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: subclavian-artery
+labels:
+  en:
+    text: costocervical artery
+    source: fma
+    status: draft
+ids:
+  fma: 70350
+  wikidata: Q66568357
+sides:
+  left:
+    ids:
+      fma: 70352
+      wikidata: Q66568359
+  right:
+    ids:
+      fma: 70351
+      wikidata: Q66568358

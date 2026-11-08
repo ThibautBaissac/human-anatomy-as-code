@@ -1,0 +1,17 @@
+slug: lamina-terminalis
+kind: cns
+laterality: midline
+status: draft
+labels:
+  en:
+    text: lamina terminalis
+    source: fma
+    status: draft
+ids:
+  fma: 61975
+  ta2: 5776
+  ta98: A14.1.08.419
+  wikidata: Q1148419
+meshes:
+  - bp3d:FJ1764
+  - bp3d:FJ1812

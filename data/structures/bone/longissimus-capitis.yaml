@@ -1,0 +1,33 @@
+slug: longissimus-capitis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: longissimus capitis
+    source: fma
+    status: draft
+  fr:
+    text: muscle longissimus de la tête
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22714
+  ta2: 2266
+  ta98: A04.3.02.014
+  wikidata: Q66514742
+sides:
+  left:
+    ids:
+      fma: 22756
+      wikidata: Q66514775
+    meshes:
+      - bp3d:FJ1533M
+  right:
+    ids:
+      fma: 22754
+      wikidata: Q66514774
+    meshes:
+      - bp3d:FJ1533

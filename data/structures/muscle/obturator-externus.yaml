@@ -1,0 +1,39 @@
+slug: obturator-externus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: obturator externus
+    source: fma
+    status: draft
+  fr:
+    text: muscle obturateur externe
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus obturatorius externus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22299
+  ta2: 2636
+  ta98: A04.7.02.031
+  wikidata: Q1756762
+sides:
+  left:
+    ids:
+      fma: 22327
+      wikidata: Q66514394
+    meshes:
+      - bp3d:FJ1425M
+  right:
+    ids:
+      fma: 22326
+      wikidata: Q66514393
+    meshes:
+      - bp3d:FJ1425

@@ -1,0 +1,19 @@
+slug: uvula
+kind: organ
+laterality: midline
+status: draft
+parent: soft-palate
+labels:
+  en:
+    text: uvula
+    source: fma
+    status: draft
+  fr:
+    text: luette
+    source: wikidata
+    status: draft
+ids:
+  fma: 55022
+  ta2: 2781
+  ta98: A05.2.01.004
+  wikidata: Q273538

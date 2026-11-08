@@ -1,0 +1,31 @@
+slug: pterygomandibular-raphe
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: pterygomandibular raphe
+    source: fma
+    status: draft
+  fr:
+    text: raphé ptérygomandibulaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 55618
+  ta2: 2178
+  ta98: A05.3.01.102
+  wikidata: Q340154
+sides:
+  left:
+    ids:
+      fma: 55620
+      wikidata: Q66545264
+    meshes:
+      - bp3d:FJ2744
+  right:
+    ids:
+      fma: 55619
+      wikidata: Q66545263
+    meshes:
+      - bp3d:FJ2756

@@ -1,0 +1,13 @@
+slug: ventricular-system-of-neuraxis
+kind: organ
+laterality: midline
+status: draft
+parent: neuraxis
+labels:
+  en:
+    text: ventricular system of neuraxis
+    source: fma
+    status: draft
+ids:
+  fma: 242675
+  wikidata: Q66599182

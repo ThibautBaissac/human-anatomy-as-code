@@ -1,0 +1,13 @@
+slug: maxillary-part-of-mouth
+kind: bone
+laterality: midline
+status: draft
+parent: mouth
+labels:
+  en:
+    text: maxillary part of mouth
+    source: fma
+    status: draft
+ids:
+  fma: 59399
+  wikidata: Q66555850

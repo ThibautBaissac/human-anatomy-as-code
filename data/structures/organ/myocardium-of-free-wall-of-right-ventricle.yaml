@@ -1,0 +1,13 @@
+slug: myocardium-of-free-wall-of-right-ventricle
+kind: organ
+laterality: midline
+status: draft
+parent: free-wall-of-right-ventricle
+labels:
+  en:
+    text: myocardium of free wall of right ventricle
+    source: fma
+    status: draft
+ids:
+  fma: 84931
+  wikidata: Q66591344

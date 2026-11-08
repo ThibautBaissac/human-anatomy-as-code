@@ -1,0 +1,29 @@
+slug: set-of-anterior-intercostal-veins
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of anterior intercostal veins
+    source: fma
+    status: draft
+  fr:
+    text: veine intercostale antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Venae intercostales anteriores
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 70839
+  ta2: 4790
+  ta98: A12.3.04.022
+  wikidata: Q4771354
+meshes:
+  - bp3d:FJ1985
+  - bp3d:FJ1994

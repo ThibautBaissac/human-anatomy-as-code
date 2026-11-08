@@ -1,0 +1,23 @@
+slug: peritoneum
+kind: organ
+laterality: midline
+status: draft
+parent: peritoneal-sac
+labels:
+  en:
+    text: peritoneum
+    source: fma
+    status: draft
+  fr:
+    text: péritoine
+    source: wikidata
+    status: draft
+  la:
+    text: peritoneum
+    source: wikidata
+    status: draft
+ids:
+  fma: 9584
+  ta2: 3729
+  ta98: A10.1.02.006
+  wikidata: Q9629

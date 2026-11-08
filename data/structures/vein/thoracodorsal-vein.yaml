@@ -1,0 +1,33 @@
+slug: thoracodorsal-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: thoracodorsal vein
+    source: fma
+    status: draft
+  fr:
+    text: veine thoraco-dorsale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 71213
+  ta2: 4974
+  ta98: A12.3.08.008
+  wikidata: Q66569042
+sides:
+  left:
+    ids:
+      fma: 71215
+      wikidata: Q66569044
+    meshes:
+      - bp3d:FJ2254
+  right:
+    ids:
+      fma: 71214
+      wikidata: Q66569043
+    meshes:
+      - bp3d:FJ2306

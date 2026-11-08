@@ -1,0 +1,8 @@
+SELECT ?item ?fma ?ta2 ?ta98 ?fr ?la ?en WHERE {
+  ?item wdt:P1402 ?fma .
+  OPTIONAL { ?item wdt:P7173 ?ta2 }
+  OPTIONAL { ?item wdt:P1323 ?ta98 }
+  OPTIONAL { ?item rdfs:label ?fr FILTER(LANG(?fr)="fr") }
+  OPTIONAL { ?item rdfs:label ?la FILTER(LANG(?la)="la") }
+  OPTIONAL { ?item rdfs:label ?en FILTER(LANG(?en)="en") }
+}

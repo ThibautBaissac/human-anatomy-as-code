@@ -1,0 +1,19 @@
+slug: right-shoulder
+kind: organ
+laterality: unpaired-right
+status: draft
+parent: pectoral-girdle
+regions:
+  - upper-limb
+labels:
+  en:
+    text: right shoulder
+    source: fma
+    status: draft
+  fr:
+    text: épaule droite
+    source: wikidata
+    status: draft
+ids:
+  fma: 33642
+  wikidata: Q66523898

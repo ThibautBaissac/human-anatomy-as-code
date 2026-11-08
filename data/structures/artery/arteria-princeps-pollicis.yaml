@@ -1,0 +1,41 @@
+slug: arteria-princeps-pollicis
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: arteria princeps pollicis
+    source: fma
+    status: draft
+  fr:
+    text: artère principale du pouce
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria princeps pollicis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22762
+  ta2: 4650
+  ta98: A12.2.09.036
+  wikidata: Q3328747
+sides:
+  left:
+    ids:
+      fma: 22907
+      wikidata: Q66514891
+    meshes:
+      - bp3d:FJ2338
+      - bp3d:FJ2339
+  right:
+    ids:
+      fma: 22905
+      wikidata: Q66514889
+    meshes:
+      - bp3d:FJ2371
+      - bp3d:FJ2372

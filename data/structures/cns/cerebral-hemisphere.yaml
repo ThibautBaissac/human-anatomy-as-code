@@ -1,0 +1,28 @@
+slug: cerebral-hemisphere
+kind: cns
+laterality: bilateral
+status: draft
+parent: telencephalon
+labels:
+  en:
+    text: cerebral hemisphere
+    source: fma
+    status: draft
+  fr:
+    text: hémisphère cérébral
+    source: wikidata
+    status: draft
+ids:
+  fma: 61817
+  ta2: 5418
+  ta98: A14.1.09.002
+  wikidata: Q551808
+sides:
+  left:
+    ids:
+      fma: 61819
+      wikidata: Q66557996
+  right:
+    ids:
+      fma: 67292
+      wikidata: Q66563080

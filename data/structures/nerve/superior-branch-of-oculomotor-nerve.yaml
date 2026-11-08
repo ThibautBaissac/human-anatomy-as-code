@@ -1,0 +1,35 @@
+slug: superior-branch-of-oculomotor-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superior branch of oculomotor nerve
+    source: fma
+    status: draft
+ids:
+  fma: 52572
+  wikidata: Q66542802
+sides:
+  left:
+    ids:
+      fma: 52575
+      wikidata: Q66542806
+    meshes:
+      - bp3d:FJ1321
+    labels:
+      en:
+        text: superior branch of left oculomotor nerve
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 52574
+      wikidata: Q66542805
+    meshes:
+      - bp3d:FJ1372
+    labels:
+      en:
+        text: superior branch of right oculomotor nerve
+        source: fma
+        status: draft

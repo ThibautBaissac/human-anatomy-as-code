@@ -1,0 +1,34 @@
+slug: investing-fascia-of-lower-limb
+kind: fascia
+laterality: bilateral
+status: draft
+parent: deep-fascial-system
+regions:
+  - lower-limb
+labels:
+  en:
+    text: investing fascia of lower limb
+    source: fma
+    status: draft
+ids:
+  fma: 57783
+  wikidata: Q66554489
+sides:
+  left:
+    ids:
+      fma: 58419
+      wikidata: Q66554997
+    labels:
+      en:
+        text: investing fascia of left lower limb
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58418
+      wikidata: Q66554995
+    labels:
+      en:
+        text: investing fascia of right lower limb
+        source: fma
+        status: draft

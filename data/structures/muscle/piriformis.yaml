@@ -1,0 +1,42 @@
+slug: piriformis
+kind: muscle
+laterality: bilateral
+status: draft
+parent: pelvic-wall
+regions:
+  - abdomen
+labels:
+  en:
+    text: piriformis
+    source: fma
+    status: draft
+  fr:
+    text: muscle piriforme
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus piriformis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 19082
+  ta2: 2604
+  ta98: A04.7.02.011
+  wikidata: Q1144893
+sides:
+  left:
+    ids:
+      fma: 22341
+      wikidata: Q66514408
+    meshes:
+      - bp3d:FJ1428M
+  right:
+    ids:
+      fma: 22340
+      wikidata: Q66514407
+    meshes:
+      - bp3d:FJ1428

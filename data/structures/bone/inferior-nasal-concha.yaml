@@ -1,0 +1,36 @@
+slug: inferior-nasal-concha
+kind: bone
+laterality: bilateral
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: inferior nasal concha
+    source: fma
+    status: draft
+  fr:
+    text: cornet nasal inférieur
+    source: wikidata
+    status: draft
+  la:
+    text: Concha nasalis inferior
+    source: wikidata
+    status: draft
+ids:
+  fma: 54736
+  ta2: 740
+  ta98: A02.1.08.001
+  wikidata: Q552439
+sides:
+  left:
+    ids:
+      fma: 54738
+      wikidata: Q66544514
+    meshes:
+      - bp3d:FJ3263
+  right:
+    ids:
+      fma: 54737
+      wikidata: Q66544513
+    meshes:
+      - bp3d:FJ3369

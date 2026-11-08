@@ -1,0 +1,21 @@
+slug: papillary-muscle-of-left-ventricle
+kind: muscle
+laterality: midline
+status: draft
+parent: subendocardial-layer-of-myocardium-of-left-ventricle
+regions:
+  - thorax
+labels:
+  en:
+    text: papillary muscle of left ventricle
+    source: fma
+    status: draft
+  fr:
+    text: muscle papillaire du ventricule gauche
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 9352
+  wikidata: Q66504827

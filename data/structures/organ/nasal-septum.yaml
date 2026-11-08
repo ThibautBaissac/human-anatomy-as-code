@@ -1,0 +1,25 @@
+slug: nasal-septum
+kind: organ
+laterality: midline
+status: draft
+parent: nose
+regions:
+  - head
+labels:
+  en:
+    text: nasal septum
+    source: fma
+    status: draft
+  fr:
+    text: septum nasal
+    source: wikidata
+    status: draft
+  la:
+    text: Septum nasi
+    source: wikidata
+    status: draft
+ids:
+  fma: 54375
+  ta2: 3137
+  ta98: A06.1.02.004
+  wikidata: Q500634

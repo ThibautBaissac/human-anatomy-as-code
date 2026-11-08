@@ -1,0 +1,41 @@
+slug: transverse-head-of-adductor-pollicis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: transverse head of adductor pollicis
+    source: fma
+    status: draft
+  fr:
+    text: chef transverse du muscle adducteur du pouce
+    source: wikidata
+    status: draft
+ids:
+  fma: 46120
+  ta2: 2528
+  ta98: A04.6.02.061
+  wikidata: Q66536312
+sides:
+  left:
+    ids:
+      fma: 46124
+      wikidata: Q66536316
+    meshes:
+      - bp3d:FJ1515M
+    labels:
+      en:
+        text: transverse head of left adductor pollicis
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 46123
+      wikidata: Q66536315
+    meshes:
+      - bp3d:FJ1515
+    labels:
+      en:
+        text: transverse head of right adductor pollicis
+        source: fma
+        status: draft

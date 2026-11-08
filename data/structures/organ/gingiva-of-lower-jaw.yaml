@@ -1,0 +1,15 @@
+slug: gingiva-of-lower-jaw
+kind: organ
+laterality: midline
+status: draft
+parent: mouth
+labels:
+  en:
+    text: gingiva of lower jaw
+    source: fma
+    status: draft
+ids:
+  fma: 59764
+  wikidata: Q66556188
+meshes:
+  - bp3d:FJ1253

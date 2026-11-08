@@ -1,0 +1,39 @@
+slug: median-cubital-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: median cubital vein
+    source: fma
+    status: draft
+  fr:
+    text: veine médiane cubitale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena mediana cubiti
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22963
+  ta2: 4980
+  ta98: A12.3.08.019
+  wikidata: Q3320949
+sides:
+  left:
+    ids:
+      fma: 22965
+      wikidata: Q66514934
+    meshes:
+      - bp3d:FJ2235
+  right:
+    ids:
+      fma: 22964
+      wikidata: Q66514933
+    meshes:
+      - bp3d:FJ2287

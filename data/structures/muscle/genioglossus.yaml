@@ -1,0 +1,39 @@
+slug: genioglossus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: genioglossus
+    source: fma
+    status: draft
+  fr:
+    text: muscle génioglosse
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus genioglossus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46690
+  ta2: 2117
+  ta98: A05.1.04.101
+  wikidata: Q580326
+sides:
+  left:
+    ids:
+      fma: 46702
+      wikidata: Q66536679
+    meshes:
+      - bp3d:FJ2738
+  right:
+    ids:
+      fma: 46698
+      wikidata: Q66536676
+    meshes:
+      - bp3d:FJ2750

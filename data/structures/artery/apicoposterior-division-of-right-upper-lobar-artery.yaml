@@ -1,0 +1,13 @@
+slug: apicoposterior-division-of-right-upper-lobar-artery
+kind: artery
+laterality: midline
+status: draft
+parent: upper-lobar-artery
+labels:
+  en:
+    text: apicoposterior division of right upper lobar artery
+    source: fma
+    status: draft
+ids:
+  fma: 68659
+  wikidata: Q66564205

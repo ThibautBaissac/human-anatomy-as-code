@@ -1,0 +1,15 @@
+slug: intervertebral-disk-of-fifth-cervical-vertebra
+kind: cartilage
+laterality: midline
+status: draft
+parent: fifth-cervical-intervertebral-symphysis
+labels:
+  en:
+    text: intervertebral disk of fifth cervical vertebra
+    source: fma
+    status: draft
+ids:
+  fma: 13898
+  wikidata: Q66508827
+meshes:
+  - bp3d:FJ3219

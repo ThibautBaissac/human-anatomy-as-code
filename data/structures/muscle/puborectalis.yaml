@@ -1,0 +1,40 @@
+slug: puborectalis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: puborectalis
+    source: fma
+    status: draft
+  fr:
+    text: muscle pubo-rectal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus puborectalis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 19091
+  ta2: 2406
+  ta98: A04.5.04.007
+  wikidata: Q842547
+sides:
+  left:
+    ids:
+      fma: 45857
+      wikidata: Q66536121
+    meshes:
+      - bp3d:FJ1458M
+      - bp3d:FJ2546
+  right:
+    ids:
+      fma: 45856
+      wikidata: Q66536120
+    meshes:
+      - bp3d:FJ2551

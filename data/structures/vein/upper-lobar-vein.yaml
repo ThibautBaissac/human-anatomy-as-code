@@ -1,0 +1,22 @@
+slug: upper-lobar-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: intrapulmonary-part-of-superior-pulmonary-vein
+labels:
+  en:
+    text: upper lobar vein
+    source: fma
+    status: draft
+ids:
+  fma: 13477
+  wikidata: Q66508138
+sides:
+  left:
+    ids:
+      fma: 8657
+      wikidata: Q66504114
+  right:
+    ids:
+      fma: 8655
+      wikidata: Q66504112

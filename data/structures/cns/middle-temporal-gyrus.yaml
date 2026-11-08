@@ -1,0 +1,32 @@
+slug: middle-temporal-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: temporal-lobe
+labels:
+  en:
+    text: middle temporal gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus temporal moyen
+    source: wikidata
+    status: draft
+ids:
+  fma: 61906
+  ta2: 5495
+  ta98: A14.1.09.146
+  wikidata: Q5407200
+sides:
+  left:
+    ids:
+      fma: 72686
+      wikidata: Q66570189
+    meshes:
+      - bp3d:FJ1789
+  right:
+    ids:
+      fma: 72685
+      wikidata: Q66570188
+    meshes:
+      - bp3d:FJ1790

@@ -1,0 +1,23 @@
+slug: neurocranium
+kind: bone
+laterality: midline
+status: draft
+parent: skull
+labels:
+  en:
+    text: neurocranium
+    source: fma
+    status: draft
+  fr:
+    text: neurocrâne
+    source: wikidata
+    status: draft
+  la:
+    text: Neurocranium
+    source: wikidata
+    status: draft
+ids:
+  fma: 53672
+  ta2: 354
+  ta98: A02.1.00.007
+  wikidata: Q1148039

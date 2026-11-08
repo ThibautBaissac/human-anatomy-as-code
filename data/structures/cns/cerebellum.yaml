@@ -1,0 +1,28 @@
+slug: cerebellum
+kind: cns
+laterality: midline
+status: draft
+parent: basicranial-part-of-head-proper
+regions:
+  - head
+labels:
+  en:
+    text: cerebellum
+    source: fma
+    status: draft
+  fr:
+    text: cervelet
+    source: wikidata
+    status: draft
+  la:
+    text: cerebellum
+    source: wikidata
+    status: draft
+ids:
+  fma: 67944
+  ta2: 5788
+  ta98: A14.1.07.001
+  wikidata: Q130983
+meshes:
+  - bp3d:FJ1781
+  - bp3d:FJ1830

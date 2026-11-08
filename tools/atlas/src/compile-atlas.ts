@@ -1,0 +1,287 @@
+import { readFileSync } from 'node:fs';
+import { byKey, listYaml } from './fs-util.ts';
+import { join, relative, sep } from 'node:path';
+import { createRequire } from 'node:module';
+import { parse } from 'yaml';
+import { Ajv2020 } from 'ajv/dist/2020.js';
+import { composeSideLabel } from './compose-side-label.ts';
+import type { Lang, Side, SideBlock, Source, Structure } from './types.ts';
+
+export interface Diagnostic {
+  file: string;
+  pointer: string;
+  rule: string;
+  message: string;
+  severity: 'error' | 'warning';
+}
+
+export interface CompiledSide extends Omit<SideBlock, 'labels'> {
+  labels: Partial<Record<Lang, string>>;
+}
+
+export interface CompiledStructure extends Omit<Structure, 'layer' | 'sides'> {
+  layer: number | null;
+  children: string[];
+  sides?: Record<Side, CompiledSide>;
+}
+
+export interface Atlas {
+  sources: Record<string, Source>;
+  structures: CompiledStructure[];
+  meshIndex: Record<string, { slug: string; side: Side | null }>;
+  attributions: { source: string; name: string; licence: string; attribution: string; url: string }[];
+}
+
+export interface CompileResult {
+  atlas: Atlas | null;
+  errors: Diagnostic[];
+  warnings: Diagnostic[];
+}
+
+export const KIND_LAYER: Record<string, number | null> = {
+  skin: 0, fascia: 1, muscle: 2, tendon: 2, ligament: 3, artery: 3, vein: 3, lymphatic: 3, nerve: 3,
+  organ: 4, cns: 4, cartilage: 5, joint: 5, bone: 5, group: null,
+};
+
+const SIDES: Side[] = ['left', 'right'];
+const LANGS: Lang[] = ['en', 'fr', 'la'];
+
+/** Every mesh reference of a structure, with its side (null at the root). */
+export function meshRefs(s: Structure): { ref: string; side: Side | null; pointer: string }[] {
+  const out: { ref: string; side: Side | null; pointer: string }[] = [];
+  (s.meshes ?? []).forEach((ref, i) => out.push({ ref, side: null, pointer: `/meshes/${i}` }));
+  for (const side of SIDES) {
+    (s.sides?.[side]?.meshes ?? []).forEach((ref, i) => out.push({ ref, side, pointer: `/sides/${side}/meshes/${i}` }));
+  }
+  return out;
+}
+
+/** Recursively sorts object keys so the output does not depend on how files are laid out. */
+function sortKeys<T>(v: T): T {
+  if (Array.isArray(v)) return v.map(sortKeys) as T;
+  if (v && typeof v === 'object') {
+    return Object.fromEntries(Object.keys(v).sort(byKey).map((k) => [k, sortKeys((v as Record<string, unknown>)[k])])) as T;
+  }
+  return v;
+}
+
+const sorted = (xs: string[] | undefined) => (xs ? [...xs].sort(byKey) : xs);
+
+function compileStructure(s: Structure, children: string[]): CompiledStructure {
+  const { sides, layer, ...rest } = s;
+  const out: CompiledStructure = { ...rest, layer: layer ?? KIND_LAYER[s.kind] ?? null, children };
+  if (out.meshes) out.meshes = sorted(out.meshes);
+  if (out.regions) out.regions = sorted(out.regions);
+  if (out.aliases) out.aliases = sorted(out.aliases);
+  if (sides) {
+    out.sides = {} as Record<Side, CompiledSide>;
+    for (const side of SIDES) {
+      const block = sides[side];
+      const labels: Partial<Record<Lang, string>> = {};
+      for (const lang of LANGS) {
+        const canonical = s.labels[lang];
+        const override = block.labels?.[lang];
+        if (override) labels[lang] = override.text;
+        else if (canonical) labels[lang] = composeSideLabel(canonical, lang, side);
+      }
+      out.sides[side] = { ...block, meshes: sorted(block.meshes), labels };
+      if (!out.sides[side].meshes) delete out.sides[side].meshes;
+    }
+  }
+  return sortKeys(out);
+}
+
+const require = createRequire(import.meta.url);
+const ajv = new Ajv2020({ allErrors: true, strict: true, strictRequired: false, allowUnionTypes: true });
+const validateStructure = ajv.compile(require('../schemas/structure.schema.json'));
+const validateSource = ajv.compile(require('../schemas/source.schema.json'));
+
+const ROOT_SLUG = 'human-body';
+
+interface Loaded<T> {
+  file: string;
+  data: T;
+}
+
+export function compileAtlas(dataDir: string): CompileResult {
+  const errors: Diagnostic[] = [];
+  const warnings: Diagnostic[] = [];
+  const rel = (p: string) => relative(dataDir, p).split(sep).join('/');
+  const err = (file: string, pointer: string, rule: string, message: string) => errors.push({ file, pointer, rule, message, severity: 'error' });
+  const warn = (file: string, pointer: string, rule: string, message: string) => warnings.push({ file, pointer, rule, message, severity: 'warning' });
+
+  // 1. YAML parsing
+  function load<T>(subdir: string): Loaded<T>[] {
+    const out: Loaded<T>[] = [];
+    for (const path of listYaml(join(dataDir, subdir))) {
+      const file = rel(path);
+      try {
+        out.push({ file, data: parse(readFileSync(path, 'utf8')) as T });
+      } catch (e) {
+        err(file, '', 'yaml-parse', (e as Error).message.split('\n')[0]);
+      }
+    }
+    return out;
+  }
+
+  // 2. JSON Schema (+ 7. laterality shape, reported as one readable error)
+  const knownSourceIds = new Set<string>(); // ids of every source file, valid or not, to avoid cascading label-source errors
+  const sourceFiles = load<Source>('sources').filter(({ file, data }) => {
+    if (data && typeof data.id === 'string') knownSourceIds.add(data.id);
+    if (validateSource(data)) return true;
+    for (const e of validateSource.errors ?? []) err(file, e.instancePath, 'schema', e.message ?? 'invalid');
+    return false;
+  });
+  const structureFiles = load<Structure>('structures').filter(({ file, data }) => {
+    const ok = validateStructure(data);
+    let schemaErrors = validateStructure.errors ?? [];
+    const lateralityBroken = data && typeof data === 'object' && (
+      (data.laterality === 'bilateral' && (!data.sides?.left || !data.sides?.right || data.meshes !== undefined)) ||
+      (data.laterality !== 'bilateral' && data.sides !== undefined));
+    if (lateralityBroken) {
+      err(file, '/sides', 'laterality-shape', data.laterality === 'bilateral'
+        ? 'une structure bilateral a deux côtés (sides.left, sides.right) et pas de meshes à la racine'
+        : `une structure ${data.laterality} n'a pas de sides`);
+      schemaErrors = schemaErrors.filter((e) => !e.schemaPath.startsWith('#/allOf/0') && !e.schemaPath.startsWith('#/properties/sides/required'));
+    }
+    const seen = new Set<string>();
+    for (const e of schemaErrors) {
+      const key = `${e.instancePath} ${e.message}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      err(file, e.instancePath, 'schema', `${e.message ?? 'invalid'}${e.params && 'allowedValues' in e.params ? ` (${(e.params.allowedValues as string[]).join(', ')})` : ''}`);
+    }
+    return ok && !lateralityBroken;
+  });
+
+  const sources: Record<string, Source> = {};
+  for (const { data } of sourceFiles) sources[data.id] = data;
+
+  structureFiles.sort((a, b) => byKey(a.data.slug, b.data.slug) || byKey(a.file, b.file));
+
+  // 3. folder = kind, file name = slug
+  for (const { file, data } of structureFiles) {
+    const parts = file.split('/');
+    if (parts[1] !== data.kind) err(file, '/kind', 'kind-folder', `le dossier « ${parts[1]} » ne correspond pas au kind « ${data.kind} »`);
+    const base = parts[parts.length - 1].replace(/\.yaml$/, '');
+    if (base !== data.slug) err(file, '/slug', 'slug-filename', `le fichier « ${base}.yaml » ne correspond pas au slug « ${data.slug} »`);
+  }
+
+  // 4. unique slugs and aliases
+  const owner = new Map<string, string>(); // slug or alias -> canonical slug
+  const aliasOf = new Map<string, string>();
+  for (const { file, data } of structureFiles) {
+    if (owner.has(data.slug)) err(file, '/slug', 'slug-unique', `slug « ${data.slug} » déjà utilisé par « ${owner.get(data.slug)} »`);
+    else owner.set(data.slug, data.slug);
+  }
+  for (const { file, data } of structureFiles) {
+    (data.aliases ?? []).forEach((a, i) => {
+      if (owner.has(a)) err(file, `/aliases/${i}`, 'slug-unique', `alias « ${a} » déjà utilisé par « ${owner.get(a)} »`);
+      else { owner.set(a, data.slug); aliasOf.set(a, data.slug); }
+    });
+  }
+
+  // 5. parent exists
+  const slugs = new Set(structureFiles.map((x) => x.data.slug));
+  for (const { file, data } of structureFiles) {
+    if (data.parent === undefined || slugs.has(data.parent)) continue;
+    const canonical = aliasOf.get(data.parent);
+    err(file, '/parent', 'parent-exists', canonical
+      ? `« ${data.parent} » est un alias : utiliser le slug canonique « ${canonical} »`
+      : `parent « ${data.parent} » introuvable`);
+  }
+
+  // 6. no parent cycle
+  const parentOf = new Map(structureFiles.filter((x) => x.data.parent && slugs.has(x.data.parent)).map((x) => [x.data.slug, x.data.parent!]));
+  const fileOf = new Map(structureFiles.map((x) => [x.data.slug, x.file]));
+  const reported = new Set<string>();
+  for (const start of [...slugs].sort(byKey)) {
+    const path: string[] = [];
+    let cur: string | undefined = start;
+    while (cur !== undefined && !path.includes(cur)) { path.push(cur); cur = parentOf.get(cur); }
+    if (cur === undefined) continue;
+    const cycle = path.slice(path.indexOf(cur));
+    const key = [...cycle].sort(byKey).join(' ');
+    if (reported.has(key)) continue;
+    reported.add(key);
+    const first = [...cycle].sort(byKey)[0];
+    err(fileOf.get(first)!, '/parent', 'parent-cycle', `cycle de parents : ${cycle.join(' → ')} → ${cur}`);
+  }
+
+  // 8-9. mesh references
+  const meshPatterns = new Map(Object.values(sources).filter((x) => x.meshPrefix).map((x) => [x.meshPrefix!, new RegExp(x.meshPattern!)]));
+  const meshOwner = new Map<string, string>();
+  for (const { file, data } of structureFiles) {
+    for (const { ref, pointer } of meshRefs(data)) {
+      const [prefix, id] = ref.split(':');
+      const pattern = meshPatterns.get(prefix);
+      if (!pattern) err(file, pointer, 'mesh-ref', `préfixe de mesh « ${prefix} » inconnu du registre des sources`);
+      else if (!pattern.test(id)) err(file, pointer, 'mesh-ref', `« ${id} » ne respecte pas le motif ${pattern.source}`);
+      if (meshOwner.has(ref)) err(file, pointer, 'mesh-unique', `mesh « ${ref} » déjà référencé par « ${meshOwner.get(ref)} »`);
+      else meshOwner.set(ref, data.slug);
+    }
+  }
+
+  // 10. unique FMA ids
+  const fmaOwner = new Map<number, string>();
+  for (const { file, data } of structureFiles) {
+    const entries: [number | undefined, string][] = [[data.ids?.fma, '/ids/fma'], ...SIDES.map((side) => [data.sides?.[side]?.ids?.fma, `/sides/${side}/ids/fma`] as [number | undefined, string])];
+    for (const [fma, pointer] of entries) {
+      if (fma === undefined) continue;
+      if (fmaOwner.has(fma)) err(file, pointer, 'fma-unique', `FMA ${fma} déjà utilisé par « ${fmaOwner.get(fma)} »`);
+      else fmaOwner.set(fma, data.slug);
+    }
+  }
+
+  // 11-12. labels
+  for (const { file, data } of structureFiles) {
+    const sets: [Structure['labels'], string][] = [[data.labels, '/labels'], ...SIDES.map((side) => [data.sides?.[side]?.labels ?? {}, `/sides/${side}/labels`] as [Structure['labels'], string])];
+    for (const [set, base] of sets) {
+      for (const lang of LANGS) {
+        const l = set[lang];
+        if (l && l.source !== 'curated' && !knownSourceIds.has(l.source)) err(file, `${base}/${lang}/source`, 'label-source', `source « ${l.source} » absente du registre`);
+      }
+    }
+    for (const lang of ['fr', 'la'] as const) {
+      const l = data.labels[lang];
+      if (!l || l.gender) continue;
+      if (l.status === 'reviewed') err(file, `/labels/${lang}`, 'label-gender', `label ${lang} relu sans genre grammatical`);
+      else warn(file, `/labels/${lang}`, 'label-gender', `label ${lang} sans genre grammatical`);
+    }
+    if (!data.parent && data.slug !== ROOT_SLUG) warn(file, '/parent', 'orphan', 'structure sans parent');
+    if (!data.labels.fr) warn(file, '/labels', 'missing-fr', 'pas de label français');
+    if (!data.labels.la) warn(file, '/labels', 'missing-la', 'pas de label latin');
+  }
+
+  const order = (a: Diagnostic, b: Diagnostic) => byKey(a.file, b.file) || byKey(a.pointer, b.pointer) || byKey(a.rule, b.rule);
+  errors.sort(order);
+  warnings.sort(order);
+  if (errors.length) return { atlas: null, errors, warnings };
+
+  const structures = structureFiles.map((x) => x.data);
+  const children = new Map<string, string[]>();
+  for (const s of structures) if (s.parent) children.set(s.parent, [...(children.get(s.parent) ?? []), s.slug]);
+
+  const meshIndex: Atlas['meshIndex'] = {};
+  const used = new Set<string>();
+  const prefixToSource = new Map(Object.values(sources).filter((x) => x.meshPrefix).map((x) => [x.meshPrefix!, x.id]));
+  for (const s of structures) {
+    for (const { ref, side } of meshRefs(s)) {
+      meshIndex[ref] = { slug: s.slug, side };
+      used.add(prefixToSource.get(ref.split(':')[0])!);
+    }
+    const labelSets = [s.labels, ...SIDES.map((side) => s.sides?.[side]?.labels ?? {})];
+    for (const set of labelSets) for (const l of Object.values(set)) if (l && l.source !== 'curated') used.add(l.source);
+  }
+
+  const atlas: Atlas = {
+    sources: Object.fromEntries(Object.keys(sources).sort(byKey).map((k) => [k, sortKeys(sources[k])])),
+    structures: structures.map((s) => compileStructure(s, (children.get(s.slug) ?? []).sort(byKey))),
+    meshIndex: Object.fromEntries(Object.keys(meshIndex).sort(byKey).map((k) => [k, sortKeys(meshIndex[k])])),
+    attributions: [...used].sort(byKey).map((id) => {
+      const { name, licence, attribution, url } = sources[id];
+      return { attribution, licence, name, source: id, url };
+    }),
+  };
+  return { atlas, errors, warnings };
+}

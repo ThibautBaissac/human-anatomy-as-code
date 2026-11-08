@@ -1,0 +1,42 @@
+slug: superior-rectus
+kind: muscle
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: superior rectus
+    source: fma
+    status: draft
+  fr:
+    text: muscle droit supérieur du bulbe de l'œil
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus rectus superior bulbi
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 49035
+  ta2: 2042
+  ta98: A15.2.07.010
+  wikidata: Q1090548
+sides:
+  left:
+    ids:
+      fma: 49045
+      wikidata: Q66538459
+    meshes:
+      - bp3d:FJ1323
+  right:
+    ids:
+      fma: 49044
+      wikidata: Q66538458
+    meshes:
+      - bp3d:FJ1374

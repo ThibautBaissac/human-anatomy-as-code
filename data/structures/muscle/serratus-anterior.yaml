@@ -1,0 +1,42 @@
+slug: serratus-anterior
+kind: muscle
+laterality: bilateral
+status: draft
+parent: lateral-superficial-chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: serratus anterior
+    source: fma
+    status: draft
+  fr:
+    text: muscle dentelé antérieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus serratus anterior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13397
+  ta2: 2307
+  ta98: A04.4.01.008
+  wikidata: Q743294
+sides:
+  left:
+    ids:
+      fma: 13399
+      wikidata: Q66508071
+    meshes:
+      - bp3d:FJ1459M
+  right:
+    ids:
+      fma: 13398
+      wikidata: Q66508070
+    meshes:
+      - bp3d:FJ1459

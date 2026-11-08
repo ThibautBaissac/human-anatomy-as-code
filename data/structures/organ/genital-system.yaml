@@ -1,0 +1,23 @@
+slug: genital-system
+kind: organ
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: genital system
+    source: fma
+    status: draft
+  fr:
+    text: système reproductif humain
+    source: wikidata
+    status: draft
+  la:
+    text: Systemata genitalia
+    source: wikidata
+    status: draft
+ids:
+  fma: 7160
+  ta2: 3467
+  ta98: A09.0.00.000
+  wikidata: Q20645683

@@ -1,0 +1,13 @@
+slug: right-middle-cerebral-artery
+kind: artery
+laterality: unpaired-right
+status: draft
+parent: internal-carotid-artery
+labels:
+  en:
+    text: right middle cerebral artery
+    source: fma
+    status: draft
+ids:
+  fma: 50082
+  wikidata: Q66539278

@@ -1,0 +1,32 @@
+slug: trunk-of-lateral-plantar-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: lateral-plantar-artery
+labels:
+  en:
+    text: trunk of lateral plantar artery
+    source: fma
+    status: draft
+ids:
+  fma: 69565
+  wikidata: Q66567463
+sides:
+  left:
+    ids:
+      fma: 69567
+      wikidata: Q66567466
+    labels:
+      en:
+        text: trunk of left lateral plantar artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 69566
+      wikidata: Q66567464
+    labels:
+      en:
+        text: trunk of right lateral plantar artery
+        source: fma
+        status: draft

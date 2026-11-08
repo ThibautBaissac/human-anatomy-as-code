@@ -1,0 +1,45 @@
+slug: middle-phalanx-of-index-finger
+kind: bone
+laterality: bilateral
+status: draft
+parent: index-finger
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: middle phalanx of index finger
+    source: fma
+    status: draft
+  fr:
+    text: phalange moyenne de l'index
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23933
+  wikidata: Q66515609
+sides:
+  left:
+    ids:
+      fma: 23938
+      wikidata: Q66515613
+    meshes:
+      - bp3d:FJ3296
+    labels:
+      en:
+        text: middle phalanx of left index finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 24455
+      wikidata: Q66515981
+    meshes:
+      - bp3d:FJ3303
+    labels:
+      en:
+        text: middle phalanx of right index finger
+        source: fma
+        status: draft

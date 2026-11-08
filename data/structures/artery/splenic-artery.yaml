@@ -1,0 +1,32 @@
+slug: splenic-artery
+kind: artery
+laterality: midline
+status: draft
+parent: celiac-artery
+labels:
+  en:
+    text: splenic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère splénique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: arteria splenica
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14773
+  ta2: 4239
+  ta98: A12.2.12.040
+  wikidata: Q707326
+meshes:
+  - bp3d:FJ2562
+  - bp3d:FJ3420
+  - bp3d:FJ3544
+  - bp3d:FJ3640

@@ -1,0 +1,38 @@
+slug: iliotibial-tract
+kind: bone
+laterality: bilateral
+status: draft
+parent: fascia-lata-of-thigh
+regions:
+  - lower-limb
+labels:
+  en:
+    text: iliotibial tract
+    source: fma
+    status: draft
+  fr:
+    text: tractus ilio-tibial
+    source: wikidata
+    status: draft
+  la:
+    text: Tractus iliotibialis
+    source: wikidata
+    status: draft
+ids:
+  fma: 51048
+  ta2: 2690
+  ta98: A04.7.03.003
+  wikidata: Q2447635
+sides:
+  left:
+    ids:
+      fma: 58777
+      wikidata: Q66555296
+    meshes:
+      - bp3d:FJ1423M
+  right:
+    ids:
+      fma: 58776
+      wikidata: Q66555295
+    meshes:
+      - bp3d:FJ1423

@@ -1,0 +1,28 @@
+slug: bronchial-artery
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: bronchial artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau artériel bronchique de l'aorte thoracique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteriae bronchiales
+    gender: f
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 68109
+  ta2: 4187
+  ta98: A12.2.11.002
+  wikidata: Q927103
+meshes:
+  - bp3d:FJ1933

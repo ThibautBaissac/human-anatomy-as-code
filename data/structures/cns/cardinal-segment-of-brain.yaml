@@ -1,0 +1,15 @@
+slug: cardinal-segment-of-brain
+kind: cns
+laterality: midline
+status: draft
+labels:
+  en:
+    text: cardinal segment of brain
+    source: fma
+    status: draft
+ids:
+  fma: 61815
+  wikidata: Q66557994
+meshes:
+  - bp3d:FJ1770
+  - bp3d:FJ1817

@@ -1,0 +1,15 @@
+slug: external-intercostal-muscle
+kind: muscle
+laterality: midline
+status: draft
+labels:
+  en:
+    text: external intercostal muscle
+    source: fma
+    status: draft
+ids:
+  fma: 9756
+  wikidata: Q66505071
+meshes:
+  - bp3d:FJ1451
+  - bp3d:FJ1451M

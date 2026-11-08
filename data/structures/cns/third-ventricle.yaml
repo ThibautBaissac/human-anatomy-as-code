@@ -1,0 +1,25 @@
+slug: third-ventricle
+kind: cns
+laterality: midline
+status: draft
+parent: diencephalon
+labels:
+  en:
+    text: third ventricle
+    source: fma
+    status: draft
+  fr:
+    text: troisième ventricule
+    source: wikidata
+    status: draft
+  la:
+    text: Ventriculus tertius
+    source: wikidata
+    status: draft
+ids:
+  fma: 78454
+  ta2: 5769
+  ta98: A14.1.08.410
+  wikidata: Q662322
+meshes:
+  - bp3d:FJ1730

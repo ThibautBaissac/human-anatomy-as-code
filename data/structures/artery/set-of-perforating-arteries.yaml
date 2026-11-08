@@ -1,0 +1,17 @@
+slug: set-of-perforating-arteries
+kind: artery
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of perforating arteries
+    source: fma
+    status: draft
+ids:
+  fma: 70815
+  wikidata: Q66568736
+meshes:
+  - bp3d:FJ2090
+  - bp3d:FJ2094
+  - bp3d:FJ2127
+  - bp3d:FJ2203

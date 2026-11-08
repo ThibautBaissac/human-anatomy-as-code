@@ -1,0 +1,15 @@
+slug: medial-lumbar-intertransversarius
+kind: muscle
+laterality: midline
+status: draft
+labels:
+  en:
+    text: medial lumbar intertransversarius
+    source: fma
+    status: draft
+ids:
+  fma: 22851
+  wikidata: Q66514842
+meshes:
+  - bp3d:FJ1548
+  - bp3d:FJ1548M

@@ -1,0 +1,39 @@
+slug: lateral-cuneiform-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: foot
+regions:
+  - foot
+  - lower-limb
+labels:
+  en:
+    text: lateral cuneiform bone
+    source: fma
+    status: draft
+  fr:
+    text: cunéiforme latéral
+    source: wikidata
+    status: draft
+  la:
+    text: Cuneiforme laterale
+    source: wikidata
+    status: draft
+ids:
+  fma: 24520
+  ta2: 1488
+  ta98: A02.5.15.001
+  wikidata: Q615837
+sides:
+  left:
+    ids:
+      fma: 24526
+      wikidata: Q66516036
+    meshes:
+      - bp3d:FJ3267
+  right:
+    ids:
+      fma: 24525
+      wikidata: Q66516035
+    meshes:
+      - bp3d:FJ3373

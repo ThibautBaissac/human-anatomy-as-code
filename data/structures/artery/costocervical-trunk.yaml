@@ -1,0 +1,36 @@
+slug: costocervical-trunk
+kind: artery
+laterality: bilateral
+status: draft
+parent: costocervical-artery
+labels:
+  en:
+    text: costocervical trunk
+    source: fma
+    status: draft
+  fr:
+    text: tronc costo-cervical
+    source: wikidata
+    status: draft
+  la:
+    text: Truncus costocervicalis
+    source: wikidata
+    status: draft
+ids:
+  fma: 10636
+  ta2: 4607
+  ta98: A12.2.08.059
+  wikidata: Q484868
+sides:
+  left:
+    ids:
+      fma: 4086
+      wikidata: Q66499683
+    meshes:
+      - bp3d:FJ2224
+  right:
+    ids:
+      fma: 5039
+      wikidata: Q66501888
+    meshes:
+      - bp3d:FJ2276

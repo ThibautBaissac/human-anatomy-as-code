@@ -1,0 +1,16 @@
+slug: hepatovenous-segment-viii
+kind: vein
+laterality: midline
+status: draft
+parent: anterior-sector-of-liver
+labels:
+  en:
+    text: hepatovenous segment viii
+    source: fma
+    status: draft
+ids:
+  fma: 15746
+  wikidata: Q66512446
+meshes:
+  - bp3d:FJ2823
+  - bp3d:FJ2824

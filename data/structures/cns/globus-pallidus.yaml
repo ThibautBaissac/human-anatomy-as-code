@@ -1,0 +1,31 @@
+slug: globus-pallidus
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: globus pallidus
+    source: fma
+    status: draft
+  fr:
+    text: globus pallidus
+    source: wikidata
+    status: draft
+ids:
+  fma: 61835
+  ta2: 5569
+  ta98: A14.1.09.518
+  wikidata: Q1759633
+sides:
+  left:
+    ids:
+      fma: 72831
+      wikidata: Q66570326
+    meshes:
+      - bp3d:FJ1757
+  right:
+    ids:
+      fma: 72830
+      wikidata: Q66570325
+    meshes:
+      - bp3d:FJ1805

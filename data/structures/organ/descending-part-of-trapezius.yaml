@@ -1,0 +1,41 @@
+slug: descending-part-of-trapezius
+kind: organ
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: descending part of trapezius
+    source: fma
+    status: draft
+  fr:
+    text: partie descendante du muscle trapèze
+    source: wikidata
+    status: draft
+ids:
+  fma: 32557
+  ta2: 2227
+  ta98: A04.3.01.002
+  wikidata: Q66523042
+sides:
+  left:
+    ids:
+      fma: 33587
+      wikidata: Q66523853
+    meshes:
+      - bp3d:FJ1521M
+    labels:
+      en:
+        text: descending part of left trapezius
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 33586
+      wikidata: Q66523852
+    meshes:
+      - bp3d:FJ1521
+    labels:
+      en:
+        text: descending part of right trapezius
+        source: fma
+        status: draft

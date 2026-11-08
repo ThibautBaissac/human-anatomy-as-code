@@ -1,0 +1,13 @@
+slug: gastrointestinal-tract
+kind: group
+laterality: midline
+status: draft
+parent: alimentary-system
+labels:
+  en:
+    text: gastrointestinal tract
+    source: fma
+    status: draft
+ids:
+  fma: 71132
+  wikidata: Q66568966

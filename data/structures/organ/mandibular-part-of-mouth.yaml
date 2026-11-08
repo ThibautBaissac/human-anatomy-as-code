@@ -1,0 +1,13 @@
+slug: mandibular-part-of-mouth
+kind: organ
+laterality: midline
+status: draft
+parent: mouth
+labels:
+  en:
+    text: mandibular part of mouth
+    source: fma
+    status: draft
+ids:
+  fma: 59398
+  wikidata: Q66555849

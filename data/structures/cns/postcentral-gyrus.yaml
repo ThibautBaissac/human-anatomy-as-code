@@ -1,0 +1,32 @@
+slug: postcentral-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: parietal-lobe
+labels:
+  en:
+    text: postcentral gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus postcentral
+    source: wikidata
+    status: draft
+ids:
+  fma: 61896
+  ta2: 5469
+  ta98: A14.1.09.128
+  wikidata: Q956517
+sides:
+  left:
+    ids:
+      fma: 72666
+      wikidata: Q66570169
+    meshes:
+      - bp3d:FJ1797
+  right:
+    ids:
+      fma: 72665
+      wikidata: Q66570168
+    meshes:
+      - bp3d:FJ1798

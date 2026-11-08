@@ -1,0 +1,32 @@
+slug: cingulate-gyrus
+kind: cns
+laterality: bilateral
+status: draft
+parent: limbic-lobe
+labels:
+  en:
+    text: cingulate gyrus
+    source: fma
+    status: draft
+  fr:
+    text: gyrus cingulaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 62434
+  ta2: 5513
+  ta98: A14.1.09.231
+  wikidata: Q1892702
+sides:
+  left:
+    ids:
+      fma: 72718
+      wikidata: Q66570221
+    meshes:
+      - bp3d:FJ1739
+  right:
+    ids:
+      fma: 72717
+      wikidata: Q66570220
+    meshes:
+      - bp3d:FJ1740

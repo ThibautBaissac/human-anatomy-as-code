@@ -1,0 +1,39 @@
+slug: inferior-epigastric-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: inferior epigastric vein
+    source: fma
+    status: draft
+  fr:
+    text: veine épigastrique inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena epigastrica inferior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 21162
+  ta2: 5051
+  ta98: A12.3.10.025
+  wikidata: Q6029315
+sides:
+  left:
+    ids:
+      fma: 21164
+      wikidata: Q66513034
+    meshes:
+      - bp3d:FJ3512
+  right:
+    ids:
+      fma: 21163
+      wikidata: Q66513033
+    meshes:
+      - bp3d:FJ3605

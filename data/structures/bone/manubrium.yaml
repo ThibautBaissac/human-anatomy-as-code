@@ -1,0 +1,23 @@
+slug: manubrium
+kind: bone
+laterality: midline
+status: draft
+parent: sternum
+regions:
+  - thorax
+labels:
+  en:
+    text: manubrium
+    source: fma
+    status: draft
+  fr:
+    text: manubrium sternal
+    source: wikidata
+    status: draft
+ids:
+  fma: 7486
+  ta2: 1130
+  ta98: A02.3.03.002
+  wikidata: Q2719344
+meshes:
+  - bp3d:FJ3290

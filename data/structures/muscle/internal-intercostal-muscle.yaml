@@ -1,0 +1,29 @@
+slug: internal-intercostal-muscle
+kind: muscle
+laterality: midline
+status: draft
+labels:
+  en:
+    text: internal intercostal muscle
+    source: fma
+    status: draft
+  fr:
+    text: muscle intercostal interne
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculi intercostales interni
+    gender: m
+    number: pl
+    source: wikidata
+    status: draft
+ids:
+  fma: 9757
+  ta2: 2312
+  ta98: A04.4.01.013
+  wikidata: Q1954132
+meshes:
+  - bp3d:FJ1455
+  - bp3d:FJ1455M

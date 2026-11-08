@@ -1,0 +1,39 @@
+slug: infraspinatus-muscle
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: infraspinatus muscle
+    source: fma
+    status: draft
+  fr:
+    text: muscle infra-épineux
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus infraspinatus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 32546
+  ta2: 2458
+  ta98: A04.6.02.008
+  wikidata: Q19087
+sides:
+  left:
+    ids:
+      fma: 32548
+      wikidata: Q66523035
+    meshes:
+      - bp3d:FJ1500M
+  right:
+    ids:
+      fma: 32547
+      wikidata: Q66523034
+    meshes:
+      - bp3d:FJ1500

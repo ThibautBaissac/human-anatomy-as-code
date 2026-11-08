@@ -1,0 +1,13 @@
+slug: portal-venous-system
+kind: vein
+laterality: midline
+status: draft
+parent: cardiovascular-system
+labels:
+  en:
+    text: portal venous system
+    source: fma
+    status: draft
+ids:
+  fma: 45628
+  wikidata: Q66535995

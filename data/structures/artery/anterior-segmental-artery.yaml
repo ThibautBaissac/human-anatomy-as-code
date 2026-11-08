@@ -1,0 +1,44 @@
+slug: anterior-segmental-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: upper-lobar-artery
+labels:
+  en:
+    text: anterior segmental artery
+    source: fma
+    status: draft
+  fr:
+    text: artère segmentaire antérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13278
+  wikidata: Q66507991
+sides:
+  left:
+    ids:
+      fma: 13279
+      ta2: 4096
+      ta98: A12.2.01.205
+      wikidata: Q66507993
+    meshes:
+      - bp3d:FJ2902
+      - bp3d:FJ2904
+      - bp3d:FJ2905
+      - bp3d:FJ2906
+      - bp3d:FJ2907
+      - bp3d:FJ2908
+      - bp3d:FJ2909
+      - bp3d:FJ2910
+  right:
+    ids:
+      fma: 8620
+      ta2: 4080
+      ta98: A12.2.01.104
+      wikidata: Q66504087
+    meshes:
+      - bp3d:FJ2041
+      - bp3d:FJ2044

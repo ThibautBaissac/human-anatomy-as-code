@@ -1,0 +1,41 @@
+slug: check-ligament-of-lateral-rectus
+kind: ligament
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: check ligament of lateral rectus
+    source: fma
+    status: draft
+  fr:
+    text: expansion fibreuse du muscle droit latéral du bulbe de l'œil
+    source: wikidata
+    status: draft
+ids:
+  fma: 49143
+  ta2: 2046
+  ta98: A15.2.07.014
+  wikidata: Q66538513
+sides:
+  left:
+    ids:
+      fma: 49145
+      wikidata: Q66538516
+    meshes:
+      - bp3d:FJ1284
+    labels:
+      en:
+        text: check ligament of left lateral rectus
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 49144
+      wikidata: Q66538514
+    meshes:
+      - bp3d:FJ1334
+    labels:
+      en:
+        text: check ligament of right lateral rectus
+        source: fma
+        status: draft

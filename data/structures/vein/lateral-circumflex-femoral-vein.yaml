@@ -1,0 +1,25 @@
+slug: lateral-circumflex-femoral-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral circumflex femoral vein
+    source: fma
+    status: draft
+ids:
+  fma: 44326
+  wikidata: Q66534244
+sides:
+  left:
+    ids:
+      fma: 44922
+      wikidata: Q66535379
+    meshes:
+      - bp3d:FJ2188
+  right:
+    ids:
+      fma: 44920
+      wikidata: Q66535377
+    meshes:
+      - bp3d:FJ2201

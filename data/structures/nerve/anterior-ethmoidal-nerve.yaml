@@ -1,0 +1,39 @@
+slug: anterior-ethmoidal-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: anterior ethmoidal nerve
+    source: fma
+    status: draft
+  fr:
+    text: nerf ethmoïdal antérieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Nervus ethmoidalis anterior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52675
+  ta2: 6208
+  ta98: A14.2.01.030
+  wikidata: Q1217108
+sides:
+  left:
+    ids:
+      fma: 52677
+      wikidata: Q66542893
+    meshes:
+      - bp3d:FJ1283
+  right:
+    ids:
+      fma: 52676
+      wikidata: Q66542892
+    meshes:
+      - bp3d:FJ1333

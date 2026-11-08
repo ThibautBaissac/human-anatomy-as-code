@@ -1,0 +1,39 @@
+slug: frontal-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: frontal nerve
+    source: fma
+    status: draft
+  fr:
+    text: Nerf frontal
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Nervus frontalis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52638
+  ta2: 6199
+  ta98: A14.2.01.020
+  wikidata: Q3271563
+sides:
+  left:
+    ids:
+      fma: 52640
+      wikidata: Q66542861
+    meshes:
+      - bp3d:FJ1290
+  right:
+    ids:
+      fma: 52639
+      wikidata: Q66542860
+    meshes:
+      - bp3d:FJ1341

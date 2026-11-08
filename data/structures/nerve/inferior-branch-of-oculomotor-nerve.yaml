@@ -1,0 +1,35 @@
+slug: inferior-branch-of-oculomotor-nerve
+kind: nerve
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: inferior branch of oculomotor nerve
+    source: fma
+    status: draft
+ids:
+  fma: 52573
+  wikidata: Q66542804
+sides:
+  left:
+    ids:
+      fma: 52577
+      wikidata: Q66542808
+    meshes:
+      - bp3d:FJ1293
+    labels:
+      en:
+        text: inferior branch of left oculomotor nerve
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 52576
+      wikidata: Q66542807
+    meshes:
+      - bp3d:FJ1344
+    labels:
+      en:
+        text: inferior branch of right oculomotor nerve
+        source: fma
+        status: draft

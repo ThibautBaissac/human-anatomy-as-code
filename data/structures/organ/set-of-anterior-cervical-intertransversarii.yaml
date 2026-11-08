@@ -1,0 +1,23 @@
+slug: set-of-anterior-cervical-intertransversarii
+kind: organ
+laterality: midline
+status: draft
+labels:
+  en:
+    text: set of anterior cervical intertransversarii
+    source: fma
+    status: draft
+  fr:
+    text: muscle intertransversaire antérieur du cou
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 71442
+  ta2: 2237
+  ta98: A04.3.01.012
+  wikidata: Q66515017
+meshes:
+  - bp3d:FJ1549
+  - bp3d:FJ1549M

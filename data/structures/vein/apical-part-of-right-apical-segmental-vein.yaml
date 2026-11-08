@@ -1,0 +1,17 @@
+slug: apical-part-of-right-apical-segmental-vein
+kind: vein
+laterality: midline
+status: draft
+parent: apical-segmental-vein
+labels:
+  en:
+    text: apical part of right apical segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 8681
+  wikidata: Q66504248
+meshes:
+  - bp3d:FJ3064
+  - bp3d:FJ3067
+  - bp3d:FJ3068

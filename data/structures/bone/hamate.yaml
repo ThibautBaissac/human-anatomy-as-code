@@ -1,0 +1,40 @@
+slug: hamate
+kind: bone
+laterality: bilateral
+status: draft
+parent: wrist
+regions:
+  - upper-limb
+labels:
+  en:
+    text: hamate
+    source: fma
+    status: draft
+  fr:
+    text: hamatum
+    source: wikidata
+    status: draft
+  la:
+    text: Os hamatum
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23730
+  ta2: 1259
+  ta98: A02.4.08.012
+  wikidata: Q54393
+sides:
+  left:
+    ids:
+      fma: 24449
+      wikidata: Q66515974
+    meshes:
+      - bp3d:FJ3261
+  right:
+    ids:
+      fma: 24448
+      wikidata: Q66515973
+    meshes:
+      - bp3d:FJ3367

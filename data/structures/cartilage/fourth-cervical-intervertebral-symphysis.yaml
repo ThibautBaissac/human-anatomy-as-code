@@ -1,0 +1,13 @@
+slug: fourth-cervical-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: cervical-vertebral-column
+labels:
+  en:
+    text: fourth cervical intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26083
+  wikidata: Q66517311

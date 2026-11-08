@@ -1,0 +1,15 @@
+slug: superficial-chest-wall
+kind: organ
+laterality: midline
+status: draft
+parent: chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: superficial chest wall
+    source: fma
+    status: draft
+ids:
+  fma: 50061
+  wikidata: Q66539262

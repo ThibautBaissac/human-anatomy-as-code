@@ -1,0 +1,25 @@
+slug: nose
+kind: organ
+laterality: midline
+status: draft
+parent: face
+regions:
+  - head
+labels:
+  en:
+    text: nose
+    source: fma
+    status: draft
+  fr:
+    text: nez humain
+    source: wikidata
+    status: draft
+  la:
+    text: Nasus humanum
+    source: wikidata
+    status: draft
+ids:
+  fma: 46472
+  ta2: 117
+  ta98: A06.1.01.001
+  wikidata: Q2673594

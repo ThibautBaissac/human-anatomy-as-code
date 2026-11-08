@@ -1,0 +1,22 @@
+slug: hepatic-biliary-tree
+kind: organ
+laterality: bilateral
+status: draft
+parent: biliary-tree
+labels:
+  en:
+    text: hepatic biliary tree
+    source: fma
+    status: draft
+ids:
+  fma: 71891
+  wikidata: Q66569582
+sides:
+  left:
+    ids:
+      fma: 71858
+      wikidata: Q66569550
+  right:
+    ids:
+      fma: 71857
+      wikidata: Q66569549

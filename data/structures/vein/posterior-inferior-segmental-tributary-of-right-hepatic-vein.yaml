@@ -1,0 +1,15 @@
+slug: posterior-inferior-segmental-tributary-of-right-hepatic-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: posterior inferior segmental tributary of right hepatic vein
+    source: fma
+    status: draft
+ids:
+  fma: 15797
+  wikidata: Q66512554
+meshes:
+  - bp3d:FJ3118
+  - bp3d:FJ3120

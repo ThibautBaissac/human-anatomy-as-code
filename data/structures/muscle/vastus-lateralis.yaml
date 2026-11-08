@@ -1,0 +1,39 @@
+slug: vastus-lateralis
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: vastus lateralis
+    source: fma
+    status: draft
+  fr:
+    text: muscle vaste latéral
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus vastus lateralis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22431
+  ta2: 2618
+  ta98: A04.7.02.021
+  wikidata: Q975459
+sides:
+  left:
+    ids:
+      fma: 38931
+      wikidata: Q66527886
+    meshes:
+      - bp3d:FJ1442M
+  right:
+    ids:
+      fma: 38930
+      wikidata: Q66527885
+    meshes:
+      - bp3d:FJ1442

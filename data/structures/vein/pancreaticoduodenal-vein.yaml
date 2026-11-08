@@ -1,0 +1,16 @@
+slug: pancreaticoduodenal-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: pancreaticoduodenal vein
+    source: fma
+    status: draft
+ids:
+  fma: 15398
+  wikidata: Q66511975
+meshes:
+  - bp3d:FJ3545
+  - bp3d:FJ3646
+  - bp3d:FJ3655

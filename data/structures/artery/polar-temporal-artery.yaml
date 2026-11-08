@@ -1,0 +1,32 @@
+slug: polar-temporal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: polar temporal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère polaire temporale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50379
+  ta98: A12.2.07.051
+  wikidata: Q66539520
+sides:
+  left:
+    ids:
+      fma: 50381
+      wikidata: Q66539522
+    meshes:
+      - bp3d:FJ1712M
+  right:
+    ids:
+      fma: 50380
+      wikidata: Q66539521
+    meshes:
+      - bp3d:FJ1712

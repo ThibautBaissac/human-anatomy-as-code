@@ -1,0 +1,38 @@
+slug: tarsal-plate-of-upper-eyelid
+kind: bone
+laterality: bilateral
+status: draft
+parent: upper-eyelid
+regions:
+  - head
+labels:
+  en:
+    text: tarsal plate of upper eyelid
+    source: fma
+    status: draft
+ids:
+  fma: 59087
+  wikidata: Q66555561
+sides:
+  left:
+    ids:
+      fma: 59092
+      wikidata: Q66555567
+    meshes:
+      - bp3d:FJ1324
+    labels:
+      en:
+        text: tarsal plate of left upper eyelid
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 59091
+      wikidata: Q66555566
+    meshes:
+      - bp3d:FJ1375
+    labels:
+      en:
+        text: tarsal plate of right upper eyelid
+        source: fma
+        status: draft

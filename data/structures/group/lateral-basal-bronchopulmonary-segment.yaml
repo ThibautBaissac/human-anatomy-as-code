@@ -1,0 +1,22 @@
+slug: lateral-basal-bronchopulmonary-segment
+kind: group
+laterality: bilateral
+status: draft
+parent: lower-lobe-of-lung
+labels:
+  en:
+    text: lateral basal bronchopulmonary segment
+    source: fma
+    status: draft
+ids:
+  fma: 13194
+  wikidata: Q66507921
+sides:
+  left:
+    ids:
+      fma: 7379
+      wikidata: Q66502932
+  right:
+    ids:
+      fma: 7363
+      wikidata: Q66502918

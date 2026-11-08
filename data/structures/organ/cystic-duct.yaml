@@ -1,0 +1,25 @@
+slug: cystic-duct
+kind: organ
+laterality: midline
+status: draft
+parent: biliary-tree
+labels:
+  en:
+    text: cystic duct
+    source: fma
+    status: draft
+  fr:
+    text: Conduit cystique
+    source: wikidata
+    status: draft
+  la:
+    text: Ductus cysticus
+    source: wikidata
+    status: draft
+ids:
+  fma: 14539
+  ta2: 3101
+  ta98: A05.8.02.011
+  wikidata: Q664439
+meshes:
+  - bp3d:FJ3080

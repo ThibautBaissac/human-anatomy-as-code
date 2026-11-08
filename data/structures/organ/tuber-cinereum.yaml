@@ -1,0 +1,22 @@
+slug: tuber-cinereum
+kind: organ
+laterality: midline
+status: draft
+parent: intermediate-hypothalamic-region
+labels:
+  en:
+    text: tuber cinereum
+    source: fma
+    status: draft
+  fr:
+    text: tuber cinereum
+    source: wikidata
+    status: draft
+ids:
+  fma: 62327
+  ta2: 5673
+  ta98: A14.1.08.408
+  wikidata: Q866106
+meshes:
+  - bp3d:FJ1780
+  - bp3d:FJ1828

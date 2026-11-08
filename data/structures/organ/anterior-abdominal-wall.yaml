@@ -1,0 +1,15 @@
+slug: anterior-abdominal-wall
+kind: organ
+laterality: midline
+status: draft
+parent: wall-of-abdomen-proper
+regions:
+  - abdomen
+labels:
+  en:
+    text: anterior abdominal wall
+    source: fma
+    status: draft
+ids:
+  fma: 14627
+  wikidata: Q66715534

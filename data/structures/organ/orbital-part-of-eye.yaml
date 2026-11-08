@@ -1,0 +1,34 @@
+slug: orbital-part-of-eye
+kind: organ
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: orbital part of eye
+    source: fma
+    status: draft
+ids:
+  fma: 72951
+  wikidata: Q66570438
+sides:
+  left:
+    ids:
+      fma: 72953
+      wikidata: Q66570440
+    labels:
+      en:
+        text: orbital part of left eye
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 72952
+      wikidata: Q66570439
+    labels:
+      en:
+        text: orbital part of right eye
+        source: fma
+        status: draft

@@ -1,0 +1,22 @@
+slug: nervous-system
+kind: group
+laterality: midline
+status: draft
+parent: human-body
+labels:
+  en:
+    text: nervous system
+    source: fma
+    status: draft
+  fr:
+    text: système nerveux
+    source: wikidata
+    status: draft
+  la:
+    text: systema nervosum
+    source: wikidata
+    status: draft
+ids:
+  fma: 7157
+  ta98: A14.0.00.000
+  wikidata: Q9404

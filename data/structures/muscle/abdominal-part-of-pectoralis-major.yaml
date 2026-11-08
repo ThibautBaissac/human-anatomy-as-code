@@ -1,0 +1,38 @@
+slug: abdominal-part-of-pectoralis-major
+kind: muscle
+laterality: bilateral
+status: draft
+parent: pectoralis-major
+regions:
+  - thorax
+labels:
+  en:
+    text: abdominal part of pectoralis major
+    source: fma
+    status: draft
+ids:
+  fma: 34699
+  wikidata: Q66524667
+sides:
+  left:
+    ids:
+      fma: 45875
+      wikidata: Q66536135
+    meshes:
+      - bp3d:FJ1446M
+    labels:
+      en:
+        text: abdominal part of left pectoralis major
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 45874
+      wikidata: Q66536134
+    meshes:
+      - bp3d:FJ1446
+    labels:
+      en:
+        text: abdominal part of right pectoralis major
+        source: fma
+        status: draft

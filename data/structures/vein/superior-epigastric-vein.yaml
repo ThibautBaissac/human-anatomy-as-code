@@ -1,0 +1,25 @@
+slug: superior-epigastric-vein
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: superior epigastric vein
+    source: fma
+    status: draft
+ids:
+  fma: 4731
+  wikidata: Q66500683
+sides:
+  left:
+    ids:
+      fma: 4785
+      wikidata: Q66501657
+    meshes:
+      - bp3d:FJ3530
+  right:
+    ids:
+      fma: 4771
+      wikidata: Q66501642
+    meshes:
+      - bp3d:FJ3615

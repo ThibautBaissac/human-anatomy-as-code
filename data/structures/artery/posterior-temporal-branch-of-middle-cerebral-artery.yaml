@@ -1,0 +1,42 @@
+slug: posterior-temporal-branch-of-middle-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: posterior temporal branch of middle cerebral artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau temporal postérieur de l'artère cérébrale moyenne
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50469
+  ta98: A12.2.07.058
+  wikidata: Q66539606
+sides:
+  left:
+    ids:
+      fma: 50471
+      wikidata: Q66539608
+    meshes:
+      - bp3d:FJ1717M
+    labels:
+      en:
+        text: posterior temporal branch of left middle cerebral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50470
+      wikidata: Q66539607
+    meshes:
+      - bp3d:FJ1717
+    labels:
+      en:
+        text: posterior temporal branch of right middle cerebral artery
+        source: fma
+        status: draft

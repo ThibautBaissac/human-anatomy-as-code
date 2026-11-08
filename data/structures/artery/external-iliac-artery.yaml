@@ -1,0 +1,40 @@
+slug: external-iliac-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: common-iliac-artery
+labels:
+  en:
+    text: external iliac artery
+    source: fma
+    status: draft
+  fr:
+    text: artère iliaque externe
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria iliaca externa
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 18805
+  ta2: 4357
+  ta98: A12.2.16.002
+  wikidata: Q585053
+sides:
+  left:
+    ids:
+      fma: 18807
+      wikidata: Q66510058
+    meshes:
+      - bp3d:FJ3466
+  right:
+    ids:
+      fma: 18806
+      wikidata: Q66510057
+    meshes:
+      - bp3d:FJ3567

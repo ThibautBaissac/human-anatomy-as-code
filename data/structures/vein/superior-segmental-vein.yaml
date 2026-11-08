@@ -1,0 +1,27 @@
+slug: superior-segmental-vein
+kind: vein
+laterality: midline
+status: draft
+labels:
+  en:
+    text: superior segmental vein
+    source: fma
+    status: draft
+  fr:
+    text: veine supérieure du poumon droit
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 13445
+  ta2: 4116
+  ta98: A12.3.02.202
+  wikidata: Q66508106
+meshes:
+  - bp3d:FJ3050
+  - bp3d:FJ3051
+  - bp3d:FJ3052
+  - bp3d:FJ3063
+  - bp3d:FJ3065
+  - bp3d:FJ3066

@@ -1,0 +1,39 @@
+slug: deep-plantar-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: deep plantar artery
+    source: fma
+    status: draft
+  fr:
+    text: artère plantaire profonde
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria plantaris profunda
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 69513
+  ta2: 4720
+  ta98: A12.2.16.054
+  wikidata: Q5250428
+sides:
+  left:
+    ids:
+      fma: 69515
+      wikidata: Q66567382
+    meshes:
+      - bp3d:FJ2068
+  right:
+    ids:
+      fma: 69514
+      wikidata: Q66567379
+    meshes:
+      - bp3d:FJ2136

@@ -1,0 +1,28 @@
+slug: hippocampus
+kind: cns
+laterality: bilateral
+status: draft
+parent: hippocampal-formation
+labels:
+  en:
+    text: hippocampus
+    source: fma
+    status: draft
+ids:
+  fma: 62493
+  ta2: 5520
+  ta98: A14.1.09.327
+  wikidata: Q7308967
+sides:
+  left:
+    ids:
+      fma: 72714
+      wikidata: Q66570217
+    meshes:
+      - bp3d:FJ1759
+  right:
+    ids:
+      fma: 72713
+      wikidata: Q66570216
+    meshes:
+      - bp3d:FJ1807

@@ -1,0 +1,35 @@
+slug: iliocostalis-cervicis
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: iliocostalis cervicis
+    source: fma
+    status: draft
+  fr:
+    text: partie cervicale du muscle ilio-costal
+    source: wikidata
+    status: draft
+  la:
+    text: iliocostalis cervicis
+    source: wikidata
+    status: draft
+ids:
+  fma: 22704
+  ta2: 2261
+  ta98: A04.3.02.009
+  wikidata: Q66514735
+sides:
+  left:
+    ids:
+      fma: 22745
+      wikidata: Q66514770
+    meshes:
+      - bp3d:FJ1526M
+  right:
+    ids:
+      fma: 22744
+      wikidata: Q66514769
+    meshes:
+      - bp3d:FJ1526

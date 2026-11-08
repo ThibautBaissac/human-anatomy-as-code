@@ -1,0 +1,49 @@
+slug: flexor-digiti-minimi-brevis-of-foot
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: flexor digiti minimi brevis of foot
+    source: fma
+    status: draft
+  fr:
+    text: muscle court fléchisseur du petit orteil
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus flexor digiti minimi brevis pedis
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 37455
+  ta2: 2682
+  ta98: A04.7.02.066
+  wikidata: Q476952
+sides:
+  left:
+    ids:
+      fma: 37472
+      wikidata: Q66526797
+    meshes:
+      - bp3d:FJ1391M
+    labels:
+      en:
+        text: flexor digiti minimi brevis of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37471
+      wikidata: Q66526796
+    meshes:
+      - bp3d:FJ1391
+    labels:
+      en:
+        text: flexor digiti minimi brevis of right foot
+        source: fma
+        status: draft

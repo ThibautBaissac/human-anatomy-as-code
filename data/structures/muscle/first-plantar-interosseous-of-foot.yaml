@@ -1,0 +1,35 @@
+slug: first-plantar-interosseous-of-foot
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: first plantar interosseous of foot
+    source: fma
+    status: draft
+ids:
+  fma: 37738
+  wikidata: Q66527002
+sides:
+  left:
+    ids:
+      fma: 37746
+      wikidata: Q66527011
+    meshes:
+      - bp3d:FJ1384M
+    labels:
+      en:
+        text: first plantar interosseous of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37745
+      wikidata: Q66527010
+    meshes:
+      - bp3d:FJ1384
+    labels:
+      en:
+        text: first plantar interosseous of right foot
+        source: fma
+        status: draft

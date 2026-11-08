@@ -1,0 +1,15 @@
+slug: anterior-thoracic-wall
+kind: organ
+laterality: midline
+status: draft
+parent: anterior-chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: anterior thoracic wall
+    source: fma
+    status: draft
+ids:
+  fma: 87542
+  wikidata: Q66593321

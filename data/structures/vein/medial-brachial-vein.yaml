@@ -1,0 +1,29 @@
+slug: medial-brachial-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: arm
+regions:
+  - arm
+  - upper-limb
+labels:
+  en:
+    text: medial brachial vein
+    source: fma
+    status: draft
+ids:
+  fma: 78021
+  wikidata: Q66575731
+sides:
+  left:
+    ids:
+      fma: 22936
+      wikidata: Q66514915
+    meshes:
+      - bp3d:FJ2313
+  right:
+    ids:
+      fma: 22935
+      wikidata: Q66514914
+    meshes:
+      - bp3d:FJ2341

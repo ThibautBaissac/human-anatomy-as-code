@@ -1,0 +1,40 @@
+slug: inferior-thyroid-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: thyrocervical-artery
+labels:
+  en:
+    text: inferior thyroid artery
+    source: fma
+    status: draft
+  fr:
+    text: artère thyroïdienne inférieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: arteria thyreoidea inferior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 10662
+  ta2: 4591
+  ta98: A12.2.08.043
+  wikidata: Q488711
+sides:
+  left:
+    ids:
+      fma: 10680
+      wikidata: Q66505830
+    meshes:
+      - bp3d:FJ2210
+  right:
+    ids:
+      fma: 10697
+      wikidata: Q66505841
+    meshes:
+      - bp3d:FJ2209

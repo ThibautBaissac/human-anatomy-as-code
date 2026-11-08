@@ -1,0 +1,34 @@
+slug: investing-fascia-of-free-lower-limb
+kind: fascia
+laterality: bilateral
+status: draft
+parent: investing-fascia-of-lower-limb
+regions:
+  - lower-limb
+labels:
+  en:
+    text: investing fascia of free lower limb
+    source: fma
+    status: draft
+ids:
+  fma: 58428
+  wikidata: Q66555006
+sides:
+  left:
+    ids:
+      fma: 58430
+      wikidata: Q66555008
+    labels:
+      en:
+        text: investing fascia of left free lower limb
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58429
+      wikidata: Q66555007
+    labels:
+      en:
+        text: investing fascia of right free lower limb
+        source: fma
+        status: draft

@@ -1,0 +1,19 @@
+slug: thoracic-wall
+kind: group
+laterality: midline
+status: draft
+parent: chest-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: thoracic wall
+    source: fma
+    status: draft
+  fr:
+    text: paroi thoracique
+    source: wikidata
+    status: draft
+ids:
+  fma: 10428
+  wikidata: Q7796140

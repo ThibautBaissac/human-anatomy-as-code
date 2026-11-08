@@ -1,0 +1,32 @@
+slug: orbit
+kind: organ
+laterality: bilateral
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: orbit
+    source: fma
+    status: draft
+  fr:
+    text: orbite
+    source: wikidata
+    status: draft
+  la:
+    text: Orbita
+    source: wikidata
+    status: draft
+ids:
+  fma: 53074
+  ta2: 469
+  ta98: A02.1.00.067
+  wikidata: Q156075
+sides:
+  left:
+    ids:
+      fma: 53083
+      wikidata: Q66543200
+  right:
+    ids:
+      fma: 53082
+      wikidata: Q66543199

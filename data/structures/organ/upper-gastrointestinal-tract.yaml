@@ -1,0 +1,17 @@
+slug: upper-gastrointestinal-tract
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: upper gastrointestinal tract
+    source: fma
+    status: draft
+  fr:
+    text: appareil digestif haut
+    source: wikidata
+    status: draft
+ids:
+  fma: 49177
+  wikidata: Q31861298

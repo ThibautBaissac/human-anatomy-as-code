@@ -1,0 +1,24 @@
+slug: inferior-lingular-vein
+kind: vein
+laterality: midline
+status: draft
+parent: lingular-vein
+labels:
+  en:
+    text: inferior lingular vein
+    source: fma
+    status: draft
+  fr:
+    text: rameau inférieur de la veine lingulaire de la veine pulmonaire supérieure gauche
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 8669
+  ta2: 4124
+  ta98: A12.3.02.310
+  wikidata: Q66504236
+meshes:
+  - bp3d:FJ2934
+  - bp3d:FJ2935

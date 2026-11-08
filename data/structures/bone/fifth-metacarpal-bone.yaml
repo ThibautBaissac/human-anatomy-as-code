@@ -1,0 +1,39 @@
+slug: fifth-metacarpal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: skeleton-of-hand-proper
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: fifth metacarpal bone
+    source: fma
+    status: draft
+  fr:
+    text: cinquième métacarpien
+    source: wikidata
+    status: draft
+  la:
+    text: Os metacarpale V
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23903
+  wikidata: Q724563
+sides:
+  left:
+    ids:
+      fma: 24473
+      wikidata: Q66516000
+    meshes:
+      - bp3d:FJ3252
+  right:
+    ids:
+      fma: 24472
+      wikidata: Q66515999
+    meshes:
+      - bp3d:FJ3358

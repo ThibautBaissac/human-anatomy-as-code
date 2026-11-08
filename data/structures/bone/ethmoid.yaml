@@ -1,0 +1,29 @@
+slug: ethmoid
+kind: bone
+laterality: midline
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: ethmoid
+    source: fma
+    status: draft
+  fr:
+    text: os ethmoïde
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os ethmoidale
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52740
+  ta2: 721
+  ta98: A02.1.07.001
+  wikidata: Q16331
+meshes:
+  - bp3d:FJ3199

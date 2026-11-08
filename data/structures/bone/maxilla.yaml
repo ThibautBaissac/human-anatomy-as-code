@@ -1,0 +1,38 @@
+slug: maxilla
+kind: bone
+laterality: bilateral
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: maxilla
+    source: fma
+    status: draft
+  fr:
+    text: os maxillaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Maxilla
+    source: wikidata
+    status: draft
+ids:
+  fma: 9711
+  ta2: 756
+  ta98: A02.1.12.001
+  wikidata: Q182895
+sides:
+  left:
+    ids:
+      fma: 53650
+      wikidata: Q66543693
+    meshes:
+      - bp3d:FJ3269
+  right:
+    ids:
+      fma: 53649
+      wikidata: Q66543692
+    meshes:
+      - bp3d:FJ3375

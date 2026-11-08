@@ -1,0 +1,44 @@
+slug: lateral-head-of-gastrocnemius
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral head of gastrocnemius
+    source: fma
+    status: draft
+  fr:
+    text: chef latéral du muscle gastrocnémien
+    source: wikidata
+    status: draft
+  la:
+    text: caput laterale musculi gastrocnemii
+    source: wikidata
+    status: draft
+ids:
+  fma: 45959
+  ta2: 2658
+  wikidata: Q66536179
+sides:
+  left:
+    ids:
+      fma: 45961
+      wikidata: Q66536181
+    meshes:
+      - bp3d:FJ1394M
+    labels:
+      en:
+        text: lateral head of left gastrocnemius
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 45960
+      wikidata: Q66536180
+    meshes:
+      - bp3d:FJ1394
+    labels:
+      en:
+        text: lateral head of right gastrocnemius
+        source: fma
+        status: draft

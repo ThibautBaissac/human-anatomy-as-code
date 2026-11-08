@@ -1,0 +1,35 @@
+slug: index-finger
+kind: organ
+laterality: bilateral
+status: draft
+parent: hand
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: index finger
+    source: fma
+    status: draft
+  fr:
+    text: index
+    source: wikidata
+    status: draft
+  la:
+    text: Index (anatomia)
+    source: wikidata
+    status: draft
+ids:
+  fma: 24946
+  ta2: 152
+  ta98: A01.1.00.054
+  wikidata: Q184848
+sides:
+  left:
+    ids:
+      fma: 60334
+      wikidata: Q66556702
+  right:
+    ids:
+      fma: 60333
+      wikidata: Q66556701

@@ -1,0 +1,45 @@
+slug: long-head-of-biceps-brachii
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: long head of biceps brachii
+    source: fma
+    status: draft
+  fr:
+    text: chef long du muscle biceps brachial
+    source: wikidata
+    status: draft
+  la:
+    text: caput longum biceps brachii
+    source: wikidata
+    status: draft
+ids:
+  fma: 37683
+  ta2: 2465
+  ta98: A04.6.02.014
+  wikidata: Q28792036
+sides:
+  left:
+    ids:
+      fma: 37687
+      wikidata: Q66526963
+    meshes:
+      - bp3d:FJ1478M
+    labels:
+      en:
+        text: long head of left biceps brachii
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37686
+      wikidata: Q66526962
+    meshes:
+      - bp3d:FJ1478
+    labels:
+      en:
+        text: long head of right biceps brachii
+        source: fma
+        status: draft

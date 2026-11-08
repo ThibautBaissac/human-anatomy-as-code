@@ -1,0 +1,42 @@
+slug: medial-rectus
+kind: muscle
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: medial rectus
+    source: fma
+    status: draft
+  fr:
+    text: muscle droit médial du bulbe de l'œil
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus rectus medialis bulbi
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 49037
+  ta2: 2044
+  ta98: A15.2.07.012
+  wikidata: Q1090541
+sides:
+  left:
+    ids:
+      fma: 49057
+      wikidata: Q66538471
+    meshes:
+      - bp3d:FJ1308
+  right:
+    ids:
+      fma: 49056
+      wikidata: Q66538470
+    meshes:
+      - bp3d:FJ1359

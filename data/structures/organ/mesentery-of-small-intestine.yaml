@@ -1,0 +1,15 @@
+slug: mesentery-of-small-intestine
+kind: organ
+laterality: midline
+status: draft
+parent: visceral-peritoneum
+labels:
+  en:
+    text: mesentery of small intestine
+    source: fma
+    status: draft
+ids:
+  fma: 14643
+  wikidata: Q66510583
+meshes:
+  - bp3d:FJ3396

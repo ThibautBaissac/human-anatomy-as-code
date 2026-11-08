@@ -1,0 +1,17 @@
+slug: ventricular-system-of-brain
+kind: cns
+laterality: midline
+status: draft
+parent: brain
+labels:
+  en:
+    text: ventricular system of brain
+    source: fma
+    status: draft
+  fr:
+    text: système ventriculaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 242787
+  wikidata: Q105402

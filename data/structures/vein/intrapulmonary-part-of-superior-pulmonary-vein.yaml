@@ -1,0 +1,32 @@
+slug: intrapulmonary-part-of-superior-pulmonary-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: lung
+labels:
+  en:
+    text: intrapulmonary part of superior pulmonary vein
+    source: fma
+    status: draft
+ids:
+  fma: 67997
+  wikidata: Q66563643
+sides:
+  left:
+    ids:
+      fma: 68004
+      wikidata: Q66563650
+    labels:
+      en:
+        text: intrapulmonary part of left superior pulmonary vein
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 68002
+      wikidata: Q66563648
+    labels:
+      en:
+        text: intrapulmonary part of right superior pulmonary vein
+        source: fma
+        status: draft

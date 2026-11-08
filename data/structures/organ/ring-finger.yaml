@@ -1,0 +1,35 @@
+slug: ring-finger
+kind: organ
+laterality: bilateral
+status: draft
+parent: hand
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: ring finger
+    source: fma
+    status: draft
+  fr:
+    text: annulaire
+    source: wikidata
+    status: draft
+  la:
+    text: Anularius
+    source: wikidata
+    status: draft
+ids:
+  fma: 24948
+  ta2: 154
+  ta98: A01.1.00.056
+  wikidata: Q192298
+sides:
+  left:
+    ids:
+      fma: 60330
+      wikidata: Q66556698
+  right:
+    ids:
+      fma: 60329
+      wikidata: Q66556697

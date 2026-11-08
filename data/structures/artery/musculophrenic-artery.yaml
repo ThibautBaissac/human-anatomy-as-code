@@ -1,0 +1,40 @@
+slug: musculophrenic-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: internal-thoracic-artery
+labels:
+  en:
+    text: musculophrenic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère musculophrénique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria musculophrenica
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 10645
+  ta2: 4587
+  ta98: A12.2.08.040
+  wikidata: Q664446
+sides:
+  left:
+    ids:
+      fma: 4077
+      wikidata: Q66499667
+    meshes:
+      - bp3d:FJ1979
+  right:
+    ids:
+      fma: 10692
+      wikidata: Q66505838
+    meshes:
+      - bp3d:FJ1969

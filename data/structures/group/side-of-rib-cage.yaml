@@ -1,0 +1,21 @@
+slug: side-of-rib-cage
+kind: group
+laterality: bilateral
+status: draft
+parent: rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: side of rib cage
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 20225
+      wikidata: Q66511612
+  right:
+    ids:
+      fma: 20224
+      wikidata: Q66511610

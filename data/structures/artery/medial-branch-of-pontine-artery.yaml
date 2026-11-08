@@ -1,0 +1,36 @@
+slug: medial-branch-of-pontine-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: pontine-artery
+labels:
+  en:
+    text: medial branch of pontine artery
+    source: fma
+    status: draft
+ids:
+  fma: 50564
+  wikidata: Q66539700
+sides:
+  left:
+    ids:
+      fma: 50567
+      wikidata: Q66539703
+    meshes:
+      - bp3d:FJ1689M
+    labels:
+      en:
+        text: medial branch of left pontine artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50566
+      wikidata: Q66539702
+    meshes:
+      - bp3d:FJ1689
+    labels:
+      en:
+        text: medial branch of right pontine artery
+        source: fma
+        status: draft

@@ -1,0 +1,25 @@
+slug: upper-secondary-canine-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: upper secondary canine tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55714
+  wikidata: Q66545333
+sides:
+  left:
+    ids:
+      fma: 55799
+      wikidata: Q66545409
+    meshes:
+      - bp3d:FJ1267
+  right:
+    ids:
+      fma: 55798
+      wikidata: Q66545408
+    meshes:
+      - bp3d:FJ1281

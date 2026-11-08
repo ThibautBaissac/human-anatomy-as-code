@@ -1,0 +1,41 @@
+slug: femur
+kind: bone
+laterality: bilateral
+status: draft
+parent: thigh
+regions:
+  - lower-limb
+  - thigh
+labels:
+  en:
+    text: femur
+    source: fma
+    status: draft
+  fr:
+    text: fémur
+    source: wikidata
+    status: draft
+  la:
+    text: Os femoris
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 9611
+  ta2: 1360
+  ta98: A02.5.04.001
+  wikidata: Q176503
+sides:
+  left:
+    ids:
+      fma: 24475
+      wikidata: Q66516002
+    meshes:
+      - bp3d:FJ3259
+  right:
+    ids:
+      fma: 24474
+      wikidata: Q66516001
+    meshes:
+      - bp3d:FJ3365

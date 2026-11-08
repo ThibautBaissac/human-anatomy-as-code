@@ -1,0 +1,16 @@
+slug: inferior-branch-of-medial-segmental-artery
+kind: artery
+laterality: midline
+status: draft
+parent: medial-segmental-artery
+labels:
+  en:
+    text: inferior branch of medial segmental artery
+    source: fma
+    status: draft
+ids:
+  fma: 68694
+  wikidata: Q66564245
+meshes:
+  - bp3d:FJ2987
+  - bp3d:FJ2988

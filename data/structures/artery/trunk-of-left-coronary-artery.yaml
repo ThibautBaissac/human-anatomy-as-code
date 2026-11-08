@@ -1,0 +1,15 @@
+slug: trunk-of-left-coronary-artery
+kind: artery
+laterality: midline
+status: draft
+parent: left-coronary-artery
+labels:
+  en:
+    text: trunk of left coronary artery
+    source: fma
+    status: draft
+ids:
+  fma: 3855
+  wikidata: Q66499463
+meshes:
+  - bp3d:FJ2737

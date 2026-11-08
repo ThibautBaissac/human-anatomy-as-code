@@ -1,0 +1,17 @@
+slug: frontal-part-of-head
+kind: organ
+laterality: midline
+status: draft
+parent: head-proper
+regions:
+  - head
+labels:
+  en:
+    text: frontal part of head
+    source: fma
+    status: draft
+ids:
+  fma: 46448
+  ta2: 101
+  ta98: A01.1.00.002
+  wikidata: Q7521995

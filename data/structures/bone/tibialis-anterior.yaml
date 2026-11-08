@@ -1,0 +1,39 @@
+slug: tibialis-anterior
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: tibialis anterior
+    source: fma
+    status: draft
+  fr:
+    text: muscle tibial antérieur
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus tibialis anterior
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22532
+  ta2: 2644
+  ta98: A04.7.02.037
+  wikidata: Q975054
+sides:
+  left:
+    ids:
+      fma: 22545
+      wikidata: Q66514562
+    meshes:
+      - bp3d:FJ1439M
+  right:
+    ids:
+      fma: 22544
+      wikidata: Q66514561
+    meshes:
+      - bp3d:FJ1439

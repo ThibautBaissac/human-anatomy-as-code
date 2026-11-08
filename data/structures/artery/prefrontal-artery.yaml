@@ -1,0 +1,32 @@
+slug: prefrontal-artery
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: prefrontal artery
+    source: fma
+    status: draft
+  fr:
+    text: artère préfrontale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50437
+  ta98: A12.2.07.063
+  wikidata: Q66539578
+sides:
+  left:
+    ids:
+      fma: 50478
+      wikidata: Q66539617
+    meshes:
+      - bp3d:FJ1724M
+  right:
+    ids:
+      fma: 50445
+      wikidata: Q66539586
+    meshes:
+      - bp3d:FJ1724

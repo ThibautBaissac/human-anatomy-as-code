@@ -1,0 +1,21 @@
+slug: posterior-cusp-of-pulmonary-valve
+kind: organ
+laterality: midline
+status: draft
+parent: pulmonary-valve
+labels:
+  en:
+    text: posterior cusp of pulmonary valve
+    source: fma
+    status: draft
+  fr:
+    text: valvule semi-lunaire gauche de la valve du tronc pulmonaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 7250
+  ta2: 4011
+  ta98: A12.1.02.012
+  wikidata: Q66502852
+meshes:
+  - bp3d:FJ2427

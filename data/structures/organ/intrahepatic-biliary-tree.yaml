@@ -1,0 +1,13 @@
+slug: intrahepatic-biliary-tree
+kind: organ
+laterality: midline
+status: draft
+parent: liver
+labels:
+  en:
+    text: intrahepatic biliary tree
+    source: fma
+    status: draft
+ids:
+  fma: 68016
+  wikidata: Q66563659

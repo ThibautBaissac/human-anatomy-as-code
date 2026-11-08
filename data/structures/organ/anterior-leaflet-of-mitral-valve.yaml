@@ -1,0 +1,23 @@
+slug: anterior-leaflet-of-mitral-valve
+kind: organ
+laterality: midline
+status: draft
+parent: mitral-valve
+regions:
+  - thorax
+labels:
+  en:
+    text: anterior leaflet of mitral valve
+    source: fma
+    status: draft
+  fr:
+    text: cuspide antérieure de la valve atrio-ventriculaire gauche
+    source: wikidata
+    status: draft
+ids:
+  fma: 7242
+  ta2: 3989
+  ta98: A12.1.04.004
+  wikidata: Q66502846
+meshes:
+  - bp3d:FJ2420

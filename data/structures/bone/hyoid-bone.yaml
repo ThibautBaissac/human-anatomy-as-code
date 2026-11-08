@@ -1,0 +1,30 @@
+slug: hyoid-bone
+kind: bone
+laterality: midline
+status: draft
+parent: viscerocranium
+labels:
+  en:
+    text: hyoid bone
+    source: fma
+    status: draft
+  fr:
+    text: os hyoïde
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Os hyoideum
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 52749
+  ta2: 876
+  ta98: A02.1.16.001
+  wikidata: Q16332
+meshes:
+  - bp3d:FJ2772
+  - bp3d:FJ3201

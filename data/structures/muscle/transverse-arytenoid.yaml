@@ -1,0 +1,28 @@
+slug: transverse-arytenoid
+kind: muscle
+laterality: midline
+status: draft
+labels:
+  en:
+    text: transverse arytenoid
+    source: fma
+    status: draft
+  fr:
+    text: muscle aryténoïdien transverse
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus arytenoideus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 46582
+  ta2: 2205
+  ta98: A06.2.08.012
+  wikidata: Q717887
+meshes:
+  - bp3d:FJ2809

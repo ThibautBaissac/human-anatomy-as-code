@@ -1,0 +1,41 @@
+slug: dorsal-artery-of-penis
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: dorsal artery of penis
+    source: fma
+    status: draft
+  fr:
+    text: artère dorsale du pénis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria dorsalis penis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 19795
+  ta2: 4354
+  ta98: A12.2.15.044M
+  wikidata: Q2080394
+sides:
+  left:
+    ids:
+      fma: 20819
+      wikidata: Q66512580
+    meshes:
+      - bp3d:FJ3496
+      - bp3d:FJ3497
+  right:
+    ids:
+      fma: 20818
+      wikidata: Q66512578
+    meshes:
+      - bp3d:FJ3592
+      - bp3d:FJ3593

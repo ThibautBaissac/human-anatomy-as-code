@@ -1,0 +1,15 @@
+slug: posterior-mediastinum
+kind: organ
+laterality: midline
+status: draft
+parent: posterior-chest
+regions:
+  - thorax
+labels:
+  en:
+    text: posterior mediastinum
+    source: fma
+    status: draft
+ids:
+  fma: 9840
+  wikidata: Q66505138

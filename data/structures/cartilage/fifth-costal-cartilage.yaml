@@ -1,0 +1,28 @@
+slug: fifth-costal-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: fifth costal cartilage
+    source: fma
+    status: draft
+ids:
+  fma: 7795
+  wikidata: Q51130808
+sides:
+  left:
+    ids:
+      fma: 8112
+      wikidata: Q66503607
+    meshes:
+      - bp3d:FJ3251
+  right:
+    ids:
+      fma: 8070
+      wikidata: Q66503563
+    meshes:
+      - bp3d:FJ3341

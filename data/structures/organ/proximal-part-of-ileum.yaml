@@ -1,0 +1,24 @@
+slug: proximal-part-of-ileum
+kind: organ
+laterality: midline
+status: draft
+parent: ileum
+labels:
+  en:
+    text: proximal part of ileum
+    source: fma
+    status: draft
+ids:
+  fma: 14964
+  wikidata: Q66511110
+meshes:
+  - bp3d:FJ2574
+  - bp3d:FJ2575
+  - bp3d:FJ2585
+  - bp3d:FJ2596
+  - bp3d:FJ2600
+  - bp3d:FJ2601
+  - bp3d:FJ2602
+  - bp3d:FJ2603
+  - bp3d:FJ2604
+  - bp3d:FJ2605

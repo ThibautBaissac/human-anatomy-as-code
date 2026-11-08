@@ -1,0 +1,25 @@
+slug: lower-secondary-canine-tooth
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lower secondary canine tooth
+    source: fma
+    status: draft
+ids:
+  fma: 55715
+  wikidata: Q66545334
+sides:
+  left:
+    ids:
+      fma: 55687
+      wikidata: Q66545306
+    meshes:
+      - bp3d:FJ1260
+  right:
+    ids:
+      fma: 55686
+      wikidata: Q66545305
+    meshes:
+      - bp3d:FJ1274

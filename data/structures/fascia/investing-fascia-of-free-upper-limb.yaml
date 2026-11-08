@@ -1,0 +1,34 @@
+slug: investing-fascia-of-free-upper-limb
+kind: fascia
+laterality: bilateral
+status: draft
+parent: free-upper-limb
+regions:
+  - upper-limb
+labels:
+  en:
+    text: investing fascia of free upper limb
+    source: fma
+    status: draft
+ids:
+  fma: 57781
+  wikidata: Q66554486
+sides:
+  left:
+    ids:
+      fma: 58406
+      wikidata: Q66554983
+    labels:
+      en:
+        text: investing fascia of left free upper limb
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 58405
+      wikidata: Q66554982
+    labels:
+      en:
+        text: investing fascia of right free upper limb
+        source: fma
+        status: draft

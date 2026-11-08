@@ -1,0 +1,13 @@
+slug: seventh-thoracic-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: thoracic-vertebral-column
+labels:
+  en:
+    text: seventh thoracic intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26099
+  wikidata: Q66517327

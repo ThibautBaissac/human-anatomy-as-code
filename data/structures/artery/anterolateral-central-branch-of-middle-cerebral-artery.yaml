@@ -1,0 +1,38 @@
+slug: anterolateral-central-branch-of-middle-cerebral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: right-middle-cerebral-artery
+labels:
+  en:
+    text: anterolateral central branch of middle cerebral artery
+    source: fma
+    status: draft
+ids:
+  fma: 50376
+  wikidata: Q66539517
+sides:
+  left:
+    ids:
+      fma: 50378
+      wikidata: Q66539519
+    meshes:
+      - bp3d:FJ1662M
+      - bp3d:FJ1663M
+    labels:
+      en:
+        text: anterolateral central branch of left middle cerebral artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50377
+      wikidata: Q66539518
+    meshes:
+      - bp3d:FJ1662
+      - bp3d:FJ1663
+    labels:
+      en:
+        text: anterolateral central branch of right middle cerebral artery
+        source: fma
+        status: draft

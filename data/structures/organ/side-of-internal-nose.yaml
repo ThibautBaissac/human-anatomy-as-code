@@ -1,0 +1,21 @@
+slug: side-of-internal-nose
+kind: organ
+laterality: bilateral
+status: draft
+parent: internal-nose
+regions:
+  - head
+labels:
+  en:
+    text: side of internal nose
+    source: fma
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 59749
+      wikidata: Q66556176
+  right:
+    ids:
+      fma: 59748
+      wikidata: Q66556175

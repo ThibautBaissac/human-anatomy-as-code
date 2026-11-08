@@ -1,0 +1,19 @@
+slug: mesoappendix
+kind: organ
+laterality: midline
+status: draft
+parent: visceral-peritoneum
+labels:
+  en:
+    text: mesoappendix
+    source: fma
+    status: draft
+  fr:
+    text: mésoappendice
+    source: wikidata
+    status: draft
+ids:
+  fma: 16549
+  wikidata: Q60332406
+meshes:
+  - bp3d:FJ3397

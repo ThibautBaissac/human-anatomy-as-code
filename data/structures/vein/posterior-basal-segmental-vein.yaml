@@ -1,0 +1,37 @@
+slug: posterior-basal-segmental-vein
+kind: vein
+laterality: bilateral
+status: draft
+parent: inferior-basal-vein
+labels:
+  en:
+    text: posterior basal segmental vein
+    source: fma
+    status: draft
+ids:
+  fma: 13292
+  wikidata: Q66508001
+sides:
+  left:
+    ids:
+      fma: 9451
+      wikidata: Q66504910
+    meshes:
+      - bp3d:FJ2945
+      - bp3d:FJ2946
+      - bp3d:FJ2948
+      - bp3d:FJ2949
+  right:
+    ids:
+      fma: 9428
+      wikidata: Q66504892
+    meshes:
+      - bp3d:FJ3041
+      - bp3d:FJ3043
+      - bp3d:FJ3044
+      - bp3d:FJ3045
+      - bp3d:FJ3046
+      - bp3d:FJ3047
+      - bp3d:FJ3048
+      - bp3d:FJ3057
+      - bp3d:FJ3058

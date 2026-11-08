@@ -1,0 +1,44 @@
+slug: pectoral-branch-of-thoraco-acromial-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: thoraco-acromial-artery
+labels:
+  en:
+    text: pectoral branch of thoraco-acromial artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau pectoral de l’artère thoraco-acromiale
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23062
+  ta2: 4624
+  ta98: A12.2.09.010
+  wikidata: Q66515005
+sides:
+  left:
+    ids:
+      fma: 23064
+      wikidata: Q66515007
+    meshes:
+      - bp3d:FJ2330
+    labels:
+      en:
+        text: pectoral branch of left thoraco-acromial artery
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 23063
+      wikidata: Q66515006
+    meshes:
+      - bp3d:FJ2361
+    labels:
+      en:
+        text: pectoral branch of right thoraco-acromial artery
+        source: fma
+        status: draft

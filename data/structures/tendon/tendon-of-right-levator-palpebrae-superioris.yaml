@@ -1,0 +1,14 @@
+slug: tendon-of-right-levator-palpebrae-superioris
+kind: tendon
+laterality: midline
+status: draft
+labels:
+  en:
+    text: tendon of right levator palpebrae superioris
+    source: fma
+    status: draft
+ids:
+  fma: 54159
+  wikidata: Q66544079
+meshes:
+  - bp3d:FJ1343

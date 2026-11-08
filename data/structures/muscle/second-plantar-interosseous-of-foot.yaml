@@ -1,0 +1,35 @@
+slug: second-plantar-interosseous-of-foot
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: second plantar interosseous of foot
+    source: fma
+    status: draft
+ids:
+  fma: 37739
+  wikidata: Q66527003
+sides:
+  left:
+    ids:
+      fma: 37744
+      wikidata: Q66527008
+    meshes:
+      - bp3d:FJ1386M
+    labels:
+      en:
+        text: second plantar interosseous of left foot
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 37743
+      wikidata: Q66527007
+    meshes:
+      - bp3d:FJ1386
+    labels:
+      en:
+        text: second plantar interosseous of right foot
+        source: fma
+        status: draft

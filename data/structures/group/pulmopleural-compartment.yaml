@@ -1,0 +1,22 @@
+slug: pulmopleural-compartment
+kind: group
+laterality: bilateral
+status: draft
+parent: compartment-of-thorax
+labels:
+  en:
+    text: pulmopleural compartment
+    source: fma
+    status: draft
+ids:
+  fma: 85054
+  wikidata: Q66591453
+sides:
+  left:
+    ids:
+      fma: 85056
+      wikidata: Q66591455
+  right:
+    ids:
+      fma: 85055
+      wikidata: Q66591454

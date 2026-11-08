@@ -1,0 +1,39 @@
+slug: first-metacarpal-bone
+kind: bone
+laterality: bilateral
+status: draft
+parent: skeleton-of-hand-proper
+regions:
+  - hand
+  - upper-limb
+labels:
+  en:
+    text: first metacarpal bone
+    source: fma
+    status: draft
+  fr:
+    text: premier métacarpien
+    source: wikidata
+    status: draft
+  la:
+    text: Os metacarpale I
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23899
+  wikidata: Q724575
+sides:
+  left:
+    ids:
+      fma: 24465
+      wikidata: Q66515992
+    meshes:
+      - bp3d:FJ3240
+  right:
+    ids:
+      fma: 24464
+      wikidata: Q66515991
+    meshes:
+      - bp3d:FJ3350

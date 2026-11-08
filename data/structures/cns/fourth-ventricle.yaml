@@ -1,0 +1,21 @@
+slug: fourth-ventricle
+kind: cns
+laterality: midline
+status: draft
+parent: ventricular-system-of-brain
+labels:
+  en:
+    text: fourth ventricle
+    source: fma
+    status: draft
+  fr:
+    text: quatrième ventricule
+    source: wikidata
+    status: draft
+ids:
+  fma: 78469
+  ta2: 5966
+  ta98: A14.1.05.701
+  wikidata: Q1069121
+meshes:
+  - bp3d:FJ1731

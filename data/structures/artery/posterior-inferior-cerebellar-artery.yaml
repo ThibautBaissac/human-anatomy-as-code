@@ -1,0 +1,64 @@
+slug: posterior-inferior-cerebellar-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: vertebral-artery
+labels:
+  en:
+    text: posterior inferior cerebellar artery
+    source: fma
+    status: draft
+  fr:
+    text: artère cérébelleuse inféro-postérieure
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria cerebelli inferior posterior
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50518
+  ta2: 4542
+  ta98: A12.2.08.012
+  wikidata: Q488727
+sides:
+  left:
+    ids:
+      fma: 50520
+      wikidata: Q66539661
+    meshes:
+      - bp3d:FJ1700M
+      - bp3d:FJ1701M
+      - bp3d:FJ1702M
+      - bp3d:FJ1703M
+      - bp3d:FJ1704M
+      - bp3d:FJ1705M
+      - bp3d:FJ1706M
+      - bp3d:FJ1707M
+      - bp3d:FJ1708M
+      - bp3d:FJ1709M
+      - bp3d:FJ1710M
+      - bp3d:FJ1711M
+      - bp3d:FJ1715M
+  right:
+    ids:
+      fma: 50519
+      wikidata: Q66539660
+    meshes:
+      - bp3d:FJ1700
+      - bp3d:FJ1701
+      - bp3d:FJ1702
+      - bp3d:FJ1703
+      - bp3d:FJ1704
+      - bp3d:FJ1705
+      - bp3d:FJ1706
+      - bp3d:FJ1707
+      - bp3d:FJ1708
+      - bp3d:FJ1709
+      - bp3d:FJ1710
+      - bp3d:FJ1711
+      - bp3d:FJ1715

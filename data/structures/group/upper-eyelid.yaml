@@ -1,0 +1,26 @@
+slug: upper-eyelid
+kind: group
+laterality: bilateral
+status: draft
+parent: eye
+regions:
+  - head
+labels:
+  en:
+    text: upper eyelid
+    source: fma
+    status: draft
+ids:
+  fma: 54439
+  ta2: 114
+  ta98: A15.2.07.025
+  wikidata: Q30348959
+sides:
+  left:
+    ids:
+      fma: 54441
+      wikidata: Q66544291
+  right:
+    ids:
+      fma: 54440
+      wikidata: Q66544290

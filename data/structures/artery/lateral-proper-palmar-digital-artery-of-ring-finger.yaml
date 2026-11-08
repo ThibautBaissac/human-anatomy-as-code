@@ -1,0 +1,35 @@
+slug: lateral-proper-palmar-digital-artery-of-ring-finger
+kind: artery
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lateral proper palmar digital artery of ring finger
+    source: fma
+    status: draft
+ids:
+  fma: 85114
+  wikidata: Q66591507
+sides:
+  left:
+    ids:
+      fma: 85116
+      wikidata: Q66591509
+    meshes:
+      - bp3d:FJ2335
+    labels:
+      en:
+        text: lateral proper palmar digital artery of left ring finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 85115
+      wikidata: Q66591508
+    meshes:
+      - bp3d:FJ2366
+    labels:
+      en:
+        text: lateral proper palmar digital artery of right ring finger
+        source: fma
+        status: draft

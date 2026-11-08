@@ -1,0 +1,25 @@
+slug: pancreas
+kind: organ
+laterality: midline
+status: draft
+parent: gastrointestinal-tract
+labels:
+  en:
+    text: pancreas
+    source: fma
+    status: draft
+  fr:
+    text: pancréas
+    source: wikidata
+    status: draft
+  la:
+    text: Pancreas
+    source: wikidata
+    status: draft
+ids:
+  fma: 7198
+  ta2: 3114
+  ta98: A05.9.01.001
+  wikidata: Q9618
+meshes:
+  - bp3d:FJ1895

@@ -1,0 +1,40 @@
+slug: choroid
+kind: organ
+laterality: bilateral
+status: draft
+parent: vascular-layer-of-eyeball
+regions:
+  - head
+labels:
+  en:
+    text: choroid
+    source: fma
+    status: draft
+  fr:
+    text: choroïde
+    source: wikidata
+    status: draft
+  la:
+    text: choroidea
+    source: wikidata
+    status: draft
+ids:
+  fma: 58298
+  ta2: 6774
+  ta98: A15.2.03.002
+  wikidata: Q271762
+sides:
+  left:
+    ids:
+      fma: 58300
+      wikidata: Q66554904
+    meshes:
+      - bp3d:FJ1285
+      - bp3d:FJ1286
+  right:
+    ids:
+      fma: 58299
+      wikidata: Q66554903
+    meshes:
+      - bp3d:FJ1336
+      - bp3d:FJ1337

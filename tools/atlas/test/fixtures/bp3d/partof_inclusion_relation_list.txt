@@ -1,0 +1,29 @@
+parent id	parent name	child id	child name
+FMA20394	human body	FMA10427	body wall
+FMA20394	human body	FMA12519	First cervical vertebra
+FMA10427	body wall	FMA13335	external oblique
+FMA24980	right lower limb	FMA24474	right femur
+FMA24981	left lower limb	FMA24475	left femur
+FMA7185	right upper limb	FMA24895	right arm
+FMA7186	left upper limb	FMA24896	left arm
+FMA7184	lower limb	FMA24980	right lower limb
+FMA7184	lower limb	FMA24981	left lower limb
+FMA7185	right upper limb	FMA37671	right biceps brachii
+FMA24896	left arm	FMA37672	left biceps brachii
+FMA24895	right arm	FMA37689	long head of right biceps brachii
+FMA24896	left arm	FMA37690	long head of left biceps brachii
+FMA9576	thorax	FMA3941	right common carotid artery
+FMA9576	thorax	FMA4058	left common carotid artery
+FMA9576	thorax	FMA5028	right lymphatic duct
+FMA24980	right lower limb	FMA70247	right femoral artery
+FMA24981	left lower limb	FMA70248	left femoral artery
+FMA9576	thorax	FMA7088	heart
+FMA7088	heart	FMA7096	right atrium
+FMA7088	heart	FMA7097	left atrium
+FMA20394	human body	FMA7184	lower limb
+FMA20394	human body	FMA7185	right upper limb
+FMA20394	human body	FMA7186	left upper limb
+FMA9576	thorax	FMA7333	superior lobe of left lung
+FMA7088	heart	FMA9300	anterior wall of left ventricle
+FMA7088	heart	FMA9301	anterior wall of right ventricle
+FMA20394	human body	FMA9576	thorax

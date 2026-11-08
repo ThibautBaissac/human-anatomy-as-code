@@ -1,0 +1,19 @@
+slug: fifth-lumbar-vertebra
+kind: bone
+laterality: midline
+status: draft
+parent: set-of-lumbar-vertebrae
+labels:
+  en:
+    text: fifth lumbar vertebra
+    source: fma
+    status: draft
+  fr:
+    text: cinquième vertèbre lombaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 13076
+  wikidata: Q46993009
+meshes:
+  - bp3d:FJ3168

@@ -1,0 +1,15 @@
+slug: posterior-inferior-segmental-branch-of-right-portal-vein
+kind: vein
+laterality: midline
+status: draft
+parent: posterior-branch-of-right-portal-vein
+labels:
+  en:
+    text: posterior inferior segmental branch of right portal vein
+    source: fma
+    status: draft
+ids:
+  fma: 15424
+  wikidata: Q66512011
+meshes:
+  - bp3d:FJ3111

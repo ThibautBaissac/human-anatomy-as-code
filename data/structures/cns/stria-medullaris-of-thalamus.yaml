@@ -1,0 +1,31 @@
+slug: stria-medullaris-of-thalamus
+kind: cns
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: stria medullaris of thalamus
+    source: fma
+    status: draft
+  fr:
+    text: Strie médullaire
+    source: wikidata
+    status: draft
+ids:
+  fma: 62080
+  ta2: 5747
+  ta98: A14.1.08.106
+  wikidata: Q7623541
+sides:
+  left:
+    ids:
+      fma: 73414
+      wikidata: Q66570869
+    meshes:
+      - bp3d:FJ1777
+  right:
+    ids:
+      fma: 73413
+      wikidata: Q66570868
+    meshes:
+      - bp3d:FJ1824

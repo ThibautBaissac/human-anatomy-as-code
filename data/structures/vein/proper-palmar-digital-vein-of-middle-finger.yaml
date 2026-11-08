@@ -1,0 +1,37 @@
+slug: proper-palmar-digital-vein-of-middle-finger
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: proper palmar digital vein of middle finger
+    source: fma
+    status: draft
+ids:
+  fma: 22928
+  wikidata: Q66514909
+sides:
+  left:
+    ids:
+      fma: 85099
+      wikidata: Q66591493
+    meshes:
+      - bp3d:FJ2326
+      - bp3d:FJ2340
+    labels:
+      en:
+        text: proper palmar digital vein of left middle finger
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 85098
+      wikidata: Q66591492
+    meshes:
+      - bp3d:FJ2356
+      - bp3d:FJ2357
+    labels:
+      en:
+        text: proper palmar digital vein of right middle finger
+        source: fma
+        status: draft

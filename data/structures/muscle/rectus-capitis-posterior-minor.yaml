@@ -1,0 +1,39 @@
+slug: rectus-capitis-posterior-minor
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: rectus capitis posterior minor
+    source: fma
+    status: draft
+  fr:
+    text: muscle petit droit postérieur de la tête
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus rectus capitis posterior minor
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 32526
+  ta2: 2250
+  ta98: A04.2.02.005
+  wikidata: Q764361
+sides:
+  left:
+    ids:
+      fma: 32533
+      wikidata: Q66523021
+    meshes:
+      - bp3d:FJ1568
+  right:
+    ids:
+      fma: 32532
+      wikidata: Q66523020
+    meshes:
+      - bp3d:FJ1590

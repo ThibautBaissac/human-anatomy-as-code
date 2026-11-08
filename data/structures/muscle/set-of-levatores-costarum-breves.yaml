@@ -1,0 +1,43 @@
+slug: set-of-levatores-costarum-breves
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: set of levatores costarum breves
+    source: fma
+    status: draft
+  fr:
+    text: muscle court élévateur des côtes
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 71314
+  ta2: 2310
+  ta98: A04.4.01.011
+  wikidata: Q66569105
+sides:
+  left:
+    ids:
+      fma: 74078
+      wikidata: Q66571431
+    meshes:
+      - bp3d:FJ1462M
+    labels:
+      en:
+        text: set of left levatores costarum breves
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 74077
+      wikidata: Q66571430
+    meshes:
+      - bp3d:FJ1462
+    labels:
+      en:
+        text: set of right levatores costarum breves
+        source: fma
+        status: draft

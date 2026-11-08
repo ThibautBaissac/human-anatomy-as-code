@@ -1,0 +1,28 @@
+slug: fourth-costal-cartilage
+kind: cartilage
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: fourth costal cartilage
+    source: fma
+    status: draft
+ids:
+  fma: 7768
+  wikidata: Q51128199
+sides:
+  left:
+    ids:
+      fma: 8167
+      wikidata: Q66503659
+    meshes:
+      - bp3d:FJ3248
+  right:
+    ids:
+      fma: 7976
+      wikidata: Q66503468
+    meshes:
+      - bp3d:FJ3339

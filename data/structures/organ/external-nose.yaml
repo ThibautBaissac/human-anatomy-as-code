@@ -1,0 +1,16 @@
+slug: external-nose
+kind: organ
+laterality: midline
+status: draft
+parent: nose
+regions:
+  - head
+labels:
+  en:
+    text: external nose
+    source: fma
+    status: draft
+ids:
+  fma: 59515
+  ta2: 117
+  wikidata: Q12180869

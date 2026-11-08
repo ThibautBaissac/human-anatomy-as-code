@@ -1,0 +1,40 @@
+slug: lateral-circumflex-femoral-artery
+kind: artery
+laterality: bilateral
+status: draft
+parent: deep-femoral-artery
+labels:
+  en:
+    text: lateral circumflex femoral artery
+    source: fma
+    status: draft
+  fr:
+    text: artère circonflexe fémorale latérale
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria circumflexa femoris lateralis
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 20798
+  ta2: 4692
+  ta98: A12.2.16.027
+  wikidata: Q707089
+sides:
+  left:
+    ids:
+      fma: 20802
+      wikidata: Q66512562
+    meshes:
+      - bp3d:FJ2078
+  right:
+    ids:
+      fma: 20801
+      wikidata: Q66512561
+    meshes:
+      - bp3d:FJ2158

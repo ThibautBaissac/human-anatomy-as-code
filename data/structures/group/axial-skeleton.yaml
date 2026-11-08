@@ -1,0 +1,13 @@
+slug: axial-skeleton
+kind: group
+laterality: midline
+status: draft
+parent: axial-skeletal-system
+labels:
+  en:
+    text: axial skeleton
+    source: fma
+    status: draft
+ids:
+  fma: 71221
+  wikidata: Q66569049

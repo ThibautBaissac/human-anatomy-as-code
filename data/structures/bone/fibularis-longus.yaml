@@ -1,0 +1,39 @@
+slug: fibularis-longus
+kind: bone
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: fibularis longus
+    source: fma
+    status: draft
+  fr:
+    text: muscle long fibulaire
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus fibularis longus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22539
+  ta2: 2652
+  ta98: A04.7.02.041
+  wikidata: Q1386945
+sides:
+  left:
+    ids:
+      fma: 22553
+      wikidata: Q66514570
+    meshes:
+      - bp3d:FJ1410M
+  right:
+    ids:
+      fma: 22552
+      wikidata: Q66514569
+    meshes:
+      - bp3d:FJ1410

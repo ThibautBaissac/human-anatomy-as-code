@@ -1,0 +1,45 @@
+slug: dorsal-venous-network-of-hand
+kind: vein
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: dorsal venous network of hand
+    source: fma
+    status: draft
+  fr:
+    text: réseau veineux dorsal de la main
+    source: wikidata
+    status: draft
+  la:
+    text: Rete venosum dorsale manus
+    source: wikidata
+    status: draft
+ids:
+  fma: 67977
+  ta2: 4967
+  ta98: A12.3.08.023
+  wikidata: Q3324393
+sides:
+  left:
+    ids:
+      fma: 62507
+      wikidata: Q66558821
+    meshes:
+      - bp3d:FJ2228
+    labels:
+      en:
+        text: dorsal venous network of left hand
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 62506
+      wikidata: Q66558819
+    meshes:
+      - bp3d:FJ2280
+    labels:
+      en:
+        text: dorsal venous network of right hand
+        source: fma
+        status: draft

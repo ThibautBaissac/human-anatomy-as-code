@@ -1,0 +1,32 @@
+slug: eighth-rib
+kind: bone
+laterality: bilateral
+status: draft
+parent: side-of-rib-cage
+regions:
+  - thorax
+labels:
+  en:
+    text: eighth rib
+    source: fma
+    status: draft
+  fr:
+    text: huitième côte
+    source: wikidata
+    status: draft
+ids:
+  fma: 8120
+  wikidata: Q51093562
+sides:
+  left:
+    ids:
+      fma: 8310
+      wikidata: Q66503810
+    meshes:
+      - bp3d:FJ3235
+  right:
+    ids:
+      fma: 8283
+      wikidata: Q66503782
+    meshes:
+      - bp3d:FJ3347

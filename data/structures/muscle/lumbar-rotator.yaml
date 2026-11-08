@@ -1,0 +1,33 @@
+slug: lumbar-rotator
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: lumbar rotator
+    source: fma
+    status: draft
+  fr:
+    text: muscle rotateur des lombes
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 23084
+  ta2: 2285
+  ta98: A04.3.02.211
+  wikidata: Q1180055
+sides:
+  left:
+    ids:
+      fma: 23090
+      wikidata: Q66515027
+    meshes:
+      - bp3d:FJ1522M
+  right:
+    ids:
+      fma: 23089
+      wikidata: Q66515026
+    meshes:
+      - bp3d:FJ1522

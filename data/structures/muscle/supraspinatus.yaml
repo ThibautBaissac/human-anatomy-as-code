@@ -1,0 +1,39 @@
+slug: supraspinatus
+kind: muscle
+laterality: bilateral
+status: draft
+labels:
+  en:
+    text: supraspinatus
+    source: fma
+    status: draft
+  fr:
+    text: muscle supra-épineux
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus supraspinatus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 9629
+  ta2: 2457
+  ta98: A04.6.02.006
+  wikidata: Q74959
+sides:
+  left:
+    ids:
+      fma: 32545
+      wikidata: Q66523033
+    meshes:
+      - bp3d:FJ1506M
+  right:
+    ids:
+      fma: 32544
+      wikidata: Q66523032
+    meshes:
+      - bp3d:FJ1506

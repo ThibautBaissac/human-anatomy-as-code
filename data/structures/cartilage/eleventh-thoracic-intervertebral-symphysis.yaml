@@ -1,0 +1,13 @@
+slug: eleventh-thoracic-intervertebral-symphysis
+kind: cartilage
+laterality: midline
+status: draft
+parent: thoracic-vertebral-column
+labels:
+  en:
+    text: eleventh thoracic intervertebral symphysis
+    source: fma
+    status: draft
+ids:
+  fma: 26103
+  wikidata: Q66517331

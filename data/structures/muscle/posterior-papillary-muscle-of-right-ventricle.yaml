@@ -1,0 +1,23 @@
+slug: posterior-papillary-muscle-of-right-ventricle
+kind: muscle
+laterality: midline
+status: draft
+parent: inferior-wall-of-right-ventricle
+labels:
+  en:
+    text: posterior papillary muscle of right ventricle
+    source: fma
+    status: draft
+  fr:
+    text: muscle papillaire postérieur du ventricule droit
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 7261
+  ta2: 4045
+  ta98: A12.1.02.018
+  wikidata: Q66502859
+meshes:
+  - bp3d:FJ2430

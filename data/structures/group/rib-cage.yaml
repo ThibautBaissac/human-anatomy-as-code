@@ -1,0 +1,21 @@
+slug: rib-cage
+kind: group
+laterality: midline
+status: draft
+parent: thoracic-wall
+regions:
+  - thorax
+labels:
+  en:
+    text: rib cage
+    source: fma
+    status: draft
+  fr:
+    text: cage thoracique
+    source: wikidata
+    status: draft
+ids:
+  fma: 7480
+  ta2: 1096
+  ta98: A02.3.04.001
+  wikidata: Q2576226

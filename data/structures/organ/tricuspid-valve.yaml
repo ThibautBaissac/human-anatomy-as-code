@@ -1,0 +1,23 @@
+slug: tricuspid-valve
+kind: organ
+laterality: midline
+status: draft
+parent: right-atrium
+labels:
+  en:
+    text: tricuspid valve
+    source: fma
+    status: draft
+  fr:
+    text: valve atrio-ventriculaire droite
+    source: wikidata
+    status: draft
+  la:
+    text: Valva atrioventricularis dextra
+    source: wikidata
+    status: draft
+ids:
+  fma: 7234
+  ta2: 3982
+  ta98: A12.1.02.003
+  wikidata: Q1344255

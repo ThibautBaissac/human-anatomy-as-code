@@ -1,0 +1,18 @@
+slug: superior-lingular-bronchial-tree
+kind: organ
+laterality: midline
+status: draft
+parent: superior-lingular-bronchopulmonary-segment
+labels:
+  en:
+    text: superior lingular bronchial tree
+    source: fma
+    status: draft
+ids:
+  fma: 68226
+  wikidata: Q66563822
+meshes:
+  - bp3d:FJ2476
+  - bp3d:FJ2477
+  - bp3d:FJ2478
+  - bp3d:FJ2540
