@@ -7,7 +7,7 @@ maxRmsMm: 25
 regions:
   pelvic:
     fit: similarity
-    organs: [ uterus-female, ovary-female-left, ovary-female-right, fallopian-tube-female-left, fallopian-tube-female-right, urinary-bladder-female, large-intestine-female, united-female ]
+    organs: [ uterus-female, ovary-female-left, ovary-female-right, fallopian-tube-female-left, fallopian-tube-female-right, large-intestine-female, united-female ]
     landmarks:
       # os coxaux BodyParts3D FJ3288 (G) / FJ3152 (D), sacrum FJ3393 ; HRA : 3d-vh-f-pelvis.glb
       - { name: ASIS_L, hra: [ 119.6, -0.3, 92.5 ], bp3d: [ 129.3, -139.1, 895.1 ] }
@@ -25,6 +25,22 @@ regions:
       rmsMm: 14.9
       maxMm: 28.7
       matrix: [ 0.931759, -0.008569, 0.012508, 11.796915, 0.008604, 0.931839, -0.002508, -142.885603, -0.012484, 0.002623, 0.931795, 802.269378, 0, 0, 0, 1 ]
+  bladder:
+    # Région pelvienne, puis 8 mm vers le haut : sans ce décalage, la vessie HRA traverse la symphyse pubienne de BodyParts3D
+    # (550 sommets devant ou dans le pubis, contact avec l'os). Mesuré après décalage : plus aucun contact avec l'os,
+    # 3 sommets devant le pubis, contact avec l'utérus conservé (l'utérus repose sur la vessie).
+    # Reculer la vessie la ferait entrer dans l'utérus.
+    fit: offset
+    from: pelvic
+    organs: [ urinary-bladder-female ]
+    landmarks: []
+    adjust: [ 0, 0, 8 ]
+    result:
+      scale: 0.93188
+      rotationDeg: 0.95
+      rmsMm: 0
+      maxMm: 0
+      matrix: [ 0.931759, -0.008569, 0.012508, 11.796915, 0.008604, 0.931839, -0.002508, -142.885603, -0.012484, 0.002623, 0.931795, 810.269378, 0, 0, 0, 1 ]
   thoracic:
     # Deux repères seulement (sternum) : la transformation pelvienne, suivie de la translation moyenne qui recale le sternum.
     fit: translation

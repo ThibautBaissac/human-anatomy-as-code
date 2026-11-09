@@ -83,3 +83,14 @@ test('registerFile writes each region result back into the YAML, keeping comment
   assert.ok(Math.abs(res.scale - 0.9) < 1e-3);
   assert.ok(res.rmsMm < 0.01);
 });
+
+test('computeRegions: an offset region is another region followed by a fixed shift, without landmarks', () => {
+  const lm = (name: string, hra: Vec3) => ({ name, hra, bp3d: knownTransform(hra) });
+  const regions = computeRegions({
+    pelvic: { fit: 'similarity', organs: ['uterus-female'], landmarks: pts.map((p, i) => lm(`p${i}`, p)) },
+    bladder: { fit: 'offset', from: 'pelvic', organs: ['urinary-bladder-female'], landmarks: [], adjust: [0, 0, 8] },
+  }, 25);
+  close(apply(regions.bladder.matrix, [1, 2, 3]), (() => { const q = knownTransform([1, 2, 3]); return [q[0], q[1], q[2] + 8]; })());
+  assert.equal(regions.bladder.ok, true);
+  assert.equal(regions.bladder.rmsMm, 0);
+});

@@ -118,8 +118,9 @@ export function fitTranslation(src: Vec3[], dst: Vec3[], base: Mat4): Fit {
 
 export interface Landmark { name: string; hra: Vec3; bp3d: Vec3 }
 export interface RegionConfig {
-  fit: 'similarity' | 'translation';
-  /** for fit: translation, the region whose transform comes first */
+  /** similarity: fitted on landmarks; translation: another region then the mean landmark offset; offset: another region then `adjust` only */
+  fit: 'similarity' | 'translation' | 'offset';
+  /** for fit: translation | offset, the region whose transform comes first */
   from?: string;
   organs: string[];
   /** landmark coordinates: hra already in the BodyParts3D axes and millimetres (after HRA_TO_BP3D) */
@@ -138,8 +139,18 @@ export function computeRegions(config: Record<string, RegionConfig>, maxRmsMm: n
     const r = config[name];
     if (!r) throw new Error(`recalage : région « ${name} » inconnue`);
     const src = r.landmarks.map((l) => l.hra), dst = r.landmarks.map((l) => l.bp3d);
-    let fit = r.fit === 'similarity' ? fitSimilarity(src, dst) : fitTranslation(src, dst, solve(r.from!, [...seen, name]).matrix);
-    if (r.adjust && r.adjust.some((v) => v !== 0)) fit = { ...fit, matrix: compose(translation(r.adjust), fit.matrix), ...residuals(compose(translation(r.adjust), fit.matrix), src, dst) };
+    let fit: Fit;
+    if (r.fit === 'similarity') fit = fitSimilarity(src, dst);
+    else if (r.fit === 'translation') fit = fitTranslation(src, dst, solve(r.from!, [...seen, name]).matrix);
+    else {
+      // offset: no landmarks of its own; residuals are those of the region it derives from
+      const base = solve(r.from!, [...seen, name]);
+      fit = { ...base, matrix: base.matrix, residualsMm: [], rmsMm: 0, maxMm: 0 };
+    }
+    if (r.adjust && r.adjust.some((v) => v !== 0)) {
+      const matrix = compose(translation(r.adjust), fit.matrix);
+      fit = { ...fit, matrix, ...(src.length ? residuals(matrix, src, dst) : {}) };
+    }
     return (out[name] = { ...fit, ok: fit.rmsMm <= maxRmsMm });
   };
   for (const name of Object.keys(config)) solve(name);

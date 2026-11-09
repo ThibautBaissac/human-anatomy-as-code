@@ -83,3 +83,16 @@ Décisions prises là où la spec `2026-11-09-modele-feminin-v1.md` est muette, 
 - Empreinte de l'extrait dépendante de la version de glTF-Transform.
 - `rotationDeg: 0` pour une région `fit: translation`.
 - Découpage de `buildAssets` et d'`importHra` en fonctions plus petites.
+
+## Recalage de la vessie (2026-11-09)
+
+- **Le défaut était plus important que l'écart de 6 mm mesuré sur les boîtes englobantes.** Après le recalage pelvien, la vessie HRA traversait la symphyse pubienne : 550 sommets devant le pubis ou dedans, contact avec l'os.
+- **On ne peut pas la reculer.** L'utérus n'est qu'à 4,5 mm en arrière ; un recul de 4 mm le fait entrer dans la vessie.
+- **Nouvelle région `bladder` (`fit: offset`).** C'est la région pelvienne suivie d'un décalage fixe de 8 mm vers le haut, sans repères propres. Ce décalage a été choisi par une recherche sur grille (décalages de −2 à +12 mm en Y et en Z), en comptant les sommets devant ou dans le pubis et les contacts à moins de 2 mm avec l'os et l'utérus.
+- **Résultat :**
+  - plus aucun contact avec l'os ;
+  - 3 sommets devant le pubis, contre 550 ;
+  - aucun sommet dans la paroi abdominale (ligne blanche, oblique externe) ;
+  - contact avec l'utérus conservé : anatomiquement, l'utérus repose sur la vessie.
+- **Le point le plus antérieur de la vessie (y = −145 mm) est au-dessus de la symphyse** (sommet à z = 806 mm), derrière la paroi abdominale : c'est la position du dôme vésical. La vue latérale rapprochée de `spikes/05-female/` le fait paraître devant le pubis, parce que les muscles de la paroi sont masqués dans la capture.
+- **Contrat de `register`.** Le mode `offset` est ajouté à `computeRegions` (test : une région décalée égale la région source suivie du décalage). Le résumé de `register` indique le décalage plutôt qu'un écart RMS nul trompeur.

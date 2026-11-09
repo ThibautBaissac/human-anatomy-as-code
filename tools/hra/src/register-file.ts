@@ -16,7 +16,10 @@ export function registerFile(path: string): { ok: boolean; summary: string[] } {
       scale: round(r.scale, 5), rotationDeg: round(r.rotationDeg, 2), rmsMm: round(r.rmsMm, 1), maxMm: round(r.maxMm, 1),
       matrix: r.matrix.map((v) => round(v, 6)),
     }, { flow: false }));
-    summary.push(`${name.padEnd(10)} échelle ${r.scale.toFixed(3)} · rotation ${r.rotationDeg.toFixed(1)}° · écart RMS ${r.rmsMm.toFixed(1)} mm (max ${r.maxMm.toFixed(1)})${r.ok ? '' : `  ✗ au-delà de ${max} mm`}`);
+    const c = conf.regions[name];
+    summary.push(c.fit === 'offset'
+      ? `${name.padEnd(10)} région ${c.from} + décalage [${(c.adjust ?? [0, 0, 0]).join(', ')}] mm (pas de repères propres)`
+      : `${name.padEnd(10)} échelle ${r.scale.toFixed(3)} · rotation ${r.rotationDeg.toFixed(1)}° · écart RMS ${r.rmsMm.toFixed(1)} mm (max ${r.maxMm.toFixed(1)})${r.ok ? '' : `  ✗ au-delà de ${max} mm`}`);
   }
   // keep each matrix on one line for readability
   doc.toString();
