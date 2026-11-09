@@ -97,3 +97,15 @@ Ces chiffres remplacent ceux de la section « Résultat sur les données réelle
 ## Ordre des règles de kind (2026-11-08, revue du viewer)
 
 Écart par rapport à l'ordre de la spec, étape 7 de l'import. Les règles `artery`, `vein`, `lymphatic`, `cns` et `nerve` passent avant `bone` et `muscle`, parce que beaucoup de vaisseaux et de nerfs portent le nom d'un os (« anterior tibial artery », « dorsal metacarpal arteries », « radial nerve »). Effet sur les données : 35 structures en `draft` sont reclassées, et le nombre d'os passe de 210 à 180. Des tests couvrent ce cas (`test/kind.test.ts`).
+
+## Muscles nommés d'après un os (2026-11-09, préalable aux animations)
+
+Douze structures étaient classées `bone` parce que la règle `bone` cherchait les noms d'os comme sous-chaînes : « fibularis » contient « fibula », « subscapularis » contient « scapula ». Les autres cas sont les fibulaires, les tibiaux, les chefs du fléchisseur ulnaire du carpe et du rond pronateur, l'extenseur ulnaire du carpe, l'élévateur de la scapula et le tractus iliotibial.
+
+- **Noms d'os en mots entiers.** Exception : « cranium », qui reste une sous-chaîne pour neurocranium, viscerocranium et basicranium.
+- **Mots-clés de muscle ajoutés.** levator, extensor, flexor, abductor, adductor, pronator, supinator, tibialis, fibularis, peroneus, subscapularis.
+- **Tractus iliotibial.** Il passe en `fascia`.
+- **Effet sur les données réelles.** 16 structures en `draft` sont reclassées : les 12 visées, plus 4 effets de bord jugés corrects. `maxillary-part-of-mouth` et `patellar-part-of-knee` passent de `bone` à `organ` : ce sont des régions, pas des os. `pectoral-girdle` et `scapular-part-of-pectoral-girdle` passent de `group` à `organ`. Dans la FMA, ce concept est la région de la ceinture scapulaire, dont les enfants (rhomboïdes, élévateur de la scapula, parties de région) sont des muscles ou des régions. Ils ne formaient un groupe qu'à cause de l'élévateur mal classé en `bone`.
+- **Règle écartée.** Donner à une structure sans mesh le kind unique de ses descendants reclassait 94 structures, souvent à tort : la paroi du corps passait en `bone`, le gros intestin en `muscle`. En effet, seuls les descendants qui ont des meshes comptent, et ils sont souvent partiels.
+
+Des tests couvrent ces cas (`test/kind.test.ts`).

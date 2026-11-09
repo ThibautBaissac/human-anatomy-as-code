@@ -9,7 +9,7 @@
 export const KIND_RULES: [string, RegExp][] = [
   ['skin', /^skin$|integument/],
   ['cartilage', /cartilage|intervertebral dis[ck]|symphysis|meniscus/],
-  ['fascia', /fascia|aponeurosis|retinaculum/],
+  ['fascia', /fascia|aponeurosis|retinaculum|iliotibial tract/],
   ['ligament', /ligament/],
   ['tendon', /tendon/],
   ['joint', /\bjoint\b|articulation/],
@@ -18,8 +18,9 @@ export const KIND_RULES: [string, RegExp][] = [
   ['lymphatic', /lymph/],
   ['cns', /brain|cerebr|cerebell|spinal cord|gyrus|sulcus|thalam|colliculus|pons|medulla|ventricle of brain|lateral ventricle/],
   ['nerve', /nerve|ganglion|plexus/],
-  ['bone', /\bbone\b|vertebra|phalanx|femur|tibia|fibula|humerus|radius|ulna|\brib\b|sternum|skull|cranium|mandible|maxilla|patella|scapula|clavicle|pelvis|sacrum|coccyx|tooth|carpal|tarsal|calcaneus|talus/],
-  ['muscle', /muscle|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps/],
+  // bone names as whole words: "tibialis", "ulnaris", "fibularis", "scapulae" are muscles
+  ['bone', /\bbone\b|vertebra|phalanx|cranium|\b(femur|tibia|fibula|humerus|radius|ulna|sternum|skull|mandible|maxilla|patella|scapula|clavicle|pelvis|sacrum|coccyx|tooth|calcaneus|talus)\b|\brib\b|carpal|tarsal/],
+  ['muscle', /muscle|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps|extensor|flexor|abductor|adductor|pronator|supinator|tibialis|fibularis|peroneus|subscapularis/],
 ];
 
 export function kindOfName(name: string): string | undefined {

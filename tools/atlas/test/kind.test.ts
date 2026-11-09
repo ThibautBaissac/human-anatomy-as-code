@@ -18,3 +18,15 @@ test('bones, muscles and the central nervous system keep their kind', () => {
   assert.equal(kindOfName('cerebellum'), 'cns');
   assert.equal(kindOfName('middle cerebral artery'), 'artery');
 });
+
+test('muscles named after a bone are muscles, not bones', () => {
+  for (const name of ['extensor carpi ulnaris', 'humeral head of flexor carpi ulnaris', 'ulnar head of pronator teres', 'fibularis brevis',
+    'fibularis longus', 'fibularis tertius', 'tibialis anterior', 'tibialis posterior', 'levator scapulae', 'subscapularis']) {
+    assert.equal(kindOfName(name), 'muscle', name);
+  }
+});
+
+test('the iliotibial tract is a fascia; bone names still match as whole words', () => {
+  assert.equal(kindOfName('iliotibial tract'), 'fascia');
+  for (const name of ['left ulna', 'head of radius', 'shaft of tibia', 'scapula', 'neck of femur', 'first metacarpal bone', 'neurocranium', 'viscerocranium', 'basicranium']) assert.equal(kindOfName(name), 'bone', name);
+});
