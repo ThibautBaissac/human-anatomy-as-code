@@ -1,6 +1,7 @@
 // Least-squares fits on mesh vertices (pure): sphere, circle, cylinder, principal axes, rotation about an axis.
 // Coordinates in mm, BodyParts3D frame. Methods from research_notes/Animations articulaires/animations.md §3.1.
-export type Vec3 = [number, number, number];
+import type { Vec3 } from '@haac/hra/register';
+export type { Vec3 };
 
 export const add = (a: Vec3, b: Vec3): Vec3 => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
 export const sub = (a: Vec3, b: Vec3): Vec3 => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
@@ -10,6 +11,14 @@ export const cross = (a: Vec3, b: Vec3): Vec3 => [a[1] * b[2] - a[2] * b[1], a[2
 export const length = (a: Vec3): number => Math.hypot(a[0], a[1], a[2]);
 export const normalize = (a: Vec3): Vec3 => scale(a, 1 / length(a));
 export const mean = (pts: Vec3[]): Vec3 => scale(pts.reduce(add, [0, 0, 0] as Vec3), 1 / pts.length);
+/** xyz positions → points. */
+export const toPoints = (p: ArrayLike<number>): Vec3[] => {
+  const out: Vec3[] = [];
+  for (let i = 0; i < p.length; i += 3) out.push([p[i], p[i + 1], p[i + 2]]);
+  return out;
+};
+/** The point farthest from `from`. */
+export const farthest = (pts: Vec3[], from: Vec3): Vec3 => pts.reduce((a, b) => (length(sub(b, from)) > length(sub(a, from)) ? b : a));
 
 /** Solves the square system A x = b (Gaussian elimination, partial pivoting). */
 function solve(A: number[][], b: number[]): number[] {

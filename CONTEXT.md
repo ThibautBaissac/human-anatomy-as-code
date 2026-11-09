@@ -87,11 +87,11 @@ Ce qui permet à des os de tourner les uns par rapport aux autres autour d'un ax
 _Avoid_ : jointure, liaison
 
 **Pose** :
-Ensemble des angles articulaires affichés, articulation par articulation et côté par côté. Une articulation absente de la pose est à son angle de repos, celui de BodyParts3D.
-_Avoid_ : posture, position
+Ensemble des angles articulaires affichés, articulation par articulation et côté par côté. Une articulation absente de la pose est à son angle de repos, celui de BodyParts3D (dans l'interface : « position de repos »).
+_Avoid_ : posture
 
 **Rig** :
-Pour un côté d'une articulation et un modèle, la liste calculée au build des instances qui tournent avec elle, de celles qui la franchissent (rendues transparentes pendant le mouvement) et des muscles qui agissent sur elle, avec leur bras de levier.
+Pour un côté d'une articulation et un modèle, la liste calculée au build des instances qui tournent avec elle, de celles qui la suivent d'une fraction de l'angle (la patella), de celles qui la franchissent (rendues transparentes pendant le mouvement) et des muscles qui agissent sur elle, avec leur bras de levier.
 _Avoid_ : squelette, armature
 
 **Action** :

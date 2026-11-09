@@ -42,6 +42,11 @@ export interface AtlasStructure {
 
 export type Motion = 'flexion-extension' | 'pronation-supination';
 export type Role = 'flexion' | 'extension' | 'pronation' | 'supination';
+/** The two roles of each motion, positive direction first (angle increasing: flexion, pronation). */
+export const ROLES_OF: Record<Motion, [positive: Role, negative: Role]> = {
+  'flexion-extension': ['flexion', 'extension'],
+  'pronation-supination': ['pronation', 'supination'],
+};
 export type Vec3 = [number, number, number];
 
 /** An animatable joint: one degree of freedom around an axis measured on our bones (data/joints). */

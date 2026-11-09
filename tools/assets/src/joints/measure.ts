@@ -1,5 +1,5 @@
 // Centre, axis and rest angle of one side of a joint, measured on the bones' vertices (pure).
-import { add, dot, fitCircle, fitCylinder, fitSphere, length, mean, normalize, principalAxes, rotateAbout, scale, signedAngle, sub, type Vec3 } from './fit.ts';
+import { add, dot, farthest, fitCircle, fitCylinder, fitSphere, length, mean, normalize, principalAxes, rotateAbout, scale, signedAngle, sub, type Vec3 } from './fit.ts';
 
 export type FitMethod = 'cylinder-contact' | 'head-to-head' | 'condyle-spheres';
 
@@ -54,7 +54,6 @@ export function within(pts: Vec3[], others: Vec3[], d: number): Vec3[] {
 
 const r1 = (x: number) => Math.round(x * 10) / 10 + 0; // + 0: no -0 in the files
 const lowest = (pts: Vec3[]) => pts.reduce((a, b) => (b[2] < a[2] ? b : a));
-const farthest = (pts: Vec3[], from: Vec3) => pts.reduce((a, b) => (length(sub(b, from)) > length(sub(a, from)) ? b : a));
 
 /** Orients `axis` so that a small positive rotation moves `tip` along `direction`. */
 function orient(axis: Vec3, centre: Vec3, tip: Vec3, direction: Vec3): Vec3 {

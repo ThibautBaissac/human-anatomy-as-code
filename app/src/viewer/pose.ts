@@ -1,6 +1,6 @@
 // Joint poses: instance matrices, crossing tissues, muscle length trends. Pure (4×4 algebra only, column-major like three.js).
 import { labelText } from './search.ts';
-import type { AtlasJoint, AtlasStructure, Lang, Motion, Role, Side, Vec3 } from './types.ts';
+import { ROLES_OF, type AtlasJoint, type AtlasStructure, type Lang, type Motion, type Role, type Side, type Vec3 } from './types.ts';
 
 export type Mat4 = number[];
 
@@ -24,7 +24,7 @@ export type Pose = Record<string, number>;
  * run almost along the axis. Same values as the build warning (tools/assets rig.ts).
  */
 export const STABLE_MOMENT_ARM_MM: Record<Motion, number> = { 'flexion-extension': 5, 'pronation-supination': 1 };
-const POSITIVE: Role[] = ['flexion', 'pronation'];
+const POSITIVE: Role[] = Object.values(ROLES_OF).map(([positive]) => positive);
 
 export const IDENTITY: Mat4 = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
 export const jointKey = (slug: string, side: Side) => `${slug}@${side}`;
@@ -136,7 +136,7 @@ export function motionDirection(previous: { angle: number; direction: 1 | -1 } |
 }
 
 /** Movers of the positive direction first. */
-const ROLE_ORDER: Role[] = ['flexion', 'extension', 'pronation', 'supination'];
+const ROLE_ORDER: Role[] = Object.values(ROLES_OF).flat();
 
 /** Muscles acting on a joint, with their role and (when measurable) their rig entry, sorted by role then name. */
 export function musclesOf(joint: AtlasJoint, structures: AtlasStructure[], rig: Rig | undefined, lang: Lang) {

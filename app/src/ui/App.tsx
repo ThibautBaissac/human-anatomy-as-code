@@ -46,7 +46,7 @@ export function App() {
   const info = (
     <InfoPanel catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick}>
       {viewer && catalog && view.selection && (
-        <MotionPanel viewer={viewer} catalog={catalog} view={view} selection={view.selection} lang={view.lang} onSelect={selectAndFocus} />
+        <MotionPanel viewer={viewer} catalog={catalog} view={{ ...view, selection: view.selection }} onSelect={selectAndFocus} />
       )}
     </InfoPanel>
   );

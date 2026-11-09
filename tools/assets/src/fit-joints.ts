@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { parse, parseDocument, type Document, type YAMLMap } from 'yaml';
 import { findObjFiles, parseObj } from './obj.ts';
 import { measureJoint, type JointInput, type Measured } from './joints/measure.ts';
-import type { Vec3 } from './joints/fit.ts';
+import { toPoints, type Vec3 } from './joints/fit.ts';
 
 type Side = 'left' | 'right';
 const SIDES: Side[] = ['left', 'right'];
@@ -42,10 +42,7 @@ export function fitJoints({ dataDir, objDir }: { dataDir: string; objDir: string
     if (!cache.has(ref)) {
       const path = objFiles.get(ref.replace(/^bp3d:/, ''));
       if (!path) throw new Error(`mesh introuvable : ${ref}`);
-      const { positions: p } = parseObj(path);
-      const out: Vec3[] = [];
-      for (let i = 0; i < p.length; i += 3) out.push([p[i], p[i + 1], p[i + 2]]);
-      cache.set(ref, out);
+      cache.set(ref, toPoints(parseObj(path).positions));
     }
     return cache.get(ref)!;
   };

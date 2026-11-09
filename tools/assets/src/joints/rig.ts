@@ -1,6 +1,6 @@
 // Rig of one side of a joint (pure): which instances turn with it, which cross it, and where the muscles acting
 // on it are attached. Computed once at build time, in world coordinates of the rest pose (spec 2026-11-09-animations-v1).
-import { dot, length, mean, normalize, rotateAbout, scale, sub, type Vec3 } from './fit.ts';
+import { dot, farthest, length, mean, normalize, rotateAbout, scale, sub, toPoints as points, type Vec3 } from './fit.ts';
 import { within } from './measure.ts';
 
 type Side = 'left' | 'right';
@@ -67,11 +67,6 @@ export const STABLE_MOMENT_ARM_MM: Record<RigJoint['motion'], number> = { 'flexi
 const POSITIVE: Role[] = ['flexion', 'pronation'];
 const cmp = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 
-const points = (p: Float32Array): Vec3[] => {
-  const out: Vec3[] = [];
-  for (let i = 0; i < p.length; i += 3) out.push([p[i], p[i + 1], p[i + 2]]);
-  return out;
-};
 
 export function rigJoint(joint: RigJoint, side: Side, instances: RigInstance[], actionsOf: Map<string, { joint: string; role: Role }[]>): { rig: Rig; warnings: string[] } {
   const s = joint.sides?.[side];
@@ -83,7 +78,7 @@ export function rigJoint(joint: RigJoint, side: Side, instances: RigInstance[], 
   const limb = proximal.limb;
 
   // Joint plane through the centre; its normal points to the proximal segment.
-  const far = prox.reduce((a, b) => (length(sub(b, s.centre)) > length(sub(a, s.centre)) ? b : a));
+  const far = farthest(prox, s.centre);
   const toProximal = normalize(sub(far, s.centre));
   const normal = joint.motion === 'pronation-supination' ? scale(s.axis, Math.sign(dot(s.axis, toProximal)) || 1) : toProximal;
   const height = (p: Vec3) => dot(sub(p, s.centre), normal);
@@ -94,7 +89,7 @@ export function rigJoint(joint: RigJoint, side: Side, instances: RigInstance[], 
   const distal = joint.moving.flatMap((b) => { const i = byName.get(`${b}@${side}`); return i ? points(i.positions) : []; });
   // flexion: towards the far end of the moving bones (the forearm is flexed and carried at rest); forearm rotation: down
   // the rotation axis, over the hand, as far as the radius spans (its far end, the radial head, lies above the plane)
-  const distalEnd = distal.length ? distal.reduce((a, b) => (length(sub(b, s.centre)) > length(sub(a, s.centre)) ? b : a)) : s.centre;
+  const distalEnd = distal.length ? farthest(distal, s.centre) : s.centre;
   const rotation = joint.motion === 'pronation-supination';
   const along = rotation ? scale(normal, -1) : normalize(sub(distalEnd, s.centre));
   const segment = Math.max(1, rotation ? Math.max(...distal.map((p) => Math.abs(height(p)))) : length(sub(distalEnd, s.centre)));

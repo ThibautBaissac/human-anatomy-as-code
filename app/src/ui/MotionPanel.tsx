@@ -3,15 +3,16 @@ import type { Viewer } from '../viewer/viewer.ts';
 import type { Catalog } from '../viewer/catalog.ts';
 import { jointKey, jointsFor, lengthTrend, motionDirection, musclesOf } from '../viewer/pose.ts';
 import { labelText } from '../viewer/search.ts';
-import type { AtlasJoint, Lang, Selection, Side, ViewState } from '../viewer/types.ts';
+import { ROLES_OF, type AtlasJoint, type Selection, type Side, type ViewState } from '../viewer/types.ts';
 import { S } from './strings.ts';
 
 const reducedMotion = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 const TREND_MARK: Record<string, string> = { shortens: '↓', lengthens: '↑', stable: '≈' };
 
 /** "Mouvement" section of the Info panel: the joints the selection takes part in, an angle slider, play, rest, muscles. */
-export function MotionPanel({ viewer, catalog, view, selection, lang, onSelect }:
-  { viewer: Viewer; catalog: Catalog; view: ViewState; selection: Selection; lang: Lang; onSelect: (sel: Selection) => void }) {
+export function MotionPanel({ viewer, catalog, view, onSelect }:
+  { viewer: Viewer; catalog: Catalog; view: ViewState & { selection: Selection }; onSelect: (sel: Selection) => void }) {
+  const { selection, lang } = view;
   const id = useId();
   const s = catalog.structure(selection.slug);
   const offered: AtlasJoint[] = s
@@ -35,8 +36,7 @@ export function MotionPanel({ viewer, catalog, view, selection, lang, onSelect }
   const playing = viewer.getSnapshot().playing;
   const isPlaying = playing?.joint === joint.slug;
   const [lo, hi] = joint.rangeDeg;
-  const positive = joint.motion === 'flexion-extension' ? 'flexion' : 'pronation';
-  const negative = joint.motion === 'flexion-extension' ? 'extension' : 'supination';
+  const [positive, negative] = ROLES_OF[joint.motion];
   const previous = last.current?.key === key ? last.current : null;
   const direction: 1 | -1 = isPlaying ? playing!.direction : motionDirection(previous, angle, joint.restDeg);
   last.current = { key, angle, direction };
