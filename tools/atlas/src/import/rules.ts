@@ -20,7 +20,7 @@ export const KIND_RULES: [string, RegExp][] = [
   ['nerve', /nerve|ganglion|plexus/],
   // bone names as whole words: "tibialis", "ulnaris", "fibularis", "scapulae" are muscles
   ['bone', /\bbone\b|vertebra|phalanx|cranium|\b(femur|tibia|fibula|humerus|radius|ulna|sternum|skull|mandible|maxilla|patella|scapula|clavicle|pelvis|sacrum|coccyx|tooth|calcaneus|talus)\b|\brib\b|carpal|tarsal/],
-  ['muscle', /muscle|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps|extensor|flexor|abductor|adductor|pronator|supinator|tibialis|fibularis|peroneus|subscapularis/],
+  ['muscle', /muscle|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps|extensor|flexor|abductor|adductor|pronator|supinator|tibialis|fibularis|peroneus|subscapularis|longissimus|iliocostalis|spinalis|splenius|serratus|psoas|coccygeus|longus capitis|longus colli/],
 ];
 
 export function kindOfName(name: string): string | undefined {

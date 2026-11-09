@@ -30,3 +30,11 @@ test('the iliotibial tract is a fascia; bone names still match as whole words', 
   assert.equal(kindOfName('iliotibial tract'), 'fascia');
   for (const name of ['left ulna', 'head of radius', 'shaft of tibia', 'scapula', 'neck of femur', 'first metacarpal bone', 'neurocranium', 'viscerocranium', 'basicranium']) assert.equal(kindOfName(name), 'bone', name);
 });
+
+test('back and neck muscles are muscles by their own name (their is-a ancestors name the vertebral column)', () => {
+  for (const name of ['longissimus thoracis', 'longissimus capitis', 'iliocostalis lumborum', 'spinalis thoracis', 'spinalis', 'semispinalis capitis',
+    'splenius cervicis', 'serratus posterior inferior', 'psoas major', 'coccygeus', 'longus capitis']) {
+    assert.equal(kindOfName(name), 'muscle', name);
+  }
+  assert.equal(kindOfName('triquetral'), undefined); // a carpal bone: left to its ancestors
+});

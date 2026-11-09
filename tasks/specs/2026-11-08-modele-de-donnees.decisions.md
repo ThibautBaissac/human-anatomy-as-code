@@ -109,3 +109,11 @@ Douze structures étaient classées `bone` parce que la règle `bone` cherchait 
 - **Règle écartée.** Donner à une structure sans mesh le kind unique de ses descendants reclassait 94 structures, souvent à tort : la paroi du corps passait en `bone`, le gros intestin en `muscle`. En effet, seuls les descendants qui ont des meshes comptent, et ils sont souvent partiels.
 
 Des tests couvrent ces cas (`test/kind.test.ts`).
+
+## Muscles du dos et du cou classés en os (2026-11-09, revue des animations)
+
+18 muscles étaient classés `bone` : longissimus, iliocostal, épineux, semi-épineux, splénius, dentelés postérieurs, grand psoas, coccygien et long de la tête. Leur nom ne déclenchait aucune règle, et leurs ancêtres *is-a* nomment la colonne vertébrale (« vertebral »). La recherche des mots-clés dans les ancêtres leur donnait donc le kind `bone`. On s'en est aperçu parce qu'un clic de test sur l'ulna déplacée sélectionnait le longissimus, affiché comme un os.
+
+- **Correction.** Leurs noms entrent dans les mots-clés de muscle : longissimus, iliocostalis, spinalis, splenius, serratus, psoas, coccygeus, longus capitis, longus colli.
+- **Effet sur les données.** 20 structures en `draft` changent de kind : les 18 muscles, plus `wall-of-abdomen` et `wall-of-abdomen-proper`, qui passent de `group` à `organ`. Ce sont des régions, qui n'étaient des groupes qu'à cause du psoas classé en `bone`.
+- **Test.** Des tests couvrent ces cas (`test/kind.test.ts`).
