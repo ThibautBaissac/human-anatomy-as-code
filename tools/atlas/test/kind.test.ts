@@ -38,3 +38,14 @@ test('back and neck muscles are muscles by their own name (their is-a ancestors 
   }
   assert.equal(kindOfName('triquetral'), undefined); // a carpal bone: left to its ancestors
 });
+
+test('kidney, spleen and adrenal gland are organs (their is-a ancestors have a cortex and a medulla)', () => {
+  for (const name of ['kidney', 'left kidney', 'spleen', 'adrenal gland', 'right suprarenal gland']) assert.equal(kindOfName(name), 'organ', name);
+  // their vessels and nerves keep their own kind
+  for (const [name, kind] of [['renal artery', 'artery'], ['splenic vein', 'vein'], ['artery of kidney', 'artery']]) assert.equal(kindOfName(name), kind, name);
+});
+
+test('parts of the trapezius, interspinales and intertransversarii are muscles', () => {
+  for (const name of ['ascending part of trapezius', 'descending part of trapezius', 'set of interspinales cervicis', 'set of interspinales lumborum',
+    'set of anterior cervical intertransversarii', 'set of posterior cervical intertransversarii']) assert.equal(kindOfName(name), 'muscle', name);
+});

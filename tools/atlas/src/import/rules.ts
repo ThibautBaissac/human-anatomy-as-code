@@ -16,11 +16,13 @@ export const KIND_RULES: [string, RegExp][] = [
   ['artery', /arter|aorta|arterial/],
   ['vein', /vein|venous|\bsinus\b|vena/],
   ['lymphatic', /lymph/],
+  // whole names: their is-a ancestors ("organ with cortex and medulla") would make them CNS
+  ['organ', /^((left|right) )?(kidney|spleen|(adrenal|suprarenal) gland)$/],
   ['cns', /brain|cerebr|cerebell|spinal cord|gyrus|sulcus|thalam|colliculus|pons|medulla|ventricle of brain|lateral ventricle/],
   ['nerve', /nerve|ganglion|plexus/],
   // bone names as whole words: "tibialis", "ulnaris", "fibularis", "scapulae" are muscles
   ['bone', /\bbone\b|vertebra|phalanx|cranium|\b(femur|tibia|fibula|humerus|radius|ulna|sternum|skull|mandible|maxilla|patella|scapula|clavicle|pelvis|sacrum|coccyx|tooth|calcaneus|talus)\b|\brib\b|carpal|tarsal/],
-  ['muscle', /muscle|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps|extensor|flexor|abductor|adductor|pronator|supinator|tibialis|fibularis|peroneus|subscapularis|longissimus|iliocostalis|spinalis|splenius|serratus|psoas|coccygeus|longus capitis|longus colli/],
+  ['muscle', /muscle|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps|extensor|flexor|abductor|adductor|pronator|supinator|tibialis|fibularis|peroneus|subscapularis|longissimus|iliocostalis|spinalis|splenius|serratus|psoas|coccygeus|longus capitis|longus colli|trapezius|interspinales|intertransversarii/],
 ];
 
 export function kindOfName(name: string): string | undefined {

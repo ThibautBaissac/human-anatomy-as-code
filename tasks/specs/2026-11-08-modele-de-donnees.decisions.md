@@ -117,3 +117,10 @@ Des tests couvrent ces cas (`test/kind.test.ts`).
 - **Correction.** Leurs noms entrent dans les mots-clés de muscle : longissimus, iliocostalis, spinalis, splenius, serratus, psoas, coccygeus, longus capitis, longus colli.
 - **Effet sur les données.** 20 structures en `draft` changent de kind : les 18 muscles, plus `wall-of-abdomen` et `wall-of-abdomen-proper`, qui passent de `group` à `organ`. Ce sont des régions, qui n'étaient des groupes qu'à cause du psoas classé en `bone`.
 - **Test.** Des tests couvrent ces cas (`test/kind.test.ts`).
+
+## Rein, rate, surrénale ; trapèze, interépineux, intertransversaires (2026-11-09, préalable aux systèmes)
+
+- **Organes classés `cns`.** Le rein, la rate et la glande surrénale étaient classés `cns` : leurs ancêtres *is-a* (organe à cortex et médulla) déclenchaient la règle `cns` (« medulla »). Une règle `organ` sur ces noms complets, éventuellement précédés de « left » ou « right », passe avant `cns`. Leurs vaisseaux et leurs nerfs gardent leur kind, puisque la règle exige le nom complet.
+- **Muscles classés `organ`.** Les parties du trapèze, les interépineux et les intertransversaires étaient classés `organ`. Leurs noms rejoignent les mots-clés de muscle.
+- **Effet sur les données.** 12 structures en `draft` changent de kind : les 9 visées, plus `urinary-system`, `endocrine-system` et `upper-urinary-tract`, qui passent de `group` à `organ`. Tous leurs descendants sont désormais des organes, et une seule nature ne fait pas un groupe. Ces trois structures n'ont pas de mesh : rien ne change à l'écran.
+- **Test.** Des tests couvrent ces cas (`test/kind.test.ts`).
