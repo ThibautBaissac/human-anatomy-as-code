@@ -28,6 +28,7 @@ export function InfoPanel({ catalog, lang, selection, onSelect, children }: { ca
       <dl className="facts">
         {selection.side && (<div><dt>{S.sideLabel}</dt><dd>{S.side[selection.side]}</dd></div>)}
         <div><dt>{S.kind}</dt><dd>{S.kinds[s.kind] ?? s.kind}</dd></div>
+        {s.systems && s.systems.length > 0 && (<div><dt>{S.systemsLabel}</dt><dd>{s.systems.map((x) => S.systems[x] ?? x).join(', ')}</dd></div>)}
         {s.layer !== null && (<div><dt>{S.layer}</dt><dd>{s.layer}</dd></div>)}
         {parent && (<div><dt>{S.parent}</dt><dd><button type="button" className="link" onClick={() => onSelect(parent.slug)}>{labelText(parent, lang)}</button></dd></div>)}
         <div><dt>{S.slug}</dt><dd><code>{s.slug}</code></dd></div>

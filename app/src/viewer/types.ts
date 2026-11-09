@@ -5,6 +5,9 @@ export type Axis = 'axial' | 'coronal' | 'sagittal';
 export type Model = 'male' | 'female';
 export const AXES: Axis[] = ['axial', 'coronal', 'sagittal'];
 export const LANGS: Lang[] = ['fr', 'en', 'la'];
+/** Anatomical systems, in display order (data: import/rules.ts SYSTEMS). */
+export const SYSTEMS = ['skeletal', 'muscular', 'cardiovascular', 'lymphatic', 'nervous', 'sensory', 'respiratory', 'digestive', 'urinary', 'genital', 'endocrine', 'integumentary'] as const;
+export type System = (typeof SYSTEMS)[number];
 
 export interface AtlasLabel {
   text: string;
@@ -28,6 +31,8 @@ export interface AtlasStructure {
   status: 'draft' | 'reviewed';
   parent?: string;
   regions?: string[];
+  /** anatomical systems, in vocabulary order */
+  systems?: string[];
   layer: number | null;
   children: string[];
   aliases?: string[];
@@ -91,6 +96,8 @@ export interface ViewState {
   layerCut: number;
   ghost: boolean;
   hiddenKinds: string[];
+  /** systems whose instances are hidden (an instance stays while one of its systems is shown) */
+  hiddenSystems: string[];
   sections: Partial<Record<Axis, number>>;
   lang: Lang;
   camera: Camera | null;
@@ -100,5 +107,5 @@ export interface ViewState {
 }
 
 export const DEFAULT_VIEW: ViewState = {
-  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], sections: {}, lang: 'fr', camera: null, model: 'male', pose: {},
+  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], hiddenSystems: [], sections: {}, lang: 'fr', camera: null, model: 'male', pose: {},
 };

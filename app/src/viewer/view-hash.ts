@@ -7,6 +7,8 @@ export interface DecodeContext {
   /** true when the structure is bilateral; when given, a side on any other structure is invalid */
   hasSides?(slug: string): boolean;
   kinds: string[];
+  /** systems of the model: any other in sys= is dropped */
+  systems?: string[];
   maxLayer: number;
   /** joints of the model: a pose on any other joint or side is dropped */
   joints?: AtlasJoint[];
@@ -21,6 +23,7 @@ export function encodeView(v: ViewState): string {
   if (v.layerCut) p.push(`layer=${v.layerCut}`);
   if (v.ghost) p.push('ghost=1');
   if (v.hiddenKinds.length) p.push(`hide=${[...v.hiddenKinds].sort().join(',')}`);
+  if (v.hiddenSystems?.length) p.push(`sys=${[...v.hiddenSystems].sort().join(',')}`);
   const cuts = AXES.filter((a) => v.sections[a] !== undefined).map((a) => `${a}:${v.sections[a]!.toFixed(3)}`);
   if (cuts.length) p.push(`cut=${cuts.join(',')}`);
   if (v.lang !== 'fr') p.push(`lang=${v.lang}`);
@@ -52,6 +55,11 @@ export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState>
   if (hide) {
     const kinds = hide.split(',').filter((k) => ctx.kinds.includes(k));
     if (kinds.length) out.hiddenKinds = kinds;
+  }
+  const sys = params.get('sys');
+  if (sys && ctx.systems) {
+    const systems = [...new Set(sys.split(',').filter((x) => ctx.systems!.includes(x)))].sort();
+    if (systems.length) out.hiddenSystems = systems;
   }
   const cut = params.get('cut');
   if (cut) {

@@ -4,7 +4,7 @@ import { colorOf } from '../viewer/colors.ts';
 import { AXES, type ViewState } from '../viewer/types.ts';
 import { S } from './strings.ts';
 
-export function Toolbar({ viewer, view, kinds, maxLayer }: { viewer: Viewer; view: ViewState; kinds: string[]; maxLayer: number }) {
+export function Toolbar({ viewer, view, kinds, systems, maxLayer }: { viewer: Viewer; view: ViewState; kinds: string[]; systems: string[]; maxLayer: number }) {
   const id = useId();
   return (
     <div className="toolbar">
@@ -20,6 +20,23 @@ export function Toolbar({ viewer, view, kinds, maxLayer }: { viewer: Viewer; vie
           ))}
         </div>
       </fieldset>
+      {systems.length > 0 && (
+        <fieldset>
+          <legend>{S.systemsLegend}</legend>
+          <ul className="systems">
+            {systems.map((x) => (
+              <li key={x}>
+                <label className="kind">
+                  <input type="checkbox" checked={!view.hiddenSystems.includes(x)} onChange={(e) => viewer.setSystemVisible(x, e.target.checked)} />
+                  {S.systems[x] ?? x}
+                </label>
+                <button type="button" className="isolate" aria-label={S.isolateSystem(S.systems[x] ?? x)} onClick={() => viewer.isolateSystem(x)}>{S.isolate}</button>
+              </li>
+            ))}
+          </ul>
+          <button type="button" onClick={() => viewer.showAllSystems()} disabled={view.hiddenSystems.length === 0}>{S.showAllSystems}</button>
+        </fieldset>
+      )}
       <fieldset>
         <legend>{S.dissection}</legend>
         <label htmlFor={`${id}-layer`}>{S.layerLabel(view.layerCut)}</label>

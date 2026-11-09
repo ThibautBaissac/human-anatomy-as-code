@@ -1,5 +1,5 @@
 // Index over atlas.json and the loaded instances: who is what, who contains whom. Pure.
-import type { Atlas, AtlasStructure, Side } from './types.ts';
+import { SYSTEMS, type Atlas, type AtlasStructure, type Side } from './types.ts';
 
 export const ROOT = 'human-body';
 /** Tree bucket for structures without a parent, other than the root. */
@@ -12,6 +12,8 @@ export interface InstanceInfo {
   side: Side | null;
   kind: string;
   layer: number;
+  /** systems of its structure (empty for a region) */
+  systems: string[];
   /** false when none of its meshes belongs to the displayed model (e.g. male geometry in a shared file) */
   inModel: boolean;
 }
@@ -28,6 +30,8 @@ export interface Catalog {
   /** From the root down to the direct parent. */
   ancestorsOf(id: string): string[];
   kinds: string[];
+  /** systems of the shown instances, in vocabulary order */
+  systems: string[];
   maxLayer: number;
 }
 
@@ -41,7 +45,7 @@ export function buildCatalog(atlas: Atlas, loaded: (string | { name: string; mes
     const s = structures.get(slug);
     // an atlas without mesh index (hand-written fixtures) shows every instance of its structures
     const inModel = !!s && (!meshes || Object.keys(atlas.meshIndex).length === 0 || meshes.some((m) => m in atlas.meshIndex));
-    return { index, name, slug, side: side ?? null, kind: s?.kind ?? 'organ', layer: s?.layer ?? 0, inModel };
+    return { index, name, slug, side: side ?? null, kind: s?.kind ?? 'organ', layer: s?.layer ?? 0, systems: s?.systems ?? [], inModel };
   });
   const own = new Map<string, number[]>();
   for (const i of instances) if (i.inModel) own.set(i.slug, [...(own.get(i.slug) ?? []), i.index]);
@@ -70,6 +74,8 @@ export function buildCatalog(atlas: Atlas, loaded: (string | { name: string; mes
   const shown = instances.filter((i) => i.inModel);
   const kinds = [...new Set(shown.map((i) => i.kind))].sort(byKey);
   const maxLayer = Math.max(0, ...shown.map((i) => i.layer));
+  const present = new Set(shown.flatMap((i) => i.systems));
+  const systems = SYSTEMS.filter((x) => present.has(x));
 
   return {
     structure: (slug) => structures.get(slug),
@@ -88,6 +94,7 @@ export function buildCatalog(atlas: Atlas, loaded: (string | { name: string; mes
       return out;
     },
     kinds,
+    systems,
     maxLayer,
   };
 }

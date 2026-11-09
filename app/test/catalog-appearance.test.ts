@@ -7,8 +7,8 @@ import { ATLAS, INSTANCES } from './fixture.ts';
 const cat = buildCatalog(ATLAS, INSTANCES);
 
 test('catalog: each instance knows its structure, side, kind and layer', () => {
-  assert.deepEqual(cat.instance(1), { index: 1, name: 'femur@right', slug: 'femur', side: 'right', kind: 'bone', layer: 5, inModel: true });
-  assert.deepEqual(cat.instance(2), { index: 2, name: 'heart', slug: 'heart', side: null, kind: 'organ', layer: 4, inModel: true });
+  assert.deepEqual(cat.instance(1), { index: 1, name: 'femur@right', slug: 'femur', side: 'right', kind: 'bone', layer: 5, systems: ['skeletal'], inModel: true });
+  assert.deepEqual(cat.instance(2), { index: 2, name: 'heart', slug: 'heart', side: null, kind: 'organ', layer: 4, systems: ['cardiovascular', 'endocrine'], inModel: true });
 });
 
 test('catalog: instances of a structure, of one side, and of a group through its descendants', () => {
@@ -66,4 +66,19 @@ test('appearance: a tissue crossing a moving joint is ghosted; selected, it is a
   assert.deepEqual(appearance({ ...s, selected: new Set([4]) }, muscleL), { visible: true, alpha: 0.15, highlighted: true });
   assert.equal(appearance({ ...s, hiddenKinds: new Set(['muscle']) }, muscleL).visible, false);
   assert.deepEqual(appearance(s, femurL), { visible: true, alpha: 1, highlighted: false });
+});
+
+test('catalog: each instance knows its systems; the systems present come in vocabulary order', () => {
+  assert.deepEqual(cat.instance(2).systems, ['cardiovascular', 'endocrine']);
+  assert.deepEqual(cat.instance(3).systems, []); // the skin of the fixture has none
+  assert.deepEqual(cat.systems, ['skeletal', 'muscular', 'cardiovascular', 'endocrine']);
+});
+
+test('appearance: an instance is hidden when all its systems are hidden; one shown keeps it; none: only its kind matters', () => {
+  const heart = cat.instance(2);
+  assert.equal(appearance({ ...base, hiddenSystems: new Set(['cardiovascular']) }, heart).visible, true);
+  assert.equal(appearance({ ...base, hiddenSystems: new Set(['cardiovascular', 'endocrine']) }, heart).visible, false);
+  assert.equal(appearance({ ...base, hiddenSystems: new Set(['cardiovascular', 'endocrine', 'skeletal', 'muscular']) }, skin).visible, true);
+  // the selection stays visible
+  assert.equal(appearance({ ...base, hiddenSystems: new Set(['skeletal']), selected: new Set([0]) }, femurL).visible, true);
 });

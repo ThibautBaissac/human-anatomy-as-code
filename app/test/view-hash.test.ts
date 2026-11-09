@@ -13,12 +13,12 @@ test('every parameter round-trips', () => {
   const v: ViewState = {
     selection: { slug: 'femur', side: 'left' }, layerCut: 2, ghost: true, hiddenKinds: ['muscle', 'skin'],
     sections: { axial: 0.625, sagittal: 0.5 }, lang: 'la',
-    camera: { position: [100, -900, 1200], target: [0, 0, 1000] }, model: 'female', pose: {},
+    camera: { position: [100, -900, 1200], target: [0, 0, 1000] }, model: 'female', pose: {}, hiddenSystems: [],
   };
   const hash = encodeView(v);
   assert.equal(hash, 'sex=f&sel=femur@left&layer=2&ghost=1&hide=muscle,skin&cut=axial:0.625,sagittal:0.500&lang=la&cam=100,-900,1200,0,0,1000');
-  // the empty pose is the default: not written, not read back
-  const { pose: _, ...encoded } = v;
+  // the empty pose and no hidden system are defaults: not written, not read back
+  const { pose: _, hiddenSystems: __, ...encoded } = v;
   assert.deepEqual(decodeView(hash, ctx), encoded);
 });
 
@@ -50,4 +50,13 @@ test('a side on a structure that has no sides is ignored', () => {
   const withSides = { ...ctx, hasSides: (s: string) => s === 'femur' };
   assert.equal(decodeView('sel=heart@left', withSides).selection, undefined);
   assert.deepEqual(decodeView('sel=femur@right', withSides).selection, { slug: 'femur', side: 'right' });
+});
+
+test('hidden systems round-trip as sys=; unknown ones are dropped', () => {
+  const withSystems = { ...ctx, systems: ['skeletal', 'muscular', 'digestive'] };
+  const hash = encodeView({ ...DEFAULT_VIEW, hiddenSystems: ['muscular', 'digestive'] });
+  assert.equal(hash, 'sys=digestive,muscular');
+  assert.deepEqual(decodeView(hash, withSystems).hiddenSystems, ['digestive', 'muscular']);
+  assert.deepEqual(decodeView('sys=digestive,wat', withSystems).hiddenSystems, ['digestive']);
+  assert.equal(decodeView('sys=wat', withSystems).hiddenSystems, undefined);
 });

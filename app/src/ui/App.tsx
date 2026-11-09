@@ -50,7 +50,7 @@ export function App() {
       )}
     </InfoPanel>
   );
-  const controls = viewer && catalog && <Toolbar viewer={viewer} view={view} kinds={catalog.kinds} maxLayer={catalog.maxLayer} />;
+  const controls = viewer && catalog && <Toolbar viewer={viewer} view={view} kinds={catalog.kinds} systems={catalog.systems} maxLayer={catalog.maxLayer} />;
 
   return (
     <div className={`app${narrow ? ' is-narrow' : ''}`}>

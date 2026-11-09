@@ -281,6 +281,16 @@ export class Viewer {
     if (on) hidden.delete(kind); else hidden.add(kind);
     this.setState({ hiddenKinds: [...hidden].sort() });
   }
+  setSystemVisible(system: string, on: boolean): void {
+    const hidden = new Set(this.view.hiddenSystems);
+    if (on) hidden.delete(system); else hidden.add(system);
+    this.setState({ hiddenSystems: [...hidden].sort() });
+  }
+  /** Shows only this system: every other system of the model is hidden. */
+  isolateSystem(system: string): void {
+    this.setState({ hiddenSystems: (this.catalog?.systems ?? []).filter((x) => x !== system).sort() });
+  }
+  showAllSystems(): void { this.setState({ hiddenSystems: [] }); }
   setLayerCut(n: number): void { this.setState({ layerCut: n }); }
   setGhost(on: boolean): void { this.setState({ ghost: on }); }
   setSection(axis: Axis, position: number | null): void {
@@ -400,6 +410,7 @@ export class Viewer {
     const sel = this.view.selection;
     const state: AppearanceState = {
       hiddenKinds: new Set(this.view.hiddenKinds),
+      hiddenSystems: new Set(this.view.hiddenSystems),
       layerCut: this.view.layerCut,
       ghost: this.view.ghost,
       selected: new Set(sel ? this.catalog.instancesOf(sel.slug, sel.side) : []),

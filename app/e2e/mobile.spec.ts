@@ -34,3 +34,13 @@ test('phone: the Mouvement section is in the Info tab and its slider moves the j
   await expect(slider).toHaveAttribute('aria-valuetext', '100° de flexion');
   await expect.poll(() => page.evaluate(() => location.hash)).toContain('p=elbow-joint@left:100');
 });
+
+test('phone: the system filter is in the Commandes tab', async ({ page }, info) => {
+  await page.goto(`${BASE}${info.project.metadata.query}`);
+  await page.waitForFunction(() => (window as unknown as { __viewer?: { pickReadyMs: number } }).__viewer?.pickReadyMs, null, { timeout: 60_000 });
+  await page.getByRole('tab', { name: 'Commandes' }).click();
+  const box = page.getByRole('group', { name: 'Afficher par système' });
+  await box.getByRole('checkbox', { name: 'Appareil digestif' }).scrollIntoViewIfNeeded();
+  await box.getByRole('checkbox', { name: 'Appareil digestif' }).tap();
+  await expect.poll(() => page.evaluate(() => location.hash)).toContain('sys=digestive');
+});
