@@ -5,7 +5,6 @@ status: draft
 parent: pancreatic-duct-tree
 systems:
   - digestive
-  - endocrine
 labels:
   en:
     text: pancreatic duct

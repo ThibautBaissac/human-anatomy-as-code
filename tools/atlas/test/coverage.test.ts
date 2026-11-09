@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { compileAtlas } from '../src/compile-atlas.ts';
 import { coverage, coverageMarkdown } from '../src/coverage.ts';
-import { validDataset } from './helpers.ts';
+import { validDataset, validStructures } from './helpers.ts';
 
 test('coverage counts, per kind, structures, labels present and labels lacking gender', () => {
   const rows = coverage(compileAtlas(validDataset()).atlas!);
@@ -26,7 +26,6 @@ test('the markdown table has one row per kind plus the total, sorted by structur
 });
 
 test('a structure with a system no longer counts as "no system"', async () => {
-  const { validStructures } = await import('./helpers.ts');
   const heart = validStructures()['structures/organ/heart.yaml'];
   const rows = coverage(compileAtlas(validDataset({ 'structures/organ/heart.yaml': { ...heart, systems: ['cardiovascular'] } })).atlas!);
   assert.equal(rows.find((r) => r.kind === 'organ')!.noSystem, 1);

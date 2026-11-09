@@ -5,8 +5,7 @@ import { createRequire } from 'node:module';
 import { parse } from 'yaml';
 import { Ajv2020 } from 'ajv/dist/2020.js';
 import { composeSideLabel } from './compose-side-label.ts';
-import { SYSTEMS } from './import/rules.ts';
-import { MODELS, ROLES_OF, type Joint, type Lang, type Model, type Side, type SideBlock, type Source, type Structure } from './types.ts';
+import { MODELS, ROLES_OF, SYSTEMS, type Joint, type Lang, type Model, type Side, type SideBlock, type Source, type Structure } from './types.ts';
 
 export interface Diagnostic {
   file: string;

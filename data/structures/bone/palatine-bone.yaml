@@ -5,7 +5,6 @@ status: draft
 parent: viscerocranium
 systems:
   - skeletal
-  - digestive
 labels:
   en:
     text: palatine bone

@@ -5,7 +5,6 @@ status: draft
 parent: alimentary-system
 systems:
   - digestive
-  - endocrine
 labels:
   en:
     text: pancreaticobiliary system

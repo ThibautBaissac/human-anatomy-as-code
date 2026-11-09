@@ -29,6 +29,10 @@ export interface SideBlock {
 }
 
 export type Model = 'male' | 'female';
+
+/** Anatomical systems, in display order (spec 2026-11-09-systemes). The app keeps a copy (app/src/viewer/types.ts). */
+export const SYSTEMS = ['skeletal', 'muscular', 'cardiovascular', 'lymphatic', 'nervous', 'sensory', 'respiratory', 'digestive', 'urinary', 'genital', 'endocrine', 'integumentary'] as const;
+export type System = (typeof SYSTEMS)[number];
 export const MODELS: Model[] = ['male', 'female'];
 
 /** How a shared structure differs in the female model: other meshes, or absent. */
@@ -47,8 +51,8 @@ export interface Structure {
   sex?: Model;
   parent?: string;
   regions?: string[];
-  /** anatomical systems, in vocabulary order (import/rules.ts SYSTEMS) */
-  systems?: string[];
+  /** anatomical systems, in vocabulary order */
+  systems?: System[];
   layer?: number;
   aliases?: string[];
   labels: Labels;

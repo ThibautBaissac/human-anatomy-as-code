@@ -6,7 +6,7 @@ parent: internal-nose
 regions:
   - head
 systems:
-  - skeletal
+  - respiratory
 labels:
   en:
     text: septal nasal cartilage

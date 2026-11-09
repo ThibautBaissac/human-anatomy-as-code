@@ -26,7 +26,7 @@ _Avoid_ : fusion, dédoublonnage
 
 **Groupe** :
 Structure de kind `group` : un regroupement de structures de natures différentes, sans mesh propre, par exemple « paroi du corps ».
-_Avoid_ : ensemble, système, catégorie
+_Avoid_ : ensemble, catégorie
 
 **Parent** :
 Structure dont celle-ci fait partie (relation *part of*, un seul parent). Sert à la navigation et à la sélection par groupe.
@@ -34,7 +34,11 @@ _Avoid_ : catégorie, groupe, ancêtre
 
 **Kind** :
 Nature tissulaire d'une structure dans un vocabulaire court et fermé (bone, muscle, artery…). Détermine l'apparence par défaut et la couche par défaut.
-_Avoid_ : type, classe, catégorie, système
+_Avoid_ : type, classe, catégorie
+
+**Système** :
+Ensemble fonctionnel auquel une structure appartient, dans un vocabulaire fermé de 12 (squelette, muscles, cardiovasculaire, lymphatique, nerveux, sens, respiratoire, digestif, urinaire, génital, endocrinien, peau). Une structure peut appartenir à plusieurs systèmes (le pancréas : digestif et endocrinien), une région à aucun. Le kind dit de quoi une structure est faite, le système à quoi elle sert.
+_Avoid_ : appareil (dans le code), catégorie, groupe
 
 **Région** :
 Zone topographique du corps (membre supérieur, tête et cou…) à laquelle une structure est rattachée ; une structure peut appartenir à plusieurs régions.

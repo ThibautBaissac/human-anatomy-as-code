@@ -70,3 +70,14 @@ test('eye adnexa, hair and breast parts', () => {
   assert.deepEqual(of('organ', 'eyebrow'), ['integumentary']);
   for (const name of ['nipple', 'female areola', 'areolar tubercle', 'lactiferous sinus', 'main lactiferous duct']) assert.deepEqual(of('organ', name), ['genital'], name);
 });
+
+test('keyword false positives found on the real data', () => {
+  assert.deepEqual(of('fascia', 'flexor retinaculum of wrist'), ['muscular']); // "retina" inside "retinaculum"
+  assert.deepEqual(of('muscle', 'digastric'), ['muscular']); // "gastr" inside "digastric"
+  assert.deepEqual(of('organ', 'pancreatic duct'), ['digestive']); // the exocrine pancreas is not endocrine
+  assert.deepEqual(of('bone', 'lacrimal bone'), ['skeletal']);
+  assert.deepEqual(of('bone', 'palatine bone'), ['skeletal']);
+  assert.deepEqual(of('organ', 'lacrimal gland'), ['sensory']);
+  assert.deepEqual(of('organ', 'hard palate'), ['digestive']);
+  assert.deepEqual(of('cartilage', 'lateral nasal cartilage'), ['respiratory']);
+});

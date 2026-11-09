@@ -7,7 +7,7 @@ export interface DecodeContext {
   /** true when the structure is bilateral; when given, a side on any other structure is invalid */
   hasSides?(slug: string): boolean;
   kinds: string[];
-  /** systems of the model: any other in sys= is dropped */
+  /** known systems (the whole vocabulary, so that sys= survives a model switch): any other in sys= is dropped */
   systems?: string[];
   maxLayer: number;
   /** joints of the model: a pose on any other joint or side is dropped */

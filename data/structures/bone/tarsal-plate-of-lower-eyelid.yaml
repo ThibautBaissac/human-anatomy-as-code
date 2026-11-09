@@ -7,7 +7,6 @@ regions:
   - head
 systems:
   - skeletal
-  - sensory
 labels:
   en:
     text: tarsal plate of lower eyelid

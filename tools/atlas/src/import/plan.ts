@@ -4,7 +4,7 @@ import type { Wikidata, WikidataRow } from './wikidata.ts';
 import { genderOf, isNoFold, kindOfName, REGION_OF_ANCESTOR, SIDE_PREFIX, slugify, splitSide, systemsOf, TA98_PATTERN } from './rules.ts';
 import { canonicalStructure } from './yaml-merge.ts';
 import { byKey } from '../fs-util.ts';
-import type { Ids, Label, Labels, Side, SideBlock, Structure } from '../types.ts';
+import type { Ids, Label, Labels, Side, SideBlock, Structure, System } from '../types.ts';
 
 export interface Overrides {
   /** canonical names (without side word) whose left/right concepts are distinct structures */
@@ -14,7 +14,7 @@ export interface Overrides {
   /** canonical English name → forced slug */
   slugs?: Record<string, string>;
   /** slug → systems, replacing the derived ones */
-  systems?: Record<string, string[]>;
+  systems?: Record<string, System[]>;
 }
 
 export interface Plan {
@@ -29,8 +29,11 @@ export interface Plan {
 
 const SIDES: Side[] = ['left', 'right'];
 
-/** Sets the systems of each structure (spec 2026-11-09-systemes): an override, or derived from kind, name and ancestors. */
-export function withSystems(structures: Structure[], overrides: Record<string, string[]> = {}, outsideParents = new Map<string, string | undefined>()): void {
+/**
+ * The structures with their systems (spec 2026-11-09-systemes): an override, or derived from kind, name and ancestors.
+ * Returned in canonical key order.
+ */
+export function withSystems(structures: Structure[], overrides: Record<string, System[]> = {}, outsideParents = new Map<string, string | undefined>()): Structure[] {
   // parents of the structures planned here, then of the existing ones (HRA structures hang under BodyParts3D groups)
   const parentOf = new Map([...outsideParents, ...structures.map((s) => [s.slug, s.parent] as const)]);
   for (const s of structures) {
@@ -40,6 +43,7 @@ export function withSystems(structures: Structure[], overrides: Record<string, s
     if (systems.length) s.systems = [...systems];
     else delete s.systems;
   }
+  return structures.map(canonicalStructure);
 }
 const meshRef = (fj: string) => `bp3d:${fj}`;
 
@@ -279,13 +283,11 @@ export function planStructures(bp: Bp3d, wd: Wikidata, overrides: Overrides = {}
     }
     return s;
   });
-  withSystems(structures, overrides.systems);
-  structures.splice(0, structures.length, ...structures.map(canonicalStructure));
-  structures.sort((a, b) => byKey(a.slug, b.slug));
+  const planned = withSystems(structures, overrides.systems).sort((a, b) => byKey(a.slug, b.slug));
 
   const unownedMeshes = [...containing.keys()].filter((fj) => !placed.has(fj)).sort(byKey);
   return {
-    structures,
+    structures: planned,
     skippedConcepts: bp.names.size - candidateSet.size,
     ties,
     parentConflicts,

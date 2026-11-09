@@ -10,7 +10,7 @@ import { applyPlan, type ApplyReport, type Patch } from './import/apply-plan.ts'
 import { canonicalStructure, setOrdered, KEY_ORDER } from './import/yaml-merge.ts';
 import { listYaml } from './fs-util.ts';
 import { withSystems } from './import/plan.ts';
-import type { Ids, Labels, Side, SideBlock, Structure } from './types.ts';
+import type { Ids, Labels, Side, SideBlock, Structure, System } from './types.ts';
 
 export interface HraOverrides {
   /** organ files used only as registration landmarks */
@@ -39,7 +39,7 @@ export interface HraOverrides {
   /** slug → Wikidata item (QID) giving the names, when no identifier or English term finds it */
   wikidata?: Record<string, string>;
   /** slug → systems, replacing the derived ones */
-  systems?: Record<string, string[]>;
+  systems?: Record<string, System[]>;
 }
 
 export interface HraImportReport extends ApplyReport {
@@ -149,8 +149,11 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
   // Existing structures of the other model: their slugs and FMA ids must not be reused.
   const taken = new Set<string>();
   const takenFma = new Set<number>();
+  /** parents of the existing structures: the systems of a female structure come through its ancestors up into BodyParts3D */
+  const existingParents = new Map<string, string | undefined>();
   for (const p of listYaml(join(dataDir, 'structures'))) {
     const s = parse(readFileSync(p, 'utf8')) as Structure | null;
+    if (s?.slug) existingParents.set(s.slug, s.parent);
     if (!s || s.sex === 'female') continue;
     taken.add(s.slug);
     for (const f of [s.ids?.fma, s.sides?.left?.ids?.fma, s.sides?.right?.ids?.fma]) if (f) takenFma.add(f);
@@ -259,13 +262,7 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
   }
 
   // Systems, through the parents of the existing structures too (female-genital-system → genital-system).
-  const existingParents = new Map<string, string | undefined>();
-  for (const path of listYaml(join(dataDir, 'structures'))) {
-    const s = parse(readFileSync(path, 'utf8')) as { slug?: string; parent?: string } | null;
-    if (s?.slug) existingParents.set(s.slug, s.parent);
-  }
-  withSystems(structures, o.systems, existingParents);
-  structures.splice(0, structures.length, ...structures.map(canonicalStructure));
+  const planned = withSystems(structures, o.systems, existingParents);
 
   // Patches on shared and male structures.
   const patches: Patch[] = [];
@@ -280,6 +277,6 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
   for (const slug of o.hidden ?? []) patches.push({ slug, apply: (doc, root) => set(doc, root, 'variants', { female: { hidden: true } }) });
   for (const slug of o.male ?? []) patches.push({ slug, apply: (doc, root) => set(doc, root, 'sex', 'male') });
 
-  const applied = applyPlan({ dataDir, structures, owns: (s) => s.sex === 'female', patches });
+  const applied = applyPlan({ dataDir, structures: planned, owns: (s) => s.sex === 'female', patches });
   return { ...applied, slugCollisions, fmaConflicts, idDivergences };
 }

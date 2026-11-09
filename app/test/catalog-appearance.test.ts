@@ -82,3 +82,14 @@ test('appearance: an instance is hidden when all its systems are hidden; one sho
   // the selection stays visible
   assert.equal(appearance({ ...base, hiddenSystems: new Set(['skeletal']), selected: new Set([0]) }, femurL).visible, true);
 });
+
+test('appearance: a system-hidden instance is hidden even below the dissection cut in ghost mode', () => {
+  assert.equal(appearance({ ...base, hiddenSystems: new Set(['muscular']), layerCut: 3, ghost: true }, muscleL).visible, false);
+});
+
+test('the app vocabulary of systems is the data schema vocabulary, in the same order', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { SYSTEMS } = await import('../src/viewer/types.ts');
+  const schema = JSON.parse(readFileSync(new URL('../../tools/atlas/schemas/structure.schema.json', import.meta.url), 'utf8'));
+  assert.deepEqual([...SYSTEMS], schema.properties.systems.items.enum);
+});

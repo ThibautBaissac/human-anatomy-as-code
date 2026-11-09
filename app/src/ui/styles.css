@@ -103,4 +103,4 @@ button.link { background: none; border: 0; padding: 0; color: var(--accent); tex
 .systems { list-style: none; padding: 0; margin: 0 0 .4rem; display: flex; flex-wrap: wrap; gap: .2rem .9rem; max-width: 52rem; }
 .systems li { display: inline-flex; align-items: center; gap: .3rem; }
 .systems .isolate { font: inherit; font-size: .85em; padding: .1rem .5rem; }
-.is-narrow .systems li, .is-narrow .systems .isolate { min-height: 44px; }
+.is-narrow .systems li, .is-narrow .systems label, .is-narrow .systems .isolate { min-height: 44px; }

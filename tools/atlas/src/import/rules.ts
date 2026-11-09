@@ -1,4 +1,6 @@
 // Fixed tables used by the BodyParts3D import (see spec "Module d'import").
+import { SYSTEMS, type System } from '../types.ts';
+export { SYSTEMS, type System };
 
 /** Kind rules, tested in order against a name; first match wins. */
 /**
@@ -179,9 +181,7 @@ export function slugify(name: string): string {
 
 export const TA98_PATTERN = /^A\d{2}\.\d\.\d{2}\.\d{3}[A-Z]?$/;
 
-/** Anatomical systems, in display order (spec 2026-11-09-systemes). */
-export const SYSTEMS = ['skeletal', 'muscular', 'cardiovascular', 'lymphatic', 'nervous', 'sensory', 'respiratory', 'digestive', 'urinary', 'genital', 'endocrine', 'integumentary'] as const;
-export type System = (typeof SYSTEMS)[number];
+
 
 /** System groups of the BodyParts3D partonomy (musculoskeletal and fascial groups: the kind settles it). */
 const SYSTEM_OF_GROUP: Record<string, System> = {
@@ -195,13 +195,19 @@ const SYSTEM_RULES: [System, RegExp][] = [
   ['cardiovascular', /\bheart\b|\b(left|right) (atrium|ventricle)|ventricle of heart|interventricular septum|interatrial|cardiac|(mitral|tricuspid|aortic|pulmonary) valve|pericard|myocard|endocard|chordae tendineae|papillary muscle|coronary sinus/],
   ['lymphatic', /lymph|\bspleen\b|thymus|tonsil/],
   ['nervous', /brain|cerebr|cerebell|spinal cord|corpus callosum|commissure(?! of (lips|eyelids))|fornix|stria terminalis|telencephal|interventricular foramen/],
-  ['sensory', /eyeball|\beye\b|ocular|retina|\blens\b|cornea|\biris\b|sclera|choroid(?! plexus)|ciliar|common tendinous ring|vitreous|conjunctiv|lacrimal|eyelid|auricle of ear|external ear|\bear\b|cochlea|tympan|ossicle|\bincus\b|\bmalleus\b|\bstapes\b|semicircular|labyrinth|olfactory|taste bud/],
-  ['respiratory', /lung|bronch|trache|laryn|pleura|\bnose\b|nasal (cavity|septum|concha)|epiglott|glottis|vocal|pharyn|^((thoracic )?diaphragm)$|conus elasticus|thyroid cartilage|cricoid|cricothyroid|thyrohyoid|arytenoid/],
-  ['digestive', /esophag|oesophag|stomach|gastr(?!ocnemius)|duoden|jejun|\bileum\b|\bileal\b|cecum|caecum|colon\b|mesocolon|rectum|anal canal|\banus\b|liver|hepat|gallbladder|\bbile\b|biliary|pancrea|appendix|intestin|tongue|tooth|teeth|salivary|parotid|submandibular gland|sublingual gland|pharyn|\bmouth\b|oral cavity|\blip\b|palat|peritone|mesenter|omentum|gingiv/],
+  ['sensory', /eyeball|\beye\b|ocular|\bretina\b|\blens\b|cornea|\biris\b|sclera|choroid(?! plexus)|ciliar|common tendinous ring|vitreous|conjunctiv|lacrimal|eyelid|auricle of ear|external ear|\bear\b|cochlea|tympan|ossicle|\bincus\b|\bmalleus\b|\bstapes\b|semicircular|labyrinth|olfactory|taste bud/],
+  ['respiratory', /lung|bronch|trache|laryn|pleura|\bnose\b|nasal (cavity|septum|concha|cartilage)|epiglott|glottis|vocal|pharyn|^((thoracic )?diaphragm)$|conus elasticus|thyroid cartilage|cricoid|cricothyroid|thyrohyoid|arytenoid/],
+  ['digestive', /esophag|oesophag|stomach|(?<!di)gastr(?!ocnemius)|duoden|jejun|\bileum\b|\bileal\b|cecum|caecum|colon\b|mesocolon|rectum|anal canal|\banus\b|liver|hepat|gallbladder|\bbile\b|biliary|pancrea|appendix|intestin|tongue|tooth|teeth|salivary|parotid|submandibular gland|sublingual gland|pharyn|\bmouth\b|oral cavity|\blip\b|palat|peritone|mesenter|omentum|gingiv/],
   ['urinary', /kidney|\brenal\b|ureter|urinary|\bbladder\b|urethr/],
   ['genital', /testis|testic|epididym|deferen|seminal|prostat|penis|penile|scrot|\buter|ovar|fallopian|vagin|vulv|clitor|mammary|breast|spermatic|bulbourethral|labi(um|a) m(aj|in)|nipple|areol|lactiferous/],
-  ['endocrine', /\bthyroid\b(?! cartilage)|parathyroid|adrenal|suprarenal|pituitar|hypophys|pineal|pancrea|islet/],
+  ['endocrine', /\bthyroid\b(?! cartilage)|parathyroid|adrenal|suprarenal|pituitar|hypophys|pineal|\bpancreas\b|islet/],
   ['integumentary', /\bskin\b|\bhair\b|\bnail\b|eyebrow|eyelash|integument/],
+];
+
+/** The only keywords that put a bone in another system: teeth chew, ossicles hear. */
+const BONE_SYSTEM_RULES: [System, RegExp][] = [
+  ['digestive', /tooth|teeth|molar|incisor|canine/],
+  ['sensory', /ossicle|\bincus\b|\bmalleus\b|\bstapes\b/],
 ];
 
 /** Kinds that always belong to their tissue system, whatever else the structure belongs to (the diaphragm is a muscle). */
@@ -217,7 +223,8 @@ export function systemsOf({ kind, name, ancestors }: { kind: string; name: strin
   const out = new Set<System>();
   for (const a of ancestors) if (SYSTEM_OF_GROUP[a]) out.add(SYSTEM_OF_GROUP[a]);
   const n = name.toLowerCase();
-  for (const [system, re] of SYSTEM_RULES) if (re.test(n)) out.add(system);
+  // bones take only their own keywords: a lacrimal or palatine bone borders an organ but belongs to the skeleton
+  for (const [system, re] of kind === 'bone' ? BONE_SYSTEM_RULES : SYSTEM_RULES) if (re.test(n)) out.add(system);
   if (SYSTEM_OF_KIND[kind]) out.add(SYSTEM_OF_KIND[kind]);
   if (!out.size && FALLBACK_OF_KIND[kind]) out.add(FALLBACK_OF_KIND[kind]);
   return SYSTEMS.filter((s) => out.has(s));

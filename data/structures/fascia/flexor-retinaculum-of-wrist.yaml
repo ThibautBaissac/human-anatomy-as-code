@@ -7,7 +7,6 @@ regions:
   - upper-limb
 systems:
   - muscular
-  - sensory
 labels:
   en:
     text: flexor retinaculum of wrist

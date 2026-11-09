@@ -7,7 +7,6 @@ export const AXES: Axis[] = ['axial', 'coronal', 'sagittal'];
 export const LANGS: Lang[] = ['fr', 'en', 'la'];
 /** Anatomical systems, in display order (data: import/rules.ts SYSTEMS). */
 export const SYSTEMS = ['skeletal', 'muscular', 'cardiovascular', 'lymphatic', 'nervous', 'sensory', 'respiratory', 'digestive', 'urinary', 'genital', 'endocrine', 'integumentary'] as const;
-export type System = (typeof SYSTEMS)[number];
 
 export interface AtlasLabel {
   text: string;
