@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { buildSearchIndex, structureName } from '../viewer/search.ts';
 import { LANGS, type Lang, type Model, type Selection } from '../viewer/types.ts';
 import { InfoPanel } from './InfoPanel.tsx';
+import { MotionPanel } from './MotionPanel.tsx';
 import { OfflineDialog } from './OfflineDialog.tsx';
 import { Bench } from './Bench.tsx';
 import { FemaleNotice } from './FemaleNotice.tsx';
@@ -38,7 +39,13 @@ export function App() {
   const pick = (slug: string) => selectAndFocus({ slug, side: null });
 
   const tree = catalog && <Tree catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick} />;
-  const info = <InfoPanel catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick} />;
+  const info = (
+    <InfoPanel catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick}>
+      {viewer && catalog && view.selection && (
+        <MotionPanel viewer={viewer} catalog={catalog} view={view} selection={view.selection} lang={view.lang} onSelect={selectAndFocus} />
+      )}
+    </InfoPanel>
+  );
   const controls = viewer && catalog && <Toolbar viewer={viewer} view={view} kinds={catalog.kinds} maxLayer={catalog.maxLayer} />;
 
   return (

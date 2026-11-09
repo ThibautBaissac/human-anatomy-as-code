@@ -80,6 +80,24 @@ _Avoid_ : version, override, alternative
 Transformation qui place des meshes d'une autre source dans le repère de BodyParts3D, ajustée par région sur des repères anatomiques.
 _Avoid_ : registration (dans la prose française), alignement, calage
 
+## Mouvement
+
+**Articulation** :
+Ce qui permet à des os de tourner les uns par rapport aux autres autour d'un axe, décrit dans `data/joints/` : un os fixe, des os mobiles, un mouvement à un degré de liberté (flexion-extension, pronation-supination), une amplitude et un angle de repos. À ne pas confondre avec le kind `joint`, qui désigne des meshes de capsules articulaires.
+_Avoid_ : jointure, liaison
+
+**Pose** :
+Ensemble des angles articulaires affichés, articulation par articulation et côté par côté. Une articulation absente de la pose est à son angle de repos, celui de BodyParts3D.
+_Avoid_ : posture, position
+
+**Rig** :
+Pour un côté d'une articulation et un modèle, la liste calculée au build des instances qui tournent avec elle, de celles qui la franchissent (rendues transparentes pendant le mouvement) et des muscles qui agissent sur elle, avec leur bras de levier.
+_Avoid_ : squelette, armature
+
+**Action** :
+Rôle d'un muscle dans le mouvement d'une articulation (fléchisseur, extenseur, pronateur, supinateur), porté par le muscle (`actions`).
+_Avoid_ : fonction
+
 **Source** :
 Jeu de données externe d'où proviennent des meshes ou des noms (BodyParts3D, Wikidata…), décrit une fois avec sa version, sa licence et son crédit d'attribution.
 _Avoid_ : provider, dataset, origine

@@ -76,3 +76,18 @@ button.link { background: none; border: 0; padding: 0; color: var(--accent); tex
 .tabpanel { flex: 1; min-height: 0; overflow: auto; padding: .5rem .75rem; }
 .tabpanel .tree-scroll { height: 100%; min-height: 12rem; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* Mouvement (animations articulaires) */
+.motion { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: .5rem; }
+.motion h3 { margin: .25rem 0; font-size: 1rem; }
+.motion h4 { margin: .75rem 0 .25rem; font-size: .9rem; }
+.motion .angle { position: relative; margin: .25rem 0; }
+.motion .angle input[type="range"] { width: 100%; min-height: 44px; position: relative; }
+.motion .arc { position: absolute; top: 50%; height: 6px; margin-top: -3px; background: rgba(120, 200, 140, .45); border-radius: 3px; pointer-events: none; }
+.motion-buttons { display: flex; gap: .5rem; flex-wrap: wrap; margin: .5rem 0; }
+.motion-buttons button { min-height: 44px; min-width: 44px; }
+.motion-buttons button[aria-pressed="true"] { outline: 2px solid currentColor; outline-offset: 1px; }
+.joint-choice label { display: flex; align-items: center; gap: .4rem; min-height: 44px; }
+.muscles { list-style: none; padding: 0; margin: 0; }
+.muscles li { padding: .15rem 0; }
+.muscles .role { color: var(--muted); }

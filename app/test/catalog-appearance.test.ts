@@ -59,3 +59,11 @@ test('appearance: a selected instance is always visible, opaque and highlighted'
   const s = { ...base, layerCut: 5, hiddenKinds: new Set(['muscle']), selected: new Set([4]) };
   assert.deepEqual(appearance(s, muscleL), { visible: true, alpha: 1, highlighted: true });
 });
+
+test('appearance: a tissue crossing a moving joint is ghosted; selected, it is a highlighted ghost; hidden, it stays hidden', () => {
+  const s = { ...base, crossing: new Set([4]) };
+  assert.deepEqual(appearance(s, muscleL), { visible: true, alpha: 0.15, highlighted: false });
+  assert.deepEqual(appearance({ ...s, selected: new Set([4]) }, muscleL), { visible: true, alpha: 0.15, highlighted: true });
+  assert.equal(appearance({ ...s, hiddenKinds: new Set(['muscle']) }, muscleL).visible, false);
+  assert.deepEqual(appearance(s, femurL), { visible: true, alpha: 1, highlighted: false });
+});

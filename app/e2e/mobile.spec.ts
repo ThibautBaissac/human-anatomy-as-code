@@ -22,3 +22,15 @@ test('phone: 3D on top, tabs below; a tap shows the Info tab; arrows move betwee
   await page.keyboard.press('Home');
   await expect(page.getByRole('tab', { name: 'Arbre' })).toHaveAttribute('aria-selected', 'true');
 });
+
+test('phone: the Mouvement section is in the Info tab and its slider moves the joint', async ({ page }, info) => {
+  await page.goto(`${BASE}${info.project.metadata.query}#sel=humerus@left`);
+  await page.waitForFunction(() => (window as unknown as { __viewer?: { pickReadyMs: number } }).__viewer?.pickReadyMs, null, { timeout: 60_000 });
+  await page.getByRole('tab', { name: 'Infos' }).click();
+  const slider = page.getByRole('region', { name: 'Mouvement' }).getByRole('slider');
+  await slider.scrollIntoViewIfNeeded();
+  await expect(slider).toBeVisible();
+  await slider.fill('100');
+  await expect(slider).toHaveAttribute('aria-valuetext', '100° de flexion');
+  await expect.poll(() => page.evaluate(() => location.hash)).toContain('p=elbow-joint@left:100');
+});

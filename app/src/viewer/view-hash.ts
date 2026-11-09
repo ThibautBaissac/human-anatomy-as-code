@@ -1,5 +1,5 @@
 // View ⇄ URL hash, for deep links. Pure. Unknown or invalid values are dropped one by one.
-import { AXES, DEFAULT_VIEW, LANGS, type Axis, type Lang, type Side, type ViewState } from './types.ts';
+import { AXES, DEFAULT_VIEW, LANGS, type AtlasJoint, type Axis, type Lang, type Side, type ViewState } from './types.ts';
 
 export interface DecodeContext {
   hasSlug(slug: string): boolean;
@@ -7,6 +7,8 @@ export interface DecodeContext {
   hasSides?(slug: string): boolean;
   kinds: string[];
   maxLayer: number;
+  /** joints of the model: a pose on any other joint or side is dropped */
+  joints?: AtlasJoint[];
 }
 
 const round = (n: number) => Math.round(n);
@@ -21,6 +23,8 @@ export function encodeView(v: ViewState): string {
   const cuts = AXES.filter((a) => v.sections[a] !== undefined).map((a) => `${a}:${v.sections[a]!.toFixed(3)}`);
   if (cuts.length) p.push(`cut=${cuts.join(',')}`);
   if (v.lang !== 'fr') p.push(`lang=${v.lang}`);
+  const pose = Object.keys(v.pose ?? {}).sort();
+  if (pose.length) p.push(`p=${pose.map((k) => `${k}:${v.pose[k]}`).join(',')}`);
   if (v.camera) p.push(`cam=${[...v.camera.position, ...v.camera.target].map(round).join(',')}`);
   return p.join('&');
 }
@@ -60,6 +64,20 @@ export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState>
   }
   const lang = params.get('lang');
   if (lang && LANGS.includes(lang as Lang)) out.lang = lang as Lang;
+  const p = params.get('p');
+  if (p && ctx.joints) {
+    const pose: Record<string, number> = {};
+    for (const part of p.split(',')) {
+      const [key, deg] = part.split(':');
+      const [slug, side] = key.split('@');
+      const j = ctx.joints.find((x) => x.slug === slug);
+      const n = Number(deg);
+      if (!j || (side !== 'left' && side !== 'right') || !j.sides?.[side] || deg === undefined || deg === '' || !Number.isFinite(n)) continue;
+      const angle = Math.min(Math.max(Math.round(n), j.rangeDeg[0]), j.rangeDeg[1]);
+      if (Math.abs(angle - j.restDeg) >= 0.5) pose[key] = angle;
+    }
+    if (Object.keys(pose).length) out.pose = pose;
+  }
   const cam = params.get('cam')?.split(',').map(Number);
   if (cam && cam.length === 6 && cam.every(Number.isFinite)) {
     const r = cam.map(round);

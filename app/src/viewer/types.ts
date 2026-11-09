@@ -36,12 +36,38 @@ export interface AtlasStructure {
   meshes?: string[];
   sides?: Record<Side, AtlasSide>;
   sex?: Model;
+  /** roles of a muscle in joint motions */
+  actions?: { joint: string; role: Role; source: string; status: 'draft' | 'reviewed' }[];
+}
+
+export type Motion = 'flexion-extension' | 'pronation-supination';
+export type Role = 'flexion' | 'extension' | 'pronation' | 'supination';
+export type Vec3 = [number, number, number];
+
+/** An animatable joint: one degree of freedom around an axis measured on our bones (data/joints). */
+export interface AtlasJoint {
+  slug: string;
+  labels: Partial<Record<Lang, AtlasLabel>>;
+  motion: Motion;
+  proximal: string;
+  moving: string[];
+  coupled?: { bone: string; ratio: number }[];
+  /** joint whose transform applies first */
+  parent?: string;
+  rangeDeg: [number, number];
+  /** angle of the BodyParts3D pose */
+  restDeg: number;
+  functionalArcDeg?: [number, number];
+  sources: string[];
+  status: 'draft' | 'reviewed';
+  sides?: Partial<Record<Side, { centre: Vec3; axis: Vec3; rmsMm: number }>>;
 }
 
 export interface Atlas {
   structures: AtlasStructure[];
   meshIndex: Record<string, { slug: string; side: Side | null }>;
-  attributions: { source: string; name: string; licence: string; attribution: string; url: string; dois?: { organ: string; doi: string }[] }[];
+  attributions: { source: string; name: string; licence: string; attribution: string; url: string; dois?: { organ: string; doi: string }[]; notice?: string }[];
+  joints?: AtlasJoint[];
 }
 
 export interface Selection {
@@ -64,8 +90,10 @@ export interface ViewState {
   lang: Lang;
   camera: Camera | null;
   model: Model;
+  /** joint angles in whole degrees, keyed joint@side; a joint at rest is absent */
+  pose: Record<string, number>;
 }
 
 export const DEFAULT_VIEW: ViewState = {
-  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], sections: {}, lang: 'fr', camera: null, model: 'male',
+  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], sections: {}, lang: 'fr', camera: null, model: 'male', pose: {},
 };

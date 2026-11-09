@@ -8,7 +8,8 @@ import { acceleratedRaycast, computeBatchedBoundsTree } from 'three-mesh-bvh';
 import { appearance, type AppearanceState } from './appearance.ts';
 import { buildCatalog, type Catalog } from './catalog.ts';
 import { colorOf, HIGHLIGHT } from './colors.ts';
-import { AXES, DEFAULT_VIEW, type Atlas, type Axis, type Camera, type Model, type Selection, type Side, type ViewState } from './types.ts';
+import { crossingInstances, jointKey, poseMatrices, type Pose, type Rigs } from './pose.ts';
+import { AXES, DEFAULT_VIEW, type Atlas, type AtlasJoint, type Axis, type Camera, type Model, type Selection, type Side, type ViewState } from './types.ts';
 
 THREE.BatchedMesh.prototype.raycast = acceleratedRaycast;
 (THREE.BatchedMesh.prototype as unknown as { computeBoundsTree: typeof computeBatchedBoundsTree }).computeBoundsTree = computeBatchedBoundsTree;
@@ -16,7 +17,15 @@ THREE.BatchedMesh.prototype.raycast = acceleratedRaycast;
 export interface Manifest {
   kinds: Record<string, { file: string; bytes: number; sha256: string; instances: number }>;
   /** files (kind keys) each model needs */
-  models?: Record<string, { kinds: string[]; totalBytes: number }>;
+  models?: Record<string, { kinds: string[]; totalBytes: number; joints?: Rigs }>;
+}
+
+/** A joint being played: which sides, and the sweep. */
+export interface Playback {
+  joint: string;
+  keys: string[];
+  /** +1 towards flexion or pronation, −1 back */
+  direction: 1 | -1;
 }
 
 export interface ViewerEvents {
@@ -34,6 +43,8 @@ export interface ViewerSnapshot {
   failedKinds: string[];
   backend: 'WebGPU' | 'WebGL2' | null;
   ready: boolean;
+  /** joint being played, if any */
+  playing: Playback | null;
 }
 
 interface Batch {
@@ -49,6 +60,8 @@ interface Batch {
   /** per batch instance: node name (slug or slug@side) and mesh references */
   names: string[];
   meshes: string[][];
+  /** per batch instance: its matrix as loaded (rest pose), the pose matrix is applied on top */
+  base: THREE.Matrix4[];
 }
 
 /** Section planes; each keeps the side n·p + c ≥ 0 (axial keeps below, coronal keeps behind, sagittal keeps the left half). */
@@ -68,7 +81,14 @@ export class Viewer {
   private box = new THREE.Box3();
   private listeners: { [K in keyof ViewerEvents]: Set<(v: ViewerEvents[K]) => void> } = { select: new Set(), pick: new Set(), hover: new Set(), change: new Set() };
   private view: ViewState = { ...DEFAULT_VIEW };
-  private snapshot: ViewerSnapshot = { view: this.view, loading: null, failedKinds: [], backend: null, ready: false };
+  private snapshot: ViewerSnapshot = { view: this.view, loading: null, failedKinds: [], backend: null, ready: false, playing: null };
+  /** joints of the model, rigs of their sides (manifest), instance name → global index */
+  joints: AtlasJoint[] = [];
+  rigs: Rigs = {};
+  private indexOf = new Map<string, number>();
+  /** instances currently away from their rest place */
+  private moved = new Set<number>();
+  private player: ((t: number) => void) | null = null;
   private raycaster = new THREE.Raycaster();
   private resize: ResizeObserver;
   private frameTimes: number[] = [];
@@ -155,6 +175,7 @@ export class Viewer {
   async load(atlas: Atlas, manifest: Manifest, baseUrl: string, model: Model = 'male'): Promise<void> {
     const t0 = this.loadStart ?? performance.now();
     this.loadStart = null;
+    this.stop();
     const needed = (manifest.models?.[model]?.kinds ?? Object.keys(manifest.kinds)).slice().sort();
     for (const b of this.batches.filter((x) => !needed.includes(x.kind))) {
       this.clip.remove(b.mesh);
@@ -183,12 +204,15 @@ export class Viewer {
       const material = new THREE.MeshStandardNodeMaterial({ color: 0xffffff, roughness: 0.6, metalness: 0 });
       const mesh = new THREE.BatchedMesh(meshes.length, vCount, iCount, material);
       mesh.name = kind;
-      const batch: Batch = { kind, mesh, material, globalOf: [], alpha: new Float32Array(meshes.length).fill(1), bvh: false, names: [], meshes: [] };
+      const batch: Batch = { kind, mesh, material, globalOf: [], alpha: new Float32Array(meshes.length).fill(1), bvh: false, names: [], meshes: [], base: [] };
       for (const m of meshes) {
         const id = mesh.addInstance(mesh.addGeometry(m.geometry));
         mesh.setMatrixAt(id, m.matrixWorld);
+        batch.base[id] = m.matrixWorld.clone();
         const node = m.parent && m.parent !== gltf.scene && m.name === '' ? m.parent : m;
-        batch.names[id] = node.name;
+        // the name comes from the node extras: GLTFLoader renames a node that shares its name with the scene ("skin" → "skin_1")
+        const extras = node.userData as { slug?: string; side?: string | null };
+        batch.names[id] = extras?.slug ? (extras.side ? `${extras.slug}@${extras.side}` : extras.slug) : node.name;
         batch.meshes[id] = (node.userData?.meshes as string[] | undefined) ?? [];
         m.geometry.dispose();
       }
@@ -205,6 +229,12 @@ export class Viewer {
     }
     this.atlas = atlas;
     this.catalog = buildCatalog(atlas, loadedInstances);
+    this.indexOf = new Map(loadedInstances.map((x, i) => [x.name, i]));
+    this.joints = atlas.joints ?? [];
+    this.rigs = manifest.models?.[model]?.joints ?? {};
+    // batches kept from the previous model still carry its pose: start again from the rest place
+    for (const g of this.moved) { const [b, id] = this.location[g]; b.mesh.setMatrixAt(id, b.base[id]); }
+    this.moved = new Set();
     this.view = { ...this.view, model };
     // a selection that does not exist in this model is cleared
     if (this.view.selection && !atlas.structures.some((x) => x.slug === this.view.selection!.slug)) {
@@ -219,6 +249,7 @@ export class Viewer {
     this.everLoaded = true;
     this.sectionsApplied = null;
     this.applySections();
+    this.applyPose();
     this.applyAppearance();
     this.emitChange({ loading: null, failedKinds, ready: true });
   }
@@ -236,6 +267,7 @@ export class Viewer {
     this.view = { ...this.view, ...patch };
     if (patch.camera) this.applyCamera(patch.camera);
     if (patch.sections) this.applySections();
+    if (patch.pose) this.applyPose();
     if (patch.selection !== undefined) this.emit('select', this.view.selection);
     this.applyAppearance();
     this.emitChange();
@@ -270,7 +302,96 @@ export class Viewer {
     this.emitChange();
   }
 
+  /** Sets one joint angle (whole degrees) on the given sides; the rest angle removes it from the pose. */
+  setJointAngle(joint: string, sides: Side[], deg: number): void {
+    const j = this.joints.find((x) => x.slug === joint);
+    if (!j) return;
+    const pose: Pose = { ...this.view.pose };
+    const angle = Math.min(Math.max(Math.round(deg), j.rangeDeg[0]), j.rangeDeg[1]);
+    for (const side of sides) {
+      if (Math.abs(angle - j.restDeg) < 0.5) delete pose[jointKey(joint, side)];
+      else pose[jointKey(joint, side)] = angle;
+    }
+    this.setState({ pose });
+  }
+
+  /**
+   * Plays a joint: sweeps its range back and forth in 4 s, from the current angle. With `once`
+   * (prefers-reduced-motion), one sweep there and back, then it stops. Tissues stay ghosted while it plays.
+   */
+  play(joint: string, sides: Side[], { once = false } = {}): void {
+    const j = this.joints.find((x) => x.slug === joint);
+    if (!j || !sides.length) return;
+    this.stop(false);
+    const [lo, hi] = j.rangeDeg;
+    const keys = sides.map((s) => jointKey(joint, s));
+    const current = this.view.pose[keys[0]] ?? j.restDeg;
+    const PERIOD = 4000;
+    // phase 0 → 0.5 goes lo → hi, 0.5 → 1 comes back; start where the current angle is, going up
+    const phase0 = Math.min(Math.max((current - lo) / (hi - lo), 0), 1) / 2;
+    let start: number | null = null;
+    this.snapshot = { ...this.snapshot, playing: { joint, keys, direction: 1 } };
+    this.applyAppearance();
+    this.player = (t) => {
+      start ??= t;
+      const elapsed = t - start;
+      const phase = phase0 + elapsed / PERIOD;
+      const f = phase % 1;
+      const angle = lo + (hi - lo) * (f < 0.5 ? f * 2 : 2 - f * 2);
+      const direction: 1 | -1 = f < 0.5 ? 1 : -1;
+      const pose: Pose = { ...this.view.pose };
+      for (const k of keys) pose[k] = Math.round(angle);
+      this.view = { ...this.view, pose };
+      this.applyPose();
+      const done = once && elapsed >= PERIOD;
+      this.emitChange({ playing: done ? null : { joint, keys, direction } });
+      if (done) this.stop();
+    };
+  }
+
+  /** Stops playing; the joint keeps its current angle. */
+  stop(emit = true): void {
+    if (!this.player && !this.snapshot.playing) return;
+    this.player = null;
+    // a joint stopped at rest leaves the pose
+    const pose: Pose = { ...this.view.pose };
+    for (const k of this.snapshot.playing?.keys ?? []) {
+      const j = this.joints.find((x) => x.slug === k.split('@')[0]);
+      if (j && pose[k] !== undefined && Math.abs(pose[k] - j.restDeg) < 0.5) delete pose[k];
+    }
+    this.view = { ...this.view, pose };
+    this.snapshot = { ...this.snapshot, playing: null };
+    this.applyAppearance();
+    if (emit) this.emitChange({ playing: null });
+  }
+
   // --- applying state -------------------------------------------------------------------
+  /** Moves the instances of the pose (pose matrix on top of the loaded one) and puts the others back. */
+  private applyPose() {
+    if (!this.catalog) return;
+    this.dirty = true;
+    const matrices = poseMatrices(this.joints, this.rigs, this.view.pose);
+    const next = new Set<number>();
+    const m = new THREE.Matrix4(), touched = new Set<Batch>();
+    for (const [name, elements] of matrices) {
+      const g = this.indexOf.get(name);
+      if (g === undefined) continue;
+      const [b, id] = this.location[g];
+      b.mesh.setMatrixAt(id, m.fromArray(elements).multiply(b.base[id]));
+      next.add(g);
+      touched.add(b);
+    }
+    for (const g of this.moved) {
+      if (next.has(g)) continue;
+      const [b, id] = this.location[g];
+      b.mesh.setMatrixAt(id, b.base[id]);
+      touched.add(b);
+    }
+    this.moved = next;
+    // whole-batch bounds (frustum culling) follow the moved instances
+    for (const b of touched) { b.mesh.computeBoundingBox(); b.mesh.computeBoundingSphere(); }
+  }
+
   private applyAppearance() {
     if (!this.catalog) return;
     this.dirty = true;
@@ -280,6 +401,8 @@ export class Viewer {
       layerCut: this.view.layerCut,
       ghost: this.view.ghost,
       selected: new Set(sel ? this.catalog.instancesOf(sel.slug, sel.side) : []),
+      crossing: new Set([...crossingInstances(this.rigs, this.joints, this.view.pose, new Set(this.snapshot.playing?.keys ?? []))]
+        .map((n) => this.indexOf.get(n)).filter((g): g is number => g !== undefined)),
     };
     const c = new THREE.Color(), v4 = new THREE.Vector4(), hl = new THREE.Color(HIGHLIGHT);
     for (const batch of this.batches) {
@@ -402,6 +525,7 @@ export class Viewer {
     // Hover waits for the picking indexes rather than building them on a mouse move.
     if (this.hoverPending && this.pickReadyMs) { const e = this.hoverPending; this.hoverPending = null; this.setHover(this.pick(e.clientX, e.clientY)); }
     this.orbit?.(t);
+    this.player?.(t);
     if (this.controls.update()) this.dirty = true; // damping still moving
     if (!this.dirty) { this.lastFrame = 0; return; }
     this.dirty = false;
@@ -462,6 +586,14 @@ export class Viewer {
     });
   }
 
+  /** World matrix and alpha of an instance by node name (e2e tests). */
+  instanceState(name: string): { matrix: number[]; alpha: number } | null {
+    const g = this.indexOf.get(name);
+    if (g === undefined) return null;
+    const [b, id] = this.location[g];
+    return { matrix: b.mesh.getMatrixAt(id, new THREE.Matrix4()).toArray(), alpha: b.alpha[id] };
+  }
+
   /** Mean frame time over the last frames, in ms (for the smoke test budget). */
   /** The file (kind key) an instance was loaded from. */
   fileOf(index: number): string | undefined {
@@ -478,6 +610,7 @@ export class Viewer {
   dispose(): void {
     this.disposed = true;
     this.orbit = null;
+    this.player = null;
     this.renderer.setAnimationLoop(null);
     this.resize.disconnect();
     this.controls.dispose();

@@ -6,12 +6,12 @@ import { S } from './strings.ts';
 import { ASSETS_CACHE } from '../offline/urls.ts';
 import { DEFAULT_VIEW, type Atlas, type Model, type Selection } from '../viewer/types.ts';
 
-const EMPTY: ViewerSnapshot = { view: DEFAULT_VIEW, loading: null, failedKinds: [], backend: null, ready: false };
+const EMPTY: ViewerSnapshot = { view: DEFAULT_VIEW, loading: null, failedKinds: [], backend: null, ready: false, playing: null };
 
 const contextOf = (atlas: Atlas, manifest: Manifest): DecodeContext => {
   const slugs = new Set(atlas.structures.map((s) => s.slug));
   const bilateral = new Set(atlas.structures.filter((s) => s.sides).map((s) => s.slug));
-  return { hasSlug: (s) => slugs.has(s), hasSides: (s) => bilateral.has(s), kinds: Object.keys(manifest.kinds), maxLayer: Math.max(0, ...atlas.structures.map((s) => s.layer ?? 0)) };
+  return { hasSlug: (s) => slugs.has(s), hasSides: (s) => bilateral.has(s), kinds: Object.keys(manifest.kinds), maxLayer: Math.max(0, ...atlas.structures.map((s) => s.layer ?? 0)), joints: atlas.joints ?? [] };
 };
 
 /** Creates the viewer on a canvas, loads the model's atlas and assets, keeps the URL hash in sync, switches models. */
