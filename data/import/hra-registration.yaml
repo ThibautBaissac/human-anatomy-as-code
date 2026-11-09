@@ -1,0 +1,43 @@
+# Recalage des organes HRA dans le repère BodyParts3D (spec 2026-11-09-modele-feminin-v1, décisions associées).
+# Les coordonnées `hra` sont déjà dans les axes et l'unité de BodyParts3D (mm, Z haut, +Y postérieur, +X gauche du sujet),
+# c'est-à-dire après la transformation de base (rotation de +90° autour de X, ×1000).
+# Repères relevés une fois par script (points extrêmes des os : research_notes/Modele feminin HRA/hra_female.md), puis relus.
+# `result` est écrit par `npm run -w tools/hra register` ; ne pas l'éditer à la main.
+maxRmsMm: 25
+regions:
+  pelvic:
+    fit: similarity
+    organs: [ uterus-female, ovary-female-left, ovary-female-right, fallopian-tube-female-left, fallopian-tube-female-right, urinary-bladder-female, large-intestine-female, united-female ]
+    landmarks:
+      # os coxaux BodyParts3D FJ3288 (G) / FJ3152 (D), sacrum FJ3393 ; HRA : 3d-vh-f-pelvis.glb
+      - { name: ASIS_L, hra: [ 119.6, -0.3, 92.5 ], bp3d: [ 129.3, -139.1, 895.1 ] }
+      - { name: ASIS_R, hra: [ -144.2, 3.9, 89.0 ], bp3d: [ -129.8, -139.0, 895.8 ] }
+      - { name: symphysis, hra: [ -20.9, 8.4, -5.1 ], bp3d: [ -11.9, -136.7, 802.7 ] }
+      - { name: promontory, hra: [ -34.4, 78.2, 118.9 ], bp3d: [ 6.9, -71.1, 902.2 ] }
+      - { name: ischial_L, hra: [ 50.4, 91.4, -45.4 ], bp3d: [ 43.6, -52.9, 752.0 ] }
+      - { name: ischial_R, hra: [ -66.3, 92.8, -46.8 ], bp3d: [ -41.2, -53.2, 752.2 ] }
+      - { name: crest_L, hra: [ 111.0, 94.1, 164.0 ], bp3d: [ 104.9, -60.0, 958.1 ] }
+      - { name: crest_R, hra: [ -118.8, 97.9, 164.7 ], bp3d: [ -101.3, -58.7, 958.1 ] }
+    adjust: [ 0, 0, 0 ]
+    result:
+      scale: 0.93188
+      rotationDeg: 0.95
+      rmsMm: 14.9
+      maxMm: 28.7
+      matrix: [ 0.931759, -0.008569, 0.012508, 11.796915, 0.008604, 0.931839, -0.002508, -142.885603, -0.012484, 0.002623, 0.931795, 802.269378, 0, 0, 0, 1 ]
+  thoracic:
+    # Deux repères seulement (sternum) : la transformation pelvienne, suivie de la translation moyenne qui recale le sternum.
+    fit: translation
+    from: pelvic
+    organs: [ mammary-gland-female-left, mammary-gland-female-right ]
+    landmarks:
+      # corps du sternum + manubrium : BodyParts3D FJ3178 + FJ3290 ; HRA : 3d-vh-f-sternum.glb + 3d-vh-f-manubrium.glb
+      - { name: sternum_top, hra: [ 1.6, 35.8, 557.1 ], bp3d: [ -12.9, -137.5, 1325.2 ] }
+      - { name: sternum_bottom, hra: [ 3.3, -6.7, 404.6 ], bp3d: [ -11.1, -204.7, 1179.6 ] }
+    adjust: [ 0, 0, 0 ]
+    result:
+      scale: 0.93188
+      rotationDeg: 0
+      rmsMm: 14.1
+      maxMm: 14.1
+      matrix: [ 0.931759, -0.008569, 0.012508, -20.172449, 0.008604, 0.931839, -0.002508, -183.473592, -0.012484, 0.002623, 0.931795, 804.338953, 0, 0, 0, 1 ]

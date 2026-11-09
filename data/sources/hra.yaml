@@ -1,0 +1,23 @@
+id: hra
+name: HuBMAP Human Reference Atlas
+version: "2.5"
+url: https://humanatlas.io/3d-reference-library
+licence: CC-BY-4.0
+attribution: "HuBMAP Human Reference Atlas (HRA), 3D Reference Organs, Visible Human Female, CC BY 4.0"
+provides: [meshes, labels, ids]
+meshPrefix: hra
+meshPattern: "^[a-z0-9-]+/[A-Za-z0-9_]+$"
+notes: >-
+  Organes féminins du modèle féminin v1, recalés dans le repère BodyParts3D (data/import/hra-registration.yaml).
+  Chaque organe est crédité par son DOI.
+dois:
+  uterus-female: 10.48539/HBM627.VTKD.892
+  ovary-female-left: 10.48539/HBM695.KCXS.294
+  ovary-female-right: 10.48539/HBM277.TVMB.676
+  fallopian-tube-female-left: 10.48539/HBM529.KBQT.896
+  fallopian-tube-female-right: 10.48539/HBM952.XJJV.857
+  mammary-gland-female-left: 10.48539/HBM533.BNJL.834
+  mammary-gland-female-right: 10.48539/HBM235.CHRK.259
+  urinary-bladder-female: 10.48539/HBM595.LMKX.573
+  large-intestine-female: 10.48539/HBM682.RSXX.965
+  united-female: 10.48539/HBM637.DWBM.744

@@ -2,8 +2,15 @@
   "name": "human-anatomy-as-code",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24" },
-  "workspaces": ["tools/atlas", "tools/assets", "app"],
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "tools/atlas",
+    "tools/assets",
+    "tools/hra",
+    "app"
+  ],
   "scripts": {
     "data": "npm run -w tools/atlas build",
     "assets": "npm run -w tools/assets build",
