@@ -2,6 +2,8 @@ slug: medial-proper-palmar-digital-artery-of-right-middle-finger
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: medial proper palmar digital artery of right middle finger

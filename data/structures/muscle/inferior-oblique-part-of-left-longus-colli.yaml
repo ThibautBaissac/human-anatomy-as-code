@@ -2,6 +2,8 @@ slug: inferior-oblique-part-of-left-longus-colli
 kind: muscle
 laterality: midline
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: inferior oblique part of left longus colli

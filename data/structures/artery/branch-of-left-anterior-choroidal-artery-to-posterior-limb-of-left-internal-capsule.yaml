@@ -2,6 +2,8 @@ slug: branch-of-left-anterior-choroidal-artery-to-posterior-limb-of-left-interna
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: branch of left anterior choroidal artery to posterior limb of left internal capsule

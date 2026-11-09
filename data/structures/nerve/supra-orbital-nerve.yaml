@@ -2,6 +2,8 @@ slug: supra-orbital-nerve
 kind: nerve
 laterality: bilateral
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: supra-orbital nerve

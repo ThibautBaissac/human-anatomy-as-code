@@ -2,6 +2,8 @@ slug: bronchial-branch-of-arch-of-aorta
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: bronchial branch of arch of aorta

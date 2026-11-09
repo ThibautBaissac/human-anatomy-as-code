@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: apicoposterior-bronchopulmonary-segment
+systems:
+  - cardiovascular
 labels:
   en:
     text: apicoposterior segmental vein

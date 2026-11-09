@@ -5,6 +5,8 @@ status: draft
 parent: eye
 regions:
   - head
+systems:
+  - sensory
 labels:
   en:
     text: lower eyelid

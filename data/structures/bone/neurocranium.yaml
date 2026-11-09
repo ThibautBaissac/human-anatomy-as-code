@@ -3,6 +3,8 @@ kind: bone
 laterality: midline
 status: draft
 parent: skull
+systems:
+  - skeletal
 labels:
   en:
     text: neurocranium

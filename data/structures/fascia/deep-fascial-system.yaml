@@ -3,6 +3,8 @@ kind: fascia
 laterality: midline
 status: draft
 parent: human-body
+systems:
+  - muscular
 labels:
   en:
     text: deep fascial system

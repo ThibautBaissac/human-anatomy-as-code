@@ -3,6 +3,8 @@ kind: cns
 laterality: bilateral
 status: draft
 parent: parietal-lobe
+systems:
+  - nervous
 labels:
   en:
     text: supramarginal gyrus

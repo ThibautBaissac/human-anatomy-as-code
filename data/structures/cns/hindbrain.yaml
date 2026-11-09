@@ -3,6 +3,8 @@ kind: cns
 laterality: midline
 status: draft
 parent: brain
+systems:
+  - nervous
 labels:
   en:
     text: hindbrain

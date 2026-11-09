@@ -2,6 +2,8 @@ slug: anterior-circumflex-humeral-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior circumflex humeral vein

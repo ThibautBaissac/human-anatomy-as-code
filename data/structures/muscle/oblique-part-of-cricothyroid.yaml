@@ -2,6 +2,9 @@ slug: oblique-part-of-cricothyroid
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
+  - respiratory
 labels:
   en:
     text: oblique part of cricothyroid

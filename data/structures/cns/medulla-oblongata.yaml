@@ -5,6 +5,8 @@ status: draft
 parent: brainstem
 regions:
   - head
+systems:
+  - nervous
 labels:
   en:
     text: medulla oblongata

@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: coronary-sinus-tree
+systems:
+  - cardiovascular
 labels:
   en:
     text: middle cardiac vein

@@ -2,6 +2,8 @@ slug: intermediate-tendon
 kind: tendon
 laterality: midline
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: intermediate tendon

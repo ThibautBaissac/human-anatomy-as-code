@@ -5,6 +5,8 @@ status: draft
 parent: inferior-wall-of-left-ventricle
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: myocardium of inferior wall of left ventricle

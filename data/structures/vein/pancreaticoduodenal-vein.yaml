@@ -2,6 +2,8 @@ slug: pancreaticoduodenal-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: pancreaticoduodenal vein

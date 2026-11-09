@@ -5,6 +5,8 @@ status: draft
 parent: investing-fascia-of-thigh
 regions:
   - lower-limb
+systems:
+  - muscular
 labels:
   en:
     text: fascia lata of thigh

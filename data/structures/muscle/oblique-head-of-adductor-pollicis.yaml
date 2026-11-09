@@ -2,6 +2,8 @@ slug: oblique-head-of-adductor-pollicis
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: oblique head of adductor pollicis

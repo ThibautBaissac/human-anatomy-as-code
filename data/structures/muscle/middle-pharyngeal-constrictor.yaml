@@ -2,6 +2,10 @@ slug: middle-pharyngeal-constrictor
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
+  - respiratory
+  - digestive
 labels:
   en:
     text: middle pharyngeal constrictor

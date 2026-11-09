@@ -2,6 +2,8 @@ slug: extensor-carpi-ulnaris
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: extensor carpi ulnaris

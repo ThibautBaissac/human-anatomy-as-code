@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: upper-lobar-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: apicoposterior division of right upper lobar artery

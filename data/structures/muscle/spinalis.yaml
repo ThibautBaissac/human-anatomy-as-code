@@ -2,6 +2,8 @@ slug: spinalis
 kind: muscle
 laterality: midline
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: spinalis

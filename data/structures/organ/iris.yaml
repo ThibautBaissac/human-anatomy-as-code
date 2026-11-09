@@ -5,6 +5,8 @@ status: draft
 parent: eyeball
 regions:
   - head
+systems:
+  - sensory
 labels:
   en:
     text: iris

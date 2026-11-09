@@ -5,6 +5,8 @@ status: draft
 parent: wrist
 regions:
   - upper-limb
+systems:
+  - muscular
 labels:
   en:
     text: investing fascia of wrist

@@ -2,6 +2,8 @@ slug: common-tendinous-ring
 kind: organ
 laterality: bilateral
 status: draft
+systems:
+  - sensory
 labels:
   en:
     text: common tendinous ring

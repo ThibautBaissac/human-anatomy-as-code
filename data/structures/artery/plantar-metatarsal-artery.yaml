@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: posterior-tibial-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: plantar metatarsal artery

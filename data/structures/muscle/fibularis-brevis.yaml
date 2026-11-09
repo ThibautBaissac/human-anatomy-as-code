@@ -2,6 +2,8 @@ slug: fibularis-brevis
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: fibularis brevis

@@ -5,6 +5,8 @@ status: draft
 parent: wall-of-eyeball
 regions:
   - head
+systems:
+  - sensory
 labels:
   en:
     text: fibrous layer of eyeball

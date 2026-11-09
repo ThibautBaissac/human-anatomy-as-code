@@ -3,6 +3,8 @@ kind: vein
 laterality: bilateral
 status: draft
 parent: lung
+systems:
+  - cardiovascular
 labels:
   en:
     text: intrapulmonary part of superior pulmonary vein

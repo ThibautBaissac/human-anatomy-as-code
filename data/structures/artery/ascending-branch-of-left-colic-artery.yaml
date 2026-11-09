@@ -2,6 +2,8 @@ slug: ascending-branch-of-left-colic-artery
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: ascending branch of left colic artery

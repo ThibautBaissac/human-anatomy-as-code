@@ -4,6 +4,8 @@ laterality: bilateral
 status: draft
 sex: female
 parent: mammary-gland
+systems:
+  - genital
 layer: 1
 labels:
   en:

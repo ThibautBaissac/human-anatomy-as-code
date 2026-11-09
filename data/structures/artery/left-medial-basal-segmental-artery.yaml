@@ -3,6 +3,8 @@ kind: artery
 laterality: unpaired-left
 status: draft
 parent: antero-medial-basal-segmental-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: left medial basal segmental artery

@@ -2,6 +2,8 @@ slug: flexor-digiti-minimi-brevis-of-hand
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: flexor digiti minimi brevis of hand

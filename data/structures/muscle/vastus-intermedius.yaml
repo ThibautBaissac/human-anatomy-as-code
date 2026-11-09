@@ -2,6 +2,8 @@ slug: vastus-intermedius
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: vastus intermedius

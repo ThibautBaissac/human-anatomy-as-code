@@ -3,6 +3,8 @@ kind: cartilage
 laterality: midline
 status: draft
 parent: vertebral-column
+systems:
+  - skeletal
 labels:
   en:
     text: intervertebral symphysis

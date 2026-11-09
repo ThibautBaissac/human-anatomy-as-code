@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: hepatic-biliary-tree
+systems:
+  - digestive
 labels:
   en:
     text: caudate lobe tributary of left hepatic biliary tree

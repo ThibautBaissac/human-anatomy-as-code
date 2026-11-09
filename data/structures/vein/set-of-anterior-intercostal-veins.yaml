@@ -2,6 +2,8 @@ slug: set-of-anterior-intercostal-veins
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: set of anterior intercostal veins

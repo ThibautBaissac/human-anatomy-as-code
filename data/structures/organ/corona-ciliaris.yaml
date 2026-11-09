@@ -2,6 +2,8 @@ slug: corona-ciliaris
 kind: organ
 laterality: bilateral
 status: draft
+systems:
+  - sensory
 labels:
   en:
     text: corona ciliaris

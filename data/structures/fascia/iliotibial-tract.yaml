@@ -5,6 +5,8 @@ status: draft
 parent: fascia-lata-of-thigh
 regions:
   - lower-limb
+systems:
+  - muscular
 labels:
   en:
     text: iliotibial tract

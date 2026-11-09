@@ -3,6 +3,8 @@ kind: vein
 laterality: bilateral
 status: draft
 parent: superior-systemic-venous-tree
+systems:
+  - cardiovascular
 labels:
   en:
     text: brachiocephalic vein

@@ -5,6 +5,8 @@ status: draft
 parent: myocardium-of-inferior-wall-of-left-ventricle
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: myocardial zone 4

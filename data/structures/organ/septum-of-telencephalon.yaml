@@ -2,6 +2,8 @@ slug: septum-of-telencephalon
 kind: organ
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: septum of telencephalon

@@ -2,6 +2,8 @@ slug: interosseous-membrane-of-forearm
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: interosseous membrane of forearm

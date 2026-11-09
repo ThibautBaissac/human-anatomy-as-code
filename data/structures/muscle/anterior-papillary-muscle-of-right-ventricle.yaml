@@ -3,6 +3,9 @@ kind: muscle
 laterality: midline
 status: draft
 parent: anterior-wall-of-right-ventricle
+systems:
+  - muscular
+  - cardiovascular
 labels:
   en:
     text: anterior papillary muscle of right ventricle

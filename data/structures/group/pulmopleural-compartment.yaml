@@ -3,6 +3,8 @@ kind: group
 laterality: bilateral
 status: draft
 parent: compartment-of-thorax
+systems:
+  - respiratory
 labels:
   en:
     text: pulmopleural compartment

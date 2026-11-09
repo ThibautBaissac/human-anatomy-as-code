@@ -2,6 +2,8 @@ slug: choroid-plexus-of-cerebral-hemisphere
 kind: cns
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: choroid plexus of cerebral hemisphere

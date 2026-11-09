@@ -6,6 +6,8 @@ parent: forearm
 regions:
   - forearm
   - upper-limb
+systems:
+  - muscular
 labels:
   en:
     text: investing fascia of forearm

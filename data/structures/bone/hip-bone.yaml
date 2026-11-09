@@ -5,6 +5,8 @@ status: draft
 parent: pelvic-skeleton
 regions:
   - lower-limb
+systems:
+  - skeletal
 labels:
   en:
     text: hip bone

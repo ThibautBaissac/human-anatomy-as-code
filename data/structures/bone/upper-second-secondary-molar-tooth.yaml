@@ -2,6 +2,9 @@ slug: upper-second-secondary-molar-tooth
 kind: bone
 laterality: bilateral
 status: draft
+systems:
+  - skeletal
+  - digestive
 labels:
   en:
     text: upper second secondary molar tooth

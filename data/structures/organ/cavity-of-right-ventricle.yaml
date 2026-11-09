@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: side-of-heart
+systems:
+  - cardiovascular
 labels:
   en:
     text: cavity of right ventricle

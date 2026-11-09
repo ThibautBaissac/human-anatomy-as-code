@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: medial-segmental-hepatic-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: medial inferior segmental hepatic artery

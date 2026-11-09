@@ -10,6 +10,8 @@ export interface CoverageRow {
   la: number;
   frNoGender: number;
   laNoGender: number;
+  /** structures with meshes and no system */
+  noSystem: number;
 }
 
 const hasMeshes = (s: CompiledStructure) => !!(s.meshes?.length || s.sides?.left.meshes?.length || s.sides?.right.meshes?.length);
@@ -23,6 +25,7 @@ function row(kind: string, list: CompiledStructure[]): CoverageRow {
     la: list.filter((s) => s.labels.la).length,
     frNoGender: list.filter((s) => s.labels.fr && !s.labels.fr.gender).length,
     laNoGender: list.filter((s) => s.labels.la && !s.labels.la.gender).length,
+    noSystem: list.filter((s) => hasMeshes(s) && !s.systems?.length).length,
   };
 }
 
@@ -38,12 +41,12 @@ const pct = (n: number, d: number) => `${n} (${d ? Math.round((100 * n) / d) : 0
 
 export function coverageMarkdown(rows: CoverageRow[]): string {
   const out = [
-    '| kind | structures | avec meshes | label fr | label la | fr sans genre | la sans genre |',
-    '|---|---:|---:|---:|---:|---:|---:|',
+    '| kind | structures | avec meshes | label fr | label la | fr sans genre | la sans genre | sans système |',
+    '|---|---:|---:|---:|---:|---:|---:|---:|',
   ];
   for (const r of rows) {
     const kind = r.kind === 'total' ? '**total**' : r.kind;
-    out.push(`| ${kind} | ${r.structures} | ${r.withMeshes} | ${pct(r.fr, r.structures)} | ${pct(r.la, r.structures)} | ${r.frNoGender} | ${r.laNoGender} |`);
+    out.push(`| ${kind} | ${r.structures} | ${r.withMeshes} | ${pct(r.fr, r.structures)} | ${pct(r.la, r.structures)} | ${r.frNoGender} | ${r.laNoGender} | ${r.noSystem} |`);
   }
   return out.join('\n') + '\n';
 }

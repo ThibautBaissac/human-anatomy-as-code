@@ -2,6 +2,8 @@ slug: tendon-of-right-levator-palpebrae-superioris
 kind: tendon
 laterality: midline
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: tendon of right levator palpebrae superioris

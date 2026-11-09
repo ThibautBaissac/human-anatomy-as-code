@@ -3,6 +3,8 @@ kind: cns
 laterality: midline
 status: draft
 parent: metencephalon
+systems:
+  - nervous
 labels:
   en:
     text: pons

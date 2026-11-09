@@ -2,6 +2,8 @@ slug: right-gastric-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: right gastric vein

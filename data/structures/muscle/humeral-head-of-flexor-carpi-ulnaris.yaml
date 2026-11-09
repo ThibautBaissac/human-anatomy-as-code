@@ -2,6 +2,8 @@ slug: humeral-head-of-flexor-carpi-ulnaris
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: humeral head of flexor carpi ulnaris

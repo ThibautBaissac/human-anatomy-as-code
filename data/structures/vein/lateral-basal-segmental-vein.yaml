@@ -3,6 +3,8 @@ kind: vein
 laterality: bilateral
 status: draft
 parent: lateral-basal-bronchopulmonary-segment
+systems:
+  - cardiovascular
 labels:
   en:
     text: lateral basal segmental vein

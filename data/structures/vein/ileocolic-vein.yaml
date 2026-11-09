@@ -2,6 +2,8 @@ slug: ileocolic-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: ileocolic vein

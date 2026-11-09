@@ -5,6 +5,8 @@ status: draft
 parent: wall-of-side-of-heart
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: wall of left atrium

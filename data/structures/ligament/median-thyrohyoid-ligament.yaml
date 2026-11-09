@@ -2,6 +2,8 @@ slug: median-thyrohyoid-ligament
 kind: ligament
 laterality: midline
 status: draft
+systems:
+  - respiratory
 labels:
   en:
     text: median thyrohyoid ligament

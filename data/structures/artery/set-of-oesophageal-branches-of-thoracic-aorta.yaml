@@ -2,6 +2,8 @@ slug: set-of-oesophageal-branches-of-thoracic-aorta
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: set of oesophageal branches of thoracic aorta

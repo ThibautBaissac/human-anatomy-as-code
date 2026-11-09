@@ -2,6 +2,8 @@ slug: long-head-of-biceps-brachii
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: long head of biceps brachii

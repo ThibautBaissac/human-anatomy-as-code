@@ -2,6 +2,8 @@ slug: left-colic-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: left colic vein

@@ -6,6 +6,8 @@ parent: thumb
 regions:
   - hand
   - upper-limb
+systems:
+  - skeletal
 labels:
   en:
     text: proximal phalanx of thumb

@@ -2,6 +2,8 @@ slug: inferior-epigastric-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: inferior epigastric vein

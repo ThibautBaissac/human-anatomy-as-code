@@ -2,6 +2,8 @@ slug: spleen
 kind: organ
 laterality: midline
 status: draft
+systems:
+  - lymphatic
 labels:
   en:
     text: spleen

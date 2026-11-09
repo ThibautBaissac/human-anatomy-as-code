@@ -3,6 +3,8 @@ kind: cns
 laterality: bilateral
 status: draft
 parent: hippocampal-formation
+systems:
+  - nervous
 labels:
   en:
     text: hippocampus

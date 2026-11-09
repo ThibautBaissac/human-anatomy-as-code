@@ -2,6 +2,9 @@ slug: lower-secondary-canine-tooth
 kind: bone
 laterality: bilateral
 status: draft
+systems:
+  - skeletal
+  - digestive
 labels:
   en:
     text: lower secondary canine tooth

@@ -6,6 +6,8 @@ parent: middle-finger
 regions:
   - hand
   - upper-limb
+systems:
+  - skeletal
 labels:
   en:
     text: middle phalanx of middle finger

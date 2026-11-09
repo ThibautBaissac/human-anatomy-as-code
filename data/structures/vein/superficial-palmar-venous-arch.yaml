@@ -2,6 +2,8 @@ slug: superficial-palmar-venous-arch
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: superficial palmar venous arch

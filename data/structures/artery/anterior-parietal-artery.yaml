@@ -2,6 +2,8 @@ slug: anterior-parietal-artery
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior parietal artery

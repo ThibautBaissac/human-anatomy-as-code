@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: lateral-bronchopulmonary-segment
+systems:
+  - cardiovascular
 labels:
   en:
     text: lateral segmental artery

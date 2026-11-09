@@ -3,6 +3,8 @@ kind: group
 laterality: midline
 status: draft
 parent: gastrointestinal-tract
+systems:
+  - digestive
 labels:
   en:
     text: liver

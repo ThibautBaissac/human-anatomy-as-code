@@ -2,6 +2,8 @@ slug: optic-part-of-retina
 kind: organ
 laterality: bilateral
 status: draft
+systems:
+  - sensory
 labels:
   en:
     text: optic part of retina

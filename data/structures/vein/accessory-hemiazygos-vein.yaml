@@ -2,6 +2,8 @@ slug: accessory-hemiazygos-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: accessory hemiazygos vein

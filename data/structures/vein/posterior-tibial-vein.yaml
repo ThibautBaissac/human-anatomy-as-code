@@ -2,6 +2,8 @@ slug: posterior-tibial-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: posterior tibial vein

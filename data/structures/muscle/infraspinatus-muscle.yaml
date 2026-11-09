@@ -2,6 +2,8 @@ slug: infraspinatus-muscle
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: infraspinatus muscle

@@ -6,6 +6,8 @@ parent: foot-proper
 regions:
   - foot
   - lower-limb
+systems:
+  - skeletal
 labels:
   en:
     text: fifth metatarsal bone

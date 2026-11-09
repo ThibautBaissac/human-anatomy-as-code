@@ -5,6 +5,8 @@ status: draft
 parent: pectoralis-major
 regions:
   - thorax
+systems:
+  - muscular
 labels:
   en:
     text: sternocostal part of pectoralis major

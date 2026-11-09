@@ -2,6 +2,8 @@ slug: gluteus-minimus
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: gluteus minimus

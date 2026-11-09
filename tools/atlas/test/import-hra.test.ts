@@ -243,3 +243,17 @@ test('patches on reviewed files are not applied and are reported', async () => {
   assert.deepEqual(r.skippedReviewedPatches, ['prostate']);
   assert.doesNotMatch(readFileSync(file, 'utf8'), /sex: male/);
 });
+
+test('systems: derived for the female structures through their ancestors (up into BodyParts3D groups), names and kinds; overrides win', async () => {
+  const { dataDir, run } = await fixture();
+  await run();
+  const f = atlases(dataDir).female;
+  assert.deepEqual(by(f, 'ovary').systems, ['genital']);
+  // a ligament of the uterus belongs to the genital system through female-genital-system → genital-system, not to the skeleton
+  assert.deepEqual(by(f, 'cardinal-ligament').systems, ['genital']);
+  assert.deepEqual(by(f, 'mammary-gland').systems, ['genital']);
+  assert.deepEqual(by(f, 'nipple').systems, ['genital']);
+  await importHra({ hraDir: join(dataDir, 'raw-hra'), filesList: join(dataDir, 'import/hra-files.yaml'), wikidataCsv: join(dataDir, 'wd.csv'), dataDir,
+    overrides: { ...OVERRIDES, systems: { nipple: ['genital', 'integumentary'] } } });
+  assert.deepEqual(by(atlases(dataDir).female, 'nipple').systems, ['genital', 'integumentary']);
+});

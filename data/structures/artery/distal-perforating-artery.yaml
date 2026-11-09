@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: plantar-metatarsal-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: distal perforating artery

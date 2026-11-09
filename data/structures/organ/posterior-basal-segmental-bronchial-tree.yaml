@@ -3,6 +3,8 @@ kind: organ
 laterality: bilateral
 status: draft
 parent: posterior-basal-bronchopulmonary-segment
+systems:
+  - respiratory
 labels:
   en:
     text: posterior basal segmental bronchial tree

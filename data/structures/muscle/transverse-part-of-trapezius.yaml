@@ -2,6 +2,8 @@ slug: transverse-part-of-trapezius
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: transverse part of trapezius

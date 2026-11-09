@@ -2,6 +2,8 @@ slug: superficial-palmar-arterial-arch
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: superficial palmar arterial arch

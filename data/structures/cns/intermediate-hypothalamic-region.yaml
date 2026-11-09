@@ -3,6 +3,8 @@ kind: cns
 laterality: midline
 status: draft
 parent: hypothalamus
+systems:
+  - nervous
 labels:
   en:
     text: intermediate hypothalamic region

@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: systemic-arterial-tree
+systems:
+  - cardiovascular
 labels:
   en:
     text: celiac artery

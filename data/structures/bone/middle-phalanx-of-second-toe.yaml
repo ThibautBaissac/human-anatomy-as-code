@@ -6,6 +6,8 @@ parent: second-toe
 regions:
   - foot
   - lower-limb
+systems:
+  - skeletal
 labels:
   en:
     text: middle phalanx of second toe

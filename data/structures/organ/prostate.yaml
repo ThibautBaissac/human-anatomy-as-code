@@ -4,6 +4,8 @@ laterality: midline
 status: draft
 sex: male
 parent: genital-system
+systems:
+  - genital
 labels:
   en:
     text: prostate

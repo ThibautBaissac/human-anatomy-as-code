@@ -3,6 +3,8 @@ kind: bone
 laterality: bilateral
 status: draft
 parent: viscerocranium
+systems:
+  - skeletal
 labels:
   en:
     text: temporal bone

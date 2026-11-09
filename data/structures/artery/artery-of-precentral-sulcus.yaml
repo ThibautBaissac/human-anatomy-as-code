@@ -2,6 +2,8 @@ slug: artery-of-precentral-sulcus
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: artery of precentral sulcus

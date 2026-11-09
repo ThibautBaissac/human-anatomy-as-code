@@ -2,6 +2,8 @@ slug: fourth-common-palmar-digital-artery
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: fourth common palmar digital artery

@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: wall-of-small-intestine
+systems:
+  - digestive
 labels:
   en:
     text: wall of ileum

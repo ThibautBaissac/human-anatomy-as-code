@@ -5,6 +5,8 @@ status: draft
 parent: internal-nose
 regions:
   - head
+systems:
+  - skeletal
 labels:
   en:
     text: septal nasal cartilage

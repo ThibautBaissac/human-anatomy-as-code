@@ -2,6 +2,8 @@ slug: opponens-digiti-minimi-of-foot
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: opponens digiti minimi of foot

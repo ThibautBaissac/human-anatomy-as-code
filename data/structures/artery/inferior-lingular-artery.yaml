@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: inferior-lingular-bronchopulmonary-segment
+systems:
+  - cardiovascular
 labels:
   en:
     text: inferior lingular artery

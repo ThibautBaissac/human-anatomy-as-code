@@ -5,6 +5,8 @@ status: draft
 parent: skeleton-of-pectoral-girdle
 regions:
   - upper-limb
+systems:
+  - skeletal
 labels:
   en:
     text: clavicle

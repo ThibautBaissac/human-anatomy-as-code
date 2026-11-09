@@ -3,6 +3,8 @@ kind: bone
 laterality: midline
 status: draft
 parent: viscerocranium
+systems:
+  - skeletal
 labels:
   en:
     text: mandible

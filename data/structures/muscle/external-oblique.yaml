@@ -5,6 +5,8 @@ status: draft
 parent: musculature-of-anterior-abdominal-wall
 regions:
   - abdomen
+systems:
+  - muscular
 labels:
   en:
     text: external oblique

@@ -2,6 +2,8 @@ slug: genicular-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: genicular vein

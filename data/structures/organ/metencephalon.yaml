@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: hindbrain
+systems:
+  - nervous
 labels:
   en:
     text: metencephalon

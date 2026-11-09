@@ -9,6 +9,7 @@ import { genderOf, kindOfName, slugify, TA98_PATTERN } from './import/rules.ts';
 import { applyPlan, type ApplyReport, type Patch } from './import/apply-plan.ts';
 import { canonicalStructure, setOrdered, KEY_ORDER } from './import/yaml-merge.ts';
 import { listYaml } from './fs-util.ts';
+import { withSystems } from './import/plan.ts';
 import type { Ids, Labels, Side, SideBlock, Structure } from './types.ts';
 
 export interface HraOverrides {
@@ -37,6 +38,8 @@ export interface HraOverrides {
   ids?: Record<string, Ids>;
   /** slug → Wikidata item (QID) giving the names, when no identifier or English term finds it */
   wikidata?: Record<string, string>;
+  /** slug → systems, replacing the derived ones */
+  systems?: Record<string, string[]>;
 }
 
 export interface HraImportReport extends ApplyReport {
@@ -254,6 +257,15 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
     if (layer !== undefined) s.layer = layer;
     structures.push(canonicalStructure(s));
   }
+
+  // Systems, through the parents of the existing structures too (female-genital-system → genital-system).
+  const existingParents = new Map<string, string | undefined>();
+  for (const path of listYaml(join(dataDir, 'structures'))) {
+    const s = parse(readFileSync(path, 'utf8')) as { slug?: string; parent?: string } | null;
+    if (s?.slug) existingParents.set(s.slug, s.parent);
+  }
+  withSystems(structures, o.systems, existingParents);
+  structures.splice(0, structures.length, ...structures.map(canonicalStructure));
 
   // Patches on shared and male structures.
   const patches: Patch[] = [];

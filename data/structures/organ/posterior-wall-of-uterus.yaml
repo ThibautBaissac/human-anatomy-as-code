@@ -4,6 +4,8 @@ laterality: midline
 status: draft
 sex: female
 parent: uterus
+systems:
+  - genital
 labels:
   en:
     text: posterior wall of uterus

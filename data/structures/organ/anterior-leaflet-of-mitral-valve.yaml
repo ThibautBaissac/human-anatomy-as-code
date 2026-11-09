@@ -5,6 +5,8 @@ status: draft
 parent: mitral-valve
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior leaflet of mitral valve

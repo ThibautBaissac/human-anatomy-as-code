@@ -2,6 +2,8 @@ slug: semispinalis-capitis
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: semispinalis capitis

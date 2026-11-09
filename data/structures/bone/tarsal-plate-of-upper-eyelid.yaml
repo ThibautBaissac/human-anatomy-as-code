@@ -5,6 +5,9 @@ status: draft
 parent: upper-eyelid
 regions:
   - head
+systems:
+  - skeletal
+  - sensory
 labels:
   en:
     text: tarsal plate of upper eyelid

@@ -3,6 +3,9 @@ kind: bone
 laterality: bilateral
 status: draft
 parent: viscerocranium
+systems:
+  - skeletal
+  - respiratory
 labels:
   en:
     text: inferior nasal concha

@@ -3,6 +3,8 @@ kind: cartilage
 laterality: midline
 status: draft
 parent: first-lumbar-intervertebral-symphysis
+systems:
+  - skeletal
 labels:
   en:
     text: intervertebral disk of first lumbar vertebra

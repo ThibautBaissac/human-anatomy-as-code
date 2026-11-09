@@ -5,6 +5,8 @@ status: draft
 parent: deep-fascial-system
 regions:
   - lower-limb
+systems:
+  - muscular
 labels:
   en:
     text: investing fascia of lower limb

@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: descending-aorta
+systems:
+  - cardiovascular
 labels:
   en:
     text: descending thoracic aorta

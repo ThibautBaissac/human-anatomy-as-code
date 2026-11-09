@@ -4,6 +4,8 @@ laterality: bilateral
 status: draft
 sex: female
 parent: uterine-tube
+systems:
+  - genital
 labels:
   en:
     text: fimbria of uterine tube

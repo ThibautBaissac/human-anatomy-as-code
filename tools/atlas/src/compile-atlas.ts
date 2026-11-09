@@ -5,6 +5,7 @@ import { createRequire } from 'node:module';
 import { parse } from 'yaml';
 import { Ajv2020 } from 'ajv/dist/2020.js';
 import { composeSideLabel } from './compose-side-label.ts';
+import { SYSTEMS } from './import/rules.ts';
 import { MODELS, ROLES_OF, type Joint, type Lang, type Model, type Side, type SideBlock, type Source, type Structure } from './types.ts';
 
 export interface Diagnostic {
@@ -119,6 +120,7 @@ function compileStructure(s: Structure, children: string[]): CompiledStructure {
   const out: CompiledStructure = { ...rest, layer: layer ?? KIND_LAYER[s.kind] ?? null, children };
   if (out.meshes) out.meshes = sorted(out.meshes);
   if (out.regions) out.regions = sorted(out.regions);
+  if (out.systems) out.systems = SYSTEMS.filter((x) => out.systems!.includes(x));
   if (out.aliases) out.aliases = sorted(out.aliases);
   if (sides) {
     out.sides = {} as Record<Side, CompiledSide>;

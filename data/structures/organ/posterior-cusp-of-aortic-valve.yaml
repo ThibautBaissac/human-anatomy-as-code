@@ -5,6 +5,8 @@ status: draft
 parent: aortic-valve
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: posterior cusp of aortic valve

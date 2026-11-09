@@ -2,6 +2,8 @@ slug: lateral-thoracic-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: lateral thoracic vein

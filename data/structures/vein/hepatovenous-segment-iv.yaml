@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: anterior-sector-of-liver
+systems:
+  - cardiovascular
 labels:
   en:
     text: hepatovenous segment iv

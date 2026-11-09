@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: anterior-segmental-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: posterior branch of right anterior segmental artery

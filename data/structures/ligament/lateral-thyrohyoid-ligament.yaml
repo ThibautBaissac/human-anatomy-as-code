@@ -2,6 +2,8 @@ slug: lateral-thyrohyoid-ligament
 kind: ligament
 laterality: bilateral
 status: draft
+systems:
+  - respiratory
 labels:
   en:
     text: lateral thyrohyoid ligament

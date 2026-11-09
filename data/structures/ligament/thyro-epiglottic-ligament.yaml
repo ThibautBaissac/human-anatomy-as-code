@@ -2,6 +2,8 @@ slug: thyro-epiglottic-ligament
 kind: ligament
 laterality: midline
 status: draft
+systems:
+  - respiratory
 labels:
   en:
     text: thyro-epiglottic ligament

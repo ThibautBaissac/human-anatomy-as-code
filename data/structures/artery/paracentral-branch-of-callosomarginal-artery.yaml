@@ -2,6 +2,8 @@ slug: paracentral-branch-of-callosomarginal-artery
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: paracentral branch of callosomarginal artery

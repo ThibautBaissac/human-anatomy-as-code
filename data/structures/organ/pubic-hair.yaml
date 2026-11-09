@@ -6,6 +6,8 @@ parent: mons-pubis
 regions:
   - abdomen
   - pelvis
+systems:
+  - integumentary
 labels:
   en:
     text: pubic hair

@@ -2,6 +2,8 @@ slug: deep-femoral-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: deep femoral vein

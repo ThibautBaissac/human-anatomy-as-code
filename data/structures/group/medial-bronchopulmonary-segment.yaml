@@ -3,6 +3,8 @@ kind: group
 laterality: midline
 status: draft
 parent: middle-lobe-of-lung
+systems:
+  - respiratory
 labels:
   en:
     text: medial bronchopulmonary segment

@@ -2,6 +2,8 @@ slug: posterior-commissure
 kind: organ
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: posterior commissure

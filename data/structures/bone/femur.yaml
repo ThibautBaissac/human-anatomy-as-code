@@ -6,6 +6,8 @@ parent: thigh
 regions:
   - lower-limb
   - thigh
+systems:
+  - skeletal
 labels:
   en:
     text: femur

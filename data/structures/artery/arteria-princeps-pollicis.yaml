@@ -2,6 +2,8 @@ slug: arteria-princeps-pollicis
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: arteria princeps pollicis

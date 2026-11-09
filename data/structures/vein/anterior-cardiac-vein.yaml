@@ -2,6 +2,8 @@ slug: anterior-cardiac-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior cardiac vein

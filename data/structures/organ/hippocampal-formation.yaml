@@ -3,6 +3,8 @@ kind: organ
 laterality: bilateral
 status: draft
 parent: archicortex
+systems:
+  - nervous
 labels:
   en:
     text: hippocampal formation

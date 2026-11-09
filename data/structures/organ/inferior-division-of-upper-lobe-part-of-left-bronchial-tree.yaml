@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: upper-lobe-part-of-bronchial-tree
+systems:
+  - respiratory
 labels:
   en:
     text: inferior division of upper lobe part of left bronchial tree

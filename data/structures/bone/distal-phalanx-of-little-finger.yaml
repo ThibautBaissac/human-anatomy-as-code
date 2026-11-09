@@ -6,6 +6,8 @@ parent: little-finger
 regions:
   - hand
   - upper-limb
+systems:
+  - skeletal
 labels:
   en:
     text: distal phalanx of little finger

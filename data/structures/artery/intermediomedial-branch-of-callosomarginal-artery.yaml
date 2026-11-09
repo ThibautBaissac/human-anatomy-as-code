@@ -2,6 +2,8 @@ slug: intermediomedial-branch-of-callosomarginal-artery
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: intermediomedial branch of callosomarginal artery

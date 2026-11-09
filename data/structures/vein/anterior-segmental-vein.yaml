@@ -3,6 +3,8 @@ kind: vein
 laterality: bilateral
 status: draft
 parent: anterior-bronchopulmonary-segment
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior segmental vein

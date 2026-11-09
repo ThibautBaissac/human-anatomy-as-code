@@ -3,6 +3,8 @@ kind: cartilage
 laterality: midline
 status: draft
 parent: third-thoracic-intervertebral-symphysis
+systems:
+  - skeletal
 labels:
   en:
     text: intervertebral disk of third thoracic vertebra

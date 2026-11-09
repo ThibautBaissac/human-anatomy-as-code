@@ -2,6 +2,8 @@ slug: set-of-dorsal-metacarpal-arteries
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: set of dorsal metacarpal arteries

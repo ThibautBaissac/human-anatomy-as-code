@@ -2,6 +2,8 @@ slug: calcaneal-tendon
 kind: tendon
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: calcaneal tendon

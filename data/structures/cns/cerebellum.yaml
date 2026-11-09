@@ -5,6 +5,8 @@ status: draft
 parent: basicranial-part-of-head-proper
 regions:
   - head
+systems:
+  - nervous
 labels:
   en:
     text: cerebellum

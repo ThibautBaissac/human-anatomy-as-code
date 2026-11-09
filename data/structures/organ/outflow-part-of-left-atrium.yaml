@@ -5,6 +5,8 @@ status: draft
 parent: left-atrium
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: outflow part of left atrium

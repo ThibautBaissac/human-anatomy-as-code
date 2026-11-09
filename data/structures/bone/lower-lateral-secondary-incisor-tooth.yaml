@@ -2,6 +2,9 @@ slug: lower-lateral-secondary-incisor-tooth
 kind: bone
 laterality: bilateral
 status: draft
+systems:
+  - skeletal
+  - digestive
 labels:
   en:
     text: lower lateral secondary incisor tooth

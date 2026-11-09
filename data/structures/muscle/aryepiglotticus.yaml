@@ -2,6 +2,9 @@ slug: aryepiglotticus
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
+  - respiratory
 labels:
   en:
     text: aryepiglotticus

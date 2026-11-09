@@ -2,6 +2,8 @@ slug: third-lumbrical-of-foot
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: third lumbrical of foot

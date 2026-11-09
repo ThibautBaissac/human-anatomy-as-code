@@ -2,6 +2,8 @@ slug: check-ligament-of-medial-rectus
 kind: ligament
 laterality: bilateral
 status: draft
+systems:
+  - skeletal
 labels:
   en:
     text: check ligament of medial rectus

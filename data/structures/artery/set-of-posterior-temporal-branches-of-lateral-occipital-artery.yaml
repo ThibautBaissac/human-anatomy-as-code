@@ -2,6 +2,8 @@ slug: set-of-posterior-temporal-branches-of-lateral-occipital-artery
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: set of posterior temporal branches of lateral occipital artery

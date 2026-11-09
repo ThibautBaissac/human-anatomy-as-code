@@ -2,6 +2,8 @@ slug: median-sacral-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: median sacral vein

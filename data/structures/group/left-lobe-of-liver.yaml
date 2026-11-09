@@ -3,6 +3,8 @@ kind: group
 laterality: midline
 status: draft
 parent: liver
+systems:
+  - digestive
 labels:
   en:
     text: left lobe of liver

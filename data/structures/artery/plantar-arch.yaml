@@ -3,6 +3,8 @@ kind: artery
 laterality: bilateral
 status: draft
 parent: trunk-of-lateral-plantar-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: plantar arch

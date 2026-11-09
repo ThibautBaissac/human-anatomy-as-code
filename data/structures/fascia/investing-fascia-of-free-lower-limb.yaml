@@ -5,6 +5,8 @@ status: draft
 parent: investing-fascia-of-lower-limb
 regions:
   - lower-limb
+systems:
+  - muscular
 labels:
   en:
     text: investing fascia of free lower limb

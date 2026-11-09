@@ -3,6 +3,8 @@ kind: artery
 laterality: unpaired-right
 status: draft
 parent: right-coronary-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: right conus artery

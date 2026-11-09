@@ -3,6 +3,8 @@ kind: group
 laterality: bilateral
 status: draft
 parent: lung
+systems:
+  - respiratory
 labels:
   en:
     text: lower lobe of lung

@@ -3,6 +3,9 @@ kind: muscle
 laterality: midline
 status: draft
 parent: papillary-muscle-of-right-ventricle
+systems:
+  - muscular
+  - cardiovascular
 labels:
   en:
     text: septal papillary muscle of right ventricle

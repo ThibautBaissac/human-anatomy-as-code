@@ -3,6 +3,8 @@ kind: artery
 laterality: bilateral
 status: draft
 parent: renal-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: ureteric segment of renal artery

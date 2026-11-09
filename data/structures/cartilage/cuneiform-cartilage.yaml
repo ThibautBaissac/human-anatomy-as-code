@@ -2,6 +2,8 @@ slug: cuneiform-cartilage
 kind: cartilage
 laterality: bilateral
 status: draft
+systems:
+  - skeletal
 labels:
   en:
     text: cuneiform cartilage

@@ -2,6 +2,8 @@ slug: dorsal-venous-network-of-hand
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: dorsal venous network of hand

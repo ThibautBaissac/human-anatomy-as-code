@@ -2,6 +2,8 @@ slug: tributary-of-middle-hepatic-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: tributary of middle hepatic vein

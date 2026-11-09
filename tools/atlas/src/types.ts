@@ -47,6 +47,8 @@ export interface Structure {
   sex?: Model;
   parent?: string;
   regions?: string[];
+  /** anatomical systems, in vocabulary order (import/rules.ts SYSTEMS) */
+  systems?: string[];
   layer?: number;
   aliases?: string[];
   labels: Labels;

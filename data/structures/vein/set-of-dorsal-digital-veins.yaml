@@ -2,6 +2,8 @@ slug: set-of-dorsal-digital-veins
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: set of dorsal digital veins

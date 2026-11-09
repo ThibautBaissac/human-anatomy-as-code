@@ -2,6 +2,8 @@ slug: plantar-venous-arch-of-foot
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: plantar venous arch of foot

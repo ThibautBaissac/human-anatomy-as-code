@@ -3,6 +3,8 @@ kind: muscle
 laterality: midline
 status: draft
 parent: anal-part-of-perineum
+systems:
+  - muscular
 labels:
   en:
     text: external anal sphincter

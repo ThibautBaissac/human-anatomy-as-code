@@ -5,6 +5,8 @@ status: draft
 parent: left-ventricle
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: inflow part of left ventricle

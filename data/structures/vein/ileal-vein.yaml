@@ -2,6 +2,8 @@ slug: ileal-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: ileal vein

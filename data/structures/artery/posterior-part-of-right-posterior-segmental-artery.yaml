@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: posterior-segmental-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: posterior part of right posterior segmental artery

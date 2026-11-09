@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: left-coronary-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior interventricular branch of left coronary artery

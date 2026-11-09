@@ -2,6 +2,8 @@ slug: puborectalis
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: puborectalis

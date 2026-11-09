@@ -2,6 +2,8 @@ slug: superficial-epigastric-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: superficial epigastric vein

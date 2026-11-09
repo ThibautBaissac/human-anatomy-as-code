@@ -5,6 +5,9 @@ status: draft
 parent: lateral-wall-of-left-ventricle
 regions:
   - thorax
+systems:
+  - muscular
+  - cardiovascular
 labels:
   en:
     text: anterolateral head of lateral papillary muscle of left ventricle

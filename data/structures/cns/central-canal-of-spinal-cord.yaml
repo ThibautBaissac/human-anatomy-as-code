@@ -3,6 +3,8 @@ kind: cns
 laterality: midline
 status: draft
 parent: spinal-cord
+systems:
+  - nervous
 labels:
   en:
     text: central canal of spinal cord

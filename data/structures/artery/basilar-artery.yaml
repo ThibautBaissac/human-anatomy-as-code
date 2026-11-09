@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: vertebral-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: basilar artery

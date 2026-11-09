@@ -3,6 +3,9 @@ kind: muscle
 laterality: bilateral
 status: draft
 parent: soft-palate
+systems:
+  - muscular
+  - digestive
 labels:
   en:
     text: levator veli palatini

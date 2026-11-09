@@ -2,6 +2,8 @@ slug: iliocostalis-thoracis
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: iliocostalis thoracis

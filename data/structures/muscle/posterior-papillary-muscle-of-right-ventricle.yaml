@@ -3,6 +3,9 @@ kind: muscle
 laterality: midline
 status: draft
 parent: inferior-wall-of-right-ventricle
+systems:
+  - muscular
+  - cardiovascular
 labels:
   en:
     text: posterior papillary muscle of right ventricle

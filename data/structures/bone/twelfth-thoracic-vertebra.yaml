@@ -5,6 +5,8 @@ status: draft
 parent: posterior-thoracic-wall
 regions:
   - thorax
+systems:
+  - skeletal
 labels:
   en:
     text: twelfth thoracic vertebra

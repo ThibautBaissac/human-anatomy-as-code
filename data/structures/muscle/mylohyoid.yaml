@@ -2,6 +2,8 @@ slug: mylohyoid
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: mylohyoid

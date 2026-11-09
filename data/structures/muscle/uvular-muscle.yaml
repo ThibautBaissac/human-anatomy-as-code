@@ -3,6 +3,9 @@ kind: muscle
 laterality: midline
 status: draft
 parent: uvula
+systems:
+  - muscular
+  - digestive
 labels:
   en:
     text: uvular muscle

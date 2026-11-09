@@ -2,6 +2,8 @@ slug: lateral-circumflex-femoral-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: lateral circumflex femoral vein

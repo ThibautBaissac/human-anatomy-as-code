@@ -2,6 +2,8 @@ slug: set-of-calcaneal-branches-of-posterior-tibial-artery
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: set of calcaneal branches of posterior tibial artery

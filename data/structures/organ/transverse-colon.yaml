@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: gastrointestinal-tract
+systems:
+  - digestive
 labels:
   en:
     text: transverse colon

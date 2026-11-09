@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: inferior-branch-of-ileocolic-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: ileal branch of inferior branch of ileocolic artery

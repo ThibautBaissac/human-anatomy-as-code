@@ -3,6 +3,8 @@ kind: cns
 laterality: midline
 status: draft
 parent: midbrain
+systems:
+  - nervous
 labels:
   en:
     text: midbrain tectum

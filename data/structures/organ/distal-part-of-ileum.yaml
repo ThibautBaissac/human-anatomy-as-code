@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: ileum
+systems:
+  - digestive
 labels:
   en:
     text: distal part of ileum

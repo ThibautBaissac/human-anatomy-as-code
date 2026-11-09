@@ -2,6 +2,8 @@ slug: stylohyoid-ligament
 kind: ligament
 laterality: bilateral
 status: draft
+systems:
+  - skeletal
 labels:
   en:
     text: stylohyoid ligament

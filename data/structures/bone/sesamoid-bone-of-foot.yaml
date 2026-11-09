@@ -2,6 +2,8 @@ slug: sesamoid-bone-of-foot
 kind: bone
 laterality: bilateral
 status: draft
+systems:
+  - skeletal
 labels:
   en:
     text: sesamoid bone of foot

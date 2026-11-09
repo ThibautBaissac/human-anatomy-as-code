@@ -2,6 +2,8 @@ slug: tentorium-cerebelli
 kind: cns
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: tentorium cerebelli

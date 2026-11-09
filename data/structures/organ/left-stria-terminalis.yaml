@@ -2,6 +2,8 @@ slug: left-stria-terminalis
 kind: organ
 laterality: unpaired-left
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: left stria terminalis

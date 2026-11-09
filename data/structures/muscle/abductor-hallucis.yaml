@@ -2,6 +2,8 @@ slug: abductor-hallucis
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: abductor hallucis

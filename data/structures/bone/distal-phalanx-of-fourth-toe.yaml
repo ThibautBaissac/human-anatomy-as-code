@@ -6,6 +6,8 @@ parent: fourth-toe
 regions:
   - foot
   - lower-limb
+systems:
+  - skeletal
 labels:
   en:
     text: distal phalanx of fourth toe

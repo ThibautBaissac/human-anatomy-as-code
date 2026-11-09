@@ -3,6 +3,8 @@ kind: artery
 laterality: bilateral
 status: draft
 parent: internal-thoracic-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: musculophrenic artery

@@ -3,6 +3,8 @@ kind: artery
 laterality: unpaired-right
 status: draft
 parent: internal-carotid-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: right middle cerebral artery

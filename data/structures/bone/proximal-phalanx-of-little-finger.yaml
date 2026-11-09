@@ -6,6 +6,8 @@ parent: little-finger
 regions:
   - hand
   - upper-limb
+systems:
+  - skeletal
 labels:
   en:
     text: proximal phalanx of little finger

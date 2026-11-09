@@ -283,3 +283,26 @@ test('files no longer produced by the source are kept and reported', () => {
   assert.ok(existsSync(join(dataDir, 'structures/organ/curated-thing.yaml')));
   assert.deepEqual(report.orphanedFiles, ['structures/organ/curated-thing.yaml']);
 });
+
+test('systems: computed for drafts from ancestors, names and kinds; regions and groups get none', () => {
+  const s = compiled(runImport().dataDir) as Record<string, CompiledStructure & { systems?: string[] }>;
+  assert.deepEqual(s.femur.systems, ['skeletal']);
+  assert.deepEqual(s['femoral-artery'].systems, ['cardiovascular']);
+  assert.deepEqual(s.heart.systems, ['cardiovascular']);
+  assert.deepEqual(s['external-oblique'].systems, ['muscular']);
+  assert.equal(s['lower-limb'].systems, undefined);
+  assert.equal(s['human-body'].systems, undefined);
+});
+
+test('systems: a reviewed structure keeps its own; an override replaces the derived ones; a re-import changes nothing', () => {
+  const { dataDir } = runImport();
+  const file = join(dataDir, 'structures/organ/heart.yaml');
+  writeFileSync(file, readFileSync(file, 'utf8').replace('status: draft\n', 'status: reviewed\n').replace(/systems:\n(  - .*\n)+/, 'systems:\n  - cardiovascular\n  - endocrine\n'));
+  runImport(dataDir, { ...OVERRIDES, systems: { femur: ['skeletal', 'muscular'] } });
+  const s = compiled(dataDir) as Record<string, CompiledStructure & { systems?: string[] }>;
+  assert.deepEqual(s.heart.systems, ['cardiovascular', 'endocrine']);
+  assert.deepEqual(s.femur.systems, ['skeletal', 'muscular']);
+  const before = snapshot(dataDir);
+  runImport(dataDir, { ...OVERRIDES, systems: { femur: ['skeletal', 'muscular'] } });
+  assert.deepEqual(snapshot(dataDir), before);
+});

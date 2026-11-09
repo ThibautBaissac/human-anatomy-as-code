@@ -2,6 +2,9 @@ slug: oblique-arytenoid
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
+  - respiratory
 labels:
   en:
     text: oblique arytenoid

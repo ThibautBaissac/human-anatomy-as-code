@@ -2,6 +2,8 @@ slug: trochlear-nerve
 kind: nerve
 laterality: bilateral
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: trochlear nerve

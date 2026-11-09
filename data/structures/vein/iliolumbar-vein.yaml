@@ -2,6 +2,8 @@ slug: iliolumbar-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: iliolumbar vein

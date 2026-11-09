@@ -2,6 +2,8 @@ slug: left-duct-of-caudate-lobe-of-liver
 kind: organ
 laterality: unpaired-left
 status: draft
+systems:
+  - digestive
 labels:
   en:
     text: left duct of caudate lobe of liver

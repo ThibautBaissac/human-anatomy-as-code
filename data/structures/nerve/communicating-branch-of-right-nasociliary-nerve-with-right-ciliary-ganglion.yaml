@@ -2,6 +2,8 @@ slug: communicating-branch-of-right-nasociliary-nerve-with-right-ciliary-ganglio
 kind: nerve
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: communicating branch of right nasociliary nerve with right ciliary ganglion

@@ -2,6 +2,8 @@ slug: tributary-of-plantar-venous-arch
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: tributary of plantar venous arch

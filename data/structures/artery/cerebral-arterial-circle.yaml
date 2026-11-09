@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: internal-carotid-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: cerebral arterial circle

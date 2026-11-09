@@ -2,6 +2,8 @@ slug: flexor-accessorius
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: flexor accessorius

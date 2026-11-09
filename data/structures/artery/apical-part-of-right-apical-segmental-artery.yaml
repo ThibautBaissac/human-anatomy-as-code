@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: apical-segmental-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: apical part of right apical segmental artery

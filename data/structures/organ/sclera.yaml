@@ -5,6 +5,8 @@ status: draft
 parent: fibrous-layer-of-eyeball
 regions:
   - head
+systems:
+  - sensory
 labels:
   en:
     text: sclera

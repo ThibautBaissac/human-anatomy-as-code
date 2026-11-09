@@ -3,6 +3,9 @@ kind: organ
 laterality: midline
 status: draft
 parent: epithalamus
+systems:
+  - nervous
+  - endocrine
 labels:
   en:
     text: pineal body

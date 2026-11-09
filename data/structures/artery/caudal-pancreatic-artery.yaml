@@ -2,6 +2,8 @@ slug: caudal-pancreatic-artery
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: caudal pancreatic artery

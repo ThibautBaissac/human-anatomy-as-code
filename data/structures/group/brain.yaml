@@ -3,6 +3,8 @@ kind: group
 laterality: midline
 status: draft
 parent: neuraxis
+systems:
+  - nervous
 labels:
   en:
     text: brain

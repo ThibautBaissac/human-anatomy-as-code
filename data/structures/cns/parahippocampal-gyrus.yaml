@@ -3,6 +3,8 @@ kind: cns
 laterality: bilateral
 status: draft
 parent: temporal-lobe
+systems:
+  - nervous
 labels:
   en:
     text: parahippocampal gyrus

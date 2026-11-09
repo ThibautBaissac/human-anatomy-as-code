@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: lateral-basal-segmental-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: lateral branch of right lateral basal segmental artery

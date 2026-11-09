@@ -2,6 +2,8 @@ slug: external-ear
 kind: organ
 laterality: midline
 status: draft
+systems:
+  - sensory
 labels:
   en:
     text: external ear

@@ -2,6 +2,8 @@ slug: lateral-sacral-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: lateral sacral vein

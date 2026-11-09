@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: medial-segmental-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: inferior branch of medial segmental artery

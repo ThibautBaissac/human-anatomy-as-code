@@ -3,6 +3,8 @@ kind: vein
 laterality: bilateral
 status: draft
 sex: male
+systems:
+  - cardiovascular
 labels:
   en:
     text: superficial dorsal vein of penis

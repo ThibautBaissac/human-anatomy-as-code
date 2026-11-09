@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: peritoneum
+systems:
+  - digestive
 labels:
   en:
     text: visceral peritoneum

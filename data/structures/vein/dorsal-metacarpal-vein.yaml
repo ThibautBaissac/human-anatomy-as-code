@@ -2,6 +2,8 @@ slug: dorsal-metacarpal-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: dorsal metacarpal vein

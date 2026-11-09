@@ -2,6 +2,8 @@ slug: anterior-inferior-pancreaticoduodenal-artery
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior inferior pancreaticoduodenal artery

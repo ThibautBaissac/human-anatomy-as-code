@@ -2,6 +2,8 @@ slug: superior-mesenteric-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: superior mesenteric vein

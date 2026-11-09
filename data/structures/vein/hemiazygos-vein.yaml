@@ -5,6 +5,8 @@ status: draft
 parent: content-of-posterior-mediastinum
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: hemiazygos vein

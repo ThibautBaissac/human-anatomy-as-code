@@ -2,6 +2,8 @@ slug: innermost-intercostal-muscle
 kind: muscle
 laterality: midline
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: innermost intercostal muscle

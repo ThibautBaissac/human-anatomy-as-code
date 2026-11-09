@@ -3,6 +3,9 @@ kind: bone
 laterality: bilateral
 status: draft
 parent: viscerocranium
+systems:
+  - skeletal
+  - sensory
 labels:
   en:
     text: lacrimal bone

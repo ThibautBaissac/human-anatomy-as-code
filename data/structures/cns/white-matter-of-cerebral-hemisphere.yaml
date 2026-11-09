@@ -3,6 +3,8 @@ kind: cns
 laterality: bilateral
 status: draft
 parent: subcortex-of-cerebral-hemisphere
+systems:
+  - nervous
 labels:
   en:
     text: white matter of cerebral hemisphere

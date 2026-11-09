@@ -3,6 +3,8 @@ kind: organ
 laterality: bilateral
 status: draft
 parent: upper-urinary-tract
+systems:
+  - urinary
 labels:
   en:
     text: ureter

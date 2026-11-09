@@ -2,6 +2,8 @@ slug: peduncle-of-midbrain
 kind: cns
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: peduncle of midbrain

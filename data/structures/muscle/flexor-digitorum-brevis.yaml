@@ -2,6 +2,8 @@ slug: flexor-digitorum-brevis
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: flexor digitorum brevis

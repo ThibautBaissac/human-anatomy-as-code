@@ -2,6 +2,8 @@ slug: posterior-inferior-segmental-tributary-of-right-hepatic-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: posterior inferior segmental tributary of right hepatic vein

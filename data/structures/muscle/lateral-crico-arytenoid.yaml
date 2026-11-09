@@ -2,6 +2,9 @@ slug: lateral-crico-arytenoid
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
+  - respiratory
 labels:
   en:
     text: lateral crico-arytenoid

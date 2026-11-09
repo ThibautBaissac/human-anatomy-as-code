@@ -6,6 +6,8 @@ parent: arm
 regions:
   - arm
   - upper-limb
+systems:
+  - skeletal
 labels:
   en:
     text: humerus

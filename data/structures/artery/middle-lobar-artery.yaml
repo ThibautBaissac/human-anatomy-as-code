@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: inferomedial-branch-of-right-pulmonary-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: middle lobar artery

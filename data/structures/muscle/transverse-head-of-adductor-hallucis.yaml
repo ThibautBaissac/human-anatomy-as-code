@@ -2,6 +2,8 @@ slug: transverse-head-of-adductor-hallucis
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: transverse head of adductor hallucis

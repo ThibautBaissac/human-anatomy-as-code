@@ -5,6 +5,8 @@ status: draft
 parent: face
 regions:
   - head
+systems:
+  - respiratory
 labels:
   en:
     text: nose

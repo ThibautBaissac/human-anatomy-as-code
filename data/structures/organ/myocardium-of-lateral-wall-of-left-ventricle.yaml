@@ -5,6 +5,8 @@ status: draft
 parent: lateral-wall-of-left-ventricle
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: myocardium of lateral wall of left ventricle

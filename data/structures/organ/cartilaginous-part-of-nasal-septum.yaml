@@ -5,6 +5,8 @@ status: draft
 parent: skeleton-of-nasal-septum
 regions:
   - head
+systems:
+  - respiratory
 labels:
   en:
     text: cartilaginous part of nasal septum

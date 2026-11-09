@@ -2,6 +2,8 @@ slug: medial-head-of-gastrocnemius
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: medial head of gastrocnemius

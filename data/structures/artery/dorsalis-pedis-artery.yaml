@@ -3,6 +3,8 @@ kind: artery
 laterality: bilateral
 status: draft
 parent: anterior-tibial-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: dorsalis pedis artery

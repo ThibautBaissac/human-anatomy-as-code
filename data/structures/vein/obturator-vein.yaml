@@ -2,6 +2,8 @@ slug: obturator-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: obturator vein

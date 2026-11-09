@@ -2,6 +2,8 @@ slug: cardinal-segment-of-brain
 kind: cns
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: cardinal segment of brain

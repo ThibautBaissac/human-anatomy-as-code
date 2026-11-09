@@ -2,6 +2,8 @@ slug: lumbar-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: lumbar vein

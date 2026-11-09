@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: left-lobe-of-liver
+systems:
+  - cardiovascular
 labels:
   en:
     text: left hepatic vein

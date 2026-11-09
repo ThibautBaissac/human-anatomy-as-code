@@ -2,6 +2,8 @@ slug: tensor-fasciae-latae
 kind: fascia
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: tensor fasciae latae

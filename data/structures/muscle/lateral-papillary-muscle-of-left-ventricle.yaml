@@ -5,6 +5,9 @@ status: draft
 parent: myocardial-zone-11
 regions:
   - thorax
+systems:
+  - muscular
+  - cardiovascular
 labels:
   en:
     text: lateral papillary muscle of left ventricle

@@ -3,6 +3,8 @@ kind: bone
 laterality: midline
 status: draft
 parent: neurocranium
+systems:
+  - skeletal
 labels:
   en:
     text: occipital bone

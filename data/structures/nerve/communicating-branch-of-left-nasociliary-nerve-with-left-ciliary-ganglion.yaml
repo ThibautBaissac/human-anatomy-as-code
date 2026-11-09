@@ -2,6 +2,8 @@ slug: communicating-branch-of-left-nasociliary-nerve-with-left-ciliary-ganglion
 kind: nerve
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: communicating branch of left nasociliary nerve with left ciliary ganglion

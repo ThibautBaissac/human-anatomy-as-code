@@ -2,6 +2,8 @@ slug: medial-head-of-triceps-brachii
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: medial head of triceps brachii

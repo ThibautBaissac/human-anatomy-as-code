@@ -3,6 +3,8 @@ kind: cartilage
 laterality: midline
 status: draft
 parent: intervertebral-symphysis-of-axis
+systems:
+  - skeletal
 labels:
   en:
     text: intervertebral disk of axis

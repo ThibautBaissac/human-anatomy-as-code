@@ -6,6 +6,8 @@ parent: leg
 regions:
   - leg
   - lower-limb
+systems:
+  - skeletal
 labels:
   en:
     text: tibia

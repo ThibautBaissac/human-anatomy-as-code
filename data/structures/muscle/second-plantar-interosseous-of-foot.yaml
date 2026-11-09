@@ -2,6 +2,8 @@ slug: second-plantar-interosseous-of-foot
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: second plantar interosseous of foot

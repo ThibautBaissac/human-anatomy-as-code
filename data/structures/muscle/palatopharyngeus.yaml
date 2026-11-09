@@ -2,6 +2,10 @@ slug: palatopharyngeus
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
+  - respiratory
+  - digestive
 labels:
   en:
     text: palatopharyngeus

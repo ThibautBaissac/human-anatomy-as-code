@@ -3,6 +3,8 @@ kind: group
 laterality: midline
 status: draft
 parent: lung
+systems:
+  - respiratory
 labels:
   en:
     text: middle lobe of lung

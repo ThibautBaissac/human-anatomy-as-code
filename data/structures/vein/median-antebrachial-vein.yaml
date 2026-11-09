@@ -2,6 +2,8 @@ slug: median-antebrachial-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: median antebrachial vein

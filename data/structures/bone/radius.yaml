@@ -6,6 +6,8 @@ parent: forearm
 regions:
   - forearm
   - upper-limb
+systems:
+  - skeletal
 labels:
   en:
     text: radius

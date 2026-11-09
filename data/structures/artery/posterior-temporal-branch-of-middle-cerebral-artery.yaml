@@ -2,6 +2,8 @@ slug: posterior-temporal-branch-of-middle-cerebral-artery
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: posterior temporal branch of middle cerebral artery

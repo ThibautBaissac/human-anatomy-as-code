@@ -2,6 +2,8 @@ slug: inferior-pancreatic-artery
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: inferior pancreatic artery

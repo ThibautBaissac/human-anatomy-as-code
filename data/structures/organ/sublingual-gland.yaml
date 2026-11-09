@@ -2,6 +2,8 @@ slug: sublingual-gland
 kind: organ
 laterality: bilateral
 status: draft
+systems:
+  - digestive
 labels:
   en:
     text: sublingual gland

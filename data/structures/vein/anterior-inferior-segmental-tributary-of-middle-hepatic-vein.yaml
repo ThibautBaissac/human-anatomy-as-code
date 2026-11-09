@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: right-lobe-of-liver
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior inferior segmental tributary of middle hepatic vein

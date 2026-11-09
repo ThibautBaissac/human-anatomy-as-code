@@ -3,6 +3,8 @@ kind: organ
 laterality: bilateral
 status: draft
 sex: male
+systems:
+  - genital
 labels:
   en:
     text: testis

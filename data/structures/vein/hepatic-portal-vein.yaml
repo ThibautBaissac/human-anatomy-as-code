@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: portal-venous-tree
+systems:
+  - cardiovascular
 labels:
   en:
     text: hepatic portal vein

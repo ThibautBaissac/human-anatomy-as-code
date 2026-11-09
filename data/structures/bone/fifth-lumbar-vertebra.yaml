@@ -3,6 +3,8 @@ kind: bone
 laterality: midline
 status: draft
 parent: set-of-lumbar-vertebrae
+systems:
+  - skeletal
 labels:
   en:
     text: fifth lumbar vertebra

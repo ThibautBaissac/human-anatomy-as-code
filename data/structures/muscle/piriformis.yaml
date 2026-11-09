@@ -5,6 +5,8 @@ status: draft
 parent: pelvic-wall
 regions:
   - abdomen
+systems:
+  - muscular
 labels:
   en:
     text: piriformis

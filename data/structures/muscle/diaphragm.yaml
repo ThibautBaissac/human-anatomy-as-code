@@ -5,6 +5,9 @@ status: draft
 parent: thorax
 regions:
   - thorax
+systems:
+  - muscular
+  - respiratory
 labels:
   en:
     text: diaphragm

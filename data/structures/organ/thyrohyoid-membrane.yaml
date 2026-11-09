@@ -2,6 +2,8 @@ slug: thyrohyoid-membrane
 kind: organ
 laterality: bilateral
 status: draft
+systems:
+  - respiratory
 labels:
   en:
     text: thyrohyoid membrane

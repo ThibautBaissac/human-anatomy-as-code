@@ -2,6 +2,8 @@ slug: first-lumbrical-of-foot
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: first lumbrical of foot

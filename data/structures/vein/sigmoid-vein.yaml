@@ -2,6 +2,8 @@ slug: sigmoid-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: sigmoid vein

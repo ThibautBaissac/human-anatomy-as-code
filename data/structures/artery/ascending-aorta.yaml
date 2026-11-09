@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: aorta
+systems:
+  - cardiovascular
 labels:
   en:
     text: ascending aorta

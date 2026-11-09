@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: myocardium-of-free-wall-of-right-ventricle
+systems:
+  - cardiovascular
 labels:
   en:
     text: subendocardial layer of myocardium of right ventricle

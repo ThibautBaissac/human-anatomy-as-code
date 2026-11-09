@@ -5,6 +5,8 @@ status: draft
 parent: myocardium-of-free-wall-of-left-ventricle
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: subendocardial layer of myocardium of left ventricle

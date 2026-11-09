@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: cerebral-arterial-circle
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior communicating artery

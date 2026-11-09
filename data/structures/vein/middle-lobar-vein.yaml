@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: middle-lobe-of-lung
+systems:
+  - cardiovascular
 labels:
   en:
     text: middle lobar vein

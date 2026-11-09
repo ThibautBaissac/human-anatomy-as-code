@@ -2,6 +2,8 @@ slug: brachioradialis
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: brachioradialis

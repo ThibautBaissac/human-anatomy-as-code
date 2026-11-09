@@ -3,6 +3,8 @@ kind: artery
 laterality: bilateral
 status: draft
 parent: external-iliac-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: femoral artery

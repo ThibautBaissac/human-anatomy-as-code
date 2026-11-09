@@ -2,6 +2,8 @@ slug: plantar-metatarsal-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: plantar metatarsal vein

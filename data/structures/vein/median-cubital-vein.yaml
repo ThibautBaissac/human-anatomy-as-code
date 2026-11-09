@@ -2,6 +2,8 @@ slug: median-cubital-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: median cubital vein

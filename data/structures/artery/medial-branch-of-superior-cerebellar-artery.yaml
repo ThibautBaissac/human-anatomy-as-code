@@ -2,6 +2,8 @@ slug: medial-branch-of-superior-cerebellar-artery
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: medial branch of superior cerebellar artery

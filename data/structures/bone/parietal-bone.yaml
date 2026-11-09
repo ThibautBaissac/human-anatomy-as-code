@@ -5,6 +5,8 @@ status: draft
 parent: neurocranium
 regions:
   - head
+systems:
+  - skeletal
 labels:
   en:
     text: parietal bone

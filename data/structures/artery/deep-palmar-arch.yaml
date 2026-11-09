@@ -2,6 +2,8 @@ slug: deep-palmar-arch
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: deep palmar arch

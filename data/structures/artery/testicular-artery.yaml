@@ -4,6 +4,8 @@ laterality: bilateral
 status: draft
 sex: male
 parent: systemic-arterial-tree
+systems:
+  - cardiovascular
 labels:
   en:
     text: testicular artery

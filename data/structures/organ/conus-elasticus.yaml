@@ -2,6 +2,8 @@ slug: conus-elasticus
 kind: organ
 laterality: bilateral
 status: draft
+systems:
+  - respiratory
 labels:
   en:
     text: conus elasticus

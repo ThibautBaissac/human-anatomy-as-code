@@ -5,6 +5,8 @@ status: draft
 parent: eye
 regions:
   - head
+systems:
+  - muscular
 labels:
   en:
     text: inferior oblique

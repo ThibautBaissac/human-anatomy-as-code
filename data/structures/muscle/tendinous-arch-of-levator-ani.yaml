@@ -2,6 +2,8 @@ slug: tendinous-arch-of-levator-ani
 kind: muscle
 laterality: midline
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: tendinous arch of levator ani

@@ -2,6 +2,8 @@ slug: thoracic-rotator
 kind: muscle
 laterality: midline
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: thoracic rotator

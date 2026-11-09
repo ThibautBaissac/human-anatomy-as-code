@@ -5,6 +5,8 @@ status: draft
 parent: cartilaginous-skeleton-of-external-nose
 regions:
   - head
+systems:
+  - skeletal
 labels:
   en:
     text: lateral nasal cartilage

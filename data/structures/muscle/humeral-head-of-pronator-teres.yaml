@@ -2,6 +2,8 @@ slug: humeral-head-of-pronator-teres
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: humeral head of pronator teres

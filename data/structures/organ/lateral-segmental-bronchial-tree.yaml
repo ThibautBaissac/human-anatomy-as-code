@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: lateral-bronchopulmonary-segment
+systems:
+  - respiratory
 labels:
   en:
     text: lateral segmental bronchial tree

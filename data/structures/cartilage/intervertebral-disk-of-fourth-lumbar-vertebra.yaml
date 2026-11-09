@@ -3,6 +3,8 @@ kind: cartilage
 laterality: midline
 status: draft
 parent: fourth-lumbar-intervertebral-symphysis
+systems:
+  - skeletal
 labels:
   en:
     text: intervertebral disk of fourth lumbar vertebra

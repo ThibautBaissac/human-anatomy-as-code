@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: large-intestine
+systems:
+  - digestive
 labels:
   en:
     text: wall of large intestine

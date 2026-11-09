@@ -5,6 +5,8 @@ status: draft
 parent: abdomen
 regions:
   - abdomen
+systems:
+  - skeletal
 labels:
   en:
     text: pelvis

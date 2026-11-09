@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: inferior-mesenteric-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: superior rectal artery

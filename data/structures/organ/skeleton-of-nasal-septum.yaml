@@ -5,6 +5,8 @@ status: draft
 parent: nasal-septum
 regions:
   - head
+systems:
+  - respiratory
 labels:
   en:
     text: skeleton of nasal septum

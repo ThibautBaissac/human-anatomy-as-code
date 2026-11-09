@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: right-middle-cerebral-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: trunk of right middle cerebral artery

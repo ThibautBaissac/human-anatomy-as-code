@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: common-hepatic-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: right gastric artery

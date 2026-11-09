@@ -2,6 +2,9 @@ slug: digastric
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
+  - digestive
 labels:
   en:
     text: digastric

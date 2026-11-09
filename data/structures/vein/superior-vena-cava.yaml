@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: superior-systemic-venous-tree
+systems:
+  - cardiovascular
 labels:
   en:
     text: superior vena cava

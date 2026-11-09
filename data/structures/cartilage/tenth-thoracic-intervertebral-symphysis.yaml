@@ -3,6 +3,8 @@ kind: cartilage
 laterality: midline
 status: draft
 parent: thoracic-vertebral-column
+systems:
+  - skeletal
 labels:
   en:
     text: tenth thoracic intervertebral symphysis

@@ -2,6 +2,8 @@ slug: insular-part-of-middle-cerebral-artery
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: insular part of middle cerebral artery

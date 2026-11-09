@@ -2,6 +2,8 @@ slug: mammillary-body
 kind: cns
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: mammillary body

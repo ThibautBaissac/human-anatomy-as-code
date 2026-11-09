@@ -2,6 +2,8 @@ slug: common-palmar-digital-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: common palmar digital vein

@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: vasculature-of-body
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior cardiac venous tree

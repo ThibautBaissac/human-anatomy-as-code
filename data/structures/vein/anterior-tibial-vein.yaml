@@ -2,6 +2,8 @@ slug: anterior-tibial-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior tibial vein

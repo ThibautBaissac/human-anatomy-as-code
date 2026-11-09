@@ -2,6 +2,8 @@ slug: proper-palmar-digital-vein-of-little-finger
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: proper palmar digital vein of little finger

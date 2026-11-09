@@ -2,6 +2,8 @@ slug: medial-lumbar-intertransversarius
 kind: muscle
 laterality: midline
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: medial lumbar intertransversarius

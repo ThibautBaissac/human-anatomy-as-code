@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: bronchial-tree
+systems:
+  - respiratory
 labels:
   en:
     text: inferomedial part of right bronchial tree

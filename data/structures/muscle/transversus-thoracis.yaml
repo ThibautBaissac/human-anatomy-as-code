@@ -5,6 +5,8 @@ status: draft
 parent: anterior-thoracic-wall
 regions:
   - thorax
+systems:
+  - muscular
 labels:
   en:
     text: transversus thoracis

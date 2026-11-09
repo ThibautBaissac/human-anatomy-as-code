@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: posterior-segmental-hepatic-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: posterior superior segmental hepatic artery

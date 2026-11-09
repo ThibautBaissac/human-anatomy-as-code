@@ -2,6 +2,8 @@ slug: first-posterior-intercostal-artery
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: first posterior intercostal artery

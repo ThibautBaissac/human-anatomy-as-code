@@ -5,6 +5,8 @@ status: draft
 parent: wall-of-abdomen
 regions:
   - abdomen
+systems:
+  - skeletal
 labels:
   en:
     text: bony pelvis

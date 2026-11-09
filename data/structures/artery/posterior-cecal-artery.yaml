@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: inferior-branch-of-ileocolic-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: posterior cecal artery

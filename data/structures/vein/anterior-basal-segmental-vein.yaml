@@ -3,6 +3,8 @@ kind: vein
 laterality: bilateral
 status: draft
 parent: superior-basal-vein
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior basal segmental vein

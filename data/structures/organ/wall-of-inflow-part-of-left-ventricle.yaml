@@ -5,6 +5,8 @@ status: draft
 parent: wall-of-left-ventricle
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: wall of inflow part of left ventricle

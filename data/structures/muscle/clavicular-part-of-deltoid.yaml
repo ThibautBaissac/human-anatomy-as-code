@@ -2,6 +2,8 @@ slug: clavicular-part-of-deltoid
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: clavicular part of deltoid

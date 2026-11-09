@@ -2,6 +2,8 @@ slug: branch-of-right-anterior-choroidal-artery-to-posterior-limb-of-right-inter
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: branch of right anterior choroidal artery to posterior limb of right internal capsule

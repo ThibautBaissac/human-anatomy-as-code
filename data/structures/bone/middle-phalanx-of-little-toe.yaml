@@ -6,6 +6,8 @@ parent: little-toe
 regions:
   - foot
   - lower-limb
+systems:
+  - skeletal
 labels:
   en:
     text: middle phalanx of little toe

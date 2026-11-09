@@ -2,6 +2,8 @@ slug: postcommunicating-part-of-posterior-cerebral-artery
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: postcommunicating part of posterior cerebral artery

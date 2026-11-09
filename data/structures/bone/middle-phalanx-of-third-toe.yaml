@@ -6,6 +6,8 @@ parent: third-toe
 regions:
   - foot
   - lower-limb
+systems:
+  - skeletal
 labels:
   en:
     text: middle phalanx of third toe

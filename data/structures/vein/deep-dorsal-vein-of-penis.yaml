@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 sex: male
+systems:
+  - cardiovascular
 labels:
   en:
     text: deep dorsal vein of penis

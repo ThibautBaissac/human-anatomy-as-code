@@ -2,6 +2,8 @@ slug: musculophrenic-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: musculophrenic vein

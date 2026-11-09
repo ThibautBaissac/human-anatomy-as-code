@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: portal-vein
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior branch of right portal vein

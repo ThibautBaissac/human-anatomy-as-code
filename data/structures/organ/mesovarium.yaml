@@ -4,6 +4,8 @@ laterality: bilateral
 status: draft
 sex: female
 parent: female-genital-system
+systems:
+  - genital
 labels:
   en:
     text: mesovarium

@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: superior-mesenteric-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: right colic artery

@@ -2,6 +2,8 @@ slug: lateral-superior-segmental-tributary-of-left-hepatic-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: lateral superior segmental tributary of left hepatic vein

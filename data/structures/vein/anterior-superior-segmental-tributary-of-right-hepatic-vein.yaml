@@ -2,6 +2,8 @@ slug: anterior-superior-segmental-tributary-of-right-hepatic-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior superior segmental tributary of right hepatic vein

@@ -3,6 +3,8 @@ kind: group
 laterality: midline
 status: draft
 parent: alimentary-system
+systems:
+  - digestive
 labels:
   en:
     text: mouth

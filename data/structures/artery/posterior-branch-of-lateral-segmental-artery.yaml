@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: lateral-segmental-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: posterior branch of lateral segmental artery

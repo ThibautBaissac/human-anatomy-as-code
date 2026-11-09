@@ -5,6 +5,8 @@ status: draft
 parent: heart
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: fibrous skeleton of heart

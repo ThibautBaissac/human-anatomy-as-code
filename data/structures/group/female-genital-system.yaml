@@ -4,6 +4,8 @@ laterality: midline
 status: draft
 sex: female
 parent: genital-system
+systems:
+  - genital
 labels:
   en:
     text: female genital system

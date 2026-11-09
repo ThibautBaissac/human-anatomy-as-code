@@ -6,6 +6,8 @@ parent: index-finger
 regions:
   - hand
   - upper-limb
+systems:
+  - skeletal
 labels:
   en:
     text: distal phalanx of index finger

@@ -2,6 +2,8 @@ slug: posterior-intercostal-arteries
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: posterior intercostal arteries

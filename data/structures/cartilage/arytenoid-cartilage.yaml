@@ -2,6 +2,8 @@ slug: arytenoid-cartilage
 kind: cartilage
 laterality: bilateral
 status: draft
+systems:
+  - respiratory
 labels:
   en:
     text: arytenoid cartilage

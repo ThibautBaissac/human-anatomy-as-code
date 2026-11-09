@@ -5,6 +5,8 @@ status: draft
 parent: wall-of-side-of-internal-nose
 regions:
   - head
+systems:
+  - respiratory
 labels:
   en:
     text: lateral wall of internal nose

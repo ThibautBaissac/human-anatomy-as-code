@@ -2,6 +2,8 @@ slug: opponens-digiti-minimi-of-hand
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: opponens digiti minimi of hand

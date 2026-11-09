@@ -3,6 +3,8 @@ kind: cartilage
 laterality: midline
 status: draft
 parent: seventh-cervical-intervertebral-symphysis
+systems:
+  - skeletal
 labels:
   en:
     text: intervertebral disk of seventh cervical vertebra

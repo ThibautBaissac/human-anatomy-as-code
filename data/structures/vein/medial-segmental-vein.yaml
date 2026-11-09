@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: medial-bronchopulmonary-segment
+systems:
+  - cardiovascular
 labels:
   en:
     text: medial segmental vein

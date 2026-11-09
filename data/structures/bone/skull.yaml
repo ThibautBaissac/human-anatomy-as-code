@@ -3,6 +3,8 @@ kind: bone
 laterality: midline
 status: draft
 parent: skeleton-in-vivo
+systems:
+  - skeletal
 labels:
   en:
     text: skull

@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: visceral-peritoneum
+systems:
+  - digestive
 labels:
   en:
     text: mesoappendix

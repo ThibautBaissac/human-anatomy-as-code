@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: basilar-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: anterior inferior cerebellar artery

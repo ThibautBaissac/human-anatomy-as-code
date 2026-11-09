@@ -2,6 +2,8 @@ slug: lateral-head-of-flexor-hallucis-brevis
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: lateral head of flexor hallucis brevis

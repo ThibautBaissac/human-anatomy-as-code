@@ -2,6 +2,8 @@ slug: gastro-epiploic-artery
 kind: artery
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: gastro-epiploic artery

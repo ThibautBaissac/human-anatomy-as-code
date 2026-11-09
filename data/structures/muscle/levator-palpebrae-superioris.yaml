@@ -5,6 +5,8 @@ status: draft
 parent: upper-eyelid
 regions:
   - head
+systems:
+  - muscular
 labels:
   en:
     text: levator palpebrae superioris

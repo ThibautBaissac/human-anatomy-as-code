@@ -1,7 +1,7 @@
 // Planning: BodyParts3D concepts + Wikidata rows → structures (pure, no disk writes).
 import { fmaNumber, type Bp3d } from './bp3d.ts';
 import type { Wikidata, WikidataRow } from './wikidata.ts';
-import { genderOf, isNoFold, kindOfName, REGION_OF_ANCESTOR, SIDE_PREFIX, slugify, splitSide, TA98_PATTERN } from './rules.ts';
+import { genderOf, isNoFold, kindOfName, REGION_OF_ANCESTOR, SIDE_PREFIX, slugify, splitSide, systemsOf, TA98_PATTERN } from './rules.ts';
 import { canonicalStructure } from './yaml-merge.ts';
 import { byKey } from '../fs-util.ts';
 import type { Ids, Label, Labels, Side, SideBlock, Structure } from '../types.ts';
@@ -13,6 +13,8 @@ export interface Overrides {
   ties?: Record<string, string>;
   /** canonical English name → forced slug */
   slugs?: Record<string, string>;
+  /** slug → systems, replacing the derived ones */
+  systems?: Record<string, string[]>;
 }
 
 export interface Plan {
@@ -26,6 +28,19 @@ export interface Plan {
 }
 
 const SIDES: Side[] = ['left', 'right'];
+
+/** Sets the systems of each structure (spec 2026-11-09-systemes): an override, or derived from kind, name and ancestors. */
+export function withSystems(structures: Structure[], overrides: Record<string, string[]> = {}, outsideParents = new Map<string, string | undefined>()): void {
+  // parents of the structures planned here, then of the existing ones (HRA structures hang under BodyParts3D groups)
+  const parentOf = new Map([...outsideParents, ...structures.map((s) => [s.slug, s.parent] as const)]);
+  for (const s of structures) {
+    const ancestors: string[] = [];
+    for (let p = s.parent; p && !ancestors.includes(p); p = parentOf.get(p)) ancestors.push(p);
+    const systems = overrides[s.slug] ?? systemsOf({ kind: s.kind, name: s.labels.en?.text ?? s.slug, ancestors });
+    if (systems.length) s.systems = [...systems];
+    else delete s.systems;
+  }
+}
 const meshRef = (fj: string) => `bp3d:${fj}`;
 
 /** External references of a concept: its FMA id plus TA2, TA98 (when well-formed) and QID of its Wikidata item. */
@@ -262,8 +277,10 @@ export function planStructures(bp: Bp3d, wd: Wikidata, overrides: Overrides = {}
       const m = meshesOf(u.self);
       if (m) s.meshes = m;
     }
-    return canonicalStructure(s);
+    return s;
   });
+  withSystems(structures, overrides.systems);
+  structures.splice(0, structures.length, ...structures.map(canonicalStructure));
   structures.sort((a, b) => byKey(a.slug, b.slug));
 
   const unownedMeshes = [...containing.keys()].filter((fj) => !placed.has(fj)).sort(byKey);

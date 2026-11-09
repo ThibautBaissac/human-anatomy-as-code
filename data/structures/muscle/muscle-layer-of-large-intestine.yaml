@@ -3,6 +3,9 @@ kind: muscle
 laterality: midline
 status: draft
 parent: wall-of-large-intestine
+systems:
+  - muscular
+  - digestive
 labels:
   en:
     text: muscle layer of large intestine

@@ -3,6 +3,9 @@ kind: muscle
 laterality: midline
 status: draft
 parent: muscle-layer-of-large-intestine
+systems:
+  - muscular
+  - digestive
 labels:
   en:
     text: taenia omentalis

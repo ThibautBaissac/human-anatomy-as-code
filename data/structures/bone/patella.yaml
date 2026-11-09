@@ -5,6 +5,8 @@ status: draft
 parent: patellar-part-of-knee
 regions:
   - lower-limb
+systems:
+  - skeletal
 labels:
   en:
     text: patella

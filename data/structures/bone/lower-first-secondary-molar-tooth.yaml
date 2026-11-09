@@ -2,6 +2,9 @@ slug: lower-first-secondary-molar-tooth
 kind: bone
 laterality: bilateral
 status: draft
+systems:
+  - skeletal
+  - digestive
 labels:
   en:
     text: lower first secondary molar tooth

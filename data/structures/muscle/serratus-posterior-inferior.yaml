@@ -2,6 +2,8 @@ slug: serratus-posterior-inferior
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: serratus posterior inferior

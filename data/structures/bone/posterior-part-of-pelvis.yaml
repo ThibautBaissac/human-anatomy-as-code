@@ -6,6 +6,8 @@ parent: pelvis
 regions:
   - abdomen
   - pelvis
+systems:
+  - skeletal
 labels:
   en:
     text: posterior part of pelvis

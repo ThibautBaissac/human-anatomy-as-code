@@ -5,6 +5,8 @@ status: draft
 parent: side-of-rib-cage
 regions:
   - thorax
+systems:
+  - skeletal
 labels:
   en:
     text: eighth rib

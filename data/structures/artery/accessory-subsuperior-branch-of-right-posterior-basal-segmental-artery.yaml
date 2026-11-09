@@ -3,6 +3,8 @@ kind: artery
 laterality: midline
 status: draft
 parent: posterior-basal-segmental-artery
+systems:
+  - cardiovascular
 labels:
   en:
     text: accessory subsuperior branch of right posterior basal segmental artery

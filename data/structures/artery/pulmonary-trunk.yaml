@@ -5,6 +5,8 @@ status: draft
 parent: content-of-middle-mediastinum
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: pulmonary trunk

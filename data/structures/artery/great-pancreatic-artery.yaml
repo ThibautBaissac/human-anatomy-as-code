@@ -2,6 +2,8 @@ slug: great-pancreatic-artery
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: great pancreatic artery

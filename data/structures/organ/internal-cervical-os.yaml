@@ -4,6 +4,8 @@ laterality: midline
 status: draft
 sex: female
 parent: uterine-cervix
+systems:
+  - genital
 labels:
   en:
     text: internal cervical os

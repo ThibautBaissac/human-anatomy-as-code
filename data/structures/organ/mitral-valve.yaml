@@ -5,6 +5,8 @@ status: draft
 parent: outflow-part-of-left-atrium
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: mitral valve

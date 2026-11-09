@@ -5,6 +5,8 @@ status: draft
 parent: wall-of-left-ventricle
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: free wall of left ventricle

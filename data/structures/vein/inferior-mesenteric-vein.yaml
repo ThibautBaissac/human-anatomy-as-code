@@ -2,6 +2,8 @@ slug: inferior-mesenteric-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: inferior mesenteric vein

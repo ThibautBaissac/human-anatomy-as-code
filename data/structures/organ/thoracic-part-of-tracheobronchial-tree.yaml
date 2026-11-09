@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: content-of-thorax
+systems:
+  - respiratory
 labels:
   en:
     text: thoracic part of tracheobronchial tree

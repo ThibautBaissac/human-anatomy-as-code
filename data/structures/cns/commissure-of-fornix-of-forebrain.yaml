@@ -2,6 +2,8 @@ slug: commissure-of-fornix-of-forebrain
 kind: cns
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: commissure of fornix of forebrain

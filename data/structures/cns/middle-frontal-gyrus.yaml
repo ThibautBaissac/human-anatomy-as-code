@@ -3,6 +3,8 @@ kind: cns
 laterality: bilateral
 status: draft
 parent: prefrontal-cortex
+systems:
+  - nervous
 labels:
   en:
     text: middle frontal gyrus

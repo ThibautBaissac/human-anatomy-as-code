@@ -2,6 +2,8 @@ slug: deep-palmar-venous-arch
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: deep palmar venous arch

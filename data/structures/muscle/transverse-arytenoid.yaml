@@ -2,6 +2,9 @@ slug: transverse-arytenoid
 kind: muscle
 laterality: midline
 status: draft
+systems:
+  - muscular
+  - respiratory
 labels:
   en:
     text: transverse arytenoid

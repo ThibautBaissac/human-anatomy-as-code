@@ -5,6 +5,8 @@ status: draft
 parent: lacrimal-duct
 regions:
   - head
+systems:
+  - sensory
 labels:
   en:
     text: nasolacrimal duct

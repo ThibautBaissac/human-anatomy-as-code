@@ -2,6 +2,8 @@ slug: first-plantar-interosseous-of-foot
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: first plantar interosseous of foot

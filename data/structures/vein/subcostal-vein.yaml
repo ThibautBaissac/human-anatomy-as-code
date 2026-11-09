@@ -2,6 +2,8 @@ slug: subcostal-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: subcostal vein

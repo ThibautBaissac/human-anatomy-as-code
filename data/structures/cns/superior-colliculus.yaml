@@ -3,6 +3,8 @@ kind: cns
 laterality: bilateral
 status: draft
 parent: midbrain-tectum
+systems:
+  - nervous
 labels:
   en:
     text: superior colliculus

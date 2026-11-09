@@ -5,6 +5,8 @@ status: draft
 parent: superficial-chest-wall
 regions:
   - thorax
+systems:
+  - muscular
 labels:
   en:
     text: subclavius

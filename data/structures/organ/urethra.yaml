@@ -4,6 +4,8 @@ laterality: midline
 status: draft
 sex: male
 parent: lower-urinary-tract
+systems:
+  - urinary
 labels:
   en:
     text: urethra

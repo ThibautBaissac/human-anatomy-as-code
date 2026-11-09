@@ -2,6 +2,8 @@ slug: popliteal-vein
 kind: vein
 laterality: bilateral
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: popliteal vein

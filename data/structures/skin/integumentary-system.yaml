@@ -3,6 +3,8 @@ kind: skin
 laterality: midline
 status: draft
 parent: human-body
+systems:
+  - integumentary
 labels:
   en:
     text: integumentary system

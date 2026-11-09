@@ -3,6 +3,8 @@ kind: organ
 laterality: midline
 status: draft
 parent: liver
+systems:
+  - digestive
 labels:
   en:
     text: right lobe of liver

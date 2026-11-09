@@ -6,6 +6,8 @@ parent: subclavian-artery
 regions:
   - arm
   - upper-limb
+systems:
+  - cardiovascular
 labels:
   en:
     text: inferior ulnar collateral artery

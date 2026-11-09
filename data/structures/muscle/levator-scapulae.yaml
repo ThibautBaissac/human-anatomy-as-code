@@ -5,6 +5,8 @@ status: draft
 parent: scapular-part-of-pectoral-girdle
 regions:
   - upper-limb
+systems:
+  - muscular
 labels:
   en:
     text: levator scapulae

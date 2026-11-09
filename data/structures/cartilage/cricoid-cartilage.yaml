@@ -2,6 +2,8 @@ slug: cricoid-cartilage
 kind: cartilage
 laterality: midline
 status: draft
+systems:
+  - respiratory
 labels:
   en:
     text: cricoid cartilage

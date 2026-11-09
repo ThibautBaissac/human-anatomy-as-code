@@ -5,6 +5,8 @@ status: draft
 parent: basicranial-part-of-head-proper
 regions:
   - head
+systems:
+  - skeletal
 labels:
   en:
     text: basicranium

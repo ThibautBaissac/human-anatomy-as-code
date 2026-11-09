@@ -3,6 +3,8 @@ kind: cartilage
 laterality: midline
 status: draft
 parent: sixth-thoracic-intervertebral-symphysis
+systems:
+  - skeletal
 labels:
   en:
     text: intervertebral disk of sixth thoracic vertebra

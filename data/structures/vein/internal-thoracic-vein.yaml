@@ -2,6 +2,8 @@ slug: internal-thoracic-vein
 kind: vein
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: internal thoracic vein

@@ -3,6 +3,8 @@ kind: group
 laterality: midline
 status: draft
 parent: forebrain
+systems:
+  - nervous
 labels:
   en:
     text: diencephalon

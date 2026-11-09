@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: medial-branch-of-left-portal-vein
+systems:
+  - cardiovascular
 labels:
   en:
     text: medial superior segmental branch of left portal vein

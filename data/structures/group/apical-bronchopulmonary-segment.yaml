@@ -3,6 +3,8 @@ kind: group
 laterality: bilateral
 status: draft
 parent: upper-lobe-of-lung
+systems:
+  - respiratory
 labels:
   en:
     text: apical bronchopulmonary segment

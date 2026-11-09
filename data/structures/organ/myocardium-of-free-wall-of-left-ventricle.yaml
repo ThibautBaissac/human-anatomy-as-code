@@ -5,6 +5,8 @@ status: draft
 parent: myocardium-of-left-ventricle-proper
 regions:
   - thorax
+systems:
+  - cardiovascular
 labels:
   en:
     text: myocardium of free wall of left ventricle

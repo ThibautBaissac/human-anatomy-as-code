@@ -2,6 +2,8 @@ slug: set-of-dorsal-interossei-of-hand
 kind: muscle
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: set of dorsal interossei of hand

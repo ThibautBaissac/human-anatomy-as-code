@@ -2,7 +2,7 @@
 import { Document, isMap, isScalar, YAMLMap, type Pair } from 'yaml';
 import type { Labels, Side, Structure } from '../types.ts';
 
-export const KEY_ORDER = ['slug', 'kind', 'laterality', 'status', 'sex', 'parent', 'regions', 'layer', 'aliases', 'labels', 'ids', 'sides', 'meshes', 'variants', 'actions'];
+export const KEY_ORDER = ['slug', 'kind', 'laterality', 'status', 'sex', 'parent', 'regions', 'systems', 'layer', 'aliases', 'labels', 'ids', 'sides', 'meshes', 'variants', 'actions'];
 const LABEL_KEY_ORDER = ['text', 'gender', 'number', 'source', 'status', 'synonyms', 'description'];
 const IDS_ORDER = ['fma', 'ta2', 'ta98', 'uberon', 'wikidata'];
 /** ids keys the import computes; any other key (uberon) belongs to curators. */
@@ -103,7 +103,7 @@ export function hasReviewedSideLabels(root: YAMLMap): boolean {
 
 /** Recomputes the non-label fields of a draft structure; `keepShape` leaves laterality, sides and meshes alone. */
 export function mergeDraft(doc: Document, root: YAMLMap, s: Structure, keepShape = false): void {
-  for (const key of ['kind', 'parent', 'regions'] as const) setOrdered(doc, root, key, s[key], KEY_ORDER);
+  for (const key of ['kind', 'parent', 'regions', 'systems'] as const) setOrdered(doc, root, key, s[key], KEY_ORDER);
   mergeIds(doc, root, s.ids, KEY_ORDER);
   mergeLabels(doc, root, s.labels, false);
   if (keepShape) return;

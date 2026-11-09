@@ -3,6 +3,9 @@ kind: organ
 laterality: midline
 status: draft
 parent: gastrointestinal-tract
+systems:
+  - digestive
+  - endocrine
 labels:
   en:
     text: pancreas

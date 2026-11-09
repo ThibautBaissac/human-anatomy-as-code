@@ -5,6 +5,8 @@ status: draft
 parent: nasal-skeleton
 regions:
   - head
+systems:
+  - respiratory
 labels:
   en:
     text: cartilaginous skeleton of nose

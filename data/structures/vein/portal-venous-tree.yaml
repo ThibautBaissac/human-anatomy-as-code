@@ -3,6 +3,8 @@ kind: vein
 laterality: midline
 status: draft
 parent: cardiovascular-system
+systems:
+  - cardiovascular
 labels:
   en:
     text: portal venous tree

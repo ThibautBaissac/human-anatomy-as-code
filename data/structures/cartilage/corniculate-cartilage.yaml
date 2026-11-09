@@ -2,6 +2,8 @@ slug: corniculate-cartilage
 kind: cartilage
 laterality: bilateral
 status: draft
+systems:
+  - skeletal
 labels:
   en:
     text: corniculate cartilage

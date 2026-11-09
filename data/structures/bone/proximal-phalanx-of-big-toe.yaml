@@ -6,6 +6,8 @@ parent: big-toe
 regions:
   - foot
   - lower-limb
+systems:
+  - skeletal
 labels:
   en:
     text: proximal phalanx of big toe

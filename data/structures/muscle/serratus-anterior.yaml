@@ -5,6 +5,8 @@ status: draft
 parent: lateral-superficial-chest-wall
 regions:
   - thorax
+systems:
+  - muscular
 labels:
   en:
     text: serratus anterior

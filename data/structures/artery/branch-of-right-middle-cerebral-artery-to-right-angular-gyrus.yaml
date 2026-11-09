@@ -2,6 +2,8 @@ slug: branch-of-right-middle-cerebral-artery-to-right-angular-gyrus
 kind: artery
 laterality: midline
 status: draft
+systems:
+  - cardiovascular
 labels:
   en:
     text: branch of right middle cerebral artery to right angular gyrus

@@ -6,6 +6,8 @@ parent: skeleton-of-hand-proper
 regions:
   - hand
   - upper-limb
+systems:
+  - skeletal
 labels:
   en:
     text: fourth metacarpal bone
