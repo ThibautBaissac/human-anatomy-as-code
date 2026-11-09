@@ -8,7 +8,7 @@ import { acceleratedRaycast, computeBatchedBoundsTree } from 'three-mesh-bvh';
 import { appearance, type AppearanceState } from './appearance.ts';
 import { buildCatalog, type Catalog } from './catalog.ts';
 import { colorOf, HIGHLIGHT } from './colors.ts';
-import { crossingInstances, jointKey, poseMatrices, type Pose, type Rigs } from './pose.ts';
+import { crossingInstances, jointKey, normaliseAngle, parseJointKey, poseMatrices, type Pose, type Rigs } from './pose.ts';
 import { AXES, DEFAULT_VIEW, type Atlas, type AtlasJoint, type Axis, type Camera, type Model, type Selection, type Side, type ViewState } from './types.ts';
 
 THREE.BatchedMesh.prototype.raycast = acceleratedRaycast;
@@ -176,6 +176,9 @@ export class Viewer {
     const t0 = this.loadStart ?? performance.now();
     this.loadStart = null;
     this.stop();
+    // batches kept for the next model still carry this pose: back to rest while the global indices are still this model's
+    for (const g of this.moved) { const [b, id] = this.location[g]; b.mesh.setMatrixAt(id, b.base[id]); }
+    this.moved = new Set();
     const needed = (manifest.models?.[model]?.kinds ?? Object.keys(manifest.kinds)).slice().sort();
     for (const b of this.batches.filter((x) => !needed.includes(x.kind))) {
       this.clip.remove(b.mesh);
@@ -232,9 +235,6 @@ export class Viewer {
     this.indexOf = new Map(loadedInstances.map((x, i) => [x.name, i]));
     this.joints = atlas.joints ?? [];
     this.rigs = manifest.models?.[model]?.joints ?? {};
-    // batches kept from the previous model still carry its pose: start again from the rest place
-    for (const g of this.moved) { const [b, id] = this.location[g]; b.mesh.setMatrixAt(id, b.base[id]); }
-    this.moved = new Set();
     this.view = { ...this.view, model };
     // a selection that does not exist in this model is cleared
     if (this.view.selection && !atlas.structures.some((x) => x.slug === this.view.selection!.slug)) {
@@ -264,6 +264,8 @@ export class Viewer {
   }
 
   setState(patch: Partial<ViewState>): void {
+    // a pose set from outside (slider, URL, Back button) wins over a playback
+    if (patch.pose && this.player) this.stop(false);
     this.view = { ...this.view, ...patch };
     if (patch.camera) this.applyCamera(patch.camera);
     if (patch.sections) this.applySections();
@@ -307,9 +309,9 @@ export class Viewer {
     const j = this.joints.find((x) => x.slug === joint);
     if (!j) return;
     const pose: Pose = { ...this.view.pose };
-    const angle = Math.min(Math.max(Math.round(deg), j.rangeDeg[0]), j.rangeDeg[1]);
+    const angle = normaliseAngle(j, deg);
     for (const side of sides) {
-      if (Math.abs(angle - j.restDeg) < 0.5) delete pose[jointKey(joint, side)];
+      if (angle === null) delete pose[jointKey(joint, side)];
       else pose[jointKey(joint, side)] = angle;
     }
     this.setState({ pose });
@@ -356,8 +358,8 @@ export class Viewer {
     // a joint stopped at rest leaves the pose
     const pose: Pose = { ...this.view.pose };
     for (const k of this.snapshot.playing?.keys ?? []) {
-      const j = this.joints.find((x) => x.slug === k.split('@')[0]);
-      if (j && pose[k] !== undefined && Math.abs(pose[k] - j.restDeg) < 0.5) delete pose[k];
+      const j = this.joints.find((x) => x.slug === parseJointKey(k).slug);
+      if (j && pose[k] !== undefined && normaliseAngle(j, pose[k]) === null) delete pose[k];
     }
     this.view = { ...this.view, pose };
     this.snapshot = { ...this.snapshot, playing: null };
@@ -592,6 +594,19 @@ export class Viewer {
     if (g === undefined) return null;
     const [b, id] = this.location[g];
     return { matrix: b.mesh.getMatrixAt(id, new THREE.Matrix4()).toArray(), alpha: b.alpha[id] };
+  }
+
+  /** Client coordinates of the centre of an instance's bounds, where it is now (e2e tests). */
+  screenPointOf(name: string): { x: number; y: number } | null {
+    const g = this.indexOf.get(name);
+    if (g === undefined) return null;
+    const [b, id] = this.location[g];
+    const box = new THREE.Box3();
+    b.mesh.getBoundingBoxAt(b.mesh.getGeometryIdAt(id), box);
+    box.applyMatrix4(b.mesh.getMatrixAt(id, new THREE.Matrix4()));
+    const p = box.getCenter(new THREE.Vector3()).project(this.camera);
+    const r = this.canvas.getBoundingClientRect();
+    return { x: r.left + ((p.x + 1) / 2) * r.width, y: r.top + ((1 - p.y) / 2) * r.height };
   }
 
   /** Mean frame time over the last frames, in ms (for the smoke test budget). */

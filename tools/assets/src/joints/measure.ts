@@ -64,7 +64,7 @@ function orient(axis: Vec3, centre: Vec3, tip: Vec3, direction: Vec3): Vec3 {
 
 export function measureJoint(joint: JointInput, bones: Record<string, Vec3[]>): Measured {
   const need = (slug: string) => {
-    const pts = bones[joint.proximal === slug ? joint.proximal : slug];
+    const pts = bones[slug];
     if (!pts?.length) throw new Error(`${joint.slug} : pas de sommets pour l'os « ${slug} »`);
     return pts;
   };
@@ -110,8 +110,7 @@ export function measureJoint(joint: JointInput, bones: Record<string, Vec3[]>): 
 
   const tip = joint.motion === 'pronation-supination' ? lowest(moving) : farthest(moving, centre);
   axis = orient(axis, centre, tip, f.positiveDirection);
-  const out: Measured = { centre: centre.map(r1) as Vec3, axis: axis.map((x) => Math.round(x * 1e4) / 1e4) as Vec3, rmsMm: r1(rmsMm) };
-  out.axis = normalize(out.axis).map((x) => Math.round(x * 1e4) / 1e4 + 0) as Vec3;
+  const out: Measured = { centre: centre.map(r1) as Vec3, axis: axis.map((x) => Math.round(x * 1e4) / 1e4 + 0) as Vec3, rmsMm: r1(rmsMm) };
   if (joint.motion === 'flexion-extension') {
     // long axes from the joint centre to the far end of each segment (mechanical axes, not the bowed shafts)
     const farEnd = (pts: Vec3[]) => { const d = Math.max(...pts.map((p) => length(sub(p, centre)))); return mean(pts.filter((p) => length(sub(p, centre)) >= d - 15)); };

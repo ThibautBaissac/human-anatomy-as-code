@@ -1,5 +1,6 @@
 // Joint poses: instance matrices, crossing tissues, muscle length trends. Pure (4×4 algebra only, column-major like three.js).
-import type { AtlasJoint, AtlasStructure, Role, Side, Vec3 } from './types.ts';
+import { labelText } from './search.ts';
+import type { AtlasJoint, AtlasStructure, Lang, Motion, Role, Side, Vec3 } from './types.ts';
 
 export type Mat4 = number[];
 
@@ -18,12 +19,16 @@ export type Rigs = Record<string, Rig>;
 /** joint@side → angle in degrees */
 export type Pose = Record<string, number>;
 
-/** Below this moment arm (mm/rad) a muscle's length barely changes: "stable". */
-export const STABLE_MOMENT_ARM_MM = 5;
+/**
+ * Below this moment arm (mm/rad) a muscle's length barely changes: "stable". Lower for forearm rotation, whose chords
+ * run almost along the axis. Same values as the build warning (tools/assets rig.ts).
+ */
+export const STABLE_MOMENT_ARM_MM: Record<Motion, number> = { 'flexion-extension': 5, 'pronation-supination': 1 };
 const POSITIVE: Role[] = ['flexion', 'pronation'];
 
 export const IDENTITY: Mat4 = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
 export const jointKey = (slug: string, side: Side) => `${slug}@${side}`;
+export const parseJointKey = (key: string) => { const [slug, side] = key.split('@'); return { slug, side: side as Side }; };
 
 export function multiply(a: Mat4, b: Mat4): Mat4 {
   const out = new Array(16).fill(0);
@@ -57,6 +62,12 @@ export function rotationAbout(centre: Vec3, axis: Vec3, deg: number): Mat4 {
 
 /** Whole-degree angles: one within half a degree of a fractional rest angle (13.1°) is the rest pose. */
 export const atRest = (j: AtlasJoint, angle: number) => Math.abs(angle - j.restDeg) < 0.5;
+
+/** The angle a pose stores: whole degrees, within the range; null at rest (absent from the pose). */
+export function normaliseAngle(j: AtlasJoint, deg: number): number | null {
+  const angle = Math.min(Math.max(Math.round(deg), j.rangeDeg[0]), j.rangeDeg[1]);
+  return atRest(j, angle) ? null : angle;
+}
 const angleOf = (j: AtlasJoint, side: Side, pose: Pose) => {
   const a = pose[jointKey(j.slug, side)];
   return a === undefined || atRest(j, a) ? j.restDeg : a;
@@ -81,9 +92,9 @@ const isIdentity = (m: Mat4) => m.every((v, i) => Math.abs(v - IDENTITY[i]) < 1e
 export function poseMatrices(joints: AtlasJoint[], rigs: Rigs, pose: Pose): Map<string, Mat4> {
   const out = new Map<string, Mat4>();
   // parents first: an instance moved by a child joint (radius, hand) ends with the child's matrix, which includes the parent's
-  const keys = Object.keys(rigs).sort((a, b) => depth(joints, a.split('@')[0]) - depth(joints, b.split('@')[0]) || (a < b ? -1 : 1));
+  const keys = Object.keys(rigs).sort((a, b) => depth(joints, parseJointKey(a).slug) - depth(joints, parseJointKey(b).slug) || (a < b ? -1 : 1));
   for (const key of keys) {
-    const [slug, side] = key.split('@') as [string, Side];
+    const { slug, side } = parseJointKey(key);
     const m = jointMatrix(joints, slug, side, pose);
     for (const name of rigs[key].moving) out.set(name, m);
     for (const c of rigs[key].coupled) out.set(c.name, jointMatrix(joints, slug, side, pose, c.ratio));
@@ -96,7 +107,7 @@ export function poseMatrices(joints: AtlasJoint[], rigs: Rigs, pose: Pose): Map<
 export function crossingInstances(rigs: Rigs, joints: AtlasJoint[], pose: Pose, active: ReadonlySet<string> = new Set()): Set<string> {
   const out = new Set<string>();
   for (const [key, rig] of Object.entries(rigs)) {
-    const [slug, side] = key.split('@') as [string, Side];
+    const { slug, side } = parseJointKey(key);
     const j = joints.find((x) => x.slug === slug);
     if (!j) continue;
     if (active.has(key) || angleOf(j, side, pose) !== j.restDeg) for (const name of rig.crossing) out.add(name);
@@ -110,11 +121,28 @@ export type Trend = 'shortens' | 'lengthens' | 'stable';
  * Whether a muscle shortens or lengthens when the joint moves in `direction` (+1: flexion or pronation).
  * null when its geometry contradicts its declared role: unknown rather than wrong.
  */
-export function lengthTrend(m: { role: Role; momentArmMm: number }, direction: 1 | -1): Trend | null {
-  if (Math.abs(m.momentArmMm) < STABLE_MOMENT_ARM_MM) return 'stable';
+export function lengthTrend(m: { role: Role; momentArmMm: number }, direction: 1 | -1, motion: Motion = 'flexion-extension'): Trend | null {
+  if (Math.abs(m.momentArmMm) < STABLE_MOMENT_ARM_MM[motion]) return 'stable';
   const shortensInPositive = m.momentArmMm < 0;
   if (shortensInPositive !== POSITIVE.includes(m.role)) return null;
   return (shortensInPositive ? direction > 0 : direction < 0) ? 'shortens' : 'lengthens';
+}
+
+/** Direction of motion for the length trend: the way the angle last moved; before any move, away from rest (+1 at rest). */
+export function motionDirection(previous: { angle: number; direction: 1 | -1 } | null, angle: number, restDeg: number): 1 | -1 {
+  if (!previous) return angle >= restDeg ? 1 : -1;
+  if (angle === previous.angle) return previous.direction;
+  return angle > previous.angle ? 1 : -1;
+}
+
+/** Movers of the positive direction first. */
+const ROLE_ORDER: Role[] = ['flexion', 'extension', 'pronation', 'supination'];
+
+/** Muscles acting on a joint, with their role and (when measurable) their rig entry, sorted by role then name. */
+export function musclesOf(joint: AtlasJoint, structures: AtlasStructure[], rig: Rig | undefined, lang: Lang) {
+  return structures
+    .flatMap((s) => (s.actions ?? []).filter((a) => a.joint === joint.slug).map((a) => ({ structure: s, role: a.role, rig: rig?.muscles.find((m) => m.slug === s.slug && m.role === a.role) })))
+    .sort((a, b) => ROLE_ORDER.indexOf(a.role) - ROLE_ORDER.indexOf(b.role) || labelText(a.structure, lang).localeCompare(labelText(b.structure, lang)));
 }
 
 /** Joints a structure takes part in: as a fixed, moving or coupled bone, or through its actions. */

@@ -1,15 +1,13 @@
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { Viewer } from '../viewer/viewer.ts';
 import type { Catalog } from '../viewer/catalog.ts';
-import { jointKey, jointsFor, lengthTrend } from '../viewer/pose.ts';
+import { jointKey, jointsFor, lengthTrend, motionDirection, musclesOf } from '../viewer/pose.ts';
 import { labelText } from '../viewer/search.ts';
 import type { AtlasJoint, Lang, Selection, Side, ViewState } from '../viewer/types.ts';
 import { S } from './strings.ts';
 
 const reducedMotion = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 const TREND_MARK: Record<string, string> = { shortens: '↓', lengthens: '↑', stable: '≈' };
-/** movers of the positive direction first */
-const ROLE_ORDER = ['flexion', 'extension', 'pronation', 'supination'];
 
 /** "Mouvement" section of the Info panel: the joints the selection takes part in, an angle slider, play, rest, muscles. */
 export function MotionPanel({ viewer, catalog, view, selection, lang, onSelect }:
@@ -20,11 +18,16 @@ export function MotionPanel({ viewer, catalog, view, selection, lang, onSelect }
     ? jointsFor(viewer.joints, s).filter((j) => (['left', 'right'] as Side[]).some((side) => viewer.rigs[jointKey(j.slug, side)]))
     : [];
   const [chosen, setChosen] = useState<string | null>(null);
+  /** last angle seen and the way it moved, per joint@side: the trend follows a drag back towards rest */
+  const last = useRef<{ key: string; angle: number; direction: 1 | -1 } | null>(null);
   const joint = offered.find((j) => j.slug === chosen) ?? offered[0];
   const sides = (selection.side ? [selection.side] : (['left', 'right'] as Side[])).filter((side) => joint && viewer.rigs[jointKey(joint.slug, side)]);
   const sidesKey = sides.join(',');
   // a joint no longer offered stops playing
   useEffect(() => () => { if (joint) viewer.stop(); }, [viewer, joint?.slug, sidesKey]);
+  const rig = joint && sides.length ? viewer.rigs[jointKey(joint.slug, sides[0])] : undefined;
+  // computed once per joint, side and language, not on every frame of a playback
+  const muscles = useMemo(() => (joint ? musclesOf(joint, viewer.atlas?.structures ?? [], rig, lang) : []), [joint, rig, lang, viewer.atlas]);
   if (!joint || !sides.length) return null;
 
   const key = jointKey(joint.slug, sides[0]);
@@ -34,13 +37,10 @@ export function MotionPanel({ viewer, catalog, view, selection, lang, onSelect }
   const [lo, hi] = joint.rangeDeg;
   const positive = joint.motion === 'flexion-extension' ? 'flexion' : 'pronation';
   const negative = joint.motion === 'flexion-extension' ? 'extension' : 'supination';
-  const direction: 1 | -1 = isPlaying ? playing!.direction : angle >= joint.restDeg ? 1 : -1;
-  const rig = viewer.rigs[key];
-  const muscles = (viewer.atlas?.structures ?? [])
-    .filter((m) => m.actions?.some((a) => a.joint === joint.slug))
-    .map((m) => ({ s: m, role: m.actions!.find((a) => a.joint === joint.slug)!.role, rig: rig?.muscles.find((x) => x.slug === m.slug) }))
-    .sort((a, b) => ROLE_ORDER.indexOf(a.role) - ROLE_ORDER.indexOf(b.role) || labelText(a.s, lang).localeCompare(labelText(b.s, lang)));
-  const name = (j: AtlasJoint) => j.labels[lang]?.text ?? j.labels.en?.text ?? j.slug;
+  const previous = last.current?.key === key ? last.current : null;
+  const direction: 1 | -1 = isPlaying ? playing!.direction : motionDirection(previous, angle, joint.restDeg);
+  last.current = { key, angle, direction };
+  const name = (j: AtlasJoint) => labelText(j, lang);
   const arc = joint.functionalArcDeg;
   const pct = (deg: number) => `${((deg - lo) / (hi - lo)) * 100}%`;
 
@@ -87,8 +87,8 @@ export function MotionPanel({ viewer, catalog, view, selection, lang, onSelect }
         <>
           <h4>{S.musclesHeading(S.movingTowards[direction > 0 ? positive : negative])}</h4>
           <ul className="muscles">
-            {muscles.map(({ s: m, role, rig: r }) => {
-              const trend = r ? lengthTrend(r, direction) : null;
+            {muscles.map(({ structure: m, role, rig: r }) => {
+              const trend = r ? lengthTrend(r, direction, joint.motion) : null;
               return (
                 <li key={m.slug}>
                   <button type="button" className="link" onClick={() => onSelect({ slug: m.slug, side: selection.side })}>{labelText(m, lang)}</button>

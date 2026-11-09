@@ -1,4 +1,5 @@
 // View ⇄ URL hash, for deep links. Pure. Unknown or invalid values are dropped one by one.
+import { normaliseAngle, parseJointKey } from './pose.ts';
 import { AXES, DEFAULT_VIEW, LANGS, type AtlasJoint, type Axis, type Lang, type Side, type ViewState } from './types.ts';
 
 export interface DecodeContext {
@@ -69,12 +70,12 @@ export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState>
     const pose: Record<string, number> = {};
     for (const part of p.split(',')) {
       const [key, deg] = part.split(':');
-      const [slug, side] = key.split('@');
+      const { slug, side } = parseJointKey(key);
       const j = ctx.joints.find((x) => x.slug === slug);
       const n = Number(deg);
       if (!j || (side !== 'left' && side !== 'right') || !j.sides?.[side] || deg === undefined || deg === '' || !Number.isFinite(n)) continue;
-      const angle = Math.min(Math.max(Math.round(n), j.rangeDeg[0]), j.rangeDeg[1]);
-      if (Math.abs(angle - j.restDeg) >= 0.5) pose[key] = angle;
+      const angle = normaliseAngle(j, n);
+      if (angle !== null) pose[key] = angle;
     }
     if (Object.keys(pose).length) out.pose = pose;
   }

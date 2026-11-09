@@ -119,3 +119,41 @@ test('a whole-degree angle within half a degree of a fractional rest angle is th
   const ctx = { hasSlug: () => true, kinds: [], maxLayer: 5, joints };
   assert.equal(decodeView('p=elbow-joint@left:13', ctx).pose, undefined);
 });
+
+test('normaliseAngle: whole degrees within the range, null at rest', async () => {
+  const { normaliseAngle } = await import('../src/viewer/pose.ts');
+  const elbow = { ...ELBOW, restDeg: 13.1 };
+  assert.equal(normaliseAngle(elbow, 89.6), 90);
+  assert.equal(normaliseAngle(elbow, 200), 145);
+  assert.equal(normaliseAngle(elbow, -5), 0);
+  assert.equal(normaliseAngle(elbow, 13), null);
+});
+
+test('musclesOf: muscles acting on a joint, movers of the positive direction first, with their rig entry', async () => {
+  const { musclesOf } = await import('../src/viewer/pose.ts');
+  const act = (joint: string, role: string) => [{ joint, role, source: 'x', status: 'draft' }];
+  const structures = [
+    { slug: 'triceps', labels: L('triceps'), actions: act('elbow-joint', 'extension') },
+    { slug: 'biceps', labels: L('biceps'), actions: act('elbow-joint', 'flexion') },
+    { slug: 'brachialis', labels: L('brachialis'), actions: act('elbow-joint', 'flexion') },
+    { slug: 'gracilis', labels: L('gracilis'), actions: act('knee-joint', 'flexion') },
+  ] as unknown as AtlasStructure[];
+  const list = musclesOf(ELBOW, structures, RIGS['elbow-joint@left'], 'en');
+  assert.deepEqual(list.map((m) => [m.structure.slug, m.role, m.rig?.momentArmMm]), [['biceps', 'flexion', -18], ['brachialis', 'flexion', undefined], ['triceps', 'extension', undefined]]);
+});
+
+test('lengthTrend: forearm rotation has small moment arms, so its stable threshold is lower (1 mm/rad)', () => {
+  assert.equal(lengthTrend({ role: 'pronation', momentArmMm: -1.8 }, 1, 'pronation-supination'), 'shortens');
+  assert.equal(lengthTrend({ role: 'supination', momentArmMm: 3.5 }, 1, 'pronation-supination'), 'lengthens');
+  assert.equal(lengthTrend({ role: 'pronation', momentArmMm: 0.6 }, 1, 'pronation-supination'), 'stable');
+  assert.equal(lengthTrend({ role: 'flexion', momentArmMm: -1.8 }, 1, 'flexion-extension'), 'stable');
+});
+
+test('motionDirection: the way the angle last moved; before any move, away from rest', async () => {
+  const { motionDirection } = await import('../src/viewer/pose.ts');
+  assert.equal(motionDirection(null, 90, 13), 1);
+  assert.equal(motionDirection(null, 0, 13), -1);
+  assert.equal(motionDirection({ angle: 90, direction: 1 }, 60, 13), -1); // dragged back towards extension
+  assert.equal(motionDirection({ angle: 60, direction: -1 }, 60, 13), -1); // unchanged: keeps the last direction
+  assert.equal(motionDirection({ angle: 60, direction: -1 }, 70, 13), 1);
+});

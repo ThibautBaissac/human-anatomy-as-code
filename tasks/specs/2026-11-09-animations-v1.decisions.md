@@ -23,6 +23,9 @@
 - **Candidats.** Une instance est candidate si elle est du même côté que l'articulation et que son membre est celui de l'articulation ou inconnu.
   - Beaucoup de structures BodyParts3D n'ont ni parent ni région (biceps, droit fémoral, veine grande saphène). Avec un membre exigé, le coude ne trouvait que 8 tissus qui le croisent.
 - **Capsule pour les membres inconnus.** Une instance sans membre connu ne tourne en bloc que si elle tient entière dans une capsule autour du segment distal : rayon de 0,5 × sa longueur, portée de 1 × sa longueur au-delà de son extrémité. Sinon, le tronc et la jambe gauches, situés sous le plan du coude gauche, tourneraient avec l'avant-bras.
+  - Flexion : la capsule va vers l'extrémité des os mobiles, car l'avant-bras est fléchi et porté au repos.
+  - Prono-supination : elle descend le long de l'axe, sur la main, sur la longueur du radius. L'extrémité la plus lointaine du radius, la tête radiale, est au-dessus du plan, et la première version de la capsule remontait l'avant-bras (revue de code).
+- **Marge.** Une instance dont aucun sommet ne dépasse le plan de plus de 3 mm est au-delà de l'articulation : toucher le plan n'est pas le franchir. Avant la revue de code, l'extenseur du petit doigt, le chef ulnaire du fléchisseur ulnaire du carpe et le scaphoïde (en prono-supination) n'étaient ni mobiles ni transparents.
 - **Rayon du critère de franchissement.** Il est de 80 mm, comme dans la note de recherche, au lieu de 100 mm.
   - Résultat : 26 tissus au coude et 27 au genou, contre 28 et 29 dans la note.
   - La liste fonctionnelle (`actions`) ajoute le supinateur au coude.
@@ -39,8 +42,10 @@ Ce qui a été retenu à la place :
 - **Origine.** Pour la flexion, c'est le passage du muscle au-dessus de l'articulation : ses sommets de 3 à 50 mm au-dessus du plan. À défaut, c'est le contact avec l'os proximal, puis l'extrémité proximale du muscle.
 - **Insertion.** C'est le contact (5 mm) avec un os mobile, ou à défaut l'extrémité distale si le muscle dépasse le plan.
   - Un muscle sans insertion qui suive l'articulation n'a pas de bras de levier : c'est le cas du chef court du biceps, dont le tendon distal est modélisé dans le chef long, et de muscles de la prono-supination situés au-dessus de la tête ulnaire.
-- **Seuil « stable ».** Il est de 5 mm/rad, au lieu de 0,5 mm pour 1°, qui aurait rendu presque tous les muscles « stables ».
-- **Indicateur.** Le sens du mouvement vient de la lecture en cours, sinon de la position par rapport au repos.
+- **Seuil « stable ».** Il est de 5 mm/rad en flexion-extension, au lieu de 0,5 mm pour 1°, qui aurait rendu presque tous les muscles « stables ». Il est de 1 mm/rad en prono-supination : les cordes y sont presque parallèles à l'axe, et à 5 mm/rad tous les muscles de l'avant-bras paraissaient « stables » (revue de code).
+  - Avec ce seuil, le carré pronateur se raccourcit et le supinateur s'allonge en pronation.
+  - Le rond pronateur reste « stable », et le chef long du biceps aussi à gauche ; à droite, sa géométrie contredit son rôle de supinateur (−3,4 mm/rad) : il est « non mesurable », et le build l'avertit.
+- **Indicateur.** Le sens du mouvement vient de la lecture en cours, sinon du dernier déplacement du curseur (un retour vers 60° depuis 90° est une extension), sinon de la position par rapport au repos.
   - Quand la géométrie contredit le rôle déclaré, l'interface affiche « non mesurable sur ce modèle » plutôt qu'une flèche fausse, et le build l'avertit.
   - Cas sur les données actuelles : sartorius, gracile (ils passent devant l'axe mesuré dans BodyParts3D) et court extenseur radial du carpe.
 
@@ -64,4 +69,9 @@ Ce qui a été retenu à la place :
   - La lecture s'arrête au changement de modèle, d'articulation ou de côté, et quand la section disparaît, par exemple en changeant d'onglet sur téléphone.
 - **Page Up / Page Down.** Ils déplacent de 10°. Les navigateurs, eux, avancent de 10 % de l'amplitude (14,5° au coude).
 - **Bug corrigé : nom de la peau.** GLTFLoader renomme un nœud qui porte le nom de la scène : « skin » devenait « skin_1 ». La peau n'était donc reconnue ni comme peau ni comme sélection. Le nom de l'instance vient désormais des extras du nœud (`slug`, `side`).
-- **Interface en test.** `Viewer.instanceState(name)` expose la matrice et l'alpha d'une instance pour les tests e2e.
+- **Interface en test.** `Viewer.instanceState(name)` et `Viewer.screenPointOf(name)` exposent la matrice, l'alpha et la position à l'écran d'une instance pour les tests e2e.
+- **Changement de modèle (revue de code).** Les instances déplacées reviennent au repos au début de `load`, tant que les indices globaux sont encore ceux du modèle quitté. Avant, un changement femme → homme, coude fléchi, plantait.
+- **Pose venue de l'extérieur.** Une pose posée de l'extérieur (curseur, URL, bouton Précédent) arrête la lecture.
+- **Lecture : une seule règle d'angle.** `normaliseAngle` (pose.ts) arrondit, borne et ramène au repos, pour l'URL, le curseur et l'arrêt de la lecture.
+- **Lecture : rendu.** Pendant une lecture, l'arbre est mémoïsé et la liste des muscles est calculée une fois (`musclesOf`), pas à chaque image.
+- **Crédits.** Un bouton « Licences… » ouvre la liste des sources du modèle affiché, avec leur notice (MIT, BSD-3).

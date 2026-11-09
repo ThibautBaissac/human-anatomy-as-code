@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import type { Catalog } from '../viewer/catalog.ts';
 import { UNATTACHED, ROOT } from '../viewer/catalog.ts';
@@ -10,7 +10,10 @@ import { S } from './strings.ts';
 const ROW = 28;
 const rowId = (id: string) => `tree-${id}`;
 
-export function Tree({ catalog, lang, selection, onSelect }: { catalog: Catalog; lang: Lang; selection: Selection | null; onSelect: (slug: string) => void }) {
+/** Memoised: re-renders only when its props change (not on every frame of a joint playback). */
+export const Tree = memo(TreeView);
+
+function TreeView({ catalog, lang, selection, onSelect }: { catalog: Catalog; lang: Lang; selection: Selection | null; onSelect: (slug: string) => void }) {
   const [state, setState] = useState<TreeState>({ expanded: new Set([ROOT]), focused: ROOT });
   const rows = useMemo(() => flattenTree(catalog, state.expanded), [catalog, state.expanded]);
   const scrollRef = useRef<HTMLDivElement>(null);

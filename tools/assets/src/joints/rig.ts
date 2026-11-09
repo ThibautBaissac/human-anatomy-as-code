@@ -62,8 +62,8 @@ const ATTACHMENT_MM = 10;
 const VIA_BAND_MM = 50;
 /** A muscle vertex this close (mm) to a bone touches it. */
 const CONTACT_MM = 5;
-/** Below this moment arm (mm/rad), a muscle is "stable" and its role cannot be checked against the geometry. */
-export const STABLE_MOMENT_ARM_MM = 5;
+/** Below this moment arm (mm/rad), a muscle is "stable" and its role cannot be checked against the geometry. Same value as the viewer (app pose.ts). */
+export const STABLE_MOMENT_ARM_MM: Record<RigJoint['motion'], number> = { 'flexion-extension': 5, 'pronation-supination': 1 };
 const POSITIVE: Role[] = ['flexion', 'pronation'];
 const cmp = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 
@@ -88,12 +88,16 @@ export function rigJoint(joint: RigJoint, side: Side, instances: RigInstance[], 
   const normal = joint.motion === 'pronation-supination' ? scale(s.axis, Math.sign(dot(s.axis, toProximal)) || 1) : toProximal;
   const height = (p: Vec3) => dot(sub(p, s.centre), normal);
 
-  // Distal segment: from the centre to the far end of the moving bones. A structure of unknown limb moves only if it lies
-  // wholly in a capsule around it (the left trunk and leg also lie below the left elbow).
+  // Distal segment: from the centre along the limb, beyond the joint, as long as the moving bones extend along the
+  // plane normal (the radius spans the forearm even though the forearm-rotation plane is at the wrist). A structure of
+  // unknown limb moves only if it lies wholly in a capsule around it (the left trunk and leg also lie below the left elbow).
   const distal = joint.moving.flatMap((b) => { const i = byName.get(`${b}@${side}`); return i ? points(i.positions) : []; });
+  // flexion: towards the far end of the moving bones (the forearm is flexed and carried at rest); forearm rotation: down
+  // the rotation axis, over the hand, as far as the radius spans (its far end, the radial head, lies above the plane)
   const distalEnd = distal.length ? distal.reduce((a, b) => (length(sub(b, s.centre)) > length(sub(a, s.centre)) ? b : a)) : s.centre;
-  const segment = length(sub(distalEnd, s.centre)) || 1;
-  const along = normalize(sub(distalEnd, s.centre));
+  const rotation = joint.motion === 'pronation-supination';
+  const along = rotation ? scale(normal, -1) : normalize(sub(distalEnd, s.centre));
+  const segment = Math.max(1, rotation ? Math.max(...distal.map((p) => Math.abs(height(p)))) : length(sub(distalEnd, s.centre)));
   const inCapsule = (p: Vec3) => {
     const w = sub(p, s.centre);
     const t = Math.min(Math.max(dot(w, along), 0), segment * (1 + CAPSULE_REACH));
@@ -112,7 +116,7 @@ export function rigJoint(joint: RigJoint, side: Side, instances: RigInstance[], 
     for (let i = 0; i < inst.positions.length; i += 3) {
       const p: Vec3 = [inst.positions[i], inst.positions[i + 1], inst.positions[i + 2]];
       const h = height(p);
-      if (h >= -MARGIN_MM) allBelow = false;
+      if (h > MARGIN_MM) allBelow = false; // within the margin counts as beyond: touching the plane is not crossing it
       if (allInCapsule && !inCapsule(p)) allInCapsule = false;
       if (length(sub(p, s.centre)) > CROSSING_RADIUS_MM) continue;
       if (h > MARGIN_MM) above++;
@@ -146,7 +150,7 @@ export function rigJoint(joint: RigJoint, side: Side, instances: RigInstance[], 
     for (const { role } of roles) {
       muscles.push({ name, slug: inst.slug, role, momentArmMm });
       const shortens = momentArmMm < 0;
-      if (Math.abs(momentArmMm) >= STABLE_MOMENT_ARM_MM && shortens !== POSITIVE.includes(role)) {
+      if (Math.abs(momentArmMm) >= STABLE_MOMENT_ARM_MM[joint.motion] && shortens !== POSITIVE.includes(role)) {
         warnings.push(`${joint.slug} : ${name} déclaré en ${role}, mais au repos sa corde ${shortens ? 'se raccourcit' : "s'allonge"} dans le sens positif (bras de levier ${momentArmMm} mm)`);
       }
     }

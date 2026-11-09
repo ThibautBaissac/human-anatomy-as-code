@@ -8,6 +8,10 @@ import { buildAssets, type AtlasInput } from './build-assets.ts';
 if (process.argv[2] === 'fit-joints') {
   // assets fit-joints <dataDir> <objDir>
   const [, dataDir, objDir] = process.argv.slice(2);
+  if (!dataDir || !objDir) {
+    console.error('usage: assets fit-joints <dataDir> <objDir>');
+    process.exit(2);
+  }
   try {
     const { fitJoints } = await import('./fit-joints.ts');
     const r = fitJoints({ dataDir, objDir });

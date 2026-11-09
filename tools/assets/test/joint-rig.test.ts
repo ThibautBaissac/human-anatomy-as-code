@@ -28,6 +28,8 @@ const ARM: RigInstance[] = [
   inst('pronator@left', 'muscle', 'upper-limb', box([-5, 5], [-10, 10], [10, 60])),
   inst('hand@left', 'bone', 'upper-limb', box([-10, 10], [-10, 10], [-400, -260])),
   inst('forearm-vein@left', 'vein', 'upper-limb', box([8, 10], [-12, -10], [-240, -20])),
+  // reaches 1 mm above the plane: inside the margin, so wholly beyond the joint
+  inst('touching@left', 'muscle', 'upper-limb', box([12, 16], [-5, 5], [-200, 1])),
   inst('ulna@right', 'bone', 'upper-limb', box([395, 405], [-5, 5], [-250, -2])),
   inst('foot@left', 'bone', 'lower-limb', box([-10, 10], [-10, 10], [-900, -800])),
   inst('skin', 'skin', null, box([-40, 40], [-40, 40], [-420, 320])),
@@ -42,7 +44,7 @@ const ACTIONS = new Map([
 
 test('moving: the listed bones and every limb instance of the same side wholly beyond the joint', () => {
   const { rig } = rigJoint(ELBOW, 'left', ARM, ACTIONS);
-  assert.deepEqual(rig.moving, ['forearm-vein@left', 'hand@left', 'ulna@left']);
+  assert.deepEqual(rig.moving, ['forearm-vein@left', 'hand@left', 'touching@left', 'ulna@left']);
 });
 
 test('crossing: limb instances with vertices on both sides near the joint, the skin, and the muscles acting on the joint', () => {
@@ -78,9 +80,12 @@ test('pronation-supination: the insertion is where the muscle touches the moving
     inst('radius@left', 'bone', 'upper-limb', box([26, 34], [-4, 4], [-10, 240])),
     inst('pronator-quadratus@left', 'muscle', 'upper-limb', box([5, 30], [-12, -6], [10, 50])),
   ];
+  // a hand muscle whose limb is unknown (no region in the data): moves with the radius, inside the capsule over the hand
+  forearm.push(inst('lumbrical@left', 'muscle', null, box([20, 30], [-5, 5], [-200, -150])));
   const actions = new Map([['pronator-quadratus', [{ joint: 'radio-ulnar-joints', role: 'pronation' as const }]]]);
   const { rig, warnings } = rigJoint(RU, 'left', forearm, actions);
   assert.deepEqual(rig.crossing, ['pronator-quadratus@left']);
+  assert.deepEqual(rig.moving, ['lumbrical@left', 'radius@left']);
   assert.equal(rig.muscles.length, 1);
   assert.ok(Math.abs(rig.muscles[0].momentArmMm) > 1);
   assert.deepEqual(warnings, []);

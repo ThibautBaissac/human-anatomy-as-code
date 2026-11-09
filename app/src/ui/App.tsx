@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { buildSearchIndex, structureName } from '../viewer/search.ts';
 import { LANGS, type Lang, type Model, type Selection } from '../viewer/types.ts';
 import { InfoPanel } from './InfoPanel.tsx';
 import { MotionPanel } from './MotionPanel.tsx';
 import { OfflineDialog } from './OfflineDialog.tsx';
+import { CreditsDialog } from './CreditsDialog.tsx';
 import { Bench } from './Bench.tsx';
 import { FemaleNotice } from './FemaleNotice.tsx';
 import { Search } from './Search.tsx';
@@ -28,6 +29,8 @@ export function App() {
   const [tab, setTab] = useState('info');
   const [offlineOpen, setOfflineOpen] = useState(false);
   const offlineButton = useRef<HTMLButtonElement>(null);
+  const [creditsOpen, setCreditsOpen] = useState(false);
+  const creditsButton = useRef<HTMLButtonElement>(null);
   useEffect(() => viewer?.on('hover', setHover), [viewer]);
   // On a phone, tapping a structure shows its information.
   useEffect(() => viewer?.on('pick', (sel) => { if (sel) setTab('info'); }), [viewer]);
@@ -36,7 +39,8 @@ export function App() {
     const s = sel && catalog?.structure(sel.slug);
     return s && sel ? structureName(s, sel.side, view.lang) : '';
   };
-  const pick = (slug: string) => selectAndFocus({ slug, side: null });
+  // stable across renders: the tree is memoised and must not re-render on every frame of a playback
+  const pick = useCallback((slug: string) => selectAndFocus({ slug, side: null }), [selectAndFocus]);
 
   const tree = catalog && <Tree catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick} />;
   const info = (
@@ -90,12 +94,15 @@ export function App() {
         <span>{loading ? S.loading(loading.loaded, loading.total) : hover ? `${S.hover} : ${nameOf(hover)}` : ' '}</span>
         {error && <span role="alert" className="error">{error}</span>}
         {failedKinds.length > 0 && <span role="alert">{(pwa.online ? S.failed : S.failedOffline)(failedKinds.join(', '))}</span>}
-        <span className="credits">{S.credits} : {atlas?.attributions.map((a) => a.name).join(', ')} · {snapshot.backend ?? ''}</span>
+        <span className="credits">{S.credits} : {atlas?.attributions.map((a) => a.name).join(', ')} · {snapshot.backend ?? ''}{' '}
+          <button ref={creditsButton} type="button" className="link" onClick={() => setCreditsOpen(true)}>{S.creditsButton}</button>
+        </span>
       </footer>
       <div role="status" aria-live="polite" className="visually-hidden" data-testid="announce">
         {notice ?? (view.selection ? S.selected(nameOf(view.selection)) : ready ? S.cleared : '')}
       </div>
       {viewer && ready && new URLSearchParams(location.search).has('bench') && <Bench viewer={viewer} />}
+      <CreditsDialog open={creditsOpen} atlas={atlas} onClose={() => { setCreditsOpen(false); creditsButton.current?.focus(); }} />
       <OfflineDialog open={offlineOpen} onClose={() => { setOfflineOpen(false); offlineButton.current?.focus(); }}
         supported={pwa.supported} canInstall={pwa.canInstall} install={pwa.install} iosHint={pwa.iosHint} model={view.model} atlas={atlas} />
     </div>

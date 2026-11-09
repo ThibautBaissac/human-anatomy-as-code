@@ -91,3 +91,10 @@ button.link { background: none; border: 0; padding: 0; color: var(--accent); tex
 .muscles { list-style: none; padding: 0; margin: 0; }
 .muscles li { padding: .15rem 0; }
 .muscles .role { color: var(--muted); }
+
+/* Données et licences */
+.credits-dialog { max-width: min(48rem, calc(100vw - 2rem)); }
+.credits-list { list-style: none; padding: 0; margin: 0 0 1rem; }
+.credits-list li { border-bottom: 1px solid var(--line); padding: .5rem 0; }
+.credits-list h3 { margin: 0 0 .25rem; font-size: 1rem; }
+.credits-list .notice { white-space: pre-wrap; font-size: .8rem; max-height: 12rem; overflow: auto; background: var(--bg); padding: .5rem; }

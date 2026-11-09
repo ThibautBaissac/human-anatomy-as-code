@@ -6,6 +6,7 @@ interface V {
   pickReadyMs: number;
   instanceState(name: string): { matrix: number[]; alpha: number } | null;
   focus(slug: string, side: string): void;
+  screenPointOf(name: string): { x: number; y: number } | null;
   setState(p: object): void;
   meanFrameMs(): number;
 }
@@ -43,17 +44,16 @@ test('elbow: the Mouvement section moves the forearm by keyboard, ghosts crossin
   expect((await state(page, 'skin'))!.alpha).toBeLessThan(1);
   await expect.poll(() => page.evaluate(() => location.hash)).toContain('p=elbow-joint@left:90');
 
-  // picking reaches the forearm where it now is
-  await page.evaluate(() => { const v = (window as unknown as { __viewer: V }).__viewer; v.setState({ hiddenKinds: ['artery', 'fascia', 'muscle', 'nerve', 'skin', 'vein', 'tendon', 'ligament', 'lymphatic', 'cns', 'organ', 'cartilage'] }); v.focus('ulna', 'left'); });
+  // a click on the moved ulna (bones only, seen from below, where ulna and radius lie side by side) selects it
+  await page.evaluate(() => {
+    const v = (window as unknown as { __viewer: V }).__viewer;
+    v.setState({ hiddenKinds: ['artery', 'fascia', 'muscle', 'nerve', 'skin', 'vein', 'tendon', 'ligament', 'lymphatic', 'cns', 'organ', 'cartilage'],
+      camera: { position: [235, -230, 700], target: [230, -160, 1040] } });
+  });
   await page.waitForTimeout(300);
-  const box = (await page.locator('canvas').boundingBox())!;
-  await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-  // the hit is an instance the elbow moved (forearm or hand): picking follows the moved geometry
-  await expect.poll(() => page.evaluate(() => {
-    const v = (window as unknown as { __viewer: V & { rigs: Record<string, { moving: string[] }> } }).__viewer;
-    const sel = v.getSnapshot().view.selection as { slug: string; side: string | null } | null;
-    return !!sel && v.rigs['elbow-joint@left'].moving.includes(`${sel.slug}@${sel.side ?? 'left'}`);
-  })).toBe(true);
+  const at = (await page.evaluate(() => (window as unknown as { __viewer: V }).__viewer.screenPointOf('ulna@left')))!;
+  await page.mouse.click(at.x, at.y);
+  await expect.poll(() => page.evaluate(() => (window as unknown as { __viewer: V }).__viewer.getSnapshot().view.selection)).toEqual({ slug: 'ulna', side: 'left' });
 
   // rest puts everything back
   await page.evaluate(() => (window as unknown as { __viewer: V }).__viewer.setState({ hiddenKinds: [] }));
@@ -91,4 +91,27 @@ test('performance budget while playing: mean frame under 16.7 ms (WebGPU)', asyn
   const frameMs = await page.evaluate(() => (window as unknown as { __viewer: V }).__viewer.meanFrameMs());
   console.log(`[budget] playing the elbow, both sides: mean frame ${frameMs.toFixed(2)} ms`);
   expect(frameMs).toBeLessThan(16.7);
+});
+
+test('a model switch keeps the pose (female → male with the elbow flexed)', async ({ page }, info) => {
+  const errors = await open(page, info.project.metadata.query as string, 'sex=f&sel=humerus@left&p=elbow-joint@left:90');
+  const flexed = (await state(page, 'ulna@left'))!.matrix;
+  await page.getByRole('combobox', { name: 'Modèle' }).selectOption('male');
+  await page.waitForFunction(() => { const v = (window as unknown as { __viewer: V }).__viewer; return v.getSnapshot().ready && v.getSnapshot().view.selection; }, null, { timeout: 60_000 });
+  await expect.poll(() => page.evaluate(() => (window as unknown as { __viewer: { getSnapshot(): { view: { model: string } } } }).__viewer.getSnapshot().view.model)).toBe('male');
+  expect((await state(page, 'ulna@left'))!.matrix).toEqual(flexed);
+  expect((await state(page, 'brachialis@left'))!.alpha).toBeLessThan(1);
+  expect(errors).toEqual([]);
+});
+
+test('the credits list each source with its licence notice (MIT, BSD-3)', async ({ page }, info) => {
+  await open(page, info.project.metadata.query as string, '');
+  await page.getByRole('button', { name: 'Licences…' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Données et licences' });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByText('Rajagopal 2016 full-body musculoskeletal model (OpenSim)')).toBeVisible();
+  await expect(dialog.getByText(/Permission is hereby granted/)).toHaveCount(1);
+  await expect(dialog.getByText(/Redistribution and use in source and binary forms/)).toHaveCount(1);
+  await dialog.getByRole('button', { name: 'Fermer' }).click();
+  await expect(page.getByRole('button', { name: 'Licences…' })).toBeFocused();
 });
