@@ -62,7 +62,23 @@ _Avoid_ : sexe, gender
 
 **Mesh** :
 Géométrie 3D qui illustre un côté (ou une structure non bilatérale), référencée par un identifiant préfixé par sa source (`bp3d:FJ1234`). Une structure sans mesh propre est illustrée par les meshes de ses descendants.
-_Avoid_ : modèle, objet, asset
+_Avoid_ : modèle 3D, objet, asset
+
+**Modèle** :
+L'un des deux corps que l'atlas montre : masculin ou féminin. Le modèle féminin v1 réunit des organes féminins (Human Reference Atlas) et le squelette et les muscles du modèle masculin (BodyParts3D).
+_Avoid_ : version, variante (au sens du corps), genre
+
+**Sexe** :
+Appartenance d'une structure à un seul modèle (champ `sex : male | female`) ; une structure sans sexe appartient aux deux.
+_Avoid_ : genre (réservé au genre grammatical)
+
+**Variante** :
+Ce qui change pour une structure partagée dans le modèle féminin : d'autres meshes, ou son absence (`variants.female`).
+_Avoid_ : version, override, alternative
+
+**Recalage** :
+Transformation qui place des meshes d'une autre source dans le repère de BodyParts3D, ajustée par région sur des repères anatomiques.
+_Avoid_ : registration (dans la prose française), alignement, calage
 
 **Source** :
 Jeu de données externe d'où proviennent des meshes ou des noms (BodyParts3D, Wikidata…), décrit une fois avec sa version, sa licence et son crédit d'attribution.

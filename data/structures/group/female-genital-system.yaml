@@ -9,3 +9,9 @@ labels:
     text: female genital system
     source: curated
     status: draft
+  fr:
+    text: appareil génital féminin
+    gender: m
+    number: sg
+    source: curated
+    status: draft

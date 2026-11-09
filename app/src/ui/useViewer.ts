@@ -21,6 +21,8 @@ export function useViewer() {
   const [error, setError] = useState<string | null>(null);
   /** announcement made when a model switch drops the selection */
   const [notice, setNotice] = useState<string | null>(null);
+  /** a model switch is in progress (the selector is disabled meanwhile) */
+  const [switching, setSwitching] = useState(false);
   const switchRef = useRef<(model: Model) => Promise<void>>(async () => {});
 
   useEffect(() => {
@@ -38,8 +40,8 @@ export function useViewer() {
     const atlasOf = (model: Model) => getJson<Atlas>(`${base}atlas-${model}.json`, `atlas-${model}.json`);
 
     /** Switches model: keeps camera, language, layers and sections; announces a selection the model does not have. */
-    const switchModel = async (model: Model) => {
-      if (!v || v.getState().model === model && v.atlas) return;
+    const doSwitch = async (model: Model) => {
+      if (!v || (v.getState().model === model && v.atlas)) return;
       const before = v.getState().selection;
       const beforeName = before && v.atlas ? structureName(v.atlas.structures.find((s) => s.slug === before.slug) ?? { slug: before.slug, labels: {} }, before.side, v.getState().lang) : null;
       const atlas = await atlasOf(model);
@@ -47,6 +49,16 @@ export function useViewer() {
       ctx = contextOf(atlas, manifest);
       await v.load(atlas, manifest, `${base}assets/`, model);
       setNotice(before && !v.getState().selection ? S.notInModel(beforeName!, model) : null);
+    };
+    // switches run one after another: a second request waits for the first (no duplicated batches)
+    let queue: Promise<void> = Promise.resolve();
+    let pending = 0;
+    const switchModel = (model: Model) => {
+      pending++;
+      setSwitching(true);
+      const run = queue.then(() => doSwitch(model));
+      queue = run.catch(() => {}).finally(() => { if (--pending === 0) setSwitching(false); });
+      return run;
     };
     switchRef.current = (model) => switchModel(model).catch((e) => setError(String(e?.message ?? e)));
 
@@ -86,6 +98,8 @@ export function useViewer() {
         }, 250);
       }));
       cleanups.push(() => clearTimeout(timer));
+      // the "absent from this model" announcement lasts until the next selection
+      cleanups.push(v.on('select', () => setNotice(null)));
       const onHash = async () => {
         if (hashOf() === written) return;
         const target = decodeView(hashOf(), ctx).model ?? 'male';
@@ -109,5 +123,5 @@ export function useViewer() {
   }, [viewer]);
   const switchModel = useCallback((model: Model) => switchRef.current(model), []);
 
-  return { canvasRef, viewer, snapshot, error, notice, selectAndFocus, switchModel };
+  return { canvasRef, viewer, snapshot, error, notice, switching, selectAndFocus, switchModel };
 }

@@ -16,6 +16,7 @@ export interface Wikidata {
   /** UBERON id without prefix (e.g. "0000995") → preferred item */
   byUberon: Map<string, WikidataRow>;
   byEn: Map<string, WikidataRow>;
+  byQid: Map<string, WikidataRow>;
 }
 
 /** Minimal RFC 4180 parser (quoted fields, doubled quotes, commas and newlines inside quotes). */
@@ -58,6 +59,7 @@ export function readWikidata(path: string): Wikidata {
   const byFma = new Map<number, WikidataRow>();
   const byUberon = new Map<string, WikidataRow>();
   const byEn = new Map<string, WikidataRow>();
+  const byQid = new Map<string, WikidataRow>();
   for (const l of lines) {
     if (l.length < header.length) continue;
     const fma = l[idx.fma] ? Number(l[idx.fma]) : undefined;
@@ -74,6 +76,7 @@ export function readWikidata(path: string): Wikidata {
       la: opt(idx.la),
       en: opt(idx.en),
     };
+    if (!byQid.has(row.qid)) byQid.set(row.qid, row);
     if (row.fma) {
       const prev = byFma.get(row.fma);
       if (!prev || better(row, prev)) byFma.set(row.fma, row);
@@ -89,5 +92,5 @@ export function readWikidata(path: string): Wikidata {
       if (!p || better(row, p)) byEn.set(key, row);
     }
   }
-  return { byFma, byUberon, byEn };
+  return { byFma, byUberon, byEn, byQid };
 }

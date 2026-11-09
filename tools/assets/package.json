@@ -2,7 +2,9 @@
   "name": "@haac/assets",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "test": "node --test \"test/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
@@ -12,7 +14,8 @@
     "@gltf-transform/core": "4.5.1",
     "@gltf-transform/extensions": "4.5.1",
     "@gltf-transform/functions": "4.5.1",
-    "meshoptimizer": "1.3.0"
+    "meshoptimizer": "1.3.0",
+    "@haac/hra": "*"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",

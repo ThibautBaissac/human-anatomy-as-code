@@ -87,7 +87,8 @@ async function main(argv: string[]): Promise<number> {
     const r = await importHra({ hraDir, filesList: join(dataDir, 'import', 'hra-files.yaml'), wikidataCsv, dataDir, overrides });
     console.log(`créées : ${r.created} · mises à jour : ${r.updated} · inchangées : ${r.unchanged}`);
     for (const [title, items] of [['collisions de slug', r.slugCollisions.map((c) => `${c.slug} → ${c.renamed}`)], ['FMA déjà utilisés (retirés)', r.fmaConflicts.map((c) => `${c.slug} : FMA ${c.fma}`)],
-      ['cibles absentes', r.missingPatchTargets], ['écritures refusées', r.writeConflicts.map((c) => `${c.slug} → ${c.file}`)], ['fichiers absents de la source (conservés)', r.orphanedFiles]] as [string, string[]][]) {
+      ['cibles absentes', r.missingPatchTargets], ['fichiers relus non modifiés', r.skippedReviewedPatches],
+      ['identifiants divergents (GLB retenu)', r.idDivergences.map((d) => `${d.node} : GLB ${d.glb} / crosswalk ${d.crosswalk}`)], ['écritures refusées', r.writeConflicts.map((c) => `${c.slug} → ${c.file}`)], ['fichiers absents de la source (conservés)', r.orphanedFiles]] as [string, string[]][]) {
       if (items.length) console.log(`${title} : ${items.length}\n${items.map((i) => `  - ${i}`).join('\n')}`);
     }
     if (r.aborted) { console.log('IMPORT ANNULÉ : fichiers illisibles ou slugs en double.'); return 1; }

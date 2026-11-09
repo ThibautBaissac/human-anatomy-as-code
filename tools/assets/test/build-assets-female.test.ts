@@ -12,6 +12,14 @@ import { buildAssets } from '../src/build-assets.ts';
 const tetra = (dx = 0) => [`v ${dx} 0 0`, `v ${dx + 1} 0 0`, `v ${dx} 1 0`, `v ${dx} 0 1`, 'f 1 3 2', 'f 1 2 4', 'f 1 4 3', 'f 2 3 4'].join('\n') + '\n';
 const lbl = (t: string) => ({ en: { text: t, source: 'fma', status: 'draft' } });
 
+/** Like grid(), but every triangle has its own three vertices (unwelded, as in the HRA files). */
+function unweldedGrid(n: number) {
+  const g = grid(n);
+  const pos: number[] = [];
+  for (const i of g.idx) pos.push(g.pos[i * 3], g.pos[i * 3 + 1], g.pos[i * 3 + 2]);
+  return { pos: new Float32Array(pos) as Float32Array<ArrayBuffer>, idx: new Uint32Array(pos.length / 3).map((_, i) => i) as Uint32Array<ArrayBuffer> };
+}
+
 /** A grid of n×n quads (2n² triangles), in metres, in the glTF frame (Y up). */
 function grid(n: number) {
   const pos: number[] = [], idx: number[] = [];
@@ -30,7 +38,7 @@ async function fixture() {
   const prim = (pos: Float32Array<ArrayBuffer>, idx: Uint32Array<ArrayBuffer>) => doc.createPrimitive()
     .setAttribute('POSITION', doc.createAccessor().setType('VEC3').setArray(pos).setBuffer(buffer))
     .setIndices(doc.createAccessor().setType('SCALAR').setArray(idx).setBuffer(buffer));
-  const g = grid(40); // 3 200 triangles
+  const g = unweldedGrid(40); // 3 200 triangles, 9 600 vertices
   const parent = doc.createNode('VH_F_uterus').setTranslation([0.001, 0, 0]);
   parent.addChild(doc.createNode('VH_F_cervix').setMesh(doc.createMesh('c').addPrimitive(prim(new Float32Array([0, 0, 0, 0.01, 0, 0, 0, 0.01, 0]), new Uint32Array([0, 1, 2])))));
   parent.addChild(doc.createNode('VH_F_body_of_uterus').setMesh(doc.createMesh('b').addPrimitive(prim(g.pos, g.idx))));

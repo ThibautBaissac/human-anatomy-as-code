@@ -1,4 +1,5 @@
 // Interface strings (French only for the MVP; one module so they can be translated later).
+const S_MODEL: Record<string, string> = { male: 'modèle masculin', female: 'modèle féminin' };
 export const S = {
   appTitle: 'Human Anatomy As Code',
   searchLabel: 'Rechercher une structure',
@@ -73,8 +74,7 @@ export const S = {
   tabsLabel: 'Panneaux',
   modelLabel: 'Modèle',
   models: { male: 'Homme', female: 'Femme' } as Record<string, string>,
-  modelGenitive: { male: 'le modèle masculin', female: 'le modèle féminin' } as Record<string, string>,
-  notInModel: (name: string, model: string) => `${name} : absent du ${model === 'female' ? 'modèle féminin' : 'modèle masculin'}, sélection effacée.`,
+  notInModel: (name: string, model: string) => `${name} : absent du ${S_MODEL[model]}, sélection effacée.`,
   femaleNotice: 'Modèle féminin v1 : organes féminins (Human Reference Atlas) sur le squelette et les muscles du modèle masculin (BodyParts3D). Pas de peau. Le bassin et la musculature ne sont pas des références féminines.',
   femaleNoticeMore: 'En savoir plus',
   femaleNoticeClose: 'Masquer ce message',
@@ -85,7 +85,7 @@ export const S = {
     'Limites : le bassin, la musculature et les proportions restent ceux d’un homme ; il n’y a ni vulve, ni urètre, ni plancher pelvien féminins. Une morphologie féminine réelle est prévue dans une version ultérieure.',
   ],
   hraCredits: 'Organes du Human Reference Atlas (CC BY 4.0)',
-  offlineThisModel: (model: string) => `Rendre disponible hors ligne : ${model === 'female' ? 'modèle féminin' : 'modèle masculin'}`,
+  offlineThisModel: (model: string) => `Rendre disponible hors ligne : ${S_MODEL[model]}`,
   offlineBothModels: 'Rendre disponibles hors ligne les deux modèles',
   controlsLabel: 'Commandes',
   matchSlug: 'slug',

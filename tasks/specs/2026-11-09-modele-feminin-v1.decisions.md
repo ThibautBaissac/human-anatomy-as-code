@@ -42,3 +42,44 @@ Décisions prises là où la spec `2026-11-09-modele-feminin-v1.md` est muette, 
 - **Recalage contrôlé visuellement et numériquement** (`spikes/05-female/*.png`).
   - Utérus, col, vagin et ovaires sont dans le petit bassin, et les ligaments ronds partent vers les régions inguinales. Les glandes mammaires sont posées sur le gril costal.
   - **Écart connu** : la vessie féminine dépasse d'environ 6 mm en avant de la symphyse pubienne (Y minimal −145 mm, contre −139 mm pour l'os coxal). C'est cohérent avec l'écart résiduel du bassin. On peut le corriger par `adjust` dans la région pelvienne, au prix d'un déplacement de tous les organes pelviens.
+
+## Corrections issues de la revue de code (2026-11-09)
+
+- **Simplification réellement appliquée.** Les meshes HRA ne sont pas soudés : chaque arête y est une bordure, et `LockBorder` bloquait toute réduction (les lobes mammaires restaient à 75 778 triangles).
+  - Les sommets sont maintenant soudés par position (`generatePositionRemap`) avant la simplification.
+  - Un mesh qui reste au-dessus de la cible fait échouer le build.
+  - Le test utilise une grille non soudée.
+  - Effet : `female-organ` passe de 5,0 à 3,5 MB, et le modèle féminin de 42,0 à 40,5 MB.
+- **Test de fumée « les deux modèles ».** Le cache des modèles est vidé, puis les deux modèles sont téléchargés. Hors ligne, le modèle féminin se recharge, la recherche fonctionne et aucune alerte n'apparaît.
+- **Test de fumée du modèle féminin, renforcé.** Il vérifie la géométrie réellement affichée : instances de l'utérus présentes, vessie issue du fichier `female-organ`, aucune instance de prostate, de testicule, d'urètre ou de peau dans le modèle. La recherche se fait sur « utérus ». Le test passe au rouge si la règle `inModel` est cassée.
+- **Panneau hors ligne.** Il liste les DOI des organes HRA du modèle féminin : le crédit CC BY reste accessible même quand l'encart est masqué.
+- **Arbitrage des identifiants.**
+  - Une divergence entre le GLB et sa table de correspondance, **dans un même vocabulaire**, est rapportée (`idDivergences`). Le GLB l'emporte, sauf arbitrage `ids`.
+  - Deux vocabulaires différents, comme pour les ovaires (FMA dans le GLB, UBERON dans la table), ne constituent pas une divergence : les deux identifiants sont gardés.
+  - Il n'y a aucune divergence sur les données réelles.
+- **Item Wikidata imposé** (`wikidata` : slug → QID), par exemple pour `uterine-tube` : « uterine tube » ne correspond pas au libellé Wikidata « fallopian tube ». Le groupe `female-genital-system` reçoit un nom français, « appareil génital féminin ».
+- **Slugs uniques.** Un slug pris par l'autre modèle reçoit le suffixe `-female`. Un conflit à l'intérieur de l'import reçoit `-2`, `-3`…
+- **Fichiers relus non modifiés.** Une variante ou un `sex` qui ne peut pas être posé sur une structure `reviewed` est désormais rapporté (`skippedReviewedPatches`), au lieu d'être ignoré en silence.
+- **Changements de modèle sérialisés.** Une seconde demande attend la fin de la première : plus de batches en double. Le sélecteur est désactivé pendant le changement.
+- **Couleur des fichiers `female-<kind>`.** Celle du kind (les ligaments HRA ont la couleur des ligaments). L'annonce « absent du modèle » s'efface à la sélection suivante.
+- **Paquet `@haac/hra`.** Il expose `./register`, dont `tools/assets` dépend par le workspace, au lieu d'un import relatif entre paquets.
+- **Glossaire (`CONTEXT.md`).** Ajout de Modèle, Sexe, Variante et Recalage. « Modèle » n'est plus dans les termes à éviter de Mesh, remplacé par « modèle 3D ».
+
+## Écarts déclarés après la revue
+
+- **Méthode de recalage.** C'est la méthode de Horn (quaternion), pas celle d'Umeyama : elle donne la même similitude au sens des moindres carrés, sans décomposition SVD à coder.
+- **`mesovarium`.** Il est extrait du corps complet et importé, bien qu'absent de la liste de nœuds de la spec : c'est un repli du ligament large qui attache l'ovaire, utile pour comprendre les rapports de l'ovaire.
+- **Chemins et commandes.**
+  - L'extrait du corps complet est dans `data/raw/hra/united-female/extracted-united.glb` : un dossier par organe, comme les autres fichiers HRA.
+  - Les commandes sont `npm run -w tools/hra fetch|register`, plutôt que `hra-fetch` / `hra-register`.
+- **Règles `sex` + `variants`.** Elles sont vérifiées par la règle de compilation `variant-shape` seulement, pas par le schéma : une seule erreur, lisible, au lieu d'une erreur de schéma en plus.
+- **Budget de chargement du modèle féminin.** Il n'a pas de test dédié. Le modèle féminin charge 13 fichiers au lieu de 12, pour 4 MB de plus.
+
+## Points mineurs laissés pour plus tard
+
+- Fichier `atlas.json` encore produit, mais plus lu par l'application.
+- Champ `source: 'bodyparts3d'` du manifeste.
+- DOI en double entre `hra-files.yaml` et `sources/hra.yaml`.
+- Empreinte de l'extrait dépendante de la version de glTF-Transform.
+- `rotationDeg: 0` pour une région `fit: translation`.
+- Découpage de `buildAssets` et d'`importHra` en fonctions plus petites.

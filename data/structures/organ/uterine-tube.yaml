@@ -9,6 +9,18 @@ labels:
     text: uterine tube
     source: hra
     status: draft
+  fr:
+    text: trompes de Fallope
+    source: wikidata
+    status: draft
+  la:
+    text: Tuba uterina
+    source: wikidata
+    status: draft
+ids:
+  ta2: 3486
+  ta98: A09.1.02.001
+  wikidata: Q1233836
 sides:
   left:
     ids:

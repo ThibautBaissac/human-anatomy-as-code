@@ -7,7 +7,7 @@ import { EXTMeshoptCompression, KHRMeshQuantization } from '@gltf-transform/exte
 import { meshopt, quantize } from '@gltf-transform/functions';
 import { MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer';
 import { parse } from 'yaml';
-import { apply, compose, HRA_TO_BP3D, type Mat4 } from '../../hra/src/register.ts';
+import { apply, compose, HRA_TO_BP3D, type Mat4 } from '@haac/hra/register';
 import { findObjFiles, mergeMeshes, parseObj, smoothNormals } from './obj.ts';
 
 type Side = 'left' | 'right';
@@ -102,13 +102,28 @@ async function readHraFile(path: string): Promise<Map<string, Geometry>> {
   return out;
 }
 
+/** Merges vertices that share a position (HRA meshes are unwelded: every edge would look like a border). */
+function weld(g: Geometry): Geometry {
+  const remap = MeshoptSimplifier.generatePositionRemap(g.positions, 3);
+  const index = new Int32Array(remap.length).fill(-1);
+  const pos: number[] = [];
+  for (let v = 0; v < remap.length; v++) {
+    const r = remap[v];
+    if (index[r] < 0) { index[r] = pos.length / 3; pos.push(g.positions[r * 3], g.positions[r * 3 + 1], g.positions[r * 3 + 2]); }
+    index[v] = index[r];
+  }
+  return { positions: new Float32Array(pos), indices: g.indices.map((v) => index[v]) as Uint32Array<ArrayBuffer> };
+}
+
 /** Simplifies to `target` triangles at most: 1 % relative error first, relaxed only if the target is not reached. */
-function simplifyTo(g: Geometry, target: number): Geometry {
+function simplifyTo(source: Geometry, target: number, ref: string): Geometry {
+  const g = weld(source);
   let indices: Uint32Array = g.indices;
   for (const error of [0.01, 0.02, 0.05, 0.1, 0.25, 1]) {
     [indices] = MeshoptSimplifier.simplify(g.indices, g.positions, 3, target * 3, error, ['LockBorder']);
     if (indices.length <= target * 3) break;
   }
+  if (indices.length > target * 3) throw new Error(`${ref} : simplification impossible sous ${target} triangles (${indices.length / 3} restants)`);
   // drop the vertices no triangle uses any more
   const remap = new Int32Array(g.positions.length / 3).fill(-1);
   const pos: number[] = [];
@@ -161,7 +176,7 @@ export async function buildAssets({ atlases, atlas, objDir, hra, outDir, simplif
       const path = hraFiles.get(organ), matrix = hraMatrix.get(organ);
       if (!path || !matrix) { missing.push(ref); continue; }
       if (!hraCache.has(path)) {
-        try { hraCache.set(path, await readHraFile(path)); } catch { hraCache.set(path, new Map()); }
+        try { hraCache.set(path, await readHraFile(path)); } catch (e) { throw new Error(`${path} : lecture impossible (${(e as Error).message})`); }
       }
       const g = hraCache.get(path)!.get(node);
       if (!g) { missing.push(ref); continue; }
@@ -169,7 +184,7 @@ export async function buildAssets({ atlases, atlas, objDir, hra, outDir, simplif
       const p = new Float32Array(g.positions.length);
       for (let k = 0; k < p.length; k += 3) p.set(apply(matrix, [g.positions[k], g.positions[k + 1], g.positions[k + 2]]), k);
       const placed = { positions: p, indices: g.indices };
-      geometry.set(ref, placed.indices.length / 3 > simplify.above ? simplifyTo(placed, simplify.target) : placed);
+      geometry.set(ref, placed.indices.length / 3 > simplify.above ? simplifyTo(placed, simplify.target, ref) : placed);
       continue;
     }
     const id = ref.startsWith(PREFIX) ? ref.slice(PREFIX.length) : ref;

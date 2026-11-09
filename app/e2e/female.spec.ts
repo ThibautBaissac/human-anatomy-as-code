@@ -14,10 +14,26 @@ test('female model: loads, shows female organs and no male ones, switches models
   await expect(model).toHaveValue('female');
   await expect(page.getByRole('note')).toContainText('Modèle féminin v1');
 
+  // geometry actually shown: female organs present, the bladder from the female file, no male-only instance
+  const shown = await page.evaluate(() => {
+    type V = { catalog: { instanceCount: number; instancesOf(s: string): number[]; instance(i: number): { slug: string; inModel: boolean } }; fileOf(i: number): string };
+    const v = (window as unknown as { __viewer: V }).__viewer;
+    const all = [...Array(v.catalog.instanceCount).keys()].map((i) => v.catalog.instance(i));
+    return {
+      uterus: v.catalog.instancesOf('uterus').length,
+      bladderFiles: v.catalog.instancesOf('urinary-bladder').map((i) => v.fileOf(i)),
+      maleShown: all.filter((x) => ['prostate', 'testis', 'urethra', 'skin'].includes(x.slug) && x.inModel).length,
+    };
+  });
+  expect(shown.uterus).toBeGreaterThan(0);
+  expect(shown.bladderFiles.length).toBeGreaterThan(0);
+  expect(new Set(shown.bladderFiles)).toEqual(new Set(['female-organ']));
+  expect(shown.maleShown).toBe(0);
+
   const search = page.getByRole('combobox', { name: 'Rechercher une structure' });
   await search.fill('prostate');
   await expect(page.getByRole('status').filter({ hasText: 'Aucun résultat' })).toBeAttached();
-  await search.fill('uterus');
+  await search.fill('utérus');
   await expect(page.getByRole('option').first()).toBeVisible();
   await search.press('Enter');
   await expect(panelName(page)).toHaveText(/ut[ée]rus/i);

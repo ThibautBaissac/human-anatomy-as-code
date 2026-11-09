@@ -5,4 +5,5 @@ export const KIND_COLORS: Record<string, string> = {
   nerve: '#f0d040', joint: '#a8b8d8', cns: '#e8c8a0', organ: '#c58a7a',
 };
 export const HIGHLIGHT = '#3ad06a';
-export const colorOf = (kind: string) => KIND_COLORS[kind] ?? KIND_COLORS.organ;
+/** Colour of a kind; files of the female model are named female-<kind>. */
+export const colorOf = (kind: string) => KIND_COLORS[kind.replace(/^female-/, '')] ?? KIND_COLORS.organ;

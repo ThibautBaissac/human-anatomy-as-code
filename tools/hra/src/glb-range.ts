@@ -49,7 +49,8 @@ const SIZE: Record<number, number> = { 5121: 1, 5123: 2, 5125: 4, 5126: 4 };
 
 async function readAccessor(url: string, json: GltfJson, binOffset: number, index: number, components: number): Promise<number[]> {
   const a = json.accessors[index];
-  const bv = json.bufferViews[a.bufferView!];
+  if (a.bufferView === undefined) throw new Error(`${url} : accesseur ${index} sans bufferView (accesseurs creux non pris en charge)`);
+  const bv = json.bufferViews[a.bufferView];
   const size = SIZE[a.componentType] * components;
   const stride = bv.byteStride ?? size;
   const start = binOffset + (bv.byteOffset ?? 0) + (a.byteOffset ?? 0);

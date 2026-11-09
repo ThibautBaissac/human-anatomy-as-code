@@ -27,6 +27,8 @@ export interface ApplyReport {
   orphanedFiles: string[];
   /** patch targets that do not exist */
   missingPatchTargets: string[];
+  /** patch targets left untouched because they are reviewed */
+  skippedReviewedPatches: string[];
 }
 
 /** An edit to an existing structure this import does not own (e.g. a female variant on a shared structure); draft files only. */
@@ -58,7 +60,7 @@ export function applyPlan({ dataDir, structures, owns, patches = [] }: ApplyOpti
   const rel = (p: string) => relative(dataDir, p).split(sep).join('/');
   const report: ApplyReport = {
     aborted: false, created: 0, updated: 0, unchanged: 0,
-    unreadableFiles: [], duplicateSlugs: [], writeConflicts: [], aliasCollisions: [], lateralityConflicts: [], orphanedFiles: [], missingPatchTargets: [],
+    unreadableFiles: [], duplicateSlugs: [], writeConflicts: [], aliasCollisions: [], lateralityConflicts: [], orphanedFiles: [], missingPatchTargets: [], skippedReviewedPatches: [],
   };
 
   // Existing files, indexed by slug and aliases. Anything ambiguous aborts before the first write.
@@ -134,7 +136,7 @@ export function applyPlan({ dataDir, structures, owns, patches = [] }: ApplyOpti
   for (const p of patches) {
     const e = bySlug.get(p.slug);
     if (!e) { report.missingPatchTargets.push(p.slug); continue; }
-    if (e.doc.get('status') === 'reviewed') continue;
+    if (e.doc.get('status') === 'reviewed') { report.skippedReviewedPatches.push(p.slug); continue; }
     p.apply(e.doc, e.doc.contents as YAMLMap);
     const text = e.doc.toString(YAML_OPTS);
     if (text === e.text) { if (!e.matched) report.unchanged++; continue; }

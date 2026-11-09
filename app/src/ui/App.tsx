@@ -16,7 +16,7 @@ import { useViewer } from './useViewer.ts';
 import { S } from './strings.ts';
 
 export function App() {
-  const { canvasRef, viewer, snapshot, error, notice, selectAndFocus, switchModel } = useViewer();
+  const { canvasRef, viewer, snapshot, error, notice, switching, selectAndFocus, switchModel } = useViewer();
   const pwa = usePwa();
   const narrow = useNarrow();
   const { view, ready, loading, failedKinds } = snapshot;
@@ -49,7 +49,7 @@ export function App() {
         {index && <Search index={index} lang={view.lang} onSelect={pick} />}
         <label className="lang">
           {S.modelLabel}
-          <select value={view.model} onChange={(e) => switchModel(e.target.value as Model)} disabled={!ready}>
+          <select value={view.model} onChange={(e) => switchModel(e.target.value as Model)} disabled={!ready || switching}>
             {(['male', 'female'] as Model[]).map((m) => <option key={m} value={m}>{S.models[m]}</option>)}
           </select>
         </label>
@@ -90,7 +90,7 @@ export function App() {
       </div>
       {viewer && ready && new URLSearchParams(location.search).has('bench') && <Bench viewer={viewer} />}
       <OfflineDialog open={offlineOpen} onClose={() => { setOfflineOpen(false); offlineButton.current?.focus(); }}
-        supported={pwa.supported} canInstall={pwa.canInstall} install={pwa.install} iosHint={pwa.iosHint} model={view.model} />
+        supported={pwa.supported} canInstall={pwa.canInstall} install={pwa.install} iosHint={pwa.iosHint} model={view.model} atlas={atlas} />
     </div>
   );
 }

@@ -463,6 +463,11 @@ export class Viewer {
   }
 
   /** Mean frame time over the last frames, in ms (for the smoke test budget). */
+  /** The file (kind key) an instance was loaded from. */
+  fileOf(index: number): string | undefined {
+    return this.location[index]?.[0].kind;
+  }
+
   meanFrameMs(): number {
     const t = this.frameTimes.slice(-120);
     return t.length ? t.reduce((a, b) => a + b, 0) / t.length : 0;

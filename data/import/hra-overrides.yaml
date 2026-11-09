@@ -36,7 +36,7 @@ male:
   - urethra
 
 groups:
-  female-genital-system: { label: female genital system, parent: genital-system }
+  female-genital-system: { label: female genital system, parent: genital-system, fr: appareil génital féminin }
 
 organs:
   uterus-female: { parent: female-genital-system }
@@ -58,3 +58,10 @@ kinds:
 # Nœuds sans label exploitable.
 labels:
   VH_F_cornua: horn of uterus
+
+# Items Wikidata imposés quand aucun identifiant ni terme anglais ne les trouve (« uterine tube » ≠ « fallopian tube »).
+wikidata:
+  uterine-tube: Q1233836
+
+# Identifiants imposés quand le GLB et son crosswalk divergent dans un même vocabulaire (rapportés par l'import).
+ids: {}

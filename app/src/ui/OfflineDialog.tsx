@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { DownloadError, NoControllerError, makeAvailableOffline, readStatus } from '../offline/offline.ts';
 import type { AssetManifest, OfflineStatus } from '../offline/offline-state.ts';
+import type { Atlas } from '../viewer/types.ts';
 import { S } from './strings.ts';
 
 const IOS_HINT_KEY = 'haac.iosHintDismissed';
 const mb = (b: number) => (b / 1e6).toFixed(1).replace('.', ',');
 
-export function OfflineDialog({ open, onClose, supported, canInstall, install, iosHint, model }: {
-  open: boolean; onClose: () => void; supported: boolean; canInstall: boolean; install: () => void; iosHint: boolean; model: string;
+export function OfflineDialog({ open, onClose, supported, canInstall, install, iosHint, model, atlas }: {
+  open: boolean; onClose: () => void; supported: boolean; canInstall: boolean; install: () => void; iosHint: boolean; model: string; atlas: Atlas | null;
 }) {
+  const hra = atlas?.attributions.find((a) => a.source === 'hra');
   const ref = useRef<HTMLDialogElement>(null);
   const [manifest, setManifest] = useState<AssetManifest | null>(null);
   const [status, setStatus] = useState<OfflineStatus | null>(null);
@@ -81,6 +83,14 @@ export function OfflineDialog({ open, onClose, supported, canInstall, install, i
               <button type="button" className="link" onClick={() => { setHideIos(true); closeButton.current?.focus(); try { localStorage.setItem(IOS_HINT_KEY, '1'); } catch { /* private mode */ } }}>{S.iosHintDismiss}</button>
             </div>
           )}
+        </>
+      )}
+      {hra?.dois && (
+        <>
+          <h3>{S.hraCredits}</h3>
+          <ul className="dois">
+            {hra.dois.map((d) => <li key={d.organ}><a href={`https://doi.org/${d.doi}`}>{d.organ}</a> — {d.doi}</li>)}
+          </ul>
         </>
       )}
       <div className="dialog-actions"><button ref={closeButton} type="button" onClick={onClose}>{S.close}</button></div>

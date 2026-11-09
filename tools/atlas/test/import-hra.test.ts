@@ -50,6 +50,8 @@ const OVERRIDES = {
   groups: { 'female-genital-system': { label: 'female genital system', parent: 'genital-system' } },
   kinds: { 'lactiferous-sinus': 'organ' },
   labels: { VH_F_cornua: 'horn of uterus' },
+  wikidata: { 'mammary-gland': 'Q5' },
+  ids: { VH_F_right_ovary: { fma: 7213, uberon: '0002118' } },
   organs: {
     'uterus-female': { parent: 'female-genital-system' }, 'ovary-female-left': { parent: 'female-genital-system' }, 'ovary-female-right': { parent: 'female-genital-system' },
     'mammary-gland-female-left': { parent: 'thorax', layer: 1 }, 'mammary-gland-female-right': { parent: 'thorax', layer: 1 },
@@ -72,7 +74,7 @@ async function fixture() {
   await glb(join(hraDir, 'ovary-female-left/3d-vh-f-ovary-l.glb'), [{ name: 'VH_F_left_ovary', extras: x('FMA:7214', 'Left ovary') }]);
   writeFileSync(join(hraDir, 'ovary-female-left/crosswalk.csv'), 'node_name,OntologyID,label\nVH_F_left_ovary,UBERON:0002119,Left ovary\n');
   await glb(join(hraDir, 'ovary-female-right/3d-vh-f-ovary-r.glb'), [{ name: 'VH_F_right_ovary', extras: x('FMA:7213', 'Right ovary') }]);
-  writeFileSync(join(hraDir, 'ovary-female-right/crosswalk.csv'), 'node_name,OntologyID,label\nVH_F_right_ovary,UBERON:0002118,Right ovary\n');
+  writeFileSync(join(hraDir, 'ovary-female-right/crosswalk.csv'), 'node_name,OntologyID,label\nVH_F_right_ovary,UBERON:0002118,Right ovary\nVH_F_right_ovary_dup,FMA:9999,x\n');
   for (const [side, S, fma, nip, fat] of [['left', 'L', 57991, '0013772', 73166], ['right', 'R', 57987, '0013773', 73167]] as const) {
     await glb(join(hraDir, `mammary-gland-female-${side}/3d-vh-f-mammary-gland-${S.toLowerCase()}.glb`), [
       { name: 'VH_F', mesh: false, children: [{ name: 'VH_F_mammary_gland', mesh: false, children: [
@@ -92,7 +94,13 @@ async function fixture() {
     { name: 'VH_F_right_round_ligament_of_uterus', extras: x('FMA:57789', 'Right round ligament of uterus') },
     { name: 'VH_F_left_cardinal_ligament_of_uterus', extras: x('FMA:77064', 'Cardinal ligament') },
     { name: 'VH_F_right_cardinal_ligament_of_uterus', extras: x('FMA:77064', 'Cardinal ligament') },
+    { name: 'VH_F_accessory_a', extras: x('FMA:900001', 'Accessory band') },
+    { name: 'VH_F_accessory_b', extras: x('FMA:900002', 'Accessory band') },
+    { name: 'VH_F_accessory_c', extras: x('FMA:900003', 'Accessory band') },
   ]);
+  // a GLB id that disagrees with the crosswalk in the same vocabulary
+  await glb(join(hraDir, 'ovary-female-left/3d-vh-f-ovary-l.glb'), [{ name: 'VH_F_left_ovary', extras: x('FMA:7214', 'Left ovary') }]);
+  writeFileSync(join(hraDir, 'ovary-female-left/crosswalk.csv'), 'node_name,OntologyID,label\nVH_F_left_ovary,FMA:7299,Left ovary\n');
   const files = join(dataDir, 'import/hra-files.yaml');
   writeFileSync(files, stringify({ baseUrl: 'x', release: 'test', organs: [
     { id: 'uterus-female', version: 'v1', file: '3d-vh-f-uterus.glb', doi: '10.1/u' },
@@ -110,6 +118,7 @@ async function fixture() {
     'http://www.wikidata.org/entity/Q2,,0000996,3523,,vagin,Vagina,vagina',
     'http://www.wikidata.org/entity/Q3,,0000995,3517,,utérus,Uterus,uterus',
     'http://www.wikidata.org/entity/Q4,67771,,,,mamelon,Papilla mammaria,nipple',
+    'http://www.wikidata.org/entity/Q5,,0001911,,,glande mammaire,Glandula mammaria,mammary gland of a female',
   ].join('\n') + '\n');
   return { dataDir, run: () => importHra({ hraDir, filesList: files, wikidataCsv: csv, dataDir, overrides: OVERRIDES }) };
 }
@@ -146,7 +155,7 @@ test('left and right files pair into bilateral structures; side words leave the 
   const ovary = by(f, 'ovary');
   assert.equal(ovary.laterality, 'bilateral');
   assert.deepEqual(ovary.sides.left.meshes, ['hra:ovary-female-left/VH_F_left_ovary']);
-  assert.deepEqual(ovary.sides.left.ids, { fma: 7214, uberon: '0002119' });
+  assert.deepEqual(ovary.sides.left.ids, { fma: 7214 });
   assert.deepEqual(ovary.sides.right.ids, { fma: 7213, uberon: '0002118' });
   assert.equal(ovary.labels.en.text, 'ovary');
   assert.deepEqual([ovary.labels.fr.text, ovary.labels.la.text], ['ovaire', 'Ovarium']);
@@ -203,4 +212,34 @@ test('names fall back to the generic English term; kind and label overrides appl
   assert.deepEqual([nipple.labels.fr.text, nipple.labels.la.text, nipple.ids.wikidata], ['mamelon', 'Papilla mammaria', 'Q4']);
   assert.equal(by(f, 'lactiferous-sinus').kind, 'organ');
   assert.equal(by(f, 'horn-of-uterus').labels.en.text, 'horn of uterus');
+});
+
+test('slugs clashing inside the import get a numeric suffix', async () => {
+  const { dataDir, run } = await fixture();
+  const r = await run();
+  const f = atlases(dataDir).female;
+  assert.deepEqual(['accessory-band', 'accessory-band-2', 'accessory-band-3'].map((x) => !!by(f, x)), [true, true, true]);
+  assert.ok(r.slugCollisions.some((c) => c.renamed === 'accessory-band-3'));
+});
+
+test('ids: a GLB/crosswalk disagreement in one vocabulary is reported (GLB kept) unless an override settles it', async () => {
+  const { run } = await fixture();
+  const r = await run();
+  assert.deepEqual(r.idDivergences, [{ node: 'VH_F_left_ovary', glb: 'FMA:7214', crosswalk: 'FMA:7299' }]);
+});
+
+test('a forced Wikidata item provides names and the item id', async () => {
+  const { dataDir, run } = await fixture();
+  await run();
+  const gland = by(atlases(dataDir).female, 'mammary-gland');
+  assert.deepEqual([gland.labels.fr.text, gland.ids.wikidata], ['glande mammaire', 'Q5']);
+});
+
+test('patches on reviewed files are not applied and are reported', async () => {
+  const { dataDir, run } = await fixture();
+  const file = join(dataDir, 'structures/organ/prostate.yaml');
+  writeFileSync(file, readFileSync(file, 'utf8').replace('status: draft', 'status: reviewed'));
+  const r = await run();
+  assert.deepEqual(r.skippedReviewedPatches, ['prostate']);
+  assert.doesNotMatch(readFileSync(file, 'utf8'), /sex: male/);
 });

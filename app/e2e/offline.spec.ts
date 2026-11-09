@@ -43,3 +43,30 @@ test('after "make available offline", the app reloads and works without network'
   await expect(page.locator('.info h2#panel-name')).not.toHaveText('fémur');
   expect(errors).toEqual([]);
 });
+
+test('"both models" makes the female model available offline too', async ({ page, context }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(String(e)));
+  await page.goto(BASE);
+  await ready(page);
+  await page.waitForFunction(() => !!navigator.serviceWorker?.controller, null, { timeout: 30_000 });
+  await page.evaluate(() => caches.delete('haac-assets'));
+  await page.getByRole('button', { name: 'Hors ligne…' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Utiliser l’atlas hors ligne' });
+  await expect(dialog.getByTestId('offline-state')).not.toHaveText(/Vérification/);
+  await dialog.getByRole('button', { name: 'Rendre disponibles hors ligne les deux modèles' }).click();
+  await expect(dialog.getByTestId('offline-state')).toContainText('Disponible hors ligne', { timeout: 90_000 });
+  await dialog.getByRole('button', { name: 'Fermer' }).click();
+
+  await context.setOffline(true);
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  await page.goto(`${BASE}#sex=f`);
+  await ready(page);
+  await expect(page.getByRole('combobox', { name: 'Modèle' })).toHaveValue('female');
+  await expect(page.locator('[role=alert]')).toHaveCount(0);
+  const search = page.getByRole('combobox', { name: 'Rechercher une structure' });
+  await search.fill('utérus');
+  await search.press('Enter');
+  await expect(page.locator('.info h2#panel-name')).toHaveText(/utérus/i);
+  expect(errors).toEqual([]);
+});

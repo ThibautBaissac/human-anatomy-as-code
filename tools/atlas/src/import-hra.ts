@@ -4,8 +4,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { NodeIO, type Node } from '@gltf-transform/core';
 import { parse, parseDocument, type Document, type YAMLMap } from 'yaml';
-import { readWikidata, type Wikidata, type WikidataRow } from './import/wikidata.ts';
-import { parseCsv } from './import/wikidata.ts';
+import { parseCsv, readWikidata, type Wikidata, type WikidataRow } from './import/wikidata.ts';
 import { genderOf, kindOfName, slugify, TA98_PATTERN } from './import/rules.ts';
 import { applyPlan, type ApplyReport, type Patch } from './import/apply-plan.ts';
 import { canonicalStructure, setOrdered, KEY_ORDER } from './import/yaml-merge.ts';
@@ -25,7 +24,7 @@ export interface HraOverrides {
   /** existing structures of the male model only */
   male?: string[];
   /** group structures created for the female model */
-  groups?: Record<string, { label: string; parent: string }>;
+  groups?: Record<string, { label: string; parent: string; fr?: string }>;
   /** per organ file: parent of its top structures, optional dissection layer */
   organs?: Record<string, { parent?: string; layer?: number }>;
   /** node name → forced slug */
@@ -34,11 +33,17 @@ export interface HraOverrides {
   kinds?: Record<string, string>;
   /** node name → English label, for nodes without a usable one */
   labels?: Record<string, string>;
+  /** node name → identifiers, when the GLB and its crosswalk disagree */
+  ids?: Record<string, Ids>;
+  /** slug → Wikidata item (QID) giving the names, when no identifier or English term finds it */
+  wikidata?: Record<string, string>;
 }
 
 export interface HraImportReport extends ApplyReport {
   slugCollisions: { slug: string; renamed: string }[];
   fmaConflicts: { slug: string; fma: number }[];
+  /** GLB and crosswalk give different ids in the same vocabulary (the GLB is kept unless an `ids` override settles it) */
+  idDivergences: { node: string; glb: string; crosswalk: string }[];
 }
 
 interface FilesList { organs: { id: string; file: string }[]; united?: { id: string } }
@@ -84,7 +89,7 @@ function readCrosswalk(path: string): Map<string, { id: string; label: string }>
 }
 
 /** Candidates of one organ file: its root (deepest mesh-less ancestor common to all meshes) and the nodes below. */
-async function organCandidates(io: NodeIO, path: string, organ: string, crosswalk: Map<string, { id: string; label: string }>, o: HraOverrides): Promise<Candidate[]> {
+async function organCandidates(io: NodeIO, path: string, organ: string, crosswalk: Map<string, { id: string; label: string }>, o: HraOverrides, divergences: HraImportReport['idDivergences']): Promise<Candidate[]> {
   const doc = await io.read(path);
   const skip = new Set(o.skipNodes ?? []);
   const swap = new Map<string, Side>();
@@ -113,7 +118,10 @@ async function organCandidates(io: NodeIO, path: string, organ: string, crosswal
     const label = o.labels?.[name] ?? (x.label && x.label !== '-' ? x.label : cw?.label || humanize(name));
     const side = swap.get(name) ?? sideOf(name, label);
     const canonical = lowerFirst(label.replace(SIDE_EN, '').replace(/\s+/g, ' ').trim());
-    const ids: Ids = { ...parseId(cw?.id), ...parseId(x.ontologyid) };
+    const fromGlb = parseId(x.ontologyid), fromCw = parseId(cw?.id);
+    const clash = (['fma', 'uberon'] as const).some((k) => fromGlb[k] !== undefined && fromCw[k] !== undefined && fromGlb[k] !== fromCw[k]);
+    if (clash && !o.ids?.[name]) divergences.push({ node: name, glb: String(x.ontologyid), crosswalk: String(cw?.id) });
+    const ids: Ids = o.ids?.[name] ? { ...o.ids[name] } : { ...fromCw, ...fromGlb };
     const key = `${organ}/${name}`;
     out.push({ key, organ, node: name, label, side, canonical, ids, hasMesh: !!n.getMesh(), parentKey });
     for (const c of n.listChildren()) add(c, key);
@@ -153,7 +161,8 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
     ...(files.united ? [{ id: files.united.id, path: join(hraDir, files.united.id, 'extracted-united.glb') }] : []),
   ];
   const candidates: Candidate[] = [];
-  for (const f of organFiles) candidates.push(...await organCandidates(io, f.path, f.id, readCrosswalk(join(hraDir, f.id, 'crosswalk.csv')), o));
+  const idDivergences: HraImportReport['idDivergences'] = [];
+  for (const f of organFiles) candidates.push(...await organCandidates(io, f.path, f.id, readCrosswalk(join(hraDir, f.id, 'crosswalk.csv')), o, idDivergences));
 
   // Group by canonical slug: a left and a right member make a bilateral structure.
   const slugCollisions: HraImportReport['slugCollisions'] = [];
@@ -164,6 +173,7 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
     groups.set(slug, [...(groups.get(slug) ?? []), c]);
   }
   const slugOfKey = new Map<string, string>();
+  const used = new Set<string>();
   const units: { slug: string; members: Candidate[]; bilateral: boolean }[] = [];
   for (const [base, members] of groups) {
     const left = members.find((m) => m.side === 'left'), right = members.find((m) => m.side === 'right');
@@ -171,20 +181,32 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
     for (const part of split ? members.map((m) => [m]) : [members]) {
       const bilateral = part.length === 2;
       // a lone sided member keeps its full name
-      let slug = bilateral || !part[0].side ? base : (o.slugs?.[part[0].node] ?? slugify(lowerFirst(part[0].label)));
-      if (taken.has(slug)) { const renamed = `${slug}-female`; slugCollisions.push({ slug, renamed }); slug = renamed; }
-      taken.add(slug);
+      const wanted = bilateral || !part[0].side ? base : (o.slugs?.[part[0].node] ?? slugify(lowerFirst(part[0].label)));
+      // a slug of the other model gets -female; a clash inside this import gets -2, -3…
+      const stem = taken.has(wanted) ? `${wanted}-female` : wanted;
+      let slug = stem;
+      for (let n = 2; used.has(slug) || taken.has(slug); n++) slug = `${stem}-${n}`;
+      if (slug !== wanted) slugCollisions.push({ slug: wanted, renamed: slug });
+      used.add(slug);
       for (const m of part) slugOfKey.set(m.key, slug);
       units.push({ slug, members: part, bilateral });
     }
   }
 
   const byEn = (name: string): WikidataRow | undefined => wd.byEn.get(name.toLowerCase());
+  const forced = (slug: string): WikidataRow | undefined => (o.wikidata?.[slug] ? wd.byQid.get(o.wikidata[slug]) : undefined);
   const rowFor = (ids: Ids): WikidataRow | undefined => (ids.fma ? wd.byFma.get(ids.fma) : undefined) ?? (ids.uberon ? wd.byUberon.get(ids.uberon) : undefined);
   const labelFrom = (text: string | undefined, lang: 'fr' | 'la', strip: boolean) => {
     if (!text) return undefined;
     const t = strip ? text.replace(lang === 'fr' ? SIDE_FR : SIDE_LA, '').trim() : text;
     return { text: t, ...(genderOf(t, lang) ?? {}), source: 'wikidata', status: 'draft' as const };
+  };
+  /** fr/la names from a Wikidata item; its TA2, TA98 and QID join the root ids when the item is the whole structure. */
+  const enrichFromRow = (labels: Labels, ids: Ids, row: WikidataRow | undefined, wholeStructure: boolean) => {
+    const fr = labelFrom(row?.fr, 'fr', !wholeStructure), la = labelFrom(row?.la, 'la', !wholeStructure);
+    if (fr) labels.fr = fr;
+    if (la) labels.la = la;
+    if (row && wholeStructure) Object.assign(ids, row.ta2 ? { ta2: row.ta2 } : {}, row.ta98 && TA98_PATTERN.test(row.ta98) ? { ta98: row.ta98 } : {}, { wikidata: row.qid });
   };
   const cleanFma = (slug: string, ids: Ids): Ids => {
     if (ids.fma && takenFma.has(ids.fma)) { fmaConflicts.push({ slug, fma: ids.fma }); const { fma: _, ...rest } = ids; return rest; }
@@ -193,7 +215,9 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
 
   const structures: Structure[] = [];
   for (const [slug, g] of Object.entries(o.groups ?? {})) {
-    structures.push(canonicalStructure({ slug, kind: 'group', laterality: 'midline', status: 'draft', sex: 'female', parent: g.parent, labels: { en: { text: g.label, source: 'curated', status: 'draft' } } }));
+    const labels: Labels = { en: { text: g.label, source: 'curated', status: 'draft' } };
+    if (g.fr) labels.fr = { text: g.fr, ...(genderOf(g.fr, 'fr') ?? {}), source: 'curated', status: 'draft' };
+    structures.push(canonicalStructure({ slug, kind: 'group', laterality: 'midline', status: 'draft', sex: 'female', parent: g.parent, labels }));
   }
   for (const u of units) {
     const first = u.members[0];
@@ -215,22 +239,13 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
         if (m.hasMesh) block.meshes = [`hra:${m.key}`];
         s.sides[side] = block;
       }
-      // a whole-structure item first (root ids, then the generic English term), else the left side's item
-      const generic = rowFor(ids) ?? byEn(first.canonical);
-      const row = generic ?? rowFor(L.ids);
-      const fromRoot = !!generic;
-      const fr = labelFrom(row?.fr, 'fr', !fromRoot), la = labelFrom(row?.la, 'la', !fromRoot);
-      if (fr) labels.fr = fr;
-      if (la) labels.la = la;
-      if (fromRoot && row) Object.assign(ids, row.ta2 ? { ta2: row.ta2 } : {}, row.ta98 && TA98_PATTERN.test(row.ta98) ? { ta98: row.ta98 } : {}, { wikidata: row.qid });
+      // a whole-structure item first (forced item, root ids, generic English term), else the left side's item
+      const generic = forced(u.slug) ?? rowFor(ids) ?? byEn(first.canonical);
+      enrichFromRow(labels, ids, generic ?? rowFor(L.ids), !!generic);
     } else {
       if (first.side) s.laterality = first.side === 'left' ? 'unpaired-left' : 'unpaired-right';
       ids = { ...first.ids };
-      const row = rowFor(ids) ?? byEn(s.labels.en!.text);
-      const fr = labelFrom(row?.fr, 'fr', false), la = labelFrom(row?.la, 'la', false);
-      if (fr) labels.fr = fr;
-      if (la) labels.la = la;
-      if (row) Object.assign(ids, row.ta2 ? { ta2: row.ta2 } : {}, row.ta98 && TA98_PATTERN.test(row.ta98) ? { ta98: row.ta98 } : {}, { wikidata: row.qid });
+      enrichFromRow(labels, ids, forced(u.slug) ?? rowFor(ids) ?? byEn(s.labels.en!.text), true);
       if (first.hasMesh) s.meshes = [`hra:${first.key}`];
     }
     ids = cleanFma(u.slug, ids);
@@ -254,5 +269,5 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
   for (const slug of o.male ?? []) patches.push({ slug, apply: (doc, root) => set(doc, root, 'sex', 'male') });
 
   const applied = applyPlan({ dataDir, structures, owns: (s) => s.sex === 'female', patches });
-  return { ...applied, slugCollisions, fmaConflicts };
+  return { ...applied, slugCollisions, fmaConflicts, idDivergences };
 }
