@@ -2,7 +2,7 @@
 import { Document, isMap, isScalar, YAMLMap, type Pair } from 'yaml';
 import type { Labels, Side, Structure } from '../types.ts';
 
-export const KEY_ORDER = ['slug', 'kind', 'laterality', 'status', 'sex', 'parent', 'regions', 'layer', 'aliases', 'labels', 'ids', 'sides', 'meshes', 'variants'];
+export const KEY_ORDER = ['slug', 'kind', 'laterality', 'status', 'sex', 'parent', 'regions', 'layer', 'aliases', 'labels', 'ids', 'sides', 'meshes', 'variants', 'actions'];
 const LABEL_KEY_ORDER = ['text', 'gender', 'number', 'source', 'status', 'synonyms', 'description'];
 const IDS_ORDER = ['fma', 'ta2', 'ta98', 'uberon', 'wikidata'];
 /** ids keys the import computes; any other key (uberon) belongs to curators. */

@@ -41,3 +41,12 @@ sides:
         text: humeral head of right pronator teres
         source: fma
         status: draft
+actions:
+  - joint: elbow-joint
+    role: flexion
+    source: holzbaur-2005
+    status: draft
+  - joint: radio-ulnar-joints
+    role: pronation
+    source: holzbaur-2005
+    status: draft

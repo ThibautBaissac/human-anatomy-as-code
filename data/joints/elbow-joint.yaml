@@ -1,0 +1,30 @@
+# Coude : flexion-extension (huméro-ulnaire et huméro-radiale), spec 2026-11-09-animations-v1.
+# 0° = extension complète ; positif = flexion. `sides` et `restDeg` sont écrits par `npm run -w tools/assets fit-joints`.
+slug: elbow-joint
+labels:
+  en: { text: elbow joint, source: curated, status: draft }
+  fr: { text: articulation du coude, gender: f, number: sg, source: curated, status: draft }
+  la: { text: articulatio cubiti, gender: f, number: sg, source: curated, status: draft }
+motion: flexion-extension
+proximal: humerus
+moving: [ ulna, radius ]
+rangeDeg: [ 0, 145 ]
+restDeg: 13.1
+functionalArcDeg: [ 30, 130 ]
+sources: [ cdc-joint-rom, morrey-1981 ]
+status: draft
+fit:
+  # cylindre sur les sommets de l'humérus en contact avec l'ulna (trochlée, < 6 mm) et le radius (capitulum, < 9 mm)
+  method: cylinder-contact
+  maxRmsMm: 3
+  positiveDirection: [ 0, -1, 0 ]
+  contactMm: [ 6, 9 ]
+sides:
+  left:
+    centre: [ 215.5, -67.5, 1045.5 ]
+    axis: [ -0.951, -0.168, -0.2597 ]
+    rmsMm: 1.7
+  right:
+    centre: [ -215.7, -67.1, 1045.8 ]
+    axis: [ -0.9493, 0.1861, 0.2534 ]
+    rmsMm: 1.9

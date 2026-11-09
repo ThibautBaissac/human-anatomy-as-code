@@ -46,3 +46,8 @@ sides:
         text: medial head of right gastrocnemius
         source: fma
         status: draft
+actions:
+  - joint: knee-joint
+    role: flexion
+    source: rajagopal-2016
+    status: draft

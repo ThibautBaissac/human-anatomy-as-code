@@ -47,3 +47,8 @@ sides:
         text: short head of right biceps femoris
         source: fma
         status: draft
+actions:
+  - joint: knee-joint
+    role: flexion
+    source: rajagopal-2016
+    status: draft

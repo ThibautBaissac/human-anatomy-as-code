@@ -37,3 +37,8 @@ sides:
       wikidata: Q66527889
     meshes:
       - bp3d:FJ1441
+actions:
+  - joint: knee-joint
+    role: extension
+    source: rajagopal-2016
+    status: draft

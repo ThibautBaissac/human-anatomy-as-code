@@ -1,0 +1,32 @@
+# Avant-bras : pronation-supination, le radius tourne autour de l'ulna. Composée après le coude (parent).
+# 0° = pouce en haut ; positif = pronation, négatif = supination. La pose anatomique de BodyParts3D est
+# en supination complète (hypothèse, contrôlée visuellement : voir les décisions de la spec).
+slug: radio-ulnar-joints
+labels:
+  en: { text: radio-ulnar joints, source: curated, status: draft }
+  fr: { text: articulations radio-ulnaires, gender: f, number: pl, source: curated, status: draft }
+  la: { text: articulationes radioulnares, gender: f, number: pl, source: curated, status: draft }
+motion: pronation-supination
+proximal: ulna
+moving: [ radius ]
+parent: elbow-joint
+rangeDeg: [ -85, 77 ]
+restDeg: -85
+sources: [ cdc-joint-rom ]
+status: draft
+fit:
+  # axe de la tête ulnaire (cercle, 4 à 18 mm de l'extrémité distale) à la tête radiale (10 mm proximaux)
+  method: head-to-head
+  maxRmsMm: 3
+  positiveDirection: [ 0, -1, 0 ]
+  distalBandMm: [ 4, 18 ]
+  proximalBandMm: [ 0, 10 ]
+sides:
+  left:
+    centre: [ 239.4, -116, 813.5 ]
+    axis: [ 0.0399, -0.201, -0.9788 ]
+    rmsMm: 1.9
+  right:
+    centre: [ -239.2, -115.6, 813.7 ]
+    axis: [ 0.0393, 0.2008, 0.9788 ]
+    rmsMm: 2.1

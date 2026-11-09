@@ -9,16 +9,21 @@ import { MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer';
 import { parse } from 'yaml';
 import { apply, compose, HRA_TO_BP3D, type Mat4 } from '@haac/hra/register';
 import { findObjFiles, mergeMeshes, parseObj, smoothNormals } from './obj.ts';
+import { rigJoint, type Limb, type Rig, type RigInstance, type RigJoint, type Role } from './joints/rig.ts';
 
 type Side = 'left' | 'right';
 interface AtlasStructure {
   slug: string;
   kind: string;
+  parent?: string;
+  regions?: string[];
   meshes?: string[];
   sides?: Partial<Record<Side, { meshes?: string[] }>>;
+  actions?: { joint: string; role: Role }[];
 }
 export interface AtlasInput {
   structures: AtlasStructure[];
+  joints?: RigJoint[];
 }
 
 export interface Instance {
@@ -32,7 +37,7 @@ export interface Instance {
 export interface Manifest {
   kinds: Record<string, { bytes: number; file: string; instances: number; sha256: string }>;
   /** files (kind keys) each model needs, and their total size */
-  models: Record<string, { kinds: string[]; totalBytes: number }>;
+  models: Record<string, { kinds: string[]; totalBytes: number; joints?: Record<string, Rig> }>;
   source: 'bodyparts3d';
   totalBytes: number;
 }
@@ -55,6 +60,8 @@ export interface BuildOptions {
   outDir: string;
   /** meshes above `above` triangles are simplified to `target` at most (spec: 60 000 → 50 000) */
   simplify?: { above: number; target: number };
+  /** build warnings (a muscle role its length change contradicts) */
+  onWarning?: (message: string) => void;
 }
 
 const PREFIX = 'bp3d:';
@@ -135,7 +142,46 @@ function simplifyTo(source: Geometry, target: number, ref: string): Geometry {
   return { positions: new Float32Array(pos), indices: out };
 }
 
-export async function buildAssets({ atlases, atlas, objDir, hra, outDir, simplify = { above: 60_000, target: 50_000 } }: BuildOptions): Promise<Manifest> {
+/** The limb a structure belongs to, through its own regions or an ancestor's. */
+function limbsOf(atlas: AtlasInput): Map<string, Limb | null> {
+  const bySlug = new Map(atlas.structures.map((s) => [s.slug, s]));
+  const out = new Map<string, Limb | null>();
+  const find = (slug: string | undefined, seen = new Set<string>()): Limb | null => {
+    if (!slug || seen.has(slug)) return null;
+    if (out.has(slug)) return out.get(slug)!;
+    seen.add(slug);
+    const s = bySlug.get(slug);
+    const own = s?.regions?.find((r): r is Limb => r === 'upper-limb' || r === 'lower-limb') ?? null;
+    const limb = own ?? find(s?.parent, seen);
+    out.set(slug, limb);
+    return limb;
+  };
+  for (const s of atlas.structures) find(s.slug);
+  return out;
+}
+
+/** Rigs of every side of every joint of one model, keyed joint@side. */
+function rigsOf(atlas: AtlasInput, instances: Instance[], geometry: Map<string, Geometry>, warn: (m: string) => void): Record<string, Rig> | undefined {
+  if (!atlas.joints?.length) return undefined;
+  const limb = limbsOf(atlas);
+  const actions = new Map(atlas.structures.filter((s) => s.actions).map((s) => [s.slug, s.actions!]));
+  const rigInstances: RigInstance[] = instances.map((i) => ({
+    name: i.name, slug: i.slug, side: i.side, kind: i.kind, limb: limb.get(i.slug) ?? null,
+    positions: mergeMeshes(i.meshes.map((m) => geometry.get(m)!)).positions,
+  }));
+  const out: Record<string, Rig> = {};
+  for (const j of atlas.joints) {
+    for (const side of ['left', 'right'] as const) {
+      if (!j.sides?.[side]) continue;
+      const { rig, warnings } = rigJoint(j, side, rigInstances, actions);
+      out[`${j.slug}@${side}`] = rig;
+      warnings.forEach(warn);
+    }
+  }
+  return out;
+}
+
+export async function buildAssets({ atlases, atlas, objDir, hra, outDir, simplify = { above: 60_000, target: 50_000 }, onWarning = () => {} }: BuildOptions): Promise<Manifest> {
   const models: Record<string, AtlasInput> = atlases ?? { male: atlas! };
   // Instances of every model; identical ones (same name and meshes) are shared.
   const byKey = new Map<string, Instance>();
@@ -235,6 +281,8 @@ export async function buildAssets({ atlases, atlas, objDir, hra, outDir, simplif
   for (const [model, keys] of Object.entries(modelKeys).sort(([a], [b]) => cmp(a, b))) {
     const kinds = [...new Set([...keys].map((k) => fileOf(byKey.get(k)!)))].sort(cmp);
     manifest.models[model] = { kinds, totalBytes: kinds.reduce((n, k) => n + manifest.kinds[k].bytes, 0) };
+    const joints = rigsOf(models[model], [...keys].map((k) => byKey.get(k)!).sort((a, b) => cmp(a.name, b.name)), geometry, onWarning);
+    if (joints) manifest.models[model].joints = joints;
   }
   mkdirSync(outDir, { recursive: true });
   const keep = new Set(Object.values(manifest.kinds).map((k) => k.file));

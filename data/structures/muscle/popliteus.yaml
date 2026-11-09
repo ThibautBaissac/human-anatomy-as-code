@@ -37,3 +37,8 @@ sides:
       wikidata: Q66514606
     meshes:
       - bp3d:FJ1430
+actions:
+  - joint: knee-joint
+    role: flexion
+    source: curated
+    status: draft

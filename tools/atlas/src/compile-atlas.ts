@@ -5,7 +5,7 @@ import { createRequire } from 'node:module';
 import { parse } from 'yaml';
 import { Ajv2020 } from 'ajv/dist/2020.js';
 import { composeSideLabel } from './compose-side-label.ts';
-import { MODELS, type Lang, type Model, type Side, type SideBlock, type Source, type Structure } from './types.ts';
+import { MODELS, ROLES_OF, type Joint, type Lang, type Model, type Side, type SideBlock, type Source, type Structure } from './types.ts';
 
 export interface Diagnostic {
   file: string;
@@ -25,11 +25,15 @@ export interface CompiledStructure extends Omit<Structure, 'layer' | 'sides' | '
   sides?: Record<Side, CompiledSide>;
 }
 
+/** A joint as the viewer needs it: measurement parameters dropped. */
+export type CompiledJoint = Omit<Joint, 'fit'>;
+
 export interface Atlas {
   sources: Record<string, Source>;
   structures: CompiledStructure[];
+  joints: CompiledJoint[];
   meshIndex: Record<string, { slug: string; side: Side | null }>;
-  attributions: { source: string; name: string; licence: string; attribution: string; url: string; dois?: { organ: string; doi: string }[] }[];
+  attributions: { source: string; name: string; licence: string; attribution: string; url: string; dois?: { organ: string; doi: string }[]; notice?: string }[];
 }
 
 export interface CompileResult {
@@ -138,6 +142,7 @@ const require = createRequire(import.meta.url);
 const ajv = new Ajv2020({ allErrors: true, strict: true, strictRequired: false, allowUnionTypes: true });
 const validateStructure = ajv.compile(require('../schemas/structure.schema.json'));
 const validateSource = ajv.compile(require('../schemas/source.schema.json'));
+const validateJoint = ajv.compile(require('../schemas/joint.schema.json'));
 
 const ROOT_SLUG = 'human-body';
 
@@ -196,6 +201,13 @@ export function compileAtlas(dataDir: string): CompileResult {
     }
     return ok && !lateralityBroken;
   });
+
+  const jointFiles = load<Joint>('joints').filter(({ file, data }) => {
+    if (validateJoint(data)) return true;
+    for (const e of validateJoint.errors ?? []) err(file, e.instancePath, 'schema', e.message ?? 'invalid');
+    return false;
+  });
+  jointFiles.sort((a, b) => byKey(a.data.slug, b.data.slug) || byKey(a.file, b.file));
 
   const sources: Record<string, Source> = {};
   for (const { data } of sourceFiles) sources[data.id] = data;
@@ -319,18 +331,67 @@ export function compileAtlas(dataDir: string): CompileResult {
     if (!data.labels.la) warn(file, '/labels', 'missing-la', 'pas de label latin');
   }
 
+  // 13. joints: bones, sides, axes, ranges, parents, sources, models
+  const structureOf = new Map(structureFiles.map((x) => [x.data.slug, x.data]));
+  const jointOf = new Map(jointFiles.map((x) => [x.data.slug, x.data]));
+  for (const { file, data: j } of jointFiles) {
+    const bones: [string, string][] = [[j.proximal, '/proximal'], ...j.moving.map((b, i) => [b, `/moving/${i}`] as [string, string]),
+      ...(j.coupled ?? []).map((c, i) => [c.bone, `/coupled/${i}/bone`] as [string, string])];
+    for (const [bone, pointer] of bones) {
+      const s = structureOf.get(bone);
+      if (!s || s.kind !== 'bone') { err(file, pointer, 'joint-bone', s ? `« ${bone} » est de kind ${s.kind}, pas bone` : `os « ${bone} » introuvable`); continue; }
+      if (j.sides && s.laterality !== 'bilateral') err(file, pointer, 'joint-side', `« ${bone} » n'est pas bilateral : pas de côtés à animer`);
+      for (const model of MODELS) if (!inModel(s, model)) err(file, pointer, 'joint-model', `« ${bone} » est absent du modèle ${model}`);
+    }
+    if (!j.sides || !Object.keys(j.sides).length) err(file, '/sides', 'joint-sides', 'articulation jamais mesurée : lancer fit-joints');
+    for (const side of SIDES) {
+      const a = j.sides?.[side]?.axis;
+      if (a && Math.abs(Math.hypot(...a) - 1) > 1e-3) err(file, `/sides/${side}/axis`, 'joint-axis', `axe de norme ${Math.hypot(...a).toFixed(4)}, attendu 1`);
+    }
+    const [lo, hi] = j.rangeDeg;
+    if (!(lo < hi)) err(file, '/rangeDeg', 'joint-range', `amplitude [${lo}, ${hi}] non croissante`);
+    else if (j.restDeg < lo || j.restDeg > hi) err(file, '/restDeg', 'joint-range', `repos ${j.restDeg}° hors de l'amplitude [${lo}, ${hi}]`);
+    if (j.parent !== undefined && !jointOf.has(j.parent)) err(file, '/parent', 'joint-parent', `articulation parente « ${j.parent} » introuvable`);
+    j.sources.forEach((src, i) => { if (!knownSourceIds.has(src)) err(file, `/sources/${i}`, 'joint-source', `source « ${src} » absente du registre`); });
+  }
+  const jointFileOf = new Map(jointFiles.map((x) => [x.data.slug, x.file]));
+  const reportedJointCycles = new Set<string>();
+  for (const start of [...jointOf.keys()].sort(byKey)) {
+    const path: string[] = [];
+    let cur: string | undefined = start;
+    while (cur !== undefined && jointOf.has(cur) && !path.includes(cur)) { path.push(cur); cur = jointOf.get(cur)!.parent; }
+    if (cur === undefined || !path.includes(cur)) continue;
+    const cycle = [...path.slice(path.indexOf(cur))].sort(byKey);
+    if (reportedJointCycles.has(cycle.join(' '))) continue;
+    reportedJointCycles.add(cycle.join(' '));
+    err(jointFileOf.get(cycle[0])!, '/parent', 'joint-cycle', `cycle d'articulations : ${cycle.join(' → ')}`);
+  }
+
+  // 14. muscle actions
+  for (const { file, data } of structureFiles) {
+    if (!data.actions) continue;
+    if (data.kind !== 'muscle') { err(file, '/actions', 'action-kind', `seul un muscle a des actions (kind ${data.kind})`); continue; }
+    data.actions.forEach((a, i) => {
+      const j = jointOf.get(a.joint);
+      if (!j) err(file, `/actions/${i}/joint`, 'action-joint', `articulation « ${a.joint} » introuvable`);
+      else if (!ROLES_OF[j.motion].includes(a.role)) err(file, `/actions/${i}/role`, 'action-role', `rôle « ${a.role} » hors du mouvement ${j.motion} (${ROLES_OF[j.motion].join(', ')})`);
+      if (a.source !== 'curated' && !knownSourceIds.has(a.source)) err(file, `/actions/${i}/source`, 'action-source', `source « ${a.source} » absente du registre`);
+    });
+  }
+
   const order = (a: Diagnostic, b: Diagnostic) => byKey(a.file, b.file) || byKey(a.pointer, b.pointer) || byKey(a.rule, b.rule);
   errors.sort(order);
   warnings.sort(order);
   if (errors.length) return { atlas: null, atlases: null, errors, warnings };
 
   const all = structureFiles.map((x) => x.data);
-  const atlases = Object.fromEntries(MODELS.map((m) => [m, buildAtlas(all, m, sources)])) as Record<Model, Atlas>;
+  const joints = jointFiles.map((x) => x.data);
+  const atlases = Object.fromEntries(MODELS.map((m) => [m, buildAtlas(all, joints, m, sources)])) as Record<Model, Atlas>;
   return { atlas: atlases.male, atlases, errors, warnings };
 }
 
 /** The atlas of one model: its structures, parents reattached past absent ones, its meshes and its credits. */
-function buildAtlas(all: Structure[], model: Model, sources: Record<string, Source>): Atlas {
+function buildAtlas(all: Structure[], joints: Joint[], model: Model, sources: Record<string, Source>): Atlas {
   const original = new Map(all.map((s) => [s.slug, s]));
   const present = new Set(all.filter((s) => inModel(s, model)).map((s) => s.slug));
   const structures = all.filter((s) => present.has(s.slug)).map((s) => {
@@ -357,16 +418,22 @@ function buildAtlas(all: Structure[], model: Model, sources: Record<string, Sour
     }
     const labelSets = [s.labels, ...SIDES.map((side) => s.sides?.[side]?.labels ?? {})];
     for (const set of labelSets) for (const l of Object.values(set)) if (l && l.source !== 'curated') used.add(l.source);
+    for (const a of s.actions ?? []) if (a.source !== 'curated') used.add(a.source);
+  }
+  for (const j of joints) {
+    for (const src of j.sources) used.add(src);
+    for (const l of Object.values(j.labels)) if (l && l.source !== 'curated') used.add(l.source);
   }
 
   return {
     sources: Object.fromEntries(Object.keys(sources).sort(byKey).map((k) => [k, sortKeys(sources[k])])),
     structures: structures.map((s) => compileStructure(s, (children.get(s.slug) ?? []).sort(byKey))),
+    joints: joints.map(({ fit: _, ...j }) => sortKeys(j)),
     meshIndex: Object.fromEntries(Object.keys(meshIndex).sort(byKey).map((k) => [k, sortKeys(meshIndex[k])])),
     attributions: [...used].sort(byKey).map((id) => {
-      const { name, licence, attribution, url, dois } = sources[id];
+      const { name, licence, attribution, url, dois, notice } = sources[id];
       const credited = dois ? [...(organs.get(id) ?? [])].filter((o) => dois[o]).sort(byKey).map((organ) => ({ doi: dois[organ], organ })) : [];
-      return { attribution, licence, name, source: id, url, ...(credited.length ? { dois: credited } : {}) };
+      return { attribution, licence, name, source: id, url, ...(credited.length ? { dois: credited } : {}), ...(notice ? { notice } : {}) };
     }),
   };
 }

@@ -39,3 +39,8 @@ sides:
     meshes:
       - bp3d:FJ1475
       - bp3d:FJ1499
+actions:
+  - joint: elbow-joint
+    role: flexion
+    source: holzbaur-2005
+    status: draft

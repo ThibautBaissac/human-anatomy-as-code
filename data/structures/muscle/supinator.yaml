@@ -37,3 +37,8 @@ sides:
       wikidata: Q66527670
     meshes:
       - bp3d:FJ1505
+actions:
+  - joint: radio-ulnar-joints
+    role: supination
+    source: holzbaur-2005
+    status: draft

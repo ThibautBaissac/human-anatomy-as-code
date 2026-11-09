@@ -1,0 +1,33 @@
+# Genou : flexion-extension en charnière (sans rotation automatique), la patella suit 0,85 × l'angle (Rajagopal 2016).
+# 0° = extension complète ; positif = flexion. `sides` et `restDeg` sont écrits par `npm run -w tools/assets fit-joints`.
+slug: knee-joint
+labels:
+  en: { text: knee joint, source: curated, status: draft }
+  fr: { text: articulation du genou, gender: f, number: sg, source: curated, status: draft }
+  la: { text: articulatio genus, gender: f, number: sg, source: curated, status: draft }
+motion: flexion-extension
+proximal: femur
+moving: [ tibia, fibula ]
+coupled:
+  - { bone: patella, ratio: 0.85 }
+rangeDeg: [ 0, 138 ]
+restDeg: 1.5
+sources: [ cdc-joint-rom, rajagopal-2016 ]
+status: draft
+fit:
+  # deux sphères sur les condyles fémoraux postérieurs (40 mm distaux, à partir de 10 mm devant le milieu de la région)
+  method: condyle-spheres
+  maxRmsMm: 3
+  positiveDirection: [ 0, 1, 0 ]
+  distalMm: 40
+  posteriorMm: -10
+  gapMm: 6
+sides:
+  left:
+    centre: [ 72.3, -72.4, 390.7 ]
+    axis: [ 0.9978, -0.0337, 0.0567 ]
+    rmsMm: 1.8
+  right:
+    centre: [ -72.2, -72.1, 390.7 ]
+    axis: [ 0.9969, 0.0543, -0.0574 ]
+    rmsMm: 1.8

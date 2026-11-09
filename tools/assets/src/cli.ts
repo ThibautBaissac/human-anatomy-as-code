@@ -5,6 +5,21 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildAssets, type AtlasInput } from './build-assets.ts';
 
+if (process.argv[2] === 'fit-joints') {
+  // assets fit-joints <dataDir> <objDir>
+  const [, dataDir, objDir] = process.argv.slice(2);
+  try {
+    const { fitJoints } = await import('./fit-joints.ts');
+    const r = fitJoints({ dataDir, objDir });
+    for (const m of r.measured) console.log(`mesuré : ${m}`);
+    for (const m of r.skipped) console.log(`ignoré (os sans mesh de ce côté) : ${m}`);
+    for (const m of r.refused) console.error(`refusé : ${m}`);
+    process.exit(r.refused.length ? 1 : 0);
+  } catch (e) {
+    console.error(`erreur : ${(e as Error).message}`);
+    process.exit(1);
+  }
+}
 const [buildDir, objDir, outDir, hraDir, importDir] = process.argv.slice(2);
 if (!buildDir || !objDir || !outDir) {
   console.error('usage: assets <buildDir> <objDir> <outDir> [<hraDir> <importDir>]');
@@ -17,7 +32,9 @@ try {
     ? { male: read('atlas-male.json'), female: read('atlas-female.json') }
     : { male: read('atlas.json') };
   const hra = hraDir && importDir ? { dir: hraDir, filesList: join(importDir, 'hra-files.yaml'), registration: join(importDir, 'hra-registration.yaml') } : undefined;
-  const manifest = await buildAssets({ atlases, objDir, hra, outDir });
+  // the same rig warning comes once per model: print it once
+  const warned = new Set<string>();
+  const manifest = await buildAssets({ atlases, objDir, hra, outDir, onWarning: (w) => { if (!warned.has(w)) { warned.add(w); console.warn(`avertissement : ${w}`); } } });
   for (const [kind, k] of Object.entries(manifest.kinds)) {
     console.log(`${kind.padEnd(16)} ${String(k.instances).padStart(5)} instances ${(k.bytes / 1e6).toFixed(1).padStart(6)} MB`);
   }

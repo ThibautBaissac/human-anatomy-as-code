@@ -41,3 +41,8 @@ sides:
         text: humeral head of right flexor carpi ulnaris
         source: fma
         status: draft
+actions:
+  - joint: elbow-joint
+    role: flexion
+    source: holzbaur-2005
+    status: draft

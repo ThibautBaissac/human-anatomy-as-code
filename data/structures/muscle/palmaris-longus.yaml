@@ -37,3 +37,8 @@ sides:
       wikidata: Q66527642
     meshes:
       - bp3d:FJ1502
+actions:
+  - joint: elbow-joint
+    role: flexion
+    source: holzbaur-2005
+    status: draft

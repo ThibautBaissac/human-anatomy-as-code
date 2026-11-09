@@ -41,3 +41,8 @@ sides:
       wikidata: Q66526979
     meshes:
       - bp3d:FJ1485
+actions:
+  - joint: elbow-joint
+    role: extension
+    source: holzbaur-2005
+    status: draft

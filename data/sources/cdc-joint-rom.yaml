@@ -1,0 +1,10 @@
+id: cdc-joint-rom
+name: CDC Normal Joint Range of Motion Study
+version: "2011"
+url: https://archive.cdc.gov/www_cdc_gov/ncbddd/jointrom/index.html
+licence: public-domain
+attribution: "CDC, Normal Joint Range of Motion Study (Soucie et al., Haemophilia 17:500-507, 2011), US government work, public domain"
+provides: [joints]
+notes: >-
+  Amplitudes articulaires des hommes de 20 à 44 ans (moyennes arrondies) : coude, avant-bras, genou.
+  doi:10.1111/j.1365-2516.2010.02399.x

@@ -1,0 +1,8 @@
+id: morrey-1981
+name: Morrey et al. 1981, functional elbow motion
+version: "1981"
+url: https://pubmed.ncbi.nlm.nih.gov/7240327/
+licence: citation
+attribution: "Morrey BF, Askew LJ, Chao EY. A biomechanical study of normal functional elbow motion. J Bone Joint Surg Am 63(6):872-877, 1981"
+provides: [joints]
+notes: "Arc fonctionnel du coude (30–130° de flexion), fait cité, sans donnée reprise."

@@ -124,6 +124,13 @@
           "$ref": "#/$defs/variant"
         }
       }
+    },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/action"
+      }
     }
   },
   "allOf": [
@@ -365,6 +372,36 @@
               }
             }
           }
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "joint",
+        "role",
+        "source",
+        "status"
+      ],
+      "properties": {
+        "joint": {
+          "$ref": "#/$defs/slug"
+        },
+        "role": {
+          "enum": [
+            "flexion",
+            "extension",
+            "pronation",
+            "supination"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
         }
       }
     }

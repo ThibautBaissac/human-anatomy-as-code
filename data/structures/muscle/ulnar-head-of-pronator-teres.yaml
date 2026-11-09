@@ -41,3 +41,8 @@ sides:
         text: ulnar head of right pronator teres
         source: fma
         status: draft
+actions:
+  - joint: radio-ulnar-joints
+    role: pronation
+    source: holzbaur-2005
+    status: draft

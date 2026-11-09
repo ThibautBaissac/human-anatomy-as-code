@@ -140,3 +140,12 @@ test('female-model structures (from the HRA import) are not reported as orphans 
   const report = run(d);
   assert.deepEqual(report.orphanedFiles, []);
 });
+
+test('muscle actions are curator data: a re-import keeps them on a draft structure', () => {
+  const d = fresh();
+  const actions = 'actions:\n  - joint: knee-joint\n    role: flexion\n    source: rajagopal-2016\n    status: draft\n';
+  const before = read(d, 'structures/bone/femur.yaml') + actions;
+  write(d, 'structures/bone/femur.yaml', before);
+  run(d);
+  assert.match(read(d, 'structures/bone/femur.yaml'), /actions:\n  - joint: knee-joint\n    role: flexion/);
+});

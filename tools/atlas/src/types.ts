@@ -54,6 +54,55 @@ export interface Structure {
   sides?: Record<Side, SideBlock>;
   meshes?: string[];
   variants?: { female?: Variant };
+  /** roles of a muscle in joint motions */
+  actions?: Action[];
+}
+
+export type Motion = 'flexion-extension' | 'pronation-supination';
+export type Role = 'flexion' | 'extension' | 'pronation' | 'supination';
+export const ROLES_OF: Record<Motion, Role[]> = {
+  'flexion-extension': ['flexion', 'extension'],
+  'pronation-supination': ['pronation', 'supination'],
+};
+
+export interface Action {
+  joint: string;
+  role: Role;
+  source: string;
+  status: Status;
+}
+
+export type Vec3 = [number, number, number];
+
+/** Centre and axis of one side of a joint, in mm, measured on our meshes. */
+export interface JointSide {
+  centre: Vec3;
+  axis: Vec3;
+  rmsMm: number;
+}
+
+/** An animatable joint: one degree of freedom around a measured axis. */
+export interface Joint {
+  slug: string;
+  labels: Labels;
+  motion: Motion;
+  /** fixed bone */
+  proximal: string;
+  /** bones that turn with the joint */
+  moving: string[];
+  /** bones that follow a fraction of the angle around the same axis */
+  coupled?: { bone: string; ratio: number }[];
+  /** joint whose transform applies first */
+  parent?: string;
+  rangeDeg: [number, number];
+  /** angle of the BodyParts3D pose */
+  restDeg: number;
+  functionalArcDeg?: [number, number];
+  sources: string[];
+  status: Status;
+  /** measurement parameters (fit-joints) */
+  fit: { method: 'cylinder-contact' | 'head-to-head' | 'condyle-spheres'; maxRmsMm: number; positiveDirection: Vec3; [param: string]: unknown };
+  sides?: Partial<Record<Side, JointSide>>;
 }
 
 export interface Source {
@@ -63,10 +112,12 @@ export interface Source {
   url: string;
   licence: string;
   attribution: string;
-  provides: ('meshes' | 'labels' | 'ids')[];
+  provides: ('meshes' | 'labels' | 'ids' | 'joints' | 'actions')[];
   meshPrefix?: string;
   meshPattern?: string;
   notes?: string;
   /** organ → DOI, credited per organ (HRA) */
   dois?: Record<string, string>;
+  /** licence notice to reproduce (MIT, BSD) */
+  notice?: string;
 }

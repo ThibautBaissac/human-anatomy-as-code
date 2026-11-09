@@ -46,7 +46,9 @@
         "enum": [
           "meshes",
           "labels",
-          "ids"
+          "ids",
+          "joints",
+          "actions"
         ]
       }
     },
@@ -67,6 +69,11 @@
         "type": "string",
         "pattern": "^10\\.\\d+/\\S+$"
       }
+    },
+    "notice": {
+      "type": "string",
+      "minLength": 1,
+      "description": "notice de licence à reproduire (MIT, BSD)"
     }
   },
   "if": {

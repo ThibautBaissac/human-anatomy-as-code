@@ -41,3 +41,8 @@ sides:
         text: lateral head of right triceps brachii
         source: fma
         status: draft
+actions:
+  - joint: elbow-joint
+    role: extension
+    source: holzbaur-2005
+    status: draft
