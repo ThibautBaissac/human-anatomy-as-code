@@ -5,7 +5,7 @@ import { createRequire } from 'node:module';
 import { parse } from 'yaml';
 import { Ajv2020 } from 'ajv/dist/2020.js';
 import { composeSideLabel } from './compose-side-label.ts';
-import type { Lang, Side, SideBlock, Source, Structure } from './types.ts';
+import { MODELS, type Lang, type Model, type Side, type SideBlock, type Source, type Structure } from './types.ts';
 
 export interface Diagnostic {
   file: string;
@@ -19,7 +19,7 @@ export interface CompiledSide extends Omit<SideBlock, 'labels'> {
   labels: Partial<Record<Lang, string>>;
 }
 
-export interface CompiledStructure extends Omit<Structure, 'layer' | 'sides'> {
+export interface CompiledStructure extends Omit<Structure, 'layer' | 'sides' | 'variants'> {
   layer: number | null;
   children: string[];
   sides?: Record<Side, CompiledSide>;
@@ -29,11 +29,14 @@ export interface Atlas {
   sources: Record<string, Source>;
   structures: CompiledStructure[];
   meshIndex: Record<string, { slug: string; side: Side | null }>;
-  attributions: { source: string; name: string; licence: string; attribution: string; url: string }[];
+  attributions: { source: string; name: string; licence: string; attribution: string; url: string; dois?: { organ: string; doi: string }[] }[];
 }
 
 export interface CompileResult {
+  /** the male atlas (kept for compatibility: atlas.json) */
   atlas: Atlas | null;
+  /** one atlas per model, structures and meshes resolved for that model */
+  atlases: Record<Model, Atlas> | null;
   errors: Diagnostic[];
   warnings: Diagnostic[];
 }
@@ -52,6 +55,46 @@ export function meshRefs(s: Structure): { ref: string; side: Side | null; pointe
   (s.meshes ?? []).forEach((ref, i) => out.push({ ref, side: null, pointer: `/meshes/${i}` }));
   for (const side of SIDES) {
     (s.sides?.[side]?.meshes ?? []).forEach((ref, i) => out.push({ ref, side, pointer: `/sides/${side}/meshes/${i}` }));
+  }
+  return out;
+}
+
+/** Mesh references of the female variant, with their pointers. */
+export function variantRefs(s: Structure): { ref: string; side: Side | null; pointer: string }[] {
+  const v = s.variants?.female;
+  const out: { ref: string; side: Side | null; pointer: string }[] = [];
+  (v?.meshes ?? []).forEach((ref, i) => out.push({ ref, side: null, pointer: `/variants/female/meshes/${i}` }));
+  for (const side of SIDES) (v?.sides?.[side]?.meshes ?? []).forEach((ref, i) => out.push({ ref, side, pointer: `/variants/female/sides/${side}/meshes/${i}` }));
+  return out;
+}
+
+/** Whether a structure exists in a model. */
+export function inModel(s: Structure, model: Model): boolean {
+  if (s.sex && s.sex !== model) return false;
+  return !(model === 'female' && s.variants?.female?.hidden);
+}
+
+/** Mesh references a structure shows in a model (variants applied), with the pointer they come from. */
+export function modelRefs(s: Structure, model: Model): { ref: string; side: Side | null; pointer: string }[] {
+  const base = meshRefs(s);
+  const v = model === 'female' ? s.variants?.female : undefined;
+  if (!v) return base;
+  const variant = variantRefs(s);
+  if (v.meshes) return [...variant.filter((r) => r.side === null), ...base.filter((r) => r.side !== null)];
+  const overridden = new Set(SIDES.filter((side) => v.sides?.[side]?.meshes));
+  return [...base.filter((r) => r.side === null || !overridden.has(r.side)), ...variant.filter((r) => r.side !== null)];
+}
+
+/** The structure as a model shows it: variant meshes applied, variants removed. */
+function resolveFor(s: Structure, model: Model): Structure {
+  const { variants, ...rest } = s;
+  const v = model === 'female' ? variants?.female : undefined;
+  if (!v) return rest;
+  const out: Structure = { ...rest };
+  if (v.meshes) out.meshes = [...v.meshes];
+  if (v.sides && out.sides) {
+    out.sides = { ...out.sides };
+    for (const side of SIDES) if (v.sides[side]?.meshes) out.sides[side] = { ...out.sides[side], meshes: [...v.sides[side]!.meshes!] };
   }
   return out;
 }
@@ -208,17 +251,40 @@ export function compileAtlas(dataDir: string): CompileResult {
     err(fileOf.get(first)!, '/parent', 'parent-cycle', `cycle de parents : ${cycle.join(' → ')} → ${cur}`);
   }
 
-  // 8-9. mesh references
-  const meshPatterns = new Map(Object.values(sources).filter((x) => x.meshPrefix).map((x) => [x.meshPrefix!, new RegExp(x.meshPattern!)]));
-  const meshOwner = new Map<string, string>();
+  // 7b. variants: only on structures in both models, shaped like the structure
   for (const { file, data } of structureFiles) {
-    for (const { ref, pointer } of meshRefs(data)) {
-      const [prefix, id] = ref.split(':');
+    const v = data.variants?.female;
+    if (!data.variants) continue;
+    if (data.sex) { err(file, '/variants', 'variant-shape', `une structure propre au modèle ${data.sex} n'a pas de variantes`); continue; }
+    if (!v) continue;
+    const bilateral = data.laterality === 'bilateral';
+    if (v.hidden && (v.meshes || v.sides)) err(file, '/variants/female', 'variant-shape', 'une variante masquée ne porte pas de meshes');
+    else if (bilateral && v.meshes) err(file, '/variants/female', 'variant-shape', 'une structure bilateral varie par côté (sides), pas à la racine');
+    else if (!bilateral && v.sides) err(file, '/variants/female', 'variant-shape', `une structure ${data.laterality} n'a pas de sides`);
+  }
+
+  // 8-9. mesh references (variants included); each mesh belongs to one structure per model
+  const meshPatterns = new Map(Object.values(sources).filter((x) => x.meshPrefix).map((x) => [x.meshPrefix!, new RegExp(x.meshPattern!)]));
+  for (const { file, data } of structureFiles) {
+    for (const { ref, pointer } of [...meshRefs(data), ...variantRefs(data)]) {
+      const [prefix, ...rest] = ref.split(':');
+      const id = rest.join(':');
       const pattern = meshPatterns.get(prefix);
       if (!pattern) err(file, pointer, 'mesh-ref', `préfixe de mesh « ${prefix} » inconnu du registre des sources`);
       else if (!pattern.test(id)) err(file, pointer, 'mesh-ref', `« ${id} » ne respecte pas le motif ${pattern.source}`);
-      if (meshOwner.has(ref)) err(file, pointer, 'mesh-unique', `mesh « ${ref} » déjà référencé par « ${meshOwner.get(ref)} »`);
-      else meshOwner.set(ref, data.slug);
+    }
+  }
+  const reportedDup = new Set<string>();
+  for (const model of MODELS) {
+    const meshOwner = new Map<string, string>();
+    for (const { file, data } of structureFiles) {
+      if (!inModel(data, model)) continue;
+      for (const { ref, pointer } of modelRefs(data, model)) {
+        if (!meshOwner.has(ref)) { meshOwner.set(ref, data.slug); continue; }
+        if (meshOwner.get(ref) === data.slug || reportedDup.has(`${file}${pointer}`)) continue;
+        reportedDup.add(`${file}${pointer}`);
+        err(file, pointer, 'mesh-unique', `mesh « ${ref} » déjà référencé par « ${meshOwner.get(ref)} » (modèle ${model})`);
+      }
     }
   }
 
@@ -256,32 +322,51 @@ export function compileAtlas(dataDir: string): CompileResult {
   const order = (a: Diagnostic, b: Diagnostic) => byKey(a.file, b.file) || byKey(a.pointer, b.pointer) || byKey(a.rule, b.rule);
   errors.sort(order);
   warnings.sort(order);
-  if (errors.length) return { atlas: null, errors, warnings };
+  if (errors.length) return { atlas: null, atlases: null, errors, warnings };
 
-  const structures = structureFiles.map((x) => x.data);
+  const all = structureFiles.map((x) => x.data);
+  const atlases = Object.fromEntries(MODELS.map((m) => [m, buildAtlas(all, m, sources)])) as Record<Model, Atlas>;
+  return { atlas: atlases.male, atlases, errors, warnings };
+}
+
+/** The atlas of one model: its structures, parents reattached past absent ones, its meshes and its credits. */
+function buildAtlas(all: Structure[], model: Model, sources: Record<string, Source>): Atlas {
+  const original = new Map(all.map((s) => [s.slug, s]));
+  const present = new Set(all.filter((s) => inModel(s, model)).map((s) => s.slug));
+  const structures = all.filter((s) => present.has(s.slug)).map((s) => {
+    const r = resolveFor(s, model);
+    let p = r.parent;
+    while (p !== undefined && !present.has(p)) p = original.get(p)?.parent;
+    if (p === undefined) delete r.parent; else r.parent = p;
+    return r;
+  });
   const children = new Map<string, string[]>();
   for (const s of structures) if (s.parent) children.set(s.parent, [...(children.get(s.parent) ?? []), s.slug]);
 
   const meshIndex: Atlas['meshIndex'] = {};
   const used = new Set<string>();
+  const organs = new Map<string, Set<string>>(); // source → organs whose meshes are shown
   const prefixToSource = new Map(Object.values(sources).filter((x) => x.meshPrefix).map((x) => [x.meshPrefix!, x.id]));
   for (const s of structures) {
     for (const { ref, side } of meshRefs(s)) {
       meshIndex[ref] = { slug: s.slug, side };
-      used.add(prefixToSource.get(ref.split(':')[0])!);
+      const [prefix, id] = ref.split(':');
+      const src = prefixToSource.get(prefix)!;
+      used.add(src);
+      if (sources[src].dois) organs.set(src, (organs.get(src) ?? new Set()).add(id.split('/')[0]));
     }
     const labelSets = [s.labels, ...SIDES.map((side) => s.sides?.[side]?.labels ?? {})];
     for (const set of labelSets) for (const l of Object.values(set)) if (l && l.source !== 'curated') used.add(l.source);
   }
 
-  const atlas: Atlas = {
+  return {
     sources: Object.fromEntries(Object.keys(sources).sort(byKey).map((k) => [k, sortKeys(sources[k])])),
     structures: structures.map((s) => compileStructure(s, (children.get(s.slug) ?? []).sort(byKey))),
     meshIndex: Object.fromEntries(Object.keys(meshIndex).sort(byKey).map((k) => [k, sortKeys(meshIndex[k])])),
     attributions: [...used].sort(byKey).map((id) => {
-      const { name, licence, attribution, url } = sources[id];
-      return { attribution, licence, name, source: id, url };
+      const { name, licence, attribution, url, dois } = sources[id];
+      const credited = dois ? [...(organs.get(id) ?? [])].filter((o) => dois[o]).sort(byKey).map((organ) => ({ doi: dois[organ], organ })) : [];
+      return { attribution, licence, name, source: id, url, ...(credited.length ? { dois: credited } : {}) };
     }),
   };
-  return { atlas, errors, warnings };
 }

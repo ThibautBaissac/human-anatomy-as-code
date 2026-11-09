@@ -45,6 +45,12 @@
     "status": {
       "$ref": "#/$defs/status"
     },
+    "sex": {
+      "enum": [
+        "male",
+        "female"
+      ]
+    },
     "parent": {
       "$ref": "#/$defs/slug"
     },
@@ -109,6 +115,15 @@
     },
     "meshes": {
       "$ref": "#/$defs/meshes"
+    },
+    "variants": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "female": {
+          "$ref": "#/$defs/variant"
+        }
+      }
     }
   },
   "allOf": [
@@ -314,6 +329,42 @@
         },
         "labels": {
           "$ref": "#/$defs/labels"
+        }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hidden": {
+          "const": true
+        },
+        "meshes": {
+          "$ref": "#/$defs/meshes"
+        },
+        "sides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "left": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "meshes": {
+                  "$ref": "#/$defs/meshes"
+                }
+              }
+            },
+            "right": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "meshes": {
+                  "$ref": "#/$defs/meshes"
+                }
+              }
+            }
+          }
         }
       }
     }

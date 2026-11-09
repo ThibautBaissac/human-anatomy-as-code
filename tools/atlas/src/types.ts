@@ -28,11 +28,23 @@ export interface SideBlock {
   labels?: Labels;
 }
 
+export type Model = 'male' | 'female';
+export const MODELS: Model[] = ['male', 'female'];
+
+/** How a shared structure differs in the female model: other meshes, or absent. */
+export interface Variant {
+  hidden?: true;
+  meshes?: string[];
+  sides?: Partial<Record<Side, { meshes?: string[] }>>;
+}
+
 export interface Structure {
   slug: string;
   kind: string;
   laterality: 'bilateral' | 'midline' | 'unpaired-left' | 'unpaired-right';
   status: Status;
+  /** only in this model; absent = in both */
+  sex?: Model;
   parent?: string;
   regions?: string[];
   layer?: number;
@@ -41,6 +53,7 @@ export interface Structure {
   ids?: Ids;
   sides?: Record<Side, SideBlock>;
   meshes?: string[];
+  variants?: { female?: Variant };
 }
 
 export interface Source {
@@ -54,4 +67,6 @@ export interface Source {
   meshPrefix?: string;
   meshPattern?: string;
   notes?: string;
+  /** organ → DOI, credited per organ (HRA) */
+  dois?: Record<string, string>;
 }

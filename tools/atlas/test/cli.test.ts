@@ -53,3 +53,12 @@ test('import-bp3d reports a missing input as a one-line error, without a stack t
   assert.doesNotMatch(r.stderr, /^\s+at /m);
   assert.match(r.stderr, /nonexistent/);
 });
+
+test('build also writes atlas-male.json and atlas-female.json next to atlas.json', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'atlas-out-'));
+  const out = join(dir, 'atlas.json');
+  const r = run('build', validDataset(), out);
+  assert.equal(r.status, 0, r.stderr);
+  assert.equal(readFileSync(join(dir, 'atlas-male.json'), 'utf8'), readFileSync(out, 'utf8'));
+  assert.equal(JSON.parse(readFileSync(join(dir, 'atlas-female.json'), 'utf8')).structures.length, 5);
+});

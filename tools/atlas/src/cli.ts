@@ -55,6 +55,11 @@ function main(argv: string[]): number {
     mkdirSync(dirname(args[1]), { recursive: true });
     writeFileSync(args[1], JSON.stringify(result.atlas, null, 2) + '\n');
     console.error(`écrit : ${args[1]} (${result.atlas.structures.length} structures)`);
+    for (const [model, atlas] of Object.entries(result.atlases!)) {
+      const path = join(dirname(args[1]), `atlas-${model}.json`);
+      writeFileSync(path, JSON.stringify(atlas, null, 2) + '\n');
+      console.error(`écrit : ${path} (${atlas.structures.length} structures)`);
+    }
     return 0;
   }
   if (cmd === 'coverage' && args.length === 1) {
