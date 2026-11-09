@@ -1,12 +1,12 @@
 /// <reference lib="webworker" />
 // Service worker: precaches the app shell only; models and data are cached at run time.
 import { CacheFirst, NetworkFirst, Serwist, type PrecacheEntry } from 'serwist';
-import { ASSETS_CACHE as ASSETS, DATA_CACHE as DATA, DATA_URLS, MANIFEST_URL, isModelPath, modelUrl } from './offline/urls.ts';
+import { ASSETS_CACHE as ASSETS, DATA_CACHE as DATA, MANIFEST_URL, isDataPath, isModelPath, modelUrl } from './offline/urls.ts';
 
 declare const self: ServiceWorkerGlobalScope & { __SW_MANIFEST: (PrecacheEntry | string)[] };
 
 const isModel = (url: URL) => url.origin === self.location.origin && isModelPath(url.pathname);
-const isData = (url: URL) => url.origin === self.location.origin && DATA_URLS.includes(url.pathname);
+const isData = (url: URL) => url.origin === self.location.origin && isDataPath(url.pathname);
 
 const serwist = new Serwist({
   precacheEntries: self.__SW_MANIFEST,

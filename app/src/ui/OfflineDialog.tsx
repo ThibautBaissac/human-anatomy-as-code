@@ -6,8 +6,8 @@ import { S } from './strings.ts';
 const IOS_HINT_KEY = 'haac.iosHintDismissed';
 const mb = (b: number) => (b / 1e6).toFixed(1).replace('.', ',');
 
-export function OfflineDialog({ open, onClose, supported, canInstall, install, iosHint }: {
-  open: boolean; onClose: () => void; supported: boolean; canInstall: boolean; install: () => void; iosHint: boolean;
+export function OfflineDialog({ open, onClose, supported, canInstall, install, iosHint, model }: {
+  open: boolean; onClose: () => void; supported: boolean; canInstall: boolean; install: () => void; iosHint: boolean; model: string;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   const [manifest, setManifest] = useState<AssetManifest | null>(null);
@@ -29,17 +29,18 @@ export function OfflineDialog({ open, onClose, supported, canInstall, install, i
     (async () => {
       const m = (await (await fetch('/assets/manifest.json')).json()) as AssetManifest;
       setManifest(m);
-      setStatus(await readStatus(m));
+      setStatus(await readStatus(m, m.models ? [model] : undefined));
     })().catch(() => setError(S.offlineReadError));
-  }, [open, supported]);
+  }, [open, supported, model]);
 
-  const download = async () => {
+  const download = async (models: string[]) => {
     if (!manifest || busy.current) return; // one download at a time, even on repeated clicks
     busy.current = true;
     setError(null);
     setProgress([0, manifest.totalBytes]);
     try {
-      setStatus(await makeAvailableOffline(manifest, (d, t) => setProgress([d, t])));
+      await makeAvailableOffline(manifest, manifest.models ? models : undefined, (d, t) => setProgress([d, t]));
+      setStatus(await readStatus(manifest, manifest.models ? [model] : undefined));
     } catch (e) {
       if (e instanceof DownloadError) setStatus(e.status);
       setError(e instanceof NoControllerError ? S.offlineNoController : S.offlineDownloadError);
@@ -70,7 +71,8 @@ export function OfflineDialog({ open, onClose, supported, canInstall, install, i
           )}
           {error && <p role="alert" className="error">{error}</p>}
           <div className="dialog-actions">
-            <button type="button" onClick={download} disabled={!manifest || !!progress || status?.state === 'complete'}>{S.makeOffline}</button>
+            <button type="button" onClick={() => download([model])} disabled={!manifest || !!progress || status?.state === 'complete'}>{manifest?.models ? S.offlineThisModel(model) : S.makeOffline}</button>
+            {manifest?.models && <button type="button" onClick={() => download(Object.keys(manifest.models!))} disabled={!manifest || !!progress}>{S.offlineBothModels}</button>}
             {canInstall && <button type="button" onClick={install}>{S.install}</button>}
           </div>
           {iosHint && !hideIos && (

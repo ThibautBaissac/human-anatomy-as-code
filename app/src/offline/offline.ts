@@ -13,9 +13,9 @@ async function cachedUrls(): Promise<string[]> {
   return out;
 }
 
-export async function readStatus(manifest: AssetManifest): Promise<OfflineStatus> {
+export async function readStatus(manifest: AssetManifest, models?: string[]): Promise<OfflineStatus> {
   const persisted = (await navigator.storage?.persisted?.().catch(() => false)) ?? false;
-  return offlineStatus(manifest, await cachedUrls(), persisted);
+  return offlineStatus(manifest, await cachedUrls(), persisted, models);
 }
 
 export class NoControllerError extends Error {}
@@ -34,13 +34,13 @@ export class DownloadError extends Error {
 }
 
 /** Asks for persistent storage, then fetches every missing file through the service worker, two at a time. */
-export async function makeAvailableOffline(manifest: AssetManifest, onProgress: (done: number, total: number) => void): Promise<OfflineStatus> {
+export async function makeAvailableOffline(manifest: AssetManifest, models: string[] | undefined, onProgress: (done: number, total: number) => void): Promise<OfflineStatus> {
   await controlled();
   await navigator.storage?.persist?.().catch(() => false);
-  const before = await readStatus(manifest);
+  const before = await readStatus(manifest, models);
   const sizes = new Map(Object.values(manifest.kinds).map((k) => [modelUrl(k.file), k.bytes]));
   let done = before.cachedBytes;
-  onProgress(done, manifest.totalBytes);
+  onProgress(done, before.totalBytes);
   const queue = [...before.missing];
   const fetched: string[] = [];
   let failed = false;
@@ -52,7 +52,7 @@ export async function makeAvailableOffline(manifest: AssetManifest, onProgress: 
         await res.arrayBuffer();
         fetched.push(url);
         done += sizes.get(url) ?? 0;
-        onProgress(done, manifest.totalBytes);
+        onProgress(done, before.totalBytes);
       } catch {
         failed = true;
       }
@@ -61,7 +61,7 @@ export async function makeAvailableOffline(manifest: AssetManifest, onProgress: 
   await Promise.all([worker(), worker()]);
   // The service worker stores a response after handing it over: count what was fetched, not only what the cache lists yet.
   const persisted = (await navigator.storage?.persisted?.().catch(() => false)) ?? false;
-  const after = offlineStatus(manifest, [...(await cachedUrls()), ...fetched], persisted);
+  const after = offlineStatus(manifest, [...(await cachedUrls()), ...fetched], persisted, models);
   if (failed || after.state !== 'complete') throw new DownloadError(after);
   return after;
 }

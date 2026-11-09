@@ -13,6 +13,7 @@ const round = (n: number) => Math.round(n);
 
 export function encodeView(v: ViewState): string {
   const p: string[] = [];
+  if (v.model === 'female') p.push('sex=f');
   if (v.selection) p.push(`sel=${v.selection.slug}${v.selection.side ? `@${v.selection.side}` : ''}`);
   if (v.layerCut) p.push(`layer=${v.layerCut}`);
   if (v.ghost) p.push('ghost=1');
@@ -27,6 +28,9 @@ export function encodeView(v: ViewState): string {
 export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState> {
   const params = new URLSearchParams(hash.replace(/^#/, ''));
   const out: Partial<ViewState> = {};
+  const sex = params.get('sex');
+  if (sex === 'f') out.model = 'female';
+  else if (sex === 'm') out.model = 'male';
 
   const sel = params.get('sel');
   if (sel) {

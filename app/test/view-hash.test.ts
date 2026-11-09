@@ -13,10 +13,10 @@ test('every parameter round-trips', () => {
   const v: ViewState = {
     selection: { slug: 'femur', side: 'left' }, layerCut: 2, ghost: true, hiddenKinds: ['muscle', 'skin'],
     sections: { axial: 0.625, sagittal: 0.5 }, lang: 'la',
-    camera: { position: [100, -900, 1200], target: [0, 0, 1000] },
+    camera: { position: [100, -900, 1200], target: [0, 0, 1000] }, model: 'female',
   };
   const hash = encodeView(v);
-  assert.equal(hash, 'sel=femur@left&layer=2&ghost=1&hide=muscle,skin&cut=axial:0.625,sagittal:0.500&lang=la&cam=100,-900,1200,0,0,1000');
+  assert.equal(hash, 'sex=f&sel=femur@left&layer=2&ghost=1&hide=muscle,skin&cut=axial:0.625,sagittal:0.500&lang=la&cam=100,-900,1200,0,0,1000');
   assert.deepEqual(decodeView(hash, ctx), v);
 });
 

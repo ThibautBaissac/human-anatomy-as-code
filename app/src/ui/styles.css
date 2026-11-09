@@ -7,8 +7,8 @@
 html, body, #root { margin: 0; height: 100%; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.app { display: grid; height: 100%; grid-template-columns: 300px 1fr 320px; grid-template-rows: auto 1fr auto auto;
-  grid-template-areas: 'header header header' 'sidebar stage info' 'controls controls controls' 'status status status'; }
+.app { display: grid; height: 100%; grid-template-columns: 300px 1fr 320px; grid-template-rows: auto auto 1fr auto auto;
+  grid-template-areas: 'header header header' 'notice notice notice' 'sidebar stage info' 'controls controls controls' 'status status status'; }
 .header { grid-area: header; display: flex; gap: 1rem; align-items: center; padding: .5rem 1rem; background: var(--panel); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
 .header h1 { font-size: 1.05rem; margin: 0; }
 .search { position: relative; display: flex; gap: .5rem; align-items: center; flex: 1; min-width: 16rem; }
@@ -60,8 +60,12 @@ button.link { background: none; border: 0; padding: 0; color: var(--accent); tex
 .dialog progress { width: 14rem; vertical-align: middle; }
 .ios-hint { margin-top: .75rem; padding: .5rem .75rem; background: var(--badge-bg); color: var(--badge-fg); border: 1px solid #c99a3c; border-radius: 4px; }
 .error { color: #a40000; font-weight: 600; }
+.female-notice { grid-area: notice; display: flex; flex-wrap: wrap; gap: .4rem 1rem; align-items: center; padding: .4rem 1rem; background: #f3eefb; border-bottom: 1px solid #c8b8e6; color: #2f2350; font-size: .9rem; }
+.female-notice p { margin: 0; flex: 1 1 30rem; }
+.female-notice button { font: inherit; }
+.dois { padding-inline-start: 1.1rem; font-size: .9rem; }
 /* Phone layout: 3D on top, tabs below. */
-.app.is-narrow { grid-template-columns: 1fr; grid-template-rows: auto 50dvh 1fr auto; grid-template-areas: 'header' 'stage' 'tabs' 'status'; }
+.app.is-narrow { grid-template-columns: 1fr; grid-template-rows: auto auto 50dvh 1fr auto; grid-template-areas: 'header' 'notice' 'stage' 'tabs' 'status'; }
 .app.is-narrow .header { gap: .4rem .75rem; }
 .app.is-narrow .header h1 { font-size: .95rem; }
 .app.is-narrow .search { order: 10; flex-basis: 100%; }

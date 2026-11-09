@@ -16,7 +16,7 @@ export default defineConfig({
   },
   projects: [
     { name: 'webgpu', metadata: { query: '' }, testIgnore: /mobile/ },
-    { name: 'webgl', metadata: { query: '?backend=webgl' }, testIgnore: /mobile|offline/ },
+    { name: 'webgl', metadata: { query: '?backend=webgl' }, testIgnore: /mobile|offline|female/ },
     // Phone emulation (touch, narrow viewport), WebGL2 like a phone without WebGPU.
     { name: 'mobile', metadata: { query: '?backend=webgl' }, testMatch: /mobile/, use: { ...devices['Pixel 7'], channel: 'chrome' } },
   ],

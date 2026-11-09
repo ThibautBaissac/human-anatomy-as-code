@@ -8,13 +8,15 @@ import { acceleratedRaycast, computeBatchedBoundsTree } from 'three-mesh-bvh';
 import { appearance, type AppearanceState } from './appearance.ts';
 import { buildCatalog, type Catalog } from './catalog.ts';
 import { colorOf, HIGHLIGHT } from './colors.ts';
-import { AXES, DEFAULT_VIEW, type Atlas, type Axis, type Camera, type Selection, type Side, type ViewState } from './types.ts';
+import { AXES, DEFAULT_VIEW, type Atlas, type Axis, type Camera, type Model, type Selection, type Side, type ViewState } from './types.ts';
 
 THREE.BatchedMesh.prototype.raycast = acceleratedRaycast;
 (THREE.BatchedMesh.prototype as unknown as { computeBoundsTree: typeof computeBatchedBoundsTree }).computeBoundsTree = computeBatchedBoundsTree;
 
 export interface Manifest {
   kinds: Record<string, { file: string; bytes: number; sha256: string; instances: number }>;
+  /** files (kind keys) each model needs */
+  models?: Record<string, { kinds: string[]; totalBytes: number }>;
 }
 
 export interface ViewerEvents {
@@ -44,6 +46,9 @@ interface Batch {
   alpha: Float32Array;
   /** picking index built (deferred after the first frame) */
   bvh: boolean;
+  /** per batch instance: node name (slug or slug@side) and mesh references */
+  names: string[];
+  meshes: string[][];
 }
 
 /** Section planes; each keeps the side n·p + c ≥ 0 (axial keeps below, coronal keeps behind, sagittal keeps the left half). */
@@ -143,22 +148,32 @@ export class Viewer {
   markLoadStart(): void { this.loadStart = performance.now(); }
   private loadStart: number | null = null;
 
-  async load(atlas: Atlas, manifest: Manifest, baseUrl: string): Promise<void> {
+  /**
+   * Loads (or switches to) a model: keeps the batches of files it shares with the current one,
+   * loads the missing files, drops the others, then rebuilds the catalog against the model's atlas.
+   */
+  async load(atlas: Atlas, manifest: Manifest, baseUrl: string, model: Model = 'male'): Promise<void> {
     const t0 = this.loadStart ?? performance.now();
-    this.atlas = atlas;
+    this.loadStart = null;
+    const needed = (manifest.models?.[model]?.kinds ?? Object.keys(manifest.kinds)).slice().sort();
+    for (const b of this.batches.filter((x) => !needed.includes(x.kind))) {
+      this.clip.remove(b.mesh);
+      b.mesh.dispose();
+      b.material.dispose();
+    }
+    this.batches = this.batches.filter((x) => needed.includes(x.kind));
+    const missing = needed.filter((k) => !this.batches.some((b) => b.kind === k));
     const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
-    const kinds = Object.keys(manifest.kinds).sort();
     let loaded = 0;
-    this.emitChange({ loading: { loaded, total: kinds.length } });
-    const results = await Promise.allSettled(kinds.map(async (kind) => {
+    this.emitChange({ loading: { loaded, total: missing.length }, ready: false });
+    const results = await Promise.allSettled(missing.map(async (kind) => {
       const gltf = await loader.loadAsync(`${baseUrl}${manifest.kinds[kind].file}`);
-      this.emitChange({ loading: { loaded: ++loaded, total: kinds.length } });
+      this.emitChange({ loading: { loaded: ++loaded, total: missing.length } });
       return { kind, gltf };
     }));
     const failedKinds: string[] = [];
-    const names: string[] = [];
     for (const [i, r] of results.entries()) {
-      if (r.status === 'rejected') { failedKinds.push(kinds[i]); console.error(`[viewer] ${kinds[i]}:`, r.reason); continue; }
+      if (r.status === 'rejected') { failedKinds.push(missing[i]); console.error(`[viewer] ${missing[i]}:`, r.reason); continue; }
       const { kind, gltf } = r.value;
       gltf.scene.updateMatrixWorld(true);
       const meshes: THREE.Mesh[] = [];
@@ -168,28 +183,48 @@ export class Viewer {
       const material = new THREE.MeshStandardNodeMaterial({ color: 0xffffff, roughness: 0.6, metalness: 0 });
       const mesh = new THREE.BatchedMesh(meshes.length, vCount, iCount, material);
       mesh.name = kind;
-      const batch: Batch = { kind, mesh, material, globalOf: [], alpha: new Float32Array(meshes.length).fill(1), bvh: false };
+      const batch: Batch = { kind, mesh, material, globalOf: [], alpha: new Float32Array(meshes.length).fill(1), bvh: false, names: [], meshes: [] };
       for (const m of meshes) {
         const id = mesh.addInstance(mesh.addGeometry(m.geometry));
         mesh.setMatrixAt(id, m.matrixWorld);
-        const global = names.length;
-        names.push(m.parent && m.parent !== gltf.scene && m.name === '' ? m.parent.name : m.name);
-        batch.globalOf[id] = global;
-        this.location[global] = [batch, id];
+        const node = m.parent && m.parent !== gltf.scene && m.name === '' ? m.parent : m;
+        batch.names[id] = node.name;
+        batch.meshes[id] = (node.userData?.meshes as string[] | undefined) ?? [];
         m.geometry.dispose();
       }
       this.clip.add(mesh);
       this.batches.push(batch);
     }
-    this.catalog = buildCatalog(atlas, names);
+    this.batches.sort((a, b) => (a.kind < b.kind ? -1 : a.kind > b.kind ? 1 : 0));
+    // global instance indices, in file then node order
+    this.location = [];
+    const loadedInstances: { name: string; meshes: string[] }[] = [];
+    for (const b of this.batches) {
+      b.globalOf = [];
+      b.names.forEach((name, id) => { b.globalOf[id] = loadedInstances.length; this.location.push([b, id]); loadedInstances.push({ name, meshes: b.meshes[id] }); });
+    }
+    this.atlas = atlas;
+    this.catalog = buildCatalog(atlas, loadedInstances);
+    this.view = { ...this.view, model };
+    // a selection that does not exist in this model is cleared
+    if (this.view.selection && !atlas.structures.some((x) => x.slug === this.view.selection!.slug)) {
+      this.view = { ...this.view, selection: null };
+      this.emit('select', null);
+    }
     this.box.setFromObject(this.clip);
     this.loadT0 = t0;
     this.awaitingFirstFrame = true;
-    if (!this.view.camera) this.frameAll();
+    this.pickReadyMs = 0;
+    if (!this.view.camera && !this.snapshot.ready && !this.everLoaded) this.frameAll();
+    this.everLoaded = true;
+    this.sectionsApplied = null;
     this.applySections();
     this.applyAppearance();
     this.emitChange({ loading: null, failedKinds, ready: true });
   }
+  private everLoaded = false;
+  /** whether cut-face materials are set up (null: to be (re)applied to every batch) */
+  private sectionsApplied: boolean | null = null;
 
   // --- state --------------------------------------------------------------------------
   getState(): ViewState {
@@ -273,8 +308,11 @@ export class Viewer {
     }
     this.clip.clippingPlanes = active.map((a) => this.planes[a]);
     const capped = active.length > 0;
+    // after a (re)load every batch gets its cut-face material state, not only those whose state changes
+    const force = this.sectionsApplied === null;
+    this.sectionsApplied = capped;
     for (const b of this.batches) {
-      if ((b.material.side === THREE.DoubleSide) === capped) continue;
+      if ((b.material.side === THREE.DoubleSide) === capped && !force) continue;
       const k = new THREE.Color(colorOf(b.kind));
       b.material.side = capped ? THREE.DoubleSide : THREE.FrontSide;
       // Cut faces: back faces drawn flat in a darker tint of the kind colour.

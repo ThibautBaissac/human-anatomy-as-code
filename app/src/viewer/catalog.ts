@@ -12,6 +12,8 @@ export interface InstanceInfo {
   side: Side | null;
   kind: string;
   layer: number;
+  /** false when none of its meshes belongs to the displayed model (e.g. male geometry in a shared file) */
+  inModel: boolean;
 }
 
 export interface Catalog {
@@ -31,15 +33,18 @@ export interface Catalog {
 
 const byKey = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 
-export function buildCatalog(atlas: Atlas, instanceNames: string[]): Catalog {
+export function buildCatalog(atlas: Atlas, loaded: (string | { name: string; meshes: string[] })[]): Catalog {
   const structures = new Map(atlas.structures.map((s) => [s.slug, s]));
-  const instances: InstanceInfo[] = instanceNames.map((name, index) => {
+  const instances: InstanceInfo[] = loaded.map((entry, index) => {
+    const { name, meshes } = typeof entry === 'string' ? { name: entry, meshes: undefined } : entry;
     const [slug, side] = name.split('@') as [string, Side | undefined];
     const s = structures.get(slug);
-    return { index, name, slug, side: side ?? null, kind: s?.kind ?? 'organ', layer: s?.layer ?? 0 };
+    // an atlas without mesh index (hand-written fixtures) shows every instance of its structures
+    const inModel = !!s && (!meshes || Object.keys(atlas.meshIndex).length === 0 || meshes.some((m) => m in atlas.meshIndex));
+    return { index, name, slug, side: side ?? null, kind: s?.kind ?? 'organ', layer: s?.layer ?? 0, inModel };
   });
   const own = new Map<string, number[]>();
-  for (const i of instances) own.set(i.slug, [...(own.get(i.slug) ?? []), i.index]);
+  for (const i of instances) if (i.inModel) own.set(i.slug, [...(own.get(i.slug) ?? []), i.index]);
 
   const children = new Map<string, string[]>();
   const parent = new Map<string, string>();
@@ -62,8 +67,9 @@ export function buildCatalog(atlas: Atlas, instanceNames: string[]): Catalog {
     return out.sort((a, b) => a - b);
   };
 
-  const kinds = [...new Set(instances.map((i) => i.kind))].sort(byKey);
-  const maxLayer = Math.max(0, ...instances.map((i) => i.layer));
+  const shown = instances.filter((i) => i.inModel);
+  const kinds = [...new Set(shown.map((i) => i.kind))].sort(byKey);
+  const maxLayer = Math.max(0, ...shown.map((i) => i.layer));
 
   return {
     structure: (slug) => structures.get(slug),

@@ -7,8 +7,8 @@ import { ATLAS, INSTANCES } from './fixture.ts';
 const cat = buildCatalog(ATLAS, INSTANCES);
 
 test('catalog: each instance knows its structure, side, kind and layer', () => {
-  assert.deepEqual(cat.instance(1), { index: 1, name: 'femur@right', slug: 'femur', side: 'right', kind: 'bone', layer: 5 });
-  assert.deepEqual(cat.instance(2), { index: 2, name: 'heart', slug: 'heart', side: null, kind: 'organ', layer: 4 });
+  assert.deepEqual(cat.instance(1), { index: 1, name: 'femur@right', slug: 'femur', side: 'right', kind: 'bone', layer: 5, inModel: true });
+  assert.deepEqual(cat.instance(2), { index: 2, name: 'heart', slug: 'heart', side: null, kind: 'organ', layer: 4, inModel: true });
 });
 
 test('catalog: instances of a structure, of one side, and of a group through its descendants', () => {

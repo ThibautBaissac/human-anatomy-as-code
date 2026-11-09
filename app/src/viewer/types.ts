@@ -2,6 +2,7 @@
 export type Lang = 'fr' | 'en' | 'la';
 export type Side = 'left' | 'right';
 export type Axis = 'axial' | 'coronal' | 'sagittal';
+export type Model = 'male' | 'female';
 export const AXES: Axis[] = ['axial', 'coronal', 'sagittal'];
 export const LANGS: Lang[] = ['fr', 'en', 'la'];
 
@@ -34,12 +35,13 @@ export interface AtlasStructure {
   ids?: Record<string, unknown>;
   meshes?: string[];
   sides?: Record<Side, AtlasSide>;
+  sex?: Model;
 }
 
 export interface Atlas {
   structures: AtlasStructure[];
   meshIndex: Record<string, { slug: string; side: Side | null }>;
-  attributions: { source: string; name: string; licence: string; attribution: string; url: string }[];
+  attributions: { source: string; name: string; licence: string; attribution: string; url: string; dois?: { organ: string; doi: string }[] }[];
 }
 
 export interface Selection {
@@ -61,8 +63,9 @@ export interface ViewState {
   sections: Partial<Record<Axis, number>>;
   lang: Lang;
   camera: Camera | null;
+  model: Model;
 }
 
 export const DEFAULT_VIEW: ViewState = {
-  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], sections: {}, lang: 'fr', camera: null,
+  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], sections: {}, lang: 'fr', camera: null, model: 'male',
 };

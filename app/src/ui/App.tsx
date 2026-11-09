@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { buildSearchIndex, structureName } from '../viewer/search.ts';
-import { LANGS, type Lang, type Selection } from '../viewer/types.ts';
+import { LANGS, type Lang, type Model, type Selection } from '../viewer/types.ts';
 import { InfoPanel } from './InfoPanel.tsx';
 import { OfflineDialog } from './OfflineDialog.tsx';
 import { Bench } from './Bench.tsx';
+import { FemaleNotice } from './FemaleNotice.tsx';
 import { Search } from './Search.tsx';
 import { Tabs } from './Tabs.tsx';
 import { Toolbar } from './Toolbar.tsx';
@@ -15,7 +16,7 @@ import { useViewer } from './useViewer.ts';
 import { S } from './strings.ts';
 
 export function App() {
-  const { canvasRef, viewer, snapshot, error, selectAndFocus } = useViewer();
+  const { canvasRef, viewer, snapshot, error, notice, selectAndFocus, switchModel } = useViewer();
   const pwa = usePwa();
   const narrow = useNarrow();
   const { view, ready, loading, failedKinds } = snapshot;
@@ -47,6 +48,12 @@ export function App() {
         <h1>{S.appTitle}</h1>
         {index && <Search index={index} lang={view.lang} onSelect={pick} />}
         <label className="lang">
+          {S.modelLabel}
+          <select value={view.model} onChange={(e) => switchModel(e.target.value as Model)} disabled={!ready}>
+            {(['male', 'female'] as Model[]).map((m) => <option key={m} value={m}>{S.models[m]}</option>)}
+          </select>
+        </label>
+        <label className="lang">
           {S.nameLang}
           <select value={view.lang} onChange={(e) => viewer?.setState({ lang: e.target.value as Lang })}>
             {LANGS.map((l) => <option key={l} value={l}>{S.langs[l]}</option>)}
@@ -55,6 +62,7 @@ export function App() {
         <span role="status" className={pwa.online ? 'visually-hidden' : 'offline-tag'}>{pwa.online ? '' : S.offlineTag}</span>
         <button ref={offlineButton} type="button" onClick={() => setOfflineOpen(true)}>{S.offlineButton}</button>
       </header>
+      {view.model === 'female' && <FemaleNotice atlas={atlas} />}
       <main className="stage">
         <canvas ref={canvasRef} className="canvas" role="img" aria-label={S.canvasLabel} aria-describedby="canvas-help" />
         <p id="canvas-help" className="visually-hidden">{S.canvasHelp}</p>
@@ -78,11 +86,11 @@ export function App() {
         <span className="credits">{S.credits} : {atlas?.attributions.map((a) => a.name).join(', ')} · {snapshot.backend ?? ''}</span>
       </footer>
       <div role="status" aria-live="polite" className="visually-hidden" data-testid="announce">
-        {view.selection ? S.selected(nameOf(view.selection)) : ready ? S.cleared : ''}
+        {notice ?? (view.selection ? S.selected(nameOf(view.selection)) : ready ? S.cleared : '')}
       </div>
       {viewer && ready && new URLSearchParams(location.search).has('bench') && <Bench viewer={viewer} />}
       <OfflineDialog open={offlineOpen} onClose={() => { setOfflineOpen(false); offlineButton.current?.focus(); }}
-        supported={pwa.supported} canInstall={pwa.canInstall} install={pwa.install} iosHint={pwa.iosHint} />
+        supported={pwa.supported} canInstall={pwa.canInstall} install={pwa.install} iosHint={pwa.iosHint} model={view.model} />
     </div>
   );
 }
