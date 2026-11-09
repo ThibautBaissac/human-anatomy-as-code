@@ -25,3 +25,6 @@ ids:
   wikidata: Q5259911
 meshes:
   - bp3d:FJ2810
+variants:
+  female:
+    hidden: true

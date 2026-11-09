@@ -1,0 +1,18 @@
+slug: abdominal-ostium-of-uterine-tube
+kind: organ
+laterality: midline
+status: draft
+sex: female
+parent: uterus
+labels:
+  en:
+    text: abdominal ostium of uterine tube
+    source: hra
+    status: draft
+ids:
+  fma: 77049
+  ta2: 3487
+  ta98: A09.1.02.002
+  wikidata: Q7107684
+meshes:
+  - hra:uterus-female/VH_F_abdominal_ostium_of_uterine_tube

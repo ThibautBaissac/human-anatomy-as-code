@@ -1,0 +1,16 @@
+slug: anterior-wall-of-uterus
+kind: organ
+laterality: midline
+status: draft
+sex: female
+parent: uterus
+labels:
+  en:
+    text: anterior wall of uterus
+    source: hra
+    status: draft
+ids:
+  fma: 224876
+  wikidata: Q66594315
+meshes:
+  - hra:uterus-female/VH_F_anterior_wall_of_uterus

@@ -1,0 +1,16 @@
+slug: internal-cervical-os
+kind: organ
+laterality: midline
+status: draft
+sex: female
+parent: uterine-cervix
+labels:
+  en:
+    text: internal cervical os
+    source: hra
+    status: draft
+ids:
+  uberon: "0013759"
+  wikidata: Q66508555
+meshes:
+  - hra:uterus-female/VH_F_internal_cervical_os

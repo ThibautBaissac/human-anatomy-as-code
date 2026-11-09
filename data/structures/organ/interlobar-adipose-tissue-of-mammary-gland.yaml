@@ -1,0 +1,25 @@
+slug: interlobar-adipose-tissue-of-mammary-gland
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: mammary-gland
+layer: 1
+labels:
+  en:
+    text: interlobar adipose tissue of mammary gland
+    source: hra
+    status: draft
+ids:
+  wikidata: Q66554719
+sides:
+  left:
+    ids:
+      fma: 73166
+    meshes:
+      - hra:mammary-gland-female-left/VH_F_fat_L
+  right:
+    ids:
+      fma: 73165
+    meshes:
+      - hra:mammary-gland-female-right/VH_F_fat_R

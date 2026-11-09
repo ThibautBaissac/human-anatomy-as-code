@@ -1,0 +1,22 @@
+slug: main-lactiferous-duct
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: mammary-gland
+layer: 1
+labels:
+  en:
+    text: main lactiferous duct
+    source: hra
+    status: draft
+ids:
+  uberon: "0015134"
+  wikidata: Q66558287
+sides:
+  left:
+    meshes:
+      - hra:mammary-gland-female-left/VH_F_main_lactiferous_ducts_L
+  right:
+    meshes:
+      - hra:mammary-gland-female-right/VH_F_main_lactiferous_ducts_R

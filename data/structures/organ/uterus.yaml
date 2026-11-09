@@ -1,0 +1,24 @@
+slug: uterus
+kind: organ
+laterality: midline
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: uterus
+    source: hra
+    status: draft
+  fr:
+    text: utérus
+    source: wikidata
+    status: draft
+  la:
+    text: Uterus
+    source: wikidata
+    status: draft
+ids:
+  ta2: 3500
+  ta98: A09.1.03.001
+  uberon: "0000995"
+  wikidata: Q9612

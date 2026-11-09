@@ -2,7 +2,7 @@
 import { Document, isMap, isScalar, YAMLMap, type Pair } from 'yaml';
 import type { Labels, Side, Structure } from '../types.ts';
 
-export const KEY_ORDER = ['slug', 'kind', 'laterality', 'status', 'parent', 'regions', 'layer', 'aliases', 'labels', 'ids', 'sides', 'meshes'];
+export const KEY_ORDER = ['slug', 'kind', 'laterality', 'status', 'sex', 'parent', 'regions', 'layer', 'aliases', 'labels', 'ids', 'sides', 'meshes', 'variants'];
 const LABEL_KEY_ORDER = ['text', 'gender', 'number', 'source', 'status', 'synonyms', 'description'];
 const IDS_ORDER = ['fma', 'ta2', 'ta98', 'uberon', 'wikidata'];
 /** ids keys the import computes; any other key (uberon) belongs to curators. */
@@ -47,7 +47,7 @@ function equal(a: unknown, b: unknown): boolean {
 const keyOf = (p: Pair) => (isScalar(p.key) ? String(p.key.value) : String(p.key));
 
 /** Sets a key, replacing the value only when it differs, inserting new keys at their canonical position. */
-function setOrdered(doc: Document, map: YAMLMap, key: string, value: unknown, order: string[]): void {
+export function setOrdered(doc: Document, map: YAMLMap, key: string, value: unknown, order: string[]): void {
   const i = map.items.findIndex((p) => keyOf(p as Pair) === key);
   if (value === undefined) {
     if (i >= 0) map.items.splice(i, 1);

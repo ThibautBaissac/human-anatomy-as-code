@@ -1,0 +1,29 @@
+slug: cardinal-ligament
+kind: ligament
+laterality: bilateral
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: cardinal ligament
+    source: hra
+    status: draft
+  fr:
+    text: Ligament de Mackenrodt
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 77064
+  ta2: 3839
+  ta98: A09.1.03.031
+  wikidata: Q2354409
+sides:
+  left:
+    meshes:
+      - hra:united-female/VH_F_left_cardinal_ligament_of_uterus
+  right:
+    meshes:
+      - hra:united-female/VH_F_right_cardinal_ligament_of_uterus

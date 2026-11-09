@@ -128,3 +128,15 @@ test('a CSV without the expected columns is rejected with a clear error', () => 
   writeFileSync(csv, 'item,fmaid,fr\nhttp://www.wikidata.org/entity/Q1,1,x\n');
   assert.throws(() => importBp3d({ bp3dDir: join(FIX, 'bp3d'), wikidataCsv: csv, dataDir: d, overrides: OVERRIDES }), /colonne.*fma/);
 });
+
+test('female-model structures (from the HRA import) are not reported as orphans by the BodyParts3D import', () => {
+  const d = writeDataset({
+    ...sources,
+    'structures/organ/uterus.yaml': {
+      slug: 'uterus', kind: 'organ', laterality: 'midline', status: 'draft', sex: 'female',
+      labels: { en: { text: 'uterus', source: 'curated', status: 'draft' } },
+    },
+  });
+  const report = run(d);
+  assert.deepEqual(report.orphanedFiles, []);
+});

@@ -1,0 +1,22 @@
+slug: fimbria-of-uterine-tube
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: uterine-tube
+labels:
+  en:
+    text: fimbria of uterine tube
+    source: hra
+    status: draft
+sides:
+  left:
+    ids:
+      fma: 18498
+    meshes:
+      - hra:fallopian-tube-female-left/VH_F_fibria_of_uterine_tube_L
+  right:
+    ids:
+      fma: 18497
+    meshes:
+      - hra:fallopian-tube-female-right/VH_F_fibria_of_uterine_tube_R

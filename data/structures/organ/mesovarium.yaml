@@ -1,0 +1,26 @@
+slug: mesovarium
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: mesovarium
+    source: hra
+    status: draft
+ids:
+  ta2: 3803
+  ta98: A10.1.02.508F
+  wikidata: Q3855299
+sides:
+  left:
+    ids:
+      fma: 19818
+    meshes:
+      - hra:united-female/VH_F_mesovarium_L
+  right:
+    ids:
+      fma: 19817
+    meshes:
+      - hra:united-female/VH_F_mesovarium_R

@@ -1,0 +1,35 @@
+slug: nipple
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: mammary-gland
+layer: 1
+labels:
+  en:
+    text: nipple
+    source: hra
+    status: draft
+  fr:
+    text: mamelon
+    source: wikidata
+    status: draft
+  la:
+    text: Mamilla
+    source: wikidata
+    status: draft
+ids:
+  ta2: 7105
+  ta98: A16.0.02.004
+  wikidata: Q188641
+sides:
+  left:
+    ids:
+      uberon: "0013772"
+    meshes:
+      - hra:mammary-gland-female-left/VH_F_nipple_L
+  right:
+    ids:
+      uberon: "0013773"
+    meshes:
+      - hra:mammary-gland-female-right/VH_F_nipple_R

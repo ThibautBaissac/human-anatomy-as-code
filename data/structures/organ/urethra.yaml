@@ -2,6 +2,7 @@ slug: urethra
 kind: organ
 laterality: midline
 status: draft
+sex: male
 parent: lower-urinary-tract
 labels:
   en:

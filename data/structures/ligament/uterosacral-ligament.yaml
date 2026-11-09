@@ -1,0 +1,26 @@
+slug: uterosacral-ligament
+kind: ligament
+laterality: bilateral
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: uterosacral ligament
+    source: hra
+    status: draft
+ids:
+  ta2: 3840
+  ta98: A09.1.03.032
+  wikidata: Q1824652
+sides:
+  left:
+    ids:
+      fma: 19120
+    meshes:
+      - hra:united-female/VH_F_left_uterosacral_ligament
+  right:
+    ids:
+      fma: 19119
+    meshes:
+      - hra:united-female/VH_F_right_uterosacral_ligament

@@ -1,0 +1,16 @@
+slug: posterior-wall-of-uterus
+kind: organ
+laterality: midline
+status: draft
+sex: female
+parent: uterus
+labels:
+  en:
+    text: posterior wall of uterus
+    source: hra
+    status: draft
+ids:
+  fma: 224878
+  wikidata: Q66594316
+meshes:
+  - hra:uterus-female/VH_F_posterior_wall_of_uterus

@@ -27,3 +27,7 @@ ids:
   wikidata: Q158716
 meshes:
   - bp3d:FJ2571
+variants:
+  female:
+    meshes:
+      - hra:large-intestine-female/VH_F_rectum

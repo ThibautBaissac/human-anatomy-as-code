@@ -1,0 +1,25 @@
+slug: female-areola
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: mammary-gland
+layer: 1
+labels:
+  en:
+    text: female areola
+    source: hra
+    status: draft
+ids:
+  wikidata: Q66593806
+sides:
+  left:
+    ids:
+      fma: 223679
+    meshes:
+      - hra:mammary-gland-female-left/VH_F_areola_L
+  right:
+    ids:
+      fma: 223677
+    meshes:
+      - hra:mammary-gland-female-right/VH_F_areola_R

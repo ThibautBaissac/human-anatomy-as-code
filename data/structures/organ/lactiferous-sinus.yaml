@@ -1,0 +1,22 @@
+slug: lactiferous-sinus
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: mammary-gland
+layer: 1
+labels:
+  en:
+    text: lactiferous sinus
+    source: hra
+    status: draft
+ids:
+  fma: 58088
+  wikidata: Q66554733
+sides:
+  left:
+    meshes:
+      - hra:mammary-gland-female-left/VH_F_main_lactiferous_sinuses_L
+  right:
+    meshes:
+      - hra:mammary-gland-female-right/VH_F_main_lactiferous_sinuses_R

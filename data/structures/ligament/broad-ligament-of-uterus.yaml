@@ -1,0 +1,24 @@
+slug: broad-ligament-of-uterus
+kind: ligament
+laterality: midline
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: broad ligament of uterus
+    source: hra
+    status: draft
+  fr:
+    text: Ligament large
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  ta2: 3800
+  ta98: A10.1.02.505F
+  uberon: "0012332"
+  wikidata: Q629796
+meshes:
+  - hra:united-female/VH_F_broad_ligament

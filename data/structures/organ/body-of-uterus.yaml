@@ -1,0 +1,16 @@
+slug: body-of-uterus
+kind: organ
+laterality: midline
+status: draft
+sex: female
+parent: uterus
+labels:
+  en:
+    text: body of uterus
+    source: hra
+    status: draft
+ids:
+  uberon: "0009853"
+  wikidata: Q66508550
+meshes:
+  - hra:uterus-female/VH_F_body_of_uterus

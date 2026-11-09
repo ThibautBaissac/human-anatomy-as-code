@@ -1,0 +1,36 @@
+slug: ovary
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: ovary
+    source: hra
+    status: draft
+  fr:
+    text: ovaire
+    source: wikidata
+    status: draft
+  la:
+    text: Ovarium
+    source: wikidata
+    status: draft
+ids:
+  ta2: 3470
+  ta98: A09.1.01.001
+  wikidata: Q9631
+sides:
+  left:
+    ids:
+      fma: 7214
+      uberon: "0002119"
+    meshes:
+      - hra:ovary-female-left/VH_F_left_ovary
+  right:
+    ids:
+      fma: 7213
+      uberon: "0002118"
+    meshes:
+      - hra:ovary-female-right/VH_F_right_ovary

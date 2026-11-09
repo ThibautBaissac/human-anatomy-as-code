@@ -27,3 +27,12 @@ ids:
   wikidata: Q9382
 meshes:
   - bp3d:FJ3149
+variants:
+  female:
+    meshes:
+      - hra:urinary-bladder-female/VH_F_fundus_of_urinary_bladder_base
+      - hra:urinary-bladder-female/VH_F_fundus_of_urinary_bladder_dome
+      - hra:urinary-bladder-female/VH_F_trigone_of_urinary_bladder
+      - hra:urinary-bladder-female/VH_F_ureteral_orifice_L
+      - hra:urinary-bladder-female/VH_F_ureteral_orifice_R
+      - hra:urinary-bladder-female/VH_F_urinary_bladder_neck_smooth_muscle

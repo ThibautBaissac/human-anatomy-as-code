@@ -2,6 +2,7 @@ slug: prostate
 kind: organ
 laterality: midline
 status: draft
+sex: male
 parent: genital-system
 labels:
   en:

@@ -1,0 +1,26 @@
+slug: ovarian-ligament
+kind: ligament
+laterality: bilateral
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: ovarian ligament
+    source: hra
+    status: draft
+ids:
+  ta2: 3834
+  ta98: A09.1.01.017
+  wikidata: Q1824650
+sides:
+  left:
+    ids:
+      fma: 55424
+    meshes:
+      - hra:united-female/VH_F_ovarian_ligament_L
+  right:
+    ids:
+      fma: 55423
+    meshes:
+      - hra:united-female/VH_F_ovarian_ligament_R

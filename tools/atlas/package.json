@@ -14,7 +14,8 @@
     "validate": "node src/cli.ts validate ../../data",
     "build": "node src/cli.ts build ../../data ../../build/atlas.json",
     "coverage": "node src/cli.ts coverage ../../data",
-    "import-bp3d": "node src/cli.ts import-bp3d ../../data/raw/bodyparts3d ../../data/import/wikidata-fma.csv ../../data"
+    "import-bp3d": "node src/cli.ts import-bp3d ../../data/raw/bodyparts3d ../../data/import/wikidata-fma.csv ../../data",
+    "import-hra": "node src/cli.ts import-hra ../../data/raw/hra ../../data/import/wikidata-fma.csv ../../data"
   },
   "dependencies": {
     "ajv": "^8.20.0",

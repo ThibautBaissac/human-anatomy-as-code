@@ -2,6 +2,7 @@ slug: testicular-vein
 kind: vein
 laterality: bilateral
 status: draft
+sex: male
 parent: inferior-systemic-venous-tree
 labels:
   en:

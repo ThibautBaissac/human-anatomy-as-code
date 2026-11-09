@@ -1,0 +1,29 @@
+slug: mammary-gland
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: thorax
+layer: 1
+labels:
+  en:
+    text: mammary gland
+    source: hra
+    status: draft
+  fr:
+    text: glande mammaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  ta2: 7099
+  ta98: A16.0.02.006
+  wikidata: Q189961
+sides:
+  left:
+    ids:
+      fma: 57991
+  right:
+    ids:
+      fma: 57987

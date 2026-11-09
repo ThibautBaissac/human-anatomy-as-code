@@ -1,0 +1,21 @@
+slug: mammary-lobe
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: mammary-gland
+layer: 1
+labels:
+  en:
+    text: mammary lobe
+    source: hra
+    status: draft
+ids:
+  uberon: "0018140"
+sides:
+  left:
+    meshes:
+      - hra:mammary-gland-female-left/VH_F_mammary_lobes_L
+  right:
+    meshes:
+      - hra:mammary-gland-female-right/VH_F_mammary_lobes_R

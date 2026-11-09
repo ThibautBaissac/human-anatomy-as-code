@@ -1,0 +1,18 @@
+slug: uterine-tube
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: uterine tube
+    source: hra
+    status: draft
+sides:
+  left:
+    ids:
+      uberon: "0001303"
+  right:
+    ids:
+      uberon: "0001302"

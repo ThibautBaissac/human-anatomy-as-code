@@ -2,6 +2,7 @@ slug: testicular-artery
 kind: artery
 laterality: bilateral
 status: draft
+sex: male
 parent: systemic-arterial-tree
 labels:
   en:

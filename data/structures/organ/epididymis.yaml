@@ -2,6 +2,7 @@ slug: epididymis
 kind: organ
 laterality: bilateral
 status: draft
+sex: male
 labels:
   en:
     text: epididymis

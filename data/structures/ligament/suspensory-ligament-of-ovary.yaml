@@ -1,0 +1,32 @@
+slug: suspensory-ligament-of-ovary
+kind: ligament
+laterality: bilateral
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: suspensory ligament of ovary
+    source: hra
+    status: draft
+  la:
+    text: Ligamentum suspensorium ovarii
+    gender: n
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  ta2: 3805
+  ta98: A09.1.01.018F
+  wikidata: Q3829580
+sides:
+  left:
+    ids:
+      fma: 19824
+    meshes:
+      - hra:united-female/VH_F_suspensory_ligament_of_ovary_L
+  right:
+    ids:
+      fma: 19823
+    meshes:
+      - hra:united-female/VH_F_suspensory_ligament_of_ovary_R

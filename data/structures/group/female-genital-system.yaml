@@ -1,0 +1,11 @@
+slug: female-genital-system
+kind: group
+laterality: midline
+status: draft
+sex: female
+parent: genital-system
+labels:
+  en:
+    text: female genital system
+    source: curated
+    status: draft

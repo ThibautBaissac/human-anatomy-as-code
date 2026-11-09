@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 
 export interface WikidataRow {
   qid: string;
-  fma: number;
+  fma?: number;
+  uberon?: string;
   ta2?: number;
   ta98?: string;
   fr?: string;
@@ -12,6 +13,8 @@ export interface WikidataRow {
 
 export interface Wikidata {
   byFma: Map<number, WikidataRow>;
+  /** UBERON id without prefix (e.g. "0000995") → preferred item */
+  byUberon: Map<string, WikidataRow>;
   byEn: Map<string, WikidataRow>;
 }
 
@@ -51,30 +54,40 @@ export function readWikidata(path: string): Wikidata {
   const missing = required.filter((c) => !header?.includes(c));
   if (missing.length) throw new Error(`colonne(s) absente(s) de ${path} : ${missing.join(', ')}`);
   const col = (name: string) => header.indexOf(name);
-  const idx = { item: col('item'), fma: col('fma'), ta2: col('ta2'), ta98: col('ta98'), fr: col('fr'), la: col('la'), en: col('en') };
+  const idx = { item: col('item'), fma: col('fma'), uberon: col('uberon'), ta2: col('ta2'), ta98: col('ta98'), fr: col('fr'), la: col('la'), en: col('en') };
   const byFma = new Map<number, WikidataRow>();
+  const byUberon = new Map<string, WikidataRow>();
   const byEn = new Map<string, WikidataRow>();
   for (const l of lines) {
     if (l.length < header.length) continue;
-    const fma = Number(l[idx.fma]);
-    if (!Number.isInteger(fma) || fma <= 0) continue;
+    const fma = l[idx.fma] ? Number(l[idx.fma]) : undefined;
+    const uberon = idx.uberon >= 0 && l[idx.uberon] ? l[idx.uberon] : undefined;
+    if (!(fma && Number.isInteger(fma) && fma > 0) && !uberon) continue;
     const opt = (i: number) => (l[i] ? l[i] : undefined);
     const row: WikidataRow = {
       qid: l[idx.item].replace(/^.*\//, ''),
-      fma,
+      fma: fma && Number.isInteger(fma) && fma > 0 ? fma : undefined,
+      uberon,
       ta2: l[idx.ta2] ? Number(l[idx.ta2]) : undefined,
       ta98: opt(idx.ta98),
       fr: opt(idx.fr),
       la: opt(idx.la),
       en: opt(idx.en),
     };
-    const prev = byFma.get(fma);
-    if (!prev || better(row, prev)) byFma.set(fma, row);
-    if (row.en) {
+    if (row.fma) {
+      const prev = byFma.get(row.fma);
+      if (!prev || better(row, prev)) byFma.set(row.fma, row);
+    }
+    if (row.uberon) {
+      const prev = byUberon.get(row.uberon);
+      if (!prev || better(row, prev)) byUberon.set(row.uberon, row);
+    }
+    // The English-label lookup serves the BodyParts3D import (FMA anchor): FMA items only.
+    if (row.en && row.fma) {
       const key = row.en.toLowerCase();
       const p = byEn.get(key);
       if (!p || better(row, p)) byEn.set(key, row);
     }
   }
-  return { byFma, byEn };
+  return { byFma, byUberon, byEn };
 }

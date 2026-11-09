@@ -1,0 +1,32 @@
+slug: round-ligament-of-uterus
+kind: ligament
+laterality: bilateral
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: round ligament of uterus
+    source: hra
+    status: draft
+  fr:
+    text: ligament rond de l'utérus
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  ta2: 3835
+  ta98: A09.1.03.029
+  wikidata: Q1527057
+sides:
+  left:
+    ids:
+      fma: 57789
+    meshes:
+      - hra:united-female/VH_F_right_round_ligament_of_uterus
+  right:
+    ids:
+      fma: 57790
+    meshes:
+      - hra:united-female/VH_F_left_round_ligament_of_uterus

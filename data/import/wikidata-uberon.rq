@@ -1,0 +1,10 @@
+# Items Wikidata portant un UBERON ID (P1554) mais pas de FMA ID, pour les organes HRA identifiés par UBERON.
+SELECT ?item ?fma ?uberon ?ta2 ?ta98 ?fr ?la ?en WHERE {
+  ?item wdt:P1554 ?uberon .
+  FILTER NOT EXISTS { ?item wdt:P1402 ?any }
+  OPTIONAL { ?item wdt:P7173 ?ta2 }
+  OPTIONAL { ?item wdt:P1323 ?ta98 }
+  OPTIONAL { ?item rdfs:label ?fr FILTER(LANG(?fr)="fr") }
+  OPTIONAL { ?item rdfs:label ?la FILTER(LANG(?la)="la") }
+  OPTIONAL { ?item rdfs:label ?en FILTER(LANG(?en)="en") }
+}

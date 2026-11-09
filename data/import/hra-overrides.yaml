@@ -1,0 +1,60 @@
+# Arbitrages de l'import HRA (modèle féminin v1, spec 2026-11-09-modele-feminin-v1).
+
+# Organes servant seulement de repères au recalage.
+skipOrgans: [pelvis-female, sternum-female, manubrium-female]
+
+# Nœuds sans identifiant ni label exploitable.
+skipNodes: [VH_F_cervicovaginal_junction]
+
+# Dans le corps complet (united-female v1.10), le ligament rond « right » est à gauche du sujet (x > 0) et inversement.
+swapSides:
+  - [VH_F_left_round_ligament_of_uterus, VH_F_right_round_ligament_of_uterus]
+
+# Structures partagées dont la géométrie féminine vient du HRA.
+variants:
+  urinary-bladder: { organ: urinary-bladder-female }
+  rectum: { organ: large-intestine-female, nodes: [VH_F_rectum] }
+
+# Absente du modèle féminin : la peau BodyParts3D est masculine et la peau HRA ne s'ajuste pas aux muscles BodyParts3D.
+hidden: [skin]
+
+# Structures du seul modèle masculin. L'urètre BodyParts3D (FJ3148) est masculin, et le HRA n'a pas d'urètre féminin.
+male:
+  - testis
+  - epididymis
+  - deferent-duct
+  - seminal-vesicle
+  - prostate
+  - glans-penis
+  - corpus-cavernosum-of-penis
+  - corpus-spongiosum-of-penis
+  - testicular-artery
+  - testicular-vein
+  - dorsal-artery-of-penis
+  - deep-dorsal-vein-of-penis
+  - superficial-dorsal-vein-of-penis
+  - urethra
+
+groups:
+  female-genital-system: { label: female genital system, parent: genital-system }
+
+organs:
+  uterus-female: { parent: female-genital-system }
+  ovary-female-left: { parent: female-genital-system }
+  ovary-female-right: { parent: female-genital-system }
+  fallopian-tube-female-left: { parent: female-genital-system }
+  fallopian-tube-female-right: { parent: female-genital-system }
+  united-female: { parent: female-genital-system }
+  # glandes mammaires : sous la peau, au-dessus du grand pectoral (couche des fascias)
+  mammary-gland-female-left: { parent: thorax, layer: 1 }
+  mammary-gland-female-right: { parent: thorax, layer: 1 }
+
+slugs: {}
+
+# « sinus » désigne d'ordinaire un sinus veineux : le sinus lactifère est un canal de la glande mammaire.
+kinds:
+  lactiferous-sinus: organ
+
+# Nœuds sans label exploitable.
+labels:
+  VH_F_cornua: horn of uterus

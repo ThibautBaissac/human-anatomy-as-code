@@ -1,0 +1,26 @@
+slug: isthmus-of-uterine-tube
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: uterine-tube
+labels:
+  en:
+    text: isthmus of uterine tube
+    source: hra
+    status: draft
+ids:
+  ta2: 3492
+  ta98: A09.1.02.007
+  wikidata: Q3803865
+sides:
+  left:
+    ids:
+      fma: 18494
+    meshes:
+      - hra:fallopian-tube-female-left/VH_F_isthmus_of_fallopian_tube_L
+  right:
+    ids:
+      fma: 18493
+    meshes:
+      - hra:fallopian-tube-female-right/VH_F_isthmus_of_fallopian_tube_R

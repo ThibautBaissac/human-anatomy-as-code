@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { parse } from 'yaml';
 import { importBp3d, type ImportReport, type Overrides } from './import-bp3d.ts';
+import { importHra, type HraOverrides } from './import-hra.ts';
 import { compileAtlas, type CompileResult, type Diagnostic } from './compile-atlas.ts';
 import { coverage, coverageMarkdown } from './coverage.ts';
 
@@ -10,7 +11,8 @@ const USAGE = `usage:
   atlas validate <dataDir>
   atlas build <dataDir> <out.json>
   atlas coverage <dataDir>
-  atlas import-bp3d <bp3dDir> <wikidata.csv> <dataDir>   (overrides : <dataDir>/import/bp3d-overrides.yaml)`;
+  atlas import-bp3d <bp3dDir> <wikidata.csv> <dataDir>   (overrides : <dataDir>/import/bp3d-overrides.yaml)
+  atlas import-hra <hraDir> <wikidata.csv> <dataDir>     (liste : <dataDir>/import/hra-files.yaml, overrides : <dataDir>/import/hra-overrides.yaml)`;
 
 const line = (d: Diagnostic) => `${d.file}:${d.pointer} ${d.rule} ${d.message}`;
 
@@ -41,7 +43,7 @@ function printReport(r: ImportReport): void {
   if (r.aborted) console.log('IMPORT ANNULÉ : aucun fichier écrit. Corriger les fichiers illisibles ou en double, puis relancer.');
 }
 
-function main(argv: string[]): number {
+async function main(argv: string[]): Promise<number> {
   const [cmd, ...args] = argv;
   if (cmd === 'validate' && args.length === 1) {
     const result = compileAtlas(args[0]);
@@ -79,13 +81,25 @@ function main(argv: string[]): number {
     report(result);
     return result.errors.length ? 1 : 0;
   }
+  if (cmd === 'import-hra' && args.length === 3) {
+    const [hraDir, wikidataCsv, dataDir] = args;
+    const overrides = parse(readFileSync(join(dataDir, 'import', 'hra-overrides.yaml'), 'utf8')) as HraOverrides;
+    const r = await importHra({ hraDir, filesList: join(dataDir, 'import', 'hra-files.yaml'), wikidataCsv, dataDir, overrides });
+    console.log(`créées : ${r.created} · mises à jour : ${r.updated} · inchangées : ${r.unchanged}`);
+    for (const [title, items] of [['collisions de slug', r.slugCollisions.map((c) => `${c.slug} → ${c.renamed}`)], ['FMA déjà utilisés (retirés)', r.fmaConflicts.map((c) => `${c.slug} : FMA ${c.fma}`)],
+      ['cibles absentes', r.missingPatchTargets], ['écritures refusées', r.writeConflicts.map((c) => `${c.slug} → ${c.file}`)], ['fichiers absents de la source (conservés)', r.orphanedFiles]] as [string, string[]][]) {
+      if (items.length) console.log(`${title} : ${items.length}\n${items.map((i) => `  - ${i}`).join('\n')}`);
+    }
+    if (r.aborted) { console.log('IMPORT ANNULÉ : fichiers illisibles ou slugs en double.'); return 1; }
+    const result = compileAtlas(dataDir);
+    report(result);
+    return result.errors.length ? 1 : 0;
+  }
   console.error(USAGE);
   return 2;
 }
 
-try {
-  process.exitCode = main(process.argv.slice(2));
-} catch (e) {
+main(process.argv.slice(2)).then((code) => (process.exitCode = code), (e) => {
   console.error(`erreur : ${(e as Error).message}`);
   process.exitCode = 1;
-}
+});

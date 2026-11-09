@@ -124,7 +124,7 @@ export function planStructures(bp: Bp3d, wd: Wikidata, overrides: Overrides = {}
     const named = conceptByName.get(u.name);
     if (named) return fmaNumber(named);
     const r = wd.byEn.get(u.name.toLowerCase());
-    return r && !candidateFmas.has(r.fma) ? r.fma : undefined;
+    return r?.fma && !candidateFmas.has(r.fma) ? r.fma : undefined;
   };
   const sortKey = (u: Unit) => rootFma(u) ?? (u.left ? fmaNumber(u.left) : u.right ? fmaNumber(u.right) : Infinity);
   units.sort((a, b) => sortKey(a) - sortKey(b) || byKey(a.name, b.name));

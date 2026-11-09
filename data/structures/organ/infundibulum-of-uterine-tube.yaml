@@ -1,0 +1,30 @@
+slug: infundibulum-of-uterine-tube
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: uterine-tube
+labels:
+  en:
+    text: infundibulum of uterine tube
+    source: hra
+    status: draft
+  fr:
+    text: infundibulum
+    source: wikidata
+    status: draft
+ids:
+  ta2: 3488
+  ta98: A09.1.02.003
+  wikidata: Q1635066
+sides:
+  left:
+    ids:
+      fma: 18490
+    meshes:
+      - hra:fallopian-tube-female-left/VH_F_uterine_tube_infundibulum_L
+  right:
+    ids:
+      fma: 18489
+    meshes:
+      - hra:fallopian-tube-female-right/VH_F_uterine_tube_infundibulum_R

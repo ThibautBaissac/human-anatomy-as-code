@@ -1,0 +1,26 @@
+slug: vagina
+kind: organ
+laterality: midline
+status: draft
+sex: female
+parent: female-genital-system
+labels:
+  en:
+    text: vagina
+    source: hra
+    status: draft
+  fr:
+    text: vagin
+    source: wikidata
+    status: draft
+  la:
+    text: Vagina
+    source: wikidata
+    status: draft
+ids:
+  ta2: 3523
+  ta98: A09.1.04.001
+  uberon: "0000996"
+  wikidata: Q5880
+meshes:
+  - hra:united-female/VH_F_vagina

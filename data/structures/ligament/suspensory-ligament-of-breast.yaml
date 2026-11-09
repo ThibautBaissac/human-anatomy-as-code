@@ -1,0 +1,25 @@
+slug: suspensory-ligament-of-breast
+kind: ligament
+laterality: bilateral
+status: draft
+sex: female
+parent: mammary-gland
+layer: 1
+labels:
+  en:
+    text: suspensory ligament of breast
+    source: hra
+    status: draft
+ids:
+  wikidata: Q66554692
+sides:
+  left:
+    ids:
+      fma: 73119
+    meshes:
+      - hra:mammary-gland-female-left/VH_F_suspensory_ligaments_L
+  right:
+    ids:
+      fma: 73118
+    meshes:
+      - hra:mammary-gland-female-right/VH_F_suspensory_ligaments_R

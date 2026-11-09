@@ -1,0 +1,34 @@
+slug: ampulla-of-uterine-tube
+kind: organ
+laterality: bilateral
+status: draft
+sex: female
+parent: uterine-tube
+labels:
+  en:
+    text: ampulla of uterine tube
+    source: hra
+    status: draft
+  fr:
+    text: ampoule tubaire
+    source: wikidata
+    status: draft
+  la:
+    text: Ampulla tubae uterinae
+    source: wikidata
+    status: draft
+ids:
+  ta2: 3491
+  ta98: A09.1.02.006
+  wikidata: Q1635075
+sides:
+  left:
+    ids:
+      fma: 18492
+    meshes:
+      - hra:fallopian-tube-female-left/VH_F_ampulla_of_uterine_tube_L
+  right:
+    ids:
+      fma: 18491
+    meshes:
+      - hra:fallopian-tube-female-right/VH_F_ampulla_of_uterine_tube_R
