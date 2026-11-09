@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node --test \"test/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
-    "build": "node src/cli.ts ../../build/atlas.json ../../data/raw/bodyparts3d ../../build/assets"
+    "build": "node src/cli.ts ../../build ../../data/raw/bodyparts3d ../../build/assets ../../data/raw/hra ../../data/import"
   },
   "dependencies": {
     "@gltf-transform/core": "4.5.1",
