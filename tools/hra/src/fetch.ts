@@ -6,8 +6,8 @@ import { Document, NodeIO } from '@gltf-transform/core';
 import { parseDocument } from 'yaml';
 import { extractNodes } from './glb-range.ts';
 
-interface OrganEntry { id: string; version: string; file: string; doi: string; sha256?: string; crosswalkSha256?: string }
-interface UnitedEntry { id: string; version: string; file: string; doi: string; nodes: string[]; extractedSha256?: string }
+interface OrganEntry { id: string; version: string; file: string; sha256?: string; crosswalkSha256?: string }
+interface UnitedEntry { id: string; version: string; file: string; nodes: string[]; extractedSha256?: string }
 interface HraFiles { baseUrl: string; release: string; organs: OrganEntry[]; united?: UnitedEntry }
 
 const sha256 = (b: Uint8Array) => createHash('sha256').update(b).digest('hex');

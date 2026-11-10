@@ -1,30 +1,29 @@
 # Fichiers du Human Reference Atlas utilisés par le modèle féminin v1 (spec 2026-11-09-modele-feminin-v1).
 # Version figée : HRA v2.5 (2026-06-15). Les sha256 sont épinglés au premier téléchargement (npm run -w tools/hra fetch),
-# puis vérifiés à chaque téléchargement suivant. Licence : CC BY 4.0 pour chaque organe, crédit par DOI.
+# puis vérifiés à chaque téléchargement suivant. Licence : CC BY 4.0 pour chaque organe, crédité par son DOI (data/sources/hra.yaml, seul endroit où les DOI sont tenus).
 baseUrl: https://cdn.humanatlas.io/digital-objects/ref-organ
 release: HRA v2.5 (2026-06-15)
 organs:
-  - { id: uterus-female, version: v1.2, file: 3d-vh-f-uterus.glb, doi: 10.48539/HBM627.VTKD.892, sha256: 41014d2b222c2dbbe8d1cc38206b0099ce76d79659a9fdea9f28b8c7d669b864, crosswalkSha256: d30bd7a11810bdc964543dfd675ad859b81f8f36997efeff95f48d48a5050b06 }
-  - { id: ovary-female-left, version: v1.3, file: 3d-vh-f-ovary-l.glb, doi: 10.48539/HBM695.KCXS.294, sha256: defd5cdc4b053b4e92193c5864bab2abae1807864ffde8bde7a7cb57f4736609, crosswalkSha256: a3487f60aa9aad8c8bf4fba037b58bebeb8c84d3ed44ecb37ae19f6c25a9b943 }
-  - { id: ovary-female-right, version: v1.3, file: 3d-vh-f-ovary-r.glb, doi: 10.48539/HBM277.TVMB.676, sha256: 381df741bf3d2511716e68db3ff70d94c0eda770d28a503af2d9fcb7b65113f8, crosswalkSha256: 40fec47dfddb4b9f91343c191fd4b9c602c971a905b4917282a32b7f34b0b518 }
-  - { id: fallopian-tube-female-left, version: v1.2, file: 3d-vh-f-fallopian-tube-l.glb, doi: 10.48539/HBM529.KBQT.896, sha256: 34817c498e038b599b338f8a35e6c1b3cbda576255c4f2ecca6d9efdebac6c15, crosswalkSha256: f220127b2844cae86ab057abffac6c4f3b2a269ff83ab1f294ab6d2f24eed877 }
-  - { id: fallopian-tube-female-right, version: v1.2, file: 3d-vh-f-fallopian-tube-r.glb, doi: 10.48539/HBM952.XJJV.857, sha256: eec911de07307d1a27cfe27c939e3f3562590e5c419e27decaf3b1d7b13ab038, crosswalkSha256: 92d42e1cb3623fbcaa25cb1140bd95f1e5abfb31587a87817f9634b770410ce6 }
-  - { id: mammary-gland-female-left, version: v1.1, file: 3d-vh-f-mammary-gland-l.glb, doi: 10.48539/HBM533.BNJL.834, sha256: e279f2dacb93d44b59dade4f52ed209ddffc1600f228bd544d464dc50663d7d5, crosswalkSha256: 19679f9aec2f05a7a12580a8d439423d18bd32521158df9c7e0adfe0a114bbb5 }
-  - { id: mammary-gland-female-right, version: v1.1, file: 3d-vh-f-mammary-gland-r.glb, doi: 10.48539/HBM235.CHRK.259, sha256: 07d176a3a93761e63de47f86628617e763973cb983ce77d92ec62e8f00a1e1db, crosswalkSha256: 303b4f9a4858f0b62fe2b2b865e61157d81d86b2d5ad272131df4a976f58a6cd }
-  - { id: urinary-bladder-female, version: v1.2, file: 3d-vh-f-urinary-bladder.glb, doi: 10.48539/HBM595.LMKX.573, sha256: 4bec5fdc117cbc4247a7d16f22f320717264f0fe7cae75fcb2e06432e1ab1a3c, crosswalkSha256: 7a0af24763e19d0a3ab48713087220ef5763d2fc7ddc7e553f241b55fc1caeb9 }
+  - { id: uterus-female, version: v1.2, file: 3d-vh-f-uterus.glb, sha256: 41014d2b222c2dbbe8d1cc38206b0099ce76d79659a9fdea9f28b8c7d669b864, crosswalkSha256: d30bd7a11810bdc964543dfd675ad859b81f8f36997efeff95f48d48a5050b06 }
+  - { id: ovary-female-left, version: v1.3, file: 3d-vh-f-ovary-l.glb, sha256: defd5cdc4b053b4e92193c5864bab2abae1807864ffde8bde7a7cb57f4736609, crosswalkSha256: a3487f60aa9aad8c8bf4fba037b58bebeb8c84d3ed44ecb37ae19f6c25a9b943 }
+  - { id: ovary-female-right, version: v1.3, file: 3d-vh-f-ovary-r.glb, sha256: 381df741bf3d2511716e68db3ff70d94c0eda770d28a503af2d9fcb7b65113f8, crosswalkSha256: 40fec47dfddb4b9f91343c191fd4b9c602c971a905b4917282a32b7f34b0b518 }
+  - { id: fallopian-tube-female-left, version: v1.2, file: 3d-vh-f-fallopian-tube-l.glb, sha256: 34817c498e038b599b338f8a35e6c1b3cbda576255c4f2ecca6d9efdebac6c15, crosswalkSha256: f220127b2844cae86ab057abffac6c4f3b2a269ff83ab1f294ab6d2f24eed877 }
+  - { id: fallopian-tube-female-right, version: v1.2, file: 3d-vh-f-fallopian-tube-r.glb, sha256: eec911de07307d1a27cfe27c939e3f3562590e5c419e27decaf3b1d7b13ab038, crosswalkSha256: 92d42e1cb3623fbcaa25cb1140bd95f1e5abfb31587a87817f9634b770410ce6 }
+  - { id: mammary-gland-female-left, version: v1.1, file: 3d-vh-f-mammary-gland-l.glb, sha256: e279f2dacb93d44b59dade4f52ed209ddffc1600f228bd544d464dc50663d7d5, crosswalkSha256: 19679f9aec2f05a7a12580a8d439423d18bd32521158df9c7e0adfe0a114bbb5 }
+  - { id: mammary-gland-female-right, version: v1.1, file: 3d-vh-f-mammary-gland-r.glb, sha256: 07d176a3a93761e63de47f86628617e763973cb983ce77d92ec62e8f00a1e1db, crosswalkSha256: 303b4f9a4858f0b62fe2b2b865e61157d81d86b2d5ad272131df4a976f58a6cd }
+  - { id: urinary-bladder-female, version: v1.2, file: 3d-vh-f-urinary-bladder.glb, sha256: 4bec5fdc117cbc4247a7d16f22f320717264f0fe7cae75fcb2e06432e1ab1a3c, crosswalkSha256: 7a0af24763e19d0a3ab48713087220ef5763d2fc7ddc7e553f241b55fc1caeb9 }
   # pour VH_F_rectum
-  - { id: large-intestine-female, version: v1.3, file: 3d-sbu-f-large-intestine.glb, doi: 10.48539/HBM682.RSXX.965, sha256: b3046d2af718e7f031578db4089a9f4bea707aa4a75af98aab78f172c2f53d74, crosswalkSha256: f464953061780cbd32cdf8da465481e8daf6da64c138421f5ead5ef31e5cfc39 }
+  - { id: large-intestine-female, version: v1.3, file: 3d-sbu-f-large-intestine.glb, sha256: b3046d2af718e7f031578db4089a9f4bea707aa4a75af98aab78f172c2f53d74, crosswalkSha256: f464953061780cbd32cdf8da465481e8daf6da64c138421f5ead5ef31e5cfc39 }
   # repères du recalage seulement (non affichés)
-  - { id: pelvis-female, version: v1.3, file: 3d-vh-f-pelvis.glb, doi: 10.48539/HBM853.VCFM.778, sha256: 6ef3436e42b7203afcdfa075e57098e97c4e1aaaec08cfdacf6300ba3d5a551d, crosswalkSha256: 0bfeff126f5707b6ca58160af4cf192143453380be8e528f86d20898df30c48b }
-  - { id: sternum-female, version: v1.0, file: 3d-vh-f-sternum.glb, doi: 10.48539/HBM669.VLNS.645, sha256: 530d45a6f7919b29fead3e66e8fa95dd18380e3069d5fbdcd0fd18a8cc230535, crosswalkSha256: 68dcc4a07779cd8f9c21e23da3d9bc4910bc790ffb59486ed4704e2aac3f8aa4 }
-  - { id: manubrium-female, version: v1.0, file: 3d-vh-f-manubrium.glb, doi: 10.48539/HBM668.VJNV.946, sha256: 65d757efc43367e5245f76c11689e9b50ba07115e575f9ce90c5c47bfb17c70e, crosswalkSha256: 1f97cc98f2b9e27f2b5860f6fade8395212d37bd3804afcdb3a81d7426118acb }
+  - { id: pelvis-female, version: v1.3, file: 3d-vh-f-pelvis.glb, sha256: 6ef3436e42b7203afcdfa075e57098e97c4e1aaaec08cfdacf6300ba3d5a551d, crosswalkSha256: 0bfeff126f5707b6ca58160af4cf192143453380be8e528f86d20898df30c48b }
+  - { id: sternum-female, version: v1.0, file: 3d-vh-f-sternum.glb, sha256: 530d45a6f7919b29fead3e66e8fa95dd18380e3069d5fbdcd0fd18a8cc230535, crosswalkSha256: 68dcc4a07779cd8f9c21e23da3d9bc4910bc790ffb59486ed4704e2aac3f8aa4 }
+  - { id: manubrium-female, version: v1.0, file: 3d-vh-f-manubrium.glb, sha256: 65d757efc43367e5245f76c11689e9b50ba07115e575f9ce90c5c47bfb17c70e, crosswalkSha256: 1f97cc98f2b9e27f2b5860f6fade8395212d37bd3804afcdb3a81d7426118acb }
 # Le vagin et les ligaments utérins n'existent que dans le corps complet (357 MB) :
 # seuls ces nœuds sont lus, par requêtes HTTP Range, vers data/raw/hra/united-female/extracted-united.glb.
 united:
   id: united-female
   version: v1.10
   file: 3d-vh-f-united.glb
-  doi: 10.48539/HBM637.DWBM.744
   nodes:
     - VH_F_vagina
     - VH_F_broad_ligament

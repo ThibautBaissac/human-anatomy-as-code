@@ -103,14 +103,14 @@ async function fixture() {
   writeFileSync(join(hraDir, 'ovary-female-left/crosswalk.csv'), 'node_name,OntologyID,label\nVH_F_left_ovary,FMA:7299,Left ovary\n');
   const files = join(dataDir, 'import/hra-files.yaml');
   writeFileSync(files, stringify({ baseUrl: 'x', release: 'test', organs: [
-    { id: 'uterus-female', version: 'v1', file: '3d-vh-f-uterus.glb', doi: '10.1/u' },
-    { id: 'ovary-female-left', version: 'v1', file: '3d-vh-f-ovary-l.glb', doi: '10.1/ol' },
-    { id: 'ovary-female-right', version: 'v1', file: '3d-vh-f-ovary-r.glb', doi: '10.1/or' },
-    { id: 'mammary-gland-female-left', version: 'v1', file: '3d-vh-f-mammary-gland-l.glb', doi: '10.1/ml' },
-    { id: 'mammary-gland-female-right', version: 'v1', file: '3d-vh-f-mammary-gland-r.glb', doi: '10.1/mr' },
-    { id: 'urinary-bladder-female', version: 'v1', file: '3d-vh-f-urinary-bladder.glb', doi: '10.1/b' },
-    { id: 'large-intestine-female', version: 'v1', file: '3d-sbu-f-large-intestine.glb', doi: '10.1/li' },
-  ], united: { id: 'united-female', version: 'v1', file: 'u.glb', doi: '10.1/un', nodes: [] } }));
+    { id: 'uterus-female', version: 'v1', file: '3d-vh-f-uterus.glb' },
+    { id: 'ovary-female-left', version: 'v1', file: '3d-vh-f-ovary-l.glb' },
+    { id: 'ovary-female-right', version: 'v1', file: '3d-vh-f-ovary-r.glb' },
+    { id: 'mammary-gland-female-left', version: 'v1', file: '3d-vh-f-mammary-gland-l.glb' },
+    { id: 'mammary-gland-female-right', version: 'v1', file: '3d-vh-f-mammary-gland-r.glb' },
+    { id: 'urinary-bladder-female', version: 'v1', file: '3d-vh-f-urinary-bladder.glb' },
+    { id: 'large-intestine-female', version: 'v1', file: '3d-sbu-f-large-intestine.glb' },
+  ], united: { id: 'united-female', version: 'v1', file: 'u.glb', nodes: [] } }));
   const csv = join(dataDir, 'wd.csv');
   writeFileSync(csv, [
     'item,fma,uberon,ta2,ta98,fr,la,en',
@@ -256,4 +256,11 @@ test('systems: derived for the female structures through their ancestors (up int
   await importHra({ hraDir: join(dataDir, 'raw-hra'), filesList: join(dataDir, 'import/hra-files.yaml'), wikidataCsv: join(dataDir, 'wd.csv'), dataDir,
     overrides: { ...OVERRIDES, systems: { nipple: ['genital', 'integumentary'] } } });
   assert.deepEqual(by(atlases(dataDir).female, 'nipple').systems, ['genital', 'integumentary']);
+});
+
+test('organs whose DOI is missing from the HRA source (the only place DOIs are kept) are reported', async () => {
+  const { dataDir, run } = await fixture();
+  writeFileSync(join(dataDir, 'sources/hra.yaml'), stringify({ ...HRA_SOURCE['sources/hra.yaml'], dois: { 'uterus-female': '10.1/u', 'united-female': '10.1/un' } }));
+  const r = await run();
+  assert.deepEqual(r.missingDois, ['large-intestine-female', 'mammary-gland-female-left', 'mammary-gland-female-right', 'ovary-female-left', 'ovary-female-right', 'urinary-bladder-female']);
 });

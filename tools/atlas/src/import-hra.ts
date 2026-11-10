@@ -47,6 +47,8 @@ export interface HraImportReport extends ApplyReport {
   fmaConflicts: { slug: string; fma: number }[];
   /** GLB and crosswalk give different ids in the same vocabulary (the GLB is kept unless an `ids` override settles it) */
   idDivergences: { node: string; glb: string; crosswalk: string }[];
+  /** organ files used but without a DOI in data/sources/hra.yaml (they would go uncredited) */
+  missingDois: string[];
 }
 
 interface FilesList { organs: { id: string; file: string }[]; united?: { id: string } }
@@ -278,5 +280,9 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
   for (const slug of o.male ?? []) patches.push({ slug, apply: (doc, root) => set(doc, root, 'sex', 'male') });
 
   const applied = applyPlan({ dataDir, structures: planned, owns: (s) => s.sex === 'female', patches });
-  return { ...applied, slugCollisions, fmaConflicts, idDivergences };
+  // DOIs are kept once, in the HRA source (credits); every organ file used must have one.
+  const hraSource = parse(readFileSync(join(dataDir, 'sources/hra.yaml'), 'utf8')) as { dois?: Record<string, string> };
+  const shownOrgans = [...files.organs.map((f) => f.id).filter((id) => !(o.skipOrgans ?? []).includes(id)), ...(files.united ? [files.united.id] : [])];
+  const missingDois = shownOrgans.filter((id) => !hraSource.dois?.[id]).sort();
+  return { ...applied, slugCollisions, fmaConflicts, idDivergences, missingDois };
 }

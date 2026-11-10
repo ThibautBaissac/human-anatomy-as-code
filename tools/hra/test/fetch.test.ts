@@ -34,8 +34,8 @@ async function fixture() {
   const list = join(root, 'hra-files.yaml');
   writeFileSync(list, '# HRA files\n' + stringify({
     baseUrl: server.url, release: 'test',
-    organs: [{ id: 'uterus-female', version: 'v1.2', file: '3d-vh-f-uterus.glb', doi: '10.48539/X' }],
-    united: { id: 'united-female', version: 'v1.10', file: '3d-vh-f-united.glb', doi: '10.48539/Y', nodes: ['VH_F_vagina'] },
+    organs: [{ id: 'uterus-female', version: 'v1.2', file: '3d-vh-f-uterus.glb' }],
+    united: { id: 'united-female', version: 'v1.10', file: '3d-vh-f-united.glb', nodes: ['VH_F_vagina'] },
   }));
   return { root, server, list, out: join(root, 'raw') };
 }
