@@ -1,16 +1,16 @@
 import { forwardRef, useId } from 'react';
-import { Activity, Layers, Scissors, SquareSplitVertical } from 'lucide-react';
-import type { Viewer } from '../viewer/viewer.ts';
+import { Activity, Layers, Pause, Play, Scissors, SquareSplitVertical } from 'lucide-react';
+import { prefersReducedMotion, type Viewer } from '../viewer/viewer.ts';
 import { colorOf } from '../viewer/colors.ts';
 import { jointKey, parseJointKey } from '../viewer/pose.ts';
 import { labelText } from '../viewer/search.ts';
 import { AXES, type AtlasJoint, type Side, type ViewState } from '../viewer/types.ts';
 import { S } from './strings.ts';
 
+const SIDES: Side[] = ['left', 'right'];
 export type Tool = 'layers' | 'dissection' | 'sections' | 'motion';
 export const TOOLS: Tool[] = ['layers', 'dissection', 'sections', 'motion'];
 const ICONS = { layers: Layers, dissection: Scissors, sections: SquareSplitVertical, motion: Activity };
-const reducedMotion = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /** Whether a tool's part of the view differs from the default (the mark on its button). */
 export function toolModified(tool: Tool, v: ViewState): boolean {
@@ -49,7 +49,7 @@ export function LayersPanel({ viewer, view, kinds, systems }: { viewer: Viewer; 
                 <input type="checkbox" className="switch" checked={!view.hiddenSystems.includes(x)} onChange={(e) => viewer.setSystemVisible(x, e.target.checked)} />
                 <span>{name}</span>
               </label>
-              <button type="button" className="btn ghost small" aria-label={S.soloSystem(name)} onClick={() => viewer.isolateSystem(x)}>{S.solo}</button>
+              <button type="button" className="btn ghost small" aria-label={S.soloSystem(name)} onClick={() => viewer.soloSystem(x)}>{S.solo}</button>
             </li>
           );
         })}
@@ -108,13 +108,13 @@ export function SectionsPanel({ viewer, view }: { viewer: Viewer; view: ViewStat
 
 /** Every animatable joint-side of the model, as joint@side keys. */
 export function jointOptions(viewer: Viewer): string[] {
-  return viewer.joints.flatMap((j) => (['left', 'right'] as Side[]).filter((side) => viewer.rigs[jointKey(j.slug, side)]).map((side) => jointKey(j.slug, side)));
+  return viewer.joints.flatMap((j) => SIDES.filter((side) => viewer.rigs[jointKey(j.slug, side)]).map((side) => jointKey(j.slug, side)));
 }
 
 /** Plays one joint-side now (looping; one sweep under reduced motion). */
 export function playJoint(viewer: Viewer, key: string) {
   const { slug, side } = parseJointKey(key);
-  viewer.play(slug, [side as Side], { once: reducedMotion() });
+  viewer.play(slug, [side as Side], { once: prefersReducedMotion() });
 }
 
 export function MotionTool({ viewer, view, motionKey, onChoose }: { viewer: Viewer; view: ViewState; motionKey: string | null; onChoose: (key: string) => void }) {
@@ -145,9 +145,9 @@ export function MotionTool({ viewer, view, motionKey, onChoose }: { viewer: View
         </label>
         <button type="button" className="btn primary icon" aria-pressed={isPlaying} aria-label={S.play}
           onClick={() => (isPlaying ? viewer.stop() : playJoint(viewer, key))}>
-          <span aria-hidden="true">{isPlaying ? '❚❚' : '▶'}</span>
+          {isPlaying ? <Pause aria-hidden="true" size={18} /> : <Play aria-hidden="true" size={18} />}
         </button>
-        <button type="button" className="btn" onClick={() => { viewer.stop(); viewer.setJointAngle(joint.slug, sides, joint.restDeg); }}>{S.rest}</button>
+        <button type="button" className="btn" aria-label={S.rest} onClick={() => { viewer.stop(); viewer.setJointAngle(joint.slug, sides, joint.restDeg); }}>{S.restShort}</button>
         <div className="angle">
           {arc && <span className="arc" aria-hidden="true" style={{ left: pct(arc[0]), width: `calc(${pct(arc[1])} - ${pct(arc[0])})` }} />}
           <input id={`${id}-angle`} type="range" min={lo} max={hi} step={1} value={angle} aria-label={S.angleLabel(joint.motion)}

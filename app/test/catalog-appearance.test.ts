@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildCatalog, UNATTACHED } from '../src/viewer/catalog.ts';
+import { buildCatalog, parseSelectionKey, selectionKey, UNATTACHED } from '../src/viewer/catalog.ts';
 import { appearance } from '../src/viewer/appearance.ts';
 import { ATLAS, INSTANCES } from './fixture.ts';
 
@@ -129,8 +129,7 @@ test('catalog: keys slug or slug@side resolve to their instances; unknown struct
   assert.deepEqual([...cat.instancesOfKeys(['nope', 'femur@middle'])], []);
 });
 
-test('catalog: the key of a selection', async () => {
-  const { selectionKey, parseSelectionKey } = await import('../src/viewer/catalog.ts');
+test('catalog: the key of a selection', () => {
   assert.equal(selectionKey({ slug: 'femur', side: 'left' }), 'femur@left');
   assert.equal(selectionKey({ slug: 'heart', side: null }), 'heart');
   assert.deepEqual(parseSelectionKey('femur@right'), { slug: 'femur', side: 'right' });

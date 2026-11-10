@@ -160,3 +160,24 @@ test('the ⋯ menu opens the licences and the help; the credit line names the so
   await expect(page.getByRole('menu')).toBeHidden();
   await expect(more).toBeFocused();
 });
+
+test('with reduced motion a preset is instant; closing the card gives focus to the search', async ({ page }, info) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await open(page, info.project.metadata.query as string, 'sel=humerus@left');
+  const before = await camera(page);
+  await page.getByRole('group', { name: 'Vue caméra' }).getByRole('button', { name: 'Dos' }).click();
+  // no glide: the camera is behind the body right after the click
+  expect((await camera(page)).position[1]).toBeGreaterThan(before.target[1]);
+  await page.getByRole('complementary', { name: /humérus/ }).getByRole('button', { name: 'Fermer la sélection' }).click();
+  await expect(page.getByRole('combobox', { name: 'Rechercher une structure' })).toBeFocused();
+});
+
+test('a model switch drops an isolation and hidden structures the model lacks', async ({ page }, info) => {
+  await open(page, info.project.metadata.query as string, 'iso=uterus&hid=uterus,femur@left&sex=f');
+  await expect(page.getByRole('button', { name: 'Quitter l’isolement' })).toBeVisible();
+  await expect(page.getByText('2 structures masquées')).toBeVisible();
+  await page.getByRole('group', { name: 'Modèle' }).getByRole('button', { name: 'Homme' }).click();
+  await expect(page.getByText('1 structure masquée')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Quitter l’isolement' })).toBeHidden();
+  expect(await alpha(page, 'femur@left')).toBe(0);
+});

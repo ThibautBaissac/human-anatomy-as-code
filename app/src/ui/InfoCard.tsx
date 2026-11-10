@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Crosshair, EyeOff, Focus, Play, X } from 'lucide-react';
-import type { Catalog } from '../viewer/catalog.ts';
+import { selectionKey, type Catalog } from '../viewer/catalog.ts';
 import { jointKey, jointsFor, lengthTrend, motionDirection, musclesOf, parseJointKey } from '../viewer/pose.ts';
 import { labelText, structureName } from '../viewer/search.ts';
 import type { Viewer } from '../viewer/viewer.ts';
@@ -13,15 +13,15 @@ const TREND_MARK: Record<string, string> = { shortens: '↓', lengthens: '↑', 
  * The selected structure: name, side, nature, systems, actions (Centrer, Isoler, Masquer, Animer), names,
  * its part in movements, parts, and the technical details folded.
  */
-export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, onAnimate, animatable }: {
+export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, onHide, onAnimate, animatable }: {
   viewer: Viewer; catalog: Catalog; view: ViewState & { selection: Selection }; motionKey: string | null;
-  onSelect: (sel: Selection) => void; onClose: () => void; onAnimate: () => void; animatable: boolean;
+  onSelect: (sel: Selection) => void; onClose: () => void; onHide: () => void; onAnimate: () => void; animatable: boolean;
 }) {
   const { selection, lang } = view;
   const s = catalog.structure(selection.slug);
   if (!s) return null;
   const parent = s.parent ? catalog.structure(s.parent) : undefined;
-  const isolated = !!view.isolated && view.isolated.slug === selection.slug && view.isolated.side === selection.side;
+  const isolated = !!view.isolated && selectionKey(view.isolated) === selectionKey(selection);
   const draft = LANGS.some((l) => s.labels[l]?.status === 'draft');
   const subtitle = [selection.side ? S.sideOf(S.side[selection.side]) : null, S.kinds[s.kind] ?? s.kind].filter(Boolean).join(' · ');
   return (
@@ -44,7 +44,7 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
       <div className="actions">
         <button type="button" className="btn action" onClick={() => viewer.focus(selection.slug, selection.side)}><Crosshair aria-hidden="true" size={18} />{S.centre}</button>
         <button type="button" className="btn action" aria-pressed={isolated} onClick={() => viewer.setIsolated(isolated ? null : selection)}><Focus aria-hidden="true" size={18} />{S.isolateStructure}</button>
-        <button type="button" className="btn action" onClick={() => viewer.hideSelection()}><EyeOff aria-hidden="true" size={18} />{S.hide}</button>
+        <button type="button" className="btn action" onClick={onHide}><EyeOff aria-hidden="true" size={18} />{S.hide}</button>
         {animatable && <button type="button" className="btn action" onClick={onAnimate}><Play aria-hidden="true" size={18} />{S.animate}</button>}
       </div>
       <dl className="names">

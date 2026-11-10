@@ -367,7 +367,7 @@ French, in `strings.ts`. They include:
 - Hover tint: the kind colour mixed 35 % towards white. Selection highlight stays `#3ad06a`; `GHOST_ALPHA` stays 0.15.
 - Performance budget unchanged: full load under 3 s, mean frame under 16.7 ms (WebGPU, Apple Silicon), with the drawer and a tool panel open.
 - Interface strings in French in `strings.ts`; no request outside the application's origin.
-- `localStorage` used only for the drawer state (key `haac.drawer`), every access in try/catch.
+- One new `localStorage` key, the drawer state (`haac.drawer`), every access in try/catch; the existing keys (female notice, iOS hint) stay.
 
 ## Out of scope
 

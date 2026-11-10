@@ -102,6 +102,14 @@ _Avoid_ : squelette, armature
 Rôle d'un muscle dans le mouvement d'une articulation (fléchisseur, extenseur, pronateur, supinateur), porté par le muscle (`actions`).
 _Avoid_ : fonction
 
+**Source** :
+Jeu de données externe d'où proviennent des meshes ou des noms (BodyParts3D, Wikidata…), décrit une fois avec sa version, sa licence et son crédit d'attribution.
+_Avoid_ : provider, dataset, origine
+
+**Référence externe** :
+Identifiant d'une structure ou d'un côté dans une terminologie tierce (FMA, TA2, TA98, UBERON, Wikidata). La FMA est la référence d'ancrage.
+_Avoid_ : mapping, code, xref
+
 ## Vue
 
 **Isolement** :
@@ -115,11 +123,3 @@ _Avoid_ : isoler un système
 **Structure masquée** :
 Structure (ou côté) retirée de la vue par l'utilisateur, jusqu'à « Réafficher » ou Ctrl+Z. Les clés sont gardées dans l'ordre où elles ont été masquées (`hid=`), la dernière est réaffichée la première.
 _Avoid_ : cachée, supprimée
-
-**Source** :
-Jeu de données externe d'où proviennent des meshes ou des noms (BodyParts3D, Wikidata…), décrit une fois avec sa version, sa licence et son crédit d'attribution.
-_Avoid_ : provider, dataset, origine
-
-**Référence externe** :
-Identifiant d'une structure ou d'un côté dans une terminologie tierce (FMA, TA2, TA98, UBERON, Wikidata). La FMA est la référence d'ancrage.
-_Avoid_ : mapping, code, xref

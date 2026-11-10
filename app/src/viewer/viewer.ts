@@ -6,7 +6,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import './bvh.ts';
 import { appearance, type AppearanceState } from './appearance.ts';
-import { buildCatalog, selectionKey, type Catalog } from './catalog.ts';
+import { buildCatalog, type Catalog } from './catalog.ts';
+import { hideSelection, keepKnown, undoHide } from './view-ops.ts';
 import { defaultCamera, GLIDE_MS, interpolateCamera, presetCamera, type Preset } from './camera.ts';
 import { colorOf, HIGHLIGHT } from './colors.ts';
 import { crossingInstances, jointKey, normaliseAngle, parseJointKey, poseMatrices, type Pose, type Rigs } from './pose.ts';
@@ -66,6 +67,7 @@ interface Batch {
 const PLANE_NORMALS: Record<Axis, [number, number, number]> = { axial: [0, 0, -1], coronal: [0, 1, 0], sagittal: [-1, 0, 0] };
 /** Hovered structures: their kind colour mixed this much towards white (spec). */
 const HOVER_MIX = 0.35;
+export const prefersReducedMotion = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 const PLANE_AXIS: Record<Axis, 'x' | 'y' | 'z'> = { axial: 'z', coronal: 'y', sagittal: 'x' };
 
 export class Viewer {
@@ -97,6 +99,8 @@ export class Viewer {
   private lastHover: string | null = null;
   /** structure-side under the pointer (tinted) */
   private hovered: Selection | null = null;
+  /** hover only on a device whose pointer is fine and hovers (spec) */
+  private finePointer = matchMedia('(hover: hover) and (pointer: fine)');
   /** camera glide in progress */
   private glide: { from: Camera; to: Camera; start: number | null } | null = null;
   catalog: Catalog | null = null;
@@ -145,7 +149,7 @@ export class Viewer {
     canvas.addEventListener('dblclick', (e) => this.onDoubleClick(e));
     // No hover while a button is down: the drag orbits the camera.
     canvas.addEventListener('pointermove', (e) => {
-      if (e.buttons) { this.hoverPending = null; this.setHover(null); } else if (e.pointerType === 'mouse' || e.pointerType === 'pen') this.hoverPending = e;
+      if (e.buttons) { this.hoverPending = null; this.setHover(null); } else if ((e.pointerType === 'mouse' || e.pointerType === 'pen') && this.finePointer.matches) this.hoverPending = e;
     });
     canvas.addEventListener('pointerleave', () => { this.hoverPending = null; this.setHover(null); });
   }
@@ -245,7 +249,7 @@ export class Viewer {
     this.indexOf = new Map(loadedInstances.map((x, i) => [x.name, i]));
     this.joints = atlas.joints ?? [];
     this.rigs = manifest.models?.[model]?.joints ?? {};
-    this.view = { ...this.view, model };
+    this.view = { ...this.view, model, ...keepKnown(this.view, this.catalog) };
     // a selection that does not exist in this model is cleared
     if (this.view.selection && !atlas.structures.some((x) => x.slug === this.view.selection!.slug)) {
       this.view = { ...this.view, selection: null };
@@ -297,7 +301,7 @@ export class Viewer {
     this.setState({ hiddenSystems: [...hidden].sort() });
   }
   /** Shows only this system: every other system of the model is hidden. */
-  isolateSystem(system: string): void {
+  soloSystem(system: string): void {
     this.setState({ hiddenSystems: (this.catalog?.systems ?? []).filter((x) => x !== system).sort() });
   }
   showAllSystems(): void { this.setState({ hiddenSystems: [] }); }
@@ -305,14 +309,13 @@ export class Viewer {
   setIsolated(target: Selection | null): void { this.setState({ isolated: target }); }
   /** Hides the selected structure and clears the selection; hiding the isolated structure ends the isolation. */
   hideSelection(): void {
-    const sel = this.view.selection;
-    if (!sel) return;
-    const key = selectionKey(sel);
-    const isolated = this.view.isolated && selectionKey(this.view.isolated) === key ? null : this.view.isolated;
-    this.setState({ hidden: [...this.view.hidden.filter((k) => k !== key), key], selection: null, isolated });
+    const patch = hideSelection(this.view);
+    if (!Object.keys(patch).length) return;
+    this.setHover(null);
+    this.setState(patch);
   }
   /** Shows the last hidden structure again. */
-  undoHide(): void { if (this.view.hidden.length) this.setState({ hidden: this.view.hidden.slice(0, -1) }); }
+  undoHide(): void { const patch = undoHide(this.view); if (patch.hidden) this.setState(patch); }
   showHidden(): void { this.setState({ hidden: [] }); }
   setLayerCut(n: number): void { this.setState({ layerCut: n }); }
   setGhost(on: boolean): void { this.setState({ ghost: on }); }
@@ -350,7 +353,8 @@ export class Viewer {
 
   /** Moves the camera to `to` in a 400 ms glide, or at once when the user asked for reduced motion. */
   private glideTo(to: Camera) {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { this.glide = null; this.applyCamera(to); this.emitChange(); return; }
+    if (prefersReducedMotion()) { this.glide = null; this.applyCamera(to); this.emitChange(); return; }
+    this.setHover(null); // the body moves under a still cursor
     this.glide = { from: this.currentCamera(), to, start: null };
     this.dirty = true;
   }

@@ -1,16 +1,16 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { RotateCcw, X } from 'lucide-react';
 import type { Viewer } from '../viewer/viewer.ts';
-import type { Preset } from '../viewer/camera.ts';
+import { PRESETS, type Preset } from '../viewer/camera.ts';
 import type { Atlas, Selection } from '../viewer/types.ts';
-import { labelPlacement } from './layout.ts';
+import { LABEL_OFFSET, labelPlacement } from './layout.ts';
 import { S } from './strings.ts';
 
 /** Camera presets and Recentrer; on a phone, Face, Dos, Profil and Recentrer. */
 export function CameraGroup({ viewer, narrow }: { viewer: Viewer; narrow: boolean }) {
   const presets: [Preset, string][] = narrow
     ? [['front', S.presets.front], ['back', S.presets.back], ['left', S.profile]]
-    : (['front', 'back', 'left', 'right', 'top'] as Preset[]).map((p) => [p, S.presets[p]]);
+    : PRESETS.map((p) => [p, S.presets[p]]);
   return (
     <div role="group" aria-label={S.cameraLabel} className="camera surface">
       {presets.map(([p, label]) => <button key={p} type="button" className="btn ghost" onClick={() => viewer.viewFrom(p)}>{label}</button>)}
@@ -41,25 +41,25 @@ export function HoverLabel({ canvas, hover, nameOf }: { canvas: HTMLCanvasElemen
   if (!hover || !cursor || !text) return null;
   return (
     <div ref={ref} className="hover-label surface" data-testid="hover-label" aria-hidden="true"
-      style={{ left: pos?.left ?? cursor.x + 14, top: pos?.top ?? cursor.y + 14 }}>{text}</div>
+      style={{ left: pos?.left ?? cursor.x + LABEL_OFFSET, top: pos?.top ?? cursor.y + LABEL_OFFSET }}>{text}</div>
   );
 }
 
 /** Isolation and hidden structures, each with the way back. */
-export function Banners({ viewer, isolatedName, hiddenCount }: { viewer: Viewer; isolatedName: string | null; hiddenCount: number }) {
+export function Banners({ viewer, isolatedName, hiddenCount, onDone }: { viewer: Viewer; isolatedName: string | null; hiddenCount: number; onDone: () => void }) {
   if (!isolatedName && !hiddenCount) return null;
   return (
     <div className="banners">
       {isolatedName && (
         <div role="status" className="banner surface">
           <span>{S.isolation} : <strong>{isolatedName}</strong></span>
-          <button type="button" className="btn small" onClick={() => viewer.setIsolated(null)}>{S.leaveIsolation}</button>
+          <button type="button" className="btn small" onClick={() => { viewer.setIsolated(null); onDone(); }}>{S.leaveIsolation}</button>
         </div>
       )}
       {hiddenCount > 0 && (
         <div role="status" className="banner surface">
           <span>{S.hiddenCount(hiddenCount)}</span>
-          <button type="button" className="btn small" onClick={() => viewer.showHidden()}>{S.showHidden}</button>
+          <button type="button" className="btn small" onClick={() => { viewer.showHidden(); onDone(); }}>{S.showHidden}</button>
         </div>
       )}
     </div>

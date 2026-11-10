@@ -23,6 +23,7 @@ export function presetCamera(preset: Preset, cam: Camera): Camera {
   const d = Math.hypot(...sub(cam.position, cam.target));
   const dir = DIRECTIONS[preset];
   const t = cam.target;
+  // + 0 turns −0 into 0: a preset position compares equal to the one written by hand
   return { position: [t[0] + dir[0] * d + 0, t[1] + dir[1] * d + 0, t[2] + dir[2] * d + 0], target: [...t] };
 }
 

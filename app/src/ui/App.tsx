@@ -23,20 +23,21 @@ import { usePwa } from './usePwa.ts';
 import { useViewer } from './useViewer.ts';
 import { S } from './strings.ts';
 
+const SIDES: Side[] = ['left', 'right'];
 const DRAWER_KEY = 'haac.drawer';
 const readDrawer = () => {
   try { const v = localStorage.getItem(DRAWER_KEY); if (v === '1' || v === '0') return v === '1'; } catch { /* storage unavailable */ }
   return innerWidth >= 1200;
 };
 const writeDrawer = (open: boolean) => { try { localStorage.setItem(DRAWER_KEY, open ? '1' : '0'); } catch { /* storage unavailable */ } };
-const typing = (t: EventTarget | null) => t instanceof HTMLElement && (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName) && !(t instanceof HTMLInputElement && ['checkbox', 'range', 'radio'].includes(t.type)));
+const isTextEntry = (t: EventTarget | null) => t instanceof HTMLElement && (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName) && !(t instanceof HTMLInputElement && ['checkbox', 'range', 'radio'].includes(t.type)));
 
 /** The joint-side a selection takes part in and that can be animated, if any. */
 function jointOfSelection(viewer: Viewer | null, sel: Selection | null): string | null {
   const s = sel && viewer?.catalog?.structure(sel.slug);
   if (!viewer || !s) return null;
   for (const j of jointsFor(viewer.joints, s)) {
-    for (const side of (sel.side ? [sel.side] : ['left', 'right']) as Side[]) if (viewer.rigs[jointKey(j.slug, side)]) return jointKey(j.slug, side);
+    for (const side of sel.side ? [sel.side] : SIDES) if (viewer.rigs[jointKey(j.slug, side)]) return jointKey(j.slug, side);
   }
   return null;
 }
@@ -63,6 +64,11 @@ export function App() {
   const [phoneTool, setPhoneTool] = useState<Tool>('layers');
   const [searchOpen, setSearchOpen] = useState(false);
   const searchButton = useRef<HTMLButtonElement>(null);
+  const drawerToggle = useRef<HTMLButtonElement>(null);
+  /** where focus goes when the control holding it disappears (card closed, banner done): the search, always there */
+  const focusHome = () => requestAnimationFrame(() => {
+    (narrow ? searchButton.current : document.querySelector<HTMLElement>('.header [role=combobox]'))?.focus();
+  });
 
   useEffect(() => viewer?.on('hover', setHover), [viewer]);
   // On a phone, tapping a structure shows its information.
@@ -96,7 +102,7 @@ export function App() {
         const t = tool;
         setTool(null);
         toolButtons.current[t]?.focus();
-      } else if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z' && !typing(e.target) && view.hidden.length) {
+      } else if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z' && !isTextEntry(e.target) && view.hidden.length) {
         e.preventDefault();
         viewer?.undoHide();
       }
@@ -108,7 +114,7 @@ export function App() {
   const tree = catalog && <Tree catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick} />;
   const card = viewer && catalog && view.selection && (
     <InfoCard viewer={viewer} catalog={catalog} view={{ ...view, selection: view.selection }} motionKey={motionKey} animatable={!!selectionJoint}
-      onSelect={selectAndFocus} onClose={() => viewer.select(null)} onAnimate={animate} />
+      onSelect={selectAndFocus} onClose={() => { viewer.select(null); focusHome(); }} onHide={() => { viewer.hideSelection(); focusHome(); }} onAnimate={animate} />
   );
   const toolContent = (t: Tool) => viewer && catalog && (
     t === 'layers' ? <LayersPanel viewer={viewer} view={view} kinds={catalog.kinds} systems={catalog.systems} />
@@ -157,7 +163,7 @@ export function App() {
         </header>
       ) : (
         <header className="header">
-          <button type="button" className="btn ghost" aria-expanded={drawerOpen} aria-controls="drawer" onClick={toggleDrawer}><Menu aria-hidden="true" size={20} />{S.structures}</button>
+          <button ref={drawerToggle} type="button" className="btn ghost" aria-expanded={drawerOpen} aria-controls="drawer" onClick={toggleDrawer}><Menu aria-hidden="true" size={20} />{S.structures}</button>
           <h1>{S.appTitle}</h1>
           <div className="header-search">{index && <Search index={index} lang={view.lang} onSelect={pick} />}</div>
           <div role="group" aria-label={S.modelLabel} className="segmented">
@@ -179,14 +185,14 @@ export function App() {
       <div className="top-overlays">
         {view.model === 'female' && <FemaleNotice atlas={atlas} />}
         <Notifications loading={loading ? S.loading(loading.loaded, loading.total) : null} errors={errors} />
-        {viewer && <Banners viewer={viewer} isolatedName={isolatedName} hiddenCount={view.hidden.length} />}
+        {viewer && <Banners viewer={viewer} isolatedName={isolatedName} hiddenCount={view.hidden.length} onDone={focusHome} />}
       </div>
 
       {!narrow && drawerOpen && (
         <nav id="drawer" className="drawer surface" aria-label={S.treeLabel}>
           <div className="drawer-head">
             <h2>{S.structures}</h2>
-            <button type="button" className="btn ghost icon" aria-label={S.closeDrawer} onClick={toggleDrawer}><ChevronLeft aria-hidden="true" size={18} /></button>
+            <button type="button" className="btn ghost icon" aria-label={S.closeDrawer} onClick={() => { toggleDrawer(); requestAnimationFrame(() => drawerToggle.current?.focus()); }}><ChevronLeft aria-hidden="true" size={18} /></button>
           </div>
           {tree}
         </nav>
@@ -232,7 +238,7 @@ export function App() {
         </Sheet>
       )}
 
-      {!narrow && <HoverLabel canvas={canvasRef.current} hover={hover} nameOf={nameOf} />}
+      <HoverLabel canvas={canvasRef.current} hover={hover} nameOf={nameOf} />
       <div role="status" aria-live="polite" className="visually-hidden" data-testid="announce">
         {notice ?? (view.selection ? S.selected(nameOf(view.selection)) : ready ? S.cleared : '')}
       </div>
