@@ -1,5 +1,5 @@
 // Index over a model's atlas and the loaded instances: who is what, who contains whom. Pure.
-import { SYSTEMS, type Atlas, type AtlasStructure, type Side } from './types.ts';
+import { SYSTEMS, type Atlas, type AtlasStructure, type Selection, type Side } from './types.ts';
 
 export const ROOT = 'human-body';
 /** Tree bucket for structures without a parent, other than the root. */
@@ -24,6 +24,8 @@ export interface Catalog {
   instanceCount: number;
   /** Own instances of a structure (one side if given); for a structure without any, those of its descendants. */
   instancesOf(slug: string, side?: Side | null): number[];
+  /** Instances of structure keys (slug or slug@side); unknown structures give none. */
+  instancesOfKeys(keys: readonly string[]): Set<number>;
   roots: string[];
   childrenOf(id: string): string[];
   parentOf(id: string): string | null;
@@ -33,6 +35,15 @@ export interface Catalog {
   /** systems of the shown instances, in vocabulary order */
   systems: string[];
   maxLayer: number;
+}
+
+/** Key of a structure-side: slug@side, or slug for a whole structure. */
+export const selectionKey = (s: Selection): string => (s.side ? `${s.slug}@${s.side}` : s.slug);
+/** The structure-side a key names, or null when it is malformed. */
+export function parseSelectionKey(key: string): Selection | null {
+  const [slug, side, extra] = key.split('@');
+  if (!slug || extra !== undefined || (side !== undefined && side !== 'left' && side !== 'right')) return null;
+  return { slug, side: (side as Side | undefined) ?? null };
 }
 
 const byKey = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
@@ -84,6 +95,14 @@ export function buildCatalog(atlas: Atlas, loaded: (string | { name: string; mes
     instancesOf(slug, side) {
       const mine = (own.get(slug) ?? []).filter((i) => !side || instances[i].side === side);
       return mine.length ? mine : descendantsInstances(slug, side);
+    },
+    instancesOfKeys(keys) {
+      const out = new Set<number>();
+      for (const k of keys) {
+        const sel = parseSelectionKey(k);
+        if (sel && structures.has(sel.slug)) for (const i of this.instancesOf(sel.slug, sel.side)) out.add(i);
+      }
+      return out;
     },
     roots: children.has(UNATTACHED) ? [ROOT, UNATTACHED] : [ROOT],
     childrenOf: (id) => children.get(id) ?? [],

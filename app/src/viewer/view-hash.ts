@@ -1,4 +1,5 @@
 // View ⇄ URL hash, for deep links. Pure. Unknown or invalid values are dropped one by one.
+import { parseSelectionKey, selectionKey } from './catalog.ts';
 import { normaliseAngle, parseJointKey } from './pose.ts';
 import { AXES, DEFAULT_VIEW, LANGS, type AtlasJoint, type Axis, type Lang, type Side, type ViewState } from './types.ts';
 
@@ -29,6 +30,8 @@ export function encodeView(v: ViewState): string {
   if (v.lang !== 'fr') p.push(`lang=${v.lang}`);
   const pose = Object.keys(v.pose ?? {}).sort();
   if (pose.length) p.push(`p=${pose.map((k) => `${k}:${v.pose[k]}`).join(',')}`);
+  if (v.isolated) p.push(`iso=${selectionKey(v.isolated)}`);
+  if (v.hidden?.length) p.push(`hid=${v.hidden.join(',')}`);
   if (v.camera) p.push(`cam=${[...v.camera.position, ...v.camera.target].map(round).join(',')}`);
   return p.join('&');
 }
@@ -40,13 +43,21 @@ export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState>
   if (sex === 'f') out.model = 'female';
   else if (sex === 'm') out.model = 'male';
 
+  // a structure-side: known structure, and a side only on a bilateral one
+  const structureSide = (key: string) => {
+    const s = parseSelectionKey(key);
+    return s && ctx.hasSlug(s.slug) && (!s.side || (ctx.hasSides?.(s.slug) ?? true)) ? s : null;
+  };
   const sel = params.get('sel');
-  if (sel) {
-    const [slug, side, extra] = sel.split('@');
-    const sideOk = side === undefined || ((side === 'left' || side === 'right') && (ctx.hasSides?.(slug) ?? true));
-    if (ctx.hasSlug(slug) && extra === undefined && sideOk) {
-      out.selection = { slug, side: (side as Side | undefined) ?? null };
-    }
+  const selection = sel ? structureSide(sel) : null;
+  if (selection) out.selection = selection;
+  const iso = params.get('iso');
+  const isolated = iso ? structureSide(iso) : null;
+  if (isolated) out.isolated = isolated;
+  const hid = params.get('hid');
+  if (hid) {
+    const hidden = [...new Set(hid.split(',').filter((k) => structureSide(k)))];
+    if (hidden.length) out.hidden = hidden;
   }
   const layer = Number(params.get('layer'));
   if (params.has('layer') && Number.isInteger(layer) && layer >= 0 && layer <= ctx.maxLayer) out.layerCut = layer;

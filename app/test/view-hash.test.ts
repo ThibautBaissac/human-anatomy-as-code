@@ -13,12 +13,12 @@ test('every parameter round-trips', () => {
   const v: ViewState = {
     selection: { slug: 'femur', side: 'left' }, layerCut: 2, ghost: true, hiddenKinds: ['muscle', 'skin'],
     sections: { axial: 0.625, sagittal: 0.5 }, lang: 'la',
-    camera: { position: [100, -900, 1200], target: [0, 0, 1000] }, model: 'female', pose: {}, hiddenSystems: [],
+    camera: { position: [100, -900, 1200], target: [0, 0, 1000] }, model: 'female', pose: {}, hiddenSystems: [], isolated: null, hidden: [],
   };
   const hash = encodeView(v);
   assert.equal(hash, 'sex=f&sel=femur@left&layer=2&ghost=1&hide=muscle,skin&cut=axial:0.625,sagittal:0.500&lang=la&cam=100,-900,1200,0,0,1000');
   // the empty pose and no hidden system are defaults: not written, not read back
-  const { pose: _, hiddenSystems: __, ...encoded } = v;
+  const { pose: _, hiddenSystems: __, isolated: ___, hidden: ____, ...encoded } = v;
   assert.deepEqual(decodeView(hash, ctx), encoded);
 });
 
@@ -59,4 +59,19 @@ test('hidden systems round-trip as sys=; unknown ones are dropped', () => {
   assert.deepEqual(decodeView(hash, withSystems).hiddenSystems, ['digestive', 'muscular']);
   assert.deepEqual(decodeView('sys=digestive,wat', withSystems).hiddenSystems, ['digestive']);
   assert.equal(decodeView('sys=wat', withSystems).hiddenSystems, undefined);
+});
+
+test('isolation and hidden structures round-trip; hid= keeps the hiding order', () => {
+  const v: ViewState = { ...DEFAULT_VIEW, isolated: { slug: 'femur', side: 'left' }, hidden: ['heart', 'femur@right'] };
+  const hash = encodeView(v);
+  assert.equal(hash, 'iso=femur@left&hid=heart,femur@right');
+  const sided = { ...ctx, hasSides: (s: string) => s === 'femur' };
+  assert.deepEqual(decodeView(hash, sided), { isolated: { slug: 'femur', side: 'left' }, hidden: ['heart', 'femur@right'] });
+  assert.deepEqual(decodeView('iso=heart', sided), { isolated: { slug: 'heart', side: null } });
+});
+
+test('unknown or invalid isolation and hidden keys are dropped one by one', () => {
+  const sided = { ...ctx, hasSides: (s: string) => s === 'femur' };
+  assert.deepEqual(decodeView('iso=nope&hid=nope,heart@left,femur@left,heart,heart', sided), { hidden: ['femur@left', 'heart'] });
+  assert.deepEqual(decodeView('iso=femur@middle', sided), {});
 });

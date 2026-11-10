@@ -103,8 +103,12 @@ export interface ViewState {
   model: Model;
   /** joint angles in whole degrees, keyed joint@side; a joint at rest is absent */
   pose: Record<string, number>;
+  /** structure-side shown alone: opaque, every other instance ghosted */
+  isolated: Selection | null;
+  /** structures the user hid, keys slug or slug@side, in hiding order (the last one is undone first) */
+  hidden: string[];
 }
 
 export const DEFAULT_VIEW: ViewState = {
-  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], hiddenSystems: [], sections: {}, lang: 'fr', camera: null, model: 'male', pose: {},
+  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], hiddenSystems: [], sections: {}, lang: 'fr', camera: null, model: 'male', pose: {}, isolated: null, hidden: [],
 };

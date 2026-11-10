@@ -37,7 +37,7 @@ const base = { hiddenKinds: new Set<string>(), layerCut: 0, ghost: false, select
 const femurL = cat.instance(0), skin = cat.instance(3), muscleL = cat.instance(4);
 
 test('appearance: visible and opaque by default', () => {
-  assert.deepEqual(appearance(base, skin), { visible: true, alpha: 1, highlighted: false });
+  assert.deepEqual(appearance(base, skin), { visible: true, alpha: 1, highlighted: false, hovered: false });
 });
 
 test('appearance: a hidden kind hides its instances, even in ghost mode', () => {
@@ -48,24 +48,24 @@ test('appearance: the dissection cut removes layers shallower than the cut', () 
   const s = { ...base, layerCut: 3 };
   assert.equal(appearance(s, skin).visible, false);
   assert.equal(appearance(s, muscleL).visible, false);
-  assert.deepEqual(appearance(s, femurL), { visible: true, alpha: 1, highlighted: false });
+  assert.deepEqual(appearance(s, femurL), { visible: true, alpha: 1, highlighted: false, hovered: false });
 });
 
 test('appearance: ghost mode keeps removed layers at alpha 0.15', () => {
-  assert.deepEqual(appearance({ ...base, layerCut: 3, ghost: true }, skin), { visible: true, alpha: 0.15, highlighted: false });
+  assert.deepEqual(appearance({ ...base, layerCut: 3, ghost: true }, skin), { visible: true, alpha: 0.15, highlighted: false, hovered: false });
 });
 
 test('appearance: a selected instance is always visible, opaque and highlighted', () => {
   const s = { ...base, layerCut: 5, hiddenKinds: new Set(['muscle']), selected: new Set([4]) };
-  assert.deepEqual(appearance(s, muscleL), { visible: true, alpha: 1, highlighted: true });
+  assert.deepEqual(appearance(s, muscleL), { visible: true, alpha: 1, highlighted: true, hovered: false });
 });
 
 test('appearance: a tissue crossing a moving joint is ghosted; selected, it is a highlighted ghost; hidden, it stays hidden', () => {
   const s = { ...base, crossing: new Set([4]) };
-  assert.deepEqual(appearance(s, muscleL), { visible: true, alpha: 0.15, highlighted: false });
-  assert.deepEqual(appearance({ ...s, selected: new Set([4]) }, muscleL), { visible: true, alpha: 0.15, highlighted: true });
+  assert.deepEqual(appearance(s, muscleL), { visible: true, alpha: 0.15, highlighted: false, hovered: false });
+  assert.deepEqual(appearance({ ...s, selected: new Set([4]) }, muscleL), { visible: true, alpha: 0.15, highlighted: true, hovered: false });
   assert.equal(appearance({ ...s, hiddenKinds: new Set(['muscle']) }, muscleL).visible, false);
-  assert.deepEqual(appearance(s, femurL), { visible: true, alpha: 1, highlighted: false });
+  assert.deepEqual(appearance(s, femurL), { visible: true, alpha: 1, highlighted: false, hovered: false });
 });
 
 test('catalog: each instance knows its systems; the systems present come in vocabulary order', () => {
@@ -92,4 +92,49 @@ test('the app vocabulary of systems is the data schema vocabulary, in the same o
   const { SYSTEMS } = await import('../src/viewer/types.ts');
   const schema = JSON.parse(readFileSync(new URL('../../tools/atlas/schemas/structure.schema.json', import.meta.url), 'utf8'));
   assert.deepEqual([...SYSTEMS], schema.properties.systems.items.enum);
+});
+
+test('appearance: a hidden structure is gone, unless it is the selection', () => {
+  const s = { ...base, hidden: new Set([0]) };
+  assert.equal(appearance(s, femurL).visible, false);
+  assert.equal(appearance({ ...s, ghost: true, layerCut: 9 }, femurL).visible, false);
+  assert.equal(appearance({ ...s, selected: new Set([0]) }, femurL).visible, true);
+});
+
+test('appearance: isolation shows the isolated opaque, whatever the filters, and ghosts every other visible instance', () => {
+  const s = { ...base, isolated: new Set([4]) };
+  assert.deepEqual(appearance({ ...s, hiddenKinds: new Set(['muscle']), layerCut: 9 }, muscleL), { visible: true, alpha: 1, highlighted: false, hovered: false });
+  assert.deepEqual(appearance(s, femurL), { visible: true, alpha: 0.15, highlighted: false, hovered: false });
+  // what the filters hide stays hidden, it is not turned into a ghost
+  assert.equal(appearance({ ...s, hiddenKinds: new Set(['bone']) }, femurL).visible, false);
+  // the selection stays opaque and highlighted during isolation
+  assert.deepEqual(appearance({ ...s, selected: new Set([0]) }, femurL), { visible: true, alpha: 1, highlighted: true, hovered: false });
+  // a hidden structure stays hidden even when isolated
+  assert.equal(appearance({ ...s, hidden: new Set([4]) }, muscleL).visible, false);
+});
+
+test('appearance: hovered only on a visible, opaque, unhighlighted instance', () => {
+  const s = { ...base, hovered: new Set([0, 3, 4]) };
+  assert.equal(appearance(s, femurL).hovered, true);
+  assert.equal(appearance({ ...s, selected: new Set([0]) }, femurL).hovered, false);
+  assert.equal(appearance({ ...s, layerCut: 1, ghost: true }, skin).hovered, false);
+  assert.equal(appearance({ ...s, crossing: new Set([4]) }, muscleL).hovered, false);
+  assert.equal(appearance({ ...s, hiddenKinds: new Set(['bone']) }, femurL).hovered, false);
+  assert.equal(appearance({ ...s, isolated: new Set([3]) }, femurL).hovered, false);
+});
+
+test('catalog: keys slug or slug@side resolve to their instances; unknown structures are dropped', () => {
+  assert.deepEqual([...cat.instancesOfKeys(['femur@left', 'heart'])].sort(), [0, 2]);
+  assert.deepEqual([...cat.instancesOfKeys(['lower-limb@right'])].sort(), [1, 5]);
+  assert.deepEqual([...cat.instancesOfKeys(['nope', 'femur@middle'])], []);
+});
+
+test('catalog: the key of a selection', async () => {
+  const { selectionKey, parseSelectionKey } = await import('../src/viewer/catalog.ts');
+  assert.equal(selectionKey({ slug: 'femur', side: 'left' }), 'femur@left');
+  assert.equal(selectionKey({ slug: 'heart', side: null }), 'heart');
+  assert.deepEqual(parseSelectionKey('femur@right'), { slug: 'femur', side: 'right' });
+  assert.deepEqual(parseSelectionKey('heart'), { slug: 'heart', side: null });
+  assert.equal(parseSelectionKey('femur@middle'), null);
+  assert.equal(parseSelectionKey('a@left@x'), null);
 });
