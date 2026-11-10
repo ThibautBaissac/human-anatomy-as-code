@@ -80,3 +80,25 @@ test('hraFetch rejects a file whose sha256 differs from the pinned one', async (
     await assert.rejects(hraFetch({ listPath: list, outDir: out }), /sha256.*3d-vh-f-uterus\.glb/);
   } finally { await server.close(); }
 });
+
+test('the extracted file is pinned by its content (names, vertices, triangles, extras), not by its bytes', async () => {
+  const { server, list, out } = await fixture();
+  try {
+    await hraFetch({ listPath: list, outDir: out });
+    assert.match(parse(readFileSync(list, 'utf8')).united.extractedContentSha256, /^[0-9a-f]{64}$/);
+    // the same content written differently (another gltf-transform version would do the same): no new extraction
+    const path = join(out, 'united-female/extracted-united.glb');
+    const io = new NodeIO();
+    const doc = await io.read(path);
+    doc.getRoot().getAsset().generator = 'another writer';
+    writeFileSync(path, await io.writeBinary(doc));
+    const before = server.hits.get('/united-female/v1.10/assets/3d-vh-f-united.glb');
+    await hraFetch({ listPath: list, outDir: out });
+    assert.equal(server.hits.get('/united-female/v1.10/assets/3d-vh-f-united.glb'), before);
+    // a content that differs from the pin is an error
+    const conf = parse(readFileSync(list, 'utf8'));
+    conf.united.extractedContentSha256 = '0'.repeat(64);
+    writeFileSync(list, stringify(conf));
+    await assert.rejects(hraFetch({ listPath: list, outDir: out }), /contenu inattendu.*extracted-united\.glb/);
+  } finally { await server.close(); }
+});
