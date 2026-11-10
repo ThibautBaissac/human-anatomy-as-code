@@ -21,3 +21,7 @@ dois:
   urinary-bladder-female: 10.48539/HBM595.LMKX.573
   large-intestine-female: 10.48539/HBM682.RSXX.965
   united-female: 10.48539/HBM637.DWBM.744
+  # organes servant seulement de repères au recalage (data/import/hra-registration.yaml) : non affichés, donc non crédités
+  pelvis-female: 10.48539/HBM853.VCFM.778
+  sternum-female: 10.48539/HBM669.VLNS.645
+  manubrium-female: 10.48539/HBM668.VJNV.946

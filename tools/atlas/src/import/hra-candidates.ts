@@ -4,7 +4,20 @@ import { readFileSync } from 'node:fs';
 import type { NodeIO, Node } from '@gltf-transform/core';
 import { parseCsv } from './wikidata.ts';
 import type { Ids, Side } from '../types.ts';
-import type { HraImportReport, HraOverrides } from '../import-hra.ts';
+import { lowerFirst } from './rules.ts';
+
+/** What reading the organ files needs from the HRA import overrides. */
+export interface CandidateOverrides {
+  skipNodes?: string[];
+  /** node pairs whose left/right are swapped in the source */
+  swapSides?: [string, string][];
+  /** node name → English label, for nodes without a usable one */
+  labels?: Record<string, string>;
+  /** node name → identifiers, when the GLB and its crosswalk disagree */
+  ids?: Record<string, Ids>;
+}
+/** GLB and crosswalk give different ids in the same vocabulary (the GLB is kept unless an `ids` override settles it). */
+export interface IdDivergence { node: string; glb: string; crosswalk: string }
 
 /** A node of an organ file that may become a structure (or one side of one). */
 export interface Candidate {
@@ -27,7 +40,6 @@ function sideOf(node: string, label: string): Side | null {
   return null;
 }
 const humanize = (node: string) => node.replace(/^VH_F_/, '').replace(/_(L|R)$/, '').replace(/_/g, ' ');
-export const lowerFirst = (s: string) => (s ? s[0].toLowerCase() + s.slice(1) : s);
 
 function parseId(id: unknown): Ids {
   const m = /^(FMA|UBERON):(\d+)$/.exec(String(id ?? ''));
@@ -46,7 +58,7 @@ export function readCrosswalk(path: string): Map<string, { id: string; label: st
 }
 
 /** Candidates of one organ file: its root (deepest mesh-less ancestor common to all meshes) and the nodes below. */
-export async function organCandidates(io: NodeIO, path: string, organ: string, crosswalk: Map<string, { id: string; label: string }>, o: HraOverrides, divergences: HraImportReport['idDivergences']): Promise<Candidate[]> {
+export async function organCandidates(io: NodeIO, path: string, organ: string, crosswalk: Map<string, { id: string; label: string }>, o: CandidateOverrides, divergences: IdDivergence[]): Promise<Candidate[]> {
   const doc = await io.read(path);
   const skip = new Set(o.skipNodes ?? []);
   const swap = new Map<string, Side>();

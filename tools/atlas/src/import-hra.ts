@@ -5,8 +5,8 @@ import { join } from 'node:path';
 import { NodeIO } from '@gltf-transform/core';
 import { parse, type Document, type YAMLMap } from 'yaml';
 import { readWikidata, type Wikidata, type WikidataRow } from './import/wikidata.ts';
-import { lowerFirst, meshNodeNames, organCandidates, readCrosswalk, type Candidate } from './import/hra-candidates.ts';
-import { genderOf, kindOfName, slugify, TA98_PATTERN } from './import/rules.ts';
+import { meshNodeNames, organCandidates, readCrosswalk, type Candidate, type CandidateOverrides, type IdDivergence } from './import/hra-candidates.ts';
+import { genderOf, kindOfName, lowerFirst, slugify, TA98_PATTERN } from './import/rules.ts';
 import { applyPlan, type ApplyReport, type Patch } from './import/apply-plan.ts';
 import { canonicalStructure, setOrdered, KEY_ORDER } from './import/yaml-merge.ts';
 import { listYaml } from './fs-util.ts';
@@ -47,7 +47,7 @@ export interface HraImportReport extends ApplyReport {
   slugCollisions: { slug: string; renamed: string }[];
   fmaConflicts: { slug: string; fma: number }[];
   /** GLB and crosswalk give different ids in the same vocabulary (the GLB is kept unless an `ids` override settles it) */
-  idDivergences: { node: string; glb: string; crosswalk: string }[];
+  idDivergences: IdDivergence[];
   /** organ files used but without a DOI in data/sources/hra.yaml (they would go uncredited) */
   missingDois: string[];
 }
@@ -199,7 +199,7 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
   const applied = applyPlan({ dataDir, structures: planned, owns: (s) => s.sex === 'female', patches });
   // DOIs are kept once, in the HRA source (credits); every organ file used must have one.
   const hraSource = parse(readFileSync(join(dataDir, 'sources/hra.yaml'), 'utf8')) as { dois?: Record<string, string> };
-  const shownOrgans = [...files.organs.map((f) => f.id).filter((id) => !(o.skipOrgans ?? []).includes(id)), ...(files.united ? [files.united.id] : [])];
+  const shownOrgans = [...files.organs.map((f) => f.id).filter((id) => !skipOrgans.has(id)), ...(files.united ? [files.united.id] : [])];
   const missingDois = shownOrgans.filter((id) => !hraSource.dois?.[id]).sort();
   return { ...applied, slugCollisions, fmaConflicts, idDivergences, missingDois };
 }

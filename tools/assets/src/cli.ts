@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // assets <buildDir> <objDir> <outDir> [<hraDir> <importDir>]
 // Reads atlas-male.json and atlas-female.json from buildDir.
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildAssets, type AtlasInput } from './build-assets.ts';
 

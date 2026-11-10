@@ -40,6 +40,5 @@ export function listInstances(atlas: AtlasInput): Instance[] {
   return out.sort((a, b) => cmp(a.name, b.name));
 }
 
-
 /** The GLB file an instance goes to: BodyParts3D instances by kind (shared), HRA instances in female-<kind>. */
 export const fileOf = (i: Instance) => (i.meshes.some((m) => m.startsWith(HRA_PREFIX)) ? `female-${i.kind}` : i.kind);

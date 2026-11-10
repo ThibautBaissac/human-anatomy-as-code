@@ -27,6 +27,9 @@ export const KIND_RULES: [string, RegExp][] = [
   ['muscle', /muscle|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps|extensor|flexor|abductor|adductor|pronator|supinator|tibialis|fibularis|peroneus|subscapularis|longissimus|iliocostalis|spinalis|splenius|serratus|psoas|coccygeus|longus capitis|longus colli|trapezius|interspinales|intertransversarii/],
 ];
 
+/** First letter in lower case ("Left ovary" → "left ovary"). */
+export const lowerFirst = (s: string) => (s ? s[0].toLowerCase() + s.slice(1) : s);
+
 export function kindOfName(name: string): string | undefined {
   const n = name.toLowerCase();
   for (const [kind, re] of KIND_RULES) if (re.test(n)) return kind;

@@ -32,4 +32,9 @@ async function cleanupModels(): Promise<void> {
   const cache = await caches.open(ASSETS);
   for (const req of await cache.keys()) if (!keep.has(new URL(req.url).pathname)) await cache.delete(req);
 }
-self.addEventListener('activate', (event) => event.waitUntil(cleanupModels()));
+/** Removes cached data that is no longer served (the former atlas.json). */
+async function cleanupData(): Promise<void> {
+  const cache = await caches.open(DATA);
+  for (const req of await cache.keys()) if (!isDataPath(new URL(req.url).pathname)) await cache.delete(req);
+}
+self.addEventListener('activate', (event) => event.waitUntil(Promise.all([cleanupModels(), cleanupData()])));

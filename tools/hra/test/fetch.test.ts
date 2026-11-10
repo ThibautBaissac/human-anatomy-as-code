@@ -102,3 +102,15 @@ test('the extracted file is pinned by its content (names, vertices, triangles, e
     await assert.rejects(hraFetch({ listPath: list, outDir: out }), /contenu inattendu.*extracted-united\.glb/);
   } finally { await server.close(); }
 });
+
+test('a corrupt extracted file is extracted again, not a crash', async () => {
+  const { server, list, out } = await fixture();
+  try {
+    await hraFetch({ listPath: list, outDir: out });
+    const path = join(out, 'united-female/extracted-united.glb');
+    writeFileSync(path, readFileSync(path).subarray(0, 100));
+    await hraFetch({ listPath: list, outDir: out });
+    const extracted = await new NodeIO().read(path);
+    assert.deepEqual(extracted.getRoot().listNodes().map((n) => n.getName()), ['VH_F_vagina']);
+  } finally { await server.close(); }
+});

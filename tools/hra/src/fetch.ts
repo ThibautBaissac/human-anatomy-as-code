@@ -23,7 +23,7 @@ const sortKeys = (v: unknown): unknown => Array.isArray(v) ? v.map(sortKeys)
 export function contentSha256(nodes: Content[]): string {
   const h = createHash('sha256');
   for (const n of [...nodes].sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))) {
-    h.update(`${n.name}\0${JSON.stringify(sortKeys(n.extras ?? {}))}\0`);
+    h.update(`${n.name}\0${JSON.stringify(sortKeys(n.extras ?? {}))}\0${n.positions.length}\0${n.indices.length}\0`);
     h.update(new Uint8Array(Float32Array.from(n.positions).buffer));
     h.update(new Uint8Array(Uint32Array.from(n.indices).buffer));
   }
@@ -65,7 +65,9 @@ export async function hraFetch({ listPath, outDir }: { listPath: string; outDir:
   if (conf.united) {
     const u = conf.united;
     const path = join(outDir, u.id, 'extracted-united.glb');
-    if (!(u.extractedContentSha256 && existsSync(path) && contentSha256(await readContent(path)) === u.extractedContentSha256)) {
+    // an unreadable file (truncated, corrupt) counts as a mismatch: it is extracted again
+    const onDisk = existsSync(path) ? await readContent(path).then(contentSha256, () => null) : null;
+    if (!(u.extractedContentSha256 && onDisk === u.extractedContentSha256)) {
       const nodes = await extractNodes(assetsUrl(u.id, u.version, u.file), u.nodes);
       const out = new Document();
       const buffer = out.createBuffer();

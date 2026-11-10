@@ -45,7 +45,7 @@ Un **modèle féminin v1** composite. Il garde le squelette et les muscles de Bo
 - **Compilation par modèle.** Le compilateur produit `build/atlas-male.json` et `build/atlas-female.json`.
   - Chaque atlas contient les structures de son modèle, avec la géométrie du modèle : `variants` y est déjà résolu.
   - Il contient aussi son `meshIndex` et ses `attributions` : seules les sources dont les meshes ou les labels apparaissent dans ce modèle.
-  - `build/atlas.json` reste produit, identique à `atlas-male.json`, pour compatibilité.
+  - `build/atlas.json` resta produit un temps pour compatibilité ; il est supprimé depuis le 2026-11-10 (voir les décisions).
 - **Règles de validation.**
   - `mesh-unique` s'applique **par modèle**.
   - `fma-unique` s'applique à l'ensemble.

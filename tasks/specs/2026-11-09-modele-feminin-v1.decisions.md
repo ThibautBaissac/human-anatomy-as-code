@@ -75,14 +75,16 @@ Décisions prises là où la spec `2026-11-09-modele-feminin-v1.md` est muette, 
 - **Règles `sex` + `variants`.** Elles sont vérifiées par la règle de compilation `variant-shape` seulement, pas par le schéma : une seule erreur, lisible, au lieu d'une erreur de schéma en plus.
 - **Budget de chargement du modèle féminin.** Il n'a pas de test dédié. Le modèle féminin charge 13 fichiers au lieu de 12, pour 4 MB de plus.
 
-## Points mineurs laissés pour plus tard
+## Points mineurs laissés pour plus tard (réglés le 2026-11-10)
 
-- Fichier `atlas.json` encore produit, mais plus lu par l'application.
-- Champ `source: 'bodyparts3d'` du manifeste.
-- DOI en double entre `hra-files.yaml` et `sources/hra.yaml`.
-- Empreinte de l'extrait dépendante de la version de glTF-Transform.
-- `rotationDeg: 0` pour une région `fit: translation`.
-- Découpage de `buildAssets` et d'`importHra` en fonctions plus petites.
+- **`atlas.json`.** Il n'est plus produit : `atlas build <dataDir> <outDir>` écrit `atlas-male.json` et `atlas-female.json`. Le service worker efface l'ancien fichier de son cache.
+- **Champ `source` du manifeste.** Il est supprimé ; la provenance est dans les `attributions` de l'atlas.
+- **DOI.** Ils ne sont tenus qu'à un endroit, `sources/hra.yaml`, y compris ceux des organes repères (bassin, sternum, manubrium). Deux contrôles les protègent : l'import HRA signale un organe utilisé sans DOI (`missingDois`), et la règle de compilation `mesh-doi` refuse un mesh dont l'organe n'en a pas.
+- **Empreinte de l'extrait.** Elle porte désormais sur le contenu (noms, extras, positions et indices, avec leurs longueurs), sous la clé `extractedContentSha256` ; elle ne dépend plus de la version de glTF-Transform. Un extrait illisible est extrait à nouveau.
+- **`rotationDeg` d'une région `fit: translation`.** Elle donne la rotation héritée de sa base (thoracique : 0,95°), et les matrices sont inchangées.
+- **Découpages.**
+  - `buildAssets` est découpée en `instances`, `geometry`, `glb` et `rigs` ; les GLB produits sont identiques à l'octet près.
+  - La lecture des fichiers d'organes d'`importHra` passe dans `import/hra-candidates.ts` ; l'import reste idempotent.
 
 ## Recalage de la vessie (2026-11-09)
 

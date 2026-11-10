@@ -285,6 +285,12 @@ export function compileAtlas(dataDir: string): CompileResult {
       const pattern = meshPatterns.get(prefix);
       if (!pattern) err(file, pointer, 'mesh-ref', `préfixe de mesh « ${prefix} » inconnu du registre des sources`);
       else if (!pattern.test(id)) err(file, pointer, 'mesh-ref', `« ${id} » ne respecte pas le motif ${pattern.source}`);
+      else {
+        // a source credited per organ (HRA): every organ shown needs its DOI, or it would go uncredited
+        const src = Object.values(sources).find((x) => x.meshPrefix === prefix);
+        const organ = id.split('/')[0];
+        if (src?.dois && !src.dois[organ]) err(file, pointer, 'mesh-doi', `organe « ${organ} » sans DOI dans la source ${src.id}`);
+      }
     }
   }
   const reportedDup = new Set<string>();

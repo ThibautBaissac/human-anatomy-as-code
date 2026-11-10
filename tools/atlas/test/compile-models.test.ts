@@ -101,3 +101,10 @@ test('variant mesh references are checked like any other', () => {
     'structures/organ/urinary-bladder.yaml': { ...FEMALE['structures/organ/urinary-bladder.yaml'], variants: { female: { meshes: ['xyz:nope'] } } } }));
   assert.deepEqual(errors.map(pick), [{ file: 'structures/organ/urinary-bladder.yaml', pointer: '/variants/female/meshes/0', rule: 'mesh-ref' }]);
 });
+
+test('mesh-doi: a mesh of a source credited per organ needs the DOI of its organ', () => {
+  const { dois, ...noDois } = HRA['sources/hra.yaml'];
+  const { 'uterus-female': _, ...others } = dois;
+  const r = compileAtlas(validDataset({ 'sources/hra.yaml': { ...noDois, dois: others }, ...FEMALE }));
+  assert.deepEqual(r.errors.map(pick), [{ file: 'structures/organ/uterus.yaml', pointer: '/meshes/0', rule: 'mesh-doi' }]);
+});
