@@ -13,7 +13,7 @@ async function open(page: Page, query: string, hash = '') {
   return errors;
 }
 
-const panelName = (page: Page) => page.locator('.info h2#panel-name');
+const panelName = (page: Page) => page.locator('#panel-name');
 
 test('loads, selects by click and by search, cuts, and restores the view from the URL', async ({ page }, info) => {
   const query = info.project.metadata.query as string;
@@ -36,6 +36,7 @@ test('loads, selects by click and by search, cuts, and restores the view from th
   await expect.poll(() => page.evaluate(() => location.hash)).toContain('sel=femur');
 
   // 3. an axial section, without console errors
+  await page.getByRole('navigation', { name: 'Outils' }).getByRole('button', { name: /^Coupes/ }).click();
   await page.getByRole('checkbox', { name: 'Axiale' }).check();
   await expect.poll(() => page.evaluate(() => location.hash)).toContain('cut=axial:0.500');
   await page.waitForTimeout(500);
@@ -45,6 +46,7 @@ test('loads, selects by click and by search, cuts, and restores the view from th
   await page.goto('about:blank');
   const errors2 = await open(page, '', url.slice(url.indexOf('?') >= 0 ? url.indexOf('?') : url.indexOf('#')).replace(/^\//, ''));
   await expect(panelName(page)).toHaveText('fémur');
+  await page.getByRole('navigation', { name: 'Outils' }).getByRole('button', { name: /^Coupes/ }).click();
   await expect(page.getByRole('checkbox', { name: 'Axiale' })).toBeChecked();
 
   expect([...errors, ...errors2]).toEqual([]);
@@ -70,10 +72,14 @@ test('in ghost mode, clicks go through the ghosted layers', async ({ page }, inf
   expect(await selected()).not.toBe(top); // something deeper, or nothing — never the ghost
 });
 
-test('performance budget: full load (atlas, GLB, BVH) under 3 s, mean frame under 16.7 ms (WebGPU)', async ({ page }, info) => {
+test('performance budget: full load (atlas, GLB, BVH) under 3 s, mean frame under 16.7 ms with panels open (WebGPU)', async ({ page }, info) => {
   test.skip(info.project.name !== 'webgpu', 'budget measured on WebGPU only');
   await open(page, '');
   await page.waitForFunction(() => (window as unknown as { __viewer: { pickReadyMs: number } }).__viewer.pickReadyMs > 0);
+  // measured with the drawer and a tool panel open over the view (spec 2026-11-10-refonte-ui)
+  await expect(page.getByRole('navigation', { name: 'Structures anatomiques' })).toBeVisible();
+  await page.getByRole('navigation', { name: 'Outils' }).getByRole('button', { name: /^Calques/ }).click();
+  await expect(page.getByRole('region', { name: 'Calques' })).toBeVisible();
   // Rendering is on demand: frame cost is measured while orbiting, which redraws every frame.
   const { loadMs, firstFrameMs, frameMs } = await page.evaluate(async () => {
     const v = (window as unknown as { __viewer: ViewerHandle & { firstFrameMs: number; orbitFor(ms: number): Promise<number[]> } }).__viewer;

@@ -102,6 +102,20 @@ _Avoid_ : squelette, armature
 Rôle d'un muscle dans le mouvement d'une articulation (fléchisseur, extenseur, pronateur, supinateur), porté par le muscle (`actions`).
 _Avoid_ : fonction
 
+## Vue
+
+**Isolement** :
+Une structure (ou un côté) montrée seule et opaque, toutes les autres instances visibles rendues transparentes. Elle reste montrée même si un filtre la cacherait. Dans l'URL : `iso=`.
+_Avoid_ : focus, solo (réservé aux systèmes)
+
+**Solo** :
+Un système montré seul : tous les autres systèmes du modèle sont masqués.
+_Avoid_ : isoler un système
+
+**Structure masquée** :
+Structure (ou côté) retirée de la vue par l'utilisateur, jusqu'à « Réafficher » ou Ctrl+Z. Les clés sont gardées dans l'ordre où elles ont été masquées (`hid=`), la dernière est réaffichée la première.
+_Avoid_ : cachée, supprimée
+
 **Source** :
 Jeu de données externe d'où proviennent des meshes ou des noms (BodyParts3D, Wikidata…), décrit une fois avec sa version, sa licence et son crédit d'attribution.
 _Avoid_ : provider, dataset, origine

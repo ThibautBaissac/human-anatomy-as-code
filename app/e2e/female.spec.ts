@@ -2,7 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 
 const BASE = 'http://localhost:5174/';
 const ready = (page: Page) => page.waitForFunction(() => (window as unknown as { __viewer?: { getSnapshot(): { ready: boolean } } }).__viewer?.getSnapshot().ready, null, { timeout: 60_000 });
-const panelName = (page: Page) => page.locator('.info h2#panel-name');
+const panelName = (page: Page) => page.locator('#panel-name');
 
 test('female model: loads, shows female organs and no male ones, switches models keeping or announcing the selection', async ({ page }) => {
   const errors: string[] = [];
@@ -10,8 +10,8 @@ test('female model: loads, shows female organs and no male ones, switches models
   page.on('pageerror', (e) => errors.push(String(e)));
   await page.goto(`${BASE}#sex=f`);
   await ready(page);
-  const model = page.getByRole('combobox', { name: 'Modèle' });
-  await expect(model).toHaveValue('female');
+  const model = page.getByRole('group', { name: 'Modèle' });
+  await expect(model.getByRole('button', { name: 'Femme' })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByRole('note')).toContainText('Modèle féminin v1');
 
   // geometry actually shown: female organs present, the bladder from the female file, no male-only instance
@@ -39,7 +39,7 @@ test('female model: loads, shows female organs and no male ones, switches models
   await expect(panelName(page)).toHaveText(/ut[ée]rus/i);
 
   // to the male model: the uterus is not there, the selection is cleared and announced
-  await model.selectOption('male');
+  await model.getByRole('button', { name: 'Homme' }).click();
   await ready(page);
   await expect(page.getByTestId('announce')).toContainText('absent du modèle masculin');
   await expect(page.getByRole('note')).toHaveCount(0);
@@ -48,7 +48,7 @@ test('female model: loads, shows female organs and no male ones, switches models
   await search.fill('fémur');
   await search.press('Enter');
   await expect(panelName(page)).toHaveText('fémur');
-  await model.selectOption('female');
+  await model.getByRole('button', { name: 'Femme' }).click();
   await ready(page);
   await expect(panelName(page)).toHaveText('fémur');
   await expect.poll(() => page.evaluate(() => location.hash)).toContain('sex=f');

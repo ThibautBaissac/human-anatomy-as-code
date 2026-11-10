@@ -12,7 +12,8 @@ test('after "make available offline", the app reloads and works without network'
 
   // Force a real download of every model: empty the model cache first.
   await page.evaluate(() => caches.delete('haac-assets'));
-  await page.getByRole('button', { name: 'Hors ligne…' }).click();
+  await page.getByRole('button', { name: 'Plus d’options' }).click();
+  await page.getByRole('menuitem', { name: 'Hors ligne…' }).click();
   const dialog = page.getByRole('dialog', { name: 'Utiliser l’atlas hors ligne' });
   await expect(dialog).toBeVisible();
   const state = dialog.getByTestId('offline-state');
@@ -23,7 +24,7 @@ test('after "make available offline", the app reloads and works without network'
   await expect(state).toContainText('Disponible hors ligne', { timeout: 90_000 });
   await expect(dialog.getByRole('alert')).toHaveCount(0); // no "download interrupted" after a successful download
   await dialog.getByRole('button', { name: 'Fermer' }).click();
-  await expect(page.getByRole('button', { name: 'Hors ligne…' })).toBeFocused();
+  await expect(page.getByRole('button', { name: 'Plus d’options' })).toBeFocused();
 
   // a view to restore from the URL
   const search = page.getByRole('combobox', { name: 'Rechercher une structure' });
@@ -36,11 +37,11 @@ test('after "make available offline", the app reloads and works without network'
   await page.reload();
   await ready(page);
   await expect(page.getByText('Hors ligne', { exact: true })).toBeVisible();
-  await expect(page.locator('.info h2#panel-name')).toHaveText('fémur');
+  await expect(page.locator('#panel-name')).toHaveText('fémur');
   await expect(page.locator('[role=alert]')).toHaveCount(0);
   await search.fill('cœur');
   await search.press('Enter');
-  await expect(page.locator('.info h2#panel-name')).not.toHaveText('fémur');
+  await expect(page.locator('#panel-name')).not.toHaveText('fémur');
   expect(errors).toEqual([]);
 });
 
@@ -51,7 +52,8 @@ test('"both models" makes the female model available offline too', async ({ page
   await ready(page);
   await page.waitForFunction(() => !!navigator.serviceWorker?.controller, null, { timeout: 30_000 });
   await page.evaluate(() => caches.delete('haac-assets'));
-  await page.getByRole('button', { name: 'Hors ligne…' }).click();
+  await page.getByRole('button', { name: 'Plus d’options' }).click();
+  await page.getByRole('menuitem', { name: 'Hors ligne…' }).click();
   const dialog = page.getByRole('dialog', { name: 'Utiliser l’atlas hors ligne' });
   await expect(dialog.getByTestId('offline-state')).not.toHaveText(/Vérification/);
   await dialog.getByRole('button', { name: 'Rendre disponibles hors ligne les deux modèles' }).click();
@@ -62,11 +64,11 @@ test('"both models" makes the female model available offline too', async ({ page
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
   await page.goto(`${BASE}#sex=f`);
   await ready(page);
-  await expect(page.getByRole('combobox', { name: 'Modèle' })).toHaveValue('female');
+  await expect(page.getByRole('group', { name: 'Modèle' }).getByRole('button', { name: 'Femme' })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('[role=alert]')).toHaveCount(0);
   const search = page.getByRole('combobox', { name: 'Rechercher une structure' });
   await search.fill('utérus');
   await search.press('Enter');
-  await expect(page.locator('.info h2#panel-name')).toHaveText(/utérus/i);
+  await expect(page.locator('#panel-name')).toHaveText(/utérus/i);
   expect(errors).toEqual([]);
 });

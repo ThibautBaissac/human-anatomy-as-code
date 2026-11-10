@@ -1,0 +1,134 @@
+import { useRef } from 'react';
+import { Crosshair, EyeOff, Focus, Play, X } from 'lucide-react';
+import type { Catalog } from '../viewer/catalog.ts';
+import { jointKey, jointsFor, lengthTrend, motionDirection, musclesOf, parseJointKey } from '../viewer/pose.ts';
+import { labelText, structureName } from '../viewer/search.ts';
+import type { Viewer } from '../viewer/viewer.ts';
+import { LANGS, ROLES_OF, type Lang, type Selection, type ViewState } from '../viewer/types.ts';
+import { S } from './strings.ts';
+
+const TREND_MARK: Record<string, string> = { shortens: '↓', lengthens: '↑', stable: '≈' };
+
+/**
+ * The selected structure: name, side, nature, systems, actions (Centrer, Isoler, Masquer, Animer), names,
+ * its part in movements, parts, and the technical details folded.
+ */
+export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, onAnimate, animatable }: {
+  viewer: Viewer; catalog: Catalog; view: ViewState & { selection: Selection }; motionKey: string | null;
+  onSelect: (sel: Selection) => void; onClose: () => void; onAnimate: () => void; animatable: boolean;
+}) {
+  const { selection, lang } = view;
+  const s = catalog.structure(selection.slug);
+  if (!s) return null;
+  const parent = s.parent ? catalog.structure(s.parent) : undefined;
+  const isolated = !!view.isolated && view.isolated.slug === selection.slug && view.isolated.side === selection.side;
+  const draft = LANGS.some((l) => s.labels[l]?.status === 'draft');
+  const subtitle = [selection.side ? S.sideOf(S.side[selection.side]) : null, S.kinds[s.kind] ?? s.kind].filter(Boolean).join(' · ');
+  return (
+    <>
+      <div className="card-head">
+        <div className="card-title">
+          <h2 id="panel-name">{structureName(s, selection.side, lang)}</h2>
+          <p className="muted small">
+            {subtitle}
+            {parent && <> · {S.partOf} <button type="button" className="link" onClick={() => onSelect({ slug: parent.slug, side: null })}>{labelText(parent, lang)}</button></>}
+          </p>
+        </div>
+        <button type="button" className="btn ghost icon" aria-label={S.closeSelection} onClick={onClose}><X aria-hidden="true" size={18} /></button>
+      </div>
+      {s.systems && s.systems.length > 0 && (
+        <ul className="chips" aria-label={S.systemsLabel}>
+          {s.systems.map((x) => <li key={x} className="chip">{S.systems[x] ?? x}</li>)}
+        </ul>
+      )}
+      <div className="actions">
+        <button type="button" className="btn action" onClick={() => viewer.focus(selection.slug, selection.side)}><Crosshair aria-hidden="true" size={18} />{S.centre}</button>
+        <button type="button" className="btn action" aria-pressed={isolated} onClick={() => viewer.setIsolated(isolated ? null : selection)}><Focus aria-hidden="true" size={18} />{S.isolateStructure}</button>
+        <button type="button" className="btn action" onClick={() => viewer.hideSelection()}><EyeOff aria-hidden="true" size={18} />{S.hide}</button>
+        {animatable && <button type="button" className="btn action" onClick={onAnimate}><Play aria-hidden="true" size={18} />{S.animate}</button>}
+      </div>
+      <dl className="names">
+        {LANGS.map((l) => (
+          <div key={l}>
+            <dt>{S.langs[l]}</dt>
+            <dd lang={l}>{s.labels[l]?.text ?? <span className="muted">{S.noName}</span>}</dd>
+          </div>
+        ))}
+      </dl>
+      {draft && <p className="note warn" title={S.notReviewedTitle}>{S.draftNote}</p>}
+      <MotionInfo viewer={viewer} catalog={catalog} view={view} motionKey={motionKey} onSelect={onSelect} lang={lang} />
+      {s.children.length > 0 && (
+        <div className="card-section">
+          <h3>{S.children}</h3>
+          <ul className="children">
+            {s.children.map((c) => {
+              const child = catalog.structure(c);
+              return child ? <li key={c}><button type="button" className="link" onClick={() => onSelect({ slug: c, side: null })}>{labelText(child, lang)}</button></li> : null;
+            })}
+          </ul>
+        </div>
+      )}
+      <details className="details">
+        <summary>{S.details}</summary>
+        <dl className="facts">
+          <div><dt>{S.slug}</dt><dd><code>{s.slug}</code></dd></div>
+          {s.layer !== null && <div><dt>{S.layer}</dt><dd>{s.layer}</dd></div>}
+          <div><dt>{S.status}</dt><dd>{S.statusValues[s.status] ?? s.status}</dd></div>
+        </dl>
+      </details>
+    </>
+  );
+}
+
+/** The structure's part in movements: a muscle's roles; for a bone, the muscles acting on its current joint and how their length changes. */
+function MotionInfo({ viewer, catalog, view, motionKey, onSelect, lang }: {
+  viewer: Viewer; catalog: Catalog; view: ViewState & { selection: Selection }; motionKey: string | null; onSelect: (sel: Selection) => void; lang: Lang;
+}) {
+  const last = useRef<{ key: string; angle: number; direction: 1 | -1 } | null>(null);
+  const s = catalog.structure(view.selection.slug)!;
+  const joints = jointsFor(viewer.joints, s);
+  if (!joints.length) return null;
+  if (s.actions?.length) {
+    return (
+      <div className="card-section">
+        <h3>{S.actsOn}</h3>
+        <ul className="roles">
+          {s.actions.map((a) => {
+            const j = viewer.joints.find((x) => x.slug === a.joint);
+            return <li key={`${a.joint}-${a.role}`}><span>{j ? labelText(j, lang) : a.joint}</span><span className="chip role">{S.roles[a.role]}</span></li>;
+          })}
+        </ul>
+      </div>
+    );
+  }
+  const chosen = motionKey ? parseJointKey(motionKey) : null;
+  const joint = joints.find((j) => j.slug === chosen?.slug) ?? joints[0];
+  const side = (chosen?.slug === joint.slug ? chosen.side : null) ?? view.selection.side ?? 'left';
+  const key = jointKey(joint.slug, side as 'left' | 'right');
+  const rig = viewer.rigs[key];
+  const muscles = musclesOf(joint, viewer.atlas?.structures ?? [], rig, lang);
+  if (!muscles.length) return null;
+  const angle = view.pose[key] ?? Math.round(joint.restDeg);
+  const playing = viewer.getSnapshot().playing;
+  const previous = last.current?.key === key ? last.current : null;
+  const direction: 1 | -1 = playing?.keys.includes(key) ? playing.direction : motionDirection(previous, angle, joint.restDeg);
+  last.current = { key, angle, direction };
+  const [positive, negative] = ROLES_OF[joint.motion];
+  return (
+    <div className="card-section">
+      <h3>{S.musclesHeading(S.movingTowards[direction > 0 ? positive : negative])} — {labelText(joint, lang)}</h3>
+      <ul className="muscles">
+        {muscles.map(({ structure: m, role, rig: r }) => {
+          const trend = r ? lengthTrend(r, direction, joint.motion) : null;
+          return (
+            <li key={`${m.slug}-${role}`}>
+              <button type="button" className="link" onClick={() => onSelect({ slug: m.slug, side: view.selection.side })}>{labelText(m, lang)}</button>
+              {' '}<span className="muted">({S.roles[role]})</span>{' '}
+              <span className={`trend trend-${trend ?? 'unknown'}`}>{trend && <span aria-hidden="true">{TREND_MARK[trend]} </span>}{trend ? S.trends[trend] : S.trendUnknown}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}

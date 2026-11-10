@@ -20,10 +20,17 @@ async function open(page: Page, query: string, hash: string) {
   await page.waitForFunction(() => (window as unknown as { __viewer?: V }).__viewer?.pickReadyMs, null, { timeout: 60_000 });
   return errors;
 }
+/** Opens the Mouvement tool (a no-op when a same-document navigation left it open). */
+async function openMotion(page: Page) {
+  const button = page.getByRole('navigation', { name: 'Outils' }).getByRole('button', { name: /^Mouvement/ });
+  if ((await button.getAttribute('aria-pressed')) !== 'true') await button.click();
+  await expect(page.getByRole('region', { name: 'Mouvement' })).toBeVisible();
+}
 const moved = (a: number[], b: number[]) => a.some((v, i) => Math.abs(v - b[i]) > 1e-3);
 
-test('elbow: the Mouvement section moves the forearm by keyboard, ghosts crossing tissues, picks the moved bone, rests', async ({ page }, info) => {
+test('elbow: the Mouvement tool moves the forearm by keyboard, ghosts crossing tissues, picks the moved bone, rests', async ({ page }, info) => {
   const errors = await open(page, info.project.metadata.query as string, 'sel=humerus@left');
+  await openMotion(page);
   const section = page.getByRole('region', { name: 'Mouvement' });
   await expect(section).toBeVisible();
   const slider = section.getByRole('slider', { name: /Angle de flexion/ });
@@ -59,6 +66,7 @@ test('elbow: the Mouvement section moves the forearm by keyboard, ghosts crossin
   await page.evaluate(() => (window as unknown as { __viewer: V }).__viewer.setState({ hiddenKinds: [] }));
   await page.goto(`${BASE}${info.project.metadata.query}#sel=humerus@left&p=elbow-joint@left:90`);
   await page.waitForFunction(() => (window as unknown as { __viewer?: V }).__viewer?.pickReadyMs, null, { timeout: 60_000 });
+  await openMotion(page);
   await page.getByRole('button', { name: 'Position de repos' }).click();
   expect((await state(page, 'ulna@left'))!.matrix).toEqual(rest);
   expect((await state(page, 'brachialis@left'))!.alpha).toBe(1);
@@ -67,6 +75,7 @@ test('elbow: the Mouvement section moves the forearm by keyboard, ghosts crossin
 
 test('the shared URL restores the pose', async ({ page }, info) => {
   await open(page, info.project.metadata.query as string, 'sel=femur&p=knee-joint@left:60,knee-joint@right:60');
+  await openMotion(page);
   const slider = page.getByRole('region', { name: 'Mouvement' }).getByRole('slider');
   await expect(slider).toHaveAttribute('aria-valuetext', '60° de flexion');
   for (const side of ['left', 'right']) expect((await state(page, `semitendinosus@${side}`))!.alpha).toBeLessThan(1);
@@ -75,6 +84,7 @@ test('the shared URL restores the pose', async ({ page }, info) => {
 test('with reduced motion, play sweeps once and stops on its own', async ({ page }, info) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await open(page, info.project.metadata.query as string, 'sel=tibia@left');
+  await openMotion(page);
   const play = page.getByRole('button', { name: 'Lire le mouvement' });
   await expect(play).toHaveAttribute('aria-pressed', 'false');
   await play.click();
@@ -86,6 +96,7 @@ test('with reduced motion, play sweeps once and stops on its own', async ({ page
 test('performance budget while playing: mean frame under 16.7 ms (WebGPU)', async ({ page }, info) => {
   test.skip(info.project.name !== 'webgpu', 'budget measured on WebGPU only');
   await open(page, '', 'sel=humerus');
+  await openMotion(page);
   await page.getByRole('button', { name: 'Lire le mouvement' }).click();
   await page.waitForTimeout(3000);
   const frameMs = await page.evaluate(() => (window as unknown as { __viewer: V }).__viewer.meanFrameMs());
@@ -96,7 +107,7 @@ test('performance budget while playing: mean frame under 16.7 ms (WebGPU)', asyn
 test('a model switch keeps the pose (female → male with the elbow flexed)', async ({ page }, info) => {
   const errors = await open(page, info.project.metadata.query as string, 'sex=f&sel=humerus@left&p=elbow-joint@left:90');
   const flexed = (await state(page, 'ulna@left'))!.matrix;
-  await page.getByRole('combobox', { name: 'Modèle' }).selectOption('male');
+  await page.getByRole('group', { name: 'Modèle' }).getByRole('button', { name: 'Homme' }).click();
   await page.waitForFunction(() => { const v = (window as unknown as { __viewer: V }).__viewer; return v.getSnapshot().ready && v.getSnapshot().view.selection; }, null, { timeout: 60_000 });
   await expect.poll(() => page.evaluate(() => (window as unknown as { __viewer: { getSnapshot(): { view: { model: string } } } }).__viewer.getSnapshot().view.model)).toBe('male');
   expect((await state(page, 'ulna@left'))!.matrix).toEqual(flexed);
@@ -106,12 +117,12 @@ test('a model switch keeps the pose (female → male with the elbow flexed)', as
 
 test('the credits list each source with its licence notice (MIT, BSD-3)', async ({ page }, info) => {
   await open(page, info.project.metadata.query as string, '');
-  await page.getByRole('button', { name: 'Licences…' }).click();
+  await page.getByRole('button', { name: 'Licences', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: 'Données et licences' });
   await expect(dialog).toBeVisible();
   await expect(dialog.getByText('Rajagopal 2016 full-body musculoskeletal model (OpenSim)')).toBeVisible();
   await expect(dialog.getByText(/Permission is hereby granted/)).toHaveCount(1);
   await expect(dialog.getByText(/Redistribution and use in source and binary forms/)).toHaveCount(1);
   await dialog.getByRole('button', { name: 'Fermer' }).click();
-  await expect(page.getByRole('button', { name: 'Licences…' })).toBeFocused();
+  await expect(page.getByRole('button', { name: 'Licences', exact: true })).toBeFocused();
 });

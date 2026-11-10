@@ -15,7 +15,8 @@ async function open(page: Page, query: string, hash = '') {
 
 test('systems: hide one, a structure of two systems stays; isolate; show all; the URL keeps it', async ({ page }, info) => {
   const errors = await open(page, info.project.metadata.query as string);
-  const block = page.getByRole('group', { name: 'Afficher par système' });
+  await page.getByRole('navigation', { name: 'Outils' }).getByRole('button', { name: /^Calques/ }).click();
+  const block = page.getByRole('region', { name: 'Calques' });
   await expect(block).toBeVisible();
 
   await block.getByRole('checkbox', { name: 'Appareil digestif' }).uncheck();
@@ -23,7 +24,7 @@ test('systems: hide one, a structure of two systems stays; isolate; show all; th
   expect(await alpha(page, 'pancreas')).toBe(1); // still endocrine
   await expect.poll(() => page.evaluate(() => location.hash)).toContain('sys=digestive');
 
-  await block.getByRole('button', { name: 'Isoler : Système nerveux' }).click();
+  await block.getByRole('button', { name: 'Solo : Système nerveux' }).click();
   expect(await alpha(page, 'cerebellum')).toBe(1);
   expect(await alpha(page, 'femur@left')).toBe(0);
   expect(await alpha(page, 'pancreas')).toBe(0);
@@ -35,11 +36,12 @@ test('systems: hide one, a structure of two systems stays; isolate; show all; th
   await page.goto('about:blank');
   await open(page, info.project.metadata.query as string, 'sys=skeletal');
   expect(await alpha(page, 'femur@left')).toBe(0);
-  await expect(page.getByRole('group', { name: 'Afficher par système' }).getByRole('checkbox', { name: 'Squelette et articulations' })).not.toBeChecked();
+  await page.getByRole('navigation', { name: 'Outils' }).getByRole('button', { name: /^Calques/ }).click();
+  await expect(page.getByRole('region', { name: 'Calques' }).getByRole('checkbox', { name: 'Squelette et articulations' })).not.toBeChecked();
   expect(errors).toEqual([]);
 });
 
-test('the Info panel names the systems of the selection', async ({ page }, info) => {
+test('the card names the systems of the selection', async ({ page }, info) => {
   await open(page, info.project.metadata.query as string, 'sel=pancreas');
-  await expect(page.locator('.info dl.facts')).toContainText('Appareil digestif, Système endocrinien');
+  await expect(page.getByRole('list', { name: 'Systèmes' }).getByRole('listitem')).toHaveText(['Appareil digestif', 'Système endocrinien']);
 });

@@ -6,10 +6,11 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import './bvh.ts';
 import { appearance, type AppearanceState } from './appearance.ts';
-import { buildCatalog, type Catalog } from './catalog.ts';
+import { buildCatalog, selectionKey, type Catalog } from './catalog.ts';
+import { defaultCamera, GLIDE_MS, interpolateCamera, presetCamera, type Preset } from './camera.ts';
 import { colorOf, HIGHLIGHT } from './colors.ts';
 import { crossingInstances, jointKey, normaliseAngle, parseJointKey, poseMatrices, type Pose, type Rigs } from './pose.ts';
-import { AXES, DEFAULT_VIEW, type Atlas, type AtlasJoint, type Axis, type Camera, type Model, type Selection, type Side, type ViewState } from './types.ts';
+import { AXES, DEFAULT_VIEW, type Atlas, type AtlasJoint, type Axis, type Camera, type Model, type Selection, type Side, type Vec3, type ViewState } from './types.ts';
 
 export interface Manifest {
   kinds: Record<string, { file: string; bytes: number; sha256: string; instances: number }>;
@@ -63,6 +64,8 @@ interface Batch {
 
 /** Section planes; each keeps the side n·p + c ≥ 0 (axial keeps below, coronal keeps behind, sagittal keeps the left half). */
 const PLANE_NORMALS: Record<Axis, [number, number, number]> = { axial: [0, 0, -1], coronal: [0, 1, 0], sagittal: [-1, 0, 0] };
+/** Hovered structures: their kind colour mixed this much towards white (spec). */
+const HOVER_MIX = 0.35;
 const PLANE_AXIS: Record<Axis, 'x' | 'y' | 'z'> = { axial: 'z', coronal: 'y', sagittal: 'x' };
 
 export class Viewer {
@@ -92,6 +95,10 @@ export class Viewer {
   private lastFrame = 0;
   private hoverPending: PointerEvent | null = null;
   private lastHover: string | null = null;
+  /** structure-side under the pointer (tinted) */
+  private hovered: Selection | null = null;
+  /** camera glide in progress */
+  private glide: { from: Camera; to: Camera; start: number | null } | null = null;
   catalog: Catalog | null = null;
   /** where the models came from on this load (bench page) */
   loadSource: 'network' | 'partial-cache' | 'cache' = 'network';
@@ -127,14 +134,19 @@ export class Viewer {
     this.controls = new OrbitControls(this.camera, canvas);
     this.controls.enableDamping = true;
     this.controls.addEventListener('end', () => this.emitChange());
+    // the user takes the camera: a glide stops where it stands
+    this.controls.addEventListener('start', () => { if (this.glide) { this.glide = null; this.emitChange(); } });
     this.controls.addEventListener('change', () => this.markDirty());
     this.resize = new ResizeObserver(() => this.fit());
     this.resize.observe(canvas);
     // A click selects, a drag (orbit) does not.
     canvas.addEventListener('pointerdown', (e) => { this.downAt = [e.clientX, e.clientY]; this.downTouch = e.pointerType === 'touch'; });
     canvas.addEventListener('click', (e) => this.onClick(e));
+    canvas.addEventListener('dblclick', (e) => this.onDoubleClick(e));
     // No hover while a button is down: the drag orbits the camera.
-    canvas.addEventListener('pointermove', (e) => { this.hoverPending = e.buttons ? null : e; });
+    canvas.addEventListener('pointermove', (e) => {
+      if (e.buttons) { this.hoverPending = null; this.setHover(null); } else if (e.pointerType === 'mouse' || e.pointerType === 'pen') this.hoverPending = e;
+    });
     canvas.addEventListener('pointerleave', () => { this.hoverPending = null; this.setHover(null); });
   }
 
@@ -265,7 +277,7 @@ export class Viewer {
     // a pose set from outside (slider, URL, Back button) wins over a playback
     if (patch.pose && this.player) this.stop(false);
     this.view = { ...this.view, ...patch };
-    if (patch.camera) this.applyCamera(patch.camera);
+    if (patch.camera) { this.glide = null; this.applyCamera(patch.camera); }
     if (patch.sections) this.applySections();
     if (patch.pose) this.applyPose();
     if (patch.selection !== undefined) this.emit('select', this.view.selection);
@@ -289,6 +301,19 @@ export class Viewer {
     this.setState({ hiddenSystems: (this.catalog?.systems ?? []).filter((x) => x !== system).sort() });
   }
   showAllSystems(): void { this.setState({ hiddenSystems: [] }); }
+  /** Shows one structure-side alone (every other instance ghosted), or ends the isolation. */
+  setIsolated(target: Selection | null): void { this.setState({ isolated: target }); }
+  /** Hides the selected structure and clears the selection; hiding the isolated structure ends the isolation. */
+  hideSelection(): void {
+    const sel = this.view.selection;
+    if (!sel) return;
+    const key = selectionKey(sel);
+    const isolated = this.view.isolated && selectionKey(this.view.isolated) === key ? null : this.view.isolated;
+    this.setState({ hidden: [...this.view.hidden.filter((k) => k !== key), key], selection: null, isolated });
+  }
+  /** Shows the last hidden structure again. */
+  undoHide(): void { if (this.view.hidden.length) this.setState({ hidden: this.view.hidden.slice(0, -1) }); }
+  showHidden(): void { this.setState({ hidden: [] }); }
   setLayerCut(n: number): void { this.setState({ layerCut: n }); }
   setGhost(on: boolean): void { this.setState({ ghost: on }); }
   setSection(axis: Axis, position: number | null): void {
@@ -308,8 +333,26 @@ export class Viewer {
       batch.mesh.getBoundingBoxAt(batch.mesh.getGeometryIdAt(id), b);
       box.union(b.applyMatrix4(batch.mesh.getMatrixAt(id, m)));
     }
-    this.frameBox(box);
-    this.emitChange();
+    this.glideTo(this.framing(box));
+  }
+
+  /** Looks at the same target from the named side of the body. */
+  viewFrom(preset: Preset): void { this.glideTo(presetCamera(preset, this.currentCamera())); }
+  /** Back to the first view: the whole body from the front. */
+  recentre(): void {
+    this.glideTo(defaultCamera({ min: this.box.min.toArray() as Vec3, max: this.box.max.toArray() as Vec3 }));
+  }
+
+  private currentCamera(): Camera {
+    const p = this.camera.position, t = this.controls.target;
+    return { position: [p.x, p.y, p.z], target: [t.x, t.y, t.z] };
+  }
+
+  /** Moves the camera to `to` in a 400 ms glide, or at once when the user asked for reduced motion. */
+  private glideTo(to: Camera) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { this.glide = null; this.applyCamera(to); this.emitChange(); return; }
+    this.glide = { from: this.currentCamera(), to, start: null };
+    this.dirty = true;
   }
 
   /** Sets one joint angle (whole degrees) on the given sides; the rest angle removes it from the pose. */
@@ -405,8 +448,11 @@ export class Viewer {
   private applyAppearance() {
     if (!this.catalog) return;
     this.dirty = true;
-    const sel = this.view.selection;
+    const sel = this.view.selection, iso = this.view.isolated, hov = this.hovered;
     const state: AppearanceState = {
+      hidden: this.catalog.instancesOfKeys(this.view.hidden),
+      isolated: new Set(iso ? this.catalog.instancesOf(iso.slug, iso.side) : []),
+      hovered: new Set(hov ? this.catalog.instancesOf(hov.slug, hov.side) : []),
       hiddenKinds: new Set(this.view.hiddenKinds),
       hiddenSystems: new Set(this.view.hiddenSystems),
       layerCut: this.view.layerCut,
@@ -415,15 +461,16 @@ export class Viewer {
       crossing: new Set([...crossingInstances(this.rigs, this.joints, this.view.pose, new Set(this.snapshot.playing?.keys ?? []))]
         .map((n) => this.indexOf.get(n)).filter((g): g is number => g !== undefined)),
     };
-    const c = new THREE.Color(), v4 = new THREE.Vector4(), hl = new THREE.Color(HIGHLIGHT);
+    const c = new THREE.Color(), v4 = new THREE.Vector4(), hl = new THREE.Color(HIGHLIGHT), white = new THREE.Color(0xffffff);
     for (const batch of this.batches) {
       const base = new THREE.Color(colorOf(batch.kind));
+      const hover = base.clone().lerp(white, HOVER_MIX);
       let transparent = false;
       for (let id = 0; id < batch.globalOf.length; id++) {
         const a = appearance(state, this.catalog.instance(batch.globalOf[id]));
         batch.mesh.setVisibleAt(id, a.visible);
         batch.alpha[id] = a.visible ? a.alpha : 0;
-        c.copy(a.highlighted ? hl : base);
+        c.copy(a.highlighted ? hl : a.hovered ? hover : base);
         batch.mesh.setColorAt(id, v4.set(c.r, c.g, c.b, a.alpha));
         if (a.visible && a.alpha < 1) transparent = true;
       }
@@ -464,22 +511,17 @@ export class Viewer {
   }
 
   private frameAll() {
-    const size = this.box.getSize(new THREE.Vector3()), center = this.box.getCenter(new THREE.Vector3());
-    const dist = Math.max(size.x, size.y, size.z) * 1.6;
-    this.controls.target.copy(center);
-    this.camera.position.copy(center).add(new THREE.Vector3(0, -dist, size.z * 0.1));
-    this.controls.update();
+    this.applyCamera(defaultCamera({ min: this.box.min.toArray() as Vec3, max: this.box.max.toArray() as Vec3 }));
   }
 
-  private frameBox(box: THREE.Box3) {
-    this.dirty = true;
+  /** The camera framing a box, keeping the viewing direction. */
+  private framing(box: THREE.Box3): Camera {
     const center = box.getCenter(new THREE.Vector3());
     const radius = Math.max(box.getSize(new THREE.Vector3()).length() / 2, 20);
     const dist = radius / Math.sin(THREE.MathUtils.degToRad(this.camera.fov / 2)) * 1.1;
     const dirv = this.camera.position.clone().sub(this.controls.target).normalize();
-    this.controls.target.copy(center);
-    this.camera.position.copy(center).addScaledVector(dirv, dist);
-    this.controls.update();
+    const p = center.clone().addScaledVector(dirv, dist);
+    return { position: [p.x, p.y, p.z], target: [center.x, center.y, center.z] };
   }
 
   // --- picking ------------------------------------------------------------------------
@@ -515,10 +557,21 @@ export class Viewer {
     this.emit('pick', sel);
   }
 
+  /** Double-click: selects the structure and frames it. */
+  private onDoubleClick(e: MouseEvent) {
+    const sel = this.pick(e.clientX, e.clientY);
+    if (!sel) return;
+    this.select(sel);
+    this.emit('pick', sel);
+    this.focus(sel.slug, sel.side);
+  }
+
   private setHover(s: Selection | null) {
     const key = s ? `${s.slug}@${s.side}` : null;
     if (key === this.lastHover) return;
     this.lastHover = key;
+    this.hovered = s;
+    this.applyAppearance();
     this.emit('hover', s);
   }
 
@@ -536,6 +589,13 @@ export class Viewer {
     // Hover waits for the picking indexes rather than building them on a mouse move.
     if (this.hoverPending && this.pickReadyMs) { const e = this.hoverPending; this.hoverPending = null; this.setHover(this.pick(e.clientX, e.clientY)); }
     this.orbit?.(t);
+    if (this.glide) {
+      const g = this.glide;
+      g.start ??= t;
+      const k = Math.min((t - g.start) / GLIDE_MS, 1);
+      this.applyCamera(interpolateCamera(g.from, g.to, k));
+      if (k >= 1) { this.glide = null; this.emitChange(); }
+    }
     this.player?.(t);
     if (this.controls.update()) this.dirty = true; // damping still moving
     if (!this.dirty) { this.lastFrame = 0; return; }

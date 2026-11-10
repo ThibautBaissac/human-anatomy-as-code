@@ -1,21 +1,45 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ChevronLeft, Menu, Play, Search as SearchIcon, X } from 'lucide-react';
+import { jointKey, jointsFor } from '../viewer/pose.ts';
 import { buildSearchIndex, structureName } from '../viewer/search.ts';
-import { LANGS, type Lang, type Model, type Selection } from '../viewer/types.ts';
-import { InfoPanel } from './InfoPanel.tsx';
-import { MotionPanel } from './MotionPanel.tsx';
+import { LANGS, type Lang, type Model, type Selection, type Side } from '../viewer/types.ts';
+import type { Viewer } from '../viewer/viewer.ts';
+import { InfoCard } from './InfoCard.tsx';
+import { MoreMenu, type MenuEntry } from './MoreMenu.tsx';
 import { OfflineDialog } from './OfflineDialog.tsx';
 import { CreditsDialog } from './CreditsDialog.tsx';
 import { Bench } from './Bench.tsx';
 import { FemaleNotice } from './FemaleNotice.tsx';
+import { Banners, CameraGroup, CreditLine, HelpDialog, HoverLabel, Notifications } from './Overlays.tsx';
 import { Search } from './Search.tsx';
+import { Sheet } from './Sheet.tsx';
 import { Tabs } from './Tabs.tsx';
-import { Toolbar } from './Toolbar.tsx';
+import { DissectionPanel, LayersPanel, MotionTool, playJoint, SectionsPanel, ToolButton, toolModified, TOOLS, type Tool } from './Tools.tsx';
 import { Tree } from './Tree.tsx';
 import { UpdateBanner } from './UpdateBanner.tsx';
+import type { SheetHeight } from './layout.ts';
 import { useNarrow } from './useNarrow.ts';
 import { usePwa } from './usePwa.ts';
 import { useViewer } from './useViewer.ts';
 import { S } from './strings.ts';
+
+const DRAWER_KEY = 'haac.drawer';
+const readDrawer = () => {
+  try { const v = localStorage.getItem(DRAWER_KEY); if (v === '1' || v === '0') return v === '1'; } catch { /* storage unavailable */ }
+  return innerWidth >= 1200;
+};
+const writeDrawer = (open: boolean) => { try { localStorage.setItem(DRAWER_KEY, open ? '1' : '0'); } catch { /* storage unavailable */ } };
+const typing = (t: EventTarget | null) => t instanceof HTMLElement && (t.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(t.tagName) && !(t instanceof HTMLInputElement && ['checkbox', 'range', 'radio'].includes(t.type)));
+
+/** The joint-side a selection takes part in and that can be animated, if any. */
+function jointOfSelection(viewer: Viewer | null, sel: Selection | null): string | null {
+  const s = sel && viewer?.catalog?.structure(sel.slug);
+  if (!viewer || !s) return null;
+  for (const j of jointsFor(viewer.joints, s)) {
+    for (const side of (sel.side ? [sel.side] : ['left', 'right']) as Side[]) if (viewer.rigs[jointKey(j.slug, side)]) return jointKey(j.slug, side);
+  }
+  return null;
+}
 
 export function App() {
   const { canvasRef, viewer, snapshot, error, notice, switching, selectAndFocus, switchModel } = useViewer();
@@ -26,84 +50,196 @@ export function App() {
   const atlas = viewer?.atlas ?? null;
   const index = useMemo(() => (atlas ? buildSearchIndex(atlas) : null), [atlas]);
   const [hover, setHover] = useState<Selection | null>(null);
-  const [tab, setTab] = useState('info');
+  const [tool, setTool] = useState<Tool | null>(null);
+  const toolButtons = useRef<Partial<Record<Tool, HTMLButtonElement | null>>>({});
+  const [drawerOpen, setDrawerOpen] = useState(readDrawer);
   const [offlineOpen, setOfflineOpen] = useState(false);
-  const offlineButton = useRef<HTMLButtonElement>(null);
   const [creditsOpen, setCreditsOpen] = useState(false);
-  const creditsButton = useRef<HTMLButtonElement>(null);
+  const [helpOpen, setHelpOpen] = useState(false);
+  const [motionKey, setMotionKey] = useState<string | null>(null);
+  // phone
+  const [sheet, setSheet] = useState<SheetHeight>('folded');
+  const [tab, setTab] = useState('info');
+  const [phoneTool, setPhoneTool] = useState<Tool>('layers');
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchButton = useRef<HTMLButtonElement>(null);
+
   useEffect(() => viewer?.on('hover', setHover), [viewer]);
   // On a phone, tapping a structure shows its information.
-  useEffect(() => viewer?.on('pick', (sel) => { if (sel) setTab('info'); }), [viewer]);
+  useEffect(() => viewer?.on('pick', (sel) => { if (sel) { setTab('info'); setSheet((h) => (h === 'folded' ? 'half' : h)); } }), [viewer]);
+  // The Mouvement tool follows the selection when it takes part in a joint.
+  const selectionJoint = useMemo(() => jointOfSelection(viewer, view.selection), [viewer, catalog, view.selection]);
+  useEffect(() => { if (selectionJoint) setMotionKey(selectionJoint); }, [selectionJoint]);
 
-  const nameOf = (sel: Selection | null) => {
+  const nameOf = useCallback((sel: Selection | null) => {
     const s = sel && catalog?.structure(sel.slug);
     return s && sel ? structureName(s, sel.side, view.lang) : '';
-  };
+  }, [catalog, view.lang]);
   // stable across renders: the tree is memoised and must not re-render on every frame of a playback
   const pick = useCallback((slug: string) => selectAndFocus({ slug, side: null }), [selectAndFocus]);
 
+  const toggleTool = (t: Tool) => setTool((cur) => (cur === t ? null : t));
+  const toggleDrawer = () => setDrawerOpen((o) => { writeDrawer(!o); return !o; });
+  const animate = () => {
+    if (!viewer || !selectionJoint) return;
+    setMotionKey(selectionJoint);
+    if (narrow) { setTab('tools'); setPhoneTool('motion'); setSheet((h) => (h === 'folded' ? 'half' : h)); }
+    else setTool('motion');
+    playJoint(viewer, selectionJoint);
+  };
+
+  // Échap closes the topmost thing (dialogs, the menu and the search handle their own); Ctrl/⌘ + Z shows the last hidden structure again.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.defaultPrevented || document.querySelector('dialog[open]')) return;
+      if (e.key === 'Escape' && tool) {
+        const t = tool;
+        setTool(null);
+        toolButtons.current[t]?.focus();
+      } else if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z' && !typing(e.target) && view.hidden.length) {
+        e.preventDefault();
+        viewer?.undoHide();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [tool, viewer, view.hidden.length]);
+
   const tree = catalog && <Tree catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick} />;
-  const info = (
-    <InfoPanel catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick}>
-      {viewer && catalog && view.selection && (
-        <MotionPanel viewer={viewer} catalog={catalog} view={{ ...view, selection: view.selection }} onSelect={selectAndFocus} />
-      )}
-    </InfoPanel>
+  const card = viewer && catalog && view.selection && (
+    <InfoCard viewer={viewer} catalog={catalog} view={{ ...view, selection: view.selection }} motionKey={motionKey} animatable={!!selectionJoint}
+      onSelect={selectAndFocus} onClose={() => viewer.select(null)} onAnimate={animate} />
   );
-  const controls = viewer && catalog && <Toolbar viewer={viewer} view={view} kinds={catalog.kinds} systems={catalog.systems} maxLayer={catalog.maxLayer} />;
+  const toolContent = (t: Tool) => viewer && catalog && (
+    t === 'layers' ? <LayersPanel viewer={viewer} view={view} kinds={catalog.kinds} systems={catalog.systems} />
+      : t === 'dissection' ? <DissectionPanel viewer={viewer} view={view} maxLayer={catalog.maxLayer} />
+        : t === 'sections' ? <SectionsPanel viewer={viewer} view={view} />
+          : <MotionTool viewer={viewer} view={view} motionKey={motionKey} onChoose={setMotionKey} />
+  );
+
+  const modelEntries: MenuEntry[] = narrow ? [
+    { kind: 'radio', group: S.modelLabel, options: (['male', 'female'] as Model[]).map((m) => ({ value: m, label: S.models[m] })), value: view.model, onChange: (m) => { if (ready && !switching) switchModel(m as Model); } },
+    { kind: 'radio', group: S.namesLabel, options: LANGS.map((l) => ({ value: l, label: S.langs[l] })), value: view.lang, onChange: (l) => viewer?.setState({ lang: l as Lang }) },
+  ] : [];
+  const menu: MenuEntry[] = [
+    ...modelEntries,
+    { kind: 'item', label: S.menuOffline, onSelect: () => setOfflineOpen(true) },
+    { kind: 'item', label: S.menuCredits, onSelect: () => setCreditsOpen(true) },
+    { kind: 'item', label: S.menuHelp, onSelect: () => setHelpOpen(true) },
+  ];
+  const offlineTag = <span role="status" className={pwa.online ? 'visually-hidden' : 'offline-tag'}>{pwa.online ? '' : S.offlineTag}</span>;
+  const isolatedName = view.isolated && catalog?.structure(view.isolated.slug) ? nameOf(view.isolated) : null;
+  const errors = [error, failedKinds.length ? (pwa.online ? S.failed : S.failedOffline)(failedKinds.join(', ')) : null].filter((x): x is string => !!x);
 
   return (
     <div className={`app${narrow ? ' is-narrow' : ''}`}>
       <UpdateBanner visible={pwa.updateReady} onReload={pwa.applyUpdate} onLater={pwa.dismissUpdate} />
-      <header className="header">
-        <h1>{S.appTitle}</h1>
-        {index && <Search index={index} lang={view.lang} onSelect={pick} />}
-        <label className="lang">
-          {S.modelLabel}
-          <select value={view.model} onChange={(e) => switchModel(e.target.value as Model)} disabled={!ready || switching}>
-            {(['male', 'female'] as Model[]).map((m) => <option key={m} value={m}>{S.models[m]}</option>)}
-          </select>
-        </label>
-        <label className="lang">
-          {S.nameLang}
-          <select value={view.lang} onChange={(e) => viewer?.setState({ lang: e.target.value as Lang })}>
-            {LANGS.map((l) => <option key={l} value={l}>{S.langs[l]}</option>)}
-          </select>
-        </label>
-        <span role="status" className={pwa.online ? 'visually-hidden' : 'offline-tag'}>{pwa.online ? '' : S.offlineTag}</span>
-        <button ref={offlineButton} type="button" onClick={() => setOfflineOpen(true)}>{S.offlineButton}</button>
-      </header>
-      {view.model === 'female' && <FemaleNotice atlas={atlas} />}
       <main className="stage">
         <canvas ref={canvasRef} className="canvas" role="img" aria-label={S.canvasLabel} aria-describedby="canvas-help" />
         <p id="canvas-help" className="visually-hidden">{S.canvasHelp}</p>
       </main>
+
       {narrow ? (
-        <Tabs current={tab} onChange={setTab} panels={{ tree, info, controls }} />
+        <header className="header">
+          {searchOpen && index ? (
+            <>
+              <Search index={index} lang={view.lang} onSelect={pick} autoFocus />
+              <button type="button" className="btn ghost icon" aria-label={S.closeSearch} onClick={() => { setSearchOpen(false); requestAnimationFrame(() => searchButton.current?.focus()); }}><X aria-hidden="true" size={20} /></button>
+            </>
+          ) : (
+            <>
+              <h1>{S.appTitle}</h1>
+              {offlineTag}
+              <button ref={searchButton} type="button" className="btn ghost icon" aria-label={S.openSearch} onClick={() => setSearchOpen(true)} disabled={!index}><SearchIcon aria-hidden="true" size={20} /></button>
+              <MoreMenu entries={menu} />
+            </>
+          )}
+        </header>
       ) : (
-        <>
-          <nav className="sidebar" aria-label={S.treeLabel}>{tree}</nav>
-          <aside className="info" aria-labelledby="info-title">
-            <h2 id="info-title" className="visually-hidden">{S.panelTitle}</h2>
-            {info}
-          </aside>
-          <section className="controls" aria-label={S.controlsLabel}>{controls}</section>
-        </>
+        <header className="header">
+          <button type="button" className="btn ghost" aria-expanded={drawerOpen} aria-controls="drawer" onClick={toggleDrawer}><Menu aria-hidden="true" size={20} />{S.structures}</button>
+          <h1>{S.appTitle}</h1>
+          <div className="header-search">{index && <Search index={index} lang={view.lang} onSelect={pick} />}</div>
+          <div role="group" aria-label={S.modelLabel} className="segmented">
+            {(['male', 'female'] as Model[]).map((m) => (
+              <button key={m} type="button" className="btn" aria-pressed={view.model === m} disabled={!ready || switching} onClick={() => switchModel(m)}>{S.models[m]}</button>
+            ))}
+          </div>
+          <label className="lang">
+            {S.namesLabel}
+            <select className="field" value={view.lang} onChange={(e) => viewer?.setState({ lang: e.target.value as Lang })}>
+              {LANGS.map((l) => <option key={l} value={l}>{S.langs[l]}</option>)}
+            </select>
+          </label>
+          {offlineTag}
+          <MoreMenu entries={menu} />
+        </header>
       )}
-      <footer className="statusbar">
-        <span>{loading ? S.loading(loading.loaded, loading.total) : hover ? `${S.hover} : ${nameOf(hover)}` : ' '}</span>
-        {error && <span role="alert" className="error">{error}</span>}
-        {failedKinds.length > 0 && <span role="alert">{(pwa.online ? S.failed : S.failedOffline)(failedKinds.join(', '))}</span>}
-        <span className="credits">{S.credits} : {atlas?.attributions.map((a) => a.name).join(', ')} · {snapshot.backend ?? ''}{' '}
-          <button ref={creditsButton} type="button" className="link" onClick={() => setCreditsOpen(true)}>{S.creditsButton}</button>
-        </span>
-      </footer>
+
+      <div className="top-overlays">
+        {view.model === 'female' && <FemaleNotice atlas={atlas} />}
+        <Notifications loading={loading ? S.loading(loading.loaded, loading.total) : null} errors={errors} />
+        {viewer && <Banners viewer={viewer} isolatedName={isolatedName} hiddenCount={view.hidden.length} />}
+      </div>
+
+      {!narrow && drawerOpen && (
+        <nav id="drawer" className="drawer surface" aria-label={S.treeLabel}>
+          <div className="drawer-head">
+            <h2>{S.structures}</h2>
+            <button type="button" className="btn ghost icon" aria-label={S.closeDrawer} onClick={toggleDrawer}><ChevronLeft aria-hidden="true" size={18} /></button>
+          </div>
+          {tree}
+        </nav>
+      )}
+      {!narrow && card && <aside className="card surface" aria-labelledby="panel-name">{card}</aside>}
+      {!narrow && tool && (
+        <section id="tool-panel" className={`tool-panel surface tool-${tool}`} aria-label={S.toolNames[tool]}>{toolContent(tool)}</section>
+      )}
+      {!narrow && catalog && (
+        <nav className="toolbar surface" aria-label={S.toolsLabel}>
+          {TOOLS.map((t) => (
+            <ToolButton key={t} ref={(el) => { toolButtons.current[t] = el; }} tool={t} open={tool === t} modified={toolModified(t, view)}
+              controls="tool-panel" onClick={() => toggleTool(t)} />
+          ))}
+        </nav>
+      )}
+      {viewer && ready && <CameraGroup viewer={viewer} narrow={narrow} />}
+      {(!narrow || sheet === 'folded') && <CreditLine atlas={atlas} onLicences={() => setCreditsOpen(true)} />}
+
+      {narrow && (
+        <Sheet height={sheet} onHeight={setSheet} header={
+          <div className="sheet-summary">
+            {view.selection && catalog ? (
+              <>
+                <span className="sheet-name">{nameOf(view.selection)}</span>
+                {selectionJoint && <button type="button" className="btn icon" aria-label={S.animate} onClick={animate}><Play aria-hidden="true" size={18} /></button>}
+              </>
+            ) : <span className="muted">{S.tapStructure}</span>}
+          </div>
+        }>
+          <Tabs current={tab} onChange={setTab} panels={{
+            info: card || <p className="muted">{S.panelEmpty}</p>,
+            tree,
+            tools: (
+              <>
+                <div role="group" aria-label={S.toolChoice} className="segmented wide">
+                  {TOOLS.map((t) => <button key={t} type="button" className="btn" aria-pressed={phoneTool === t} onClick={() => setPhoneTool(t)}>{S.toolNames[t]}</button>)}
+                </div>
+                <section className={`phone-tool tool-${phoneTool}`} aria-label={S.toolNames[phoneTool]}>{toolContent(phoneTool)}</section>
+              </>
+            ),
+          }} />
+        </Sheet>
+      )}
+
+      {!narrow && <HoverLabel canvas={canvasRef.current} hover={hover} nameOf={nameOf} />}
       <div role="status" aria-live="polite" className="visually-hidden" data-testid="announce">
         {notice ?? (view.selection ? S.selected(nameOf(view.selection)) : ready ? S.cleared : '')}
       </div>
       {viewer && ready && new URLSearchParams(location.search).has('bench') && <Bench viewer={viewer} />}
-      <CreditsDialog open={creditsOpen} atlas={atlas} onClose={() => { setCreditsOpen(false); creditsButton.current?.focus(); }} />
-      <OfflineDialog open={offlineOpen} onClose={() => { setOfflineOpen(false); offlineButton.current?.focus(); }}
+      <CreditsDialog open={creditsOpen} atlas={atlas} onClose={() => setCreditsOpen(false)} />
+      <HelpDialog open={helpOpen} onClose={() => setHelpOpen(false)} backend={snapshot.backend} />
+      <OfflineDialog open={offlineOpen} onClose={() => setOfflineOpen(false)}
         supported={pwa.supported} canInstall={pwa.canInstall} install={pwa.install} iosHint={pwa.iosHint} model={view.model} atlas={atlas} />
     </div>
   );
