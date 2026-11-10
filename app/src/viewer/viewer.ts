@@ -4,15 +4,12 @@ import { frontFacing, materialColor, vec3 } from 'three/tsl';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
-import { acceleratedRaycast, computeBatchedBoundsTree } from 'three-mesh-bvh';
+import './bvh.ts';
 import { appearance, type AppearanceState } from './appearance.ts';
 import { buildCatalog, type Catalog } from './catalog.ts';
 import { colorOf, HIGHLIGHT } from './colors.ts';
 import { crossingInstances, jointKey, normaliseAngle, parseJointKey, poseMatrices, type Pose, type Rigs } from './pose.ts';
 import { AXES, DEFAULT_VIEW, type Atlas, type AtlasJoint, type Axis, type Camera, type Model, type Selection, type Side, type ViewState } from './types.ts';
-
-THREE.BatchedMesh.prototype.raycast = acceleratedRaycast;
-(THREE.BatchedMesh.prototype as unknown as { computeBoundsTree: typeof computeBatchedBoundsTree }).computeBoundsTree = computeBatchedBoundsTree;
 
 export interface Manifest {
   kinds: Record<string, { file: string; bytes: number; sha256: string; instances: number }>;
@@ -136,7 +133,8 @@ export class Viewer {
     // A click selects, a drag (orbit) does not.
     canvas.addEventListener('pointerdown', (e) => { this.downAt = [e.clientX, e.clientY]; this.downTouch = e.pointerType === 'touch'; });
     canvas.addEventListener('click', (e) => this.onClick(e));
-    canvas.addEventListener('pointermove', (e) => { this.hoverPending = e; });
+    // No hover while a button is down: the drag orbits the camera.
+    canvas.addEventListener('pointermove', (e) => { this.hoverPending = e.buttons ? null : e; });
     canvas.addEventListener('pointerleave', () => { this.hoverPending = null; this.setHover(null); });
   }
 
