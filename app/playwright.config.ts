@@ -22,7 +22,7 @@ export default defineConfig({
   ],
   webServer: {
     command: 'npm run build && npm run preview',
-    url: 'http://localhost:5174/atlas.json',
+    url: 'http://localhost:5174/atlas-male.json',
     reuseExistingServer: false,
     timeout: 120_000,
   },

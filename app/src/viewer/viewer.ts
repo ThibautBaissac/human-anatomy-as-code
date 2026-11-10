@@ -164,7 +164,7 @@ export class Viewer {
   getSnapshot = (): ViewerSnapshot => this.snapshot;
 
   // --- loading ------------------------------------------------------------------------
-  /** Call before fetching atlas.json so that loadMs covers the whole load (atlas, GLB, BVH). */
+  /** Call before fetching the atlas so that loadMs covers the whole load (atlas, GLB, BVH). */
   markLoadStart(): void { this.loadStart = performance.now(); }
   private loadStart: number | null = null;
 

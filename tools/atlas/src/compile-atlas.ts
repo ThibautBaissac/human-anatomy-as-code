@@ -37,7 +37,7 @@ export interface Atlas {
 }
 
 export interface CompileResult {
-  /** the male atlas (kept for compatibility: atlas.json) */
+  /** the male atlas (shorthand for atlases.male) */
   atlas: Atlas | null;
   /** one atlas per model, structures and meshes resolved for that model */
   atlases: Record<Model, Atlas> | null;

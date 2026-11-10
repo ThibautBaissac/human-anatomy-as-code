@@ -5,14 +5,14 @@ import { isIosNotInstalled } from '../src/offline/platform.ts';
 import { tabsKeyReducer } from '../src/ui/tabs-model.ts';
 
 const manifest = { kinds: { bone: { file: 'bone.aaaaaaaa.glb', bytes: 600 }, muscle: { file: 'muscle.bbbbbbbb.glb', bytes: 400 } }, totalBytes: 1000 };
-const DATA = ['/atlas.json', '/assets/manifest.json'];
+const DATA = ['/atlas-male.json', '/assets/manifest.json'];
 
 test('offlineStatus: nothing cached', () => {
   assert.deepEqual(offlineStatus(manifest, [], false), { state: 'none', cachedBytes: 0, totalBytes: 1000, missing: ['/assets/bone.aaaaaaaa.glb', '/assets/muscle.bbbbbbbb.glb', ...DATA], persisted: false });
 });
 
 test('offlineStatus: some models cached is partial, bytes counted', () => {
-  const s = offlineStatus(manifest, ['/assets/bone.aaaaaaaa.glb', '/atlas.json'], true);
+  const s = offlineStatus(manifest, ['/assets/bone.aaaaaaaa.glb', '/atlas-male.json'], true);
   assert.equal(s.state, 'partial');
   assert.equal(s.cachedBytes, 600);
   assert.deepEqual(s.missing, ['/assets/muscle.bbbbbbbb.glb', '/assets/manifest.json']);

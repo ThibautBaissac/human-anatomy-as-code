@@ -28,7 +28,7 @@ function staticFiles(): Plugin {
   };
 }
 
-// build/ (atlas.json + assets/) is served at the root of the app; Vite's own files go to /app/.
+// build/ (atlas-male.json, atlas-female.json, assets/) is served at the root of the app; Vite's own files go to /app/.
 export default defineConfig({
   publicDir: '../build',
   server: { port: 5174, strictPort: true },
@@ -49,7 +49,7 @@ export default defineConfig({
       rollupFormat: 'iife',
       // App shell only: never the models nor the data.
       globPatterns: ['index.html', 'app/**/*.{js,css}', 'icons/*.{png,svg}', 'manifest.webmanifest'],
-      globIgnores: ['assets/**', 'atlas.json'],
+      globIgnores: ['assets/**', 'atlas-*.json'],
     }),
   ],
 });

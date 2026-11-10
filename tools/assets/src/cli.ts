@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // assets <buildDir> <objDir> <outDir> [<hraDir> <importDir>]
-// Reads atlas-male.json / atlas-female.json from buildDir (falls back to atlas.json alone).
+// Reads atlas-male.json and atlas-female.json from buildDir.
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildAssets, type AtlasInput } from './build-assets.ts';
@@ -32,9 +32,7 @@ if (!buildDir || !objDir || !outDir) {
 const read = (f: string) => JSON.parse(readFileSync(join(buildDir, f), 'utf8'));
 try {
   const t0 = performance.now();
-  const atlases: Record<string, AtlasInput> = existsSync(join(buildDir, 'atlas-female.json'))
-    ? { male: read('atlas-male.json'), female: read('atlas-female.json') }
-    : { male: read('atlas.json') };
+  const atlases: Record<string, AtlasInput> = { male: read('atlas-male.json'), female: read('atlas-female.json') };
   const hra = hraDir && importDir ? { dir: hraDir, filesList: join(importDir, 'hra-files.yaml'), registration: join(importDir, 'hra-registration.yaml') } : undefined;
   // the same rig warning comes once per model: print it once
   const warned = new Set<string>();

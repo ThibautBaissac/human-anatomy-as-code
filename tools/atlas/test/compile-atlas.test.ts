@@ -55,7 +55,7 @@ test('sources are indexed by id and attributions list only the sources in use', 
   assert.deepEqual(noWikidata.atlas!.attributions.map((a) => a.source), ['fma']);
 });
 
-test('atlas.json keys are sorted and mesh lists ordered, whatever the file layout', async () => {
+test('atlas keys are sorted and mesh lists ordered, whatever the file layout', async () => {
   const { validStructures, writeDataset, sources } = await import('./helpers.ts');
   const files = validStructures();
   const heart = files['structures/organ/heart.yaml'];

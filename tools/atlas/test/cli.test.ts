@@ -22,19 +22,20 @@ test('validate exits 1 and prints file:pointer rule message for each error', () 
   assert.match(r.stdout + r.stderr, /structures\/organ\/heart\.yaml:\/parent parent-exists /);
 });
 
-test('build writes atlas.json when valid', () => {
-  const out = join(mkdtempSync(join(tmpdir(), 'atlas-out-')), 'atlas.json');
+test('build writes one atlas per model into the output directory, and no atlas.json', () => {
+  const out = mkdtempSync(join(tmpdir(), 'atlas-out-'));
   const r = run('build', validDataset(), out);
   assert.equal(r.status, 0, r.stderr);
-  const atlas = JSON.parse(readFileSync(out, 'utf8'));
-  assert.equal(atlas.structures.length, 5);
+  assert.equal(JSON.parse(readFileSync(join(out, 'atlas-male.json'), 'utf8')).structures.length, 5);
+  assert.equal(JSON.parse(readFileSync(join(out, 'atlas-female.json'), 'utf8')).structures.length, 5);
+  assert.equal(existsSync(join(out, 'atlas.json')), false);
 });
 
 test('build refuses to write when there are errors', () => {
-  const out = join(mkdtempSync(join(tmpdir(), 'atlas-out-')), 'atlas.json');
+  const out = mkdtempSync(join(tmpdir(), 'atlas-out-'));
   const r = run('build', broken(), out);
   assert.equal(r.status, 1);
-  assert.equal(existsSync(out), false);
+  assert.equal(existsSync(join(out, 'atlas-male.json')), false);
 });
 
 test('import-bp3d reads the overrides file, writes structures, validates and prints the report', async () => {
@@ -52,13 +53,4 @@ test('import-bp3d reports a missing input as a one-line error, without a stack t
   assert.equal(r.status, 1);
   assert.doesNotMatch(r.stderr, /^\s+at /m);
   assert.match(r.stderr, /nonexistent/);
-});
-
-test('build also writes atlas-male.json and atlas-female.json next to atlas.json', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'atlas-out-'));
-  const out = join(dir, 'atlas.json');
-  const r = run('build', validDataset(), out);
-  assert.equal(r.status, 0, r.stderr);
-  assert.equal(readFileSync(join(dir, 'atlas-male.json'), 'utf8'), readFileSync(out, 'utf8'));
-  assert.equal(JSON.parse(readFileSync(join(dir, 'atlas-female.json'), 'utf8')).structures.length, 5);
 });

@@ -1,4 +1,4 @@
-// Index over atlas.json and the loaded instances: who is what, who contains whom. Pure.
+// Index over a model's atlas and the loaded instances: who is what, who contains whom. Pure.
 import { SYSTEMS, type Atlas, type AtlasStructure, type Side } from './types.ts';
 
 export const ROOT = 'human-body';

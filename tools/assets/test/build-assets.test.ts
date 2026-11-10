@@ -82,7 +82,7 @@ test('the manifest lists file, bytes, sha256 and instance count per kind, keys s
   const onDisk = JSON.parse(readFileSync(join(outDir, 'manifest.json'), 'utf8'));
   assert.deepEqual(onDisk, manifest);
   assert.deepEqual(Object.keys(manifest.kinds), ['artery', 'bone', 'muscle', 'organ']);
-  assert.equal(manifest.source, 'bodyparts3d');
+  assert.equal('source' in manifest, false); // provenance lives in the atlas attributions
   const bone = manifest.kinds.bone;
   const bytes = readFileSync(join(outDir, bone.file));
   const sha256 = createHash('sha256').update(bytes).digest('hex');

@@ -1,4 +1,4 @@
-// atlas.json + BodyParts3D OBJ files → one meshopt-compressed GLB per kind, one node per structure-side.
+// One atlas per model + BodyParts3D OBJ and HRA files → one meshopt-compressed GLB per kind, one node per structure-side.
 import { createHash } from 'node:crypto';
 import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -38,7 +38,6 @@ export interface Manifest {
   kinds: Record<string, { bytes: number; file: string; instances: number; sha256: string }>;
   /** files (kind keys) each model needs, and their total size */
   models: Record<string, { kinds: string[]; totalBytes: number; joints?: Record<string, Rig> }>;
-  source: 'bodyparts3d';
   totalBytes: number;
 }
 
@@ -272,7 +271,7 @@ export async function buildAssets({ atlases, atlas, objDir, hra, outDir, simplif
   }
 
   // Content-addressed names: a file changes name exactly when its content changes.
-  const manifest: Manifest = { kinds: {}, models: {}, source: 'bodyparts3d', totalBytes: 0 };
+  const manifest: Manifest = { kinds: {}, models: {}, totalBytes: 0 };
   for (const [kind, bytes, count] of outputs) {
     const sha256 = createHash('sha256').update(bytes).digest('hex');
     manifest.kinds[kind] = { bytes: bytes.length, file: `${kind}.${sha256.slice(0, 8)}.glb`, instances: count, sha256 };

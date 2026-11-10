@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { join } from 'node:path';
 import { parse } from 'yaml';
 import { importBp3d, type ImportReport, type Overrides } from './import-bp3d.ts';
 import { importHra, type HraOverrides } from './import-hra.ts';
@@ -9,7 +9,7 @@ import { coverage, coverageMarkdown } from './coverage.ts';
 
 const USAGE = `usage:
   atlas validate <dataDir>
-  atlas build <dataDir> <out.json>
+  atlas build <dataDir> <outDir>      (écrit atlas-male.json et atlas-female.json)
   atlas coverage <dataDir>
   atlas import-bp3d <bp3dDir> <wikidata.csv> <dataDir>   (overrides : <dataDir>/import/bp3d-overrides.yaml)
   atlas import-hra <hraDir> <wikidata.csv> <dataDir>     (liste : <dataDir>/import/hra-files.yaml, overrides : <dataDir>/import/hra-overrides.yaml)`;
@@ -53,12 +53,10 @@ async function main(argv: string[]): Promise<number> {
   if (cmd === 'build' && args.length === 2) {
     const result = compileAtlas(args[0]);
     report(result);
-    if (!result.atlas) return 1;
-    mkdirSync(dirname(args[1]), { recursive: true });
-    writeFileSync(args[1], JSON.stringify(result.atlas, null, 2) + '\n');
-    console.error(`écrit : ${args[1]} (${result.atlas.structures.length} structures)`);
-    for (const [model, atlas] of Object.entries(result.atlases!)) {
-      const path = join(dirname(args[1]), `atlas-${model}.json`);
+    if (!result.atlases) return 1;
+    mkdirSync(args[1], { recursive: true });
+    for (const [model, atlas] of Object.entries(result.atlases)) {
+      const path = join(args[1], `atlas-${model}.json`);
       writeFileSync(path, JSON.stringify(atlas, null, 2) + '\n');
       console.error(`écrit : ${path} (${atlas.structures.length} structures)`);
     }
