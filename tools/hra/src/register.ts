@@ -113,7 +113,10 @@ export function fitTranslation(src: Vec3[], dst: Vec3[], base: Mat4): Fit {
   const mapped = src.map((p) => apply(base, p));
   const matrix = compose(translation(mean(dst.map((d, i) => sub(d, mapped[i])))), base);
   const scale = Math.cbrt(Math.abs(base[0] * (base[5] * base[10] - base[6] * base[9]) - base[1] * (base[4] * base[10] - base[6] * base[8]) + base[2] * (base[4] * base[9] - base[5] * base[8])));
-  return { matrix, scale, rotationDeg: 0, ...residuals(matrix, src, dst) };
+  // the rotation is the base's: angle of its linear part once the scale is divided out
+  const trace = (base[0] + base[5] + base[10]) / scale;
+  const rotationDeg = (Math.acos(Math.min(1, Math.max(-1, (trace - 1) / 2))) * 180) / Math.PI;
+  return { matrix, scale, rotationDeg, ...residuals(matrix, src, dst) };
 }
 
 export interface Landmark { name: string; hra: Vec3; bp3d: Vec3 }

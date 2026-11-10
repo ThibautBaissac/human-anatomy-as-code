@@ -94,3 +94,11 @@ test('computeRegions: an offset region is another region followed by a fixed shi
   assert.equal(regions.bladder.ok, true);
   assert.equal(regions.bladder.rmsMm, 0);
 });
+
+test('a translation region reports the rotation it inherits from its base (not 0)', () => {
+  const base = fitSimilarity(pts, pts.map(knownTransform)).matrix;
+  const src: Vec3[] = [[0, 0, 100], [0, 0, 0]];
+  const fit = fitTranslation(src, src.map(knownTransform), base);
+  assert.ok(Math.abs(fit.rotationDeg - 30) < 1e-6, `${fit.rotationDeg}`);
+  assert.ok(Math.abs(fit.scale - 0.9) < 1e-9);
+});
