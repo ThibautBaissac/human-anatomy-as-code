@@ -66,6 +66,12 @@ test('tools: one panel at a time, Échap closes it and gives focus back, a mark 
   await expect(layers).toHaveAccessibleName('Calques, modifié');
   await layers.click();
   await expect(panel).toBeHidden();
+
+  // the × in the panel header closes it too, focus back on the tool button
+  await sections.click();
+  await page.getByRole('region', { name: 'Coupes' }).getByRole('button', { name: 'Fermer le panneau Coupes' }).click();
+  await expect(page.getByRole('region', { name: 'Coupes' })).toBeHidden();
+  await expect(sections).toBeFocused();
 });
 
 test('the card: appears on selection, Isoler ghosts the rest and survives a reload, Masquer hides, Ctrl+Z brings back', async ({ page }, info) => {

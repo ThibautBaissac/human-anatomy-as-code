@@ -105,6 +105,12 @@ export function App() {
   const pick = useCallback((slug: string) => selectAndFocus({ slug, side: null }), [selectAndFocus]);
 
   const toggleTool = (t: Tool) => setTool((cur) => (cur === t ? null : t));
+  /** Closes the open tool panel (× or Échap) and gives the focus back to its toolbar button. */
+  const closeTool = () => {
+    const t = tool;
+    setTool(null);
+    if (t) toolButtons.current[t]?.focus();
+  };
   const toggleDrawer = () => setDrawerOpen((o) => { writeDrawer(!o); return !o; });
   const animate = () => {
     if (!viewer || !selectionJoint) return;
@@ -119,9 +125,7 @@ export function App() {
     const onKey = (e: KeyboardEvent) => {
       if (e.defaultPrevented || document.querySelector('dialog[open]')) return;
       if (e.key === 'Escape' && tool) {
-        const t = tool;
-        setTool(null);
-        toolButtons.current[t]?.focus();
+        closeTool();
       } else if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z' && !isTextEntry(e.target) && view.hidden.length) {
         e.preventDefault();
         viewer?.undoHide();
@@ -227,7 +231,13 @@ export function App() {
       )}
       {!narrow && card && <aside className="card surface" aria-labelledby="panel-name">{card}</aside>}
       {!narrow && tool && (
-        <section id="tool-panel" className={`tool-panel surface tool-${tool}`} aria-label={S.toolNames[tool]}>{toolContent(tool)}</section>
+        <section id="tool-panel" className={`tool-panel surface tool-${tool}`} aria-labelledby="tool-panel-title">
+          <div className="tool-panel-head">
+            <h2 id="tool-panel-title">{S.toolNames[tool]}</h2>
+            <button type="button" className="btn ghost icon small" aria-label={S.closeTool(S.toolNames[tool])} onClick={closeTool}><X aria-hidden="true" size={18} /></button>
+          </div>
+          {toolContent(tool)}
+        </section>
       )}
       {!narrow && catalog && (
         <nav className="toolbar surface" aria-label={S.toolsLabel}>

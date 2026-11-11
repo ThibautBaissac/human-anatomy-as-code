@@ -44,6 +44,13 @@ test('systems: only the skeleton at startup; show all; hide one, a structure of 
   expect(await alpha(page, 'femur@left')).toBe(1);
   await expect(block.getByRole('button', { name: 'Tout afficher' })).toBeDisabled();
 
+  // Tout masquer: back to the skeleton alone; the button then has nothing left to do
+  await block.getByRole('button', { name: 'Tout masquer' }).click();
+  expect(await alpha(page, 'femur@left')).toBe(1);
+  expect(await alpha(page, 'stomach')).toBe(0);
+  expect(await alpha(page, 'cerebellum')).toBe(0);
+  await expect(block.getByRole('button', { name: 'Tout masquer' })).toBeDisabled();
+
   await page.goto('about:blank');
   await open(page, info.project.metadata.query as string, 'sys=skeletal');
   expect(await alpha(page, 'femur@left')).toBe(0);

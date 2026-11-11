@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { buildCatalog } from '../src/viewer/catalog.ts';
-import { hideSelection, keepKnown, setHidden, undoHide } from '../src/viewer/view-ops.ts';
+import { hideSelection, isSkeletonOnly, keepKnown, setHidden, skeletonOnly, undoHide } from '../src/viewer/view-ops.ts';
 import { DEFAULT_VIEW } from '../src/viewer/types.ts';
 import { ATLAS, INSTANCES } from './fixture.ts';
 
@@ -37,4 +37,13 @@ test('setHidden from the tree: hides last, clears a matching selection or isolat
   assert.deepEqual(setHidden(v, 'heart', true), { hidden: ['skin', 'heart'] });
   assert.deepEqual(setHidden(v, 'heart', false), { hidden: ['skin'] });
   assert.deepEqual(setHidden(v, 'femur', false), {});
+});
+
+test('Tout masquer: every system of the model but the skeleton hidden, bones shown again', () => {
+  const systems = ['skeletal', 'muscular', 'nervous'];
+  const v = { ...DEFAULT_VIEW, hiddenSystems: ['skeletal'], hiddenKinds: ['bone', 'skin'] };
+  assert.deepEqual(skeletonOnly(v, systems), { hiddenSystems: ['muscular', 'nervous'], hiddenKinds: ['skin'] });
+  assert.equal(isSkeletonOnly(v, systems), false);
+  assert.equal(isSkeletonOnly({ ...v, ...skeletonOnly(v, systems) }, systems), true);
+  assert.equal(isSkeletonOnly({ ...DEFAULT_VIEW, hiddenSystems: [] }, systems), false);
 });

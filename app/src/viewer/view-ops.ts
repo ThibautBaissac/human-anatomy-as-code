@@ -23,6 +23,20 @@ export function setHidden(v: ViewState, key: string, on: boolean): Partial<ViewS
   return patch;
 }
 
+/**
+ * Hides every system but the skeleton (Calques → Tout masquer): the systems of the model other than `skeletal`
+ * are hidden, and the bones show again if their kind was hidden.
+ */
+export function skeletonOnly(v: ViewState, systems: readonly string[]): Partial<ViewState> {
+  return { hiddenSystems: systems.filter((x) => x !== 'skeletal').sort(), hiddenKinds: v.hiddenKinds.filter((k) => k !== 'bone') };
+}
+
+/** Whether the view already shows the skeleton alone (Tout masquer has nothing left to do). */
+export function isSkeletonOnly(v: ViewState, systems: readonly string[]): boolean {
+  const others = systems.filter((x) => x !== 'skeletal');
+  return !v.hiddenKinds.includes('bone') && !v.hiddenSystems.includes('skeletal') && others.every((x) => v.hiddenSystems.includes(x));
+}
+
 /** Shows the last hidden structure again. */
 export function undoHide(v: ViewState): Partial<ViewState> {
   return v.hidden.length ? { hidden: v.hidden.slice(0, -1) } : {};

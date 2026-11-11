@@ -7,7 +7,7 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import './bvh.ts';
 import { appearance, type AppearanceState } from './appearance.ts';
 import { buildCatalog, selectionKey, type Catalog } from './catalog.ts';
-import { hideSelection, keepKnown, setHidden, undoHide } from './view-ops.ts';
+import { hideSelection, keepKnown, setHidden, skeletonOnly, undoHide } from './view-ops.ts';
 import { centreShift, defaultCamera, fitDistance, freeShare, GLIDE_MS, interpolateCamera, NO_INSETS, presetCamera, revealNeed, type Insets, type Preset } from './camera.ts';
 import { colorOf, HIGHLIGHT, roughnessOf } from './colors.ts';
 import { aoPipeline, setupLighting, type Quality } from './rendering.ts';
@@ -376,6 +376,8 @@ export class Viewer {
     this.setState({ hiddenSystems: (this.catalog?.systems ?? []).filter((x) => x !== system).sort() });
   }
   showAllSystems(): void { this.setState({ hiddenSystems: [] }); }
+  /** Hides every system but the skeleton, bones shown. */
+  showSkeletonOnly(): void { this.setState(skeletonOnly(this.view, this.catalog?.systems ?? [])); }
   /** Shows one structure-side alone (every other instance ghosted), or ends the isolation. */
   setIsolated(target: Selection | null): void { this.setState({ isolated: target }); }
   /** Hides the selected structure and clears the selection; hiding the isolated structure ends the isolation. */

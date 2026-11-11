@@ -238,9 +238,12 @@ input[type='checkbox'] { accent-color: var(--control); width: 18px; height: 18px
 .tool-panel { position: fixed; z-index: 8; left: 50%; bottom: 100px; transform: translateX(-50%); width: 420px; max-width: calc(100vw - 2 * var(--gap)); max-height: calc(100vh - var(--header-h) - 140px);
   overflow: auto; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
 .tool-panel.tool-layers { width: 560px; }
+.tool-panel-head { display: flex; align-items: center; justify-content: space-between; margin: -6px -8px 2px 0; }
+.tool-panel-head h2 { font-size: 1rem; font-weight: 700; }
 .tool-panel.tool-motion { width: 640px; }
 .panel-head { display: flex; align-items: center; justify-content: space-between; }
 .panel-head h3 { font-size: .95rem; font-weight: 600; }
+.panel-actions { display: flex; gap: 2px; }
 .systems { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
 .systems li { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
 .systems .btn { color: var(--muted); }

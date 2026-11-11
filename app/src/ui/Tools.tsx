@@ -3,6 +3,7 @@ import { Activity, Layers, Pause, Play, Scissors, SquareSplitVertical } from 'lu
 import { prefersReducedMotion, type Viewer } from '../viewer/viewer.ts';
 import { colorOf } from '../viewer/colors.ts';
 import { shownLayers, type Catalog } from '../viewer/catalog.ts';
+import { isSkeletonOnly } from '../viewer/view-ops.ts';
 import { jointKey, parseJointKey } from '../viewer/pose.ts';
 import { labelText } from '../viewer/search.ts';
 import { AXES, DEFAULT_HIDDEN_SYSTEMS, sameSystems, type AtlasJoint, type Side, type ViewState } from '../viewer/types.ts';
@@ -39,7 +40,10 @@ export function LayersPanel({ viewer, view, kinds, systems }: { viewer: Viewer; 
     <>
       <div className="panel-head">
         <h3>{S.systemsLabel}</h3>
-        <button type="button" className="btn ghost small" onClick={() => viewer.showAllSystems()} disabled={view.hiddenSystems.length === 0}>{S.showAllSystems}</button>
+        <div className="panel-actions">
+          <button type="button" className="btn ghost small" onClick={() => viewer.showAllSystems()} disabled={view.hiddenSystems.length === 0}>{S.showAllSystems}</button>
+          <button type="button" className="btn ghost small" title={S.hideAllTitle} onClick={() => viewer.showSkeletonOnly()} disabled={isSkeletonOnly(view, systems)}>{S.hideAllSystems}</button>
+        </div>
       </div>
       <ul className="systems">
         {systems.map((x) => {
