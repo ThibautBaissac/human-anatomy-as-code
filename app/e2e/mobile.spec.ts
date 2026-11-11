@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const BASE = 'http://localhost:5174/';
+const BASE = '/'; // relative to use.baseURL (playwright.config.ts)
 const ready = (page: Page) => page.waitForFunction(() => (window as unknown as { __viewer?: { pickReadyMs: number } }).__viewer?.pickReadyMs, null, { timeout: 60_000 });
 const sheet = (page: Page) => page.getByRole('region', { name: 'Panneau' });
 

@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const BASE = 'http://localhost:5174/';
+const BASE = '/'; // relative to use.baseURL (playwright.config.ts)
 const ready = (page: Page) => page.waitForFunction(() => (window as unknown as { __viewer?: { getSnapshot(): { ready: boolean } } }).__viewer?.getSnapshot().ready, null, { timeout: 60_000 });
 
 test('after "make available offline", the app reloads and works without network', async ({ page, context }) => {

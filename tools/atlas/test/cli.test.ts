@@ -22,6 +22,17 @@ test('validate exits 1 and prints file:pointer rule message for each error', () 
   assert.match(r.stdout + r.stderr, /structures\/organ\/heart\.yaml:\/parent parent-exists /);
 });
 
+test('warnings are counted by rule by default, listed one by one with --verbose; errors are always listed', () => {
+  const short = run('validate', broken());
+  assert.match(short.stderr, /^warning missing-la : 2$/m);
+  assert.doesNotMatch(short.stderr, /^warning structures\//m);
+  assert.match(short.stderr, /^error structures\/organ\/heart\.yaml:\/parent parent-exists /m);
+  assert.match(short.stderr, /--verbose/);
+  const full = run('validate', '--verbose', broken());
+  assert.match(full.stderr, /^warning structures\/\S+\.yaml:\/labels missing-la /m);
+  assert.equal(full.status, 1);
+});
+
 test('build writes one atlas per model into the output directory, and no atlas.json', () => {
   const out = mkdtempSync(join(tmpdir(), 'atlas-out-'));
   const r = run('build', validDataset(), out);

@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 
 // Desktop layout of the redesign (spec 2026-11-10-refonte-ui): stage, drawer, tools, card, camera, hover.
-const BASE = 'http://localhost:5174/';
+const BASE = '/'; // relative to use.baseURL (playwright.config.ts)
 interface V {
   pickReadyMs: number;
   getSnapshot(): { view: { selection: { slug: string; side: string | null } | null; camera: { position: number[]; target: number[] } | null; pose: Record<string, number> }; playing: unknown };

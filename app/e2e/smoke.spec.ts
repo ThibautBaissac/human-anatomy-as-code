@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const BASE = 'http://localhost:5174/';
+const BASE = '/'; // relative to use.baseURL (playwright.config.ts)
 
 interface ViewerHandle { getSnapshot(): { ready: boolean; backend: string }; loadMs: number; meanFrameMs(): number }
 

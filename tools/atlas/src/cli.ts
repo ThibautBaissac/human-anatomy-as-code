@@ -7,7 +7,7 @@ import { importHra, type HraOverrides } from './import-hra.ts';
 import { compileAtlas, type CompileResult, type Diagnostic } from './compile-atlas.ts';
 import { coverage, coverageMarkdown } from './coverage.ts';
 
-const USAGE = `usage:
+const USAGE = `usage (--verbose : chaque avertissement, et non leur compte par règle) :
   atlas validate <dataDir>
   atlas build <dataDir> <outDir>      (écrit atlas-male.json et atlas-female.json)
   atlas coverage <dataDir>
@@ -16,8 +16,15 @@ const USAGE = `usage:
 
 const line = (d: Diagnostic) => `${d.file}:${d.pointer} ${d.rule} ${d.message}`;
 
+/** Errors one by one; warnings one by one with --verbose, otherwise counted by rule (thousands would bury the report). */
 function report({ errors, warnings }: CompileResult): void {
-  for (const w of warnings) console.warn(`warning ${line(w)}`);
+  if (verbose) for (const w of warnings) console.warn(`warning ${line(w)}`);
+  else {
+    const byRule = new Map<string, number>();
+    for (const w of warnings) byRule.set(w.rule, (byRule.get(w.rule) ?? 0) + 1);
+    for (const [rule, n] of [...byRule].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))) console.warn(`warning ${rule} : ${n}`);
+    if (warnings.length) console.warn('(détail des avertissements : --verbose)');
+  }
   for (const e of errors) console.error(`error ${line(e)}`);
   console.error(`${errors.length} erreur(s), ${warnings.length} avertissement(s)`);
 }
@@ -44,8 +51,11 @@ function printReport(r: ImportReport): void {
   if (r.aborted) console.log('IMPORT ANNULÉ : aucun fichier écrit. Corriger les fichiers illisibles ou en double, puis relancer.');
 }
 
+let verbose = false;
+
 async function main(argv: string[]): Promise<number> {
-  const [cmd, ...args] = argv;
+  verbose = argv.includes('--verbose');
+  const [cmd, ...args] = argv.filter((a) => a !== '--verbose');
   if (cmd === 'validate' && args.length === 1) {
     const result = compileAtlas(args[0]);
     report(result);
