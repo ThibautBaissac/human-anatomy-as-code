@@ -36,6 +36,8 @@ ties:
   FJ3589: FMA4950               # left ascending lumbar vein (x = +20)
   # rangé sous « right fibular vein » mais dans la cuisse gauche (z 540-718) : miroir exact de FJ2192, veine perforante
   FJ2190: FMA70922              # set of perforating veins
+  # seul mesh à la fois de « occipital part of head » (région) et de « occipital bone » : c'est l'os (FJ3309.obj)
+  FJ3309: FMA52735              # occipital bone
 
 # Meshes rattachés à aucune structure : BodyParts3D les range sous un concept qu'ils ne sont pas,
 # et leur identité réelle est inconnue.
@@ -52,7 +54,6 @@ slugs:
 systems:
   anatomical-compartment-space: [nervous]     # petit espace au contact des corps mamillaires (3e ventricule)
   linea-alba: [muscular]                      # aponévrose des muscles de la paroi abdominale
-  occipital-part-of-head: [integumentary]     # surface cutanée de l'occiput
   parenchyma: [digestive, endocrine]          # parenchyme du pancréas, comme le pancréas
   pterygomandibular-raphe: [muscular]         # raphé entre buccinateur et constricteur supérieur du pharynx
   short-ciliary-nerves: [nervous]             # du ganglion ciliaire au globe oculaire

@@ -5,8 +5,6 @@ status: draft
 parent: head-proper
 regions:
   - head
-systems:
-  - integumentary
 labels:
   en:
     text: occipital part of head
@@ -25,5 +23,3 @@ ids:
   ta2: 102
   ta98: A02.1.00.014
   wikidata: Q3321315
-meshes:
-  - bp3d:FJ3309
