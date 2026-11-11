@@ -40,7 +40,6 @@ export const S = {
   failed: (kinds: string) => `Modèles non chargés : ${kinds}`,
   selected: (name: string) => `Sélection : ${name}`,
   cleared: 'Aucune sélection',
-  credits: 'Données',
   creditsTitle: 'Données et licences',
   licence: 'Licence',
   offlineTitle: 'Utiliser l’atlas hors ligne',
@@ -137,7 +136,6 @@ export const S = {
   presets: { front: 'Face', back: 'Dos', left: 'Gauche', right: 'Droite', top: 'Dessus' } as Record<string, string>,
   profile: 'Profil',
   recentre: 'Recentrer la vue',
-  creditsLink: 'Licences',
   helpTitle: 'Aide et raccourcis',
   helpSections: [
     { title: 'Souris', items: ['Faire glisser : tourner autour du corps', 'Molette : zoomer', 'Clic droit glissé : déplacer la vue', 'Clic : sélectionner une structure', 'Double-clic : sélectionner et cadrer'] },

@@ -10,7 +10,7 @@ import { OfflineDialog } from './OfflineDialog.tsx';
 import { CreditsDialog } from './CreditsDialog.tsx';
 import { Bench } from './Bench.tsx';
 import { FemaleNotice } from './FemaleNotice.tsx';
-import { Banners, CameraGroup, CreditLine, HelpDialog, HoverLabel, Notifications } from './Overlays.tsx';
+import { Banners, CameraGroup, HelpDialog, HoverLabel, Notifications } from './Overlays.tsx';
 import { Search } from './Search.tsx';
 import { Sheet } from './Sheet.tsx';
 import { Tabs } from './Tabs.tsx';
@@ -210,7 +210,6 @@ export function App() {
         </nav>
       )}
       {viewer && ready && <CameraGroup viewer={viewer} narrow={narrow} />}
-      {(!narrow || sheet === 'folded') && <CreditLine atlas={atlas} onLicences={() => setCreditsOpen(true)} />}
 
       {narrow && (
         <Sheet height={sheet} onHeight={setSheet} header={

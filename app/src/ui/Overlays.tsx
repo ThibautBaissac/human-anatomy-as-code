@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { RotateCcw, X, ZoomIn, ZoomOut } from 'lucide-react';
 import type { Viewer } from '../viewer/viewer.ts';
 import { PRESETS, type Preset } from '../viewer/camera.ts';
-import type { Atlas, Selection } from '../viewer/types.ts';
+import type { Selection } from '../viewer/types.ts';
 import { LABEL_OFFSET, labelPlacement } from './layout.ts';
 import { S } from './strings.ts';
 
@@ -106,17 +106,5 @@ export function HelpDialog({ open, onClose, backend }: { open: boolean; onClose:
       <p className="muted">{S.backendLabel} : {backend ?? '—'}</p>
       <div className="dialog-actions"><button type="button" className="btn" onClick={onClose}>{S.close}</button></div>
     </dialog>
-  );
-}
-
-/** One line of credits over the view, and the way to the full licences. */
-export function CreditLine({ atlas, onLicences }: { atlas: Atlas | null; onLicences: () => void }) {
-  if (!atlas) return null;
-  const names = atlas.attributions.map((a) => a.name).join(', ');
-  return (
-    <p className="credit-line">
-      <span className="credit-text" title={names}>{S.credits} : {names}</span>{' · '}
-      <button type="button" className="link" onClick={onLicences}>{S.creditsLink}</button>
-    </p>
   );
 }

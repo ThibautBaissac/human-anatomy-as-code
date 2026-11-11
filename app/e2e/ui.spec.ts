@@ -146,10 +146,16 @@ test('hover: a label names the structure near the cursor, none while dragging', 
   await page.mouse.up();
 });
 
-test('the ⋯ menu opens the licences and the help; the credit line names the sources', async ({ page }, info) => {
+test('the ⋯ menu opens the licences and the help; no credit line over the view', async ({ page }, info) => {
   await open(page, info.project.metadata.query as string);
-  await expect(page.getByText(/^Données : BodyParts3D/)).toBeAttached();
+  await expect(page.getByText(/^Données : BodyParts3D/)).toHaveCount(0);
   const more = page.getByRole('button', { name: 'Plus d’options' });
+  await more.click();
+  await page.getByRole('menuitem', { name: 'Données et licences…' }).click();
+  const credits = page.getByRole('dialog', { name: 'Données et licences' });
+  await expect(credits).toContainText('BodyParts3D');
+  await credits.getByRole('button', { name: 'Fermer' }).click();
+  await expect(more).toBeFocused();
   await more.click();
   await page.getByRole('menuitem', { name: 'Aide et raccourcis' }).click();
   const help = page.getByRole('dialog', { name: 'Aide et raccourcis' });

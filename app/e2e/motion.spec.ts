@@ -118,12 +118,14 @@ test('a model switch keeps the pose (female → male with the elbow flexed)', as
 
 test('the credits list each source with its licence notice (MIT, BSD-3)', async ({ page }, info) => {
   await open(page, info.project.metadata.query as string, '');
-  await page.getByRole('button', { name: 'Licences', exact: true }).click();
+  const more = page.getByRole('button', { name: 'Plus d’options' });
+  await more.click();
+  await page.getByRole('menuitem', { name: 'Données et licences…' }).click();
   const dialog = page.getByRole('dialog', { name: 'Données et licences' });
   await expect(dialog).toBeVisible();
   await expect(dialog.getByText('Rajagopal 2016 full-body musculoskeletal model (OpenSim)')).toBeVisible();
   await expect(dialog.getByText(/Permission is hereby granted/)).toHaveCount(1);
   await expect(dialog.getByText(/Redistribution and use in source and binary forms/)).toHaveCount(1);
   await dialog.getByRole('button', { name: 'Fermer' }).click();
-  await expect(page.getByRole('button', { name: 'Licences', exact: true })).toBeFocused();
+  await expect(more).toBeFocused();
 });

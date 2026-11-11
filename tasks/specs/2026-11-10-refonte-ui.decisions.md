@@ -15,6 +15,8 @@ Décisions prises là où la spec se tait ou admet deux lectures.
 - **Focus.** Quand le contrôle qui a le focus disparaît (fermeture de la carte, Masquer, bouton d'une bannière), le focus va à la recherche (sur téléphone, au bouton loupe) ; la fermeture du tiroir le rend au bouton « Structures ».
 - **Bouton Repos.** Libellé visible « Repos », nom accessible « Position de repos » (le nom contient le libellé visible).
 
+- **Crédits (2026-11-11).** La ligne de crédits au-dessus de la vue est retirée (user story 34) : les crédits complets restent dans ⋯ → « Données et licences… », que CC BY 4.0 admet comme attribution « raisonnable selon le support ».
+
 Constats de revue laissés en l'état :
 - Le double toucher repose sur la conversion en `dblclick` du navigateur ; il n'a pas de test e2e mobile.
 - Une interruption de glissade par un geste de l'utilisateur n'a pas de test e2e (elle est couverte par l'écoute de `start` d'OrbitControls).
