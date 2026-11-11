@@ -9,11 +9,11 @@ Entité anatomique canonique, indépendante du côté : « fémur », « muscle 
 _Avoid_ : concept, part, élément, organe (au sens générique)
 
 **Slug** :
-Identifiant primaire d'une structure : terme anglais TA2 en kebab-case ASCII (`biceps-brachii`). Immuable une fois publié ; un ancien slug survit comme alias.
+Identifiant primaire d'une structure : nom anglais FMA (celui de BodyParts3D) en kebab-case ASCII (`long-head-of-biceps-brachii`), très proche du terme TA2, qui n'existe pas sous forme ouverte lisible par machine. Immuable une fois publié ; un ancien slug survit comme alias.
 _Avoid_ : id, key, nom
 
 **Latéralité** :
-Distribution d'une structure par rapport au plan médian : `bilateral` (deux côtés), `midline` (une seule instance, traversée par le plan médian), `unpaired-left` ou `unpaired-right` (une seule instance, d'un côté : rate, foie).
+Distribution d'une structure par rapport au plan médian : `bilateral` (deux côtés), `midline` (une seule instance, traversée par le plan médian), `unpaired-left` ou `unpaired-right` (une seule instance, d'un côté : la rate, à gauche). Le foie, traversé par le plan médian, est `midline`.
 _Avoid_ : symétrie, parité
 
 **Côté** :
@@ -87,7 +87,7 @@ _Avoid_ : registration (dans la prose française), alignement, calage
 ## Mouvement
 
 **Articulation** :
-Ce qui permet à des os de tourner les uns par rapport aux autres autour d'un axe, décrit dans `data/joints/` : un os fixe, des os mobiles, un mouvement à un degré de liberté (flexion-extension, pronation-supination), une amplitude et un angle de repos. À ne pas confondre avec le kind `joint`, qui désigne des meshes de capsules articulaires.
+Ce qui permet à des os de tourner les uns par rapport aux autres autour d'un axe, décrit dans `data/joints/` : un os fixe, des os mobiles, un mouvement à un degré de liberté (flexion-extension, pronation-supination), une amplitude et un angle de repos. À ne pas confondre avec le kind `joint`, réservé aux meshes de capsules articulaires (aucune structure ne l'a encore).
 _Avoid_ : jointure, liaison
 
 **Pose** :
@@ -107,7 +107,7 @@ Jeu de données externe d'où proviennent des meshes ou des noms (BodyParts3D, W
 _Avoid_ : provider, dataset, origine
 
 **Référence externe** :
-Identifiant d'une structure ou d'un côté dans une terminologie tierce (FMA, TA2, TA98, UBERON, Wikidata). La FMA est la référence d'ancrage.
+Identifiant d'une structure ou d'un côté dans une terminologie tierce (FMA, TA2, TA98, UBERON, Wikidata). La FMA est la référence d'ancrage ; seules quelques structures venues du Human Reference Atlas n'ont pas de FMA.
 _Avoid_ : mapping, code, xref
 
 ## Vue
