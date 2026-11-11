@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { labelPlacement, nextSheet, sheetHeights, snapSheet } from '../src/ui/layout.ts';
+import { labelPlacement, nextSheet, sheetHeights, snapSheet, viewInsets } from '../src/ui/layout.ts';
 
 const viewport = { width: 1440, height: 900 };
 const size = { width: 200, height: 30 };
@@ -40,4 +40,14 @@ test('the handle cycles folded → half → full → folded', () => {
   assert.equal(nextSheet('folded'), 'half');
   assert.equal(nextSheet('half'), 'full');
   assert.equal(nextSheet('full'), 'folded');
+});
+
+test('view insets: what sits along each edge plus a gap; a closed panel takes nothing', () => {
+  const vp = { width: 1440, height: 900 };
+  const header = { left: 0, top: 0, right: 1440, bottom: 60 };
+  const drawer = { left: 16, top: 76, right: 316, bottom: 796 };
+  const card = { left: 1064, top: 76, right: 1424, bottom: 600 };
+  const toolbar = { left: 520, top: 808, right: 920, bottom: 880 };
+  assert.deepEqual(viewInsets(vp, { top: [header], left: [drawer], right: [card], bottom: [toolbar] }), { top: 72, left: 328, right: 388, bottom: 104 });
+  assert.deepEqual(viewInsets(vp, { top: [header], left: [], right: [] }, 0), { top: 60, left: 0, right: 0, bottom: 0 });
 });

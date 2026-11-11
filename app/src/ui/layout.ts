@@ -29,3 +29,19 @@ export function snapSheet(height: number, heights: Record<SheetHeight, number>):
 }
 
 export const nextSheet = (h: SheetHeight): SheetHeight => (h === 'folded' ? 'half' : h === 'half' ? 'full' : 'folded');
+
+export interface Rect { left: number; top: number; right: number; bottom: number }
+
+/**
+ * Room the interface takes over the 3D view, from the rectangles of what sits along each edge, plus a gap.
+ * Missing rectangles (closed panels) take nothing.
+ */
+export function viewInsets(viewport: Size, parts: { top?: Rect[]; right?: Rect[]; bottom?: Rect[]; left?: Rect[] }, gap = 12) {
+  const room = (values: number[]) => { const m = Math.max(0, ...values); return m > 0 ? m + gap : 0; };
+  return {
+    top: room((parts.top ?? []).map((r) => r.bottom)),
+    right: room((parts.right ?? []).map((r) => viewport.width - r.left)),
+    bottom: room((parts.bottom ?? []).map((r) => viewport.height - r.top)),
+    left: room((parts.left ?? []).map((r) => r.right)),
+  };
+}

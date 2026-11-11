@@ -2,6 +2,7 @@ import { forwardRef, useId } from 'react';
 import { Activity, Layers, Pause, Play, Scissors, SquareSplitVertical } from 'lucide-react';
 import { prefersReducedMotion, type Viewer } from '../viewer/viewer.ts';
 import { colorOf } from '../viewer/colors.ts';
+import { shownLayers, type Catalog } from '../viewer/catalog.ts';
 import { jointKey, parseJointKey } from '../viewer/pose.ts';
 import { labelText } from '../viewer/search.ts';
 import { AXES, DEFAULT_HIDDEN_SYSTEMS, sameSystems, type AtlasJoint, type Side, type ViewState } from '../viewer/types.ts';
@@ -70,13 +71,36 @@ export function LayersPanel({ viewer, view, kinds, systems }: { viewer: Viewer; 
   );
 }
 
-export function DissectionPanel({ viewer, view, maxLayer }: { viewer: Viewer; view: ViewState; maxLayer: number }) {
+/** Name of a layer: its kinds, as the layer tool lists them. */
+const layerName = (kinds: string[]) => kinds.map((k) => S.kinds[k] ?? k).join(', ');
+
+export function DissectionPanel({ viewer, view, catalog }: { viewer: Viewer; view: ViewState; catalog: Catalog }) {
   const id = useId();
+  const { maxLayer, layerKinds } = catalog;
+  const layers = shownLayers(catalog, view.hiddenKinds, view.hiddenSystems);
+  // the deepest layer of the view is never cut: removing layers needs something above it
+  const inert = layers.length < 2;
+  const from = layerKinds.slice(view.layerCut).find((k) => k.length) ?? [];
+  const text = `${S.layerLabel(view.layerCut)} · ${S.visibleFrom(layerName(from))}`;
   return (
     <>
       <label htmlFor={`${id}-layer`} className="field-label">{S.layerLabel(view.layerCut)}</label>
+      <p className="muted small layer-from">{S.visibleFrom(layerName(from))}</p>
       <input id={`${id}-layer`} type="range" min={0} max={maxLayer} step={1} value={view.layerCut}
-        aria-valuetext={S.layerLabel(view.layerCut)} onChange={(e) => viewer.setLayerCut(Number(e.target.value))} />
+        aria-valuetext={text} onChange={(e) => viewer.setLayerCut(Number(e.target.value))} />
+      {/* each name under its slider stop (the thumb is ~16 px wide: its centre runs 8 px inside each end) */}
+      <ol className="layer-ticks" aria-hidden="true">
+        {layerKinds.map((k, n) => (
+          <li key={n} className={n < view.layerCut ? 'is-cut' : undefined}
+            style={{ left: `calc(8px + (100% - 16px) * ${maxLayer ? n / maxLayer : 0})` }}>{k.length ? S.kinds[k[0]] ?? k[0] : '—'}</li>
+        ))}
+      </ol>
+      {inert && (
+        <div className="note info inline-note">
+          <span>{S.dissectionInert}</span>
+          <button type="button" className="btn small" onClick={() => viewer.showAllSystems()}>{S.showAllSystems}</button>
+        </div>
+      )}
       <label className="switch-row">
         <input type="checkbox" className="switch" checked={view.ghost} onChange={(e) => viewer.setGhost(e.target.checked)} />
         <span>{S.ghost}</span>

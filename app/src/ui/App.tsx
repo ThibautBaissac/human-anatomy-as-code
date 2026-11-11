@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronLeft, Menu, Play, Search as SearchIcon, X } from 'lucide-react';
 import { jointKey, jointsFor } from '../viewer/pose.ts';
-import { buildSearchIndex, structureName } from '../viewer/search.ts';
+import { buildSearchIndex, structureName, suggestions } from '../viewer/search.ts';
 import { LANGS, type Lang, type Model, type Selection, type Side } from '../viewer/types.ts';
 import type { Viewer } from '../viewer/viewer.ts';
 import { InfoCard } from './InfoCard.tsx';
@@ -10,7 +10,7 @@ import { OfflineDialog } from './OfflineDialog.tsx';
 import { CreditsDialog } from './CreditsDialog.tsx';
 import { Bench } from './Bench.tsx';
 import { FemaleNotice } from './FemaleNotice.tsx';
-import { Banners, CameraGroup, HelpDialog, HoverLabel, Notifications } from './Overlays.tsx';
+import { Banners, CameraGroup, HelpDialog, HoverLabel, Notifications, Welcome } from './Overlays.tsx';
 import { Search } from './Search.tsx';
 import { Sheet } from './Sheet.tsx';
 import { Tabs } from './Tabs.tsx';
@@ -21,9 +21,13 @@ import type { SheetHeight } from './layout.ts';
 import { useNarrow } from './useNarrow.ts';
 import { usePwa } from './usePwa.ts';
 import { useViewer } from './useViewer.ts';
+import { useViewInsets } from './useViewInsets.ts';
+import { THEMES, useTheme, type ThemeChoice } from './useTheme.ts';
 import { S } from './strings.ts';
 
 const SIDES: Side[] = ['left', 'right'];
+/** offered on an empty search: a few well-known structures across systems */
+const SUGGESTED = ['heart', 'skull', 'femur', 'gluteus-maximus', 'stomach', 'kidney'];
 const DRAWER_KEY = 'haac.drawer';
 const readDrawer = () => {
   try { const v = localStorage.getItem(DRAWER_KEY); if (v === '1' || v === '0') return v === '1'; } catch { /* storage unavailable */ }
@@ -45,11 +49,19 @@ function jointOfSelection(viewer: Viewer | null, sel: Selection | null): string 
 export function App() {
   const { canvasRef, viewer, snapshot, error, notice, switching, selectAndFocus, switchModel } = useViewer();
   const pwa = usePwa();
+  const theme = useTheme(viewer);
+  /** the model a switch is going to, while it loads */
+  const [switchTarget, setSwitchTarget] = useState<Model | null>(null);
+  useEffect(() => { if (!switching) setSwitchTarget(null); }, [switching]);
+  const toModel = (m: Model) => { if (m === view.model) return; setSwitchTarget(m); switchModel(m); };
   const narrow = useNarrow();
+  /** a desktop window too narrow for the toolbar and the camera presets side by side */
+  const compact = useNarrow('(max-width: 1200px)');
   const { view, ready, loading, failedKinds } = snapshot;
   const catalog = ready ? viewer?.catalog ?? null : null;
   const atlas = viewer?.atlas ?? null;
   const index = useMemo(() => (atlas ? buildSearchIndex(atlas) : null), [atlas]);
+  const tryThese = useMemo(() => (index ? suggestions(index, SUGGESTED, view.lang) : []), [index, view.lang]);
   const [hover, setHover] = useState<Selection | null>(null);
   const [tool, setTool] = useState<Tool | null>(null);
   const toolButtons = useRef<Partial<Record<Tool, HTMLButtonElement | null>>>({});
@@ -73,6 +85,11 @@ export function App() {
   useEffect(() => viewer?.on('hover', setHover), [viewer]);
   // On a phone, tapping a structure shows its information.
   useEffect(() => viewer?.on('pick', (sel) => { if (sel) { setTab('info'); setSheet((h) => (h === 'folded' ? 'half' : h)); } }), [viewer]);
+  // A structure picked under a panel (or too small to see) is brought into view, once the card or the sheet has opened.
+  useEffect(() => viewer?.on('pick', (sel) => {
+    if (sel) requestAnimationFrame(() => requestAnimationFrame(() => viewer.reveal(sel)));
+  }), [viewer]);
+  useViewInsets(viewer, narrow, sheet, `${drawerOpen}|${!!view.selection}|${ready}|${tool}`);
   // The Mouvement tool follows the selection when it takes part in a joint.
   const selectionJoint = useMemo(() => jointOfSelection(viewer, view.selection), [viewer, catalog, view.selection]);
   useEffect(() => { if (selectionJoint) setMotionKey(selectionJoint); }, [selectionJoint]);
@@ -111,24 +128,26 @@ export function App() {
     return () => document.removeEventListener('keydown', onKey);
   }, [tool, viewer, view.hidden.length]);
 
-  const tree = catalog && <Tree catalog={catalog} lang={view.lang} selection={view.selection} onSelect={pick} />;
+  const setHidden = useCallback((slug: string, on: boolean) => viewer?.setHidden(slug, on), [viewer]);
+  const tree = catalog && <Tree catalog={catalog} lang={view.lang} selection={view.selection} hidden={view.hidden} onSelect={pick} onHidden={setHidden} />;
   const card = viewer && catalog && view.selection && (
     <InfoCard viewer={viewer} catalog={catalog} view={{ ...view, selection: view.selection }} motionKey={motionKey} animatable={!!selectionJoint}
       onSelect={selectAndFocus} onClose={() => { viewer.select(null); focusHome(); }} onHide={() => { viewer.hideSelection(); focusHome(); }} onAnimate={animate} />
   );
   const toolContent = (t: Tool) => viewer && catalog && (
     t === 'layers' ? <LayersPanel viewer={viewer} view={view} kinds={catalog.kinds} systems={catalog.systems} />
-      : t === 'dissection' ? <DissectionPanel viewer={viewer} view={view} maxLayer={catalog.maxLayer} />
+      : t === 'dissection' ? <DissectionPanel viewer={viewer} view={view} catalog={catalog} />
         : t === 'sections' ? <SectionsPanel viewer={viewer} view={view} />
           : <MotionTool viewer={viewer} view={view} motionKey={motionKey} onChoose={setMotionKey} />
   );
 
   const modelEntries: MenuEntry[] = narrow ? [
-    { kind: 'radio', group: S.modelLabel, options: (['male', 'female'] as Model[]).map((m) => ({ value: m, label: S.models[m] })), value: view.model, onChange: (m) => { if (ready && !switching) switchModel(m as Model); } },
+    { kind: 'radio', group: S.modelLabel, options: (['male', 'female'] as Model[]).map((m) => ({ value: m, label: S.models[m] })), value: view.model, onChange: (m) => { if (ready && !switching) toModel(m as Model); } },
     { kind: 'radio', group: S.namesLabel, options: LANGS.map((l) => ({ value: l, label: S.langs[l] })), value: view.lang, onChange: (l) => viewer?.setState({ lang: l as Lang }) },
   ] : [];
   const menu: MenuEntry[] = [
     ...modelEntries,
+    { kind: 'radio', group: S.themeLabel, options: THEMES.map((t) => ({ value: t, label: S.themes[t] })), value: theme.choice, onChange: (t) => theme.choose(t as ThemeChoice) },
     { kind: 'item', label: S.menuOffline, onSelect: () => setOfflineOpen(true) },
     { kind: 'item', label: S.menuCredits, onSelect: () => setCreditsOpen(true) },
     { kind: 'item', label: S.menuHelp, onSelect: () => setHelpOpen(true) },
@@ -149,7 +168,7 @@ export function App() {
         <header className="header">
           {searchOpen && index ? (
             <>
-              <Search index={index} lang={view.lang} onSelect={pick} autoFocus />
+              <Search index={index} lang={view.lang} onSelect={pick} autoFocus suggestions={tryThese} />
               <button type="button" className="btn ghost icon" aria-label={S.closeSearch} onClick={() => { setSearchOpen(false); requestAnimationFrame(() => searchButton.current?.focus()); }}><X aria-hidden="true" size={20} /></button>
             </>
           ) : (
@@ -165,26 +184,31 @@ export function App() {
         <header className="header">
           <button ref={drawerToggle} type="button" className="btn ghost" aria-expanded={drawerOpen} aria-controls="drawer" onClick={toggleDrawer}><Menu aria-hidden="true" size={20} />{S.structures}</button>
           <h1>{S.appTitle}</h1>
-          <div className="header-search">{index && <Search index={index} lang={view.lang} onSelect={pick} />}</div>
+          <div className="header-search">{index && <Search index={index} lang={view.lang} onSelect={pick} suggestions={tryThese} />}</div>
           <div role="group" aria-label={S.modelLabel} className="segmented">
             {(['male', 'female'] as Model[]).map((m) => (
-              <button key={m} type="button" className="btn" aria-pressed={view.model === m} disabled={!ready || switching} onClick={() => switchModel(m)}>{S.models[m]}</button>
+              <button key={m} type="button" className="btn" aria-pressed={view.model === m} aria-busy={switchTarget === m || undefined} disabled={!ready || switching} onClick={() => toModel(m)}>{S.models[m]}</button>
             ))}
           </div>
-          <label className="lang">
-            {S.namesLabel}
-            <select className="field" value={view.lang} onChange={(e) => viewer?.setState({ lang: e.target.value as Lang })}>
-              {LANGS.map((l) => <option key={l} value={l}>{S.langs[l]}</option>)}
-            </select>
-          </label>
+          <span className="lang-label muted" aria-hidden="true">{S.namesIn}</span>
+          <div role="group" aria-label={S.namesLabel} title={S.namesLabel} className="segmented lang">
+            {LANGS.map((l) => (
+              // visible FR / EN / LA, spelt out for screen readers; the name still starts with the visible text
+              <button key={l} type="button" className="btn" aria-pressed={view.lang === l} title={S.langs[l]} onClick={() => viewer?.setState({ lang: l })}>
+                {S.langShort[l]}<span className="visually-hidden"> ({S.langs[l].toLowerCase()})</span>
+              </button>
+            ))}
+          </div>
           {offlineTag}
           <MoreMenu entries={menu} />
         </header>
       )}
 
       <div className="top-overlays">
+        {ready && <Welcome touch={narrow || matchMedia('(pointer: coarse)').matches} onDone={focusHome} />}
         {view.model === 'female' && <FemaleNotice atlas={atlas} onDone={focusHome} />}
-        <Notifications loading={loading ? S.loading(loading.loaded, loading.total) : null} errors={errors} onDone={focusHome} />
+        <Notifications loading={switchTarget ? S.switchingTo(switchTarget) : loading ? S.loading(loading.loaded, loading.total) : null}
+          progress={loading && loading.total ? loading : null} errors={errors} onDone={focusHome} />
         {viewer && <Banners viewer={viewer} isolatedName={isolatedName} hiddenCount={view.hidden.length} onDone={focusHome} />}
       </div>
 
@@ -209,7 +233,7 @@ export function App() {
           ))}
         </nav>
       )}
-      {viewer && ready && <CameraGroup viewer={viewer} narrow={narrow} />}
+      {viewer && ready && <CameraGroup viewer={viewer} narrow={narrow} compact={compact} />}
 
       {narrow && (
         <Sheet height={sheet} onHeight={setSheet} header={

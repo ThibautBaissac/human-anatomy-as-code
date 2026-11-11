@@ -14,6 +14,8 @@ export default defineConfig({
     channel: 'chrome',
     headless: true,
     viewport: { width: 1440, height: 900 },
+    // the first-visit message is taken as read: it would sit over the view in every test
+    storageState: { cookies: [], origins: [{ origin: `http://localhost:${PORT}`, localStorage: [{ name: 'haac.welcome', value: '1' }] }] },
     launchOptions: {
       args: ['--enable-unsafe-webgpu', '--enable-features=Vulkan', '--use-angle=metal', '--ignore-gpu-blocklist', '--disable-gpu-vsync', '--disable-frame-rate-limit'],
     },

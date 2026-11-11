@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { flattenTree, treeKeyReducer, type TreeState } from '../src/ui/tree-model.ts';
+import { filterTree, flattenTree, sortedTree, treeKeyReducer, type TreeState } from '../src/ui/tree-model.ts';
+import { normalize } from '../src/viewer/search.ts';
 import { buildCatalog, UNATTACHED } from '../src/viewer/catalog.ts';
 import { ATLAS, INSTANCES } from './fixture.ts';
 
@@ -50,4 +51,24 @@ test('Home / End jump to the first and last visible rows; Enter selects the focu
 test('unknown keys leave the state unchanged', () => {
   const s = st('heart', ['human-body']);
   assert.deepEqual(key(s, 'x'), s);
+});
+
+test('sortedTree orders children by the name shown, in the language collation', () => {
+  const names: Record<string, string> = { heart: 'Zeta', 'lower-limb': 'alpha' };
+  const t = sortedTree(cat, (id) => names[id] ?? id, 'fr');
+  assert.deepEqual(t.childrenOf('human-body'), ['lower-limb', 'heart']);
+  assert.deepEqual(t.roots, cat.roots);
+});
+
+test('filterTree keeps the matches and their ancestors, opened; ignores accents and case; none under two characters', () => {
+  const names: Record<string, string> = { femur: 'Fémur', heart: 'cœur', 'lower-limb': 'membre inférieur', 'human-body': 'corps humain' };
+  const name = (id: string) => names[id] ?? id;
+  const f = filterTree(cat, name, 'FEMU', normalize)!;
+  assert.equal(f.matches, 1);
+  assert.deepEqual(f.tree.roots, ['human-body']);
+  assert.deepEqual(f.tree.childrenOf('human-body'), ['lower-limb']);
+  assert.ok(f.tree.childrenOf('lower-limb').includes('femur'));
+  assert.ok(f.expanded.has('human-body') && f.expanded.has('lower-limb'));
+  assert.equal(filterTree(cat, name, 'f', normalize), null);
+  assert.equal(filterTree(cat, name, 'zzz', normalize)!.tree.roots.length, 0);
 });

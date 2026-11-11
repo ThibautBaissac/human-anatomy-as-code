@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { Crosshair, EyeOff, Focus, Play, X } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Crosshair, EyeOff, Focus, Info, Play, X } from 'lucide-react';
 import { selectionKey, type Catalog } from '../viewer/catalog.ts';
 import { jointKey, jointsFor, lengthTrend, motionDirection, musclesOf, parseJointKey } from '../viewer/pose.ts';
 import { labelLang, labelText, structureName, structureNameLang } from '../viewer/search.ts';
@@ -8,6 +8,30 @@ import { LANGS, ROLES_OF, type Lang, type Selection, type ViewState } from '../v
 import { S } from './strings.ts';
 
 const TREND_MARK: Record<string, string> = { shortens: '↓', lengthens: '↑', stable: '≈' };
+/** Lists longer than this show their first items and a button for the rest. */
+const FOLD_AT = 5;
+
+/** Pointer or focus on a structure name in the card tints it in the 3D view, like hovering it there. */
+const previewProps = (viewer: Viewer, sel: Selection) => ({
+  onPointerEnter: () => viewer.preview(sel), onPointerLeave: () => viewer.preview(null),
+  onFocus: () => viewer.preview(sel), onBlur: () => viewer.preview(null),
+});
+
+/** A list folded after FOLD_AT items, with « N autres » to unfold it. */
+function Folded<T>({ items, render, className, label }: { items: T[]; render: (x: T) => React.ReactNode; className: string; label: string }) {
+  const [open, setOpen] = useState(false);
+  const shown = open || items.length <= FOLD_AT + 1 ? items : items.slice(0, FOLD_AT);
+  return (
+    <>
+      <ul className={className} aria-label={label}>{shown.map(render)}</ul>
+      {items.length > FOLD_AT + 1 && (
+        <button type="button" className="btn ghost small more-items" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+          {open ? S.fewerItems : S.moreItems(items.length - FOLD_AT)}
+        </button>
+      )}
+    </>
+  );
+}
 
 /**
  * The selected structure: name, side, nature, systems, actions (Centrer, Isoler, Masquer, Animer), names,
@@ -64,17 +88,15 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
           </div>
         ))}
       </dl>
-      {draft && <p className="note warn" title={S.notReviewedTitle}>{S.draftNote}</p>}
+      {draft && <p className="draft-note muted small"><Info aria-hidden="true" size={14} />{S.draftNote}</p>}
       <MotionInfo viewer={viewer} catalog={catalog} view={view} motionKey={motionKey} onSelect={onSelect} lang={lang} />
       {s.children.length > 0 && (
         <div className="card-section">
           <h3>{S.children}</h3>
-          <ul className="children">
-            {s.children.map((c) => {
-              const child = catalog.structure(c);
-              return child ? <li key={c}><button type="button" className="link" lang={labelLang(child, lang)} onClick={() => onSelect({ slug: c, side: null })}>{labelText(child, lang)}</button></li> : null;
-            })}
-          </ul>
+          <Folded key={s.slug} className="children" label={S.children} items={s.children.filter((c) => catalog.structure(c))} render={(c) => {
+            const child = catalog.structure(c)!;
+            return <li key={c}><button type="button" className="link" lang={labelLang(child, lang)} {...previewProps(viewer, { slug: c, side: null })} onClick={() => onSelect({ slug: c, side: null })}>{labelText(child, lang)}</button></li>;
+          }} />
         </div>
       )}
       <details className="details">
@@ -126,18 +148,16 @@ function MotionInfo({ viewer, catalog, view, motionKey, onSelect, lang }: {
   return (
     <div className="card-section">
       <h3>{S.musclesHeading(S.movingTowards[direction > 0 ? positive : negative])} — {labelText(joint, lang)}</h3>
-      <ul className="muscles">
-        {muscles.map(({ structure: m, role, rig: r }) => {
+      <Folded key={`${s.slug}-${key}`} className="muscles" label={S.musclesHeading(S.movingTowards[direction > 0 ? positive : negative])} items={muscles} render={({ structure: m, role, rig: r }) => {
           const trend = r ? lengthTrend(r, direction, joint.motion) : null;
           return (
             <li key={`${m.slug}-${role}`}>
-              <button type="button" className="link" lang={labelLang(m, lang)} onClick={() => onSelect({ slug: m.slug, side: view.selection.side })}>{labelText(m, lang)}</button>
+              <button type="button" className="link" lang={labelLang(m, lang)} {...previewProps(viewer, { slug: m.slug, side: view.selection.side })} onClick={() => onSelect({ slug: m.slug, side: view.selection.side })}>{labelText(m, lang)}</button>
               {' '}<span className="muted">({S.roles[role]})</span>{' '}
               <span className={`trend trend-${trend ?? 'unknown'}`}>{trend && <span aria-hidden="true">{TREND_MARK[trend]} </span>}{trend ? S.trends[trend] : S.trendUnknown}</span>
             </li>
           );
-        })}
-      </ul>
+        }} />
     </div>
   );
 }

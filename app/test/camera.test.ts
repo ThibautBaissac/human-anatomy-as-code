@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { defaultCamera, easeInOutCubic, interpolateCamera, presetCamera } from '../src/viewer/camera.ts';
+import { centreShift, defaultCamera, easeInOutCubic, fitDistance, freeShare, interpolateCamera, presetCamera, revealNeed } from '../src/viewer/camera.ts';
 import type { Camera } from '../src/viewer/types.ts';
 
 // BodyParts3D frame: +x is the body's left, −y its front, +z up.
@@ -63,4 +63,33 @@ test('interpolation takes the short way round', () => {
   const a = interpolateCamera(front, left, 0.5).position, b = interpolateCamera(front, right, 0.5).position;
   assert.ok(a[0] > 0 && a[1] < 0, `front→left passes front-left: ${a}`);
   assert.ok(b[0] < 0 && b[1] < 0, `front→right passes front-right: ${b}`);
+});
+
+test('the default framing steps back by the share of the height the panels leave free (never past 30 %)', () => {
+  const box = { min: [-300, -150, 0] as [number, number, number], max: [300, 150, 1700] as [number, number, number] };
+  assert.ok(Math.abs(defaultCamera(box, 0.8).position[1] - (-1700 * 1.6) / 0.8) < 1e-9);
+  assert.deepEqual(defaultCamera(box, 0.1).position, defaultCamera(box, 0.3).position);
+});
+
+test('free share and centre shift: a 300 px drawer on the left moves the picture 150 px right', () => {
+  const i = { top: 60, right: 0, bottom: 100, left: 300 };
+  assert.deepEqual(freeShare(1200, 800, i), { x: 0.75, y: 0.8 });
+  assert.deepEqual(centreShift(i), { x: 150, y: -20 });
+  assert.deepEqual(freeShare(400, 800, { top: 0, right: 0, bottom: 0, left: 390 }), { x: 0.3, y: 1 });
+});
+
+test('fit distance: a smaller free area or a narrow window puts the camera further away', () => {
+  const full = fitDistance(100, 35, 1.5, { x: 1, y: 1 });
+  assert.ok(Math.abs(full - (100 / Math.sin(Math.atan(Math.tan((17.5 * Math.PI) / 180)))) * 1.1) < 1e-9);
+  assert.ok(fitDistance(100, 35, 1.5, { x: 1, y: 0.5 }) > full);
+  // a phone in portrait: the width limits
+  assert.ok(fitDistance(100, 35, 0.5, { x: 1, y: 1 }) > full);
+});
+
+test('reveal: nothing inside the free area, pan when under a panel, frame when tiny', () => {
+  const area = { left: 0, top: 60, right: 900, bottom: 700 };
+  assert.equal(revealNeed({ x: 400, y: 300 }, 30, area), null);
+  assert.equal(revealNeed({ x: 1000, y: 300 }, 30, area), 'pan');
+  assert.equal(revealNeed({ x: 400, y: 30 }, 30, area), 'pan');
+  assert.equal(revealNeed({ x: 400, y: 300 }, 2, area), 'frame');
 });

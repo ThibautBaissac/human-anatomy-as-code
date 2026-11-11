@@ -14,6 +14,11 @@ async function open(page: Page, query: string, hash = '') {
 }
 
 const panelName = (page: Page) => page.locator('#panel-name');
+/** Middle of the area the panels leave free over the view, 40 % down: the body is there (it is centred in that area). */
+const freePoint = (page: Page) => page.evaluate(() => {
+  const a = (window as unknown as { __viewer: { freeArea(): { left: number; top: number; right: number; bottom: number } } }).__viewer.freeArea();
+  return { x: (a.left + a.right) / 2, y: a.top + (a.bottom - a.top) * 0.4 };
+});
 
 test('loads, selects by click and by search, cuts, and restores the view from the URL', async ({ page }, info) => {
   const query = info.project.metadata.query as string;
@@ -21,10 +26,9 @@ test('loads, selects by click and by search, cuts, and restores the view from th
   const backend = await page.evaluate(() => (window as unknown as { __viewer: ViewerHandle }).__viewer.getSnapshot().backend);
   expect(backend).toBe(query ? 'WebGL2' : 'WebGPU');
 
-  // 1. click in the middle of the canvas selects something
-  const canvas = page.locator('canvas');
-  const box = (await canvas.boundingBox())!;
-  await page.mouse.click(box.x + box.width / 2, box.y + box.height * 0.4);
+  // 1. click in the middle of the view (the area the panels leave free) selects something
+  const at = await freePoint(page);
+  await page.mouse.click(at.x, at.y);
   await expect(panelName(page)).not.toBeEmpty();
 
   // 2. search "fémur", pick the first result: panel and hash follow
@@ -55,8 +59,7 @@ test('loads, selects by click and by search, cuts, and restores the view from th
 test('in ghost mode, clicks go through the ghosted layers', async ({ page }, info) => {
   await open(page, info.project.metadata.query as string, '#sys=none');
   type V = { setLayerCut(n: number): void; setGhost(b: boolean): void; select(s: null): void; getSnapshot(): { view: { selection: { slug: string } | null } }; catalog: { structure(s: string): { layer: number } } };
-  const box = (await page.locator('canvas').boundingBox())!;
-  const at = { x: box.x + box.width / 2, y: box.y + box.height * 0.4 };
+  const at = await freePoint(page);
   const selected = () => page.evaluate(() => (window as unknown as { __viewer: V }).__viewer.getSnapshot().view.selection?.slug ?? null);
   // What is on top at that point, and its layer.
   await page.mouse.click(at.x, at.y);

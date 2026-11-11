@@ -88,3 +88,12 @@ export function search(index: SearchIndex, query: string, lang: Lang, limit = 20
     slug: s.slug, name: nameIn(index.names.get(s.slug), s.slug, lang), nameLang: langIn(index.names.get(s.slug), lang), matchedLang: s.term.lang, matchedText: s.term.text,
   }));
 }
+
+/** Structures to try on an empty search, those the model has, by name in the language. */
+export function suggestions(index: SearchIndex, slugs: readonly string[], lang: Lang): SearchResult[] {
+  return slugs.filter((slug) => index.names.has(slug)).map((slug) => {
+    const names = index.names.get(slug);
+    const name = nameIn(names, slug, lang);
+    return { slug, name, nameLang: langIn(names, lang), matchedLang: lang, matchedText: name };
+  });
+}

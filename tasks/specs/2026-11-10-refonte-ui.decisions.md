@@ -17,6 +17,16 @@ Décisions prises là où la spec se tait ou admet deux lectures.
 
 - **Crédits (2026-11-11).** La ligne de crédits au-dessus de la vue est retirée (user story 34) : les crédits complets restent dans ⋯ → « Données et licences… », que CC BY 4.0 admet comme attribution « raisonnable selon le support ».
 
+- **Audit UX (2026-11-11).**
+  - *Cadrage entre les panneaux.* L'interface déclare au viewer la place qu'elle couvre (en-tête, tiroir Structures, carte, barres du bas ; sur téléphone, en-tête, colonne caméra et tiroir du bas compté à sa hauteur d'arrivée, plafonnée à mi-hauteur). La projection est décalée (`setViewOffset`) pour centrer la scène dans la zone libre, sans bouger la caméra ; le décalage s'amortit sur quelques images, sauf mouvement réduit. Recentrer, les vues et les cadrages tiennent dans la zone libre. Le panneau d'outil ouvert ne compte pas : il est passager.
+  - *Sélection au clic.* Une structure choisie dans la 3D et recouverte ensuite par un panneau est ramenée dans la zone libre (même distance) ; une structure de moins de 8 px est cadrée. Le double-clic cadre toujours.
+  - *Vues caméra.* Sous 1 200 px de large, ou sur téléphone, les vues prédéfinies passent dans un menu « Vue » ; le téléphone garde une colonne d'icônes.
+  - *Langue des noms.* Trois boutons FR / EN / LA précédés de « Noms en », à la place de la liste déroulante : l'interface reste en français.
+  - *Arbre.* Trié par nom affiché (collation de la langue), filtre au-dessus, marque de langue sur un nom affiché dans une autre langue que celle choisie, œil pour masquer ou réafficher une structure. L'œil est un raccourci souris (masqué aux lecteurs d'écran) : au clavier, sélectionner puis Masquer.
+  - *Accueil.* Un message unique au premier lancement (gardé dans le navigateur) ; une recherche vide propose quelques structures.
+  - *Dissection.* Noms des couches sous le curseur, « Visible à partir de », et un avis quand toutes les structures affichées sont à la même profondeur.
+  - *Thème clair.* Le sombre reste le défaut ; ⋯ → Thème propose Clair et « Comme le système ».
+
 Constats de revue laissés en l'état :
 - Le double toucher repose sur la conversion en `dblclick` du navigateur ; il n'a pas de test e2e mobile.
 - Une interruption de glissade par un geste de l'utilisateur n'a pas de test e2e (elle est couverte par l'écoute de `start` d'OrbitControls).

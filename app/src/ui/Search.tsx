@@ -5,13 +5,15 @@ import { Search as SearchIcon } from 'lucide-react';
 import { S } from './strings.ts';
 
 
-/** ARIA APG combobox with a listbox popup. */
-export function Search({ index, lang, onSelect, autoFocus = false }: { index: SearchIndex; lang: Lang; onSelect: (slug: string) => void; autoFocus?: boolean }) {
+/** ARIA APG combobox with a listbox popup. Empty, a click or ↓ lists a few structures to try. */
+export function Search({ index, lang, onSelect, autoFocus = false, suggestions = [] }: { index: SearchIndex; lang: Lang; onSelect: (slug: string) => void; autoFocus?: boolean; suggestions?: SearchResult[] }) {
   const id = useId();
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(-1);
-  const results: SearchResult[] = useMemo(() => search(index, query, lang), [index, query, lang]);
+  const found: SearchResult[] = useMemo(() => search(index, query, lang), [index, query, lang]);
+  const suggesting = query.trim() === '';
+  const results = suggesting ? suggestions : found;
   const expanded = open && results.length > 0;
 
   const choose = (r: SearchResult | undefined) => {
@@ -47,10 +49,12 @@ export function Search({ index, lang, onSelect, autoFocus = false }: { index: Se
         className="field"
         value={query}
         onChange={(e) => { setQuery(e.target.value); setOpen(true); setActive(-1); }}
+        onClick={() => setOpen(true)}
         onKeyDown={onKeyDown}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
       />
-      <ul id={`${id}-list`} role="listbox" aria-label={S.searchLabel} className="search-list" hidden={!expanded}>
+      <ul id={`${id}-list`} role="listbox" aria-label={suggesting ? S.suggestionsLabel : S.searchLabel} className="search-list" hidden={!expanded}>
+        {suggesting && <li role="none" aria-hidden="true" className="search-list-head">{S.suggestionsLabel}</li>}
         {results.map((r, i) => (
           <li
             key={r.slug}
@@ -61,7 +65,7 @@ export function Search({ index, lang, onSelect, autoFocus = false }: { index: Se
             onMouseDown={(e) => { e.preventDefault(); choose(r); }}
           >
             <span lang={r.nameLang}>{r.name}</span>
-            <span className="match"> — {r.matchedLang === 'slug' ? S.matchSlug : S.langs[r.matchedLang]}{r.matchedText !== r.name && <> : <span lang={r.matchedLang === 'slug' ? undefined : r.matchedLang}>{r.matchedText}</span></>}</span>
+            {!suggesting && <span className="match"> — {r.matchedLang === 'slug' ? S.matchSlug : S.langs[r.matchedLang]}{r.matchedText !== r.name && <> : <span lang={r.matchedLang === 'slug' ? undefined : r.matchedLang}>{r.matchedText}</span></>}</span>}
           </li>
         ))}
       </ul>

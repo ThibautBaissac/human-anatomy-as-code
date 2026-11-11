@@ -21,6 +21,47 @@ export interface TreeState {
   selected?: string;
 }
 
+/** The same tree, children sorted by the name they show (in that language's collation). */
+export function sortedTree(tree: TreeSource, nameOf: (id: string) => string, locale: string): TreeSource {
+  const collator = new Intl.Collator(locale, { sensitivity: 'base', numeric: true });
+  const cache = new Map<string, string[]>();
+  return {
+    roots: tree.roots,
+    parentOf: (id) => tree.parentOf(id),
+    childrenOf(id) {
+      let kids = cache.get(id);
+      if (!kids) { kids = [...tree.childrenOf(id)].sort((a, b) => collator.compare(nameOf(a), nameOf(b))); cache.set(id, kids); }
+      return kids;
+    },
+  };
+}
+
+/**
+ * The rows a filter keeps: every node whose name contains the query (accents and case ignored), with its ancestors,
+ * which open so the matches show. Null under two characters (no filter).
+ */
+export function filterTree(tree: TreeSource, nameOf: (id: string) => string, query: string, norm: (s: string) => string): { tree: TreeSource; expanded: Set<string>; matches: number } | null {
+  const q = norm(query);
+  if (q.length < 2) return null;
+  const keep = new Set<string>(), expanded = new Set<string>();
+  let matches = 0;
+  const walk = (id: string, path: string[]): boolean => {
+    let hit = false;
+    for (const c of tree.childrenOf(id)) if (walk(c, [...path, id])) hit = true;
+    if (norm(nameOf(id)).includes(q)) { matches++; hit = true; }
+    if (hit) { keep.add(id); for (const p of path) expanded.add(p); }
+    return hit;
+  };
+  for (const r of tree.roots) walk(r, []);
+  // a kept node whose descendants matched is open as well
+  for (const id of keep) if (tree.childrenOf(id).some((c) => keep.has(c))) expanded.add(id);
+  return {
+    tree: { roots: tree.roots.filter((r) => keep.has(r)), parentOf: tree.parentOf, childrenOf: (id) => tree.childrenOf(id).filter((c) => keep.has(c)) },
+    expanded,
+    matches,
+  };
+}
+
 export function flattenTree(tree: TreeSource, expanded: ReadonlySet<string>): TreeRow[] {
   const rows: TreeRow[] = [];
   const walk = (ids: string[], level: number) => {

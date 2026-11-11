@@ -8,6 +8,7 @@ interface V {
   instanceState(name: string): { alpha: number } | null;
   screenPointOf(name: string): { x: number; y: number } | null;
   setState(p: object): void;
+  freeArea(): { left: number; top: number; right: number; bottom: number };
 }
 const viewer = <T,>(page: Page, f: (v: V) => T) => page.evaluate(f as never) as Promise<T>;
 const alpha = (page: Page, name: string) => page.evaluate((n) => (window as unknown as { __viewer: V }).__viewer.instanceState(n)!.alpha, name);
@@ -133,8 +134,11 @@ test('camera: Dos looks from behind keeping the target, Recentrer gives the firs
 test('hover: a label names the structure near the cursor, none while dragging', async ({ page }, info) => {
   await open(page, info.project.metadata.query as string);
   const label = page.getByTestId('hover-label');
-  const box = (await page.locator('canvas').boundingBox())!;
-  const at = { x: box.x + box.width / 2, y: box.y + box.height * 0.4 };
+  // the middle of the free area, 40 % down: the body is centred between the panels
+  const at = await viewer(page, () => {
+    const a = (window as unknown as { __viewer: V }).__viewer.freeArea();
+    return { x: (a.left + a.right) / 2, y: a.top + (a.bottom - a.top) * 0.4 };
+  });
   await page.mouse.move(at.x, at.y);
   await expect(label).toBeVisible();
   await expect(label).not.toBeEmpty();

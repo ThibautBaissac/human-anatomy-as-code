@@ -35,6 +35,26 @@ export interface Catalog {
   /** systems of the shown instances, in vocabulary order */
   systems: string[];
   maxLayer: number;
+  /** kinds of the shown instances at each layer (index = layer), skin first, bone last */
+  layerKinds: string[][];
+}
+
+/** Order of the kinds inside a layer: the one that names the layer best comes first. */
+const KIND_ORDER = ['skin', 'fascia', 'muscle', 'tendon', 'organ', 'cns', 'artery', 'vein', 'nerve', 'lymphatic', 'ligament', 'bone', 'cartilage', 'joint'];
+const kindRank = (k: string) => { const i = KIND_ORDER.indexOf(k); return i < 0 ? KIND_ORDER.length : i; };
+
+/**
+ * Layers of the instances a view shows (by kind and system, before any layer cut). Removing layers changes
+ * something only when there are at least two.
+ */
+export function shownLayers(catalog: Pick<Catalog, 'instance' | 'instanceCount'>, hiddenKinds: readonly string[], hiddenSystems: readonly string[]): number[] {
+  const kinds = new Set(hiddenKinds), systems = new Set(hiddenSystems), out = new Set<number>();
+  for (let i = 0; i < catalog.instanceCount; i++) {
+    const x = catalog.instance(i);
+    if (!x.inModel || kinds.has(x.kind) || (x.systems.length && x.systems.every((s) => systems.has(s)))) continue;
+    out.add(x.layer);
+  }
+  return [...out].sort((a, b) => a - b);
 }
 
 /** Key of a structure-side: slug@side, or slug for a whole structure. */
@@ -85,6 +105,9 @@ export function buildCatalog(atlas: Atlas, loaded: (string | { name: string; mes
   const shown = instances.filter((i) => i.inModel);
   const kinds = [...new Set(shown.map((i) => i.kind))].sort(byKey);
   const maxLayer = Math.max(0, ...shown.map((i) => i.layer));
+  const layerKinds: string[][] = Array.from({ length: maxLayer + 1 }, () => []);
+  for (const k of kinds) for (const l of new Set(shown.filter((i) => i.kind === k).map((i) => i.layer))) layerKinds[l].push(k);
+  for (const list of layerKinds) list.sort((a, b) => kindRank(a) - kindRank(b) || byKey(a, b));
   const present = new Set(shown.flatMap((i) => i.systems));
   const systems = SYSTEMS.filter((x) => present.has(x));
 
@@ -115,5 +138,6 @@ export function buildCatalog(atlas: Atlas, loaded: (string | { name: string; mes
     kinds,
     systems,
     maxLayer,
+    layerKinds,
   };
 }

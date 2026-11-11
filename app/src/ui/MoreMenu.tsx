@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { MoreHorizontal } from 'lucide-react';
 import { S } from './strings.ts';
 
@@ -6,8 +6,11 @@ export type MenuEntry =
   | { kind: 'item'; label: string; onSelect: () => void }
   | { kind: 'radio'; group: string; options: { value: string; label: string }[]; value: string; onChange: (value: string) => void };
 
-/** ARIA APG menu button: arrows move, Échap closes and gives focus back, a click outside closes. */
-export function MoreMenu({ entries }: { entries: MenuEntry[] }) {
+/**
+ * ARIA APG menu button: arrows move, Échap closes and gives focus back, a click outside closes.
+ * By default the ⋯ button; `label`, `icon` and `text` make another one, `up` opens the menu above it.
+ */
+export function MoreMenu({ entries, label = S.more, icon, text, up = false }: { entries: MenuEntry[]; label?: string; icon?: ReactNode; text?: string; up?: boolean }) {
   const id = useId();
   const [open, setOpen] = useState(false);
   const button = useRef<HTMLButtonElement>(null);
@@ -38,12 +41,12 @@ export function MoreMenu({ entries }: { entries: MenuEntry[] }) {
 
   return (
     <div className="menu-wrap">
-      <button ref={button} type="button" className="btn ghost icon" aria-label={S.more} aria-haspopup="menu" aria-expanded={open} aria-controls={`${id}-menu`}
+      <button ref={button} type="button" className={`btn ghost${text ? '' : ' icon'}`} aria-label={text ? undefined : label} aria-haspopup="menu" aria-expanded={open} aria-controls={`${id}-menu`}
         onClick={() => setOpen((o) => !o)}>
-        <MoreHorizontal aria-hidden="true" size={20} />
+        {icon ?? <MoreHorizontal aria-hidden="true" size={20} />}{text}
       </button>
       {open && (
-        <div ref={menu} id={`${id}-menu`} role="menu" aria-label={S.more} className="menu surface" onKeyDown={onKeyDown}>
+        <div ref={menu} id={`${id}-menu`} role="menu" aria-label={label} className={`menu surface${up ? ' up' : ''}`} onKeyDown={onKeyDown}>
           {entries.map((e, n) => e.kind === 'item' ? (
             <button key={n} type="button" role="menuitem" tabIndex={-1} className="menu-item" onClick={() => choose(e.onSelect)}>{e.label}</button>
           ) : (

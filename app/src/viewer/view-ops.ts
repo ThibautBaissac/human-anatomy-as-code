@@ -10,6 +10,19 @@ export function hideSelection(v: ViewState): Partial<ViewState> {
   return { hidden: [...v.hidden.filter((k) => k !== key), key], selection: null, isolated };
 }
 
+/**
+ * Hides or shows one structure (key slug or slug@side) from the tree. Hiding it clears it from the selection and the
+ * isolation, like Masquer; showing it removes the key wherever it stands in the undo order.
+ */
+export function setHidden(v: ViewState, key: string, on: boolean): Partial<ViewState> {
+  const shown = v.hidden.filter((k) => k !== key);
+  if (!on) return shown.length === v.hidden.length ? {} : { hidden: shown };
+  const patch: Partial<ViewState> = { hidden: [...shown, key] };
+  if (v.selection && selectionKey(v.selection) === key) patch.selection = null;
+  if (v.isolated && selectionKey(v.isolated) === key) patch.isolated = null;
+  return patch;
+}
+
 /** Shows the last hidden structure again. */
 export function undoHide(v: ViewState): Partial<ViewState> {
   return v.hidden.length ? { hidden: v.hidden.slice(0, -1) } : {};

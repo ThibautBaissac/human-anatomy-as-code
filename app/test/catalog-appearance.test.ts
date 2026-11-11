@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildCatalog, parseSelectionKey, selectionKey, UNATTACHED } from '../src/viewer/catalog.ts';
+import { buildCatalog, parseSelectionKey, selectionKey, shownLayers, UNATTACHED } from '../src/viewer/catalog.ts';
 import { appearance } from '../src/viewer/appearance.ts';
 import { ATLAS, INSTANCES } from './fixture.ts';
 
@@ -31,6 +31,23 @@ test('catalog: tree roots are the root structure then the unattached bucket', ()
 test('catalog: kinds with instances, sorted, and the deepest layer', () => {
   assert.deepEqual(cat.kinds, ['bone', 'muscle', 'organ', 'skin']);
   assert.equal(cat.maxLayer, 5);
+});
+
+test('catalog: the kinds at each layer, skin first, bone last; a layer without instance is empty', () => {
+  assert.equal(cat.layerKinds.length, 6);
+  assert.deepEqual(cat.layerKinds[0], ['skin']);
+  assert.deepEqual(cat.layerKinds[cat.instance(4).layer], ['muscle']);
+  assert.deepEqual(cat.layerKinds[4], ['organ']);
+  assert.deepEqual(cat.layerKinds[5], ['bone']);
+  assert.deepEqual(cat.layerKinds[1], []);
+});
+
+test('shown layers: what hidden kinds and systems leave; one layer left means a cut changes nothing', () => {
+  assert.deepEqual(shownLayers(cat, [], []), [...new Set([0, cat.instance(4).layer, 4, 5])].sort((a, b) => a - b));
+  assert.deepEqual(shownLayers(cat, ['skin', 'muscle', 'organ'], []), [5]);
+  // the heart belongs to two systems: it goes only when both are hidden
+  assert.ok(shownLayers(cat, ['skin', 'muscle', 'bone'], ['cardiovascular']).includes(4));
+  assert.deepEqual(shownLayers(cat, ['skin', 'muscle', 'bone'], ['cardiovascular', 'endocrine']), []);
 });
 
 const base = { hiddenKinds: new Set<string>(), layerCut: 0, ghost: false, selected: new Set<number>() };

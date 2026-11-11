@@ -7,8 +7,8 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import './bvh.ts';
 import { appearance, type AppearanceState } from './appearance.ts';
 import { buildCatalog, selectionKey, type Catalog } from './catalog.ts';
-import { hideSelection, keepKnown, undoHide } from './view-ops.ts';
-import { defaultCamera, GLIDE_MS, interpolateCamera, presetCamera, type Preset } from './camera.ts';
+import { hideSelection, keepKnown, setHidden, undoHide } from './view-ops.ts';
+import { centreShift, defaultCamera, fitDistance, freeShare, GLIDE_MS, interpolateCamera, NO_INSETS, presetCamera, revealNeed, type Insets, type Preset } from './camera.ts';
 import { colorOf, HIGHLIGHT } from './colors.ts';
 import { crossingInstances, jointKey, normaliseAngle, parseJointKey, poseMatrices, type Pose, type Rigs } from './pose.ts';
 import { AXES, DEFAULT_VIEW, type Atlas, type AtlasJoint, type Axis, type Camera, type Model, type Selection, type Side, type Vec3, type ViewState } from './types.ts';
@@ -103,6 +103,9 @@ export class Viewer {
   private hovered: Selection | null = null;
   /** hover only on a device whose pointer is fine and hovers (spec) */
   private finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+  /** room the interface takes over the canvas: wanted, and as drawn (it eases towards the wanted one) */
+  private insets: Insets = { ...NO_INSETS };
+  private shownInsets: Insets = { ...NO_INSETS };
   /** camera glide in progress */
   private glide: { from: Camera; to: Camera; start: number | null } | null = null;
   catalog: Catalog | null = null;
@@ -144,7 +147,7 @@ export class Viewer {
     canvas.addEventListener('keyup', () => this.emitChange());
     this.controls.addEventListener('end', () => this.emitChange());
     // the user takes the camera: a glide stops where it stands
-    this.controls.addEventListener('start', () => { if (this.glide) { this.glide = null; this.emitChange(); } });
+    this.controls.addEventListener('start', () => { this.untouchedFirstView = false; if (this.glide) { this.glide = null; this.emitChange(); } });
     this.controls.addEventListener('change', () => this.markDirty());
     this.resize = new ResizeObserver(() => this.fit());
     // device pixels: also fires when the page zoom or the screen density changes (not in Safari, hence the fallback)
@@ -293,7 +296,7 @@ export class Viewer {
     if (patch.pose && this.player) this.stop(false);
     const before = this.view.selection;
     this.view = { ...this.view, ...patch };
-    if (patch.camera) { this.glide = null; this.applyCamera(patch.camera); }
+    if (patch.camera) { this.glide = null; this.untouchedFirstView = false; this.applyCamera(patch.camera); }
     if (patch.sections) this.applySections();
     if (patch.pose) this.applyPose();
     // only an actual change: re-applying the same selection (URL read back) is not a new selection
@@ -310,11 +313,55 @@ export class Viewer {
     const t = this.controls.target, offset = this.camera.position.clone().sub(t);
     const d = Math.min(Math.max(offset.length() * factor, this.controls.minDistance), this.controls.maxDistance);
     this.glide = null;
+    this.untouchedFirstView = false;
     this.camera.position.copy(t).add(offset.setLength(d));
     this.controls.update();
     this.markDirty();
     this.emitChange();
   }
+  /**
+   * Room the interface takes over the canvas (CSS px from each edge). The picture moves so that the scene is centred in the
+   * free area, and framings fit in it; the change eases in over a few frames unless the user asked for reduced motion.
+   */
+  setInsets(i: Insets): void {
+    const r = (n: number) => Math.max(0, Math.round(n));
+    const next = { top: r(i.top), right: r(i.right), bottom: r(i.bottom), left: r(i.left) };
+    if (JSON.stringify(next) === JSON.stringify(this.insets)) return;
+    this.insets = next;
+    if (prefersReducedMotion() || !this.everLoaded) { this.shownInsets = { ...next }; this.applyViewOffset(); }
+    // the bars appear once the model is loaded: an untouched first view is framed again for them
+    if (this.untouchedFirstView) this.applyCamera(this.wholeBody());
+    this.dirty = true;
+  }
+
+  /** Client coordinates of the area the interface leaves free over the canvas (e2e tests). */
+  freeArea(): { left: number; top: number; right: number; bottom: number } {
+    const r = this.canvas.getBoundingClientRect(), i = this.insets;
+    return { left: r.left + i.left, top: r.top + i.top, right: r.right - i.right, bottom: r.bottom - i.bottom };
+  }
+
+  /** After a click selection: brings it into the free area if a panel covers it, frames it if it is too small to see. */
+  reveal(sel: Selection): void {
+    const box = this.boxOf(sel.slug, sel.side);
+    if (!box) return;
+    const w = this.canvas.clientWidth, h = this.canvas.clientHeight;
+    const centre = box.getCenter(new THREE.Vector3());
+    const p = centre.clone().project(this.camera);
+    const edge = centre.clone().addScaledVector(new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 0), box.getSize(new THREE.Vector3()).length() / 2).project(this.camera);
+    const radiusPx = Math.hypot((edge.x - p.x) * w / 2, (edge.y - p.y) * h / 2);
+    const i = this.insets;
+    const need = revealNeed({ x: (p.x + 1) / 2 * w, y: (1 - p.y) / 2 * h }, radiusPx, { left: i.left, top: i.top, right: w - i.right, bottom: h - i.bottom });
+    if (need === 'frame') this.glideTo(this.framing(box));
+    else if (need === 'pan') {
+      const offset = this.camera.position.clone().sub(this.controls.target);
+      const pos = centre.clone().add(offset);
+      this.glideTo({ position: [pos.x, pos.y, pos.z], target: [centre.x, centre.y, centre.z] });
+    }
+  }
+
+  /** Tints a structure as if the pointer were on it (a name hovered in the interface); null ends it. */
+  preview(sel: Selection | null): void { this.setHover(sel); }
+
   setKindVisible(kind: string, on: boolean): void {
     const hidden = new Set(this.view.hiddenKinds);
     if (on) hidden.delete(kind); else hidden.add(kind);
@@ -342,6 +389,10 @@ export class Viewer {
   /** Shows the last hidden structure again. */
   undoHide(): void { const patch = undoHide(this.view); if (patch.hidden) this.setState(patch); }
   showHidden(): void { this.setState({ hidden: [] }); }
+  /** Colour behind the body (a CSS colour: the interface theme's stage). */
+  setBackground(css: string): void { if (!css) return; (this.scene.background as THREE.Color).setStyle(css); this.dirty = true; }
+  /** Hides or shows one structure by key (slug or slug@side), from the tree. */
+  setHidden(key: string, on: boolean): void { const patch = setHidden(this.view, key, on); if (Object.keys(patch).length) { if (on) this.setHover(null); this.setState(patch); } }
   setLayerCut(n: number): void { this.setState({ layerCut: n }); }
   setGhost(on: boolean): void { this.setState({ ghost: on }); }
   setSection(axis: Axis, position: number | null): void {
@@ -352,23 +403,32 @@ export class Viewer {
 
   /** Frames the camera on a structure (or one side), keeping the viewing direction. */
   focus(slug: string, side?: Side | null): void {
-    if (!this.catalog) return;
-    const ids = this.catalog.instancesOf(slug, side);
-    if (!ids.length) return;
+    const box = this.boxOf(slug, side);
+    if (box) this.glideTo(this.framing(box));
+  }
+
+  /** Bounds of a structure (or one side) where it stands now, or null when it has no instance. */
+  private boxOf(slug: string, side?: Side | null): THREE.Box3 | null {
+    const ids = this.catalog?.instancesOf(slug, side) ?? [];
+    if (!ids.length) return null;
     const box = new THREE.Box3(), b = new THREE.Box3(), m = new THREE.Matrix4();
     for (const g of ids) {
       const [batch, id] = this.location[g];
       batch.mesh.getBoundingBoxAt(batch.mesh.getGeometryIdAt(id), b);
       box.union(b.applyMatrix4(batch.mesh.getMatrixAt(id, m)));
     }
-    this.glideTo(this.framing(box));
+    return box;
   }
 
   /** Looks at the same target from the named side of the body. */
   viewFrom(preset: Preset): void { this.glideTo(presetCamera(preset, this.currentCamera())); }
   /** Back to the first view: the whole body from the front. */
-  recentre(): void {
-    this.glideTo(defaultCamera({ min: this.box.min.toArray() as Vec3, max: this.box.max.toArray() as Vec3 }));
+  recentre(): void { this.glideTo(this.wholeBody()); }
+
+  /** The first view, stepped back so the body fits between the panels. */
+  private wholeBody(): Camera {
+    const w = this.canvas.clientWidth || 1, h = this.canvas.clientHeight || 1;
+    return defaultCamera({ min: this.box.min.toArray() as Vec3, max: this.box.max.toArray() as Vec3 }, freeShare(w, h, this.insets).y * 0.86);
   }
 
   private currentCamera(): Camera {
@@ -378,6 +438,7 @@ export class Viewer {
 
   /** Moves the camera to `to` in a 400 ms glide, or at once when the user asked for reduced motion. */
   private glideTo(to: Camera) {
+    this.untouchedFirstView = false;
     if (prefersReducedMotion()) { this.glide = null; this.applyCamera(to); this.emitChange(); return; }
     this.setHover(null); // the body moves under a still cursor
     this.glide = { from: this.currentCamera(), to, start: null };
@@ -539,15 +600,16 @@ export class Viewer {
     this.controls.update();
   }
 
-  private frameAll() {
-    this.applyCamera(defaultCamera({ min: this.box.min.toArray() as Vec3, max: this.box.max.toArray() as Vec3 }));
-  }
+  private frameAll() { this.applyCamera(this.wholeBody()); this.untouchedFirstView = true; }
+  /** the first view is on screen and nobody has moved the camera since */
+  private untouchedFirstView = false;
 
   /** The camera framing a box, keeping the viewing direction. */
   private framing(box: THREE.Box3): Camera {
     const center = box.getCenter(new THREE.Vector3());
     const radius = Math.max(box.getSize(new THREE.Vector3()).length() / 2, 20);
-    const dist = radius / Math.sin(THREE.MathUtils.degToRad(this.camera.fov / 2)) * 1.1;
+    const w = this.canvas.clientWidth || 1, h = this.canvas.clientHeight || 1;
+    const dist = fitDistance(radius, this.camera.fov, w / h, freeShare(w, h, this.insets));
     const dirv = this.camera.position.clone().sub(this.controls.target).normalize();
     const p = center.clone().addScaledVector(dirv, dist);
     return { position: [p.x, p.y, p.z], target: [center.x, center.y, center.z] };
@@ -609,14 +671,36 @@ export class Viewer {
     const w = this.canvas.clientWidth, h = this.canvas.clientHeight;
     if (!w || !h) return;
     this.camera.aspect = w / h;
-    this.camera.updateProjectionMatrix();
+    this.applyViewOffset();
     // the window may have moved to a screen with another density, or the page been zoomed
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     this.renderer.setSize(w, h, false);
     this.dirty = true;
   }
 
+  /** Shifts the projection so the scene centre is the centre of the free area (the camera itself does not move). */
+  private applyViewOffset() {
+    const w = this.canvas.clientWidth, h = this.canvas.clientHeight;
+    if (!w || !h) return;
+    const { x, y } = centreShift(this.shownInsets);
+    if (x || y) this.camera.setViewOffset(w, h, -x, -y, w, h); else this.camera.clearViewOffset();
+    this.camera.updateProjectionMatrix();
+  }
+
+  /** Eases the drawn insets towards the wanted ones; true while they still move. */
+  private easeInsets(): boolean {
+    const a = this.shownInsets, b = this.insets;
+    let moving = false;
+    for (const k of ['top', 'right', 'bottom', 'left'] as const) {
+      const d = b[k] - a[k];
+      if (Math.abs(d) < 0.5) a[k] = b[k]; else { a[k] += d * 0.25; moving = true; }
+    }
+    return moving;
+  }
+
   private frame(t: number) {
+    const s = this.shownInsets, i = this.insets;
+    if (s.top !== i.top || s.right !== i.right || s.bottom !== i.bottom || s.left !== i.left) { this.easeInsets(); this.applyViewOffset(); this.dirty = true; }
     // Hover waits for the picking indexes rather than building them on a mouse move.
     if (this.hoverPending && this.pickReadyMs) { const e = this.hoverPending; this.hoverPending = null; this.setHover(this.pick(e.clientX, e.clientY)); }
     this.orbit?.(t);
