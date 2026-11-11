@@ -139,9 +139,9 @@ export function App() {
 
   return (
     <div className={`app${narrow ? ' is-narrow' : ''}`}>
-      <UpdateBanner visible={pwa.updateReady} onReload={pwa.applyUpdate} onLater={pwa.dismissUpdate} />
+      <UpdateBanner visible={pwa.updateReady} onReload={pwa.applyUpdate} onLater={() => { pwa.dismissUpdate(); focusHome(); }} />
       <main className="stage">
-        <canvas ref={canvasRef} className="canvas" role="img" aria-label={S.canvasLabel} aria-describedby="canvas-help" />
+        <canvas ref={canvasRef} className="canvas" tabIndex={0} role="img" aria-label={S.canvasLabel} aria-describedby="canvas-help" />
         <p id="canvas-help" className="visually-hidden">{S.canvasHelp}</p>
       </main>
 
@@ -183,8 +183,8 @@ export function App() {
       )}
 
       <div className="top-overlays">
-        {view.model === 'female' && <FemaleNotice atlas={atlas} />}
-        <Notifications loading={loading ? S.loading(loading.loaded, loading.total) : null} errors={errors} />
+        {view.model === 'female' && <FemaleNotice atlas={atlas} onDone={focusHome} />}
+        <Notifications loading={loading ? S.loading(loading.loaded, loading.total) : null} errors={errors} onDone={focusHome} />
         {viewer && <Banners viewer={viewer} isolatedName={isolatedName} hiddenCount={view.hidden.length} onDone={focusHome} />}
       </div>
 

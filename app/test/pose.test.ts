@@ -110,6 +110,7 @@ test('pose decoding: unknown joints or sides are dropped, angles are rounded and
     { 'elbow-joint@left': 145, 'knee-joint@left': 45 });
   assert.equal(decodeView('p=elbow-joint@left:10', ctx).pose, undefined);
   assert.equal(decodeView('p=elbow-joint@left:abc', ctx).pose, undefined);
+  assert.equal(decodeView('p=elbow-joint@left@x:90', ctx).pose, undefined);
 });
 
 test('a whole-degree angle within half a degree of a fractional rest angle is the rest pose', () => {

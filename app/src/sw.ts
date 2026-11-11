@@ -17,14 +17,22 @@ const serwist = new Serwist({
   runtimeCaching: [
     // Models are content-addressed (name = hash), hence immutable.
     { matcher: ({ url }) => isModel(url), handler: new CacheFirst({ cacheName: ASSETS }) },
-    { matcher: ({ url }) => isData(url), handler: new NetworkFirst({ cacheName: DATA, networkTimeoutSeconds: 3 }) },
+    {
+      matcher: ({ url }) => isData(url),
+      handler: new NetworkFirst({
+        cacheName: DATA,
+        networkTimeoutSeconds: 3,
+        // A data-only release changes the manifest but not sw.js (no activate): purge the old models when a new manifest is stored.
+        plugins: [{ cacheDidUpdate: async ({ request }) => { if (new URL(request.url).pathname === MANIFEST_URL) await cleanupModels(true); } }],
+      }),
+    },
   ],
 });
 serwist.addEventListeners();
 
-/** Removes cached models that the current manifest no longer lists. */
-async function cleanupModels(): Promise<void> {
-  let res = await fetch(MANIFEST_URL).catch(() => undefined);
+/** Removes cached models that the current manifest no longer lists (the cached one when `cachedOnly`). */
+async function cleanupModels(cachedOnly = false): Promise<void> {
+  let res = cachedOnly ? undefined : await fetch(MANIFEST_URL).catch(() => undefined);
   if (!res?.ok) res = await (await caches.open(DATA)).match(MANIFEST_URL);
   if (!res) return;
   const manifest = (await res.json()) as { kinds: Record<string, { file: string }> };

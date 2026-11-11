@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Crosshair, EyeOff, Focus, Play, X } from 'lucide-react';
 import { selectionKey, type Catalog } from '../viewer/catalog.ts';
 import { jointKey, jointsFor, lengthTrend, motionDirection, musclesOf, parseJointKey } from '../viewer/pose.ts';
-import { labelText, structureName } from '../viewer/search.ts';
+import { labelLang, labelText, structureName, structureNameLang } from '../viewer/search.ts';
 import type { Viewer } from '../viewer/viewer.ts';
 import { LANGS, ROLES_OF, type Lang, type Selection, type ViewState } from '../viewer/types.ts';
 import { S } from './strings.ts';
@@ -28,14 +28,23 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
     <>
       <div className="card-head">
         <div className="card-title">
-          <h2 id="panel-name">{structureName(s, selection.side, lang)}</h2>
+          <h2 id="panel-name" lang={structureNameLang(s, selection.side, lang)}>{structureName(s, selection.side, lang)}</h2>
           <p className="muted small">
             {subtitle}
-            {parent && <> · {S.partOf} <button type="button" className="link" onClick={() => onSelect({ slug: parent.slug, side: null })}>{labelText(parent, lang)}</button></>}
+            {parent && <> · {S.partOf} <button type="button" className="link" lang={labelLang(parent, lang)} onClick={() => onSelect({ slug: parent.slug, side: null })}>{labelText(parent, lang)}</button></>}
           </p>
         </div>
         <button type="button" className="btn ghost icon" aria-label={S.closeSelection} onClick={onClose}><X aria-hidden="true" size={18} /></button>
       </div>
+      {s.sides && (
+        // a side can also be chosen without the 3D view (keyboard, screen reader)
+        <div role="group" aria-label={S.sideChoice} className="segmented sides">
+          {([null, 'left', 'right'] as const).filter((x) => x === null || s.sides?.[x]).map((x) => (
+            <button key={x ?? 'both'} type="button" className="btn small" aria-pressed={selection.side === x}
+              onClick={() => onSelect({ slug: s.slug, side: x })}>{x ? S.sideButton[x] : S.bothSides}</button>
+          ))}
+        </div>
+      )}
       {s.systems && s.systems.length > 0 && (
         <ul className="chips" aria-label={S.systemsLabel}>
           {s.systems.map((x) => <li key={x} className="chip">{S.systems[x] ?? x}</li>)}
@@ -63,7 +72,7 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
           <ul className="children">
             {s.children.map((c) => {
               const child = catalog.structure(c);
-              return child ? <li key={c}><button type="button" className="link" onClick={() => onSelect({ slug: c, side: null })}>{labelText(child, lang)}</button></li> : null;
+              return child ? <li key={c}><button type="button" className="link" lang={labelLang(child, lang)} onClick={() => onSelect({ slug: c, side: null })}>{labelText(child, lang)}</button></li> : null;
             })}
           </ul>
         </div>
@@ -122,7 +131,7 @@ function MotionInfo({ viewer, catalog, view, motionKey, onSelect, lang }: {
           const trend = r ? lengthTrend(r, direction, joint.motion) : null;
           return (
             <li key={`${m.slug}-${role}`}>
-              <button type="button" className="link" onClick={() => onSelect({ slug: m.slug, side: view.selection.side })}>{labelText(m, lang)}</button>
+              <button type="button" className="link" lang={labelLang(m, lang)} onClick={() => onSelect({ slug: m.slug, side: view.selection.side })}>{labelText(m, lang)}</button>
               {' '}<span className="muted">({S.roles[role]})</span>{' '}
               <span className={`trend trend-${trend ?? 'unknown'}`}>{trend && <span aria-hidden="true">{TREND_MARK[trend]} </span>}{trend ? S.trends[trend] : S.trendUnknown}</span>
             </li>

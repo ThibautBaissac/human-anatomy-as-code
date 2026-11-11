@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { RotateCcw, X } from 'lucide-react';
+import { RotateCcw, X, ZoomIn, ZoomOut } from 'lucide-react';
 import type { Viewer } from '../viewer/viewer.ts';
 import { PRESETS, type Preset } from '../viewer/camera.ts';
 import type { Atlas, Selection } from '../viewer/types.ts';
@@ -14,6 +14,8 @@ export function CameraGroup({ viewer, narrow }: { viewer: Viewer; narrow: boolea
   return (
     <div role="group" aria-label={S.cameraLabel} className="camera surface">
       {presets.map(([p, label]) => <button key={p} type="button" className="btn ghost" onClick={() => viewer.viewFrom(p)}>{label}</button>)}
+      <button type="button" className="btn ghost icon" aria-label={S.zoomIn} onClick={() => viewer.zoom(0.8)}><ZoomIn aria-hidden="true" size={18} /></button>
+      <button type="button" className="btn ghost icon" aria-label={S.zoomOut} onClick={() => viewer.zoom(1.25)}><ZoomOut aria-hidden="true" size={18} /></button>
       <button type="button" className="btn ghost icon" aria-label={S.recentre} onClick={() => viewer.recentre()}><RotateCcw aria-hidden="true" size={18} /></button>
     </div>
   );
@@ -67,7 +69,7 @@ export function Banners({ viewer, isolatedName, hiddenCount, onDone }: { viewer:
 }
 
 /** Loading progress and errors over the view. */
-export function Notifications({ loading, errors }: { loading: string | null; errors: string[] }) {
+export function Notifications({ loading, errors, onDone }: { loading: string | null; errors: string[]; onDone: () => void }) {
   const [closed, setClosed] = useState<string[]>([]);
   const shown = errors.filter((e) => !closed.includes(e));
   if (!loading && !shown.length) return null;
@@ -77,7 +79,7 @@ export function Notifications({ loading, errors }: { loading: string | null; err
       {shown.map((e) => (
         <div key={e} role="alert" className="toast surface error">
           <span>{e}</span>
-          <button type="button" className="btn ghost icon small" aria-label={S.dismiss} onClick={() => setClosed((c) => [...c, e])}><X aria-hidden="true" size={16} /></button>
+          <button type="button" className="btn ghost icon small" aria-label={S.dismiss} onClick={() => { setClosed((c) => [...c, e]); onDone(); }}><X aria-hidden="true" size={16} /></button>
         </div>
       ))}
     </div>

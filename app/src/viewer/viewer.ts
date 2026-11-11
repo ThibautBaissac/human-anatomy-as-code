@@ -6,7 +6,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import './bvh.ts';
 import { appearance, type AppearanceState } from './appearance.ts';
-import { buildCatalog, type Catalog } from './catalog.ts';
+import { buildCatalog, selectionKey, type Catalog } from './catalog.ts';
 import { hideSelection, keepKnown, undoHide } from './view-ops.ts';
 import { defaultCamera, GLIDE_MS, interpolateCamera, presetCamera, type Preset } from './camera.ts';
 import { colorOf, HIGHLIGHT } from './colors.ts';
@@ -33,6 +33,8 @@ export interface ViewerEvents {
   pick: Selection | null;
   hover: Selection | null;
   change: ViewerSnapshot;
+  /** the GPU device or WebGL context was lost: nothing draws any more until a reload */
+  lost: string;
 }
 
 /** Everything the UI renders from. */
@@ -81,7 +83,7 @@ export class Viewer {
   /** global instance index → [batch, batch instance id] */
   private location: [Batch, number][] = [];
   private box = new THREE.Box3();
-  private listeners: { [K in keyof ViewerEvents]: Set<(v: ViewerEvents[K]) => void> } = { select: new Set(), pick: new Set(), hover: new Set(), change: new Set() };
+  private listeners: { [K in keyof ViewerEvents]: Set<(v: ViewerEvents[K]) => void> } = { select: new Set(), pick: new Set(), hover: new Set(), change: new Set(), lost: new Set() };
   private view: ViewState = { ...DEFAULT_VIEW };
   private snapshot: ViewerSnapshot = { view: this.view, loading: null, failedKinds: [], backend: null, ready: false, playing: null };
   /** joints of the model, rigs of their sides (manifest), instance name → global index */
@@ -137,12 +139,16 @@ export class Viewer {
     this.scene.add(this.camera, this.clip);
     this.controls = new OrbitControls(this.camera, canvas);
     this.controls.enableDamping = true;
+    // arrow keys pan the view once the canvas has the focus
+    this.controls.listenToKeyEvents(canvas);
+    canvas.addEventListener('keyup', () => this.emitChange());
     this.controls.addEventListener('end', () => this.emitChange());
     // the user takes the camera: a glide stops where it stands
     this.controls.addEventListener('start', () => { if (this.glide) { this.glide = null; this.emitChange(); } });
     this.controls.addEventListener('change', () => this.markDirty());
     this.resize = new ResizeObserver(() => this.fit());
-    this.resize.observe(canvas);
+    // device pixels: also fires when the page zoom or the screen density changes (not in Safari, hence the fallback)
+    try { this.resize.observe(canvas, { box: 'device-pixel-content-box' }); } catch { this.resize.observe(canvas); }
     // A click selects, a drag (orbit) does not.
     canvas.addEventListener('pointerdown', (e) => { this.downAt = [e.clientX, e.clientY]; this.downTouch = e.pointerType === 'touch'; });
     canvas.addEventListener('click', (e) => this.onClick(e));
@@ -156,6 +162,8 @@ export class Viewer {
 
   static async create(canvas: HTMLCanvasElement, opts: { backend: 'auto' | 'webgl' }): Promise<Viewer> {
     const v = new Viewer(canvas, opts.backend === 'webgl');
+    // three only logs a lost device (mobile tab in the background, GPU reset): tell the UI
+    v.renderer.onDeviceLost = (info: { message?: string }) => { console.error('[viewer] device lost', info); v.emit('lost', info?.message ?? ''); };
     await v.renderer.init();
     v.snapshot = { ...v.snapshot, backend: (v.renderer.backend as unknown as { isWebGPUBackend?: boolean }).isWebGPUBackend ? 'WebGPU' : 'WebGL2' };
     v.fit();
@@ -191,8 +199,11 @@ export class Viewer {
     this.loadStart = null;
     this.stop();
     // batches kept for the next model still carry this pose: back to rest while the global indices are still this model's
-    for (const g of this.moved) { const [b, id] = this.location[g]; b.mesh.setMatrixAt(id, b.base[id]); }
+    const reset = new Set<Batch>();
+    for (const g of this.moved) { const [b, id] = this.location[g]; b.mesh.setMatrixAt(id, b.base[id]); reset.add(b); }
     this.moved = new Set();
+    // their cached bounds still hold the posed limbs: the model box (sections, recentring) is taken at rest
+    for (const b of reset) { b.mesh.computeBoundingBox(); b.mesh.computeBoundingSphere(); }
     const needed = (manifest.models?.[model]?.kinds ?? Object.keys(manifest.kinds)).slice().sort();
     for (const b of this.batches.filter((x) => !needed.includes(x.kind))) {
       this.clip.remove(b.mesh);
@@ -280,16 +291,30 @@ export class Viewer {
   setState(patch: Partial<ViewState>): void {
     // a pose set from outside (slider, URL, Back button) wins over a playback
     if (patch.pose && this.player) this.stop(false);
+    const before = this.view.selection;
     this.view = { ...this.view, ...patch };
     if (patch.camera) { this.glide = null; this.applyCamera(patch.camera); }
     if (patch.sections) this.applySections();
     if (patch.pose) this.applyPose();
-    if (patch.selection !== undefined) this.emit('select', this.view.selection);
+    // only an actual change: re-applying the same selection (URL read back) is not a new selection
+    const key = (s: Selection | null) => (s ? selectionKey(s) : null);
+    if (patch.selection !== undefined && key(before) !== key(this.view.selection)) this.emit('select', this.view.selection);
     this.applyAppearance();
     this.emitChange();
   }
 
   select(target: Selection | null): void { this.setState({ selection: target }); }
+
+  /** Moves the camera towards (factor < 1) or away from the target, within the controls' limits: zoom without wheel or pinch. */
+  zoom(factor: number): void {
+    const t = this.controls.target, offset = this.camera.position.clone().sub(t);
+    const d = Math.min(Math.max(offset.length() * factor, this.controls.minDistance), this.controls.maxDistance);
+    this.glide = null;
+    this.camera.position.copy(t).add(offset.setLength(d));
+    this.controls.update();
+    this.markDirty();
+    this.emitChange();
+  }
   setKindVisible(kind: string, on: boolean): void {
     const hidden = new Set(this.view.hiddenKinds);
     if (on) hidden.delete(kind); else hidden.add(kind);
@@ -585,6 +610,8 @@ export class Viewer {
     if (!w || !h) return;
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
+    // the window may have moved to a screen with another density, or the page been zoomed
+    this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     this.renderer.setSize(w, h, false);
     this.dirty = true;
   }

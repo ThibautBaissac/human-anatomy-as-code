@@ -118,6 +118,11 @@ export const S = {
   animate: 'Animer',
   closeSelection: 'Fermer la sélection',
   sideOf: (side: string) => `Côté ${side}`,
+  sideChoice: 'Côté sélectionné',
+  bothSides: 'Les deux côtés',
+  sideButton: { left: 'Côté gauche', right: 'Côté droit' } as Record<string, string>,
+  zoomIn: 'Zoom avant',
+  zoomOut: 'Zoom arrière',
   partOf: 'Partie de',
   draftNote: 'Traductions importées, pas encore relues.',
   details: 'Détails techniques',
@@ -137,7 +142,7 @@ export const S = {
   helpSections: [
     { title: 'Souris', items: ['Faire glisser : tourner autour du corps', 'Molette : zoomer', 'Clic droit glissé : déplacer la vue', 'Clic : sélectionner une structure', 'Double-clic : sélectionner et cadrer'] },
     { title: 'Écran tactile', items: ['Glisser un doigt : tourner', 'Pincer : zoomer', 'Glisser deux doigts : déplacer la vue', 'Toucher : sélectionner', 'Double toucher : sélectionner et cadrer'] },
-    { title: 'Clavier', items: ['Échap : fermer le menu, la recherche ou le panneau d’outil ouvert', 'Ctrl + Z (⌘ Z) : réafficher la dernière structure masquée', 'Page précédente / suivante sur le curseur d’angle : ± 10°', 'Arbre : flèches pour parcourir, Entrée pour sélectionner'] },
+    { title: 'Clavier', items: ['Échap : fermer le menu, la recherche ou le panneau d’outil ouvert', 'Ctrl + Z (⌘ Z) : réafficher la dernière structure masquée', 'Page précédente / suivante sur le curseur d’angle : ± 10°', 'Arbre : flèches pour parcourir, Entrée pour sélectionner', 'Vue 3D (après Tab) : flèches pour déplacer la vue ; boutons Zoom avant et Zoom arrière', 'Carte : boutons Les deux côtés, Côté gauche, Côté droit'] },
   ],
   backendLabel: 'Rendu',
   jointLabel: 'Articulation',
@@ -151,5 +156,6 @@ export const S = {
   closeSearch: 'Fermer la recherche',
   toolChoice: 'Outil',
   dismiss: 'Fermer ce message',
+  gpuLost: 'L’affichage 3D s’est arrêté (carte graphique réinitialisée ou onglet mis en veille). Rechargez la page pour le relancer.',
   loadError: (what: string) => `Impossible de charger ${what}. Vérifiez que les données et les modèles ont été construits (npm run data, npm run assets).`,
 };

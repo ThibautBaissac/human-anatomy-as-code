@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { Viewer, type Manifest, type ViewerSnapshot } from '../viewer/viewer.ts';
 import { decodeView, encodeView, viewFromHash, type DecodeContext } from '../viewer/view-hash.ts';
+import { keepKnown } from '../viewer/view-ops.ts';
 import { structureName } from '../viewer/search.ts';
 import { S } from './strings.ts';
 import { ASSETS_CACHE } from '../offline/urls.ts';
@@ -67,6 +68,7 @@ export function useViewer() {
       v = await Viewer.create(canvasRef.current!, { backend });
       if (disposed) { v.dispose(); return; }
       setViewer(v);
+      cleanups.push(v.on('lost', () => setError(S.gpuLost)));
       // Test hook used by the smoke test (e2e/smoke.spec.ts) and the bench page.
       (window as unknown as { __viewer: Viewer }).__viewer = v;
       const hashOf = () => location.hash.replace(/^#/, '');
@@ -102,9 +104,16 @@ export function useViewer() {
       cleanups.push(v.on('select', () => setNotice(null)));
       const onHash = async () => {
         if (hashOf() === written) return;
-        const target = decodeView(hashOf(), ctx).model ?? 'male';
-        if (target !== v!.getState().model) await switchModel(target);
-        v!.setState(viewFromHash(decodeView(hashOf(), ctx), v!.getState()));
+        try {
+          const target = decodeView(hashOf(), ctx).model ?? 'male';
+          if (target !== v!.getState().model) await switchModel(target);
+          const next = viewFromHash(decodeView(hashOf(), ctx), v!.getState());
+          // like a model switch: isolation and hidden keys with nothing loaded behind them are dropped
+          v!.setState({ ...next, ...keepKnown({ ...v!.getState(), ...next }, v!.catalog!) });
+        } catch (e) {
+          console.error(e);
+          setError(String((e as Error)?.message ?? e));
+        }
       };
       addEventListener('hashchange', onHash);
       cleanups.push(() => removeEventListener('hashchange', onHash));

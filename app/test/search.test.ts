@@ -23,7 +23,7 @@ test('a query shorter than 2 characters gives nothing', () => {
 
 test('matches in any language, without accents, and reports where it matched', () => {
   const r = search(index, 'femur', 'fr');
-  assert.deepEqual(r[0], { slug: 'femur', name: 'fémur', matchedLang: 'fr', matchedText: 'fémur' });
+  assert.deepEqual(r[0], { slug: 'femur', name: 'fémur', nameLang: 'fr', matchedLang: 'fr', matchedText: 'fémur' });
   assert.equal(search(index, 'os femoris', 'en')[0].matchedLang, 'la');
   assert.equal(search(index, 'coeur', 'en')[0].name, 'heart');
 });
@@ -31,7 +31,7 @@ test('matches in any language, without accents, and reports where it matched', (
 test('synonyms and slugs match too', () => {
   assert.equal(search(index, 'myocarde', 'fr')[0].slug, 'heart');
   const onlySlug = buildSearchIndex({ ...ATLAS, structures: [{ ...ATLAS.structures[1], slug: 'cor-humanum' }] });
-  assert.deepEqual(search(onlySlug, 'cor-hum', 'fr')[0], { slug: 'cor-humanum', name: 'cœur', matchedLang: 'slug', matchedText: 'cor-humanum' });
+  assert.deepEqual(search(onlySlug, 'cor-hum', 'fr')[0], { slug: 'cor-humanum', name: 'cœur', nameLang: 'fr', matchedLang: 'slug', matchedText: 'cor-humanum' });
 });
 
 test('ranking: prefix before substring, ties by shorter matched label', () => {
@@ -65,4 +65,18 @@ test('structureName: side name in the language, else fr, else en; whole structur
   const thigh = ATLAS.structures.find((s) => s.slug === 'thigh-muscle')!;
   assert.equal(structureName(thigh, 'right', 'la'), 'right thigh muscle'); // neither la nor fr: en
   assert.equal(structureName(femur, null, 'la'), 'Os femoris');
+});
+
+test('labelLang / structureNameLang: the language of the text actually shown, for the lang attribute', async () => {
+  const { labelLang, structureNameLang } = await import('../src/viewer/search.ts');
+  const skin = ATLAS.structures.find((s) => s.slug === 'skin')!;
+  assert.equal(labelLang(skin, 'la'), 'la');
+  assert.equal(labelLang(skin, 'fr'), 'en'); // no fr label: the en one is shown
+  const femur = ATLAS.structures.find((s) => s.slug === 'femur')!;
+  assert.equal(structureNameLang(femur, 'left', 'la'), 'fr');
+  const thigh = ATLAS.structures.find((s) => s.slug === 'thigh-muscle')!;
+  assert.equal(structureNameLang(thigh, 'right', 'la'), 'en');
+  assert.equal(labelLang({ labels: {} }, 'fr'), undefined); // the slug
+  const { search: find, buildSearchIndex: build } = await import('../src/viewer/search.ts');
+  assert.equal(find(build(ATLAS), 'skin', 'fr')[0].nameLang, 'en');
 });

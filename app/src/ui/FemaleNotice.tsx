@@ -5,7 +5,7 @@ import { S } from './strings.ts';
 const KEY = 'haac.femaleNoticeHidden';
 
 /** Honest description of the composite female model, dismissible, with a dialog for details and HRA credits. */
-export function FemaleNotice({ atlas }: { atlas: Atlas | null }) {
+export function FemaleNotice({ atlas, onDone }: { atlas: Atlas | null; onDone: () => void }) {
   const [hidden, setHidden] = useState(() => { try { return localStorage.getItem(KEY) === '1'; } catch { return false; } });
   const dialog = useRef<HTMLDialogElement>(null);
   const more = useRef<HTMLButtonElement>(null);
@@ -16,7 +16,7 @@ export function FemaleNotice({ atlas }: { atlas: Atlas | null }) {
         <div className="female-notice" role="note">
           <p>{S.femaleNotice}</p>
           <button ref={more} type="button" className="link" onClick={() => dialog.current?.showModal()}>{S.femaleNoticeMore}</button>
-          <button type="button" onClick={() => { setHidden(true); try { localStorage.setItem(KEY, '1'); } catch { /* private mode */ } }}>{S.femaleNoticeClose}</button>
+          <button type="button" onClick={() => { setHidden(true); try { localStorage.setItem(KEY, '1'); } catch { /* private mode */ } onDone(); }}>{S.femaleNoticeClose}</button>
         </div>
       )}
       <dialog ref={dialog} className="dialog" aria-labelledby="female-about-title" onClose={() => more.current?.focus()}>

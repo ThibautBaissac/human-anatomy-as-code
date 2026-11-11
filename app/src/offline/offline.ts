@@ -59,9 +59,15 @@ export async function makeAvailableOffline(manifest: AssetManifest, models: stri
     }
   };
   await Promise.all([worker(), worker()]);
-  // The service worker stores a response after handing it over: count what was fetched, not only what the cache lists yet.
+  // The service worker stores a response after handing it over, and a failed store (quota) never reaches the page:
+  // wait for the cache to list what was fetched, then count only what it lists.
+  let cached = await cachedUrls();
+  for (let i = 0; i < 50 && fetched.some((u) => !cached.includes(u)); i++) {
+    await new Promise((r) => setTimeout(r, 200));
+    cached = await cachedUrls();
+  }
   const persisted = (await navigator.storage?.persisted?.().catch(() => false)) ?? false;
-  const after = offlineStatus(manifest, [...(await cachedUrls()), ...fetched], persisted, models);
+  const after = offlineStatus(manifest, cached, persisted, models);
   if (failed || after.state !== 'complete') throw new DownloadError(after);
   return after;
 }

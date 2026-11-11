@@ -60,8 +60,8 @@ export function Search({ index, lang, onSelect, autoFocus = false }: { index: Se
             className={i === active ? 'is-active' : undefined}
             onMouseDown={(e) => { e.preventDefault(); choose(r); }}
           >
-            {r.name}
-            <span className="match"> — {r.matchedLang === 'slug' ? S.matchSlug : S.langs[r.matchedLang]}{r.matchedText !== r.name ? ` : ${r.matchedText}` : ''}</span>
+            <span lang={r.nameLang}>{r.name}</span>
+            <span className="match"> — {r.matchedLang === 'slug' ? S.matchSlug : S.langs[r.matchedLang]}{r.matchedText !== r.name && <> : <span lang={r.matchedLang === 'slug' ? undefined : r.matchedLang}>{r.matchedText}</span></>}</span>
           </li>
         ))}
       </ul>

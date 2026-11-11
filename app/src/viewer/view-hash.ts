@@ -95,7 +95,8 @@ export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState>
       const { slug, side } = parseJointKey(key);
       const j = ctx.joints.find((x) => x.slug === slug);
       const n = Number(deg);
-      if (!j || (side !== 'left' && side !== 'right') || !j.sides?.[side] || deg === undefined || deg === '' || !Number.isFinite(n)) continue;
+      // a key with more segments (`elbow-joint@left@x`) would be kept and written back forever
+      if (!j || key !== `${slug}@${side}` || (side !== 'left' && side !== 'right') || !j.sides?.[side] || deg === undefined || deg === '' || !Number.isFinite(n)) continue;
       const angle = normaliseAngle(j, n);
       if (angle !== null) pose[key] = angle;
     }

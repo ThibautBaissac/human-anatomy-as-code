@@ -14,6 +14,8 @@ export interface SearchResult {
   name: string;
   matchedLang: MatchLang;
   matchedText: string;
+  /** language of `name` (for the lang attribute), none when it falls back to the slug */
+  nameLang?: Lang;
 }
 
 export function normalize(s: string): string {
@@ -38,6 +40,15 @@ export function structureName(s: Pick<AtlasStructure, 'slug' | 'labels' | 'sides
 
 const nameIn = (names: Partial<Record<Lang, string>> | undefined, slug: string, lang: Lang) =>
   names?.[lang] ?? names?.fr ?? names?.en ?? slug;
+/** Language of the text nameIn / labelText return, by the same fallback; undefined for the slug. */
+const langIn = (names: Partial<Record<Lang, unknown>> | undefined, lang: Lang): Lang | undefined =>
+  names?.[lang] ? lang : names?.fr ? 'fr' : names?.en ? 'en' : undefined;
+export const labelLang = (s: Pick<AtlasStructure, 'labels'>, lang: Lang): Lang | undefined => langIn(s.labels, lang);
+/** Language of the text structureName returns. */
+export function structureNameLang(s: Pick<AtlasStructure, 'labels' | 'sides'>, side: Side | null, lang: Lang): Lang | undefined {
+  const names = side ? s.sides?.[side]?.labels : undefined;
+  return langIn(names, lang) ?? labelLang(s, lang);
+}
 
 export function buildSearchIndex(atlas: Atlas): SearchIndex {
   const names = new Map<string, Partial<Record<Lang, string>>>();
@@ -74,6 +85,6 @@ export function search(index: SearchIndex, query: string, lang: Lang, limit = 20
   }
   scored.sort((a, b) => a.rank - b.rank || a.length - b.length || (a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0));
   return scored.slice(0, limit).map((s) => ({
-    slug: s.slug, name: nameIn(index.names.get(s.slug), s.slug, lang), matchedLang: s.term.lang, matchedText: s.term.text,
+    slug: s.slug, name: nameIn(index.names.get(s.slug), s.slug, lang), nameLang: langIn(index.names.get(s.slug), lang), matchedLang: s.term.lang, matchedText: s.term.text,
   }));
 }

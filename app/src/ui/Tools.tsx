@@ -161,7 +161,8 @@ export function MotionTool({ viewer, view, motionKey, onChoose }: { viewer: View
               viewer.setJointAngle(joint.slug, sides, angle + (e.key === 'PageUp' ? 10 : -10));
             }} />
         </div>
-        <output htmlFor={`${id}-angle`} className="angle-value">{S.angleText(joint.motion, angle)}</output>
+        {/* silent while playing: the value changes every frame */}
+        <output htmlFor={`${id}-angle`} className="angle-value" aria-live={isPlaying ? 'off' : 'polite'}>{S.angleText(joint.motion, angle)}</output>
       </div>
       {arc && <p id={`${id}-arc`} className="muted small">{S.functionalArc(arc[0], arc[1])} · {S.ghostedNote}</p>}
     </>

@@ -2,7 +2,7 @@ import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import type { Catalog } from '../viewer/catalog.ts';
 import { UNATTACHED, ROOT } from '../viewer/catalog.ts';
-import { labelText } from '../viewer/search.ts';
+import { labelText, labelLang } from '../viewer/search.ts';
 import type { Lang, Selection } from '../viewer/types.ts';
 import { flattenTree, treeKeyReducer, type TreeState } from './tree-model.ts';
 import { S } from './strings.ts';
@@ -75,7 +75,7 @@ function TreeView({ catalog, lang, selection, onSelect }: { catalog: Catalog; la
               <span className="twisty" aria-hidden="true" onClick={(e) => { e.stopPropagation(); if (r.expandable) toggle(r.id); }}>
                 {r.expandable ? (r.expanded ? '▾' : '▸') : ''}
               </span>
-              {name(r.id)}
+              <span lang={r.id === UNATTACHED ? undefined : labelLang(catalog.structure(r.id) ?? { labels: {} }, lang)}>{name(r.id)}</span>
             </div>
           );
         })}
