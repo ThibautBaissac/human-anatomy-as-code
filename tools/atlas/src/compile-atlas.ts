@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, statSync } from 'node:fs';
 import { byKey, listYaml } from './fs-util.ts';
 import { join, relative, sep } from 'node:path';
 import { createRequire } from 'node:module';
@@ -159,6 +159,13 @@ export function compileAtlas(dataDir: string): CompileResult {
   const err = (file: string, pointer: string, rule: string, message: string) => errors.push({ file, pointer, rule, message, severity: 'error' });
   const warn = (file: string, pointer: string, rule: string, message: string) => warnings.push({ file, pointer, rule, message, severity: 'warning' });
 
+  // 0. a missing data directory is not an empty atlas
+  const isDir = (p: string) => statSync(p, { throwIfNoEntry: false })?.isDirectory() ?? false;
+  if (!isDir(join(dataDir, 'structures'))) {
+    err('structures/', '', 'data-dir', isDir(dataDir) ? `pas de dossier structures/ dans « ${dataDir} »` : `dossier de données « ${dataDir} » introuvable`);
+    return { atlas: null, atlases: null, errors, warnings };
+  }
+
   // 1. YAML parsing
   function load<T>(subdir: string): Loaded<T>[] {
     const out: Loaded<T>[] = [];
@@ -300,9 +307,11 @@ export function compileAtlas(dataDir: string): CompileResult {
       if (!inModel(data, model)) continue;
       for (const { ref, pointer } of modelRefs(data, model)) {
         if (!meshOwner.has(ref)) { meshOwner.set(ref, data.slug); continue; }
-        if (meshOwner.get(ref) === data.slug || reportedDup.has(`${file}${pointer}`)) continue;
+        if (reportedDup.has(`${file}${pointer}`)) continue;
         reportedDup.add(`${file}${pointer}`);
-        err(file, pointer, 'mesh-unique', `mesh « ${ref} » déjà référencé par « ${meshOwner.get(ref)} » (modèle ${model})`);
+        err(file, pointer, 'mesh-unique', meshOwner.get(ref) === data.slug
+          ? `mesh « ${ref} » référencé deux fois par « ${data.slug} » (modèle ${model})`
+          : `mesh « ${ref} » déjà référencé par « ${meshOwner.get(ref)} » (modèle ${model})`);
       }
     }
   }
@@ -360,6 +369,10 @@ export function compileAtlas(dataDir: string): CompileResult {
     else if (j.restDeg < lo || j.restDeg > hi) err(file, '/restDeg', 'joint-range', `repos ${j.restDeg}° hors de l'amplitude [${lo}, ${hi}]`);
     if (j.parent !== undefined && !jointOf.has(j.parent)) err(file, '/parent', 'joint-parent', `articulation parente « ${j.parent} » introuvable`);
     j.sources.forEach((src, i) => { if (!knownSourceIds.has(src)) err(file, `/sources/${i}`, 'joint-source', `source « ${src} » absente du registre`); });
+    for (const lang of LANGS) {
+      const l = j.labels[lang];
+      if (l && l.source !== 'curated' && !knownSourceIds.has(l.source)) err(file, `/labels/${lang}/source`, 'label-source', `source « ${l.source} » absente du registre`);
+    }
   }
   const jointFileOf = new Map(jointFiles.map((x) => [x.data.slug, x.file]));
   const reportedJointCycles = new Set<string>();

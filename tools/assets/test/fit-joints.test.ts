@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { parse } from 'yaml';
-import { fitJoints } from '../src/fit-joints.ts';
+import { accepted, fitJoints } from '../src/fit-joints.ts';
 
 type V = [number, number, number];
 const rod = (from: V, to: V, n = 60): V[] => Array.from({ length: n }, (_, i) => from.map((f, k) => f + ((to[k] - f) * i) / (n - 1)) as V);
@@ -77,4 +77,24 @@ test('fit-joints refuses to write a side whose fit error exceeds maxRmsMm', () =
   assert.equal(report.refused.length, 2);
   assert.match(report.refused[0], /knee-joint@left.*maxRmsMm/);
   assert.equal(readFileSync(file, 'utf8'), before);
+});
+
+test('a fit whose error or result is not a finite number is refused', () => {
+  const m = { centre: [70, 0, 20] as V, axis: [1, 0, 0] as V, rmsMm: 0.2 };
+  assert.equal(accepted(m, 3), true);
+  assert.equal(accepted({ ...m, rmsMm: NaN }, 3), false);
+  assert.equal(accepted({ ...m, centre: [NaN, 0, 20] }, 3), false);
+  assert.equal(accepted({ ...m, axis: [Infinity, 0, 0] }, 3), false);
+  assert.equal(accepted({ ...m, restDeg: NaN }, 3), false);
+  assert.equal(accepted({ ...m, rmsMm: 4 }, 3), false);
+});
+
+test('fit-joints never modifies a reviewed joint', () => {
+  const { dataDir, objDir, file } = fixture();
+  writeFileSync(file, readFileSync(file, 'utf8').replace('\nstatus: draft', '\nstatus: reviewed'));
+  const before = readFileSync(file, 'utf8');
+  const report = fitJoints({ dataDir, objDir });
+  assert.equal(readFileSync(file, 'utf8'), before);
+  assert.deepEqual(report.reviewed, ['knee-joint']);
+  assert.deepEqual(report.measured, []);
 });

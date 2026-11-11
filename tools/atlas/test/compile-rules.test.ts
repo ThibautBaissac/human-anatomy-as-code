@@ -86,6 +86,11 @@ test('mesh-unique: a mesh belongs to one structure only', () => {
   expectError(spleen({ meshes: ['bp3d:FJ2417'] }), { file: SPLEEN, pointer: '/meshes/0', rule: 'mesh-unique' });
 });
 
+test('mesh-unique: the same mesh twice in one structure (both sides, or a side and the root) is an error', () => {
+  const femur = (sides: object) => ({ [FEMUR]: { ...S[FEMUR], sides: { ...S[FEMUR].sides, ...sides } } });
+  expectError(femur({ right: { ids: { fma: 24474 }, meshes: ['bp3d:FJ3259M'] } }), { file: FEMUR, pointer: '/sides/right/meshes/0', rule: 'mesh-unique' });
+});
+
 test('fma-unique: an FMA id is used once across roots and sides', () => {
   expectError(spleen({ ids: { fma: 24474 } }), { file: SPLEEN, pointer: '/ids/fma', rule: 'fma-unique' });
 });

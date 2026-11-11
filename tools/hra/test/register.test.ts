@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { apply, compose, computeRegions, fitSimilarity, fitTranslation, HRA_TO_BP3D, type Vec3 } from '../src/register.ts';
+import { apply, compose, computeRegions, DegenerateLandmarksError, fitSimilarity, fitTranslation, HRA_TO_BP3D, type Vec3 } from '../src/register.ts';
 
 const close = (a: number[], b: number[], eps = 1e-6) => a.forEach((x, i) => assert.ok(Math.abs(x - b[i]) < eps, `${a} ≈ ${b}`));
 const pts: Vec3[] = [[0, 0, 0], [100, 0, 0], [0, 80, 0], [0, 0, 60], [50, 40, 30], [-20, 10, 90]];
@@ -101,4 +101,28 @@ test('a translation region reports the rotation it inherits from its base (not 0
   const fit = fitTranslation(src, src.map(knownTransform), base);
   assert.ok(Math.abs(fit.rotationDeg - 30) < 1e-6, `${fit.rotationDeg}`);
   assert.ok(Math.abs(fit.scale - 0.9) < 1e-9);
+});
+
+test('fitSimilarity refuses degenerate landmarks: fewer than 3, coincident, collinear', () => {
+  const line: Vec3[] = [[0, 0, 0], [10, 10, 0], [20, 20, 0], [-5, -5, 0]];
+  for (const src of [pts.slice(0, 2), [[1, 2, 3], [1, 2, 3], [1, 2, 3]] as Vec3[], line]) {
+    assert.throws(() => fitSimilarity(src, src.map(knownTransform)), DegenerateLandmarksError);
+  }
+  // the target landmarks too
+  assert.throws(() => fitSimilarity(pts.slice(0, 4), line), DegenerateLandmarksError);
+});
+
+test('registerFile does not persist a fit beyond maxRmsMm', async () => {
+  const { registerFile } = await import('../src/register-file.ts');
+  const { mkdtempSync, readFileSync, writeFileSync } = await import('node:fs');
+  const { join } = await import('node:path');
+  const { tmpdir } = await import('node:os');
+  const path = join(mkdtempSync(join(tmpdir(), 'reg-')), 'hra-registration.yaml');
+  const lm = pts.map((p, i) => `      - { name: p${i}, hra: [${p.join(', ')}], bp3d: [${p[0] * (i % 2 ? 3 : 1)}, ${p[1]}, ${p[2]}] }`).join('\n');
+  writeFileSync(path, `maxRmsMm: 25\nregions:\n  pelvic:\n    fit: similarity\n    organs: [uterus-female]\n    landmarks:\n${lm}\n`);
+  const before = readFileSync(path, 'utf8');
+  const r = registerFile(path);
+  assert.equal(r.ok, false);
+  assert.equal(readFileSync(path, 'utf8'), before);
+  assert.match(r.summary.join('\n'), /au-delà de 25 mm/);
 });

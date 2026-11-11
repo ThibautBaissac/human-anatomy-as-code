@@ -65,7 +65,8 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
   const wd: Wikidata = readWikidata(wikidataCsv);
   const io = new NodeIO();
 
-  // Existing structures of the other model: their slugs and FMA ids must not be reused.
+  // Existing structures of the other model: their slugs, aliases and FMA ids must not be reused
+  // (a planned slug equal to an alias would be merged into that structure).
   const taken = new Set<string>();
   const takenFma = new Set<number>();
   /** parents of the existing structures: the systems of a female structure come through its ancestors up into BodyParts3D */
@@ -75,6 +76,7 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
     if (s?.slug) existingParents.set(s.slug, s.parent);
     if (!s || s.sex === 'female') continue;
     taken.add(s.slug);
+    for (const a of s.aliases ?? []) taken.add(a);
     for (const f of [s.ids?.fma, s.sides?.left?.ids?.fma, s.sides?.right?.ids?.fma]) if (f) takenFma.add(f);
   }
 

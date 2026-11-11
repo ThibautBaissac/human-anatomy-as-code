@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { measureJoint, type JointInput } from '../src/joints/measure.ts';
-import { rotateAbout, type Vec3 } from '../src/joints/fit.ts';
+import { FitError, rotateAbout, type Vec3 } from '../src/joints/fit.ts';
 
 const close = (a: number, b: number, tol: number, what = '') => assert.ok(Math.abs(a - b) <= tol, `${what} ${a} ≠ ${b} ± ${tol}`);
 const closeVec = (a: Vec3, b: Vec3, tol: number, what = '') => a.forEach((v, i) => close(v, b[i], tol, `${what}[${i}]`));
@@ -81,4 +81,14 @@ test('a bone without vertices is reported by name', () => {
   const joint: JointInput = { slug: 'knee-joint', motion: 'flexion-extension', proximal: 'femur', moving: ['tibia'],
     fit: { method: 'condyle-spheres', maxRmsMm: 3, positiveDirection: [0, 1, 0] } };
   assert.throws(() => measureJoint(joint, { femur: [[0, 0, 0]] }), /tibia/);
+});
+
+test('an empty condyle or band filter is a named fit error, not a TypeError', () => {
+  const femur = rod([0, 0, 0], [0, 0, 420]), tibia = rod([0, 0, -10], [0, 0, -350]);
+  const condyles: JointInput = { slug: 'knee-joint', motion: 'flexion-extension', proximal: 'femur', moving: ['tibia'],
+    fit: { method: 'condyle-spheres', maxRmsMm: 3, positiveDirection: [0, 1, 0], gapMm: 1000 } };
+  assert.throws(() => measureJoint(condyles, { femur, tibia }), (e: Error) => e instanceof FitError && /knee-joint/.test(e.message));
+  const heads: JointInput = { slug: 'radio-ulnar-joints', motion: 'pronation-supination', proximal: 'ulna', moving: ['radius'],
+    fit: { method: 'head-to-head', maxRmsMm: 3, positiveDirection: [0, 1, 0], distalBandMm: [1000, 2000] } };
+  assert.throws(() => measureJoint(heads, { ulna: femur, radius: tibia }), (e: Error) => e instanceof FitError && /radio-ulnar-joints/.test(e.message));
 });

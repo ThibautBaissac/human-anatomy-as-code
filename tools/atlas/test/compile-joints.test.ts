@@ -116,6 +116,16 @@ test('joint-source: cited sources exist', () => {
   expectError({ [KNEE]: knee({ sources: ['aaos'] }) }, { file: KNEE, pointer: '/sources/0', rule: 'joint-source' });
 });
 
+test('label-source: joint label sources are registered sources or curated', () => {
+  expectError({ [KNEE]: knee({ labels: { ...knee().labels, en: lbl('knee joint', 'fmaa') } }) }, { file: KNEE, pointer: '/labels/en/source', rule: 'label-source' });
+});
+
+test('schema: fit parameters are the ones the measurement reads', () => {
+  expectError({ [KNEE]: knee({ fit: { ...knee().fit, contactMM: [6] } }) }, { file: KNEE, pointer: '/fit', rule: 'schema' });
+  const { errors } = compileAtlas(dataset({ [KNEE]: knee({ fit: { ...knee().fit, distalMm: 40, posteriorMm: 0, gapMm: 6, contactMm: [6], distalBandMm: [4, 18], proximalBandMm: [0, 10] } }) }));
+  assert.deepEqual(errors, []);
+});
+
 test('joint-model: the bones of a joint exist in every model', () => {
   const femur = 'structures/bone/femur.yaml';
   expectError({ [femur]: { ...S[femur], variants: { female: { hidden: true } } } }, { file: KNEE, pointer: '/proximal', rule: 'joint-model' });

@@ -105,3 +105,24 @@ test('a declared role that the length change contradicts is reported', () => {
   assert.match(warnings[0], /triceps@left.*flexion.*s'allonge/);
   assert.deepEqual(rigJoint(ELBOW, 'left', ARM, ACTIONS).warnings, []);
 });
+
+test('a side-less instance (unpaired, midline) lying wholly on one side of the median plane moves with that side only', () => {
+  // both elbows in the real frame: subject's left = +x
+  const elbows: RigJoint = { ...ELBOW, sides: { left: { centre: [200, 0, 0], axis: [-1, 0, 0] }, right: { centre: [-200, 0, 0], axis: [-1, 0, 0] } } };
+  const at = (dx: number) => (b: Float32Array) => b.map((v, i) => (i % 3 === 0 ? v + dx : v));
+  const instances: RigInstance[] = [
+    ...['left', 'right'].flatMap((side) => {
+      const shift = at(side === 'left' ? 200 : -200);
+      return [inst(`humerus@${side}`, 'bone', 'upper-limb', shift(box([-5, 5], [-5, 5], [5, 300]))), inst(`ulna@${side}`, 'bone', 'upper-limb', shift(box([-5, 5], [-5, 5], [-250, -2])))];
+    }),
+    // unpaired-right finger artery (BodyParts3D names one side only): right hand, x < 0
+    inst('finger-artery', 'artery', 'upper-limb', box([-205, -195], [-5, 5], [-300, -280])),
+    // a midline structure astride the median plane never moves with a limb
+    inst('midline-vein', 'vein', 'upper-limb', box([-210, 210], [-5, 5], [-300, -280])),
+  ];
+  const right = rigJoint(elbows, 'right', instances, new Map()).rig;
+  const left = rigJoint(elbows, 'left', instances, new Map()).rig;
+  assert.deepEqual(right.moving, ['finger-artery', 'ulna@right']);
+  assert.deepEqual(left.moving, ['ulna@left']);
+  for (const r of [left, right]) assert.ok(![...r.moving, ...r.crossing].includes('midline-vein'));
+});

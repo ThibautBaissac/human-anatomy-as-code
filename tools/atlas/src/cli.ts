@@ -34,6 +34,7 @@ function printReport(r: ImportReport): void {
   list('collisions de slug', r.slugCollisions, (c) => `${c.slug} → ${c.renamed}`);
   list('meshes propres d\'un concept canonique bilatéral', r.canonicalMeshConflicts, (c) => `${c.slug} : ${c.meshes.join(' ')}`);
   list('meshes sans propriétaire', r.unownedMeshes, (m) => m);
+  list('overrides sans effet', r.unusedOverrides, (x) => x);
   list('fichiers absents de la source (conservés)', r.orphanedFiles, (f) => f);
   list('fichiers illisibles', r.unreadableFiles, (f) => f);
   list('slugs ou alias en double', r.duplicateSlugs, (f) => f);
@@ -71,7 +72,7 @@ async function main(argv: string[]): Promise<number> {
   if (cmd === 'import-bp3d' && args.length === 3) {
     const [bp3dDir, wikidataCsv, dataDir] = args;
     const overridesPath = join(dataDir, 'import', 'bp3d-overrides.yaml');
-    const overrides = existsSync(overridesPath) ? (parse(readFileSync(overridesPath, 'utf8')) as Overrides) : {};
+    const overrides = existsSync(overridesPath) ? ((parse(readFileSync(overridesPath, 'utf8')) ?? {}) as Overrides) : {}; // an empty file parses to null
     const r = importBp3d({ bp3dDir, wikidataCsv, dataDir, overrides });
     printReport(r);
     if (r.aborted) return 1;
@@ -81,7 +82,7 @@ async function main(argv: string[]): Promise<number> {
   }
   if (cmd === 'import-hra' && args.length === 3) {
     const [hraDir, wikidataCsv, dataDir] = args;
-    const overrides = parse(readFileSync(join(dataDir, 'import', 'hra-overrides.yaml'), 'utf8')) as HraOverrides;
+    const overrides = (parse(readFileSync(join(dataDir, 'import', 'hra-overrides.yaml'), 'utf8')) ?? {}) as HraOverrides;
     const r = await importHra({ hraDir, filesList: join(dataDir, 'import', 'hra-files.yaml'), wikidataCsv, dataDir, overrides });
     console.log(`créées : ${r.created} · mises à jour : ${r.updated} · inchangées : ${r.unchanged}`);
     for (const [title, items] of [['collisions de slug', r.slugCollisions.map((c) => `${c.slug} → ${c.renamed}`)], ['FMA déjà utilisés (retirés)', r.fmaConflicts.map((c) => `${c.slug} : FMA ${c.fma}`)],

@@ -18,6 +18,14 @@ export interface FitReport {
   refused: string[];
   /** joint@side skipped: a bone has no mesh on that side */
   skipped: string[];
+  /** joints left untouched because they are reviewed (tools never modify reviewed data) */
+  reviewed: string[];
+}
+
+/** A measure is written only when every number is finite and the fit error is within the threshold (NaN > x is false). */
+export function accepted(m: Measured, maxRmsMm: number): boolean {
+  const finite = [...m.centre, ...m.axis, m.rmsMm, m.restDeg ?? 0].every(Number.isFinite);
+  return finite && m.rmsMm <= maxRmsMm;
 }
 
 function yamlFiles(dir: string): string[] {
@@ -47,10 +55,11 @@ export function fitJoints({ dataDir, objDir }: { dataDir: string; objDir: string
     return cache.get(ref)!;
   };
 
-  const report: FitReport = { measured: [], refused: [], skipped: [] };
+  const report: FitReport = { measured: [], refused: [], skipped: [], reviewed: [] };
   for (const file of yamlFiles(join(dataDir, 'joints'))) {
     const doc: Document = parseDocument(readFileSync(file, 'utf8'));
-    const joint = doc.toJS() as JointInput;
+    const joint = doc.toJS() as JointInput & { status?: string };
+    if (joint.status === 'reviewed') { report.reviewed.push(joint.slug); continue; }
     const results: [Side, Measured][] = [];
     let refused = false;
     for (const side of SIDES) {
@@ -59,7 +68,7 @@ export function fitJoints({ dataDir, objDir }: { dataDir: string; objDir: string
       if (refs.some((r) => !r?.length)) { report.skipped.push(`${joint.slug}@${side}`); continue; }
       const bones = Object.fromEntries(slugs.map((slug, i) => [slug, refs[i]!.flatMap(vertices)]));
       const m = measureJoint(joint, bones);
-      if (m.rmsMm > joint.fit.maxRmsMm) {
+      if (!accepted(m, joint.fit.maxRmsMm)) {
         report.refused.push(`${joint.slug}@${side} : erreur d'ajustement ${m.rmsMm} mm > maxRmsMm ${joint.fit.maxRmsMm}`);
         refused = true;
       } else results.push([side, m]);

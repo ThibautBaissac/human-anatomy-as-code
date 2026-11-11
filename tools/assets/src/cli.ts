@@ -17,6 +17,7 @@ if (process.argv[2] === 'fit-joints') {
     const r = fitJoints({ dataDir, objDir });
     for (const m of r.measured) console.log(`mesuré : ${m}`);
     for (const m of r.skipped) console.log(`ignoré (os sans mesh de ce côté) : ${m}`);
+    for (const m of r.reviewed) console.log(`ignoré (articulation relue) : ${m}`);
     for (const m of r.refused) console.error(`refusé : ${m}`);
     process.exit(r.refused.length ? 1 : 0);
   } catch (e) {

@@ -1,4 +1,4 @@
-// Reads data/import/hra-registration.yaml, fits every region, writes the results back (comments kept).
+// Reads data/import/hra-registration.yaml, fits every region, writes the results back (comments kept) when every fit passes.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { parseDocument } from 'yaml';
 import { computeRegions, type RegionConfig } from './register.ts';
@@ -21,6 +21,8 @@ export function registerFile(path: string): { ok: boolean; summary: string[] } {
       ? `${name.padEnd(10)} région ${c.from} + décalage [${(c.adjust ?? [0, 0, 0]).join(', ')}] mm (pas de repères propres)`
       : `${name.padEnd(10)} échelle ${r.scale.toFixed(3)} · rotation ${r.rotationDeg.toFixed(1)}° · écart RMS ${r.rmsMm.toFixed(1)} mm (max ${r.maxMm.toFixed(1)})${r.ok ? '' : `  ✗ au-delà de ${max} mm`}`);
   }
+  const ok = Object.values(results).every((r) => r.ok);
+  if (!ok) return { ok, summary: [...summary, 'recalage refusé : fichier inchangé'] }; // a failed fit is never persisted
   // keep each matrix on one line for readability
   doc.toString();
   for (const name of Object.keys(results)) {
@@ -28,5 +30,5 @@ export function registerFile(path: string): { ok: boolean; summary: string[] } {
     if (m) m.flow = true;
   }
   writeFileSync(path, doc.toString({ lineWidth: 0 }));
-  return { ok: Object.values(results).every((r) => r.ok), summary };
+  return { ok, summary };
 }

@@ -1,5 +1,5 @@
 // Centre, axis and rest angle of one side of a joint, measured on the bones' vertices (pure).
-import { add, dot, farthest, fitCircle, fitCylinder, fitSphere, length, mean, normalize, principalAxes, rotateAbout, scale, signedAngle, sub, type Vec3 } from './fit.ts';
+import { add, dot, farthest, FitError, fitCircle, fitCylinder, fitSphere, length, mean, normalize, principalAxes, rotateAbout, scale, signedAngle, sub, type Vec3 } from './fit.ts';
 
 export type FitMethod = 'cylinder-contact' | 'head-to-head' | 'condyle-spheres';
 
@@ -67,6 +67,11 @@ export function measureJoint(joint: JointInput, bones: Record<string, Vec3[]>): 
     if (!pts?.length) throw new Error(`${joint.slug} : pas de sommets pour l'os « ${slug} »`);
     return pts;
   };
+  /** a vertex filter (band, condyle) that keeps nothing is a parameter error, named as such */
+  const kept = (pts: Vec3[], what: string) => {
+    if (!pts.length) throw new FitError(`${joint.slug} : ${what} vide, revoir les paramètres de fit`);
+    return pts;
+  };
   const proximal = need(joint.proximal);
   const moving = joint.moving.flatMap(need);
   const f = joint.fit;
@@ -87,11 +92,11 @@ export function measureJoint(joint: JointInput, bones: Record<string, Vec3[]>): 
     let ua = principalAxes(proximal)[0];
     if (ua[2] < 0) ua = scale(ua, -1); // pointing up (proximal)
     const uMin = Math.min(...proximal.map((p) => dot(p, ua)));
-    const ulnarHead = fitCircle(proximal.filter((p) => { const s = dot(p, ua) - uMin; return s >= lo && s <= hi; }), ua);
+    const ulnarHead = fitCircle(kept(proximal.filter((p) => { const s = dot(p, ua) - uMin; return s >= lo && s <= hi; }), `bande distale [${lo}, ${hi}] mm de ${joint.proximal}`), ua);
     let ra = principalAxes(moving)[0];
     if (ra[2] < 0) ra = scale(ra, -1);
     const rMax = Math.max(...moving.map((p) => dot(p, ra)));
-    const radialHead = fitCircle(moving.filter((p) => { const s = rMax - dot(p, ra); return s >= plo && s <= phi; }), ra);
+    const radialHead = fitCircle(kept(moving.filter((p) => { const s = rMax - dot(p, ra); return s >= plo && s <= phi; }), `bande proximale [${plo}, ${phi}] mm de ${joint.moving.join(', ')}`), ra);
     centre = ulnarHead.centre;
     axis = normalize(sub(radialHead.centre, ulnarHead.centre));
     rmsMm = Math.max(ulnarHead.rms, radialHead.rms);
@@ -99,9 +104,9 @@ export function measureJoint(joint: JointInput, bones: Record<string, Vec3[]>): 
     const zMin = Math.min(...proximal.map((p) => p[2]));
     const region = proximal.filter((p) => p[2] <= zMin + (f.distalMm ?? 40));
     const m = mean(region);
-    const back = region.filter((p) => p[1] >= m[1] + (f.posteriorMm ?? 0));
+    const back = kept(region.filter((p) => p[1] >= m[1] + (f.posteriorMm ?? 0)), 'région postérieure des condyles');
     const gap = f.gapMm ?? 6;
-    const a = fitSphere(back.filter((p) => p[0] < m[0] - gap)), b = fitSphere(back.filter((p) => p[0] > m[0] + gap));
+    const a = fitSphere(kept(back.filter((p) => p[0] < m[0] - gap), 'condyle −x')), b = fitSphere(kept(back.filter((p) => p[0] > m[0] + gap), 'condyle +x'));
     centre = scale(add(a.centre, b.centre), 0.5);
     axis = normalize(sub(b.centre, a.centre));
     rmsMm = Math.max(a.rms, b.rms);

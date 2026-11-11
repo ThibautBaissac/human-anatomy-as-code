@@ -74,9 +74,27 @@ function residuals(m: Mat4, src: Vec3[], dst: Vec3[]) {
   return { residualsMm: r, rmsMm: Math.sqrt(r.reduce((s, x) => s + x * x, 0) / r.length), maxMm: Math.max(...r) };
 }
 
+/** Landmarks that cannot fix a rotation: fewer than 3 pairs, all coincident or all on one line. */
+export class DegenerateLandmarksError extends Error {
+  override name = 'DegenerateLandmarksError';
+}
+
+/** Throws when the points do not span a plane (coincident or collinear), relative to their spread. */
+function assertSpread(ps: Vec3[], which: string): void {
+  const c = mean(ps);
+  const far = ps.reduce((a, p) => (dist(p, c) > dist(a, c) ? p : a));
+  const r = dist(far, c);
+  if (!(r > 1e-9)) throw new DegenerateLandmarksError(`fitSimilarity : repères ${which} confondus`);
+  const u = sub(far, c).map((x) => x / r) as Vec3;
+  const offLine = Math.max(...ps.map((p) => { const w = sub(p, c), t = w[0] * u[0] + w[1] * u[1] + w[2] * u[2]; return Math.hypot(w[0] - t * u[0], w[1] - t * u[1], w[2] - t * u[2]); }));
+  if (offLine <= 1e-6 * r) throw new DegenerateLandmarksError(`fitSimilarity : repères ${which} alignés`);
+}
+
 /** Least-squares similarity (uniform scale, rotation, translation) mapping src onto dst (Horn's quaternion method). */
 export function fitSimilarity(src: Vec3[], dst: Vec3[]): Fit {
-  if (src.length < 3 || src.length !== dst.length) throw new Error('fitSimilarity : au moins 3 paires de repères');
+  if (src.length < 3 || src.length !== dst.length) throw new DegenerateLandmarksError('fitSimilarity : au moins 3 paires de repères');
+  assertSpread(src, 'HRA');
+  assertSpread(dst, 'BodyParts3D');
   const ms = mean(src), md = mean(dst);
   const xs = src.map((p) => sub(p, ms)), ys = dst.map((p) => sub(p, md));
   const S = [0, 1, 2].map((i) => [0, 1, 2].map((j) => xs.reduce((s, x, k) => s + x[i] * ys[k][j], 0)));

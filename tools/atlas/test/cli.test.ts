@@ -38,6 +38,17 @@ test('build refuses to write when there are errors', () => {
   assert.equal(existsSync(join(out, 'atlas-male.json')), false);
 });
 
+test('validate and build fail on a missing data directory or one without structures/', () => {
+  for (const dir of ['/nonexistent/data', mkdtempSync(join(tmpdir(), 'atlas-empty-'))]) {
+    const r = run('validate', dir);
+    assert.equal(r.status, 1, r.stderr);
+    assert.match(r.stderr, /data-dir/);
+    const out = mkdtempSync(join(tmpdir(), 'atlas-out-'));
+    assert.equal(run('build', dir, out).status, 1);
+    assert.equal(existsSync(join(out, 'atlas-male.json')), false);
+  }
+});
+
 test('import-bp3d reads the overrides file, writes structures, validates and prints the report', async () => {
   const { writeDataset, sources } = await import('./helpers.ts');
   const FIX = new URL('./fixtures/', import.meta.url).pathname;
@@ -46,6 +57,15 @@ test('import-bp3d reads the overrides file, writes structures, validates and pri
   assert.equal(r.status, 0, r.stderr);
   assert.ok(existsSync(join(dataDir, 'structures/organ/left-atrium.yaml')));
   assert.match(r.stdout + r.stderr, /créées\s*:?\s*\d+/);
+});
+
+test('import-bp3d reads an empty overrides file as no overrides', async () => {
+  const { writeDataset, sources } = await import('./helpers.ts');
+  const FIX = new URL('./fixtures/', import.meta.url).pathname;
+  const dataDir = writeDataset({ ...sources, 'import/bp3d-overrides.yaml': '# rien\n' });
+  const r = run('import-bp3d', join(FIX, 'bp3d'), join(FIX, 'wikidata.csv'), dataDir);
+  assert.doesNotMatch(r.stderr, /TypeError|Cannot read/);
+  assert.match(r.stdout, /créées\s*:?\s*\d+/);
 });
 
 test('import-bp3d reports a missing input as a one-line error, without a stack trace', () => {

@@ -185,6 +185,21 @@ export function lateralityOf(name: string, extent: [number, number] | undefined)
 }
 
 /**
+ * Own meshes of a midline concept, by side, when every one lies more than `MIDLINE_MARGIN_MM` clear of the median
+ * plane and both sides have some (veins of both feet): such a concept is bilateral. Undefined otherwise.
+ */
+export function lateralSplit(meshes: string[], extents: Map<string, [number, number]>): Record<'left' | 'right', string[]> | undefined {
+  const out = { left: [] as string[], right: [] as string[] };
+  for (const fj of meshes) {
+    const e = extents.get(fj);
+    if (e && e[0] > MIDLINE_MARGIN_MM) out.left.push(fj);
+    else if (e && e[1] < -MIDLINE_MARGIN_MM) out.right.push(fj);
+    else return undefined;
+  }
+  return out.left.length && out.right.length ? out : undefined;
+}
+
+/**
  * A Wikidata label made fit for the atlas: no disambiguation suffix ("Vomer (anatomia)"),
  * French as a common noun (lower-case first letter), Latin as in Terminologia Anatomica (capital first letter).
  */

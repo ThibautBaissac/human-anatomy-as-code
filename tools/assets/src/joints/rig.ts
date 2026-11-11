@@ -103,9 +103,16 @@ export function rigJoint(joint: RigJoint, side: Side, instances: RigInstance[], 
   const acting = (slug: string) => (actionsOf.get(slug) ?? []).filter((a) => a.joint === joint.slug);
   const moving = new Set(joint.moving.map((b) => `${b}@${side}`).filter((n) => byName.has(n)));
   const crossing = new Set<string>();
+  // a side-less instance (unpaired or midline: a finger artery BodyParts3D names on one side only) belongs to this
+  // side when it lies wholly on its side of the median plane (subject's left = +x)
+  const onThisSide = (pos: Float32Array) => {
+    for (let i = 0; i < pos.length; i += 3) if (side === 'left' ? pos[i] <= 0 : pos[i] >= 0) return false;
+    return pos.length > 0;
+  };
   for (const inst of instances) {
     if (listed.has(inst.name)) continue;
-    const candidate = inst.kind === 'skin' || (inst.side === side && (inst.limb === null || inst.limb === limb));
+    const sameSide = inst.side === side || (inst.side === null && onThisSide(inst.positions));
+    const candidate = inst.kind === 'skin' || (sameSide && (inst.limb === null || inst.limb === limb));
     if (!candidate) continue;
     let above = 0, below = 0, allBelow = true, allInCapsule = true;
     for (let i = 0; i < inst.positions.length; i += 3) {

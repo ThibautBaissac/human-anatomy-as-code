@@ -63,6 +63,7 @@ systems:
 # Slug → latéralité, à la place de celle que donnent le nom et la géométrie.
 laterality:
   tentorium-cerebelli: midline  # cloison médiane ; BodyParts3D n'en modélise que la moitié droite
+  external-anal-sphincter: midline  # anneau traversé par le plan médian, fait de deux demi-meshes : ce n'est pas une paire
 
 # Slug → kind, à la place de celui que donnent les noms.
 kinds:

@@ -3,6 +3,14 @@
 import type { Vec3 } from '@haac/hra/register';
 export type { Vec3 };
 
+/** A fit that cannot be computed: too few points (an empty filter), or points that fix nothing. */
+export class FitError extends Error {
+  override name = 'FitError';
+}
+const atLeast = (pts: Vec3[], n: number, what: string) => {
+  if (pts.length < n) throw new FitError(`ajustement ${what} : ${pts.length} sommet(s), au moins ${n}`);
+};
+
 export const add = (a: Vec3, b: Vec3): Vec3 => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
 export const sub = (a: Vec3, b: Vec3): Vec3 => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
 export const scale = (a: Vec3, k: number): Vec3 => [a[0] * k, a[1] * k, a[2] * k];
@@ -28,7 +36,7 @@ function solve(A: number[][], b: number[]): number[] {
     let p = c;
     for (let r = c + 1; r < n; r++) if (Math.abs(M[r][c]) > Math.abs(M[p][c])) p = r;
     [M[c], M[p]] = [M[p], M[c]];
-    if (Math.abs(M[c][c]) < 1e-12) throw new Error('ajustement dégénéré (points alignés ou trop peu nombreux)');
+    if (Math.abs(M[c][c]) < 1e-12) throw new FitError('ajustement dégénéré (points alignés ou trop peu nombreux)');
     for (let r = 0; r < n; r++) {
       if (r === c) continue;
       const f = M[r][c] / M[c][c];
@@ -56,6 +64,7 @@ const rmsOf = (xs: number[], target: number) => Math.sqrt(xs.reduce((s, x) => s 
 
 /** Algebraic sphere fit (Kåsa). */
 export function fitSphere(pts: Vec3[]): { centre: Vec3; radius: number; rms: number } {
+  atLeast(pts, 4, 'de sphère');
   const m = mean(pts);
   const q = pts.map((p) => sub(p, m));
   const [a, b, c, d] = leastSquares(q.map((p) => [2 * p[0], 2 * p[1], 2 * p[2], 1]), q.map((p) => dot(p, p)));
@@ -72,6 +81,7 @@ export function basisOf(axis: Vec3): [Vec3, Vec3] {
 
 /** Circle fit (Kåsa) of the points projected onto the plane normal to `axis`; the centre keeps the points' mean height. */
 export function fitCircle(pts: Vec3[], axis: Vec3): { centre: Vec3; radius: number; rms: number } {
+  atLeast(pts, 3, 'de cercle');
   const [u, v] = basisOf(normalize(axis));
   const m = mean(pts);
   const q = pts.map((p) => { const w = sub(p, m); return [dot(w, u), dot(w, v)]; });
@@ -117,6 +127,7 @@ export function principalAxes(pts: Vec3[]): Vec3[] {
  * and take the line through both centres as the next axis (30 iterations, from the principal axis).
  */
 export function fitCylinder(pts: Vec3[], initial?: Vec3): { point: Vec3; axis: Vec3; radius: number; rms: number } {
+  atLeast(pts, 6, 'de cylindre');
   let axis = normalize(initial ?? principalAxes(pts)[0]);
   let point = mean(pts);
   for (let it = 0; it < 30; it++) {

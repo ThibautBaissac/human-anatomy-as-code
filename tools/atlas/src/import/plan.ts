@@ -1,7 +1,7 @@
 // Planning: BodyParts3D concepts + Wikidata rows → structures (pure, no disk writes).
 import { fmaNumber, type Bp3d } from './bp3d.ts';
 import type { Wikidata, WikidataRow } from './wikidata.ts';
-import { cleanLabel, genderOf, isNoFold, kindOfName, lateralityOf, REGION_OF_ANCESTOR, SIDE_PREFIX, slugify, splitSide, systemsOf, TA98_PATTERN } from './rules.ts';
+import { cleanLabel, genderOf, isNoFold, kindOfName, lateralityOf, lateralSplit, REGION_OF_ANCESTOR, SIDE_PREFIX, slugify, splitSide, systemsOf, TA98_PATTERN } from './rules.ts';
 import { canonicalStructure } from './yaml-merge.ts';
 import { byKey } from '../fs-util.ts';
 import type { Ids, Label, Labels, Side, SideBlock, Structure, System } from '../types.ts';
@@ -35,7 +35,11 @@ export interface Plan {
   slugCollisions: { slug: string; renamed: string }[];
   canonicalMeshConflicts: { slug: string; meshes: string[] }[];
   unownedMeshes: string[];
+  /** override entries that matched nothing (stale slug, unknown concept or mesh) and unknown override keys */
+  unusedOverrides: string[];
 }
+
+const OVERRIDE_KEYS: (keyof Overrides)[] = ['noFold', 'ties', 'excludeMeshes', 'slugs', 'systems', 'laterality', 'kinds', 'parents', 'ids'];
 
 const SIDES: Side[] = ['left', 'right'];
 
@@ -118,11 +122,13 @@ export function planStructures(bp: Bp3d, wd: Wikidata, overrides: Overrides = {}
 
   // 3. Laterality folding: "left X" + "right X" (side word anywhere) → X with two sides.
   const sideGroups = new Map<string, Partial<Record<Side, { concept: string }>>>();
+  const splitNames = new Set<string>();
   const selfByName = new Map<string, string[]>();
   const addSelf = (name: string, c: string) => selfByName.set(name, [...(selfByName.get(name) ?? []), c]);
   for (const c of candidates) {
     const name = bp.names.get(c) ?? c;
     const split = splitSide(name);
+    if (split) splitNames.add(split.canonical);
     if (!split || isNoFold(split.canonical, noFold)) { addSelf(name, c); continue; }
     const g = sideGroups.get(split.canonical) ?? {};
     if (g[split.side] === undefined) g[split.side] = { concept: c };
@@ -255,7 +261,16 @@ export function planStructures(bp: Bp3d, wd: Wikidata, overrides: Overrides = {}
     extentOf.set(u, e);
     return e;
   };
-  for (const u of units) if (u.laterality !== 'bilateral') u.laterality = overrides.laterality?.[slugOf.get(u)!] ?? lateralityOf(u.name, extent(u));
+  // A midline concept whose own meshes lie clear of the plane on both sides (both feet) is bilateral, its meshes split by side:
+  // one instance could follow neither limb. An override keeps it whole.
+  const splitOf = new Map<Unit, Record<Side, string[]>>();
+  for (const u of units) {
+    if (u.laterality === 'bilateral') continue;
+    const forced = overrides.laterality?.[slugOf.get(u)!];
+    u.laterality = forced ?? lateralityOf(u.name, extent(u));
+    const split = !forced && u.laterality === 'midline' && u.self ? lateralSplit(ownMeshes.get(u.self) ?? [], bp.extents) : undefined;
+    if (split) { u.laterality = 'bilateral'; splitOf.set(u, split); }
+  }
 
   // 9. Assemble.
   const canonicalMeshConflicts: Plan['canonicalMeshConflicts'] = [];
@@ -287,7 +302,14 @@ export function planStructures(bp: Bp3d, wd: Wikidata, overrides: Overrides = {}
     const regions = regionsOf(u);
     if (regions) s.regions = regions;
     if (Object.keys(ids).length) s.ids = ids;
-    if (u.laterality === 'bilateral') {
+    const split = splitOf.get(u);
+    if (split) {
+      s.sides = {} as Record<Side, SideBlock>;
+      for (const side of SIDES) {
+        split[side].forEach((fj) => placed.add(fj));
+        s.sides[side] = { meshes: [...split[side]].sort(byKey).map(meshRef) };
+      }
+    } else if (u.laterality === 'bilateral') {
       // Meshes owned by the canonical concept go to the side whose concept contains them.
       const extra: Record<Side, string[]> = { left: [], right: [] };
       const ambiguous: string[] = [];
@@ -318,6 +340,26 @@ export function planStructures(bp: Bp3d, wd: Wikidata, overrides: Overrides = {}
   const planned = withSystems(structures, overrides.systems).sort((a, b) => byKey(a.slug, b.slug));
 
   const unownedMeshes = [...containing.keys()].filter((fj) => !placed.has(fj) && !excluded.has(fj)).sort(byKey);
+
+  // Overrides that matched nothing: silently dropped otherwise.
+  const unusedOverrides: string[] = [];
+  for (const k of Object.keys(overrides)) if (!OVERRIDE_KEYS.includes(k as keyof Overrides)) unusedOverrides.push(`${k} : clé inconnue`);
+  for (const e of noFold) if (![...splitNames].some((n) => isNoFold(n, [e]))) unusedOverrides.push(`noFold : « ${e} » ne correspond à aucune paire`);
+  for (const [fj, c] of Object.entries(overrides.ties ?? {})) {
+    if (!containing.has(fj)) unusedOverrides.push(`ties.${fj} : mesh inconnu`);
+    else if (!bp.names.has(c)) unusedOverrides.push(`ties.${fj} : concept ${c} inconnu`);
+  }
+  for (const fj of excluded) if (!containing.has(fj)) unusedOverrides.push(`excludeMeshes : mesh ${fj} inconnu`);
+  const unitNames = new Set(units.map((u) => u.name));
+  for (const name of Object.keys(overrides.slugs ?? {})) if (!unitNames.has(name)) unusedOverrides.push(`slugs.${name} : nom absent de l'import`);
+  const plannedSlugs = new Set(planned.map((s) => s.slug));
+  for (const key of ['systems', 'laterality', 'kinds', 'parents', 'ids'] as const) {
+    for (const slug of Object.keys(overrides[key] ?? {})) {
+      if (!plannedSlugs.has(slug)) unusedOverrides.push(`${key}.${slug} : slug absent de l'import`);
+      else if (key === 'laterality' && planned.find((s) => s.slug === slug)!.laterality === 'bilateral') unusedOverrides.push(`laterality.${slug} : structure repliée (bilateral)`);
+    }
+  }
+  unusedOverrides.sort(byKey);
   return {
     structures: planned,
     skippedConcepts: bp.names.size - candidateSet.size,
@@ -326,5 +368,6 @@ export function planStructures(bp: Bp3d, wd: Wikidata, overrides: Overrides = {}
     slugCollisions,
     canonicalMeshConflicts,
     unownedMeshes,
+    unusedOverrides,
   };
 }

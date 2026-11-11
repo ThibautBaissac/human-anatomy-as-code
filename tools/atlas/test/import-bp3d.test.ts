@@ -189,6 +189,36 @@ test('parent, kind and id overrides replace the computed values; null removes an
   assert.deepEqual(s.femur.ids, { fma: 9611, ta2: 1360, ta98: 'A02.5.04.999' });
 });
 
+test('override entries that match nothing, and unknown override keys, are reported', () => {
+  const { report } = runImport(undefined, {
+    ...OVERRIDES,
+    nofold: ['atrium'],
+    ties: { FJ2810: 'FMA0000', FJ0000: 'FMA7163' },
+    excludeMeshes: ['FJ0001'],
+    slugs: { 'no such name': 'x' },
+    laterality: { femur: 'midline', gone: 'midline' },
+    kinds: { gone: 'bone', femur: 'bone' },
+    parents: { gone: 'human-body' },
+    systems: { gone: ['skeletal'] },
+    ids: { gone: { fma: null } },
+  });
+  assert.deepEqual(report.unusedOverrides, [
+    'excludeMeshes : mesh FJ0001 inconnu',
+    'ids.gone : slug absent de l\'import',
+    'kinds.gone : slug absent de l\'import',
+    'laterality.femur : structure repliée (bilateral)',
+    'laterality.gone : slug absent de l\'import',
+    'noFold : « auricle » ne correspond à aucune paire',
+    'noFold : « coronary artery » ne correspond à aucune paire',
+    'nofold : clé inconnue',
+    'parents.gone : slug absent de l\'import',
+    'slugs.no such name : nom absent de l\'import',
+    'systems.gone : slug absent de l\'import',
+    'ties.FJ0000 : mesh inconnu',
+    'ties.FJ2810 : concept FMA0000 inconnu',
+  ]);
+});
+
 test('abstract is-a classes without a mesh of their own are not structures', () => {
   const s = compiled(runImport().dataDir);
   assert.equal(s['bone-organ'], undefined);

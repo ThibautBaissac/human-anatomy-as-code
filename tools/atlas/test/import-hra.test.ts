@@ -264,3 +264,14 @@ test('organs whose DOI is missing from the HRA source (the only place DOIs are k
   const r = await run();
   assert.deepEqual(r.missingDois, ['large-intestine-female', 'mammary-gland-female-left', 'mammary-gland-female-right', 'ovary-female-left', 'ovary-female-right', 'urinary-bladder-female']);
 });
+
+test('an alias of an existing structure is a taken slug: the HRA structure is renamed, not merged into it', async () => {
+  const { dataDir, run } = await fixture();
+  const file = join(dataDir, 'structures/organ/urethra.yaml');
+  writeFileSync(file, stringify({ slug: 'urethra', kind: 'organ', laterality: 'midline', status: 'draft', parent: 'human-body', aliases: ['vagina'], labels: lbl('urethra'), meshes: ['bp3d:FJ5'] }));
+  const before = readFileSync(file, 'utf8');
+  const r = await run();
+  assert.equal(readFileSync(file, 'utf8'), before);
+  assert.ok(r.slugCollisions.some((c) => c.slug === 'vagina' && c.renamed === 'vagina-female'));
+  assert.deepEqual(by(atlases(dataDir).female, 'vagina-female').meshes, ['hra:united-female/VH_F_vagina']);
+});
