@@ -26,6 +26,7 @@ Décisions prises là où la spec se tait ou admet deux lectures.
   - *Accueil.* Un message unique au premier lancement (gardé dans le navigateur) ; une recherche vide propose quelques structures.
   - *Dissection.* Noms des couches sous le curseur, « Visible à partir de », et un avis quand toutes les structures affichées sont à la même profondeur.
   - *Thème clair.* Le sombre reste le défaut ; ⋯ → Thème propose Clair et « Comme le système ».
+- **Rendu (2026-11-11).** La géométrie BodyParts3D n'existe qu'en version réduite à 99 % : le gain vient de l'éclairage. Environnement de studio pré-filtré (`RoomEnvironment`, intensité basse), lumière principale de face-gauche au-dessus, contre-jour froid, lampe frontale faible ; tone mapping Neutral ; rugosité par kind (os mats, vaisseaux brillants). Occlusion ambiante GTAO à mi-résolution, appliquée à la seule lumière indirecte ; le pré-rendu profondeur-normales exclut les lots transparents, si bien que les couches fantômes n'assombrissent rien. Le canvas est transparent : le fond est la couleur `--stage` du thème, hors tone mapping. ⋯ → Rendu : Détaillé (défaut sur ordinateur) ou Léger (défaut sur téléphone, sans occlusion).
 
 Constats de revue laissés en l'état :
 - Le double toucher repose sur la conversion en `dblclick` du navigateur ; il n'a pas de test e2e mobile.

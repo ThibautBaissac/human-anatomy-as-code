@@ -9,7 +9,8 @@ import { appearance, type AppearanceState } from './appearance.ts';
 import { buildCatalog, selectionKey, type Catalog } from './catalog.ts';
 import { hideSelection, keepKnown, setHidden, undoHide } from './view-ops.ts';
 import { centreShift, defaultCamera, fitDistance, freeShare, GLIDE_MS, interpolateCamera, NO_INSETS, presetCamera, revealNeed, type Insets, type Preset } from './camera.ts';
-import { colorOf, HIGHLIGHT } from './colors.ts';
+import { colorOf, HIGHLIGHT, roughnessOf } from './colors.ts';
+import { aoPipeline, setupLighting, type Quality } from './rendering.ts';
 import { crossingInstances, jointKey, normaliseAngle, parseJointKey, poseMatrices, type Pose, type Rigs } from './pose.ts';
 import { AXES, DEFAULT_VIEW, type Atlas, type AtlasJoint, type Axis, type Camera, type Model, type Selection, type Side, type Vec3, type ViewState } from './types.ts';
 
@@ -129,16 +130,12 @@ export class Viewer {
 
   private constructor(canvas: HTMLCanvasElement, forceWebGL: boolean) {
     this.canvas = canvas;
-    this.renderer = new THREE.WebGPURenderer({ canvas, antialias: true, forceWebGL });
+    // transparent canvas: the page's stage colour shows behind the body, untouched by tone mapping
+    this.renderer = new THREE.WebGPURenderer({ canvas, antialias: true, alpha: true, forceWebGL });
+    this.renderer.setClearColor(0x000000, 0);
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-    this.scene.background = new THREE.Color(0x1d2026);
-    this.scene.add(new THREE.HemisphereLight(0xffffff, 0x404050, 1.6));
-    const dir = new THREE.DirectionalLight(0xffffff, 2);
-    dir.position.set(1, 2, 3);
-    this.scene.add(dir);
     this.camera = new THREE.PerspectiveCamera(35, 1, 1, 20000);
     this.camera.up.set(0, 0, 1);
-    this.camera.add(new THREE.DirectionalLight(0xffffff, 0.8));
     this.scene.add(this.camera, this.clip);
     this.controls = new OrbitControls(this.camera, canvas);
     this.controls.enableDamping = true;
@@ -168,6 +165,8 @@ export class Viewer {
     // three only logs a lost device (mobile tab in the background, GPU reset): tell the UI
     v.renderer.onDeviceLost = (info: { message?: string }) => { console.error('[viewer] device lost', info); v.emit('lost', info?.message ?? ''); };
     await v.renderer.init();
+    // the environment is pre-filtered on the GPU: after init
+    setupLighting(v.renderer, v.scene, v.camera);
     v.snapshot = { ...v.snapshot, backend: (v.renderer.backend as unknown as { isWebGPUBackend?: boolean }).isWebGPUBackend ? 'WebGPU' : 'WebGL2' };
     v.fit();
     v.renderer.setAnimationLoop((t) => v.frame(t));
@@ -232,7 +231,7 @@ export class Viewer {
       gltf.scene.traverse((o) => { if ((o as THREE.Mesh).isMesh) meshes.push(o as THREE.Mesh); });
       let vCount = 0, iCount = 0;
       for (const m of meshes) { vCount += m.geometry.attributes.position.count; iCount += m.geometry.index!.count; }
-      const material = new THREE.MeshStandardNodeMaterial({ color: 0xffffff, roughness: 0.6, metalness: 0 });
+      const material = new THREE.MeshStandardNodeMaterial({ color: 0xffffff, roughness: roughnessOf(kind), metalness: 0 });
       const mesh = new THREE.BatchedMesh(meshes.length, vCount, iCount, material);
       mesh.name = kind;
       const batch: Batch = { kind, mesh, material, globalOf: [], alpha: new Float32Array(meshes.length).fill(1), bvh: false, names: [], meshes: [], base: [] };
@@ -389,8 +388,12 @@ export class Viewer {
   /** Shows the last hidden structure again. */
   undoHide(): void { const patch = undoHide(this.view); if (patch.hidden) this.setState(patch); }
   showHidden(): void { this.setState({ hidden: [] }); }
-  /** Colour behind the body (a CSS colour: the interface theme's stage). */
-  setBackground(css: string): void { if (!css) return; (this.scene.background as THREE.Color).setStyle(css); this.dirty = true; }
+  private quality: Quality = 'high';
+  private pipeline: THREE.RenderPipeline | null = null;
+  /** Ambient occlusion on (`high`) or off (`low`: phones, slow GPUs). */
+  setQuality(q: Quality): void { if (q !== this.quality) { this.quality = q; this.dirty = true; } }
+  getQuality = (): Quality => this.quality;
+
   /** Hides or shows one structure by key (slug or slug@side), from the tree. */
   setHidden(key: string, on: boolean): void { const patch = setHidden(this.view, key, on); if (Object.keys(patch).length) { if (on) this.setHover(null); this.setState(patch); } }
   setLayerCut(n: number): void { this.setState({ layerCut: n }); }
@@ -717,7 +720,8 @@ export class Viewer {
     this.dirty = false;
     if (this.lastFrame) { this.frameTimes.push(t - this.lastFrame); if (this.frameTimes.length > 300) this.frameTimes.shift(); }
     this.lastFrame = t;
-    this.renderer.render(this.scene, this.camera);
+    if (this.quality === 'high') (this.pipeline ??= aoPipeline(this.renderer, this.scene, this.camera)).render();
+    else this.renderer.render(this.scene, this.camera);
     if (this.awaitingFirstFrame) {
       this.awaitingFirstFrame = false;
       this.firstFrameMs = performance.now() - this.loadT0;
@@ -813,6 +817,7 @@ export class Viewer {
     this.renderer.setAnimationLoop(null);
     this.resize.disconnect();
     this.controls.dispose();
+    this.pipeline?.dispose();
     this.renderer.dispose();
   }
 }

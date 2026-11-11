@@ -120,6 +120,8 @@ export const S = {
   menuCredits: 'Données et licences…',
   menuHelp: 'Aide et raccourcis',
   themeLabel: 'Thème',
+  qualityLabel: 'Rendu',
+  qualities: { high: 'Détaillé (ombres de contact)', low: 'Léger (plus rapide)' } as Record<string, string>,
   themes: { dark: 'Sombre', light: 'Clair', system: 'Comme le système' } as Record<string, string>,
   switchingTo: (model: string) => `Passage au ${S_MODEL[model]}…`,
   namesLabel: 'Langue des noms',

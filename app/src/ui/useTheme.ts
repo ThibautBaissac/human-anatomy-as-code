@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
-import type { Viewer } from '../viewer/viewer.ts';
 
 export type ThemeChoice = 'dark' | 'light' | 'system';
 export const THEMES: ThemeChoice[] = ['dark', 'light', 'system'];
@@ -12,10 +11,10 @@ const read = (): ThemeChoice => {
 const prefersLight = () => typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: light)').matches;
 
 /**
- * Dark (the default), light, or as the system says. Sets data-theme on the document, the browser bar colour,
- * and the 3D background (the --stage colour).
+ * Dark (the default), light, or as the system says. Sets data-theme on the document and the browser bar colour;
+ * the 3D canvas is transparent over the --stage colour.
  */
-export function useTheme(viewer: Viewer | null) {
+export function useTheme() {
   const [choice, setChoice] = useState<ThemeChoice>(read);
   const [systemLight, setSystemLight] = useState(prefersLight);
   useEffect(() => {
@@ -29,8 +28,7 @@ export function useTheme(viewer: Viewer | null) {
     document.documentElement.dataset.theme = theme;
     const stage = getComputedStyle(document.documentElement).getPropertyValue('--stage').trim();
     document.querySelector('meta[name=theme-color]')?.setAttribute('content', stage);
-    viewer?.setBackground(stage);
-  }, [theme, viewer]);
+  }, [theme]);
   const choose = (c: ThemeChoice) => { setChoice(c); try { localStorage.setItem(KEY, c); } catch { /* storage unavailable */ } };
   return { choice, choose };
 }

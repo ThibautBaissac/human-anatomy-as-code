@@ -23,6 +23,8 @@ import { usePwa } from './usePwa.ts';
 import { useViewer } from './useViewer.ts';
 import { useViewInsets } from './useViewInsets.ts';
 import { THEMES, useTheme, type ThemeChoice } from './useTheme.ts';
+import { QUALITIES, useQuality } from './useQuality.ts';
+import type { Quality } from '../viewer/rendering.ts';
 import { S } from './strings.ts';
 
 const SIDES: Side[] = ['left', 'right'];
@@ -49,7 +51,7 @@ function jointOfSelection(viewer: Viewer | null, sel: Selection | null): string 
 export function App() {
   const { canvasRef, viewer, snapshot, error, notice, switching, selectAndFocus, switchModel } = useViewer();
   const pwa = usePwa();
-  const theme = useTheme(viewer);
+  const theme = useTheme();
   /** the model a switch is going to, while it loads */
   const [switchTarget, setSwitchTarget] = useState<Model | null>(null);
   useEffect(() => { if (!switching) setSwitchTarget(null); }, [switching]);
@@ -57,6 +59,7 @@ export function App() {
   const narrow = useNarrow();
   /** a desktop window too narrow for the toolbar and the camera presets side by side */
   const compact = useNarrow('(max-width: 1200px)');
+  const quality = useQuality(viewer, narrow);
   const { view, ready, loading, failedKinds } = snapshot;
   const catalog = ready ? viewer?.catalog ?? null : null;
   const atlas = viewer?.atlas ?? null;
@@ -148,6 +151,7 @@ export function App() {
   const menu: MenuEntry[] = [
     ...modelEntries,
     { kind: 'radio', group: S.themeLabel, options: THEMES.map((t) => ({ value: t, label: S.themes[t] })), value: theme.choice, onChange: (t) => theme.choose(t as ThemeChoice) },
+    { kind: 'radio', group: S.qualityLabel, options: QUALITIES.map((q) => ({ value: q, label: S.qualities[q] })), value: quality.quality, onChange: (q) => quality.choose(q as Quality) },
     { kind: 'item', label: S.menuOffline, onSelect: () => setOfflineOpen(true) },
     { kind: 'item', label: S.menuCredits, onSelect: () => setCreditsOpen(true) },
     { kind: 'item', label: S.menuHelp, onSelect: () => setHelpOpen(true) },
