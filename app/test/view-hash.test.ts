@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { decodeView, encodeView } from '../src/viewer/view-hash.ts';
-import { DEFAULT_VIEW, type ViewState } from '../src/viewer/types.ts';
+import { DEFAULT_VIEW, SYSTEMS, type ViewState } from '../src/viewer/types.ts';
 
 const ctx = { hasSlug: (s: string) => ['femur', 'heart'].includes(s), kinds: ['bone', 'muscle', 'skin'], maxLayer: 5 };
 
@@ -13,11 +13,11 @@ test('every parameter round-trips', () => {
   const v: ViewState = {
     selection: { slug: 'femur', side: 'left' }, layerCut: 2, ghost: true, hiddenKinds: ['muscle', 'skin'],
     sections: { axial: 0.625, sagittal: 0.5 }, lang: 'la',
-    camera: { position: [100, -900, 1200], target: [0, 0, 1000] }, model: 'female', pose: {}, hiddenSystems: [], isolated: null, hidden: [],
+    camera: { position: [100, -900, 1200], target: [0, 0, 1000] }, model: 'female', pose: {}, hiddenSystems: DEFAULT_VIEW.hiddenSystems, isolated: null, hidden: [],
   };
   const hash = encodeView(v);
   assert.equal(hash, 'sex=f&sel=femur@left&layer=2&ghost=1&hide=muscle,skin&cut=axial:0.625,sagittal:0.500&lang=la&cam=100,-900,1200,0,0,1000');
-  // the empty pose and no hidden system are defaults: not written, not read back
+  // the empty pose and the default hidden systems are defaults: not written, not read back
   const { pose: _, hiddenSystems: __, isolated: ___, hidden: ____, ...encoded } = v;
   assert.deepEqual(decodeView(hash, ctx), encoded);
 });
@@ -59,6 +59,14 @@ test('hidden systems round-trip as sys=; unknown ones are dropped', () => {
   assert.deepEqual(decodeView(hash, withSystems).hiddenSystems, ['digestive', 'muscular']);
   assert.deepEqual(decodeView('sys=digestive,wat', withSystems).hiddenSystems, ['digestive']);
   assert.equal(decodeView('sys=wat', withSystems).hiddenSystems, undefined);
+});
+
+test('by default only the skeleton shows; every system shown is written sys=none', () => {
+  assert.deepEqual(DEFAULT_VIEW.hiddenSystems, SYSTEMS.filter((x) => x !== 'skeletal'));
+  assert.equal(encodeView({ ...DEFAULT_VIEW, hiddenSystems: [...DEFAULT_VIEW.hiddenSystems].reverse() }), '');
+  assert.equal(encodeView({ ...DEFAULT_VIEW, hiddenSystems: [] }), 'sys=none');
+  assert.deepEqual(decodeView('sys=none', { ...ctx, systems: [...SYSTEMS] }).hiddenSystems, []);
+  assert.equal(decodeView('', { ...ctx, systems: [...SYSTEMS] }).hiddenSystems, undefined);
 });
 
 test('isolation and hidden structures round-trip; hid= keeps the hiding order', () => {

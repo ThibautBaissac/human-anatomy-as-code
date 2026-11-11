@@ -61,7 +61,7 @@ test('tools: one panel at a time, Échap closes it and gives focus back, a mark 
 
   await expect(layers).toHaveAccessibleName('Calques');
   await layers.click();
-  await panel.getByRole('checkbox', { name: 'Appareil digestif' }).uncheck();
+  await panel.getByRole('checkbox', { name: 'Appareil digestif' }).check(); // hidden by default: showing it modifies
   await expect(layers).toHaveAccessibleName('Calques, modifié');
   await layers.click();
   await expect(panel).toBeHidden();

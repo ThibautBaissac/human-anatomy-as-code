@@ -4,7 +4,7 @@ import { prefersReducedMotion, type Viewer } from '../viewer/viewer.ts';
 import { colorOf } from '../viewer/colors.ts';
 import { jointKey, parseJointKey } from '../viewer/pose.ts';
 import { labelText } from '../viewer/search.ts';
-import { AXES, type AtlasJoint, type Side, type ViewState } from '../viewer/types.ts';
+import { AXES, DEFAULT_HIDDEN_SYSTEMS, sameSystems, type AtlasJoint, type Side, type ViewState } from '../viewer/types.ts';
 import { S } from './strings.ts';
 
 const SIDES: Side[] = ['left', 'right'];
@@ -14,7 +14,7 @@ const ICONS = { layers: Layers, dissection: Scissors, sections: SquareSplitVerti
 
 /** Whether a tool's part of the view differs from the default (the mark on its button). */
 export function toolModified(tool: Tool, v: ViewState): boolean {
-  if (tool === 'layers') return v.hiddenSystems.length > 0 || v.hiddenKinds.length > 0;
+  if (tool === 'layers') return !sameSystems(v.hiddenSystems, DEFAULT_HIDDEN_SYSTEMS) || v.hiddenKinds.length > 0;
   if (tool === 'dissection') return v.layerCut > 0 || v.ghost;
   if (tool === 'sections') return Object.keys(v.sections).length > 0;
   return Object.keys(v.pose).length > 0;

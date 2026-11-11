@@ -37,7 +37,7 @@ test('phone: one-line header, the 3D view under a folded sheet; a tap opens Info
 });
 
 test('phone: Outils holds the four tools; the system filter and the joint slider work by touch', async ({ page }, info) => {
-  await page.goto(`${BASE}${info.project.metadata.query}#sel=humerus@left`);
+  await page.goto(`${BASE}${info.project.metadata.query}#sys=none&sel=humerus@left`);
   await ready(page);
   await sheet(page).getByRole('button', { name: /panneau/ }).first().click();
   await page.getByRole('tab', { name: 'Outils' }).click();

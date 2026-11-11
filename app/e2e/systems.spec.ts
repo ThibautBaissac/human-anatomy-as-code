@@ -13,11 +13,22 @@ async function open(page: Page, query: string, hash = '') {
   return errors;
 }
 
-test('systems: hide one, a structure of two systems stays; isolate; show all; the URL keeps it', async ({ page }, info) => {
+test('systems: only the skeleton at startup; show all; hide one, a structure of two systems stays; isolate; the URL keeps it', async ({ page }, info) => {
   const errors = await open(page, info.project.metadata.query as string);
-  await page.getByRole('navigation', { name: 'Outils' }).getByRole('button', { name: /^Calques/ }).click();
+  expect(await alpha(page, 'femur@left')).toBe(1);
+  expect(await alpha(page, 'stomach')).toBe(0);
+  expect(await alpha(page, 'cerebellum')).toBe(0);
+  const layers = page.getByRole('navigation', { name: 'Outils' }).getByRole('button', { name: /^Calques/ });
+  await expect(layers).not.toHaveAttribute('aria-label', /.+/); // the default: no mark
+  await layers.click();
   const block = page.getByRole('region', { name: 'Calques' });
   await expect(block).toBeVisible();
+  await expect(block.getByRole('checkbox', { name: 'Squelette et articulations' })).toBeChecked();
+  await expect(block.getByRole('checkbox', { name: 'Appareil digestif' })).not.toBeChecked();
+
+  await block.getByRole('button', { name: 'Tout afficher' }).click();
+  expect(await alpha(page, 'stomach')).toBe(1);
+  await expect.poll(() => page.evaluate(() => location.hash)).toContain('sys=none');
 
   await block.getByRole('checkbox', { name: 'Appareil digestif' }).uncheck();
   expect(await alpha(page, 'stomach')).toBe(0);

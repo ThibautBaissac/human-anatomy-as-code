@@ -53,7 +53,7 @@ test('loads, selects by click and by search, cuts, and restores the view from th
 });
 
 test('in ghost mode, clicks go through the ghosted layers', async ({ page }, info) => {
-  await open(page, info.project.metadata.query as string);
+  await open(page, info.project.metadata.query as string, '#sys=none');
   type V = { setLayerCut(n: number): void; setGhost(b: boolean): void; select(s: null): void; getSnapshot(): { view: { selection: { slug: string } | null } }; catalog: { structure(s: string): { layer: number } } };
   const box = (await page.locator('canvas').boundingBox())!;
   const at = { x: box.x + box.width / 2, y: box.y + box.height * 0.4 };

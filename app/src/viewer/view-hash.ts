@@ -1,7 +1,7 @@
 // View ⇄ URL hash, for deep links. Pure. Unknown or invalid values are dropped one by one.
 import { parseSelectionKey, selectionKey } from './catalog.ts';
 import { normaliseAngle, parseJointKey } from './pose.ts';
-import { AXES, DEFAULT_VIEW, LANGS, type AtlasJoint, type Axis, type Lang, type Side, type ViewState } from './types.ts';
+import { AXES, DEFAULT_HIDDEN_SYSTEMS, DEFAULT_VIEW, LANGS, sameSystems, type AtlasJoint, type Axis, type Lang, type Side, type ViewState } from './types.ts';
 
 export interface DecodeContext {
   hasSlug(slug: string): boolean;
@@ -24,7 +24,9 @@ export function encodeView(v: ViewState): string {
   if (v.layerCut) p.push(`layer=${v.layerCut}`);
   if (v.ghost) p.push('ghost=1');
   if (v.hiddenKinds.length) p.push(`hide=${[...v.hiddenKinds].sort().join(',')}`);
-  if (v.hiddenSystems?.length) p.push(`sys=${[...v.hiddenSystems].sort().join(',')}`);
+  // absent sys= is the default (skeleton only); no hidden system at all is sys=none
+  const sys = v.hiddenSystems ?? [];
+  if (!sameSystems(sys, DEFAULT_HIDDEN_SYSTEMS)) p.push(`sys=${sys.length ? [...sys].sort().join(',') : 'none'}`);
   const cuts = AXES.filter((a) => v.sections[a] !== undefined).map((a) => `${a}:${v.sections[a]!.toFixed(3)}`);
   if (cuts.length) p.push(`cut=${cuts.join(',')}`);
   if (v.lang !== 'fr') p.push(`lang=${v.lang}`);
@@ -68,7 +70,8 @@ export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState>
     if (kinds.length) out.hiddenKinds = kinds;
   }
   const sys = params.get('sys');
-  if (sys && ctx.systems) {
+  if (sys === 'none') out.hiddenSystems = [];
+  else if (sys && ctx.systems) {
     const systems = [...new Set(sys.split(',').filter((x) => ctx.systems!.includes(x)))].sort();
     if (systems.length) out.hiddenSystems = systems;
   }

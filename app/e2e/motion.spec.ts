@@ -16,7 +16,8 @@ async function open(page: Page, query: string, hash: string) {
   const errors: string[] = [];
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
   page.on('pageerror', (e) => errors.push(String(e)));
-  await page.goto(`${BASE}${query}#${hash}`);
+  // every system shown: the tests watch muscles and skin, hidden by the skeleton-only default
+  await page.goto(`${BASE}${query}#${hash ? `sys=none&${hash}` : 'sys=none'}`);
   await page.waitForFunction(() => (window as unknown as { __viewer?: V }).__viewer?.pickReadyMs, null, { timeout: 60_000 });
   return errors;
 }
@@ -64,7 +65,7 @@ test('elbow: the Mouvement tool moves the forearm by keyboard, ghosts crossing t
 
   // rest puts everything back
   await page.evaluate(() => (window as unknown as { __viewer: V }).__viewer.setState({ hiddenKinds: [] }));
-  await page.goto(`${BASE}${info.project.metadata.query}#sel=humerus@left&p=elbow-joint@left:90`);
+  await page.goto(`${BASE}${info.project.metadata.query}#sys=none&sel=humerus@left&p=elbow-joint@left:90`);
   await page.waitForFunction(() => (window as unknown as { __viewer?: V }).__viewer?.pickReadyMs, null, { timeout: 60_000 });
   await openMotion(page);
   await page.getByRole('button', { name: 'Position de repos' }).click();

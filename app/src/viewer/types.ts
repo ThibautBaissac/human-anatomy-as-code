@@ -109,6 +109,12 @@ export interface ViewState {
   hidden: string[];
 }
 
+/** At startup only the skeleton shows: every other system is hidden. */
+export const DEFAULT_HIDDEN_SYSTEMS: readonly string[] = SYSTEMS.filter((x) => x !== 'skeletal');
+
+/** Whether two lists of hidden systems hide the same systems (order aside). */
+export const sameSystems = (a: readonly string[], b: readonly string[]) => a.length === b.length && a.every((x) => b.includes(x));
+
 export const DEFAULT_VIEW: ViewState = {
-  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], hiddenSystems: [], sections: {}, lang: 'fr', camera: null, model: 'male', pose: {}, isolated: null, hidden: [],
+  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], hiddenSystems: [...DEFAULT_HIDDEN_SYSTEMS], sections: {}, lang: 'fr', camera: null, model: 'male', pose: {}, isolated: null, hidden: [],
 };
