@@ -18,7 +18,7 @@ sides:
       fma: 73462
       wikidata: Q66570913
     meshes:
-      - bp3d:FJ1735
+      - bp3d:FJ1736
     labels:
       en:
         text: brachium of left superior colliculus
@@ -29,7 +29,7 @@ sides:
       fma: 73461
       wikidata: Q66570912
     meshes:
-      - bp3d:FJ1736
+      - bp3d:FJ1735
     labels:
       en:
         text: brachium of right superior colliculus

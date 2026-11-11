@@ -12,7 +12,7 @@ labels:
     source: hra
     status: draft
   fr:
-    text: Ligament large
+    text: ligament large
     gender: m
     number: sg
     source: wikidata

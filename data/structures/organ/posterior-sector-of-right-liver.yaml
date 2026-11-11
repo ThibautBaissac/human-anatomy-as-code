@@ -1,0 +1,15 @@
+slug: posterior-sector-of-right-liver
+kind: organ
+laterality: unpaired-right
+status: draft
+parent: hemiliver
+systems:
+  - digestive
+labels:
+  en:
+    text: posterior sector of right liver
+    source: fma
+    status: draft
+ids:
+  fma: 15749
+  wikidata: Q66512452

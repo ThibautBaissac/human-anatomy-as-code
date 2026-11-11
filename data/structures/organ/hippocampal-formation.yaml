@@ -11,7 +11,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Formation hippocampique
+    text: formation hippocampique
     source: wikidata
     status: draft
 ids:

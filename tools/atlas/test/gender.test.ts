@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { genderOf } from '../src/import/rules.ts';
+import { cleanLabel, genderOf } from '../src/import/rules.ts';
 
 test('fr: frequent head nouns of BodyParts3D labels', () => {
   assert.deepEqual(genderOf('chef long du muscle biceps brachial', 'fr'), { gender: 'm', number: 'sg' });
@@ -29,4 +29,11 @@ test('la: frequent head nouns, singular and plural', () => {
 test('unknown head noun gives no gender', () => {
   assert.equal(genderOf('zzz', 'fr'), undefined);
   assert.equal(genderOf('Iliocostalis', 'la'), undefined);
+});
+
+test('Wikidata labels lose their disambiguation suffix; French starts lower-case, Latin upper-case', () => {
+  assert.equal(cleanLabel('Vomer (anatomia)', 'la'), 'Vomer');
+  assert.equal(cleanLabel('arteria axillaris', 'la'), 'Arteria axillaris');
+  assert.equal(cleanLabel('Ligament large', 'fr'), 'ligament large');
+  assert.equal(cleanLabel('Vena tibialis anterior (singular)', 'la'), 'Vena tibialis anterior');
 });

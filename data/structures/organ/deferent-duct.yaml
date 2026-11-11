@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Vas deferens
-    gender: n
+    text: Ductus deferens
+    gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 19234

@@ -1,8 +1,8 @@
 slug: hepatovenous-segment-vi
 kind: vein
-laterality: midline
+laterality: unpaired-right
 status: draft
-parent: posterior-sector-of-liver
+parent: posterior-sector-of-right-liver
 systems:
   - cardiovascular
 labels:

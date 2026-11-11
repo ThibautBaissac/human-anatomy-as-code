@@ -1,6 +1,6 @@
 slug: ascending-colon
 kind: organ
-laterality: midline
+laterality: unpaired-right
 status: draft
 parent: gastrointestinal-tract
 systems:
@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: colon ascendens
+    text: Colon ascendens
     gender: n
     number: sg
     source: wikidata

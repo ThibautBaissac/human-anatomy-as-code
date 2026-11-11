@@ -18,8 +18,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: astragalus
-    source: wikidata
+    text: Talus
+    gender: m
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 9708

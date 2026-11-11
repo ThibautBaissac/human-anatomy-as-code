@@ -16,8 +16,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: iliocostalis lumborum
-    source: wikidata
+    text: Musculus iliocostalis lumborum
+    gender: m
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 22702

@@ -2,7 +2,7 @@ slug: cerebral-arterial-circle
 kind: artery
 laterality: midline
 status: draft
-parent: internal-carotid-artery
+parent: systemic-arterial-tree
 systems:
   - cardiovascular
 labels:

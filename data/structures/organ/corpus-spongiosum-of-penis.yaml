@@ -11,7 +11,7 @@ labels:
     source: fma
     status: draft
   la:
-    text: corpus spongiosum penis
+    text: Corpus spongiosum penis
     gender: n
     number: sg
     source: wikidata

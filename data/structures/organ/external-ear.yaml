@@ -14,10 +14,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Musculi auriculares
-    gender: m
-    number: pl
-    source: wikidata
+    text: Auris externa
+    gender: f
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 52781

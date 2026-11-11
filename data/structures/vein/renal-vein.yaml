@@ -16,10 +16,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Venae renales
+    text: Vena renalis
     gender: f
-    number: pl
-    source: wikidata
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 14334

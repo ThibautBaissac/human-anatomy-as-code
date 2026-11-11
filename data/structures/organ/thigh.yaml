@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: femur
+    text: Femur
     gender: n
     number: sg
     source: wikidata

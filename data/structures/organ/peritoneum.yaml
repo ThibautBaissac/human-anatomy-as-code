@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: peritoneum
+    text: Peritoneum
     gender: n
     number: sg
     source: wikidata

@@ -1,0 +1,30 @@
+slug: right-gastro-epiploic-artery
+kind: artery
+laterality: unpaired-right
+status: draft
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: right gastro-epiploic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère gastro-omentale droite
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria gastro-omentalis dextra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14781
+  ta2: 4221
+  ta98: A12.2.12.022
+  wikidata: Q707202
+meshes:
+  - bp3d:FJ3596

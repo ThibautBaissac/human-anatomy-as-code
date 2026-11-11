@@ -1,0 +1,17 @@
+slug: trunk-of-right-hepatic-artery
+kind: artery
+laterality: unpaired-right
+status: draft
+parent: right-hepatic-artery
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: trunk of right hepatic artery
+    source: fma
+    status: draft
+ids:
+  fma: 70456
+  wikidata: Q66568423
+meshes:
+  - bp3d:FJ3117

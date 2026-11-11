@@ -1,6 +1,6 @@
 slug: wall-of-left-atrium
 kind: organ
-laterality: midline
+laterality: unpaired-left
 status: draft
 parent: wall-of-side-of-heart
 regions:

@@ -13,7 +13,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Muscle petit rhomboïde
+    text: muscle petit rhomboïde
     gender: m
     number: sg
     source: wikidata

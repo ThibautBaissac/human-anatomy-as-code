@@ -1,0 +1,15 @@
+slug: anterior-sector-of-right-liver
+kind: organ
+laterality: unpaired-right
+status: draft
+parent: hemiliver
+systems:
+  - digestive
+labels:
+  en:
+    text: anterior sector of right liver
+    source: fma
+    status: draft
+ids:
+  fma: 15748
+  wikidata: Q66512450

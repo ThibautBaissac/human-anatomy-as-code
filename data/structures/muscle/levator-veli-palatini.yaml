@@ -12,7 +12,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Muscle élévateur du voile du palais
+    text: muscle élévateur du voile du palais
     gender: m
     number: sg
     source: wikidata

@@ -10,8 +10,10 @@ labels:
     source: fma
     status: draft
   fr:
-    text: trou de monro
-    source: wikidata
+    text: foramen interventriculaire
+    gender: m
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 75351

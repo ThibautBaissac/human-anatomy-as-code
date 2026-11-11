@@ -17,8 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: stomachus
-    source: wikidata
+    text: Gaster
+    gender: f
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 7148

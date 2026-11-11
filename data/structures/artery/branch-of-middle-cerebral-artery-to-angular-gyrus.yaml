@@ -1,0 +1,44 @@
+slug: branch-of-middle-cerebral-artery-to-angular-gyrus
+kind: artery
+laterality: bilateral
+status: draft
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: branch of middle cerebral artery to angular gyrus
+    source: fma
+    status: draft
+  fr:
+    text: rameau du gyrus angulaire de l'artère cérébrale moyenne
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 50475
+  ta98: A12.2.07.060
+  wikidata: Q66539612
+sides:
+  left:
+    ids:
+      fma: 50477
+      wikidata: Q66539615
+    meshes:
+      - bp3d:FJ1673M
+    labels:
+      en:
+        text: branch of left middle cerebral artery to left angular gyrus
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50476
+      wikidata: Q66539613
+    meshes:
+      - bp3d:FJ1673
+    labels:
+      en:
+        text: branch of right middle cerebral artery to right angular gyrus
+        source: fma
+        status: draft

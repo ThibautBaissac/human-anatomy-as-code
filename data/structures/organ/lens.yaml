@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: lens
+    text: Lens
     source: wikidata
     status: draft
 ids:

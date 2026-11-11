@@ -9,12 +9,16 @@ labels:
     source: fma
     status: draft
   fr:
-    text: torse
-    source: wikidata
+    text: thorax
+    gender: m
+    number: sg
+    source: curated
     status: draft
   la:
-    text: Pectus
-    source: wikidata
+    text: Thorax
+    gender: m
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 9576

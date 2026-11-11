@@ -9,14 +9,16 @@ labels:
     source: fma
     status: draft
   fr:
-    text: appareil digestif humain
+    text: appareil digestif
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
   la:
-    text: Apparatus digestorius humanum
-    source: wikidata
+    text: Apparatus digestorius
+    gender: m
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 7152

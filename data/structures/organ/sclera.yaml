@@ -17,8 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: sclirotica
-    source: wikidata
+    text: Sclera
+    gender: f
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 58269

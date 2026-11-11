@@ -1,6 +1,6 @@
 slug: wall-of-inflow-part-of-left-ventricle
 kind: organ
-laterality: midline
+laterality: unpaired-left
 status: draft
 parent: wall-of-left-ventricle
 regions:

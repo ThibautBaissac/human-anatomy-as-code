@@ -10,7 +10,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Muscle pectiné
+    text: muscle pectiné
     gender: m
     number: sg
     source: wikidata

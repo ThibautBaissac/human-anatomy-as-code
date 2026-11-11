@@ -2,7 +2,7 @@ slug: temporal-bone
 kind: bone
 laterality: bilateral
 status: draft
-parent: viscerocranium
+parent: neurocranium
 systems:
   - skeletal
 labels:
@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Ossa temporalia
+    text: Os temporale
     gender: n
-    number: pl
-    source: wikidata
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 52737

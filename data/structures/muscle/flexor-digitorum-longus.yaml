@@ -10,10 +10,10 @@ labels:
     source: fma
     status: draft
   fr:
-    text: muscle fléchisseur commun des orteils
+    text: muscle long fléchisseur des orteils
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
   la:
     text: Musculus flexor digitorum longus

@@ -11,7 +11,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Tectum
+    text: tectum
     source: wikidata
     status: draft
 ids:

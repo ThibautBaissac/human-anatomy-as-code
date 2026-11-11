@@ -1,6 +1,6 @@
 slug: right-coronary-artery
 kind: artery
-laterality: midline
+laterality: unpaired-right
 status: draft
 parent: systemic-arterial-tree
 systems:
@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: arteria coronaria dextra
+    text: Arteria coronaria dextra
     gender: f
     number: sg
     source: wikidata

@@ -1,0 +1,27 @@
+slug: left-posterior-cusp-of-aortic-valve
+kind: organ
+laterality: unpaired-left
+status: draft
+parent: aortic-valve
+regions:
+  - thorax
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: left posterior cusp of aortic valve
+    source: fma
+    status: draft
+  fr:
+    text: valvule coronaire gauche de la valve aortique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 7254
+  ta2: 3996
+  ta98: A12.1.04.014
+  wikidata: Q66502856
+meshes:
+  - bp3d:FJ2426

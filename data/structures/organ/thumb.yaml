@@ -16,7 +16,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: pollex
+    text: Pollex
     source: wikidata
     status: draft
 ids:

@@ -1,6 +1,6 @@
 slug: outflow-part-of-left-ventricle
 kind: organ
-laterality: midline
+laterality: unpaired-left
 status: draft
 parent: left-ventricle
 regions:

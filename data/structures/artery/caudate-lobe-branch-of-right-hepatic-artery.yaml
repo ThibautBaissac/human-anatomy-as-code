@@ -1,0 +1,26 @@
+slug: caudate-lobe-branch-of-right-hepatic-artery
+kind: artery
+laterality: unpaired-right
+status: draft
+parent: right-hepatic-artery
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: caudate lobe branch of right hepatic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère droite du lobe caudé
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 70447
+  ta2: 4231
+  ta98: A12.2.12.032
+  wikidata: Q66568415
+meshes:
+  - bp3d:FJ1916
+  - bp3d:FJ2386

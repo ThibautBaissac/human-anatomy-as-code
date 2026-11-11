@@ -1,0 +1,37 @@
+slug: branch-of-anterior-choroidal-artery-to-posterior-limb-of-internal-capsule
+kind: artery
+laterality: bilateral
+status: draft
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: branch of anterior choroidal artery to posterior limb of internal capsule
+    source: fma
+    status: draft
+ids:
+  fma: 50119
+  wikidata: Q66539313
+sides:
+  left:
+    ids:
+      fma: 50147
+      wikidata: Q66539342
+    meshes:
+      - bp3d:FJ1674M
+    labels:
+      en:
+        text: branch of left anterior choroidal artery to posterior limb of left internal capsule
+        source: fma
+        status: draft
+  right:
+    ids:
+      fma: 50146
+      wikidata: Q66539341
+    meshes:
+      - bp3d:FJ1674
+    labels:
+      en:
+        text: branch of right anterior choroidal artery to posterior limb of right internal capsule
+        source: fma
+        status: draft

@@ -1,0 +1,25 @@
+slug: left-anterior-cusp-of-pulmonary-valve
+kind: organ
+laterality: unpaired-left
+status: draft
+parent: pulmonary-valve
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: left anterior cusp of pulmonary valve
+    source: fma
+    status: draft
+  fr:
+    text: valvule semi-lunaire antérieure de la valve du tronc pulmonaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 7247
+  ta2: 4012
+  ta98: A12.1.02.013
+  wikidata: Q66502849
+meshes:
+  - bp3d:FJ2417

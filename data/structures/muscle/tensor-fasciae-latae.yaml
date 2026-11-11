@@ -1,0 +1,41 @@
+slug: tensor-fasciae-latae
+kind: muscle
+laterality: bilateral
+status: draft
+systems:
+  - muscular
+labels:
+  en:
+    text: tensor fasciae latae
+    source: fma
+    status: draft
+  fr:
+    text: muscle tenseur du fascia lata
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus tensor fasciae latae
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 22423
+  ta2: 2602
+  ta98: A04.7.02.010
+  wikidata: Q1429453
+sides:
+  left:
+    ids:
+      fma: 22426
+      wikidata: Q66514485
+    meshes:
+      - bp3d:FJ1438M
+  right:
+    ids:
+      fma: 22425
+      wikidata: Q66514484
+    meshes:
+      - bp3d:FJ1438

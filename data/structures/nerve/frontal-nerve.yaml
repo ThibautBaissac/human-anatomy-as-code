@@ -10,7 +10,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Nerf frontal
+    text: nerf frontal
     gender: m
     number: sg
     source: wikidata

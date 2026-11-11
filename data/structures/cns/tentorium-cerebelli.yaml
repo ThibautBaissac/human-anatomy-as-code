@@ -10,7 +10,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Tente du cervelet
+    text: tente du cervelet
     source: wikidata
     status: draft
 ids:

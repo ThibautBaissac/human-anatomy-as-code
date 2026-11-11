@@ -63,10 +63,10 @@ test('without a BodyParts3D canonical concept, ids and labels come from the Wiki
   assert.equal(s['upper-limb'].ids!.fma, 7183);
 });
 
-test('pairs on the no-fold list stay two structures', () => {
+test('pairs on the no-fold list stay two structures, each unpaired on the side its name gives', () => {
   const s = compiled(runImport().dataDir);
-  assert.equal(s['left-atrium'].laterality, 'midline');
-  assert.equal(s['right-atrium'].laterality, 'midline');
+  assert.equal(s['left-atrium'].laterality, 'unpaired-left');
+  assert.equal(s['right-atrium'].laterality, 'unpaired-right');
   assert.equal(s.atrium, undefined);
 });
 
@@ -103,22 +103,38 @@ test('a missing side label is added to an existing draft file, an existing one i
   assert.equal(readFileSync(file, 'utf8'), text);
 });
 
-test('a side word inside the name with only one side keeps the full name, midline', () => {
+test('a side word inside the name with only one side keeps the full name and is unpaired on that side', () => {
   const s = compiled(runImport().dataDir);
-  assert.equal(s['superior-lobe-of-left-lung'].laterality, 'midline');
+  assert.equal(s['superior-lobe-of-left-lung'].laterality, 'unpaired-left');
+});
+
+test('a name that gives the same side twice folds; its side keeps the FMA name', () => {
+  const s = compiled(runImport().dataDir);
+  const b = s['branch-of-middle-cerebral-artery-to-angular-gyrus'];
+  assert.equal(b.laterality, 'bilateral');
+  assert.deepEqual(b.sides!.left.meshes, ['bp3d:FJ1660M']);
+  assert.equal(b.sides!.right.labels.en, 'branch of right middle cerebral artery to right angular gyrus');
+});
+
+test('without a side word, laterality comes from the geometry: wholly on one side is unpaired, across the median plane is midline', () => {
+  const s = compiled(runImport().dataDir);
+  assert.equal(s.spleen.laterality, 'unpaired-left');
+  assert.equal(s.stomach.laterality, 'midline');
+  assert.equal(s['external-oblique'].laterality, 'midline'); // no geometry: midline
+  assert.equal(compiled(runImport(undefined, { ...OVERRIDES, laterality: { spleen: 'midline' } }).dataDir).spleen.laterality, 'midline');
 });
 
 test('the no-fold list also applies as a suffix after "of"', () => {
   const s = compiled(runImport().dataDir);
-  assert.equal(s['anterior-wall-of-left-ventricle'].laterality, 'midline');
-  assert.equal(s['anterior-wall-of-right-ventricle'].laterality, 'midline');
+  assert.equal(s['anterior-wall-of-left-ventricle'].laterality, 'unpaired-left');
+  assert.equal(s['anterior-wall-of-right-ventricle'].laterality, 'unpaired-right');
   assert.equal(s['anterior-wall-of-ventricle'], undefined);
 });
 
 test('every mesh has exactly one owner; groups own the fragments no specific concept claims', () => {
   const { dataDir, report } = runImport();
   const { atlas } = compileAtlas(dataDir);
-  assert.equal(Object.keys(atlas!.meshIndex).length, 26);
+  assert.equal(Object.keys(atlas!.meshIndex).length, 30);
   assert.deepEqual(report.unownedMeshes, []);
   const s = compiled(dataDir);
   assert.deepEqual(s['body-wall'].meshes, ['bp3d:FJ9001', 'bp3d:FJ9002']);
@@ -146,6 +162,31 @@ test('an explicit tie override wins over the rules', () => {
   const s = compiled(dataDir);
   assert.deepEqual(s.integument.meshes, ['bp3d:FJ2810']);
   assert.equal(s.skin, undefined);
+});
+
+test('a tie may give a mesh to a concept BodyParts3D does not list for it: a mesh filed under the wrong side', () => {
+  const s = compiled(runImport(undefined, { ...OVERRIDES, ties: { FJ3259: 'FMA24475', FJ3259M: 'FMA24474' } }).dataDir);
+  assert.deepEqual(s.femur.sides!.left.meshes, ['bp3d:FJ3259']);
+  assert.deepEqual(s.femur.sides!.right.meshes, ['bp3d:FJ3259M']);
+});
+
+test('an excluded mesh belongs to no structure and is not reported as unowned', () => {
+  const { dataDir, report } = runImport(undefined, { ...OVERRIDES, excludeMeshes: ['FJ9003'] });
+  const s = compiled(dataDir);
+  assert.equal(s['external-oblique'].meshes, undefined);
+  assert.deepEqual(report.unownedMeshes, []);
+});
+
+test('parent, kind and id overrides replace the computed values; null removes an id', () => {
+  const s = compiled(runImport(undefined, {
+    ...OVERRIDES,
+    parents: { femur: 'human-body' },
+    kinds: { 'external-oblique': 'fascia' },
+    ids: { femur: { ta98: 'A02.5.04.999', wikidata: null } },
+  }).dataDir);
+  assert.equal(s.femur.parent, 'human-body');
+  assert.equal(s['external-oblique'].kind, 'fascia');
+  assert.deepEqual(s.femur.ids, { fma: 9611, ta2: 1360, ta98: 'A02.5.04.999' });
 });
 
 test('abstract is-a classes without a mesh of their own are not structures', () => {
@@ -234,6 +275,16 @@ test('a reviewed label is never touched, a draft label is refreshed, a missing l
   assert.equal(s.femur.labels.fr!.text, 'fémur (relu)');
   assert.equal(s.femur.labels.fr!.status, 'reviewed');
   assert.equal(s.femur.labels.la!.text, 'Os femoris');
+});
+
+test('a label a curator rewrote (source curated) is never overwritten, even in draft', () => {
+  const { dataDir } = runImport();
+  const file = join(dataDir, 'structures/bone/femur.yaml');
+  writeFileSync(file, readFileSync(file, 'utf8').replace(/text: Os femoris\n(\s+)gender: n\n\s+number: sg\n\s+source: wikidata/, 'text: Os femoris (corrigé)\n$1gender: n\n$1number: sg\n$1source: curated'));
+  runImport(dataDir);
+  const la = compiled(dataDir).femur.labels.la!;
+  assert.equal(la.text, 'Os femoris (corrigé)');
+  assert.equal(la.source, 'curated');
 });
 
 test('a reviewed structure keeps its fields; only missing labels are added', () => {

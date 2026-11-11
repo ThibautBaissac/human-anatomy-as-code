@@ -19,7 +19,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: musculus rhomboideus major
+    text: Musculus rhomboideus major
     gender: m
     number: sg
     source: wikidata

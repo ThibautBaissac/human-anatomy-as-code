@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: colon transversum
+    text: Colon transversum
     gender: n
     number: sg
     source: wikidata

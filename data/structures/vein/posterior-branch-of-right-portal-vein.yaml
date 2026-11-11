@@ -1,8 +1,8 @@
 slug: posterior-branch-of-right-portal-vein
 kind: vein
-laterality: midline
+laterality: unpaired-right
 status: draft
-parent: portal-vein
+parent: right-portal-vein
 systems:
   - cardiovascular
 labels:

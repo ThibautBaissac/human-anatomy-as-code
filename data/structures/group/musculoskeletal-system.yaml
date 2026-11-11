@@ -9,16 +9,16 @@ labels:
     source: fma
     status: draft
   fr:
-    text: appareil locomoteur humain
+    text: appareil locomoteur
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
   la:
-    text: Systema musculosceletalis humanum
+    text: Systema musculoskeletale
     gender: n
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 7482

@@ -19,7 +19,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: cerebellum
+    text: Cerebellum
     gender: n
     number: sg
     source: wikidata

@@ -32,10 +32,10 @@ sides:
       fma: 37389
       wikidata: Q66526733
     meshes:
-      - bp3d:FJ1469
+      - bp3d:FJ1469M
   right:
     ids:
       fma: 37388
       wikidata: Q66526732
     meshes:
-      - bp3d:FJ1469M
+      - bp3d:FJ1469

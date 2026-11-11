@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: colon descendens
+    text: Colon descendens
     gender: n
     number: sg
     source: wikidata

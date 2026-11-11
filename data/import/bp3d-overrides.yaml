@@ -14,12 +14,39 @@ noFold:
   - hepatic duct
   - hepatic vein
   - lobe of liver
+  - liver                       # foie droit / foie gauche : secteurs hépatiques distincts (II à gauche, VI-VII à droite)
+  - portal vein                 # branches droite et gauche de la veine porte
+  - hepatic artery              # artères hépatiques droite et gauche
+  - gastro-epiploic artery      # gastro-omentales droite (gastroduodénale) et gauche (splénique)
+  - gastroepiploic vein
+  - marginal vein               # veines marginales droite et gauche du cœur
+  - aortic valve                # valvules semi-lunaires : chacune est une structure propre
+  - pulmonary valve
 
-# Fichier mesh → concept propriétaire, quand la règle d'égalité se trompe.
-ties: {}
+# Fichier mesh → concept propriétaire, quand la règle d'égalité se trompe ou quand BodyParts3D
+# range un mesh sous le mauvais concept (contrôlé sur la géométrie : le gauche du sujet est en x > 0).
+ties:
+  # côtés inversés dans BodyParts3D : le mesh « gauche » est à droite du sujet, et inversement
+  FJ1469: FMA37388              # right flexor pollicis brevis (x = -272)
+  FJ1469M: FMA37389             # left flexor pollicis brevis (x = +272)
+  FJ2754: FMA46633              # right middle pharyngeal constrictor (x = -11)
+  FJ2742: FMA46634              # left middle pharyngeal constrictor (x = +10)
+  FJ1735: FMA73461              # brachium of right superior colliculus (x = -11)
+  FJ1736: FMA73462              # brachium of left superior colliculus (x = +9)
+  FJ3493: FMA4843               # right ascending lumbar vein (x = -18)
+  FJ3589: FMA4950               # left ascending lumbar vein (x = +20)
+  # rangé sous « right fibular vein » mais dans la cuisse gauche (z 540-718) : miroir exact de FJ2192, veine perforante
+  FJ2190: FMA70922              # set of perforating veins
+
+# Meshes rattachés à aucune structure : BodyParts3D les range sous un concept qu'ils ne sont pas,
+# et leur identité réelle est inconnue.
+excludeMeshes:
+  - FJ2041                      # « right anterior segmental artery » : sous le poumon (z 1015-1050, base du lobe inférieur à 1134), contre la surrénale
+  - FJ2044
 
 # Nom anglais canonique → slug imposé.
-slugs: {}
+slugs:
+  set of heterogeneous clusters: short-ciliary-nerves   # nom FMA générique du concept : ce sont les nerfs ciliaires courts
 
 # Slug → systèmes, à la place des systèmes déduits (nom, kind, ancêtres) : structures
 # maillées que les règles laissent sans système, donc jamais masquées par le filtre.
@@ -29,6 +56,30 @@ systems:
   occipital-part-of-head: [integumentary]     # surface cutanée de l'occiput
   parenchyma: [digestive, endocrine]          # parenchyme du pancréas, comme le pancréas
   pterygomandibular-raphe: [muscular]         # raphé entre buccinateur et constricteur supérieur du pharynx
-  set-of-heterogeneous-clusters: [nervous]    # nerfs ciliaires courts : du ganglion ciliaire au globe oculaire
+  short-ciliary-nerves: [nervous]             # du ganglion ciliaire au globe oculaire
   wall-of-ventricle: [cardiovascular]         # paroi ventriculaire du cœur
   xiphoid-process: [skeletal]                 # partie du sternum
+
+# Slug → latéralité, à la place de celle que donnent le nom et la géométrie.
+laterality:
+  tentorium-cerebelli: midline  # cloison médiane ; BodyParts3D n'en modélise que la moitié droite
+
+# Slug → kind, à la place de celui que donnent les noms.
+kinds:
+  short-ciliary-nerves: nerve
+
+# Slug → parent, à la place du parent part-of de BodyParts3D.
+parents:
+  temporal-bone: neurocranium   # TA : os du neurocrâne, pas du viscérocrâne
+  sphenoid-bone: neurocranium
+  ethmoid: neurocranium
+  cerebral-arterial-circle: systemic-arterial-tree  # le cercle n'est pas une partie de la carotide interne
+
+# Slug → identifiants externes corrigés (null retire la clé) : erreurs de Wikidata.
+ids:
+  sartorius: { ta98: A04.7.02.016 }             # Wikidata lui donne le code du carré fémoral
+  right-conus-artery: { ta98: A12.2.03.103 }    # A12.2.03.203 est le rameau du cône de l'interventriculaire antérieure
+  bony-pelvis: { ta2: null, ta98: A02.5.02.001, wikidata: null }  # Wikidata rattache le FMA du bassin osseux à l'os coxal
+  telencephalon: { ta2: null }                  # TA2 5416 est le prosencéphale
+  external-nose: { ta2: null }                  # TA2 117 est le nez
+

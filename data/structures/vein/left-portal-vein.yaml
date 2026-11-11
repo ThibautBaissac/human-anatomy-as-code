@@ -1,0 +1,25 @@
+slug: left-portal-vein
+kind: vein
+laterality: unpaired-left
+status: draft
+parent: left-lobe-of-liver
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: left portal vein
+    source: fma
+    status: draft
+  fr:
+    text: rameau gauche de la veine porte hépatique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15415
+  ta2: 5097
+  wikidata: Q66511992
+meshes:
+  - bp3d:FJ1893
+  - bp3d:FJ2404

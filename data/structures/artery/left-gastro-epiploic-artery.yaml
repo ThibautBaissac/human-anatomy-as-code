@@ -1,0 +1,30 @@
+slug: left-gastro-epiploic-artery
+kind: artery
+laterality: unpaired-left
+status: draft
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: left gastro-epiploic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère gastro-omentale gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Arteria gastroomentalis sinistra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14796
+  ta2: 4248
+  ta98: A12.2.12.047
+  wikidata: Q707204
+meshes:
+  - bp3d:FJ3501

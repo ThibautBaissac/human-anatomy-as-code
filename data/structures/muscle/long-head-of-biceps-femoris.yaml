@@ -16,10 +16,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: caput longum biceps femoris
+    text: Caput longum musculi bicipitis femoris
     gender: n
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 45887

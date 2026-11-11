@@ -11,10 +11,10 @@ labels:
     source: fma
     status: draft
   fr:
-    text: lobule fusiforme
+    text: gyrus fusiforme
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 61908

@@ -11,10 +11,10 @@ labels:
     source: fma
     status: draft
   fr:
-    text: veine postérieure du poumon droit
+    text: veine segmentaire postérieure
     gender: f
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 13443

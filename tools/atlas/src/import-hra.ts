@@ -6,7 +6,7 @@ import { NodeIO } from '@gltf-transform/core';
 import { parse, type Document, type YAMLMap } from 'yaml';
 import { readWikidata, type Wikidata, type WikidataRow } from './import/wikidata.ts';
 import { meshNodeNames, organCandidates, readCrosswalk, type Candidate, type CandidateOverrides, type IdDivergence } from './import/hra-candidates.ts';
-import { genderOf, kindOfName, lowerFirst, slugify, TA98_PATTERN } from './import/rules.ts';
+import { cleanLabel, genderOf, kindOfName, lowerFirst, slugify, TA98_PATTERN } from './import/rules.ts';
 import { applyPlan, type ApplyReport, type Patch } from './import/apply-plan.ts';
 import { canonicalStructure, setOrdered, KEY_ORDER } from './import/yaml-merge.ts';
 import { listYaml } from './fs-util.ts';
@@ -123,7 +123,7 @@ export async function importHra({ hraDir, filesList, wikidataCsv, dataDir, overr
   const rowFor = (ids: Ids): WikidataRow | undefined => (ids.fma ? wd.byFma.get(ids.fma) : undefined) ?? (ids.uberon ? wd.byUberon.get(ids.uberon) : undefined);
   const labelFrom = (text: string | undefined, lang: 'fr' | 'la', strip: boolean) => {
     if (!text) return undefined;
-    const t = strip ? text.replace(lang === 'fr' ? SIDE_FR : SIDE_LA, '').trim() : text;
+    const t = cleanLabel(strip ? text.replace(lang === 'fr' ? SIDE_FR : SIDE_LA, '').trim() : text, lang);
     return { text: t, ...(genderOf(t, lang) ?? {}), source: 'wikidata', status: 'draft' as const };
   };
   /** fr/la names from a Wikidata item; its TA2, TA98 and QID join the root ids when the item is the whole structure. */

@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: glandula adrenalis
+    text: Glandula adrenalis
     gender: f
     number: sg
     source: wikidata

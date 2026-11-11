@@ -1,6 +1,6 @@
 slug: cystic-duct
 kind: organ
-laterality: midline
+laterality: unpaired-right
 status: draft
 parent: biliary-tree
 systems:
@@ -11,7 +11,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Conduit cystique
+    text: conduit cystique
     gender: m
     number: sg
     source: wikidata

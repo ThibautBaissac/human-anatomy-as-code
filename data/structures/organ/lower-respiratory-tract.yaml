@@ -11,8 +11,10 @@ labels:
     source: fma
     status: draft
   fr:
-    text: arbre bronchique
-    source: wikidata
+    text: voies respiratoires inférieures
+    gender: f
+    number: pl
+    source: curated
     status: draft
 ids:
   fma: 45662

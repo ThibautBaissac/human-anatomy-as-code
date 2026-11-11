@@ -1,6 +1,6 @@
 slug: appendicular-artery
 kind: artery
-laterality: midline
+laterality: unpaired-right
 status: draft
 parent: inferior-branch-of-ileocolic-artery
 systems:
@@ -11,7 +11,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Artère appendiculaire
+    text: artère appendiculaire
     gender: f
     number: sg
     source: wikidata

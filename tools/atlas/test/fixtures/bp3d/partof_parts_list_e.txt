@@ -15,16 +15,20 @@ FMA37689	BP12	long head of right biceps brachii
 FMA37690	BP13	long head of left biceps brachii
 FMA3941	BP14	right common carotid artery
 FMA4058	BP15	left common carotid artery
-FMA5028	BP16	right lymphatic duct
-FMA70247	BP17	right femoral artery
-FMA70248	BP18	left femoral artery
-FMA7088	BP19	heart
-FMA7096	BP20	right atrium
-FMA7097	BP21	left atrium
-FMA7184	BP22	lower limb
-FMA7185	BP23	right upper limb
-FMA7186	BP24	left upper limb
-FMA7333	BP25	superior lobe of left lung
-FMA9300	BP26	anterior wall of left ventricle
-FMA9301	BP27	anterior wall of right ventricle
-FMA9576	BP28	thorax
+FMA50001	BP16	branch of left middle cerebral artery to left angular gyrus
+FMA50002	BP17	branch of right middle cerebral artery to right angular gyrus
+FMA5028	BP18	right lymphatic duct
+FMA70247	BP19	right femoral artery
+FMA70248	BP20	left femoral artery
+FMA7088	BP21	heart
+FMA7096	BP22	right atrium
+FMA7097	BP23	left atrium
+FMA7148	BP24	stomach
+FMA7184	BP25	lower limb
+FMA7185	BP26	right upper limb
+FMA7186	BP27	left upper limb
+FMA7196	BP28	spleen
+FMA7333	BP29	superior lobe of left lung
+FMA9300	BP30	anterior wall of left ventricle
+FMA9301	BP31	anterior wall of right ventricle
+FMA9576	BP32	thorax

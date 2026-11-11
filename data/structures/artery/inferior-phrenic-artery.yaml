@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Arteriae phrenicae inferiores
+    text: Arteria phrenica inferior
     gender: f
-    number: pl
-    source: wikidata
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 14734

@@ -1,0 +1,30 @@
+slug: left-gastroepiploic-vein
+kind: vein
+laterality: unpaired-left
+status: draft
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: left gastroepiploic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine gastro-épiploïque gauche
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena gastroomentalis sinistra vena gastroepiploica sinistra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15390
+  ta2: 5126
+  ta98: A12.3.12.031
+  wikidata: Q6381103
+meshes:
+  - bp3d:FJ3502

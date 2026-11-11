@@ -11,7 +11,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Jéjunum
+    text: jéjunum
     gender: m
     number: sg
     source: wikidata

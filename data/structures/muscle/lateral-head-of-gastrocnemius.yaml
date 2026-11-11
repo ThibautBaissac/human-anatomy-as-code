@@ -16,7 +16,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: caput laterale musculi gastrocnemii
+    text: Caput laterale musculi gastrocnemii
     gender: n
     number: sg
     source: wikidata

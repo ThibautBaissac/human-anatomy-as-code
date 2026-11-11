@@ -1,8 +1,8 @@
 slug: hepatovenous-segment-ii
 kind: vein
-laterality: midline
+laterality: unpaired-left
 status: draft
-parent: posterior-sector-of-liver
+parent: posterior-sector-of-left-liver
 systems:
   - cardiovascular
 labels:

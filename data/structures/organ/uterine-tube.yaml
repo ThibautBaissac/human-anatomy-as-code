@@ -12,8 +12,10 @@ labels:
     source: hra
     status: draft
   fr:
-    text: trompes de Fallope
-    source: wikidata
+    text: trompe utérine
+    gender: f
+    number: sg
+    source: curated
     status: draft
   la:
     text: Tuba uterina

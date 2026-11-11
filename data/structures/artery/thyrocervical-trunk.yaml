@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: truncus thyrocervicalis
+    text: Truncus thyrocervicalis
     gender: m
     number: sg
     source: wikidata

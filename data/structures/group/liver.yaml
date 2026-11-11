@@ -17,8 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: iecur
-    source: wikidata
+    text: Hepar
+    gender: n
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 7197

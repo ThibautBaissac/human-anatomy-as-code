@@ -1,8 +1,8 @@
 slug: lateral-branch-of-left-portal-vein
 kind: vein
-laterality: midline
+laterality: unpaired-left
 status: draft
-parent: portal-vein
+parent: left-portal-vein
 systems:
   - cardiovascular
 labels:

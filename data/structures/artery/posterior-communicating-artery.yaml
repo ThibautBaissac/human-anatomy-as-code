@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Arteria cerebri communicans posterior
+    text: Arteria communicans posterior
     gender: f
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 50084

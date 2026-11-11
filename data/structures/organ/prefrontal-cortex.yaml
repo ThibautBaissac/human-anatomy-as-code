@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Os praefrontale
-    gender: n
+    text: Cortex praefrontalis
+    gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 224850

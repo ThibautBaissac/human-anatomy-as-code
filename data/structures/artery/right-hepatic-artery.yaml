@@ -1,0 +1,23 @@
+slug: right-hepatic-artery
+kind: artery
+laterality: unpaired-right
+status: draft
+parent: right-lobe-of-liver
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: right hepatic artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau droit de l'artère hépatique propre
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14778
+  ta2: 4229
+  ta98: A12.2.12.030
+  wikidata: Q66510804

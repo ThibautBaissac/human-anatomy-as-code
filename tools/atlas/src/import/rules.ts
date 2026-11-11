@@ -9,10 +9,13 @@ export { SYSTEMS, type System };
  * ("anterior tibial artery", "dorsal metacarpal arteries", "radial nerve").
  */
 export const KIND_RULES: [string, RegExp][] = [
+  // a muscle named after the fascia it tenses
+  ['muscle', /tensor fasciae latae/],
   ['skin', /^skin$|integument/],
   ['cartilage', /cartilage|intervertebral dis[ck]|symphysis|meniscus/],
   ['fascia', /fascia|aponeurosis|retinaculum|iliotibial tract/],
-  ['ligament', /ligament/],
+  // interosseous membranes are fibrous joints between two bones, not interosseous muscles
+  ['ligament', /ligament|interosseous membrane/],
   ['tendon', /tendon/],
   ['joint', /\bjoint\b|articulation/],
   ['artery', /arter|aorta|arterial/],
@@ -20,11 +23,11 @@ export const KIND_RULES: [string, RegExp][] = [
   ['lymphatic', /lymph/],
   // whole names: their is-a ancestors ("organ with cortex and medulla") would make them CNS
   ['organ', /^((left|right) )?(kidney|spleen|(adrenal|suprarenal) gland)$/],
-  ['cns', /brain|cerebr|cerebell|spinal cord|gyrus|sulcus|thalam|colliculus|pons|medulla|ventricle of brain|lateral ventricle/],
+  ['cns', /brain|amygdal|cerebr|cerebell|spinal cord|gyrus|sulcus|thalam|colliculus|pons|medulla|ventricle of brain|lateral ventricle/],
   ['nerve', /nerve|ganglion|plexus/],
   // bone names as whole words: "tibialis", "ulnaris", "fibularis", "scapulae" are muscles
   ['bone', /\bbone\b|vertebra|phalanx|cranium|\b(femur|tibia|fibula|humerus|radius|ulna|sternum|skull|mandible|maxilla|patella|scapula|clavicle|pelvis|sacrum|coccyx|tooth|calcaneus|talus)\b|\brib\b|carpal|tarsal/],
-  ['muscle', /muscle|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps|extensor|flexor|abductor|adductor|pronator|supinator|tibialis|fibularis|peroneus|subscapularis|longissimus|iliocostalis|spinalis|splenius|serratus|psoas|coccygeus|longus capitis|longus colli|trapezius|interspinales|intertransversarii/],
+  ['muscle', /muscle|pectoralis|\bhead of\b.*(biceps|triceps)|inteross|lumbrical|levator|rectus|oblique|sphincter|platysma|biceps|triceps|extensor|flexor|abductor|adductor|pronator|supinator|tibialis|fibularis|peroneus|subscapularis|longissimus|iliocostalis|spinalis|splenius|serratus|psoas|coccygeus|longus capitis|longus colli|trapezius|interspinales|intertransversarii/],
 ];
 
 /** First letter in lower case ("Left ovary" → "left ovary"). */
@@ -157,14 +160,37 @@ export const SIDE_PREFIX = /^(left|right) (.+)$/;
 
 /**
  * The side word of a lateralised name and the canonical name without it.
- * Only a name with exactly one "left" or "right" as a whole word qualifies.
+ * A name qualifies when all its "left" or "right" whole words name the same side
+ * ("branch of left middle cerebral artery to left angular gyrus"); a name with both does not.
  */
-export function splitSide(name: string): { side: 'left' | 'right'; canonical: string; prefix: boolean } | undefined {
+export function splitSide(name: string): { side: 'left' | 'right'; canonical: string } | undefined {
   const words = name.split(' ');
   const at = words.flatMap((w, i) => (w === 'left' || w === 'right' ? [i] : []));
-  if (at.length !== 1) return undefined;
-  const i = at[0];
-  return { side: words[i] as 'left' | 'right', canonical: words.filter((_, k) => k !== i).join(' '), prefix: i === 0 };
+  if (!at.length || at.some((i) => words[i] !== words[at[0]])) return undefined;
+  return { side: words[at[0]] as 'left' | 'right', canonical: words.filter((_, k) => !at.includes(k)).join(' ') };
+}
+
+/**
+ * Laterality of a structure that is not folded: the side its name gives, otherwise its geometry
+ * (x extent of its meshes and of its descendants' meshes, subject's left = +x). A structure that
+ * stays more than `MIDLINE_MARGIN_MM` on one side of the median plane is unpaired on that side.
+ */
+export const MIDLINE_MARGIN_MM = 2;
+export function lateralityOf(name: string, extent: [number, number] | undefined): 'midline' | 'unpaired-left' | 'unpaired-right' {
+  const split = splitSide(name);
+  if (split) return split.side === 'left' ? 'unpaired-left' : 'unpaired-right';
+  if (extent && extent[0] > MIDLINE_MARGIN_MM) return 'unpaired-left';
+  if (extent && extent[1] < -MIDLINE_MARGIN_MM) return 'unpaired-right';
+  return 'midline';
+}
+
+/**
+ * A Wikidata label made fit for the atlas: no disambiguation suffix ("Vomer (anatomia)"),
+ * French as a common noun (lower-case first letter), Latin as in Terminologia Anatomica (capital first letter).
+ */
+export function cleanLabel(text: string, lang: 'fr' | 'la'): string {
+  const t = text.replace(/\s*\([^()]*\)\s*$/, '').replace(/\s+/g, ' ').trim();
+  return lang === 'fr' ? lowerFirst(t) : t ? t[0].toUpperCase() + t.slice(1) : t;
 }
 
 /** A canonical name on the no-fold list, as itself or as the tail after "of" ("wall of ventricle"). */

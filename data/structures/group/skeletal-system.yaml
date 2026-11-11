@@ -9,16 +9,16 @@ labels:
     source: fma
     status: draft
   fr:
-    text: squelette humain
+    text: squelette
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
   la:
-    text: Ossa humanum
+    text: Systema skeletale
     gender: n
-    number: pl
-    source: wikidata
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 23881

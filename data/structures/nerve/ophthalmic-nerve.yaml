@@ -16,8 +16,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: N Ophthalmicus
-    source: wikidata
+    text: Nervus ophthalmicus
+    gender: m
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 52621

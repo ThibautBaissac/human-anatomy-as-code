@@ -15,7 +15,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: membrum inferius
+    text: Membrum inferius
     source: wikidata
     status: draft
 ids:

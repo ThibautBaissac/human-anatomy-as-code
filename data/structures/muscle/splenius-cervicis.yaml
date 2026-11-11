@@ -10,7 +10,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Muscle splénius du cou
+    text: muscle splénius du cou
     gender: m
     number: sg
     source: wikidata

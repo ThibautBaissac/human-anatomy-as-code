@@ -9,10 +9,10 @@ labels:
     source: fma
     status: draft
   fr:
-    text: système reproductif humain
+    text: appareil génital
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
   la:
     text: Systemata genitalia

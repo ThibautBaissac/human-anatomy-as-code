@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Vesica
+    text: Vesica urinaria
     gender: f
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 15900

@@ -1,0 +1,17 @@
+slug: trunk-of-left-portal-vein
+kind: vein
+laterality: unpaired-left
+status: draft
+parent: left-portal-vein
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: trunk of left portal vein
+    source: fma
+    status: draft
+ids:
+  fma: 82697
+  wikidata: Q66589501
+meshes:
+  - bp3d:FJ3102

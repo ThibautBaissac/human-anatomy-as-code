@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: truncus coeliacus
+    text: Truncus coeliacus
     gender: m
     number: sg
     source: wikidata

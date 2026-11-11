@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Venae suprarenales
+    text: Vena suprarenalis
     gender: f
-    number: pl
-    source: wikidata
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 14348

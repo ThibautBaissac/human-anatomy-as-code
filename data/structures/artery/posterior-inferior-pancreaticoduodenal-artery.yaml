@@ -1,6 +1,6 @@
 slug: posterior-inferior-pancreaticoduodenal-artery
 kind: artery
-laterality: midline
+laterality: unpaired-right
 status: draft
 systems:
   - cardiovascular
@@ -10,10 +10,10 @@ labels:
     source: fma
     status: draft
   fr:
-    text: rameau inférieur de l'artère pancréatico-duodénale inférieure
+    text: rameau postérieur de l'artère pancréatico-duodénale inférieure
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 70480

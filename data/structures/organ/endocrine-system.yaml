@@ -15,7 +15,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: systema endocrinum
+    text: Systema endocrinum
     gender: n
     number: sg
     source: wikidata

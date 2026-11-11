@@ -1,0 +1,33 @@
+slug: left-marginal-vein
+kind: vein
+laterality: unpaired-left
+status: draft
+parent: coronary-sinus-tree
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: left marginal vein
+    source: fma
+    status: draft
+  fr:
+    text: veine marginale gauche du cœur
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena marginalis sinistra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4708
+  ta2: 4161
+  ta98: A12.3.01.005
+  wikidata: Q6516978
+meshes:
+  - bp3d:FJ2703
+  - bp3d:FJ2704
+  - bp3d:FJ2705

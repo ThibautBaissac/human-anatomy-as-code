@@ -2,7 +2,7 @@ slug: medial-segmental-hepatic-artery
 kind: artery
 laterality: midline
 status: draft
-parent: hepatic-artery
+parent: left-hepatic-artery
 systems:
   - cardiovascular
 labels:

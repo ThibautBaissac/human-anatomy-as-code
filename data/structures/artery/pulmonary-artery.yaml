@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Truncus pulmonalis arteria pulmonalis
-    gender: m
+    text: Arteria pulmonalis
+    gender: f
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 66326

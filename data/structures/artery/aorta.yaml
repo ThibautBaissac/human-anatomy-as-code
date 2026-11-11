@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Aorta arteria maxima
+    text: Aorta
     gender: f
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 3734

@@ -9,8 +9,16 @@ labels:
     source: fma
     status: draft
   fr:
-    text: colonne vertébrale humaine
-    source: wikidata
+    text: colonne vertébrale
+    gender: f
+    number: sg
+    source: curated
+    status: draft
+  la:
+    text: Columna vertebralis
+    gender: f
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 13478

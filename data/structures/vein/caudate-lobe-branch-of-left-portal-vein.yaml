@@ -1,0 +1,24 @@
+slug: caudate-lobe-branch-of-left-portal-vein
+kind: vein
+laterality: unpaired-left
+status: draft
+parent: left-portal-vein
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: caudate lobe branch of left portal vein
+    source: fma
+    status: draft
+  fr:
+    text: rameau du lobe caudé
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15425
+  ta2: 5099
+  wikidata: Q66512012
+meshes:
+  - bp3d:FJ3124

@@ -11,16 +11,16 @@ labels:
     source: fma
     status: draft
   fr:
-    text: cerveau humain
+    text: encéphale
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
   la:
-    text: Encephalon humanum
+    text: Encephalon
     gender: n
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 50801

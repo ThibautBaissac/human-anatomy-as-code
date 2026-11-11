@@ -16,8 +16,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Cervix
-    source: wikidata
+    text: Cervix uteri
+    gender: f
+    number: sg
+    source: curated
     status: draft
 ids:
   ta2: 3508

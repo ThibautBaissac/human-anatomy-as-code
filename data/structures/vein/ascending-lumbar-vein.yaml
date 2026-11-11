@@ -30,10 +30,10 @@ sides:
       fma: 4950
       wikidata: Q66501813
     meshes:
-      - bp3d:FJ3493
+      - bp3d:FJ3589
   right:
     ids:
       fma: 4843
       wikidata: Q66501713
     meshes:
-      - bp3d:FJ3589
+      - bp3d:FJ3493

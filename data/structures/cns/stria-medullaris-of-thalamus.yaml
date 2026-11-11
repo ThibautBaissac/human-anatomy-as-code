@@ -10,7 +10,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Strie médullaire
+    text: strie médullaire
     source: wikidata
     status: draft
 ids:

@@ -16,8 +16,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: longissimus thoracis
-    source: wikidata
+    text: Musculus longissimus thoracis
+    gender: m
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 22709

@@ -11,14 +11,16 @@ labels:
     source: fma
     status: draft
   fr:
-    text: peau humaine
+    text: peau
     gender: f
     number: sg
-    source: wikidata
+    source: curated
     status: draft
   la:
-    text: Cutis humanum
-    source: wikidata
+    text: Cutis
+    gender: f
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 7163

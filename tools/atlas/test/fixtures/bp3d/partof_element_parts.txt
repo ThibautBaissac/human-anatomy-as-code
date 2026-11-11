@@ -8,6 +8,8 @@ FMA20394	human body	FJ1234
 FMA20394	human body	FJ1234M
 FMA20394	human body	FJ1300
 FMA20394	human body	FJ1300M
+FMA20394	human body	FJ1660
+FMA20394	human body	FJ1660M
 FMA20394	human body	FJ2420
 FMA20394	human body	FJ2421
 FMA20394	human body	FJ2430
@@ -25,6 +27,8 @@ FMA20394	human body	FJ7101
 FMA20394	human body	FJ7101M
 FMA20394	human body	FJ7102
 FMA20394	human body	FJ7102M
+FMA20394	human body	FJ8001
+FMA20394	human body	FJ8002
 FMA20394	human body	FJ9001
 FMA20394	human body	FJ9002
 FMA20394	human body	FJ9003
@@ -47,6 +51,8 @@ FMA3941	right common carotid artery	FJ7102
 FMA4058	left common carotid artery	FJ7001M
 FMA4058	left common carotid artery	FJ7101M
 FMA4058	left common carotid artery	FJ7102M
+FMA50001	branch of left middle cerebral artery to left angular gyrus	FJ1660M
+FMA50002	branch of right middle cerebral artery to right angular gyrus	FJ1660
 FMA5028	right lymphatic duct	FJ4001
 FMA70247	right femoral artery	FJ3001
 FMA70248	left femoral artery	FJ3001M
@@ -56,6 +62,7 @@ FMA7088	heart	FJ2430
 FMA7088	heart	FJ2431
 FMA7096	right atrium	FJ2421
 FMA7097	left atrium	FJ2420
+FMA7148	stomach	FJ8002
 FMA7184	lower limb	FJ3001
 FMA7184	lower limb	FJ3001M
 FMA7184	lower limb	FJ3259
@@ -64,9 +71,12 @@ FMA7185	right upper limb	FJ1234
 FMA7185	right upper limb	FJ1300
 FMA7186	left upper limb	FJ1234M
 FMA7186	left upper limb	FJ1300M
+FMA7196	spleen	FJ8001
 FMA7333	superior lobe of left lung	FJ4100
 FMA9300	anterior wall of left ventricle	FJ2430
 FMA9301	anterior wall of right ventricle	FJ2431
+FMA9576	thorax	FJ1660
+FMA9576	thorax	FJ1660M
 FMA9576	thorax	FJ2420
 FMA9576	thorax	FJ2421
 FMA9576	thorax	FJ2430
@@ -79,3 +89,5 @@ FMA9576	thorax	FJ7101
 FMA9576	thorax	FJ7101M
 FMA9576	thorax	FJ7102
 FMA9576	thorax	FJ7102M
+FMA9576	thorax	FJ8001
+FMA9576	thorax	FJ8002

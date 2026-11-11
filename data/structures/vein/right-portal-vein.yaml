@@ -1,0 +1,25 @@
+slug: right-portal-vein
+kind: vein
+laterality: unpaired-right
+status: draft
+parent: liver
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: right portal vein
+    source: fma
+    status: draft
+  fr:
+    text: rameau droit de la veine porte hépatique
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15414
+  ta2: 5094
+  wikidata: Q66511991
+meshes:
+  - bp3d:FJ1913
+  - bp3d:FJ2405

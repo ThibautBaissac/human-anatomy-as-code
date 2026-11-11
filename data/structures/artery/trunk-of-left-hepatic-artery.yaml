@@ -1,0 +1,17 @@
+slug: trunk-of-left-hepatic-artery
+kind: artery
+laterality: unpaired-left
+status: draft
+parent: left-hepatic-artery
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: trunk of left hepatic artery
+    source: fma
+    status: draft
+ids:
+  fma: 70457
+  wikidata: Q66568424
+meshes:
+  - bp3d:FJ3095

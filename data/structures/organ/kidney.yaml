@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: ren
+    text: Ren
     gender: m
     number: sg
     source: wikidata

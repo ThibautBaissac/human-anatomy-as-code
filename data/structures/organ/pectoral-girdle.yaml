@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Cingulum membri superiores
+    text: Cingulum membri superioris
     gender: n
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 23217

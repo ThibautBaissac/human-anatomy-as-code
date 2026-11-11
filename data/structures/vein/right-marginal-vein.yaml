@@ -1,0 +1,33 @@
+slug: right-marginal-vein
+kind: vein
+laterality: unpaired-right
+status: draft
+parent: side-of-heart
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: right marginal vein
+    source: fma
+    status: draft
+  fr:
+    text: veine marginale droite du cœur
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena marginalis dextra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 4716
+  ta2: 4167
+  ta98: A12.3.01.011
+  wikidata: Q7333621
+meshes:
+  - bp3d:FJ2727
+  - bp3d:FJ2728
+  - bp3d:FJ2729

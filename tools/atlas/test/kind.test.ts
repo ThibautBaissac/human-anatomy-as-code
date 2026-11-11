@@ -49,3 +49,11 @@ test('parts of the trapezius, interspinales and intertransversarii are muscles',
   for (const name of ['ascending part of trapezius', 'descending part of trapezius', 'set of interspinales cervicis', 'set of interspinales lumborum',
     'set of anterior cervical intertransversarii', 'set of posterior cervical intertransversarii']) assert.equal(kindOfName(name), 'muscle', name);
 });
+
+test('kind exceptions: a muscle named after a fascia, interosseous membranes, the amygdala, the pectoralis major', () => {
+  assert.equal(kindOfName('tensor fasciae latae'), 'muscle');
+  assert.equal(kindOfName('interosseous membrane of forearm'), 'ligament');
+  assert.equal(kindOfName('dorsal interosseous of hand'), 'muscle');
+  assert.equal(kindOfName('amygdala'), 'cns');
+  assert.equal(kindOfName('pectoralis major'), 'muscle');
+});

@@ -19,10 +19,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Musculus pterygoideus externus"
+    text: Musculus rectus lateralis bulbi
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 49038

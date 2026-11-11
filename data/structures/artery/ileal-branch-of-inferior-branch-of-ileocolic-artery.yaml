@@ -1,6 +1,6 @@
 slug: ileal-branch-of-inferior-branch-of-ileocolic-artery
 kind: artery
-laterality: midline
+laterality: unpaired-right
 status: draft
 parent: inferior-branch-of-ileocolic-artery
 systems:
@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Rami ilealis arteriae ileocolicae
+    text: Ramus ilealis arteriae ileocolicae
     gender: m
-    number: pl
-    source: wikidata
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 14819

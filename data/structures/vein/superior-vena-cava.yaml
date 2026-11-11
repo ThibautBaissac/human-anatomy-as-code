@@ -1,6 +1,6 @@
 slug: superior-vena-cava
 kind: vein
-laterality: midline
+laterality: unpaired-right
 status: draft
 parent: superior-systemic-venous-tree
 systems:
@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: vena cava superior
+    text: Vena cava superior
     gender: f
     number: sg
     source: wikidata

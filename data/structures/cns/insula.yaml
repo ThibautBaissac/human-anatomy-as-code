@@ -11,13 +11,13 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Cortex insulaire
+    text: cortex insulaire
     gender: m
     number: sg
     source: wikidata
     status: draft
   la:
-    text: insula
+    text: Insula
     source: wikidata
     status: draft
 ids:

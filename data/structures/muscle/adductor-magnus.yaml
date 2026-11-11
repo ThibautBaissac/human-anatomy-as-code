@@ -10,10 +10,10 @@ labels:
     source: fma
     status: draft
   fr:
-    text: muscle troisième adducteur
+    text: muscle grand adducteur
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
   la:
     text: Musculus adductor magnus

@@ -12,7 +12,7 @@ labels:
     source: hra
     status: draft
   fr:
-    text: Ligament de Mackenrodt
+    text: ligament de Mackenrodt
     gender: m
     number: sg
     source: wikidata

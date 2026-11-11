@@ -14,15 +14,19 @@ FMA24895	right arm	FMA37689	long head of right biceps brachii
 FMA24896	left arm	FMA37690	long head of left biceps brachii
 FMA9576	thorax	FMA3941	right common carotid artery
 FMA9576	thorax	FMA4058	left common carotid artery
+FMA9576	thorax	FMA50001	branch of left middle cerebral artery to left angular gyrus
+FMA9576	thorax	FMA50002	branch of right middle cerebral artery to right angular gyrus
 FMA9576	thorax	FMA5028	right lymphatic duct
 FMA24980	right lower limb	FMA70247	right femoral artery
 FMA24981	left lower limb	FMA70248	left femoral artery
 FMA9576	thorax	FMA7088	heart
 FMA7088	heart	FMA7096	right atrium
 FMA7088	heart	FMA7097	left atrium
+FMA9576	thorax	FMA7148	stomach
 FMA20394	human body	FMA7184	lower limb
 FMA20394	human body	FMA7185	right upper limb
 FMA20394	human body	FMA7186	left upper limb
+FMA9576	thorax	FMA7196	spleen
 FMA9576	thorax	FMA7333	superior lobe of left lung
 FMA7088	heart	FMA9300	anterior wall of left ventricle
 FMA7088	heart	FMA9301	anterior wall of right ventricle

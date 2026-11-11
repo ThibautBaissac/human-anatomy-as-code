@@ -15,8 +15,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Epidydimis
-    source: wikidata
+    text: Epididymis
+    gender: f
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 18255

@@ -1,0 +1,23 @@
+slug: left-hepatic-artery
+kind: artery
+laterality: unpaired-left
+status: draft
+parent: left-lobe-of-liver
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: left hepatic artery
+    source: fma
+    status: draft
+  fr:
+    text: rameau gauche de l'artère hépatique propre
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 14779
+  ta2: 4234
+  ta98: A12.2.12.035
+  wikidata: Q66510808

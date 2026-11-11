@@ -15,8 +15,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Articulatio radiocarpea
-    source: wikidata
+    text: Carpus
+    gender: m
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 24922

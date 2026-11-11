@@ -17,8 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: brachium humanum
-    source: wikidata
+    text: Pars libera membri superioris
+    gender: f
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 24878

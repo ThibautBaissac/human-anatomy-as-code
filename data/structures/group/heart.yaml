@@ -13,16 +13,16 @@ labels:
     source: fma
     status: draft
   fr:
-    text: cœur humain
+    text: cœur
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
   la:
-    text: cor humanus
+    text: Cor
     gender: n
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 7088

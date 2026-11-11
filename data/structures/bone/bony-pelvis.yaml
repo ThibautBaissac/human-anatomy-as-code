@@ -13,19 +13,17 @@ labels:
     source: fma
     status: draft
   fr:
-    text: os coxal
+    text: bassin osseux
     gender: m
     number: sg
-    source: wikidata
+    source: curated
     status: draft
   la:
-    text: Os coxae
-    gender: n
+    text: Pelvis
+    gender: f
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 16580
-  ta2: 1307
-  ta98: A02.5.01.001
-  wikidata: Q3356933
+  ta98: A02.5.02.001

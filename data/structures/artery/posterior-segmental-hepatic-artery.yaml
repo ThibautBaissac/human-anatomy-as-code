@@ -1,8 +1,8 @@
 slug: posterior-segmental-hepatic-artery
 kind: artery
-laterality: midline
+laterality: unpaired-right
 status: draft
-parent: hepatic-artery
+parent: right-hepatic-artery
 systems:
   - cardiovascular
 labels:

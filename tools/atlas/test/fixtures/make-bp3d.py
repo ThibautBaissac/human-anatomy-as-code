@@ -37,6 +37,12 @@ partof = {  # concept: (name, part-of parent or None)
  # side word inside the name, on the no-fold list as a suffix ("... of ventricle"): stays apart
  'FMA9300': ('anterior wall of left ventricle', 'FMA7088'),
  'FMA9301': ('anterior wall of right ventricle', 'FMA7088'),
+ # side words naming the same side twice: fold
+ 'FMA50001': ('branch of left middle cerebral artery to left angular gyrus', 'FMA9576'),
+ 'FMA50002': ('branch of right middle cerebral artery to right angular gyrus', 'FMA9576'),
+ # laterality from geometry (OBJ files below): wholly on the left, across the median plane
+ 'FMA7196': ('spleen', 'FMA9576'),
+ 'FMA7148': ('stomach', 'FMA9576'),
  # canonical is-a concept owning one trunk mesh per side (common carotid artery)
  'FMA4058': ('left common carotid artery', 'FMA9576'),
  'FMA3941': ('right common carotid artery', 'FMA9576'),
@@ -56,6 +62,10 @@ own = {  # concept: meshes listed for it in its own right (part-of tree)
  'FMA12519': ['FJ5001'],
  'FMA37690': ['FJ1300M'], 'FMA37689': ['FJ1300'], 'FMA9300': ['FJ2430'], 'FMA9301': ['FJ2431'],
  'FMA4058': ['FJ7001M', 'FJ7101M', 'FJ7102M'], 'FMA3941': ['FJ7001', 'FJ7101', 'FJ7102'],
+ 'FMA50001': ['FJ1660M'], 'FMA50002': ['FJ1660'], 'FMA7196': ['FJ8001'], 'FMA7148': ['FJ8002'],
+}
+objs = {  # mesh: x of its vertices (subject's left = +x)
+ 'FJ8001': [60, 110], 'FJ8002': [-20, 80],
 }
 children = {}
 for c, (_, p) in partof.items():
@@ -84,3 +94,8 @@ w('isa_inclusion_relation_list.txt', ['parent id', 'parent name', 'child id', 'c
   [(p, isa[p][0], c, n) for c, (n, ps) in sorted(isa.items()) for p in ps])
 w('partof_element_parts.txt', ['concept id', 'name', 'element file id'], [(c, partof[c][0], fj) for c in sorted(el_partof) for fj in sorted(el_partof[c])])
 w('isa_element_parts.txt', ['concept id', 'name', 'element file id'], [(c, isa[c][0], fj) for c in sorted(el_isa) for fj in sorted(el_isa[c])])
+import os
+os.makedirs('bp3d/obj_partof/fixture', exist_ok=True)
+for fj, xs in objs.items():
+    with open(f'bp3d/obj_partof/fixture/{fj}.obj', 'w') as f:
+        f.write(f'# {fj}\n' + ''.join(f'v {x} 0 1000\n' for x in xs) + 'f 1 2 1\n')

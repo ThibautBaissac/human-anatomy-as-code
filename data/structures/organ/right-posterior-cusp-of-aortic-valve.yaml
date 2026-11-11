@@ -1,0 +1,27 @@
+slug: right-posterior-cusp-of-aortic-valve
+kind: organ
+laterality: unpaired-right
+status: draft
+parent: aortic-valve
+regions:
+  - thorax
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: right posterior cusp of aortic valve
+    source: fma
+    status: draft
+  fr:
+    text: valvule semi-lunaire postérieure de la valve aortique
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 7252
+  ta2: 3997
+  ta98: A12.1.04.015
+  wikidata: Q66502854
+meshes:
+  - bp3d:FJ2431

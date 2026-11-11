@@ -16,7 +16,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Vena tibialis anterior (singular)
+    text: Vena tibialis anterior
     gender: f
     number: sg
     source: wikidata

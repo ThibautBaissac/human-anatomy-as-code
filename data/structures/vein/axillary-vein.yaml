@@ -16,7 +16,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: vena axillaris
+    text: Vena axillaris
     gender: f
     number: sg
     source: wikidata

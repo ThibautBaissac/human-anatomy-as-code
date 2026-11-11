@@ -15,7 +15,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: os
+    text: Os
     gender: n
     number: sg
     source: wikidata

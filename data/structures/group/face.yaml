@@ -15,7 +15,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: facies
+    text: Facies
     gender: f
     number: sg
     source: wikidata

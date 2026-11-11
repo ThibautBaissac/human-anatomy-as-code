@@ -13,12 +13,16 @@ labels:
     source: fma
     status: draft
   fr:
-    text: nez humain
-    source: wikidata
+    text: nez
+    gender: m
+    number: sg
+    source: curated
     status: draft
   la:
-    text: Nasus humanum
-    source: wikidata
+    text: Nasus
+    gender: m
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 46472

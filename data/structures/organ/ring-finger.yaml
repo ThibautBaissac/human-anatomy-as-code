@@ -16,8 +16,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Anularius
-    source: wikidata
+    text: Digitus anularis
+    gender: m
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 24948

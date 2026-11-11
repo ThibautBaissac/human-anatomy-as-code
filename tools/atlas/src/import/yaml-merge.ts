@@ -79,7 +79,8 @@ export function mergeLabels(doc: Document, root: YAMLMap, planned: Labels, onlyM
     if (!p) continue;
     const cur = labels.get(lang, true);
     if (!isMap(cur)) { setOrdered(doc, labels, lang, p, LANG_ORDER); continue; }
-    if (onlyMissing || cur.get('status') === 'reviewed') continue;
+    // A reviewed label, or one written by someone else than the import (a curator's correction), is never changed.
+    if (onlyMissing || cur.get('status') === 'reviewed' || cur.get('source') !== p.source) continue;
     const label = cur as YAMLMap;
     for (const key of COMPUTED_LABEL_KEYS) setOrdered(doc, label, key, p[key], LABEL_KEY_ORDER);
     if (p.gender) setOrdered(doc, label, 'gender', p.gender, LABEL_KEY_ORDER);

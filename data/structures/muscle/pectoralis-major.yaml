@@ -1,0 +1,40 @@
+slug: pectoralis-major
+kind: muscle
+laterality: bilateral
+status: draft
+parent: superficial-chest-wall
+regions:
+  - thorax
+systems:
+  - muscular
+labels:
+  en:
+    text: pectoralis major
+    source: fma
+    status: draft
+  fr:
+    text: muscle grand pectoral
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Musculus pectoralis major
+    gender: m
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 9627
+  ta2: 2301
+  ta98: A04.4.01.002
+  wikidata: Q532798
+sides:
+  left:
+    ids:
+      fma: 13374
+      wikidata: Q66508053
+  right:
+    ids:
+      fma: 13373
+      wikidata: Q66508052

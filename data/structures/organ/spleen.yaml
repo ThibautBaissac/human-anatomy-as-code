@@ -1,6 +1,6 @@
 slug: spleen
 kind: organ
-laterality: midline
+laterality: unpaired-left
 status: draft
 systems:
   - lymphatic
@@ -16,7 +16,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: lien
+    text: Lien
     source: wikidata
     status: draft
 ids:

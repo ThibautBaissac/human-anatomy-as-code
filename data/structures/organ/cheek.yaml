@@ -15,10 +15,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: mala
+    text: Bucca
     gender: f
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 46476

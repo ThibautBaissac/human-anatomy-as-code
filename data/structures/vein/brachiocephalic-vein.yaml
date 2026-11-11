@@ -17,10 +17,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Vena brachiocephalica vena anonyma
+    text: Vena brachiocephalica
     gender: f
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 4723

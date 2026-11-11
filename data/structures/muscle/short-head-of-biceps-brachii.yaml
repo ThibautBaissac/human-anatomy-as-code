@@ -16,10 +16,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: caput breve biceps brachii
+    text: Caput breve musculi bicipitis brachii
     gender: n
     number: sg
-    source: wikidata
+    source: curated
     status: draft
 ids:
   fma: 37682

@@ -2,7 +2,7 @@ slug: hepatovenous-segment-iv
 kind: vein
 laterality: midline
 status: draft
-parent: anterior-sector-of-liver
+parent: anterior-sector-of-left-liver
 systems:
   - cardiovascular
 labels:

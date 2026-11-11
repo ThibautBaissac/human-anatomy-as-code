@@ -16,10 +16,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: Cartilagines arytaenoideae
+    text: Cartilago arytenoidea
     gender: f
-    number: pl
-    source: wikidata
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 55109

@@ -2,7 +2,7 @@ slug: ethmoid
 kind: bone
 laterality: midline
 status: draft
-parent: viscerocranium
+parent: neurocranium
 systems:
   - skeletal
 labels:

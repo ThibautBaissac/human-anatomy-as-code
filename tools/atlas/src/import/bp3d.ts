@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 export interface Bp3d {
@@ -14,6 +14,8 @@ export interface Bp3d {
   isaParents: Map<string, string[]>;
   /** concepts that have is-a children */
   isaHasChildren: Set<string>;
+  /** mesh file id → [min x, max x] of its vertices (subject's left = +x), when the OBJ files are present */
+  extents: Map<string, [number, number]>;
 }
 
 function readTsv(path: string): Record<string, string>[] {
@@ -47,7 +49,30 @@ export function readBp3d(dir: string): Bp3d {
     isaParents.set(r['child id'], [...(isaParents.get(r['child id']) ?? []), r['parent id']]);
     isaHasChildren.add(r['parent id']);
   }
-  return { names, elements, partof, partofParent, isaParents, isaHasChildren };
+  return { names, elements, partof, partofParent, isaParents, isaHasChildren, extents: readExtents(dir) };
+}
+
+/** x extent of every OBJ file under the extracted archives (obj_partof/…, obj_isa/…); empty without them. */
+export function readExtents(dir: string): Map<string, [number, number]> {
+  const out = new Map<string, [number, number]>();
+  const walk = (d: string) => {
+    for (const e of readdirSync(d, { withFileTypes: true })) {
+      const p = join(d, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.name.endsWith('.obj') && !out.has(e.name.slice(0, -4))) {
+        let min = Infinity, max = -Infinity;
+        for (const line of readFileSync(p, 'utf8').split('\n')) {
+          if (!line.startsWith('v ')) continue;
+          const x = Number(line.split(/\s+/)[1]);
+          if (x < min) min = x;
+          if (x > max) max = x;
+        }
+        if (min <= max) out.set(e.name.slice(0, -4), [min, max]);
+      }
+    }
+  };
+  for (const sub of ['obj_partof', 'obj_isa']) if (existsSync(join(dir, sub))) walk(join(dir, sub));
+  return out;
 }
 
 export const fmaNumber = (concept: string): number => Number(concept.replace(/^FMA/, ''));

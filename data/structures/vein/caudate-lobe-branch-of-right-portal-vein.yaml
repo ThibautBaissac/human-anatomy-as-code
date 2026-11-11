@@ -1,0 +1,17 @@
+slug: caudate-lobe-branch-of-right-portal-vein
+kind: vein
+laterality: unpaired-right
+status: draft
+parent: right-portal-vein
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: caudate lobe branch of right portal vein
+    source: fma
+    status: draft
+ids:
+  fma: 82706
+  wikidata: Q66589506
+meshes:
+  - bp3d:FJ1914

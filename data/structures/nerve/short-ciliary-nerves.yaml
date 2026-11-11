@@ -1,0 +1,31 @@
+slug: short-ciliary-nerves
+kind: nerve
+laterality: midline
+status: draft
+systems:
+  - nervous
+aliases:
+  - set-of-heterogeneous-clusters
+labels:
+  en:
+    text: short ciliary nerves
+    source: curated
+    status: draft
+  fr:
+    text: nerfs ciliaires courts
+    gender: m
+    number: pl
+    source: curated
+    status: draft
+  la:
+    text: Nervi ciliares breves
+    gender: m
+    number: pl
+    source: curated
+    status: draft
+ids:
+  fma: 78590
+  wikidata: Q66576455
+meshes:
+  - bp3d:FJ1319
+  - bp3d:FJ1370

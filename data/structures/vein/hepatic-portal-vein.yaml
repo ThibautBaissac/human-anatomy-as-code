@@ -1,6 +1,6 @@
 slug: hepatic-portal-vein
 kind: vein
-laterality: midline
+laterality: unpaired-right
 status: draft
 parent: portal-venous-tree
 systems:
@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: vena portae hepatis
+    text: Vena portae hepatis
     gender: f
     number: sg
     source: wikidata

@@ -34,10 +34,10 @@ sides:
       fma: 46634
       wikidata: Q66536635
     meshes:
-      - bp3d:FJ2754
+      - bp3d:FJ2742
   right:
     ids:
       fma: 46633
       wikidata: Q66536634
     meshes:
-      - bp3d:FJ2742
+      - bp3d:FJ2754

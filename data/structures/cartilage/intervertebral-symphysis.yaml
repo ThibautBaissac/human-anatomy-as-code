@@ -11,7 +11,7 @@ labels:
     source: fma
     status: draft
   la:
-    text: symphysis intervertebralis
+    text: Symphysis intervertebralis
     source: wikidata
     status: draft
 ids:

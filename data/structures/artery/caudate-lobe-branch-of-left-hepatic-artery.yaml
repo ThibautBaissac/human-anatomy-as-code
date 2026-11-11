@@ -1,0 +1,25 @@
+slug: caudate-lobe-branch-of-left-hepatic-artery
+kind: artery
+laterality: unpaired-left
+status: draft
+parent: left-hepatic-artery
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: caudate lobe branch of left hepatic artery
+    source: fma
+    status: draft
+  fr:
+    text: artère gauche du lobe caudé
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 70455
+  ta2: 4235
+  ta98: A12.2.12.036
+  wikidata: Q66568422
+meshes:
+  - bp3d:FJ3077

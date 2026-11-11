@@ -17,7 +17,7 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: os zygomaticum
+    text: Os zygomaticum
     gender: n
     number: sg
     source: wikidata

@@ -1,0 +1,30 @@
+slug: right-gastroepiploic-vein
+kind: vein
+laterality: unpaired-right
+status: draft
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: right gastroepiploic vein
+    source: fma
+    status: draft
+  fr:
+    text: veine gastro-épiploïque droite
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+  la:
+    text: Vena gastroomentalis dextra
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 15397
+  ta2: 5116
+  ta98: A12.3.12.021
+  wikidata: Q4115374
+meshes:
+  - bp3d:FJ3597

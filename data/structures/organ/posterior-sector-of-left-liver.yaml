@@ -1,0 +1,15 @@
+slug: posterior-sector-of-left-liver
+kind: organ
+laterality: unpaired-left
+status: draft
+parent: hemiliver
+systems:
+  - digestive
+labels:
+  en:
+    text: posterior sector of left liver
+    source: fma
+    status: draft
+ids:
+  fma: 15751
+  wikidata: Q66512456

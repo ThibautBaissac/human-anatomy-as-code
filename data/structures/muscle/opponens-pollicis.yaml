@@ -10,7 +10,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: Muscle opposant du pouce
+    text: muscle opposant du pouce
     gender: m
     number: sg
     source: wikidata

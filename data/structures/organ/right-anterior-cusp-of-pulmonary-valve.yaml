@@ -1,0 +1,25 @@
+slug: right-anterior-cusp-of-pulmonary-valve
+kind: organ
+laterality: unpaired-right
+status: draft
+parent: pulmonary-valve
+systems:
+  - cardiovascular
+labels:
+  en:
+    text: right anterior cusp of pulmonary valve
+    source: fma
+    status: draft
+  fr:
+    text: valvule semi-lunaire droite de la valve du tronc pulmonaire
+    gender: f
+    number: sg
+    source: wikidata
+    status: draft
+ids:
+  fma: 7249
+  ta2: 4010
+  ta98: A12.1.02.011
+  wikidata: Q66502851
+meshes:
+  - bp3d:FJ2434

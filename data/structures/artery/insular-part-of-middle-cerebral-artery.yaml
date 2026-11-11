@@ -10,7 +10,7 @@ labels:
     source: fma
     status: draft
   fr:
-    text: partie insulaire de l'artère  cérébrale moyenne
+    text: partie insulaire de l'artère cérébrale moyenne
     gender: f
     number: sg
     source: wikidata

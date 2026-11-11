@@ -16,8 +16,10 @@ labels:
     source: wikidata
     status: draft
   la:
-    text: labrum
-    source: wikidata
+    text: Labium
+    gender: n
+    number: sg
+    source: curated
     status: draft
 ids:
   fma: 59816
