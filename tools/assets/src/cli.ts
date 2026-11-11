@@ -37,7 +37,11 @@ try {
   const hra = hraDir && importDir ? { dir: hraDir, filesList: join(importDir, 'hra-files.yaml'), registration: join(importDir, 'hra-registration.yaml') } : undefined;
   // the same rig warning comes once per model: print it once
   const warned = new Set<string>();
-  const manifest = await buildAssets({ atlases, objDir, hra, outDir, onWarning: (w) => { if (!warned.has(w)) { warned.add(w); console.warn(`avertissement : ${w}`); } } });
+  const manifest = await buildAssets({
+    atlases, objDir, hra, outDir,
+    onWarning: (w) => { if (!warned.has(w)) { warned.add(w); console.warn(`avertissement : ${w}`); } },
+    onRefined: (r) => console.log(`subdivision : ${r.meshes} meshes facettés, ${r.trianglesBefore} → ${r.trianglesAfter} triangles (+${r.trianglesAfter - r.trianglesBefore})`),
+  });
   for (const [kind, k] of Object.entries(manifest.kinds)) {
     console.log(`${kind.padEnd(16)} ${String(k.instances).padStart(5)} instances ${(k.bytes / 1e6).toFixed(1).padStart(6)} MB`);
   }

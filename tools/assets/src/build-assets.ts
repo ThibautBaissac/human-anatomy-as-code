@@ -8,6 +8,7 @@ import { cmp, fileOf, listInstances, type AtlasInput, type Instance } from './in
 import { loadGeometry, type HraInput } from './geometry.ts';
 import { encodeGlbs } from './glb.ts';
 import { rigsOf } from './rigs.ts';
+import { needsRefine, refine } from './refine.ts';
 
 export { listInstances, type AtlasInput, type Instance } from './instances.ts';
 export type { HraInput } from './geometry.ts';
@@ -30,9 +31,13 @@ export interface BuildOptions {
   simplify?: { above: number; target: number };
   /** build warnings (a muscle role its length change contradicts) */
   onWarning?: (message: string) => void;
+  /** faceted meshes of the refined kinds get one level of Phong tessellation (default true) */
+  refine?: boolean;
+  /** what the refinement did: meshes refined, triangles before and after */
+  onRefined?: (r: { meshes: number; trianglesBefore: number; trianglesAfter: number }) => void;
 }
 
-export async function buildAssets({ atlases, atlas, objDir, hra, outDir, simplify = { above: 60_000, target: 50_000 }, onWarning = () => {} }: BuildOptions): Promise<Manifest> {
+export async function buildAssets({ atlases, atlas, objDir, hra, outDir, simplify = { above: 60_000, target: 50_000 }, onWarning = () => {}, refine: refineOn = true, onRefined = () => {} }: BuildOptions): Promise<Manifest> {
   const models: Record<string, AtlasInput> = atlases ?? { male: atlas! };
   // Instances of every model; identical ones (same name and meshes) are shared.
   const byKey = new Map<string, Instance>();
@@ -45,7 +50,22 @@ export async function buildAssets({ atlases, atlas, objDir, hra, outDir, simplif
   const instances = [...byKey.values()].sort((a, b) => cmp(fileOf(a), fileOf(b)) || cmp(a.name, b.name));
 
   const geometry = await loadGeometry(instances.flatMap((i) => i.meshes), { objDir, hra, simplify });
-  const outputs = await encodeGlbs(instances, geometry);
+  // What is drawn: faceted meshes refined. The rigs keep the source geometry (joint fits and muscle lengths unchanged).
+  const display = new Map(geometry);
+  let refined = 0, before = 0, after = 0;
+  if (refineOn) {
+    for (const i of instances) {
+      for (const m of i.meshes) {
+        const g = geometry.get(m)!;
+        if (display.get(m) !== g || !needsRefine(i.kind, g)) continue;
+        const r = refine(g);
+        display.set(m, r);
+        refined++; before += g.indices.length / 3; after += r.indices.length / 3;
+      }
+    }
+  }
+  onRefined({ meshes: refined, trianglesBefore: before, trianglesAfter: after });
+  const outputs = await encodeGlbs(instances, display);
 
   // Content-addressed names: a file changes name exactly when its content changes.
   const manifest: Manifest = { kinds: {}, models: {}, totalBytes: 0 };

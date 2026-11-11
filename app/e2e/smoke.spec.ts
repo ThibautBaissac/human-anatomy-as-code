@@ -75,7 +75,7 @@ test('in ghost mode, clicks go through the ghosted layers', async ({ page }, inf
   expect(await selected()).not.toBe(top); // something deeper, or nothing — never the ghost
 });
 
-test('performance budget: full load (atlas, GLB, BVH) under 3 s, mean frame under 16.7 ms with panels open (WebGPU)', async ({ page }, info) => {
+test('performance budget: full load (atlas, GLB, BVH) under 4 s, mean frame under 16.7 ms with panels open (WebGPU)', async ({ page }, info) => {
   test.skip(info.project.name !== 'webgpu', 'budget measured on WebGPU only');
   await open(page, '');
   await page.waitForFunction(() => (window as unknown as { __viewer: { pickReadyMs: number } }).__viewer.pickReadyMs > 0);
@@ -90,6 +90,7 @@ test('performance budget: full load (atlas, GLB, BVH) under 3 s, mean frame unde
     return { loadMs: v.loadMs, firstFrameMs: v.firstFrameMs, frameMs: times.reduce((a, b) => a + b, 0) / times.length };
   });
   console.log(`[budget] first frame ${Math.round(firstFrameMs)} ms · pick ready ${Math.round(loadMs)} ms · mean frame ${frameMs.toFixed(2)} ms`);
-  expect(loadMs).toBeLessThan(3000);
+  // 4 s since the refinement of faceted meshes (decisions of spec 2026-11-10-refonte-ui): BVH build grows with the triangles
+  expect(loadMs).toBeLessThan(4000);
   expect(frameMs).toBeLessThan(16.7);
 });

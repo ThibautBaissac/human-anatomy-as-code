@@ -118,3 +118,20 @@ test('a rebuild after one OBJ changed renames only that kind and removes the old
   for (const k of ['artery', 'bone', 'muscle']) assert.equal(after.kinds[k].file, before.kinds[k].file);
   assert.deepEqual(readdirSync(outDir).filter((f) => f.endsWith('.glb')).sort(), Object.values(after.kinds).map((k) => k.file).sort());
 });
+
+test('faceted meshes of the refined kinds are drawn refined (×4 triangles), others as they are; refine: false keeps them all', async () => {
+  const { objDir, outDir } = fixture();
+  let report: { meshes: number; trianglesBefore: number; trianglesAfter: number } | undefined;
+  await buildAssets({ atlas: ATLAS, objDir, outDir, onRefined: (r) => { report = r; } });
+  const m = JSON.parse(readFileSync(join(outDir, 'manifest.json'), 'utf8'));
+  // tetrahedra are as faceted as can be: bone, muscle and organ refined, artery not
+  assert.deepEqual((await readGlb(join(outDir, m.kinds.bone.file))).map((n) => n.triangles), [16, 16]);
+  assert.deepEqual((await readGlb(join(outDir, m.kinds.organ.file))).map((n) => n.triangles), [16]);
+  assert.deepEqual((await readGlb(join(outDir, m.kinds.artery.file))).map((n) => n.triangles), [8, 4]);
+  assert.deepEqual(report, { meshes: 4, trianglesBefore: 16, trianglesAfter: 64 });
+
+  const plain = fixture();
+  await buildAssets({ atlas: ATLAS, objDir: plain.objDir, outDir: plain.outDir, refine: false });
+  const p = JSON.parse(readFileSync(join(plain.outDir, 'manifest.json'), 'utf8'));
+  assert.deepEqual((await readGlb(join(plain.outDir, p.kinds.bone.file))).map((n) => n.triangles), [4, 4]);
+});
