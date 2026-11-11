@@ -199,7 +199,7 @@ const SYSTEM_RULES: [System, RegExp][] = [
   ['lymphatic', /lymph|\bspleen\b|thymus|tonsil/],
   ['nervous', /brain|cerebr|cerebell|spinal cord|corpus callosum|commissure(?! of (lips|eyelids))|fornix|stria terminalis|telencephal|interventricular foramen/],
   ['sensory', /eyeball|\beye\b|ocular|\bretina\b|\blens\b|cornea|\biris\b|sclera|choroid(?! plexus)|ciliar|common tendinous ring|vitreous|conjunctiv|lacrimal|eyelid|auricle of ear|external ear|\bear\b|cochlea|tympan|ossicle|\bincus\b|\bmalleus\b|\bstapes\b|semicircular|labyrinth|olfactory|taste bud/],
-  ['respiratory', /lung|bronch|trache|laryn|pleura|\bnose\b|nasal (cavity|septum|concha|cartilage)|epiglott|glottis|vocal|pharyn|^((thoracic )?diaphragm)$|conus elasticus|thyroid cartilage|cricoid|cricothyroid|thyrohyoid|arytenoid/],
+  ['respiratory', /lung|bronch|trache|laryn|pleura|\bnose\b|nasal (cavity|septum|concha|cartilage)|alar cartilage|epiglott|glottis|vocal|pharyn|^((thoracic )?diaphragm)$|conus elasticus|thyroid cartilage|cricoid|cricothyroid|thyrohyoid|arytenoid/],
   ['digestive', /esophag|oesophag|stomach|(?<!di)gastr(?!ocnemius)|duoden|jejun|\bileum\b|\bileal\b|cecum|caecum|colon\b|mesocolon|rectum|anal canal|\banus\b|liver|hepat|gallbladder|\bbile\b|biliary|pancrea|appendix|intestin|tongue|tooth|teeth|salivary|parotid|submandibular gland|sublingual gland|pharyn|\bmouth\b|oral cavity|\blip\b|palat|peritone|mesenter|omentum|gingiv/],
   ['urinary', /kidney|\brenal\b|ureter|urinary|\bbladder\b|urethr/],
   ['genital', /testis|testic|epididym|deferen|seminal|prostat|penis|penile|scrot|\buter|ovar|fallopian|vagin|vulv|clitor|mammary|breast|spermatic|bulbourethral|labi(um|a) m(aj|in)|nipple|areol|lactiferous/],

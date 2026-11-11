@@ -5,6 +5,8 @@ status: draft
 parent: sternum
 regions:
   - thorax
+systems:
+  - skeletal
 labels:
   en:
     text: xiphoid process

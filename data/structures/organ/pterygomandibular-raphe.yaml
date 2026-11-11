@@ -2,6 +2,8 @@ slug: pterygomandibular-raphe
 kind: organ
 laterality: bilateral
 status: draft
+systems:
+  - muscular
 labels:
   en:
     text: pterygomandibular raphe

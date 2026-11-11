@@ -20,3 +20,15 @@ ties: {}
 
 # Nom anglais canonique → slug imposé.
 slugs: {}
+
+# Slug → systèmes, à la place des systèmes déduits (nom, kind, ancêtres) : structures
+# maillées que les règles laissent sans système, donc jamais masquées par le filtre.
+systems:
+  anatomical-compartment-space: [nervous]     # petit espace au contact des corps mamillaires (3e ventricule)
+  linea-alba: [muscular]                      # aponévrose des muscles de la paroi abdominale
+  occipital-part-of-head: [integumentary]     # surface cutanée de l'occiput
+  parenchyma: [digestive, endocrine]          # parenchyme du pancréas, comme le pancréas
+  pterygomandibular-raphe: [muscular]         # raphé entre buccinateur et constricteur supérieur du pharynx
+  set-of-heterogeneous-clusters: [nervous]    # nerfs ciliaires courts : du ganglion ciliaire au globe oculaire
+  wall-of-ventricle: [cardiovascular]         # paroi ventriculaire du cœur
+  xiphoid-process: [skeletal]                 # partie du sternum

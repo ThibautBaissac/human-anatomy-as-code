@@ -20,3 +20,13 @@ test('an unknown system is a schema error at its pointer', () => {
   assert.equal(atlas, null);
   assert.deepEqual(errors.map(pick), [{ file: HEART, pointer: '/systems/1', rule: 'schema' }]);
 });
+
+test('the real data: every structure that owns a mesh has a system (the system filter could never hide it)', () => {
+  const { atlases, errors } = compileAtlas(new URL('../../../data', import.meta.url).pathname);
+  assert.deepEqual(errors, []);
+  for (const atlas of Object.values(atlases!)) {
+    const owners = new Set(Object.values(atlas.meshIndex).map((m) => m.slug));
+    const without = atlas.structures.filter((s) => owners.has(s.slug) && !(s as { systems?: string[] }).systems?.length).map((s) => s.slug);
+    assert.deepEqual(without, []);
+  }
+});

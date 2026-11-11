@@ -6,7 +6,7 @@ parent: cartilaginous-skeleton-of-external-nose
 regions:
   - head
 systems:
-  - skeletal
+  - respiratory
 labels:
   en:
     text: major alar cartilage

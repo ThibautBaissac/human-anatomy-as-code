@@ -2,6 +2,9 @@ slug: parenchyma
 kind: organ
 laterality: midline
 status: draft
+systems:
+  - digestive
+  - endocrine
 labels:
   en:
     text: parenchyma

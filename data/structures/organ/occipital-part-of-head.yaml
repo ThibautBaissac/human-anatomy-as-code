@@ -5,6 +5,8 @@ status: draft
 parent: head-proper
 regions:
   - head
+systems:
+  - integumentary
 labels:
   en:
     text: occipital part of head

@@ -80,4 +80,7 @@ test('keyword false positives found on the real data', () => {
   assert.deepEqual(of('organ', 'lacrimal gland'), ['sensory']);
   assert.deepEqual(of('organ', 'hard palate'), ['digestive']);
   assert.deepEqual(of('cartilage', 'lateral nasal cartilage'), ['respiratory']);
+  // the alar cartilages belong to the external nose like the other nasal cartilages (not to the skeleton)
+  assert.deepEqual(of('cartilage', 'major alar cartilage'), ['respiratory']);
+  assert.deepEqual(of('cartilage', 'minor alar cartilage'), ['respiratory']);
 });

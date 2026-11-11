@@ -2,6 +2,8 @@ slug: anatomical-compartment-space
 kind: organ
 laterality: midline
 status: draft
+systems:
+  - nervous
 labels:
   en:
     text: anatomical compartment space
