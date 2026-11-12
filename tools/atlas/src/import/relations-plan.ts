@@ -26,6 +26,8 @@ export interface RelationsReport {
   conflicts: { slug: string; type: RelationType; kept: string; planned: string }[];
   /** slugs with a relation from one side to the opposite side (ignored) */
   oppositeSide: string[];
+  /** QIDs of lateralised nerve items ("left X") with no unlateralised item "X": kept as they are */
+  lateralUnresolved: string[];
 }
 
 export interface PlannedRelations { structure?: Relation[]; left?: Relation[]; right?: Relation[] }
@@ -119,10 +121,12 @@ interface Context {
   targets: Map<string, TargetRow>;
   registry: ExternalTargets;
   qidByFma: Map<number, string>;
+  /** lower-cased English label → QID, from the targets snapshot then the registry: how "left X" finds "X" */
+  qidByEn: Map<string, string>;
 }
 
 /** Where rejected rows go: the report for a structure's own rows, nowhere for the rows of a muscle whole. */
-interface Sink { ignore(reason: string, detail: string): void; drop(): void; opposite(): void }
+interface Sink { ignore(reason: string, detail: string): void; drop(): void; opposite(): void; lateral(qid: string): void }
 
 const typeRank = (t: RelationType) => RELATION_TYPES.indexOf(t);
 const byOutput = (a: Relation, b: Relation) => typeRank(a.type) - typeRank(b.type) || byKey(a.target, b.target);
@@ -147,17 +151,25 @@ function places(structures: Structure[]): { byFma: Map<number, Place>; byQid: Ma
 
 function push<K, V>(m: Map<K, V[]>, k: K, v: V) { const l = m.get(k); if (l) l.push(v); else m.set(k, [v]); }
 
+/** Our structure (or side) a Wikidata item maps to, by its QID then its FMA id. */
+function placeOf(ctx: Context, qid: string): Place | undefined {
+  const fma = ctx.targets.get(qid)?.fma;
+  return ctx.byQid.get(qid) ?? (fma ? ctx.byFma.get(fma) : undefined);
+}
+
+const enOf = (ctx: Context, qid: string): string | undefined => ctx.targets.get(qid)?.en ?? ctx.registry[qid]?.labels.en?.text;
+
 /** The relations a subject level gets from the rows on the given FMA ids and QIDs, mapped and checked. */
 function candidatesFrom(ctx: Context, subject: Structure, side: Level, fmaIds: number[], qids: string[], sink: Sink): Candidate[] {
   const out: Candidate[] = [];
-  const accept = (type: RelationType, target: Place | string, source: PlanSource, order: number, detail: string) => {
+  const accept = (type: RelationType, target: Place | string, source: PlanSource, order: number, detail: string, level: Level = side) => {
     const external = typeof target === 'string';
     const slug = external ? target : target.slug;
     if (!external && slug === subject.slug) return sink.ignore('self', detail);
     const problem = kindProblem(type, subject, external ? undefined : ctx.bySlug.get(slug)!.kind);
     if (problem) return sink.ignore('wrong-kind', `${detail} : ${problem.message}`);
     if (!external && side && target.side && target.side !== side) return sink.opposite();
-    out.push({ type, target: slug, source, side, order });
+    out.push({ type, target: slug, source, side: level, order });
   };
   for (const id of fmaIds) {
     for (const e of ctx.fmaOn.get(id) ?? []) {
@@ -180,11 +192,15 @@ function candidatesFrom(ctx: Context, subject: Structure, side: Level, fmaIds: n
         if (subject.kind === 'vein') { sink.ignore('vein-p2286', detail); continue; }
         type = 'arterial-supply';
       } else type = 'innervation';
-      const targetFma = ctx.targets.get(row.target)?.fma;
-      const target = ctx.byQid.get(row.target) ?? (targetFma ? ctx.byFma.get(targetFma) : undefined);
-      if (target) { accept(type, target, 'wikidata', row.order, detail); continue; }
+      const mapped = placeOf(ctx, row.target);
+      if (mapped) { accept(type, mapped, 'wikidata', row.order, detail); continue; }
       if (type !== 'innervation') { sink.drop(); continue; }
-      if (!ctx.targets.get(row.target)?.en && !ctx.registry[row.target]) { sink.ignore('no-label', `${detail} : cible externe sans label anglais`); continue; }
+      // a lateralised nerve item follows the muscle's side: the relation is that of its unlateralised item, on the structure
+      const lateral = /^(?:left|right) (.+)$/i.exec(enOf(ctx, row.target) ?? '');
+      const whole = lateral ? ctx.qidByEn.get(lateral[1].toLowerCase()) : undefined;
+      if (whole) { accept(type, placeOf(ctx, whole) ?? `wikidata:${whole}`, 'wikidata', row.order, `${detail} (→ ${whole})`, null); continue; }
+      if (lateral) sink.lateral(row.target);
+      if (!enOf(ctx, row.target)) { sink.ignore('no-label', `${detail} : cible externe sans label anglais`); continue; }
       accept(type, `wikidata:${row.target}`, 'wikidata', row.order, detail);
     }
   }
@@ -201,7 +217,7 @@ function anchors(s: Structure): { side: Level; fma?: number; qid?: string }[] {
   return out;
 }
 
-const MUTED: Sink = { ignore() {}, drop() {}, opposite() {} };
+const MUTED: Sink = { ignore() {}, drop() {}, opposite() {}, lateral() {} };
 
 /** Relations of `type` inherited from the nearest FMA whole (part-of, up to three levels) that has some. */
 function fromWhole(ctx: Context, subject: Structure, side: Level, fma: number, type: RelationType): Candidate[] {
@@ -274,10 +290,14 @@ export function planRelations(input: RelationsInput): RelationsPlan {
     targets: new Map(input.targets.map((t) => [t.qid, t])),
     registry: input.registry,
     qidByFma: input.qidByFma,
+    qidByEn: new Map(),
   };
+  for (const t of input.targets) if (t.en && !ctx.qidByEn.has(t.en.toLowerCase())) ctx.qidByEn.set(t.en.toLowerCase(), t.qid);
+  for (const [q, e] of Object.entries(input.registry)) { const en = e.labels.en?.text.toLowerCase(); if (en && !ctx.qidByEn.has(en)) ctx.qidByEn.set(en, q); }
 
-  const report: RelationsReport = { ignored: [], dropped: 0, conflicts: [], oppositeSide: [] };
+  const report: RelationsReport = { ignored: [], dropped: 0, conflicts: [], oppositeSide: [], lateralUnresolved: [] };
   const opposite = new Set<string>();
+  const lateral = new Set<string>();
   const relations = new Map<string, PlannedRelations>();
 
   for (const s of input.structures) {
@@ -285,6 +305,7 @@ export function planRelations(input: RelationsInput): RelationsPlan {
       ignore: (reason, detail) => report.ignored.push({ subject: s.slug, reason, detail }),
       drop: () => { report.dropped++; },
       opposite: () => opposite.add(s.slug),
+      lateral: (qid) => lateral.add(qid),
     };
     let cands = anchors(s).flatMap((a) => candidatesFrom(ctx, s, a.side, a.fma ? [a.fma] : [], a.qid ? [a.qid] : [], sink));
 
@@ -346,13 +367,14 @@ export function planRelations(input: RelationsInput): RelationsPlan {
     if (Object.keys(out).length) relations.set(s.slug, out);
   }
   report.oppositeSide = [...opposite].sort(byKey);
+  report.lateralUnresolved = [...lateral].sort((a, b) => qidNumber(a) - qidNumber(b));
 
   return { relations, registry: plannedRegistry(input, relations), report };
 }
 
 const qidNumber = (q: string) => Number(q.slice(1));
 
-/** The registry with an entry, refreshed from the snapshot, for every external target in use; reviewed entries untouched. */
+/** The registry with an entry, refreshed from the snapshot, for every external target in use; reviewed entries and protected labels untouched. */
 function plannedRegistry(input: RelationsInput, relations: Map<string, PlannedRelations>): ExternalTargets {
   const registry: ExternalTargets = { ...input.registry };
   const targets = new Map(input.targets.map((t) => [t.qid, t]));
@@ -362,7 +384,13 @@ function plannedRegistry(input: RelationsInput, relations: Map<string, PlannedRe
     const row = targets.get(q);
     if (registry[q]?.status === 'reviewed' || !row?.en) continue;
     const labels: Labels = {};
-    for (const lang of ['en', 'fr', 'la'] as const) { const text = row[lang]; if (text) labels[lang] = { text, source: 'wikidata', status: 'draft' }; }
+    for (const lang of ['en', 'fr', 'la'] as const) {
+      // as for structures, a reviewed label or one a curator wrote is never changed
+      const kept = registry[q]?.labels[lang];
+      if (kept && (kept.status === 'reviewed' || kept.source !== 'wikidata')) { labels[lang] = kept; continue; }
+      const text = row[lang];
+      if (text) labels[lang] = { text, source: 'wikidata', status: 'draft' };
+    }
     const entry: ExternalTarget = { ...(row.fma ? { fma: row.fma } : {}), labels, source: 'wikidata', status: 'draft' };
     registry[q] = entry;
   }

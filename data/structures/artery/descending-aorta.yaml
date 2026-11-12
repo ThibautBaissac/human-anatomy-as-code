@@ -30,7 +30,7 @@ ids:
 meshes:
   - bp3d:FJ3427
 relations:
-  - type: branch-of
+  - type: continuation-of
     target: arch-of-aorta
-    source: wikidata
+    source: curated
     status: draft

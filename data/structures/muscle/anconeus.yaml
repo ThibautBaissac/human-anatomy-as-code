@@ -37,26 +37,12 @@ sides:
       wikidata: Q66526980
     meshes:
       - bp3d:FJ1485M
-    relations:
-      - type: innervation
-        target: wikidata:Q66561627
-        source: wikidata
-        status: draft
   right:
     ids:
       fma: 37705
       wikidata: Q66526979
     meshes:
       - bp3d:FJ1485
-    relations:
-      - type: innervation
-        target: wikidata:Q66526506
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66561627
-        source: wikidata
-        status: draft
 actions:
   - joint: elbow-joint
     role: extension
@@ -65,5 +51,13 @@ actions:
 relations:
   - type: arterial-supply
     target: deep-brachial-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q1365325
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q66561627
     source: wikidata
     status: draft

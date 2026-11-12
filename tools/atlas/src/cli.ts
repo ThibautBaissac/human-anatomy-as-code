@@ -67,6 +67,7 @@ function printRelationsReport(r: ReturnType<typeof importRelations>): void {
   console.log(`cibles hors de nos structures (abandonnées) : ${r.dropped}`);
   list('conflits avec une relation relue (gardée)', r.conflicts, (c) => `${c.slug} ${c.type} : gardé ${c.kept}, prévu ${c.planned}`);
   list('relations vers le côté opposé (ignorées)', r.oppositeSide, (s) => s);
+  console.log(`nerfs latéralisés sans item non latéralisé (gardés) : ${r.lateralUnresolved.length}`);
   list('relevés absents', r.missingFiles, (f) => f);
   list('fichiers illisibles', r.unreadableFiles, (f) => f);
   list('slugs ou alias en double', r.duplicateSlugs, (f) => f);

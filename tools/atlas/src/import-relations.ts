@@ -31,7 +31,7 @@ interface ExistingFile { path: string; text: string; doc: Document; slug: string
 
 export function importRelations(dataDir: string): ImportRelationsReport {
   const report: ImportRelationsReport = {
-    ignored: [], dropped: 0, conflicts: [], oppositeSide: [],
+    ignored: [], dropped: 0, conflicts: [], oppositeSide: [], lateralUnresolved: [],
     aborted: false, updated: 0, unchanged: 0, unreadableFiles: [], duplicateSlugs: [], missingFiles: [], registryWritten: false,
   };
   const abort = () => { report.aborted = true; return report; };

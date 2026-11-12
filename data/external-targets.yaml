@@ -1075,8 +1075,8 @@ Q623365:
       source: wikidata
       status: draft
     fr:
-      text: nerf supérieur du muscle subscapulaire
-      source: wikidata
+      text: nerf subscapulaire inférieur
+      source: curated
       status: draft
   source: wikidata
   status: draft

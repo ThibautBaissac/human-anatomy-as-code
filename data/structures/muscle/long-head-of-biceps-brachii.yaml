@@ -38,11 +38,6 @@ sides:
         text: long head of left biceps brachii
         source: fma
         status: draft
-    relations:
-      - type: innervation
-        target: wikidata:Q66526503
-        source: wikidata
-        status: draft
   right:
     ids:
       fma: 37686
@@ -54,11 +49,6 @@ sides:
         text: long head of right biceps brachii
         source: fma
         status: draft
-    relations:
-      - type: innervation
-        target: wikidata:Q66526502
-        source: wikidata
-        status: draft
 actions:
   - joint: elbow-joint
     role: flexion
@@ -67,4 +57,9 @@ actions:
   - joint: radio-ulnar-joints
     role: supination
     source: holzbaur-2005
+    status: draft
+relations:
+  - type: innervation
+    target: wikidata:Q1758126
+    source: wikidata
     status: draft

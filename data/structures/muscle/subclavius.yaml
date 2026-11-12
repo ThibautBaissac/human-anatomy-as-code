@@ -36,32 +36,18 @@ sides:
       wikidata: Q66508079
     meshes:
       - bp3d:FJ1460M
-    relations:
-      - type: innervation
-        target: wikidata:Q1781342
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66561593
-        source: wikidata
-        status: draft
   right:
     ids:
       fma: 13412
       wikidata: Q66508080
     meshes:
       - bp3d:FJ1460
-    relations:
-      - type: innervation
-        target: wikidata:Q1781342
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66561592
-        source: wikidata
-        status: draft
 relations:
   - type: arterial-supply
     target: internal-thoracic-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q1781342
     source: wikidata
     status: draft

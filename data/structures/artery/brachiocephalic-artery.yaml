@@ -31,6 +31,6 @@ meshes:
   - bp3d:FJ3417
 relations:
   - type: branch-of
-    target: systemic-arterial-tree
-    source: fma
+    target: arch-of-aorta
+    source: curated
     status: draft

@@ -33,27 +33,18 @@ sides:
       wikidata: Q66514390
     meshes:
       - bp3d:FJ1422M
-    relations:
-      - type: innervation
-        target: wikidata:Q66512099
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66514062
-        source: wikidata
-        status: draft
   right:
     ids:
       fma: 22322
       wikidata: Q66514389
     meshes:
       - bp3d:FJ1422
-    relations:
-      - type: innervation
-        target: wikidata:Q66512099
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66514060
-        source: wikidata
-        status: draft
+relations:
+  - type: innervation
+    target: wikidata:Q545676
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q66512099
+    source: wikidata
+    status: draft

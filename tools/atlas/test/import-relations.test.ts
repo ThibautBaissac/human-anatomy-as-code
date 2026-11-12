@@ -191,6 +191,35 @@ test('an unmapped innervation target becomes an external target with its labels 
   });
 });
 
+// lateralised Wikidata nerve items (Q66526508 "right axillary nerve"…) and their unlateralised counterparts
+const NERVES: TargetRow[] = [
+  { qid: 'Q600', en: 'axillary nerve', fr: 'nerf axillaire' },
+  { qid: 'Q601', en: 'Left axillary nerve' },
+  { qid: 'Q602', en: 'right axillary nerve' },
+  { qid: 'Q603', en: 'right radial nerve' },
+  { qid: 'Q604', en: 'radial nerve', fr: 'nerf radial' },
+  { qid: 'Q605', en: 'left nerve without whole' },
+];
+const sidedMuscle = () => [...structures(), structure('deltoid', 'muscle', 'bilateral', { fma: 100, wikidata: 'Q100' }, { left: { fma: 101, wikidata: 'Q101' }, right: { fma: 102, wikidata: 'Q102' } })];
+
+test('a lateralised nerve item on each side folds into one structure-level innervation of the unlateralised item', () => {
+  const p = plan({ structures: sidedMuscle(), targets: NERVES, wikidata: wd('Q101,P3189,Q601', 'Q102,P3189,Q602') });
+  assert.deepEqual(p.relations.get('deltoid'), { structure: [rel('innervation', 'wikidata:Q600', 'wikidata')] });
+  assert.deepEqual(Object.keys(p.registry), ['Q600']);
+  assert.deepEqual(p.report.lateralUnresolved, []);
+});
+
+test('a lateralised nerve item on one side only gives a structure-level innervation: no false asymmetry', () => {
+  const p = plan({ structures: sidedMuscle(), targets: NERVES, wikidata: wd('Q102,P3189,Q603') });
+  assert.deepEqual(p.relations.get('deltoid'), { structure: [rel('innervation', 'wikidata:Q604', 'wikidata')] });
+});
+
+test('a lateralised nerve item without an unlateralised counterpart is kept as it is and counted', () => {
+  const p = plan({ structures: sidedMuscle(), targets: NERVES, wikidata: wd('Q101,P3189,Q605') });
+  assert.deepEqual(p.relations.get('deltoid'), { left: [rel('innervation', 'wikidata:Q605', 'wikidata')] });
+  assert.deepEqual(p.report.lateralUnresolved, ['Q605']);
+});
+
 test('an unmapped target of another type than innervation is dropped and counted', () => {
   const p = plan({ fma: fma('8,arterial_supply,99999') });
   assert.equal(p.relations.has('kidney'), false);
@@ -269,6 +298,20 @@ test('a reviewed registry entry is never modified', () => {
   const p = plan({ wikidata: wd('Q10,P3189,Q500'), registry });
   assert.deepEqual(p.registry.Q500, entry);
   assert.deepEqual(p.relations.get('thigh-muscle'), { structure: [rel('innervation', 'wikidata:Q500', 'wikidata')] });
+});
+
+test("a curated label of a draft registry entry is kept, the entry's other labels refreshed", () => {
+  // the real Q623365 "inferior subscapular nerve", whose French label on Wikidata is that of the superior one
+  const fr = { text: 'nerf subscapulaire inférieur', source: 'curated', status: 'draft' as const };
+  const registry: ExternalTargets = {
+    Q500: { labels: { en: { text: 'old', source: 'wikidata', status: 'draft' }, fr }, source: 'wikidata', status: 'draft' },
+  };
+  const p = plan({ wikidata: wd('Q10,P3189,Q500'), registry });
+  assert.deepEqual(p.registry.Q500.labels, {
+    en: { text: 'tibial nerve', source: 'wikidata', status: 'draft' },
+    fr,
+    la: { text: 'nervus tibialis', source: 'wikidata', status: 'draft' },
+  });
 });
 
 test('a reviewed tree relation equal to the plan is kept and no conflict is reported', () => {

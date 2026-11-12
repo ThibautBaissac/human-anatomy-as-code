@@ -32,6 +32,6 @@ meshes:
   - bp3d:FJ2011
 relations:
   - type: branch-of
-    target: systemic-arterial-tree
-    source: fma
+    target: abdominal-aorta
+    source: curated
     status: draft

@@ -42,6 +42,6 @@ sides:
       - bp3d:FJ3583
 relations:
   - type: tributary-of
-    target: superior-systemic-venous-tree
-    source: fma
+    target: superior-vena-cava
+    source: curated
     status: draft

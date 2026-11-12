@@ -29,6 +29,6 @@ meshes:
   - bp3d:FJ1934
 relations:
   - type: branch-of
-    target: systemic-arterial-tree
-    source: fma
+    target: descending-thoracic-aorta
+    source: curated
     status: draft

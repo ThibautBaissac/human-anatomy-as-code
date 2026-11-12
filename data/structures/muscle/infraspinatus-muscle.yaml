@@ -33,32 +33,18 @@ sides:
       wikidata: Q66523035
     meshes:
       - bp3d:FJ1500M
-    relations:
-      - type: innervation
-        target: wikidata:Q559526
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66562250
-        source: wikidata
-        status: draft
   right:
     ids:
       fma: 32547
       wikidata: Q66523034
     meshes:
       - bp3d:FJ1500
-    relations:
-      - type: innervation
-        target: wikidata:Q559526
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66562249
-        source: wikidata
-        status: draft
 relations:
   - type: arterial-supply
     target: circumflex-scapular-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q559526
     source: wikidata
     status: draft

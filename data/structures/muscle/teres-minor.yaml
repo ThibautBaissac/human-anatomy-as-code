@@ -33,40 +33,22 @@ sides:
       wikidata: Q66523039
     meshes:
       - bp3d:FJ1508M
-    relations:
-      - type: innervation
-        target: wikidata:Q1547173
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66526509
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66561602
-        source: wikidata
-        status: draft
   right:
     ids:
       fma: 32553
       wikidata: Q66523038
     meshes:
       - bp3d:FJ1508
-    relations:
-      - type: innervation
-        target: wikidata:Q1547173
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66526508
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66561602
-        source: wikidata
-        status: draft
 relations:
   - type: arterial-supply
     target: posterior-circumflex-humeral-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q1547173
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q66561602
     source: wikidata
     status: draft

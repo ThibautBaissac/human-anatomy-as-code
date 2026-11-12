@@ -46,10 +46,6 @@ sides:
         target: wikidata:Q66561605
         source: wikidata
         status: draft
-      - type: innervation
-        target: wikidata:Q66561607
-        source: wikidata
-        status: draft
   right:
     ids:
       fma: 13414
@@ -67,10 +63,6 @@ sides:
         status: draft
       - type: innervation
         target: wikidata:Q66561604
-        source: wikidata
-        status: draft
-      - type: innervation
-        target: wikidata:Q66561606
         source: wikidata
         status: draft
 relations:
