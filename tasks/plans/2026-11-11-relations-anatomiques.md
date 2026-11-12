@@ -353,12 +353,12 @@ App (`app`):
 
 **Risk:** high (bulk data change; needs network)
 
-- [ ] **Step 1: Fetch** — run `npm run -w tools/atlas fetch-relations` in the background (minutes; the Wikidata service may throttle). Expected: three CSV files; the `missingFma` list printed.
-- [ ] **Step 2: Verify the continuation orientation** — in `relations-fma.csv`, find the rows linking the FMA ids of `axillary-artery` and `brachial-artery` (from their YAML). Set `CONTINUATION_DISTAL_IS_SUBJECT` so that the plan yields `brachial-artery continuation-of axillary-artery`; add a Task 5 test case reproducing the real row.
-- [ ] **Step 3: Import** — run `npm run -w tools/atlas import-relations`. Expected: 0 compile errors. Read the report: conflicts, opposite-side, ignored reasons.
-- [ ] **Step 4: Check against the spec's measured coverage** — `npm run coverage -w tools/atlas`. Expected order of magnitude: arteries with `branch-of` ≥ 200 of 298; veins with `tributary-of` ≥ 80 of 180; muscles with `innervation` ≥ 130 of 222. A figure far below means a mapping bug: stop and fix Task 5, do not commit.
-- [ ] **Step 5: Pick the e2e pair** — confirm `popliteal-artery` has at least one artery in its inverse `branch-of` (expected: `anterior-tibial-artery`) and its network has more than one structure. If not, choose another bilateral artery with branches and write the choice in the decisions file.
-- [ ] **Step 6: Record and commit** — append to the decisions file the counts, the number of side-level relations, and the e2e pair.
+- [x] **Step 1: Fetch** — run `npm run -w tools/atlas fetch-relations` in the background (minutes; the Wikidata service may throttle). Expected: three CSV files; the `missingFma` list printed.
+- [x] **Step 2: Verify the continuation orientation** — in `relations-fma.csv`, find the rows linking the FMA ids of `axillary-artery` and `brachial-artery` (from their YAML). Set `CONTINUATION_DISTAL_IS_SUBJECT` so that the plan yields `brachial-artery continuation-of axillary-artery`; add a Task 5 test case reproducing the real row.
+- [x] **Step 3: Import** — run `npm run -w tools/atlas import-relations`. Expected: 0 compile errors. Read the report: conflicts, opposite-side, ignored reasons.
+- [x] **Step 4: Check against the spec's measured coverage** — `npm run coverage -w tools/atlas`. Expected order of magnitude: arteries with `branch-of` ≥ 200 of 298; veins with `tributary-of` ≥ 80 of 180; muscles with `innervation` ≥ 130 of 222. A figure far below means a mapping bug: stop and fix Task 5, do not commit.
+- [x] **Step 5: Pick the e2e pair** — confirm `popliteal-artery` has at least one artery in its inverse `branch-of` (expected: `anterior-tibial-artery`) and its network has more than one structure. If not, choose another bilateral artery with branches and write the choice in the decisions file.
+- [x] **Step 6: Record and commit** — append to the decisions file the counts, the number of side-level relations, and the e2e pair.
 
   ```bash
   git add data tools/atlas tasks/specs/2026-11-11-relations-anatomiques.decisions.md
