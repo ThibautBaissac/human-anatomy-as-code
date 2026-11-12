@@ -199,16 +199,16 @@ App (`app`):
 
 **Risk:** normal
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
   - Task 1 fixture → `byType['branch-of'].total = 1`, `bySource.fma = 1`, `byStatus.draft = 1`; `byType['tributary-of'].total = 3` (renal, gonadal left, gonadal right)
   - `missing.arteriesWithoutBranchOf = 1` (femoral), `missing.veinsWithoutTributaryOf = 1` (inferior vena cava), `missing.musclesWithoutInnervation = 0`
   - registry with an extra unused `Q2` → `registryUnused = ['Q2']`, `externalsUsed = 1`
   - `coverageMarkdown` output contains the line `| branch-of | 1 |`
 
-- [ ] **Step 2: Run the tests and watch them fail** — `npm test -w tools/atlas`, FAIL.
-- [ ] **Step 3: Implement** — counts from the compiled male atlas; `cli.ts coverage` passes the registry read from `<dataDir>/external-targets.yaml`.
-- [ ] **Step 4: Run the tests and watch them pass** — `npm test -w tools/atlas && npm run coverage`, PASS and a Relations section printed.
-- [ ] **Step 5: Commit**
+- [x] **Step 2: Run the tests and watch them fail** — `npm test -w tools/atlas`, FAIL.
+- [x] **Step 3: Implement** — counts from the compiled male atlas; `cli.ts coverage` passes the registry read from `<dataDir>/external-targets.yaml`.
+- [x] **Step 4: Run the tests and watch them pass** — `npm test -w tools/atlas && npm run coverage`, PASS and a Relations section printed.
+- [x] **Step 5: Commit**
 
   ```bash
   git add tools/atlas
