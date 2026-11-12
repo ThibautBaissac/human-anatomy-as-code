@@ -232,24 +232,24 @@ App (`app`):
 
 **Risk:** high (external services, throttling, data correctness depends on reading the FMA right)
 
-- [ ] **Step 1: Write the failing tests** (with an injected `fetch` returning canned JSON)
+- [x] **Step 1: Write the failing tests** (with an injected `fetch` returning canned JSON)
   - two canned OLS4 class responses for FMA `22441` and `22457` → `relations-fma.csv` rows for their `branch_of`/`regional_part_of` restrictions, sorted, header first
   - a 404 for FMA `13363` → listed in `missingFma`, other ids still written
   - a canned SPARQL JSON result with two bindings → `relations-wikidata.csv` with two rows
   - QID list of 1 441 items → split into POST batches of at most 200 VALUES each
   - an HTTP 429 then 200 → retried once after the `Retry-After` delay (injected clock), result written
 
-- [ ] **Step 2: Run the tests and watch them fail** — `npm test -w tools/atlas`, FAIL.
+- [x] **Step 2: Run the tests and watch them fail** — `npm test -w tools/atlas`, FAIL.
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
   - FMA through OLS4 `https://www.ebi.ac.uk/ols4/api/v2/ontologies/fma/classes/{iri}` with `iri` = URL-encoded twice `http://purl.org/sig/ont/fma/fma<id>`, reading the related-class restrictions; subjects: every FMA id of our structures and sides, plus, for kind `muscle`, the `regional_part_of` / `constitutional_part_of` ancestors up to 3 levels (their own relations are fetched too).
   - Wikidata: POST to `https://query.wikidata.org/sparql`, header `User-Agent: haac-atlas/0.1 (relations fetch)`, query text kept in `relations-wikidata.rq` with a `VALUES ?item {}` placeholder filled per batch; subjects: our QIDs (structure and side) plus the QIDs of muscle wholes; properties `P3261`, `P2286`, `P3189`. Then labels and FMA id (`P1402`) of every `P3189` target.
   - At most 1 request per second to each service; on 429/503 wait `Retry-After` (default 60 s), retry up to 5 times, then fail with the batch named.
   - Record in `data/sources/wikidata.yaml` `notes` the date of the relations export.
 
-- [ ] **Step 4: Run the tests and watch them pass** — `npm test -w tools/atlas && npm run typecheck -w tools/atlas`, PASS.
+- [x] **Step 4: Run the tests and watch them pass** — `npm test -w tools/atlas && npm run typecheck -w tools/atlas`, PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
   ```bash
   git add tools/atlas data/import/relations-wikidata.rq
