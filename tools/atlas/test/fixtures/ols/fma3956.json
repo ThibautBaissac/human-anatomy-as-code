@@ -1,0 +1,224 @@
+{
+  "iri": "http://purl.org/sig/ont/fma/fma3956",
+  "label": [
+    "Vertebral artery"
+  ],
+  "relatedTo": [
+    {
+      "property": "http://purl.org/sig/ont/fma/arterial_supply_of",
+      "value": "http://purl.org/sig/ont/fma/fma7647",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch",
+      "value": "http://purl.org/sig/ont/fma/fma50505",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch",
+      "value": "http://purl.org/sig/ont/fma/fma50506",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch",
+      "value": "http://purl.org/sig/ont/fma/fma50509",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch",
+      "value": "http://purl.org/sig/ont/fma/fma50510",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch",
+      "value": "http://purl.org/sig/ont/fma/fma50515",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch",
+      "value": "http://purl.org/sig/ont/fma/fma50518",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch",
+      "value": "http://purl.org/sig/ont/fma/fma50531",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch",
+      "value": "http://purl.org/sig/ont/fma/fma50534",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch",
+      "value": "http://purl.org/sig/ont/fma/fma50537",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch_of",
+      "value": "http://purl.org/sig/ont/fma/fma3951",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/branch_of",
+      "value": "http://purl.org/sig/ont/fma/fma4690",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50493",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50494",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50495",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50496",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50505",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50506",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50509",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50510",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50515",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50518",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50531",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50534",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma50537",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma76260",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part_of",
+      "value": "http://purl.org/sig/ont/fma/fma3951",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    }
+  ]
+}

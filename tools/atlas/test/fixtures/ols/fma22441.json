@@ -1,0 +1,104 @@
+{
+  "iri": "http://purl.org/sig/ont/fma/fma22441",
+  "label": [
+    "Adductor longus"
+  ],
+  "relatedTo": [
+    {
+      "property": "http://purl.org/sig/ont/fma/arterial_supply",
+      "value": "http://purl.org/sig/ont/fma/fma70269",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/constitutional_part",
+      "value": "http://purl.org/sig/ont/fma/fma297970",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/constitutional_part",
+      "value": "http://purl.org/sig/ont/fma/fma46990",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/contained_in",
+      "value": "http://purl.org/sig/ont/fma/fma85200",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/member_of",
+      "value": "http://purl.org/sig/ont/fma/fma50208",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/member_of",
+      "value": "http://purl.org/sig/ont/fma/fma74149",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/nerve_supply",
+      "value": "http://purl.org/sig/ont/fma/fma45316",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma46978",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/regional_part",
+      "value": "http://purl.org/sig/ont/fma/fma46987",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/segmental_supply",
+      "value": "http://purl.org/sig/ont/fma/fma63517",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/segmental_supply",
+      "value": "http://purl.org/sig/ont/fma/fma63518",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    },
+    {
+      "property": "http://purl.org/sig/ont/fma/segmental_supply",
+      "value": "http://purl.org/sig/ont/fma/fma63519",
+      "type": [
+        "related"
+      ],
+      "isObsolete": false
+    }
+  ]
+}

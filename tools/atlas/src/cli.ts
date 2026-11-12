@@ -5,6 +5,7 @@ import { parse } from 'yaml';
 import { importBp3d, type ImportReport, type Overrides } from './import-bp3d.ts';
 import { importHra, type HraOverrides } from './import-hra.ts';
 import { compileAtlas, type CompileResult, type Diagnostic } from './compile-atlas.ts';
+import { fetchRelations } from './fetch-relations.ts';
 import { coverage, coverageMarkdown } from './coverage.ts';
 import type { ExternalTargets } from './types.ts';
 
@@ -12,6 +13,7 @@ const USAGE = `usage (--verbose : chaque avertissement, et non leur compte par r
   atlas validate <dataDir>
   atlas build <dataDir> <outDir>      (écrit atlas-male.json et atlas-female.json)
   atlas coverage <dataDir>
+  atlas fetch-relations <dataDir>     (seul usage du réseau : écrit <dataDir>/import/relations-fma.csv, relations-wikidata.csv, wikidata-targets.csv)
   atlas import-bp3d <bp3dDir> <wikidata.csv> <dataDir>   (overrides : <dataDir>/import/bp3d-overrides.yaml)
   atlas import-hra <hraDir> <wikidata.csv> <dataDir>     (liste : <dataDir>/import/hra-files.yaml, overrides : <dataDir>/import/hra-overrides.yaml)`;
 
@@ -80,6 +82,11 @@ async function main(argv: string[]): Promise<number> {
     const registryPath = join(args[0], 'external-targets.yaml');
     const registry = existsSync(registryPath) ? ((parse(readFileSync(registryPath, 'utf8')) ?? {}) as ExternalTargets) : {};
     process.stdout.write(coverageMarkdown(coverage(result.atlas, registry)));
+    return 0;
+  }
+  if (cmd === 'fetch-relations' && args.length === 1) {
+    const r = await fetchRelations(args[0], { log: (m) => console.log(m) });
+    console.log(`FMA interrogés : ${r.fmaIds} · QIDs : ${r.qids} · FMA absents : ${r.missingFma.length}`);
     return 0;
   }
   if (cmd === 'import-bp3d' && args.length === 3) {

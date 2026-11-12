@@ -1,0 +1,16 @@
+# Relations anatomiques de nos items Wikidata : P3261 (artère/veine/nerf : branche de), P2286 (apport artériel), P3189 (innervation).
+# fetch-relations.ts remplace `VALUES ?item {}` par un lot de 200 items au plus, interroge en POST, puis agrège les lots.
+SELECT ?item ?prop ?target WHERE {
+  VALUES ?item {}
+  VALUES ?prop { wdt:P3261 wdt:P2286 wdt:P3189 }
+  ?item ?prop ?target .
+  FILTER(ISIRI(?target))
+}
+# --- cibles d'innervation (P3189) : FMA ID (P1402) et labels, même substitution par lot
+SELECT ?qid ?fma ?en ?fr ?la WHERE {
+  VALUES ?qid {}
+  OPTIONAL { ?qid wdt:P1402 ?fma }
+  OPTIONAL { ?qid rdfs:label ?en FILTER(LANG(?en)="en") }
+  OPTIONAL { ?qid rdfs:label ?fr FILTER(LANG(?fr)="fr") }
+  OPTIONAL { ?qid rdfs:label ?la FILTER(LANG(?la)="la") }
+}
