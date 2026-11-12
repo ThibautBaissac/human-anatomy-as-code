@@ -1,41 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { compileAtlas, type Diagnostic } from '../src/compile-atlas.ts';
-import { sources, validStructures, writeDataset } from './helpers.ts';
+import { sources, validStructures, writeDataset, relationsFixture, rel, FEM, POP, IVC, GON, MUSCLE, REGISTRY } from './helpers.ts';
 
 const lbl = (text: string) => ({ text, source: 'fma', status: 'draft' });
-const rel = (type: string, target: string, extra: object = {}) => ({ type, target, source: 'fma', status: 'draft', ...extra });
-const FEM = 'structures/artery/femoral-artery.yaml';
-const POP = 'structures/artery/popliteal-artery.yaml';
-const IVC = 'structures/vein/inferior-vena-cava.yaml';
-const GON = 'structures/vein/gonadal-vein.yaml';
-const MUSCLE = 'structures/muscle/biceps-brachii.yaml';
-const REGISTRY = 'external-targets.yaml';
-
-/** The shared fixture: valid structures plus arteries, veins and an external target. */
-function fixture(): Record<string, any> {
-  const base = validStructures();
-  const bilateral = (slug: string, kind: string, l: string, r: string, extra: object = {}) => ({
-    slug, kind, laterality: 'bilateral', status: 'draft', parent: 'human-body', labels: { en: lbl(slug.replace(/-/g, ' ')) },
-    sides: { left: { meshes: [`bp3d:${l}`] }, right: { meshes: [`bp3d:${r}`] } }, ...extra,
-  });
-  return {
-    ...sources,
-    'sources/fma.yaml': { ...sources['sources/fma.yaml'], provides: ['labels', 'ids', 'relations'] },
-    'sources/wikidata.yaml': { ...sources['sources/wikidata.yaml'], provides: ['labels', 'ids', 'relations'] },
-    ...base,
-    [MUSCLE]: { ...base[MUSCLE], relations: [rel('innervation', 'wikidata:Q1', { source: 'wikidata' })] },
-    [FEM]: bilateral('femoral-artery', 'artery', 'FJ10M', 'FJ10', { ids: { wikidata: 'Q10' } }),
-    [POP]: bilateral('popliteal-artery', 'artery', 'FJ11M', 'FJ11', { relations: [rel('branch-of', 'femoral-artery')] }),
-    [IVC]: { slug: 'inferior-vena-cava', kind: 'vein', laterality: 'midline', status: 'draft', parent: 'human-body', labels: { en: lbl('inferior vena cava') }, meshes: ['bp3d:FJ20'] },
-    'structures/vein/renal-vein.yaml': bilateral('renal-vein', 'vein', 'FJ21M', 'FJ21', { relations: [rel('tributary-of', 'inferior-vena-cava')] }),
-    [GON]: bilateral('gonadal-vein', 'vein', 'FJ22M', 'FJ22', { sides: {
-      left: { meshes: ['bp3d:FJ22M'], relations: [rel('tributary-of', 'renal-vein')] },
-      right: { meshes: ['bp3d:FJ22'], relations: [rel('tributary-of', 'inferior-vena-cava')] },
-    } }),
-    [REGISTRY]: { Q1: { labels: { en: lbl('tibial nerve') }, source: 'wikidata', status: 'draft' } },
-  };
-}
+const fixture = relationsFixture;
 
 function compile(overrides: Record<string, unknown> = {}) {
   const files: Record<string, unknown> = { ...fixture(), ...overrides };

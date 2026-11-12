@@ -6,6 +6,7 @@ import { importBp3d, type ImportReport, type Overrides } from './import-bp3d.ts'
 import { importHra, type HraOverrides } from './import-hra.ts';
 import { compileAtlas, type CompileResult, type Diagnostic } from './compile-atlas.ts';
 import { coverage, coverageMarkdown } from './coverage.ts';
+import type { ExternalTargets } from './types.ts';
 
 const USAGE = `usage (--verbose : chaque avertissement, et non leur compte par règle) :
   atlas validate <dataDir>
@@ -76,7 +77,9 @@ async function main(argv: string[]): Promise<number> {
   if (cmd === 'coverage' && args.length === 1) {
     const result = compileAtlas(args[0]);
     if (!result.atlas) { report(result); return 1; }
-    process.stdout.write(coverageMarkdown(coverage(result.atlas)));
+    const registryPath = join(args[0], 'external-targets.yaml');
+    const registry = existsSync(registryPath) ? ((parse(readFileSync(registryPath, 'utf8')) ?? {}) as ExternalTargets) : {};
+    process.stdout.write(coverageMarkdown(coverage(result.atlas, registry)));
     return 0;
   }
   if (cmd === 'import-bp3d' && args.length === 3) {

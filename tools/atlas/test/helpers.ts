@@ -78,3 +78,39 @@ export function validDataset(overrides: Record<string, unknown> = {}): string {
   for (const [k, v] of Object.entries(files)) if (v === null) delete files[k];
   return writeDataset(files);
 }
+
+// Relations fixture, shared by the compile and coverage tests.
+const relLbl = (text: string) => ({ text, source: 'fma', status: 'draft' });
+export const rel = (type: string, target: string, extra: object = {}) => ({ type, target, source: 'fma', status: 'draft', ...extra });
+export const FEM = 'structures/artery/femoral-artery.yaml';
+export const POP = 'structures/artery/popliteal-artery.yaml';
+export const IVC = 'structures/vein/inferior-vena-cava.yaml';
+export const GON = 'structures/vein/gonadal-vein.yaml';
+export const MUSCLE = 'structures/muscle/biceps-brachii.yaml';
+export const REGISTRY = 'external-targets.yaml';
+
+/** The shared fixture: valid structures plus arteries, veins and an external target. */
+export function relationsFixture(): Record<string, any> {
+  const base = validStructures();
+  const bilateral = (slug: string, kind: string, l: string, r: string, extra: object = {}) => ({
+    slug, kind, laterality: 'bilateral', status: 'draft', parent: 'human-body', labels: { en: relLbl(slug.replace(/-/g, ' ')) },
+    sides: { left: { meshes: [`bp3d:${l}`] }, right: { meshes: [`bp3d:${r}`] } }, ...extra,
+  });
+  return {
+    ...sources,
+    'sources/fma.yaml': { ...sources['sources/fma.yaml'], provides: ['labels', 'ids', 'relations'] },
+    'sources/wikidata.yaml': { ...sources['sources/wikidata.yaml'], provides: ['labels', 'ids', 'relations'] },
+    ...base,
+    [MUSCLE]: { ...base[MUSCLE], relations: [rel('innervation', 'wikidata:Q1', { source: 'wikidata' })] },
+    [FEM]: bilateral('femoral-artery', 'artery', 'FJ10M', 'FJ10', { ids: { wikidata: 'Q10' } }),
+    [POP]: bilateral('popliteal-artery', 'artery', 'FJ11M', 'FJ11', { relations: [rel('branch-of', 'femoral-artery')] }),
+    [IVC]: { slug: 'inferior-vena-cava', kind: 'vein', laterality: 'midline', status: 'draft', parent: 'human-body', labels: { en: relLbl('inferior vena cava') }, meshes: ['bp3d:FJ20'] },
+    'structures/vein/renal-vein.yaml': bilateral('renal-vein', 'vein', 'FJ21M', 'FJ21', { relations: [rel('tributary-of', 'inferior-vena-cava')] }),
+    [GON]: bilateral('gonadal-vein', 'vein', 'FJ22M', 'FJ22', { sides: {
+      left: { meshes: ['bp3d:FJ22M'], relations: [rel('tributary-of', 'renal-vein')] },
+      right: { meshes: ['bp3d:FJ22'], relations: [rel('tributary-of', 'inferior-vena-cava')] },
+    } }),
+    [REGISTRY]: { Q1: { labels: { en: relLbl('tibial nerve') }, source: 'wikidata', status: 'draft' } },
+  };
+}
+
