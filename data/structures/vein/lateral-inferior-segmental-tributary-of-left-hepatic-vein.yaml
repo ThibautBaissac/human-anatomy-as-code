@@ -16,3 +16,8 @@ meshes:
   - bp3d:FJ3097
   - bp3d:FJ3099
   - bp3d:FJ3100
+relations:
+  - type: tributary-of
+    target: left-hepatic-vein
+    source: fma
+    status: draft

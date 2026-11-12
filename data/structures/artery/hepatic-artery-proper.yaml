@@ -29,3 +29,8 @@ ids:
   wikidata: Q542166
 meshes:
   - bp3d:FJ3081
+relations:
+  - type: branch-of
+    target: common-hepatic-artery
+    source: fma
+    status: draft

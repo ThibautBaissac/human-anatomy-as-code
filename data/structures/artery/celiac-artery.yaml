@@ -30,3 +30,8 @@ ids:
 meshes:
   - bp3d:FJ1846
   - bp3d:FJ2013
+relations:
+  - type: branch-of
+    target: systemic-arterial-tree
+    source: fma
+    status: draft

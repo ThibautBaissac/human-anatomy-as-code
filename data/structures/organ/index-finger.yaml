@@ -33,3 +33,8 @@ sides:
     ids:
       fma: 60333
       wikidata: Q66556701
+relations:
+  - type: arterial-supply
+    target: arteria-radialis-indicis
+    source: wikidata
+    status: draft

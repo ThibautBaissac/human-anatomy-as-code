@@ -40,3 +40,8 @@ sides:
       wikidata: Q66500712
     meshes:
       - bp3d:FJ3583
+relations:
+  - type: tributary-of
+    target: superior-systemic-venous-tree
+    source: fma
+    status: draft

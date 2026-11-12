@@ -40,3 +40,8 @@ sides:
       wikidata: Q66512471
     meshes:
       - bp3d:FJ3614
+relations:
+  - type: branch-of
+    target: femoral-artery
+    source: fma
+    status: draft

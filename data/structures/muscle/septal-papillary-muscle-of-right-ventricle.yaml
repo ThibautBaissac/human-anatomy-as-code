@@ -24,3 +24,16 @@ ids:
   wikidata: Q66502860
 meshes:
   - bp3d:FJ2437
+relations:
+  - type: arterial-supply
+    target: anterior-interventricular-branch-of-left-coronary-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: posterior-interventricular-branch-of-right-coronary-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: right-coronary-artery
+    source: fma
+    status: draft

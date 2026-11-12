@@ -64,3 +64,8 @@ sides:
       - bp3d:FJ1710
       - bp3d:FJ1711
       - bp3d:FJ1715
+relations:
+  - type: branch-of
+    target: vertebral-artery
+    source: fma
+    status: draft

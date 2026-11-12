@@ -22,3 +22,12 @@ ids:
   fma: 62000
   ta98: A14.1.09.001
   wikidata: Q75855
+relations:
+  - type: arterial-supply
+    target: anterior-cerebral-artery
+    source: wikidata
+    status: draft
+  - type: arterial-supply
+    target: posterior-cerebral-artery
+    source: wikidata
+    status: draft

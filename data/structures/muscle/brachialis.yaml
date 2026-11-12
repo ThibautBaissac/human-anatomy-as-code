@@ -37,14 +37,61 @@ sides:
       wikidata: Q66526949
     meshes:
       - bp3d:FJ1486M
+    relations:
+      - type: innervation
+        target: wikidata:Q1365325
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q1758126
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66526503
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66526507
+        source: wikidata
+        status: draft
   right:
     ids:
       fma: 37668
       wikidata: Q66526948
     meshes:
       - bp3d:FJ1486
+    relations:
+      - type: innervation
+        target: wikidata:Q1365325
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q1758126
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66526502
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66526506
+        source: wikidata
+        status: draft
 actions:
   - joint: elbow-joint
     role: flexion
     source: holzbaur-2005
+    status: draft
+relations:
+  - type: arterial-supply
+    target: brachial-artery
+    source: wikidata
+    status: draft
+  - type: arterial-supply
+    target: radial-recurrent-artery
+    source: wikidata
+    status: draft
+  - type: arterial-supply
+    target: superior-ulnar-collateral-artery
+    source: wikidata
     status: draft

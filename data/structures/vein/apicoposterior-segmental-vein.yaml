@@ -21,3 +21,8 @@ ids:
   ta2: 4120
   ta98: A12.3.02.302
   wikidata: Q66504233
+relations:
+  - type: tributary-of
+    target: upper-lobar-vein
+    source: fma
+    status: draft

@@ -32,6 +32,31 @@ sides:
         text: long head of left triceps brachii
         source: fma
         status: draft
+    relations:
+      - type: innervation
+        target: wikidata:Q1547173
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66526507
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66526509
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66561627
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66561628
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66588042
+        source: wikidata
+        status: draft
   right:
     ids:
       fma: 37699
@@ -43,8 +68,42 @@ sides:
         text: long head of right triceps brachii
         source: fma
         status: draft
+    relations:
+      - type: innervation
+        target: wikidata:Q1547173
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66526506
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66526508
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66561627
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66561628
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66588042
+        source: wikidata
+        status: draft
 actions:
   - joint: elbow-joint
     role: extension
     source: holzbaur-2005
+    status: draft
+relations:
+  - type: arterial-supply
+    target: deep-brachial-artery
+    source: wikidata
+    status: draft
+  - type: arterial-supply
+    target: posterior-circumflex-humeral-artery
+    source: wikidata
     status: draft

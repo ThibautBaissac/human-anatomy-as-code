@@ -30,3 +30,8 @@ ids:
   wikidata: Q198654
 meshes:
   - bp3d:FJ1795
+relations:
+  - type: arterial-supply
+    target: posterior-medial-choroidal-artery
+    source: fma
+    status: draft

@@ -40,3 +40,8 @@ sides:
       wikidata: Q66505842
     meshes:
       - bp3d:FJ2303
+relations:
+  - type: branch-of
+    target: thyrocervical-artery
+    source: fma
+    status: draft

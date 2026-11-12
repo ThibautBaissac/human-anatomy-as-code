@@ -40,3 +40,8 @@ sides:
       wikidata: Q66556217
     meshes:
       - bp3d:FJ2768
+relations:
+  - type: innervation
+    target: wikidata:Q1076379
+    source: wikidata
+    status: draft

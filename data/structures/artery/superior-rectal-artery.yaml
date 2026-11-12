@@ -29,3 +29,8 @@ ids:
   wikidata: Q384950
 meshes:
   - bp3d:FJ3656
+relations:
+  - type: branch-of
+    target: inferior-mesenteric-artery
+    source: fma
+    status: draft

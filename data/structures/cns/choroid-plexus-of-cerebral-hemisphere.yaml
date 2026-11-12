@@ -23,3 +23,8 @@ ids:
 meshes:
   - bp3d:FJ1755
   - bp3d:FJ1803
+relations:
+  - type: arterial-supply
+    target: posterior-medial-choroidal-artery
+    source: fma
+    status: draft

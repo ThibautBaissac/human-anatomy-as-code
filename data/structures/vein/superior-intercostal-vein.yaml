@@ -19,6 +19,11 @@ sides:
       wikidata: Q136558443
     meshes:
       - bp3d:FJ1986
+    relations:
+      - type: tributary-of
+        target: brachiocephalic-vein
+        source: fma
+        status: draft
   right:
     ids:
       fma: 4877
@@ -27,3 +32,8 @@ sides:
       wikidata: Q66501742
     meshes:
       - bp3d:FJ1991
+    relations:
+      - type: tributary-of
+        target: azygos-vein
+        source: fma
+        status: draft

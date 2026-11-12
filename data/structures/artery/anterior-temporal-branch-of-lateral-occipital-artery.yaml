@@ -36,3 +36,8 @@ sides:
         text: anterior temporal branch of right lateral occipital artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: lateral-occipital-artery
+    source: fma
+    status: draft

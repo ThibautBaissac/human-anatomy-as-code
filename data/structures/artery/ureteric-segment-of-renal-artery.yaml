@@ -37,3 +37,8 @@ sides:
         text: ureteric segment of right renal artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: renal-artery
+    source: fma
+    status: draft

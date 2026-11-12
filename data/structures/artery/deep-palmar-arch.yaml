@@ -39,3 +39,8 @@ sides:
       wikidata: Q66514832
     meshes:
       - bp3d:FJ2279
+relations:
+  - type: branch-of
+    target: radial-artery
+    source: fma
+    status: draft

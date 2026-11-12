@@ -35,3 +35,8 @@ sides:
         text: branch of right anterior choroidal artery to posterior limb of right internal capsule
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: anterior-choroidal-artery
+    source: fma
+    status: draft

@@ -24,3 +24,8 @@ ids:
 meshes:
   - bp3d:FJ1916
   - bp3d:FJ2386
+relations:
+  - type: branch-of
+    target: right-hepatic-artery
+    source: fma
+    status: draft

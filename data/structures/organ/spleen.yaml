@@ -26,3 +26,8 @@ ids:
   wikidata: Q9371
 meshes:
   - bp3d:FJ2561
+relations:
+  - type: arterial-supply
+    target: splenic-artery
+    source: wikidata
+    status: draft

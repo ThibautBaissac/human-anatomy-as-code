@@ -41,3 +41,8 @@ sides:
     meshes:
       - bp3d:FJ2342
       - bp3d:FJ2363
+relations:
+  - type: branch-of
+    target: radial-artery
+    source: fma
+    status: draft

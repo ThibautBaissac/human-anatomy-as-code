@@ -22,3 +22,8 @@ sides:
     ids:
       fma: 50658
       wikidata: Q66539804
+relations:
+  - type: branch-of
+    target: posterior-cerebral-artery
+    source: fma
+    status: draft

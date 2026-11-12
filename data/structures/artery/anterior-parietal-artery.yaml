@@ -32,3 +32,8 @@ sides:
       wikidata: Q66539626
     meshes:
       - bp3d:FJ1667
+relations:
+  - type: branch-of
+    target: insular-part-of-middle-cerebral-artery
+    source: fma
+    status: draft

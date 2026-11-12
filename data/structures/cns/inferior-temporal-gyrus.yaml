@@ -34,3 +34,12 @@ sides:
       wikidata: Q66570190
     meshes:
       - bp3d:FJ1747
+relations:
+  - type: arterial-supply
+    target: anterior-temporal-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: polar-temporal-artery
+    source: fma
+    status: draft

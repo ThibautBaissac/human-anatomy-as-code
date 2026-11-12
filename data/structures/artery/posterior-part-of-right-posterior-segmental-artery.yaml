@@ -17,3 +17,8 @@ meshes:
   - bp3d:FJ2970
   - bp3d:FJ2971
   - bp3d:FJ2972
+relations:
+  - type: branch-of
+    target: posterior-segmental-artery
+    source: fma
+    status: draft

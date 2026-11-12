@@ -42,3 +42,8 @@ sides:
     meshes:
       - bp3d:FJ2291
       - bp3d:FJ2292
+relations:
+  - type: branch-of
+    target: axillary-artery
+    source: fma
+    status: draft

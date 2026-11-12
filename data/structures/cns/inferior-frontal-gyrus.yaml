@@ -34,3 +34,8 @@ sides:
       wikidata: Q66570162
     meshes:
       - bp3d:FJ1745
+relations:
+  - type: arterial-supply
+    target: artery-of-precentral-sulcus
+    source: fma
+    status: draft

@@ -15,3 +15,8 @@ labels:
 ids:
   fma: 9563
   wikidata: Q66505001
+relations:
+  - type: arterial-supply
+    target: posterior-interventricular-branch-of-right-coronary-artery
+    source: fma
+    status: draft

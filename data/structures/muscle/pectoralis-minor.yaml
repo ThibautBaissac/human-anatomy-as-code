@@ -42,3 +42,12 @@ sides:
       wikidata: Q66508054
     meshes:
       - bp3d:FJ1456
+relations:
+  - type: arterial-supply
+    target: internal-thoracic-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q1978103
+    source: wikidata
+    status: draft

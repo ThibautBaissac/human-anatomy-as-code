@@ -25,3 +25,12 @@ ids:
   ta2: 6049
   ta98: A14.1.02.001
   wikidata: Q9606
+relations:
+  - type: arterial-supply
+    target: anterior-spinal-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: vertebral-artery
+    source: fma
+    status: draft

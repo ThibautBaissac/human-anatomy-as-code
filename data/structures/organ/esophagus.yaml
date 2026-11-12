@@ -29,3 +29,8 @@ ids:
   wikidata: Q173710
 meshes:
   - bp3d:FJ2563
+relations:
+  - type: arterial-supply
+    target: esophageal-artery
+    source: fma
+    status: draft

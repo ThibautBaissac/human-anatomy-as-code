@@ -13,3 +13,8 @@ labels:
 ids:
   fma: 68659
   wikidata: Q66564205
+relations:
+  - type: branch-of
+    target: upper-lobar-artery
+    source: fma
+    status: draft

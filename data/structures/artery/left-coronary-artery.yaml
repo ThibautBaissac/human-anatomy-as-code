@@ -27,3 +27,8 @@ ids:
   ta2: 4142
   ta98: A12.2.03.201
   wikidata: Q744391
+relations:
+  - type: branch-of
+    target: ascending-aorta
+    source: fma
+    status: draft

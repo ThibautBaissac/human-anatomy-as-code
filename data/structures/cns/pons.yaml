@@ -22,3 +22,8 @@ ids:
 meshes:
   - bp3d:FJ1775
   - bp3d:FJ1822
+relations:
+  - type: arterial-supply
+    target: pontine-artery
+    source: fma
+    status: draft

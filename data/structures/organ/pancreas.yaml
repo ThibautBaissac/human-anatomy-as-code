@@ -28,3 +28,36 @@ ids:
   wikidata: Q9618
 meshes:
   - bp3d:FJ1895
+relations:
+  - type: arterial-supply
+    target: caudal-pancreatic-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: dorsal-pancreatic-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: great-pancreatic-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: inferior-pancreatic-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: inferior-pancreaticoduodenal-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q190140
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q7130417
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q897760
+    source: wikidata
+    status: draft

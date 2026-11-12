@@ -29,3 +29,12 @@ ids:
   wikidata: Q2562556
 meshes:
   - bp3d:FJ2566
+relations:
+  - type: arterial-supply
+    target: right-colic-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q190140
+    source: wikidata
+    status: draft

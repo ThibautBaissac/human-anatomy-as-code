@@ -29,3 +29,8 @@ ids:
   wikidata: Q515917
 meshes:
   - bp3d:FJ3417
+relations:
+  - type: branch-of
+    target: systemic-arterial-tree
+    source: fma
+    status: draft

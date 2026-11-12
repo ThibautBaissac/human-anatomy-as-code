@@ -28,3 +28,8 @@ ids:
   wikidata: Q3091615
 meshes:
   - bp3d:FJ3641
+relations:
+  - type: tributary-of
+    target: pre-hepatic-portal-vein
+    source: fma
+    status: draft

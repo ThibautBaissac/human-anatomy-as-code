@@ -43,3 +43,16 @@ sides:
         text: ulnar head of right flexor carpi ulnaris
         source: fma
         status: draft
+relations:
+  - type: arterial-supply
+    target: ulnar-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q254580
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q66588066
+    source: wikidata
+    status: draft

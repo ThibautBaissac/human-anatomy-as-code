@@ -28,3 +28,8 @@ ids:
   wikidata: Q3176575
 meshes:
   - bp3d:FJ3443
+relations:
+  - type: tributary-of
+    target: splenic-vein
+    source: fma
+    status: draft

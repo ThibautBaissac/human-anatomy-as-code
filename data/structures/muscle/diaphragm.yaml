@@ -32,3 +32,8 @@ ids:
   wikidata: Q9654
 meshes:
   - bp3d:FJ3131
+relations:
+  - type: innervation
+    target: wikidata:Q737313
+    source: wikidata
+    status: draft

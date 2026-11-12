@@ -35,3 +35,8 @@ sides:
         text: medial branch of right superior cerebellar artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: superior-cerebellar-artery
+    source: fma
+    status: draft

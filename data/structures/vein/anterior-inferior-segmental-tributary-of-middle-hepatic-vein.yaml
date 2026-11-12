@@ -16,3 +16,8 @@ ids:
 meshes:
   - bp3d:FJ3083
   - bp3d:FJ3086
+relations:
+  - type: tributary-of
+    target: middle-hepatic-vein
+    source: fma
+    status: draft

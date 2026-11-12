@@ -32,3 +32,8 @@ meshes:
   - bp3d:FJ3420
   - bp3d:FJ3544
   - bp3d:FJ3640
+relations:
+  - type: branch-of
+    target: celiac-artery
+    source: fma
+    status: draft

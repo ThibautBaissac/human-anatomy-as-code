@@ -26,3 +26,8 @@ sides:
       wikidata: Q66539832
     meshes:
       - bp3d:FJ1727
+relations:
+  - type: branch-of
+    target: posterior-choroidal-artery
+    source: fma
+    status: draft

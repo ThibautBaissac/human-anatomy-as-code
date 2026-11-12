@@ -38,6 +38,11 @@ sides:
         text: long head of left biceps brachii
         source: fma
         status: draft
+    relations:
+      - type: innervation
+        target: wikidata:Q66526503
+        source: wikidata
+        status: draft
   right:
     ids:
       fma: 37686
@@ -48,6 +53,11 @@ sides:
       en:
         text: long head of right biceps brachii
         source: fma
+        status: draft
+    relations:
+      - type: innervation
+        target: wikidata:Q66526502
+        source: wikidata
         status: draft
 actions:
   - joint: elbow-joint

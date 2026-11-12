@@ -35,3 +35,8 @@ sides:
     meshes:
       - bp3d:FJ1685
       - bp3d:FJ1686
+relations:
+  - type: branch-of
+    target: insular-part-of-middle-cerebral-artery
+    source: fma
+    status: draft

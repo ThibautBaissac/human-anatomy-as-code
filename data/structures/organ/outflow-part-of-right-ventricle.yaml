@@ -19,3 +19,12 @@ ids:
   ta2: 4041
   ta98: A12.1.02.008
   wikidata: Q2307505
+relations:
+  - type: arterial-supply
+    target: conus-branch-of-anterior-interventricular-branch-of-left-coronary-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: right-conus-artery
+    source: fma
+    status: draft

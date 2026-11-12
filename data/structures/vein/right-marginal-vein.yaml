@@ -31,3 +31,8 @@ meshes:
   - bp3d:FJ2727
   - bp3d:FJ2728
   - bp3d:FJ2729
+relations:
+  - type: tributary-of
+    target: anterior-cardiac-vein
+    source: fma
+    status: draft

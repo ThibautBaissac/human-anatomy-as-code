@@ -30,9 +30,19 @@ sides:
       - bp3d:FJ2911
       - bp3d:FJ2912
       - bp3d:FJ2913
+    relations:
+      - type: branch-of
+        target: upper-lobar-artery
+        source: fma
+        status: draft
   right:
     ids:
       fma: 8619
       ta2: 4081
       ta98: A12.2.01.107
       wikidata: Q66504086
+    relations:
+      - type: branch-of
+        target: apicoposterior-division-of-right-upper-lobar-artery
+        source: fma
+        status: draft

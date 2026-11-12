@@ -31,3 +31,8 @@ sides:
       wikidata: Q66570323
     meshes:
       - bp3d:FJ1823
+relations:
+  - type: arterial-supply
+    target: anterolateral-central-branch-of-middle-cerebral-artery
+    source: fma
+    status: draft

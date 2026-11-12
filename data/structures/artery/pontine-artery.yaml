@@ -22,3 +22,8 @@ sides:
     ids:
       fma: 50561
       wikidata: Q66539697
+relations:
+  - type: branch-of
+    target: basilar-artery
+    source: fma
+    status: draft

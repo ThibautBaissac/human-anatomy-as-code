@@ -30,3 +30,8 @@ ids:
 meshes:
   - bp3d:FJ1672
   - bp3d:FJ1844
+relations:
+  - type: branch-of
+    target: vertebral-artery
+    source: fma
+    status: draft

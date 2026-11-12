@@ -33,3 +33,8 @@ sides:
       wikidata: Q66575636
     meshes:
       - bp3d:FJ2265
+relations:
+  - type: tributary-of
+    target: circumflex-scapular-vein
+    source: wikidata
+    status: draft

@@ -51,3 +51,8 @@ sides:
         text: dorsal venous arch of right foot
         source: fma
         status: draft
+relations:
+  - type: tributary-of
+    target: great-saphenous-vein
+    source: fma
+    status: draft

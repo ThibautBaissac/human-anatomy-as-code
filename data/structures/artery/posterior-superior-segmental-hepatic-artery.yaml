@@ -16,3 +16,8 @@ ids:
 meshes:
   - bp3d:FJ3115
   - bp3d:FJ3116
+relations:
+  - type: branch-of
+    target: posterior-segmental-hepatic-artery
+    source: fma
+    status: draft

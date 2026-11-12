@@ -16,3 +16,8 @@ ids:
 meshes:
   - bp3d:FJ3091
   - bp3d:FJ3093
+relations:
+  - type: branch-of
+    target: lateral-segmental-hepatic-artery
+    source: fma
+    status: draft

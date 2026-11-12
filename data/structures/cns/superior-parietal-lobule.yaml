@@ -34,3 +34,12 @@ sides:
       wikidata: Q66570174
     meshes:
       - bp3d:FJ1836
+relations:
+  - type: arterial-supply
+    target: anterior-parietal-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: artery-of-postcentral-sulcus
+    source: fma
+    status: draft

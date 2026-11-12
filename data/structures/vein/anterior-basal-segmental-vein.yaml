@@ -30,3 +30,8 @@ sides:
     meshes:
       - bp3d:FJ3049
       - bp3d:FJ3056
+relations:
+  - type: tributary-of
+    target: superior-basal-vein
+    source: fma
+    status: draft

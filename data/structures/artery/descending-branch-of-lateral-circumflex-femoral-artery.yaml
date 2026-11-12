@@ -49,3 +49,8 @@ sides:
         text: descending branch of right lateral circumflex femoral artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: lateral-circumflex-femoral-artery
+    source: fma
+    status: draft

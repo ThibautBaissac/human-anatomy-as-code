@@ -40,3 +40,8 @@ sides:
       wikidata: Q66510773
     meshes:
       - bp3d:FJ2038
+relations:
+  - type: branch-of
+    target: systemic-arterial-tree
+    source: fma
+    status: draft

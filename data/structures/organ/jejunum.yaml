@@ -21,3 +21,8 @@ ids:
   ta2: 2958
   ta98: A05.6.03.001
   wikidata: Q185765
+relations:
+  - type: innervation
+    target: wikidata:Q190140
+    source: wikidata
+    status: draft

@@ -47,3 +47,12 @@ sides:
       - bp3d:FJ3607
       - bp3d:FJ3608
       - bp3d:FJ3609
+relations:
+  - type: tributary-of
+    target: common-iliac-vein
+    source: fma
+    status: draft
+  - type: continuation-of
+    target: common-iliac-vein
+    source: fma
+    status: draft

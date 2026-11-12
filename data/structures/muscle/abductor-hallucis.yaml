@@ -39,3 +39,12 @@ sides:
       wikidata: Q66526784
     meshes:
       - bp3d:FJ1400
+relations:
+  - type: arterial-supply
+    target: medial-plantar-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q604987
+    source: wikidata
+    status: draft

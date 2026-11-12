@@ -40,3 +40,8 @@ sides:
       wikidata: Q66499558
     meshes:
       - bp3d:FJ1936
+relations:
+  - type: branch-of
+    target: internal-thoracic-artery
+    source: fma
+    status: draft

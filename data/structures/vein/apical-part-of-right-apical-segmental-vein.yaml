@@ -17,3 +17,8 @@ meshes:
   - bp3d:FJ3064
   - bp3d:FJ3067
   - bp3d:FJ3068
+relations:
+  - type: tributary-of
+    target: apical-segmental-vein
+    source: fma
+    status: draft

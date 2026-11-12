@@ -47,3 +47,8 @@ sides:
         text: communicating branch of right nasociliary nerve with right ciliary ganglion
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: nasociliary-nerve
+    source: fma
+    status: draft

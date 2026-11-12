@@ -29,3 +29,12 @@ ids:
   wikidata: Q1029907
 meshes:
   - bp3d:FJ2564
+relations:
+  - type: arterial-supply
+    target: left-gastric-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: right-gastric-artery
+    source: fma
+    status: draft

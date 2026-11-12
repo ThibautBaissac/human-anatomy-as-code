@@ -18,3 +18,8 @@ meshes:
   - bp3d:FJ2976
   - bp3d:FJ2977
   - bp3d:FJ2979
+relations:
+  - type: branch-of
+    target: anterior-segmental-artery
+    source: fma
+    status: draft

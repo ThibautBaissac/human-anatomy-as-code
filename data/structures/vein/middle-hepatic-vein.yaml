@@ -22,3 +22,8 @@ ids:
   wikidata: Q66509396
 meshes:
   - bp3d:FJ2414
+relations:
+  - type: tributary-of
+    target: inferior-vena-cava
+    source: fma
+    status: draft

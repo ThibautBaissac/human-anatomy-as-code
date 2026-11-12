@@ -34,3 +34,8 @@ sides:
     meshes:
       - bp3d:FJ2204
       - bp3d:FJ2205
+relations:
+  - type: branch-of
+    target: set-of-common-plantar-digital-arteries
+    source: wikidata
+    status: draft

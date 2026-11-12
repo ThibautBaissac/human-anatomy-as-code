@@ -34,3 +34,16 @@ sides:
       wikidata: Q66570168
     meshes:
       - bp3d:FJ1798
+relations:
+  - type: arterial-supply
+    target: artery-of-central-sulcus
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: artery-of-postcentral-sulcus
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: callosomarginal-artery
+    source: fma
+    status: draft

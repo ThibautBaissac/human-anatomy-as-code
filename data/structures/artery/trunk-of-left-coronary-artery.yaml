@@ -15,3 +15,8 @@ ids:
   wikidata: Q66499463
 meshes:
   - bp3d:FJ2737
+relations:
+  - type: continuation-of
+    target: aorta
+    source: fma
+    status: draft

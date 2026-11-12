@@ -34,3 +34,8 @@ sides:
     ids:
       fma: 9713
       wikidata: Q24206677
+relations:
+  - type: arterial-supply
+    target: ulnar-artery
+    source: wikidata
+    status: draft

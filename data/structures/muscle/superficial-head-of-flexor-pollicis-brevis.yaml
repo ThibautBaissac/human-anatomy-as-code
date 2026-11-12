@@ -43,3 +43,8 @@ sides:
         text: superficial head of right flexor pollicis brevis
         source: fma
         status: draft
+relations:
+  - type: innervation
+    target: wikidata:Q66578920
+    source: wikidata
+    status: draft

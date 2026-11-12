@@ -29,3 +29,8 @@ ids:
   wikidata: Q2562565
 meshes:
   - bp3d:FJ2567
+relations:
+  - type: arterial-supply
+    target: left-colic-artery
+    source: wikidata
+    status: draft

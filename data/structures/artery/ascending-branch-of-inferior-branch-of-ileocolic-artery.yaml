@@ -29,3 +29,8 @@ ids:
   wikidata: Q5144814
 meshes:
   - bp3d:FJ3414
+relations:
+  - type: branch-of
+    target: inferior-branch-of-ileocolic-artery
+    source: fma
+    status: draft

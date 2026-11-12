@@ -33,3 +33,8 @@ sides:
   right:
     meshes:
       - bp3d:FJ2347
+relations:
+  - type: branch-of
+    target: radial-artery
+    source: wikidata
+    status: draft

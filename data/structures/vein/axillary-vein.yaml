@@ -39,3 +39,8 @@ sides:
       wikidata: Q66508026
     meshes:
       - bp3d:FJ2269
+relations:
+  - type: tributary-of
+    target: subclavian-vein
+    source: fma
+    status: draft

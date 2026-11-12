@@ -44,3 +44,8 @@ actions:
     role: pronation
     source: holzbaur-2005
     status: draft
+relations:
+  - type: innervation
+    target: wikidata:Q66535297
+    source: wikidata
+    status: draft

@@ -50,3 +50,8 @@ sides:
         text: deltoid branch of right thoraco-acromial artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: thoraco-acromial-artery
+    source: fma
+    status: draft

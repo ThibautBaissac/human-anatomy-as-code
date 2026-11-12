@@ -39,3 +39,8 @@ sides:
       wikidata: Q66534267
     meshes:
       - bp3d:FJ2173
+relations:
+  - type: tributary-of
+    target: popliteal-vein
+    source: fma
+    status: draft

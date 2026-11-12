@@ -16,3 +16,8 @@ ids:
 meshes:
   - bp3d:FJ3054
   - bp3d:FJ3055
+relations:
+  - type: tributary-of
+    target: superior-basal-vein
+    source: fma
+    status: draft

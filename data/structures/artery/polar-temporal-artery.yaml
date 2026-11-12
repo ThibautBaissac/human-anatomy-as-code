@@ -32,3 +32,8 @@ sides:
       wikidata: Q66539521
     meshes:
       - bp3d:FJ1712
+relations:
+  - type: branch-of
+    target: sphenoid-part-of-middle-cerebral-artery
+    source: fma
+    status: draft

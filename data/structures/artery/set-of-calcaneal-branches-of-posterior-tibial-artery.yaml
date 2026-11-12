@@ -27,3 +27,8 @@ sides:
   right:
     meshes:
       - bp3d:FJ2195
+relations:
+  - type: branch-of
+    target: posterior-tibial-artery
+    source: wikidata
+    status: draft

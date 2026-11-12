@@ -46,3 +46,8 @@ actions:
     role: flexion
     source: holzbaur-2005
     status: draft
+relations:
+  - type: innervation
+    target: wikidata:Q1364876
+    source: wikidata
+    status: draft

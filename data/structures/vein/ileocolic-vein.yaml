@@ -29,3 +29,8 @@ ids:
 meshes:
   - bp3d:FJ3415
   - bp3d:FJ3440
+relations:
+  - type: tributary-of
+    target: superior-mesenteric-vein
+    source: fma
+    status: draft

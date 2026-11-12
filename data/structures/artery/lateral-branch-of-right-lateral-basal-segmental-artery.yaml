@@ -18,3 +18,8 @@ meshes:
   - bp3d:FJ3005
   - bp3d:FJ3006
   - bp3d:FJ3007
+relations:
+  - type: branch-of
+    target: lateral-basal-segmental-artery
+    source: fma
+    status: draft

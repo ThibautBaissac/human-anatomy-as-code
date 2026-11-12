@@ -24,3 +24,8 @@ ids:
 meshes:
   - bp3d:FJ2643
   - bp3d:FJ2644
+relations:
+  - type: branch-of
+    target: anterior-interventricular-branch-of-left-coronary-artery
+    source: fma
+    status: draft

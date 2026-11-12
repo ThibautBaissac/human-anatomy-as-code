@@ -25,3 +25,20 @@ ids:
   ta2: 2933
   ta98: A05.6.01.001
   wikidata: Q11090
+relations:
+  - type: arterial-supply
+    target: right-gastric-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: right-gastro-epiploic-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: superior-mesenteric-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q190140
+    source: wikidata
+    status: draft

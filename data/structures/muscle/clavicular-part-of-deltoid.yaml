@@ -32,6 +32,23 @@ sides:
         text: clavicular part of left deltoid
         source: fma
         status: draft
+    relations:
+      - type: innervation
+        target: wikidata:Q1547173
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66526509
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66561601
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66588165
+        source: wikidata
+        status: draft
   right:
     ids:
       fma: 34680
@@ -43,3 +60,33 @@ sides:
         text: clavicular part of right deltoid
         source: fma
         status: draft
+    relations:
+      - type: innervation
+        target: wikidata:Q1547173
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66526508
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66561601
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66588165
+        source: wikidata
+        status: draft
+relations:
+  - type: arterial-supply
+    target: anterior-circumflex-humeral-artery
+    source: wikidata
+    status: draft
+  - type: arterial-supply
+    target: deltoid-branch-of-thoraco-acromial-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: posterior-circumflex-humeral-artery
+    source: wikidata
+    status: draft

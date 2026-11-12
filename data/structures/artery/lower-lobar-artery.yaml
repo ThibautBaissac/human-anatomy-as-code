@@ -26,9 +26,19 @@ sides:
       ta2: 4101
       ta98: A12.2.01.214
       wikidata: Q66563804
+    relations:
+      - type: branch-of
+        target: pulmonary-artery
+        source: fma
+        status: draft
   right:
     ids:
       fma: 68200
       ta2: 4085
       ta98: A12.2.01.113
       wikidata: Q66563803
+    relations:
+      - type: branch-of
+        target: inferomedial-branch-of-right-pulmonary-artery
+        source: fma
+        status: draft

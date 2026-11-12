@@ -40,3 +40,8 @@ sides:
       wikidata: Q66566997
     meshes:
       - bp3d:FJ3584
+relations:
+  - type: branch-of
+    target: renal-artery
+    source: fma
+    status: draft

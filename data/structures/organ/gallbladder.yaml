@@ -29,3 +29,8 @@ ids:
   wikidata: Q64386
 meshes:
   - bp3d:FJ2817
+relations:
+  - type: arterial-supply
+    target: posterior-superior-pancreaticoduodenal-artery
+    source: fma
+    status: draft

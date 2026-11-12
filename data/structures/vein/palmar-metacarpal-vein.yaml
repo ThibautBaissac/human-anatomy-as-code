@@ -29,3 +29,8 @@ sides:
       - bp3d:FJ2290
       - bp3d:FJ2350
       - bp3d:FJ2353
+relations:
+  - type: tributary-of
+    target: radial-vein
+    source: fma
+    status: draft

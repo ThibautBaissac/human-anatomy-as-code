@@ -22,3 +22,8 @@ ids:
   wikidata: Q38042010
 meshes:
   - bp3d:FJ3546
+relations:
+  - type: branch-of
+    target: inferior-pancreaticoduodenal-artery
+    source: fma
+    status: draft

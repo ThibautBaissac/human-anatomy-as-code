@@ -16,3 +16,28 @@ ids:
   wikidata: Q66511268
 meshes:
   - bp3d:FJ2570
+relations:
+  - type: arterial-supply
+    target: common-iliac-artery
+    source: wikidata
+    status: draft
+  - type: arterial-supply
+    target: inferior-branch-of-ileocolic-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: inferior-mesenteric-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: middle-colic-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: right-colic-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: superior-mesenteric-artery
+    source: wikidata
+    status: draft

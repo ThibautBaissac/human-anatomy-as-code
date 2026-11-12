@@ -35,3 +35,16 @@ sides:
       wikidata: Q66600565
     meshes:
       - bp3d:FJ1827
+relations:
+  - type: arterial-supply
+    target: posterior-medial-choroidal-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: thalamogeniculate-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: thalamoperforating-artery
+    source: fma
+    status: draft

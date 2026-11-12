@@ -39,3 +39,16 @@ sides:
       wikidata: Q66508036
     meshes:
       - bp3d:FJ1586
+relations:
+  - type: arterial-supply
+    target: inferior-thyroid-artery
+    source: wikidata
+    status: draft
+  - type: arterial-supply
+    target: superficial-cervical-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q568799
+    source: wikidata
+    status: draft

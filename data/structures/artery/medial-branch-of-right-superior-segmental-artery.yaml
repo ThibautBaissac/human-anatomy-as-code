@@ -17,3 +17,8 @@ meshes:
   - bp3d:FJ2994
   - bp3d:FJ2995
   - bp3d:FJ2996
+relations:
+  - type: branch-of
+    target: superior-segmental-artery
+    source: fma
+    status: draft

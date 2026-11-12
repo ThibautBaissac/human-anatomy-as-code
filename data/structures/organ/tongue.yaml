@@ -29,3 +29,12 @@ ids:
   wikidata: Q9614
 meshes:
   - bp3d:FJ2761
+relations:
+  - type: innervation
+    target: wikidata:Q319577
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q334143
+    source: wikidata
+    status: draft

@@ -34,3 +34,8 @@ sides:
       wikidata: Q66505844
     meshes:
       - bp3d:FJ2308
+relations:
+  - type: branch-of
+    target: transverse-cervical-artery
+    source: fma
+    status: draft

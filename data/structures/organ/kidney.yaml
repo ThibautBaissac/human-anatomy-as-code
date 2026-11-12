@@ -40,3 +40,8 @@ sides:
       wikidata: Q66502827
     meshes:
       - bp3d:FJ3147
+relations:
+  - type: arterial-supply
+    target: renal-artery
+    source: fma
+    status: draft

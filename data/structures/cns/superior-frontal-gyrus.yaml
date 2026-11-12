@@ -34,3 +34,12 @@ sides:
       wikidata: Q66570158
     meshes:
       - bp3d:FJ1834
+relations:
+  - type: arterial-supply
+    target: artery-of-precentral-sulcus
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: callosomarginal-artery
+    source: fma
+    status: draft

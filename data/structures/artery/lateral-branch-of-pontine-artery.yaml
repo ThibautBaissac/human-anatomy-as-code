@@ -36,3 +36,8 @@ sides:
         text: lateral branch of right pontine artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: pontine-artery
+    source: fma
+    status: draft

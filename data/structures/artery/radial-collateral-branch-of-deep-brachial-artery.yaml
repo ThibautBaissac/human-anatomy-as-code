@@ -32,3 +32,8 @@ sides:
         text: radial collateral branch of right deep brachial artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: deep-brachial-artery
+    source: fma
+    status: draft

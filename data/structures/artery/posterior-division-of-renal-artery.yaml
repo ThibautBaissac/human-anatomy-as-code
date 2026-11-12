@@ -47,3 +47,8 @@ sides:
         text: posterior division of right renal artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: renal-artery
+    source: wikidata
+    status: draft

@@ -32,3 +32,16 @@ ids:
 meshes:
   - bp3d:FJ1781
   - bp3d:FJ1830
+relations:
+  - type: arterial-supply
+    target: anterior-inferior-cerebellar-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: posterior-inferior-cerebellar-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: superior-cerebellar-artery
+    source: fma
+    status: draft

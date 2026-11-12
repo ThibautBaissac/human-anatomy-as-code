@@ -33,3 +33,8 @@ meshes:
   - bp3d:FJ2672
   - bp3d:FJ2674
   - bp3d:FJ2675
+relations:
+  - type: branch-of
+    target: right-coronary-artery
+    source: fma
+    status: draft

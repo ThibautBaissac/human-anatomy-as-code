@@ -8,7 +8,8 @@ import { RELATION_TYPES, TREE_TYPES, type ExternalTarget, type ExternalTargets, 
 /**
  * How the FMA's `A continuous_distally_with B` is read. `false`: B is distal to A, so `continuation-of` is written on B
  * and points to A (the brachial artery continues the axillary artery). `true`: the subject A is the distal one.
- * Provisional; verified on the axillary → brachial pair against the real snapshot (Task 7).
+ * Verified on the FMA 5.1.0 snapshot (Task 7): it has no axillary → brachial row, but every row between two of our
+ * structures puts the proximal one first (common iliac vein → external iliac vein, esophagus → stomach, ureter → bladder).
  */
 export const CONTINUATION_DISTAL_IS_SUBJECT = false;
 
@@ -226,14 +227,31 @@ function dedup(cands: Candidate[]): Candidate[] {
 
 const sameTargets = (a: Candidate[], b: Candidate[]) => a.length === b.length && a.every((x) => b.some((y) => y.target === x.target));
 
-/** Side comparison of one type: identical sides at structure level, differing sides at side level; structure-level rows hold for both sides. */
-function fold(cands: Candidate[]): Candidate[] {
+/**
+ * Side comparison of one type: identical sides at structure level, differing sides at side level; structure-level rows hold
+ * for both sides. For a tree type (`tree` given), each level keeps its first candidate by source priority then row order
+ * before the sides are compared, the others reported as `second-tree`.
+ */
+function fold(cands: Candidate[], tree?: Sink): Candidate[] {
   const at = (side: Level) => cands.filter((c) => c.side === side);
   const [s, l, r] = [at(null), at('left'), at('right')];
-  if (!l.length && !r.length) return dedup(s);
-  const left = dedup([...l, ...s]), right = dedup([...r, ...s]);
-  if (sameTargets(left, right)) return dedup([...left, ...right]).map((c) => ({ ...c, side: null }));
-  return [...left.map((c) => ({ ...c, side: 'left' as const })), ...right.map((c) => ({ ...c, side: 'right' as const }))];
+  const rejected = new Set<string>();
+  const keep = (list: Candidate[]) => {
+    if (!tree || list.length < 2) return list;
+    const [first, ...rest] = [...list].sort(better);
+    for (const c of rest) rejected.add(`${c.type} ${c.target} (${c.source}) : ${first.target} est gardée`);
+    return [first];
+  };
+  let out: Candidate[];
+  if (!l.length && !r.length) out = keep(dedup(s));
+  else {
+    const left = keep(dedup([...l, ...s])), right = keep(dedup([...r, ...s]));
+    out = sameTargets(left, right)
+      ? dedup([...left, ...right]).map((c) => ({ ...c, side: null }))
+      : [...left.map((c) => ({ ...c, side: 'left' as const })), ...right.map((c) => ({ ...c, side: 'right' as const }))];
+  }
+  rejected.forEach((detail) => tree!.ignore('second-tree', detail));
+  return out;
 }
 
 const levelKey = (side: Level) => side ?? 'structure';
@@ -280,15 +298,8 @@ export function planRelations(input: RelationsInput): RelationsPlan {
       }
     }
 
-    // sides compared type by type, then one tree relation per type and level
-    let planned = RELATION_TYPES.flatMap((type) => fold(cands.filter((c) => c.type === type)));
-    planned = planned.filter((c) => {
-      if (!TREE_TYPES.includes(c.type)) return true;
-      const first = planned.filter((o) => o.type === c.type && o.side === c.side).sort(better)[0];
-      if (first === c) return true;
-      sink.ignore('second-tree', `${c.type} ${c.target} (${c.source}) : ${first.target} est gardée`);
-      return false;
-    });
+    // one tree relation per type and level, then sides compared type by type
+    const planned = RELATION_TYPES.flatMap((type) => fold(cands.filter((c) => c.type === type), TREE_TYPES.includes(type) ? sink : undefined));
 
     // merge with the protected relations (reviewed or curated)
     const protectedAt = new Map<string, Relation[]>([

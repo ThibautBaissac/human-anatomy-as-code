@@ -21,3 +21,8 @@ ids:
   ta2: 4232
   ta98: A12.2.12.033
   wikidata: Q66568409
+relations:
+  - type: branch-of
+    target: right-lobe-branch-of-right-hepatic-artery
+    source: fma
+    status: draft

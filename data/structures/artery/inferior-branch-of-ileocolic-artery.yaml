@@ -19,3 +19,8 @@ labels:
 ids:
   fma: 14823
   wikidata: Q38044089
+relations:
+  - type: branch-of
+    target: ileocolic-artery
+    source: fma
+    status: draft

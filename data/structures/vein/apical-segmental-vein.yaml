@@ -34,7 +34,17 @@ sides:
       - bp3d:FJ2962
       - bp3d:FJ2963
       - bp3d:FJ2964
+    relations:
+      - type: tributary-of
+        target: apicoposterior-segmental-vein
+        source: fma
+        status: draft
   right:
     ids:
       fma: 8661
       wikidata: Q66504119
+    relations:
+      - type: tributary-of
+        target: upper-lobar-vein
+        source: fma
+        status: draft

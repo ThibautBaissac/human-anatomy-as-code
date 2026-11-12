@@ -34,3 +34,8 @@ sides:
       wikidata: Q66539778
     meshes:
       - bp3d:FJ1691
+relations:
+  - type: branch-of
+    target: posterior-cerebral-artery
+    source: fma
+    status: draft

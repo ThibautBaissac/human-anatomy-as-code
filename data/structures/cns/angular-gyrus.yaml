@@ -34,3 +34,12 @@ sides:
       wikidata: Q66570172
     meshes:
       - bp3d:FJ1733
+relations:
+  - type: arterial-supply
+    target: branch-of-middle-cerebral-artery-to-angular-gyrus
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: posterior-parietal-artery
+    source: fma
+    status: draft

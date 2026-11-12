@@ -23,3 +23,8 @@ ids:
   ta2: 4054
   ta98: A12.1.03.001
   wikidata: Q1989441
+relations:
+  - type: arterial-supply
+    target: circumflex-branch-of-left-coronary-artery
+    source: fma
+    status: draft

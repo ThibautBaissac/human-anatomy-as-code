@@ -36,3 +36,8 @@ sides:
       wikidata: Q66502829
     meshes:
       - bp3d:FJ3142
+relations:
+  - type: arterial-supply
+    target: testicular-artery
+    source: fma
+    status: draft

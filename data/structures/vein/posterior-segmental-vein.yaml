@@ -37,6 +37,11 @@ sides:
       - bp3d:FJ2942
       - bp3d:FJ2943
       - bp3d:FJ2965
+    relations:
+      - type: tributary-of
+        target: apicoposterior-segmental-vein
+        source: fma
+        status: draft
   right:
     ids:
       fma: 8663
@@ -49,3 +54,8 @@ sides:
       - bp3d:FJ3026
       - bp3d:FJ3069
       - bp3d:FJ3070
+    relations:
+      - type: tributary-of
+        target: upper-lobar-vein
+        source: fma
+        status: draft

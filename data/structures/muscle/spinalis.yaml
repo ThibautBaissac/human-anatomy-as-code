@@ -29,3 +29,8 @@ ids:
 meshes:
   - bp3d:FJ1543
   - bp3d:FJ1543M
+relations:
+  - type: innervation
+    target: wikidata:Q7234230
+    source: wikidata
+    status: draft

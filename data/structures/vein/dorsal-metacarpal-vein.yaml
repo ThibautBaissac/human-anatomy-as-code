@@ -19,3 +19,8 @@ sides:
   right:
     meshes:
       - bp3d:FJ2199
+relations:
+  - type: tributary-of
+    target: cephalic-vein
+    source: fma
+    status: draft

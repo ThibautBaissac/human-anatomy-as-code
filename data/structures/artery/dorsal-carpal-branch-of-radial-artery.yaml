@@ -50,3 +50,8 @@ sides:
         text: dorsal carpal branch of right radial artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: radial-artery
+    source: fma
+    status: draft

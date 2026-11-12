@@ -40,3 +40,8 @@ sides:
       wikidata: Q66539670
     meshes:
       - bp3d:FJ1657
+relations:
+  - type: branch-of
+    target: vertebral-artery
+    source: fma
+    status: draft

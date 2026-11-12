@@ -17,9 +17,19 @@ sides:
       wikidata: Q66499686
     meshes:
       - bp3d:FJ1970
+    relations:
+      - type: branch-of
+        target: costocervical-trunk
+        source: fma
+        status: draft
   right:
     ids:
       fma: 5042
       wikidata: Q66501890
     meshes:
       - bp3d:FJ1935
+    relations:
+      - type: branch-of
+        target: costocervical-artery
+        source: fma
+        status: draft

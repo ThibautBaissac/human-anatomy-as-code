@@ -31,9 +31,19 @@ sides:
       wikidata: Q66501813
     meshes:
       - bp3d:FJ3589
+    relations:
+      - type: tributary-of
+        target: hemiazygos-vein
+        source: fma
+        status: draft
   right:
     ids:
       fma: 4843
       wikidata: Q66501713
     meshes:
       - bp3d:FJ3493
+    relations:
+      - type: tributary-of
+        target: azygos-vein
+        source: fma
+        status: draft

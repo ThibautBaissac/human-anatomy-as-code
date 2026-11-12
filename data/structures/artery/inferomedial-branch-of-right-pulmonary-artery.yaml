@@ -13,3 +13,8 @@ labels:
 ids:
   fma: 68658
   wikidata: Q66564204
+relations:
+  - type: branch-of
+    target: pulmonary-artery
+    source: fma
+    status: draft

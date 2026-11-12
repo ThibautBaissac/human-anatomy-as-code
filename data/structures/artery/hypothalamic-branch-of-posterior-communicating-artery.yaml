@@ -35,3 +35,8 @@ sides:
         text: hypothalamic branch of right posterior communicating artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: posterior-communicating-artery
+    source: fma
+    status: draft

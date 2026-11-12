@@ -27,3 +27,8 @@ ids:
   wikidata: Q9656
 meshes:
   - bp3d:FJ2565
+relations:
+  - type: arterial-supply
+    target: appendicular-artery
+    source: fma
+    status: draft

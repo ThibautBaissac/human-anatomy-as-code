@@ -39,3 +39,12 @@ sides:
       wikidata: Q66526730
     meshes:
       - bp3d:FJ1483
+relations:
+  - type: arterial-supply
+    target: superficial-palmar-arterial-arch
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q66578932
+    source: wikidata
+    status: draft

@@ -35,3 +35,8 @@ sides:
         text: posteromedial central branch of right posterior cerebral artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: posterior-cerebral-artery
+    source: fma
+    status: draft

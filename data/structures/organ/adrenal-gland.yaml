@@ -40,3 +40,12 @@ sides:
       wikidata: Q66715642
     meshes:
       - bp3d:FJ3130
+relations:
+  - type: arterial-supply
+    target: inferior-suprarenal-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: middle-suprarenal-artery
+    source: fma
+    status: draft

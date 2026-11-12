@@ -32,3 +32,8 @@ sides:
     ids:
       fma: 11345
       wikidata: Q66506358
+relations:
+  - type: arterial-supply
+    target: brachial-artery
+    source: wikidata
+    status: draft

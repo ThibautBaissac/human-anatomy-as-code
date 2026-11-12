@@ -34,3 +34,8 @@ sides:
       wikidata: Q66563800
     meshes:
       - bp3d:FJ2973
+relations:
+  - type: branch-of
+    target: pulmonary-artery
+    source: fma
+    status: draft

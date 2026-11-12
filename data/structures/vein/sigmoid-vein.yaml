@@ -14,3 +14,8 @@ ids:
   wikidata: Q66511971
 meshes:
   - bp3d:FJ3639
+relations:
+  - type: tributary-of
+    target: inferior-mesenteric-vein
+    source: fma
+    status: draft

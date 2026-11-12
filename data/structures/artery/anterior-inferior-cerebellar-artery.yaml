@@ -30,3 +30,8 @@ ids:
 meshes:
   - bp3d:FJ1656
   - bp3d:FJ1656M
+relations:
+  - type: branch-of
+    target: basilar-artery
+    source: fma
+    status: draft

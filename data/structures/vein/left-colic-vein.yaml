@@ -30,3 +30,8 @@ meshes:
   - bp3d:FJ3400
   - bp3d:FJ3429
   - bp3d:FJ3495
+relations:
+  - type: tributary-of
+    target: inferior-mesenteric-vein
+    source: fma
+    status: draft

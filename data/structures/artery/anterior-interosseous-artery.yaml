@@ -40,3 +40,8 @@ sides:
       wikidata: Q66514816
     meshes:
       - bp3d:FJ2266
+relations:
+  - type: branch-of
+    target: common-interosseous-artery
+    source: fma
+    status: draft

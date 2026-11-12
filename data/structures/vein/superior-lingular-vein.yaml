@@ -24,3 +24,8 @@ ids:
 meshes:
   - bp3d:FJ2937
   - bp3d:FJ2938
+relations:
+  - type: tributary-of
+    target: lingular-vein
+    source: fma
+    status: draft

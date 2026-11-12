@@ -40,3 +40,8 @@ sides:
       wikidata: Q66574996
     meshes:
       - bp3d:FJ2170
+relations:
+  - type: branch-of
+    target: external-iliac-artery
+    source: fma
+    status: draft

@@ -15,3 +15,8 @@ ids:
   wikidata: Q66510852
 meshes:
   - bp3d:FJ3534
+relations:
+  - type: branch-of
+    target: inferior-mesenteric-artery
+    source: fma
+    status: draft

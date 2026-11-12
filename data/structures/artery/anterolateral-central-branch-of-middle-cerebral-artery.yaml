@@ -26,6 +26,11 @@ sides:
         text: anterolateral central branch of left middle cerebral artery
         source: fma
         status: draft
+    relations:
+      - type: branch-of
+        target: sphenoid-part-of-middle-cerebral-artery
+        source: fma
+        status: draft
   right:
     ids:
       fma: 50377
@@ -36,5 +41,10 @@ sides:
     labels:
       en:
         text: anterolateral central branch of right middle cerebral artery
+        source: fma
+        status: draft
+    relations:
+      - type: branch-of
+        target: right-middle-cerebral-artery
         source: fma
         status: draft

@@ -53,3 +53,8 @@ sides:
       - bp3d:FJ3624
       - bp3d:FJ3625
       - bp3d:FJ3626
+relations:
+  - type: branch-of
+    target: abdominal-aorta
+    source: fma
+    status: draft

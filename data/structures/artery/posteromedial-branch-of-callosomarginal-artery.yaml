@@ -42,3 +42,8 @@ sides:
         text: posteromedial branch of right callosomarginal artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: callosomarginal-artery
+    source: fma
+    status: draft

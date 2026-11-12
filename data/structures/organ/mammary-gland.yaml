@@ -29,3 +29,8 @@ sides:
   right:
     ids:
       fma: 57987
+relations:
+  - type: arterial-supply
+    target: internal-thoracic-artery
+    source: wikidata
+    status: draft

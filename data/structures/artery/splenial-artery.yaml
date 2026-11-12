@@ -35,3 +35,8 @@ sides:
     meshes:
       - bp3d:FJ1677
       - bp3d:FJ1678
+relations:
+  - type: branch-of
+    target: medial-occipital-artery
+    source: fma
+    status: draft

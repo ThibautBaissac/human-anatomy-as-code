@@ -14,3 +14,8 @@ ids:
   wikidata: Q66569409
 meshes:
   - bp3d:FJ1874
+relations:
+  - type: branch-of
+    target: left-hepatic-artery
+    source: fma
+    status: draft

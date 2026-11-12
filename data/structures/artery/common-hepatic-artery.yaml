@@ -29,3 +29,8 @@ ids:
   wikidata: Q707236
 meshes:
   - bp3d:FJ3078
+relations:
+  - type: branch-of
+    target: celiac-artery
+    source: fma
+    status: draft

@@ -40,3 +40,8 @@ sides:
       wikidata: Q66395588
     meshes:
       - bp3d:FJ2310
+relations:
+  - type: branch-of
+    target: brachial-artery
+    source: fma
+    status: draft

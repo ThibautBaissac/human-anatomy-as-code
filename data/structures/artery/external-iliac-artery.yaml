@@ -40,3 +40,8 @@ sides:
       wikidata: Q66510057
     meshes:
       - bp3d:FJ3567
+relations:
+  - type: branch-of
+    target: common-iliac-artery
+    source: fma
+    status: draft

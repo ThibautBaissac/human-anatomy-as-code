@@ -40,3 +40,12 @@ sides:
       wikidata: Q66513354
     meshes:
       - bp3d:FJ3566
+relations:
+  - type: tributary-of
+    target: inferior-vena-cava
+    source: fma
+    status: draft
+  - type: continuation-of
+    target: inferior-vena-cava
+    source: fma
+    status: draft

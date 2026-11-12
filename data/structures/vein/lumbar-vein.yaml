@@ -19,3 +19,8 @@ sides:
   right:
     meshes:
       - bp3d:FJ3635
+relations:
+  - type: tributary-of
+    target: inferior-vena-cava
+    source: fma
+    status: draft

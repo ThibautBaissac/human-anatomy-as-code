@@ -40,3 +40,8 @@ sides:
       wikidata: Q66514811
     meshes:
       - bp3d:FJ2293
+relations:
+  - type: branch-of
+    target: ulnar-artery
+    source: fma
+    status: draft

@@ -18,3 +18,16 @@ ids:
   fma: 62003
   ta98: A14.1.03.004
   wikidata: Q1500793
+relations:
+  - type: arterial-supply
+    target: anterior-inferior-cerebellar-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: pontine-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: superior-cerebellar-artery
+    source: fma
+    status: draft

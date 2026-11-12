@@ -40,3 +40,8 @@ sides:
       wikidata: Q66533838
     meshes:
       - bp3d:FJ2164
+relations:
+  - type: branch-of
+    target: posterior-tibial-artery
+    source: wikidata
+    status: draft

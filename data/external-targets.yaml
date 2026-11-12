@@ -1,0 +1,1799 @@
+Q1076379:
+  fma: 53228
+  labels:
+    en:
+      text: chorda tympani
+      source: wikidata
+      status: draft
+    fr:
+      text: corde du tympan
+      source: wikidata
+      status: draft
+    la:
+      text: Chorda tympani
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q109370466:
+  labels:
+    en:
+      text: spinal accessory nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1134638:
+  fma: 19038
+  labels:
+    en:
+      text: anococcygeal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf ano-coccygien
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus anococcygeus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q115619080:
+  labels:
+    en:
+      text: deep branches of cervical plexus
+      source: wikidata
+      status: draft
+    fr:
+      text: plexus cervical profond
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q120682527:
+  labels:
+    en:
+      text: thyrohyoid branch
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1245816:
+  fma: 53396
+  labels:
+    en:
+      text: cervical branch of the facial nerve
+      source: wikidata
+      status: draft
+    la:
+      text: Ramus colli nervi facialis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1364876:
+  fma: 14385
+  labels:
+    en:
+      text: median nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf médian
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus medianus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1365325:
+  fma: 37069
+  labels:
+    en:
+      text: radial nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf radial
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus radialis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1515961:
+  fma: 75467
+  labels:
+    en:
+      text: set of intercostal nerves
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf intercostal
+      source: wikidata
+      status: draft
+    la:
+      text: Nervi intercostales
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1547173:
+  fma: 37072
+  labels:
+    en:
+      text: axillary nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf axillaire
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus axillaris
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1577203:
+  fma: 19039
+  labels:
+    en:
+      text: common fibular nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf fibulaire commun
+      source: wikidata
+      status: draft
+    la:
+      text: nervus fibularis communis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1623349:
+  fma: 75469
+  labels:
+    en:
+      text: set of inferior anal nerves
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf anal inférieur
+      source: wikidata
+      status: draft
+    la:
+      text: '"Nervi anales inferiores,'
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q16872983:
+  fma: 66048
+  labels:
+    en:
+      text: Levator ani nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle élévateur de l'anus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1740177:
+  fma: 65279
+  labels:
+    en:
+      text: Dorsal scapular nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf dorsal de la scapula
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus dorsalis scapulae
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1758126:
+  fma: 37064
+  labels:
+    en:
+      text: musculocutaneous nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf musculo-cutané
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus musculocutaneus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1761014:
+  fma: 16510
+  labels:
+    en:
+      text: superior gluteal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf glutéal supérieur
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus gluteus superior
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1781342:
+  fma: 65280
+  labels:
+    en:
+      text: subclavian nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf subclavier
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus subclavius
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1890743:
+  fma: 65275
+  labels:
+    en:
+      text: long thoracic nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf thoracique long
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus thoracicus longus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q189763:
+  fma: 50866
+  labels:
+    en:
+      text: trigeminal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf trijumeau
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus trigeminus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q190140:
+  fma: 5731
+  labels:
+    en:
+      text: vagus nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf vague
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus vagus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1978103:
+  fma: 65293
+  labels:
+    en:
+      text: medial pectoral nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf pectoral médial
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus pectoralis medialis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1978139:
+  fma: 7054
+  labels:
+    en:
+      text: Suboccipital nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf suboccipital
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus suboccipitalis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1978150:
+  fma: 16511
+  labels:
+    en:
+      text: inferior gluteal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf glutéal inférieur
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus gluteus inferior
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1978161:
+  fma: 16487
+  labels:
+    en:
+      text: obturator nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf obturateur
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus obturatorius
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q1978198:
+  fma: 19035
+  labels:
+    en:
+      text: tibial nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf tibial
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus tibialis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q223903:
+  fma: 50864
+  labels:
+    en:
+      text: oculomotor nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: Nerf oculomoteur
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus oculomotorius
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q2241227:
+  fma: 78711
+  labels:
+    en:
+      text: Nerve to obturator internus
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle obturateur interne
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus musculi obturatorii interni
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q242160:
+  fma: 50868
+  labels:
+    en:
+      text: facial nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf facial
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus facialis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q254580:
+  fma: 37319
+  labels:
+    en:
+      text: ulnar nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf ulnaire
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q2575284:
+  fma: 65296
+  labels:
+    en:
+      text: Lateral pectoral nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf pectoral latéral
+      source: wikidata
+      status: draft
+    la:
+      text: N Pectoralis lateralis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27050893:
+  fma: 8736
+  labels:
+    en:
+      text: Anterior ramus of third cervical nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: branche antérieure du troisième nerf cervical
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27050934:
+  fma: 8739
+  labels:
+    en:
+      text: Anterior ramus of fourth cervical nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: branche antérieure du quatrième nerf cervical
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27050941:
+  fma: 8730
+  labels:
+    en:
+      text: Anterior ramus of sixth cervical nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27056994:
+  fma: 7065
+  labels:
+    en:
+      text: Anterior ramus of first lumbar nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau antérieur du premier nerf lombaire
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27056997:
+  fma: 8764
+  labels:
+    en:
+      text: Anterior ramus of second lumbar nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau antérieur du deuxième nerf lombaire
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27057000:
+  fma: 8767
+  labels:
+    en:
+      text: Anterior ramus of third lumbar nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau antérieur du troisième nerf lombaire
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27057090:
+  fma: 7068
+  labels:
+    en:
+      text: Anterior ramus of first sacral nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau antérieur du premier nerf sacré
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27057091:
+  fma: 8776
+  labels:
+    en:
+      text: Anterior ramus of second sacral nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau antérieur du deuxième nerf sacré
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058089:
+  fma: 8602
+  labels:
+    en:
+      text: second intercostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: deuxième nerf intercostal
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058091:
+  fma: 8603
+  labels:
+    en:
+      text: third intercostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: troisième nerf intercostal
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058093:
+  fma: 8604
+  labels:
+    en:
+      text: fourth intercostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: quatrième nerf intercostal
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058096:
+  fma: 8605
+  labels:
+    en:
+      text: fifth intercostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: cinquième nerf intercostal
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058097:
+  fma: 8606
+  labels:
+    en:
+      text: sixth intercostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: sixième nerf intercostal
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058099:
+  fma: 8607
+  labels:
+    en:
+      text: seventh intercostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: septième nerf intercostal
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058100:
+  fma: 8608
+  labels:
+    en:
+      text: eighth intercostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: huitième nerf intercostal
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058102:
+  fma: 8609
+  labels:
+    en:
+      text: ninth intercostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: neuvième nerf intercostal
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058103:
+  fma: 8610
+  labels:
+    en:
+      text: tenth intercostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: dixième nerf intercostal
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058105:
+  fma: 8611
+  labels:
+    en:
+      text: eleventh intercostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: onzième nerf intercostal
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q27058580:
+  labels:
+    en:
+      text: spinal part of the accessory nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q271987:
+  fma: 6720
+  labels:
+    en:
+      text: accessory nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf accessoire
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus accessorius
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q3088530:
+  fma: 44771
+  labels:
+    en:
+      text: deep fibular nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf fibulaire profond
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus fibularis profundus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q3088602:
+  fma: 44699
+  labels:
+    en:
+      text: superficial fibular nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf fibulaire superficiel
+      source: wikidata
+      status: draft
+    la:
+      text: '"Nervus fibularis superficialis,'
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q318773:
+  fma: 50867
+  labels:
+    en:
+      text: abducens nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: Nerf abducens
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus abducens
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q319577:
+  fma: 50871
+  labels:
+    en:
+      text: hypoglossal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf hypoglosse
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus hypoglossus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q334143:
+  fma: 50870
+  labels:
+    en:
+      text: glossopharyngeal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf glossopharyngien
+      source: wikidata
+      status: draft
+    la:
+      text: nervus glossopharyngeus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q376687:
+  fma: 21869
+  labels:
+    en:
+      text: dorsal nerve of the penis
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf dorsal du pénis
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus dorsalis penis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q385981:
+  fma: 52996
+  labels:
+    en:
+      text: mandibular nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf mandibulaire
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus mandibularis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q4163340:
+  fma: 16488
+  labels:
+    en:
+      text: accessory obturator nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf obturateur accessoire
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus obturatorius accessorius
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q4771326:
+  fma: 45306
+  labels:
+    en:
+      text: anterior branch of obturator nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau antérieur du nerf obturateur
+      source: wikidata
+      status: draft
+    la:
+      text: Ramus anterior nervi obturatorii
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q4771357:
+  fma: 44822
+  labels:
+    en:
+      text: anterior interosseous nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf interosseux antébrachial antérieur
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus interosseus antebrachii anterior
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q4771359:
+  fma: 75478
+  labels:
+    en:
+      text: anterior labial nerves
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf labial antérieur
+      source: wikidata
+      status: draft
+    la:
+      text: Nervi labiales anteriores
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q498798:
+  fma: 65443
+  labels:
+    en:
+      text: greater occipital nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf grand occipital
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus occipitalis major
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q5250372:
+  labels:
+    en:
+      text: deep branch of radial nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau profond du nerf radial
+      source: wikidata
+      status: draft
+    la:
+      text: '"Ramus profundus nervi radialis,'
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q5250374:
+  fma: 44877
+  labels:
+    en:
+      text: deep branch of ulnar nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau profond du nerf ulnaire
+      source: wikidata
+      status: draft
+    la:
+      text: Ramus profundus nervi ulnaris
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q5422038:
+  fma: 6243
+  labels:
+    en:
+      text: external laryngeal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau externe du nerf laryngé supérieur
+      source: wikidata
+      status: draft
+    la:
+      text: Ramus externus nervi laryngei superioris
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q545676:
+  fma: 16486
+  labels:
+    en:
+      text: femoral nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf fémoral
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus femoralis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q559526:
+  fma: 37025
+  labels:
+    en:
+      text: suprascapular nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf supra-scapulaire
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus suprascapularis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q568799:
+  fma: 55142
+  labels:
+    en:
+      text: ansa cervicalis
+      source: wikidata
+      status: draft
+    fr:
+      text: anse cervicale
+      source: wikidata
+      status: draft
+    la:
+      text: Ansa cervicalis, ansa hypoglossi
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q597400:
+  fma: 78705
+  labels:
+    en:
+      text: nerve to quadratus femoris
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle carré fémoral
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus musculi quadrati femoris
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q604987:
+  fma: 44716
+  labels:
+    en:
+      text: medial plantar nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf plantaire médial
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus plantaris medialis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q623365:
+  fma: 65307
+  labels:
+    en:
+      text: Inferior subscapular nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf supérieur du muscle subscapulaire
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q623377:
+  fma: 65304
+  labels:
+    en:
+      text: upper subscapular nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf supérieur du muscle subscapulaire
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus subscapularis superior
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q6495668:
+  fma: 44724
+  labels:
+    en:
+      text: lateral plantar nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf plantaire latéral
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus plantaris lateralis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66512099:
+  fma: 20581
+  labels:
+    en:
+      text: nerve to iliacus
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle iliaque
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66514060:
+  fma: 16499
+  labels:
+    en:
+      text: right femoral nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66514062:
+  fma: 16500
+  labels:
+    en:
+      text: left femoral nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66526502:
+  fma: 37065
+  labels:
+    en:
+      text: right musculocutaneous nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66526503:
+  fma: 37066
+  labels:
+    en:
+      text: left musculocutaneous nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66526506:
+  fma: 37070
+  labels:
+    en:
+      text: right radial nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66526507:
+  fma: 37071
+  labels:
+    en:
+      text: left radial nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66526508:
+  fma: 37073
+  labels:
+    en:
+      text: right axillary nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66526509:
+  fma: 37074
+  labels:
+    en:
+      text: left axillary nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66535043:
+  fma: 44692
+  labels:
+    en:
+      text: interosseous nerve of leg
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf interosseux de la jambe
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66535283:
+  fma: 44824
+  labels:
+    en:
+      text: nerve to flexor carpi radialis
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle fléchisseur radial du carpe
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66535297:
+  fma: 44835
+  labels:
+    en:
+      text: nerve to pronator quadratus
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle carré pronateur
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66535674:
+  fma: 45247
+  labels:
+    en:
+      text: pectineus branch of femoral nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau du muscle pectiné du nerf fémoral
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66542230:
+  fma: 52193
+  labels:
+    en:
+      text: rectus femoris branch of femoral nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau du muscle droit fémoral du nerf fémoral
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66542235:
+  fma: 52196
+  labels:
+    en:
+      text: vastus lateralis branch of femoral nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau du muscle vaste latéral du nerf fémoral
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66542243:
+  fma: 52199
+  labels:
+    en:
+      text: vastus intermedius branch of femoral nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau du muscle vaste intermédiaire du nerf fémoral
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66542249:
+  fma: 52202
+  labels:
+    en:
+      text: vastus medialis branch of femoral nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau du muscle vaste médial du nerf fémoral
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561592:
+  fma: 65285
+  labels:
+    en:
+      text: right subclavian nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561593:
+  fma: 65286
+  labels:
+    en:
+      text: left subclavian nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561601:
+  fma: 65300
+  labels:
+    en:
+      text: deltoid branch of posterior branch of axillary nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle deltoïde de la branche postérieure du nerf axillaire
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561602:
+  fma: 65301
+  labels:
+    en:
+      text: nerve to teres minor
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle petit rond
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561604:
+  fma: 65305
+  labels:
+    en:
+      text: right superior subscapular nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561605:
+  fma: 65306
+  labels:
+    en:
+      text: left superior subscapular nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561606:
+  fma: 65308
+  labels:
+    en:
+      text: right inferior subscapular nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561607:
+  fma: 65309
+  labels:
+    en:
+      text: left inferior subscapular nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561627:
+  fma: 65329
+  labels:
+    en:
+      text: branch of posterior muscular branch of radial nerve to medial head of triceps brachii
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du chef médial du muscle triceps brachial
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561628:
+  fma: 65330
+  labels:
+    en:
+      text: branch of posterior muscular branch of radial nerve to lateral head of triceps brachii
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du chef latéral du muscle triceps brachial
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561632:
+  fma: 65334
+  labels:
+    en:
+      text: nerve to brachioradialis
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle brachio-radial
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66561649:
+  fma: 65351
+  labels:
+    en:
+      text: branch of ulnar nerve to flexor digitorum profundus
+      source: wikidata
+      status: draft
+    fr:
+      text: branche du nerf ulnaire pour la partie médiale du muscle fléchisseur profond des doigts
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66562249:
+  fma: 66083
+  labels:
+    en:
+      text: right suprascapular nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66562250:
+  fma: 66084
+  labels:
+    en:
+      text: left suprascapular nerve
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66578920:
+  fma: 80267
+  labels:
+    en:
+      text: nerve to superficial head of flexor pollicis brevis
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du chef superficiel du muscle court fléchisseur du pouce
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66578926:
+  fma: 80273
+  labels:
+    en:
+      text: branch of median nerve to opponens pollicis
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle opposant du pouce
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66578932:
+  fma: 80279
+  labels:
+    en:
+      text: nerve to abductor pollicis brevis
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle court abducteur du pouce
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66578940:
+  fma: 80286
+  labels:
+    en:
+      text: nerve to extensor indicis
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle extenseur de l'index
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66578943:
+  fma: 80289
+  labels:
+    en:
+      text: nerve to extensor pollicis longus
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle long extenseur du pouce
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66578947:
+  fma: 80292
+  labels:
+    en:
+      text: nerve to extensor pollicis brevis
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle court extenseur du pouce
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66578950:
+  fma: 80295
+  labels:
+    en:
+      text: nerve to abductor pollicis longus
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle long abducteur du pouce
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66588026:
+  fma: 81182
+  labels:
+    en:
+      text: nerve to extensor carpi ulnaris
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle extenseur ulnaire du carpe
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66588029:
+  fma: 81185
+  labels:
+    en:
+      text: nerve to extensor digiti minimi
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle extenseur du petit doigt
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66588032:
+  fma: 81188
+  labels:
+    en:
+      text: nerve to extensor digitorum
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle extenseur des doigts
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66588035:
+  fma: 81191
+  labels:
+    en:
+      text: nerve to extensor carpi radialis brevis
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle court extenseur radial du carpe
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66588042:
+  fma: 81198
+  labels:
+    en:
+      text: branch of medial muscular branch of radial nerve to long head of triceps brachii
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du chef long du muscle triceps brachial
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66588049:
+  fma: 81205
+  labels:
+    en:
+      text: nerve to extensor carpi radialis longus
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle long extenseur radial du carpe
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66588066:
+  fma: 81220
+  labels:
+    en:
+      text: nerve to flexor carpi ulnaris
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle fléchisseur ulnaire du carpe
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q66588165:
+  fma: 81322
+  labels:
+    en:
+      text: deltoid branch of anterior branch of axillary nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf du muscle deltoïde de la branche antérieure du nerf axillaire
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q6947748:
+  fma: 53247
+  labels:
+    en:
+      text: mylohyoid nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf mylo-hyoïdien
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus mylohyoideus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q7130417:
+  fma: 21540
+  labels:
+    en:
+      text: pancreatic plexus
+      source: wikidata
+      status: draft
+    la:
+      text: Plexus pancreaticus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q7234170:
+  fma: 45307
+  labels:
+    en:
+      text: posterior branch of obturator nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: rameau postérieur du nerf obturateur
+      source: wikidata
+      status: draft
+    la:
+      text: Ramus posterior nervi obturatorii
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q7234230:
+  fma: 5983
+  labels:
+    en:
+      text: posterior ramus of spinal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: branche postérieure des nerfs spinaux
+      source: wikidata
+      status: draft
+    la:
+      text: Ramus posterior nervi spinalis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q737313:
+  fma: 6191
+  labels:
+    en:
+      text: phrenic nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf phrénique
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus phrenicus
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q740541:
+  fma: 6246
+  labels:
+    en:
+      text: recurrent laryngeal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf laryngé récurrent
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus laryngeus recurrens
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q7630977:
+  fma: 65567
+  labels:
+    en:
+      text: subcostal nerve
+      source: wikidata
+      status: draft
+    fr:
+      text: nerf subcostal
+      source: wikidata
+      status: draft
+    la:
+      text: Nervus subcostalis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q897760:
+  fma: 77584
+  labels:
+    en:
+      text: celiac ganglia
+      source: wikidata
+      status: draft
+    fr:
+      text: ganglion coeliaque
+      source: wikidata
+      status: draft
+    la:
+      text: Ganglia coeliaca
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft
+Q921815:
+  fma: 5904
+  labels:
+    en:
+      text: cervical plexus
+      source: wikidata
+      status: draft
+    fr:
+      text: plexus cervical
+      source: wikidata
+      status: draft
+    la:
+      text: Plexus cervicalis
+      source: wikidata
+      status: draft
+  source: wikidata
+  status: draft

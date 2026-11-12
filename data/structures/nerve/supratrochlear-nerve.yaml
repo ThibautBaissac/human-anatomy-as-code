@@ -33,3 +33,8 @@ sides:
       wikidata: Q66542863
     meshes:
       - bp3d:FJ1377
+relations:
+  - type: branch-of
+    target: frontal-nerve
+    source: fma
+    status: draft

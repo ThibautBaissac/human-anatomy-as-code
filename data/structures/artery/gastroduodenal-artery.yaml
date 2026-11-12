@@ -27,3 +27,8 @@ ids:
   ta2: 4215
   ta98: A12.2.12.016
   wikidata: Q707194
+relations:
+  - type: branch-of
+    target: common-hepatic-artery
+    source: fma
+    status: draft

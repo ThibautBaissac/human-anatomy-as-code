@@ -29,3 +29,8 @@ ids:
   wikidata: Q134955
 meshes:
   - bp3d:FJ2573
+relations:
+  - type: arterial-supply
+    target: inferior-pancreaticoduodenal-artery
+    source: wikidata
+    status: draft

@@ -40,3 +40,8 @@ sides:
       wikidata: Q66500714
     meshes:
       - bp3d:FJ3587
+relations:
+  - type: tributary-of
+    target: brachiocephalic-vein
+    source: fma
+    status: draft

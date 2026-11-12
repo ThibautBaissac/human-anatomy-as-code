@@ -15,3 +15,8 @@ ids:
   wikidata: Q66568417
 meshes:
   - bp3d:FJ3107
+relations:
+  - type: branch-of
+    target: medial-segmental-hepatic-artery
+    source: fma
+    status: draft

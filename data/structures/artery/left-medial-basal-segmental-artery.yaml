@@ -24,3 +24,8 @@ ids:
 meshes:
   - bp3d:FJ2884
   - bp3d:FJ2885
+relations:
+  - type: branch-of
+    target: lower-lobar-artery
+    source: fma
+    status: draft

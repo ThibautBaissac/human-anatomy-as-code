@@ -25,3 +25,12 @@ sides:
       wikidata: Q66510140
     meshes:
       - bp3d:FJ3606
+relations:
+  - type: tributary-of
+    target: internal-iliac-vein
+    source: fma
+    status: draft
+  - type: continuation-of
+    target: internal-iliac-vein
+    source: fma
+    status: draft

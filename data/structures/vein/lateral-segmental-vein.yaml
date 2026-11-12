@@ -13,3 +13,8 @@ labels:
 ids:
   fma: 8664
   wikidata: Q66504231
+relations:
+  - type: tributary-of
+    target: middle-lobar-vein
+    source: fma
+    status: draft

@@ -35,6 +35,11 @@ sides:
       wikidata: Q30126919
     meshes:
       - bp3d:FJ3483
+    relations:
+      - type: branch-of
+        target: systemic-arterial-tree
+        source: fma
+        status: draft
   right:
     ids:
       fma: 3941
@@ -42,3 +47,8 @@ sides:
       wikidata: Q30126918
     meshes:
       - bp3d:FJ3564
+    relations:
+      - type: branch-of
+        target: brachiocephalic-artery
+        source: fma
+        status: draft

@@ -33,3 +33,8 @@ sides:
     ids:
       fma: 60325
       wikidata: Q66556693
+relations:
+  - type: arterial-supply
+    target: arteria-princeps-pollicis
+    source: wikidata
+    status: draft

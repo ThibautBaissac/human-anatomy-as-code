@@ -15,3 +15,8 @@ ids:
   wikidata: Q66510843
 meshes:
   - bp3d:FJ3437
+relations:
+  - type: branch-of
+    target: superior-mesenteric-artery
+    source: fma
+    status: draft

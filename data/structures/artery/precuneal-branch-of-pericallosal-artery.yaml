@@ -35,3 +35,8 @@ sides:
         text: precuneal branch of right pericallosal artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: pericallosal-artery
+    source: fma
+    status: draft

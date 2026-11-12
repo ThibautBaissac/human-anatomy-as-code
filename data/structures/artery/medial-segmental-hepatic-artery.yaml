@@ -21,3 +21,8 @@ ids:
   ta2: 4236
   ta98: A12.2.12.037
   wikidata: Q66568416
+relations:
+  - type: branch-of
+    target: left-lobe-branch-of-left-hepatic-artery
+    source: fma
+    status: draft

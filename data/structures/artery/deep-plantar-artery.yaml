@@ -39,3 +39,8 @@ sides:
       wikidata: Q66567379
     meshes:
       - bp3d:FJ2136
+relations:
+  - type: branch-of
+    target: dorsalis-pedis-artery
+    source: fma
+    status: draft

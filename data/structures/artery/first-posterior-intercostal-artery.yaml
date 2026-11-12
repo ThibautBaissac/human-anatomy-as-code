@@ -33,3 +33,8 @@ sides:
       wikidata: Q66562373
     meshes:
       - bp3d:FJ1939
+relations:
+  - type: branch-of
+    target: superior-intercostal-artery
+    source: fma
+    status: draft

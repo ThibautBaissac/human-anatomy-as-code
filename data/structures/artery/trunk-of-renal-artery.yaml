@@ -36,3 +36,8 @@ sides:
         text: trunk of right renal artery
         source: fma
         status: draft
+relations:
+  - type: continuation-of
+    target: aorta
+    source: fma
+    status: draft

@@ -22,3 +22,8 @@ sides:
     ids:
       fma: 70351
       wikidata: Q66568358
+relations:
+  - type: branch-of
+    target: subclavian-artery
+    source: fma
+    status: draft

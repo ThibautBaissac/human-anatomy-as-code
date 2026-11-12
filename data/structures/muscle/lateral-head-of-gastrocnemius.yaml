@@ -53,3 +53,12 @@ actions:
     role: flexion
     source: rajagopal-2016
     status: draft
+relations:
+  - type: arterial-supply
+    target: posterior-tibial-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q1978198
+    source: wikidata
+    status: draft

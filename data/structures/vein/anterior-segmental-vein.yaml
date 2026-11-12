@@ -37,3 +37,8 @@ sides:
     meshes:
       - bp3d:FJ3028
       - bp3d:FJ3029
+relations:
+  - type: tributary-of
+    target: upper-lobar-vein
+    source: fma
+    status: draft

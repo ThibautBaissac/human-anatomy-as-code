@@ -21,3 +21,8 @@ ids:
   ta2: 4122
   ta98: A12.3.02.308
   wikidata: Q66504115
+relations:
+  - type: tributary-of
+    target: superior-pulmonary-vein
+    source: fma
+    status: draft

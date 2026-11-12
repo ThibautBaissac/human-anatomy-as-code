@@ -21,3 +21,8 @@ ids:
   wikidata: Q38047666
 meshes:
   - bp3d:FJ3399
+relations:
+  - type: branch-of
+    target: left-colic-artery
+    source: fma
+    status: draft

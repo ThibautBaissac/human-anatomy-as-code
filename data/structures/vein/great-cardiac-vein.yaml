@@ -29,3 +29,8 @@ ids:
   wikidata: Q2886255
 meshes:
   - bp3d:FJ2656
+relations:
+  - type: tributary-of
+    target: coronary-sinus
+    source: fma
+    status: draft

@@ -21,3 +21,8 @@ ids:
   ta2: 4229
   ta98: A12.2.12.030
   wikidata: Q66510804
+relations:
+  - type: branch-of
+    target: hepatic-artery-proper
+    source: fma
+    status: draft

@@ -23,3 +23,8 @@ ids:
   wikidata: Q66513307
 meshes:
   - bp3d:FJ2056
+relations:
+  - type: tributary-of
+    target: internal-pudendal-vein
+    source: fma
+    status: draft

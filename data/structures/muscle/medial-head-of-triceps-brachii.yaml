@@ -48,3 +48,16 @@ actions:
     role: extension
     source: holzbaur-2005
     status: draft
+relations:
+  - type: arterial-supply
+    target: deep-brachial-artery
+    source: wikidata
+    status: draft
+  - type: arterial-supply
+    target: posterior-circumflex-humeral-artery
+    source: wikidata
+    status: draft
+  - type: innervation
+    target: wikidata:Q66561627
+    source: wikidata
+    status: draft

@@ -22,3 +22,8 @@ sides:
     ids:
       fma: 8655
       wikidata: Q66504112
+relations:
+  - type: tributary-of
+    target: superior-pulmonary-vein
+    source: fma
+    status: draft

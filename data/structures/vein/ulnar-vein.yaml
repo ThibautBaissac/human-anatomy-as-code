@@ -25,3 +25,8 @@ sides:
       wikidata: Q66514924
     meshes:
       - bp3d:FJ2312
+relations:
+  - type: tributary-of
+    target: medial-brachial-vein
+    source: fma
+    status: draft

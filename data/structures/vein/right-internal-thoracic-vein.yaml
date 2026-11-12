@@ -13,3 +13,8 @@ labels:
 ids:
   fma: 4758
   wikidata: Q66500719
+relations:
+  - type: tributary-of
+    target: brachiocephalic-vein
+    source: fma
+    status: draft

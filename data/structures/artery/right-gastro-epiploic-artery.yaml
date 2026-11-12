@@ -28,3 +28,8 @@ ids:
   wikidata: Q707202
 meshes:
   - bp3d:FJ3596
+relations:
+  - type: branch-of
+    target: gastroduodenal-artery
+    source: fma
+    status: draft

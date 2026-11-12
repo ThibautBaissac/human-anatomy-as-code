@@ -40,3 +40,8 @@ sides:
       wikidata: Q66533829
     meshes:
       - bp3d:FJ2055
+relations:
+  - type: branch-of
+    target: anterior-tibial-artery
+    source: fma
+    status: draft

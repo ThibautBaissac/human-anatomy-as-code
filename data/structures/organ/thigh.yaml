@@ -36,3 +36,8 @@ sides:
     ids:
       fma: 24968
       wikidata: Q66516322
+relations:
+  - type: arterial-supply
+    target: femoral-artery
+    source: wikidata
+    status: draft

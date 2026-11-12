@@ -42,3 +42,8 @@ sides:
       wikidata: Q66538466
     meshes:
       - bp3d:FJ1373
+relations:
+  - type: innervation
+    target: trochlear-nerve
+    source: wikidata
+    status: draft

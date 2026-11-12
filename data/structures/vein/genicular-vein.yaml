@@ -31,3 +31,8 @@ sides:
       - bp3d:FJ2153
       - bp3d:FJ2181
       - bp3d:FJ2182
+relations:
+  - type: tributary-of
+    target: popliteal-vein
+    source: fma
+    status: draft

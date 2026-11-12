@@ -27,3 +27,8 @@ ids:
   ta2: 4143
   ta98: A12.2.03.202
   wikidata: Q4771358
+relations:
+  - type: branch-of
+    target: left-coronary-artery
+    source: fma
+    status: draft

@@ -34,3 +34,8 @@ sides:
     ids:
       fma: 242625
       wikidata: Q66599163
+relations:
+  - type: arterial-supply
+    target: anterior-cerebral-artery
+    source: wikidata
+    status: draft

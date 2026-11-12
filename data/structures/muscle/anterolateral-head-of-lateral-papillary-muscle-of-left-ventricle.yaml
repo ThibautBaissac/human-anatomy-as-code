@@ -18,3 +18,16 @@ ids:
   wikidata: Q66502862
 meshes:
   - bp3d:FJ2418
+relations:
+  - type: arterial-supply
+    target: diagonal-branch-of-anterior-descending-branch-of-left-coronary-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: marginal-branch-of-right-coronary-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: posterior-interventricular-branch-of-right-coronary-artery
+    source: fma
+    status: draft

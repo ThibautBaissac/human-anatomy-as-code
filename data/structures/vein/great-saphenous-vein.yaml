@@ -39,3 +39,8 @@ sides:
       wikidata: Q66513342
     meshes:
       - bp3d:FJ2145
+relations:
+  - type: tributary-of
+    target: femoral-vein
+    source: fma
+    status: draft

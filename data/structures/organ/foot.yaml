@@ -34,3 +34,8 @@ sides:
     ids:
       fma: 11343
       wikidata: Q66506356
+relations:
+  - type: arterial-supply
+    target: dorsalis-pedis-artery
+    source: wikidata
+    status: draft

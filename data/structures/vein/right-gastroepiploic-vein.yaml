@@ -28,3 +28,8 @@ ids:
   wikidata: Q4115374
 meshes:
   - bp3d:FJ3597
+relations:
+  - type: tributary-of
+    target: superior-mesenteric-vein
+    source: fma
+    status: draft

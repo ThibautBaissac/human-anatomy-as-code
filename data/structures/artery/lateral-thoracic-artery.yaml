@@ -40,3 +40,8 @@ sides:
       wikidata: Q66514721
     meshes:
       - bp3d:FJ1938
+relations:
+  - type: branch-of
+    target: axillary-artery
+    source: fma
+    status: draft

@@ -40,3 +40,8 @@ sides:
       wikidata: Q66505820
     meshes:
       - bp3d:FJ2278
+relations:
+  - type: branch-of
+    target: costocervical-trunk
+    source: fma
+    status: draft

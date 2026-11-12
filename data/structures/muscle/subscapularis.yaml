@@ -33,9 +33,48 @@ sides:
       wikidata: Q66508082
     meshes:
       - bp3d:FJ1504M
+    relations:
+      - type: innervation
+        target: wikidata:Q623365
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q623377
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66561605
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66561607
+        source: wikidata
+        status: draft
   right:
     ids:
       fma: 13414
       wikidata: Q66508081
     meshes:
       - bp3d:FJ1504
+    relations:
+      - type: innervation
+        target: wikidata:Q623365
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q623377
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66561604
+        source: wikidata
+        status: draft
+      - type: innervation
+        target: wikidata:Q66561606
+        source: wikidata
+        status: draft
+relations:
+  - type: arterial-supply
+    target: circumflex-scapular-artery
+    source: wikidata
+    status: draft

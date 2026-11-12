@@ -41,3 +41,8 @@ sides:
     meshes:
       - bp3d:FJ2132
       - bp3d:FJ2193
+relations:
+  - type: tributary-of
+    target: popliteal-vein
+    source: fma
+    status: draft

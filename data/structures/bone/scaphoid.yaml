@@ -40,3 +40,8 @@ sides:
       wikidata: Q66515960
     meshes:
       - bp3d:FJ3383
+relations:
+  - type: arterial-supply
+    target: radial-artery
+    source: wikidata
+    status: draft

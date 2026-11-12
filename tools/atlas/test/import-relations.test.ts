@@ -95,6 +95,20 @@ test('continuous_distally_with gives continuation-of on the distal one: brachial
   assert.equal(p.relations.has('axillary-artery'), false);
 });
 
+test('the real FMA 5.1.0 row 14333 continuous_distally_with 18883 gives external-iliac-vein continuation-of common-iliac-vein', () => {
+  // The snapshot has no axillary/brachial continuation row; this one, like 7131→7148 (esophagus→stomach) and
+  // 9704→15900 (ureter→urinary bladder), shows the FMA subject is the proximal one.
+  const p = planRelations({
+    structures: [
+      structure('common-iliac-vein', 'vein', 'bilateral', { fma: 14333 }),
+      structure('external-iliac-vein', 'vein', 'bilateral', { fma: 18883 }),
+    ],
+    fma: fma('14333,continuous_distally_with,18883'), wikidata: [], targets: [], registry: {}, qidByFma: new Map(),
+  });
+  assert.deepEqual(p.relations.get('external-iliac-vein'), { structure: [rel('continuation-of', 'common-iliac-vein')] });
+  assert.equal(p.relations.has('common-iliac-vein'), false);
+});
+
 test('Wikidata P3261 never yields continuation-of', () => {
   const p = plan({ wikidata: wd('Q4,P3261,Q3') });
   assert.deepEqual(p.relations.get('brachial-artery'), { structure: [rel('branch-of', 'axillary-artery', 'wikidata')] });
@@ -290,6 +304,13 @@ test('a second tree relation of one type is reported, the first by source priori
   const twoFma = plan({ fma: fma('2,branch_of,1', '2,branch_of,3') });
   assert.deepEqual(twoFma.relations.get('popliteal-artery'), { structure: [rel('branch-of', 'femoral-artery')] });
   assert.deepEqual(twoFma.report.ignored.map(({ subject, reason }) => ({ subject, reason })), [{ subject: 'popliteal-artery', reason: 'second-tree' }]);
+});
+
+test('sides left equal once the second tree relation is set aside are written once at structure level', () => {
+  // the real testicular vein: the whole and the right side give the inferior vena cava, the right side also a second tree
+  const p = plan({ fma: fma('7,tributary_of,6', '72,tributary_of,6', '72,tributary_of,5') });
+  assert.deepEqual(p.relations.get('gonadal-vein'), { structure: [rel('tributary-of', 'inferior-vena-cava')] });
+  assert.deepEqual(p.report.ignored.map(({ subject, reason }) => ({ subject, reason })), [{ subject: 'gonadal-vein', reason: 'second-tree' }]);
 });
 
 // ---------- idempotence ----------

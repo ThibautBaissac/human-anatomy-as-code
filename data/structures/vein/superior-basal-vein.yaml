@@ -19,3 +19,8 @@ sides:
     ids:
       fma: 8672
       wikidata: Q66504239
+relations:
+  - type: tributary-of
+    target: common-basal-vein
+    source: fma
+    status: draft

@@ -34,3 +34,8 @@ sides:
       wikidata: Q66533846
     meshes:
       - bp3d:FJ2179
+relations:
+  - type: branch-of
+    target: medial-plantar-artery
+    source: wikidata
+    status: draft

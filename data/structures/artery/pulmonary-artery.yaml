@@ -43,3 +43,8 @@ sides:
       wikidata: Q2917413
     meshes:
       - bp3d:FJ3019
+relations:
+  - type: branch-of
+    target: pulmonary-arterial-tree
+    source: fma
+    status: draft

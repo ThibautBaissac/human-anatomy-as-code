@@ -40,3 +40,8 @@ sides:
       ta2: 4086
       ta98: A12.2.01.114
       wikidata: Q66504090
+relations:
+  - type: branch-of
+    target: lower-lobar-artery
+    source: fma
+    status: draft

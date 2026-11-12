@@ -13,3 +13,8 @@ labels:
 ids:
   fma: 50082
   wikidata: Q66539278
+relations:
+  - type: branch-of
+    target: internal-carotid-artery
+    source: fma
+    status: draft

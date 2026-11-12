@@ -40,3 +40,8 @@ sides:
       wikidata: Q66539709
     meshes:
       - bp3d:FJ1726
+relations:
+  - type: branch-of
+    target: basilar-artery
+    source: fma
+    status: draft

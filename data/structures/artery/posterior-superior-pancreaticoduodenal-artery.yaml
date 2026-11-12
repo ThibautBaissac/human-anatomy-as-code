@@ -22,3 +22,8 @@ ids:
   wikidata: Q37947145
 meshes:
   - bp3d:FJ3557
+relations:
+  - type: branch-of
+    target: gastroduodenal-artery
+    source: fma
+    status: draft

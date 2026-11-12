@@ -40,3 +40,8 @@ sides:
       wikidata: Q66539280
     meshes:
       - bp3d:FJ1713
+relations:
+  - type: branch-of
+    target: internal-carotid-artery
+    source: fma
+    status: draft

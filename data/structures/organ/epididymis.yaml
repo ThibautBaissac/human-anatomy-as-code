@@ -38,3 +38,8 @@ sides:
       wikidata: Q66509437
     meshes:
       - bp3d:FJ3141
+relations:
+  - type: arterial-supply
+    target: testicular-artery
+    source: wikidata
+    status: draft

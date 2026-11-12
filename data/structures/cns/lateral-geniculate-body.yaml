@@ -33,3 +33,8 @@ sides:
       wikidata: Q66570759
     meshes:
       - bp3d:FJ1813
+relations:
+  - type: arterial-supply
+    target: thalamogeniculate-artery
+    source: fma
+    status: draft

@@ -40,3 +40,8 @@ sides:
       wikidata: Q66562434
     meshes:
       - bp3d:FJ2305
+relations:
+  - type: branch-of
+    target: subscapular-artery
+    source: fma
+    status: draft

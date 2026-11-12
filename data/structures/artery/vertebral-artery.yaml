@@ -40,3 +40,8 @@ sides:
       wikidata: Q66499536
     meshes:
       - bp3d:FJ1725
+relations:
+  - type: branch-of
+    target: subclavian-artery
+    source: fma
+    status: draft

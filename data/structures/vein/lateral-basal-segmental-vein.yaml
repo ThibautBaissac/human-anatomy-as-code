@@ -32,3 +32,8 @@ sides:
       - bp3d:FJ3060
       - bp3d:FJ3061
       - bp3d:FJ3062
+relations:
+  - type: tributary-of
+    target: inferior-basal-vein
+    source: fma
+    status: draft

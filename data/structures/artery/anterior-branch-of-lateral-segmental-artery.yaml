@@ -16,3 +16,8 @@ ids:
 meshes:
   - bp3d:FJ2982
   - bp3d:FJ2985
+relations:
+  - type: branch-of
+    target: lateral-segmental-artery
+    source: fma
+    status: draft

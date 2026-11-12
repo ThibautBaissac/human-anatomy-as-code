@@ -39,3 +39,8 @@ sides:
       wikidata: Q66542911
     meshes:
       - bp3d:FJ1347
+relations:
+  - type: branch-of
+    target: nasociliary-nerve
+    source: fma
+    status: draft

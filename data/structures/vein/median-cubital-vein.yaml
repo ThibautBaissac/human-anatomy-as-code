@@ -39,3 +39,8 @@ sides:
       wikidata: Q66514933
     meshes:
       - bp3d:FJ2287
+relations:
+  - type: tributary-of
+    target: basilic-vein
+    source: fma
+    status: draft

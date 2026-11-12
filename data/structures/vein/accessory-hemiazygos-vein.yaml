@@ -28,3 +28,8 @@ ids:
   wikidata: Q4672537
 meshes:
   - bp3d:FJ1981
+relations:
+  - type: tributary-of
+    target: azygos-vein
+    source: fma
+    status: draft

@@ -15,3 +15,8 @@ ids:
 meshes:
   - bp3d:FJ3632
   - bp3d:FJ3636
+relations:
+  - type: branch-of
+    target: systemic-arterial-tree
+    source: fma
+    status: draft

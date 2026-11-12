@@ -39,3 +39,8 @@ sides:
       wikidata: Q66542860
     meshes:
       - bp3d:FJ1341
+relations:
+  - type: branch-of
+    target: ophthalmic-nerve
+    source: fma
+    status: draft

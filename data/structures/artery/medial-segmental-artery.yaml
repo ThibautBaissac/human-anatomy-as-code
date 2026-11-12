@@ -21,3 +21,8 @@ ids:
   ta2: 4083
   ta98: A12.2.01.111
   wikidata: Q66563797
+relations:
+  - type: branch-of
+    target: middle-lobar-artery
+    source: fma
+    status: draft

@@ -26,3 +26,12 @@ ids:
 meshes:
   - bp3d:FJ1760
   - bp3d:FJ1808
+relations:
+  - type: arterial-supply
+    target: hypothalamic-branch-of-posterior-communicating-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: thalamoperforating-artery
+    source: fma
+    status: draft

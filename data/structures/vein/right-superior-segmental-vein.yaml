@@ -13,3 +13,8 @@ labels:
 ids:
   fma: 8670
   wikidata: Q66504237
+relations:
+  - type: tributary-of
+    target: inferior-pulmonary-vein
+    source: fma
+    status: draft

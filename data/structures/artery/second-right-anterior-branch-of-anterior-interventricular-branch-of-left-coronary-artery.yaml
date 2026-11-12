@@ -15,3 +15,8 @@ ids:
   wikidata: Q66499474
 meshes:
   - bp3d:FJ2646
+relations:
+  - type: branch-of
+    target: anterior-interventricular-branch-of-left-coronary-artery
+    source: fma
+    status: draft

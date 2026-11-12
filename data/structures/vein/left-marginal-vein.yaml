@@ -31,3 +31,8 @@ meshes:
   - bp3d:FJ2703
   - bp3d:FJ2704
   - bp3d:FJ2705
+relations:
+  - type: tributary-of
+    target: coronary-sinus
+    source: fma
+    status: draft

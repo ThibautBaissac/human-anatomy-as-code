@@ -34,3 +34,8 @@ meshes:
   - bp3d:FJ2652
   - bp3d:FJ2653
   - bp3d:FJ2654
+relations:
+  - type: branch-of
+    target: left-coronary-artery
+    source: fma
+    status: draft

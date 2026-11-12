@@ -15,3 +15,8 @@ ids:
   wikidata: Q66564275
 meshes:
   - bp3d:FJ3001
+relations:
+  - type: branch-of
+    target: anterior-basal-segmental-artery
+    source: fma
+    status: draft

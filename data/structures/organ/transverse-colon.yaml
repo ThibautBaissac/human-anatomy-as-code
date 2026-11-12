@@ -29,3 +29,8 @@ ids:
   wikidata: Q2619732
 meshes:
   - bp3d:FJ2572
+relations:
+  - type: arterial-supply
+    target: middle-colic-artery
+    source: wikidata
+    status: draft

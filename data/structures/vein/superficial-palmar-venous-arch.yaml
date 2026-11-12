@@ -39,3 +39,8 @@ sides:
       wikidata: Q66514896
     meshes:
       - bp3d:FJ2301
+relations:
+  - type: tributary-of
+    target: ulnar-vein
+    source: fma
+    status: draft

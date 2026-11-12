@@ -14,3 +14,8 @@ ids:
   wikidata: Q66512568
 meshes:
   - bp3d:FJ3101
+relations:
+  - type: tributary-of
+    target: left-hepatic-vein
+    source: fma
+    status: draft

@@ -33,3 +33,8 @@ sides:
       wikidata: Q66515043
     meshes:
       - bp3d:FJ2299
+relations:
+  - type: tributary-of
+    target: axillary-vein
+    source: fma
+    status: draft

@@ -42,3 +42,8 @@ sides:
         text: middle temporal branch of right middle cerebral artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: insular-part-of-middle-cerebral-artery
+    source: fma
+    status: draft

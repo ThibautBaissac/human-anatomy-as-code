@@ -16,3 +16,8 @@ ids:
 meshes:
   - bp3d:FJ2987
   - bp3d:FJ2988
+relations:
+  - type: branch-of
+    target: medial-segmental-artery
+    source: fma
+    status: draft

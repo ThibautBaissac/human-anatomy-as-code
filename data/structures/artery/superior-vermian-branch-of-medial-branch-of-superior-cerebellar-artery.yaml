@@ -35,3 +35,8 @@ sides:
         text: superior vermian branch of medial branch of right superior cerebellar artery
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: medial-branch-of-superior-cerebellar-artery
+    source: fma
+    status: draft

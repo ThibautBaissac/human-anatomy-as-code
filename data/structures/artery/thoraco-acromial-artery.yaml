@@ -19,3 +19,8 @@ sides:
     ids:
       fma: 22672
       wikidata: Q66514719
+relations:
+  - type: branch-of
+    target: axillary-artery
+    source: fma
+    status: draft

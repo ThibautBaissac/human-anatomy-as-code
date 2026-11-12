@@ -39,3 +39,8 @@ sides:
       wikidata: Q66533809
     meshes:
       - bp3d:FJ2152
+relations:
+  - type: branch-of
+    target: popliteal-artery
+    source: wikidata
+    status: draft

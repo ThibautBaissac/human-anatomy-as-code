@@ -18,3 +18,8 @@ meshes:
   - bp3d:FJ2989
   - bp3d:FJ3000
   - bp3d:FJ3011
+relations:
+  - type: branch-of
+    target: apical-segmental-artery
+    source: fma
+    status: draft

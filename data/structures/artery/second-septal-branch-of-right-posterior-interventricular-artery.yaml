@@ -14,3 +14,8 @@ ids:
   wikidata: Q66499459
 meshes:
   - bp3d:FJ2736
+relations:
+  - type: branch-of
+    target: posterior-interventricular-branch-of-right-coronary-artery
+    source: fma
+    status: draft

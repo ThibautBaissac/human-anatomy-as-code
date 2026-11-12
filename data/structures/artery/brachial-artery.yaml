@@ -43,3 +43,8 @@ sides:
       wikidata: Q66396274
     meshes:
       - bp3d:FJ2271
+relations:
+  - type: branch-of
+    target: axillary-artery
+    source: wikidata
+    status: draft

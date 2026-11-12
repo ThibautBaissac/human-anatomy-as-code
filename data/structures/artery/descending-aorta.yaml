@@ -29,3 +29,8 @@ ids:
   wikidata: Q3270170
 meshes:
   - bp3d:FJ3427
+relations:
+  - type: branch-of
+    target: arch-of-aorta
+    source: wikidata
+    status: draft

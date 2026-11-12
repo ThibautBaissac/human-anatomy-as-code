@@ -46,3 +46,8 @@ sides:
         text: artery of right precentral sulcus
         source: fma
         status: draft
+relations:
+  - type: branch-of
+    target: insular-part-of-middle-cerebral-artery
+    source: fma
+    status: draft

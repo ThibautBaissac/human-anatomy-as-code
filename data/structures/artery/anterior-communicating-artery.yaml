@@ -29,3 +29,8 @@ ids:
   wikidata: Q598769
 meshes:
   - bp3d:FJ1655
+relations:
+  - type: branch-of
+    target: anterior-cerebral-artery
+    source: fma
+    status: draft

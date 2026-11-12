@@ -22,3 +22,8 @@ ids:
   wikidata: Q66510820
 meshes:
   - bp3d:FJ3419
+relations:
+  - type: branch-of
+    target: splenic-artery
+    source: fma
+    status: draft

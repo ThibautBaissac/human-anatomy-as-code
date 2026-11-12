@@ -21,3 +21,16 @@ ids:
   fma: 7259
   ta2: 4043
   wikidata: Q66502857
+relations:
+  - type: arterial-supply
+    target: anterior-interventricular-branch-of-left-coronary-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: posterior-interventricular-branch-of-right-coronary-artery
+    source: fma
+    status: draft
+  - type: arterial-supply
+    target: right-coronary-artery
+    source: fma
+    status: draft

@@ -40,3 +40,8 @@ sides:
       wikidata: Q66533852
     meshes:
       - bp3d:FJ2169
+relations:
+  - type: branch-of
+    target: deep-plantar-artery
+    source: wikidata
+    status: draft

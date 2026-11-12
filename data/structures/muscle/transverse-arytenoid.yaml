@@ -29,3 +29,8 @@ ids:
   wikidata: Q717887
 meshes:
   - bp3d:FJ2809
+relations:
+  - type: innervation
+    target: wikidata:Q740541
+    source: wikidata
+    status: draft
