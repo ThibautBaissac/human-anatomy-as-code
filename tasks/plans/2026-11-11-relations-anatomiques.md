@@ -152,7 +152,7 @@ App (`app`):
 
 **Risk:** high (the atlas JSON is the contract with the app)
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
   Same fixture as Task 1, compiled; assertions on `result.atlases`:
   - male atlas, `popliteal-artery.relations` → `[{ type: 'branch-of', target: 'femoral-artery', source: 'fma', status: 'draft' }]`
@@ -166,21 +166,21 @@ App (`app`):
   - a structure whose source `fma` is used only by relations → `fma` appears in `attributions`
   - compiling twice gives byte-identical JSON
 
-- [ ] **Step 2: Run the tests and watch them fail**
+- [x] **Step 2: Run the tests and watch them fail**
 
   Run: `npm test -w tools/atlas`
   Expected: FAIL (no `inverse`, `externals`, `outside`)
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
   In `buildAtlas`, per model: resolve targets (registry QID carried by a structure's or a side's `ids.wikidata` → that slug), flatten side relations with `side`, build inverses from all structures (present or not) and keep those whose target is present, collect `outside` and `externals`. Count relation sources as used for attributions.
 
-- [ ] **Step 4: Run the tests and watch them pass**
+- [x] **Step 4: Run the tests and watch them pass**
 
   Run: `npm test -w tools/atlas && npm run typecheck -w tools/atlas && npm run data`
   Expected: PASS; `build/atlas-male.json` written.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
   ```bash
   git add tools/atlas
