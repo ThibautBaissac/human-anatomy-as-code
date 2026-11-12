@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { DownloadError, NoControllerError, makeAvailableOffline, readStatus } from '../offline/offline.ts';
 import type { AssetManifest, OfflineStatus } from '../offline/offline-state.ts';
+import { MANIFEST_URL } from '../offline/urls.ts';
 import type { Atlas } from '../viewer/types.ts';
 import { S } from './strings.ts';
 
@@ -29,7 +30,7 @@ export function OfflineDialog({ open, onClose, supported, canInstall, install, i
   useEffect(() => {
     if (!open || !supported) return;
     (async () => {
-      const m = (await (await fetch('/assets/manifest.json')).json()) as AssetManifest;
+      const m = (await (await fetch(MANIFEST_URL)).json()) as AssetManifest;
       setManifest(m);
       setStatus(await readStatus(m, m.models ? [model] : undefined));
     })().catch(() => setError(S.offlineReadError));

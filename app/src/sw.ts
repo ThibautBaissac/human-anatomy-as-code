@@ -1,7 +1,7 @@
 /// <reference lib="webworker" />
 // Service worker: precaches the app shell only; models and data are cached at run time.
 import { CacheFirst, NetworkFirst, Serwist, type PrecacheEntry } from 'serwist';
-import { ASSETS_CACHE as ASSETS, DATA_CACHE as DATA, MANIFEST_URL, isDataPath, isModelPath, modelUrl } from './offline/urls.ts';
+import { ASSETS_CACHE as ASSETS, BASE, DATA_CACHE as DATA, MANIFEST_URL, isDataPath, isModelPath, modelUrl } from './offline/urls.ts';
 
 declare const self: ServiceWorkerGlobalScope & { __SW_MANIFEST: (PrecacheEntry | string)[] };
 
@@ -10,7 +10,7 @@ const isData = (url: URL) => url.origin === self.location.origin && isDataPath(u
 
 const serwist = new Serwist({
   precacheEntries: self.__SW_MANIFEST,
-  precacheOptions: { navigateFallback: '/index.html', cleanupOutdatedCaches: true },
+  precacheOptions: { navigateFallback: `${BASE}index.html`, cleanupOutdatedCaches: true },
   // Updates wait for the user to accept them (banner); the very first install takes control at once.
   skipWaiting: false,
   clientsClaim: true,

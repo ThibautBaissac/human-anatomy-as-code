@@ -26,6 +26,22 @@
         "app"
       ],
       "port": 5174
+    },
+    {
+      "name": "app-pages-preview",
+      "runtimeExecutable": "env",
+      "runtimeArgs": [
+        "HAAC_BASE=/human-anatomy-as-code/",
+        "npm",
+        "run",
+        "preview",
+        "-w",
+        "app",
+        "--",
+        "--port",
+        "5175"
+      ],
+      "port": 5175
     }
   ]
 }

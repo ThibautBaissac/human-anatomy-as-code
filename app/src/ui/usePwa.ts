@@ -17,7 +17,7 @@ export function usePwa() {
 
   useEffect(() => {
     if (!supported) return;
-    const s = new Serwist('/sw.js', { scope: '/', type: 'classic' });
+    const s = new Serwist(`${import.meta.env.BASE_URL}sw.js`, { scope: import.meta.env.BASE_URL, type: 'classic' });
     s.addEventListener('waiting', () => setUpdateReady(true));
     // Reload once the update the user accepted takes control of the page. An update accepted in another tab
     // also takes control here (clientsClaim): keep the banner, its button now reloads. The first install is not an update.

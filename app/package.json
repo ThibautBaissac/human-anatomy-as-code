@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
+    "build:pages": "HAAC_BASE=/human-anatomy-as-code/ vite build && touch dist/.nojekyll",
     "preview": "vite preview",
     "preview:https": "node scripts/preview-https.mjs",
     "test": "node --test \"test/**/*.test.ts\"",

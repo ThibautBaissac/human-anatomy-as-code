@@ -19,6 +19,7 @@
     "dev": "npm run -w app dev",
     "test": "npm test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "e2e": "npm run -w app e2e"
+    "e2e": "npm run -w app e2e",
+    "deploy:pages": "sh app/scripts/deploy-pages.sh"
   }
 }

@@ -30,6 +30,8 @@ function staticFiles(): Plugin {
 
 // build/ (atlas-male.json, atlas-female.json, assets/) is served at the root of the app; Vite's own files go to /app/.
 export default defineConfig({
+  // HAAC_BASE=/human-anatomy-as-code/ for GitHub Pages (npm run build:pages); '/' everywhere else.
+  base: process.env.HAAC_BASE ?? '/',
   publicDir: '../build',
   server: { port: 5174, strictPort: true },
   preview: { port: 5174, strictPort: true, https },
