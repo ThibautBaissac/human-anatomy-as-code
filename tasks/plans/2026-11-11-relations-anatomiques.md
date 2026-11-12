@@ -78,7 +78,7 @@ App (`app`):
 
 **Risk:** high (changes the data format every later task and every curator depends on)
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
   Fixture: `validStructures()` plus these files (all `status: draft`, labels `en` only unless stated):
   - `structures/artery/femoral-artery.yaml`: bilateral, sides with meshes `bp3d:FJ10M` / `bp3d:FJ10`, ids `{ wikidata: 'Q10' }`
@@ -110,23 +110,23 @@ App (`app`):
 
   Kind rules (exact): `branch-of`: subject and target both `artery` or both `nerve`. `tributary-of`: `vein` → `vein`. `continuation-of`: same kind, one of `artery`, `vein`, `nerve`. `arterial-supply`: subject not `group`, target `artery`. `innervation`: subject not `group`, target `nerve` or `wikidata:`. Side relations hold for that side: the cycle check runs on the graph whose nodes are `slug` (non-bilateral) and `slug@side` (bilateral), edges by the side derivation of the spec.
 
-- [ ] **Step 2: Run the tests and watch them fail**
+- [x] **Step 2: Run the tests and watch them fail**
 
   Run: `npm test -w tools/atlas`
   Expected: FAIL on every new case (unknown property `relations`, missing rules)
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
   Data: add `relations` to `provides` in `data/sources/fma.yaml` and `data/sources/wikidata.yaml`.
 
   Schemas: `relation` def `{ type: enum RELATION_TYPES, target: pattern above, source: string, status: $ref status }`, all required, no additional properties; `relations: { type: array, minItems: 1, uniqueItems: true, items: relation }` on structure and side. `external-targets.schema.json`: object, property names `^Q[0-9]+$`, values `{ fma?: integer, labels (en required, same label def as structures), source, status }`. `KEY_ORDER` gains `'relations'` after `'actions'`; `SIDE_ORDER` gains `'relations'` last. `validateRelations` in `src/relations.ts`, called from `compileAtlas` after the actions check; `err`/`warn` pointers are JSON pointers into the structure file (`/sides/left/relations/0/target`).
 
-- [ ] **Step 4: Run the tests and watch them pass**
+- [x] **Step 4: Run the tests and watch them pass**
 
   Run: `npm test -w tools/atlas && npm run typecheck -w tools/atlas && npm run validate -w tools/atlas`
   Expected: PASS; `validate` on the real data still reports 0 errors.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
   ```bash
   git add tools/atlas data/sources
