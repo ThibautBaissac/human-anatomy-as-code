@@ -4,5 +4,5 @@ version: "5.1.0"
 url: https://github.com/uw-sig/FMA
 licence: CC-BY-4.0
 attribution: "Foundational Model of Anatomy, Structural Informatics Group, University of Washington, CC BY 4.0"
-provides: [labels, ids]
+provides: [labels, ids, relations]
 notes: Noms anglais repris via les listes BodyParts3D 4.0, qui suivent la FMA.

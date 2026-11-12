@@ -152,6 +152,14 @@
       "items": {
         "$ref": "#/$defs/action"
       }
+    },
+    "relations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/relation"
+      }
     }
   },
   "allOf": [
@@ -357,6 +365,14 @@
         },
         "labels": {
           "$ref": "#/$defs/labels"
+        },
+        "relations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/relation"
+          }
         }
       }
     },
@@ -416,6 +432,38 @@
             "pronation",
             "supination"
           ]
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "target",
+        "source",
+        "status"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "branch-of",
+            "tributary-of",
+            "continuation-of",
+            "arterial-supply",
+            "innervation"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "pattern": "^([a-z0-9]+(-[a-z0-9]+)*|wikidata:Q[0-9]+)$"
         },
         "source": {
           "type": "string",

@@ -5,7 +5,8 @@ import { createRequire } from 'node:module';
 import { parse } from 'yaml';
 import { Ajv2020 } from 'ajv/dist/2020.js';
 import { composeSideLabel } from './compose-side-label.ts';
-import { MODELS, ROLES_OF, SYSTEMS, type Joint, type Lang, type Model, type Side, type SideBlock, type Source, type Structure } from './types.ts';
+import { sideShapeErrors, validateRelations } from './relations.ts';
+import { MODELS, ROLES_OF, SYSTEMS, type Joint, type Lang, type Model, type Side, type SideBlock, type ExternalTargets, type Source, type Structure } from './types.ts';
 
 export interface Diagnostic {
   file: string;
@@ -144,6 +145,7 @@ const ajv = new Ajv2020({ allErrors: true, strict: true, strictRequired: false, 
 const validateStructure = ajv.compile(require('../schemas/structure.schema.json'));
 const validateSource = ajv.compile(require('../schemas/source.schema.json'));
 const validateJoint = ajv.compile(require('../schemas/joint.schema.json'));
+const validateExternalTargets = ajv.compile(require('../schemas/external-targets.schema.json'));
 
 const ROOT_SLUG = 'human-body';
 
@@ -198,6 +200,7 @@ export function compileAtlas(dataDir: string): CompileResult {
       err(file, '/sides', 'laterality-shape', data.laterality === 'bilateral'
         ? 'une structure bilateral a deux côtés (sides.left, sides.right) et pas de meshes à la racine'
         : `une structure ${data.laterality} n'a pas de sides`);
+      if (data.laterality !== 'bilateral') errors.push(...sideShapeErrors(file, data));
       schemaErrors = schemaErrors.filter((e) => !e.schemaPath.startsWith('#/allOf/0') && !e.schemaPath.startsWith('#/properties/sides/required'));
     }
     const seen = new Set<string>();
@@ -209,6 +212,17 @@ export function compileAtlas(dataDir: string): CompileResult {
     }
     return ok && !lateralityBroken;
   });
+
+  // registry of external targets: a missing file is an empty registry
+  const registryPath = join(dataDir, 'external-targets.yaml');
+  let registry: ExternalTargets = {};
+  if (statSync(registryPath, { throwIfNoEntry: false })?.isFile()) {
+    try {
+      const parsed = parse(readFileSync(registryPath, 'utf8')) ?? {};
+      if (validateExternalTargets(parsed)) registry = parsed as ExternalTargets;
+      else for (const e of validateExternalTargets.errors ?? []) err('external-targets.yaml', e.instancePath, 'schema', e.message ?? 'invalid');
+    } catch (e) { err('external-targets.yaml', '', 'yaml-parse', (e as Error).message.split('\n')[0]); }
+  }
 
   const jointFiles = load<Joint>('joints').filter(({ file, data }) => {
     if (validateJoint(data)) return true;
@@ -398,6 +412,10 @@ export function compileAtlas(dataDir: string): CompileResult {
       if (a.source !== 'curated' && !knownSourceIds.has(a.source)) err(file, `/actions/${i}/source`, 'action-source', `source « ${a.source} » absente du registre`);
     });
   }
+
+  // 15. relations
+  const relationSources = new Set(Object.values(sources).filter((x) => x.provides.includes('relations')).map((x) => x.id));
+  for (const d of validateRelations(structureFiles, registry, relationSources)) (d.severity === 'error' ? errors : warnings).push(d);
 
   const order = (a: Diagnostic, b: Diagnostic) => byKey(a.file, b.file) || byKey(a.pointer, b.pointer) || byKey(a.rule, b.rule);
   errors.sort(order);

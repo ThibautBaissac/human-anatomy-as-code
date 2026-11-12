@@ -26,6 +26,7 @@ export interface SideBlock {
   ids?: Ids;
   meshes?: string[];
   labels?: Labels;
+  relations?: Relation[];
 }
 
 export type Model = 'male' | 'female';
@@ -62,7 +63,31 @@ export interface Structure {
   variants?: { female?: Variant };
   /** roles of a muscle in joint motions */
   actions?: Action[];
+  /** anatomical relations to other structures (spec 2026-11-11-relations-anatomiques) */
+  relations?: Relation[];
 }
+
+export type RelationType = 'branch-of' | 'tributary-of' | 'continuation-of' | 'arterial-supply' | 'innervation';
+export const RELATION_TYPES: RelationType[] = ['branch-of', 'tributary-of', 'continuation-of', 'arterial-supply', 'innervation'];
+export const TREE_TYPES: RelationType[] = ['branch-of', 'tributary-of', 'continuation-of'];
+
+export interface Relation {
+  type: RelationType;
+  /** a structure slug, or `wikidata:Q<digits>` for an external target */
+  target: string;
+  /** `curated` or a source id */
+  source: string;
+  status: Status;
+}
+
+/** A target outside the atlas, named from the registry (data/external-targets.yaml), keyed by bare QID. */
+export interface ExternalTarget {
+  fma?: number;
+  labels: Labels;
+  source: string;
+  status: Status;
+}
+export type ExternalTargets = Record<string, ExternalTarget>;
 
 export type Motion = 'flexion-extension' | 'pronation-supination';
 export type Role = 'flexion' | 'extension' | 'pronation' | 'supination';
@@ -118,7 +143,7 @@ export interface Source {
   url: string;
   licence: string;
   attribution: string;
-  provides: ('meshes' | 'labels' | 'ids' | 'joints' | 'actions')[];
+  provides: ('meshes' | 'labels' | 'ids' | 'joints' | 'actions' | 'relations')[];
   meshPrefix?: string;
   meshPattern?: string;
   notes?: string;

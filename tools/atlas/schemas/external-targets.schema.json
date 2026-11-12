@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://haac.example/schemas/external-targets.schema.json",
+  "title": "Cibles externes des relations",
+  "type": "object",
+  "additionalProperties": false,
+  "patternProperties": {
+    "^Q[0-9]+$": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "labels",
+        "source",
+        "status"
+      ],
+      "properties": {
+        "fma": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "labels": {
+          "$ref": "structure.schema.json#/$defs/labels",
+          "type": "object",
+          "required": [
+            "en"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "reviewed"
+          ]
+        }
+      }
+    }
+  }
+}

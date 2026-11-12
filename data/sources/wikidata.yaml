@@ -4,5 +4,5 @@ version: "2026-11-08"
 url: https://www.wikidata.org/
 licence: CC0-1.0
 attribution: "Wikidata, CC0"
-provides: [labels, ids]
+provides: [labels, ids, relations]
 notes: Export SPARQL des items portant un FMA ID (P1402), requêtes import/wikidata-fma.rq et import/wikidata-uberon.rq, exports concaténés dans import/wikidata-fma.csv.

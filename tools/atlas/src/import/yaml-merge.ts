@@ -2,14 +2,14 @@
 import { Document, isMap, isScalar, YAMLMap, type Pair } from 'yaml';
 import type { Labels, Side, Structure } from '../types.ts';
 
-export const KEY_ORDER = ['slug', 'kind', 'laterality', 'status', 'sex', 'parent', 'regions', 'systems', 'layer', 'aliases', 'labels', 'ids', 'sides', 'meshes', 'variants', 'actions'];
+export const KEY_ORDER = ['slug', 'kind', 'laterality', 'status', 'sex', 'parent', 'regions', 'systems', 'layer', 'aliases', 'labels', 'ids', 'sides', 'meshes', 'variants', 'actions', 'relations'];
 const LABEL_KEY_ORDER = ['text', 'gender', 'number', 'source', 'status', 'synonyms', 'description'];
 const IDS_ORDER = ['fma', 'ta2', 'ta98', 'uberon', 'wikidata'];
 /** ids keys the import computes; any other key (uberon) belongs to curators. */
 const COMPUTED_IDS = ['fma', 'ta2', 'ta98', 'wikidata'] as const;
 /** label keys the import always sets; gender and number are set only when the import knows them. */
 const COMPUTED_LABEL_KEYS = ['text', 'source', 'status'] as const;
-const SIDE_ORDER = ['ids', 'meshes', 'labels'];
+const SIDE_ORDER = ['ids', 'meshes', 'labels', 'relations'];
 const LANG_ORDER = ['en', 'fr', 'la'];
 const SIDES: Side[] = ['left', 'right'];
 

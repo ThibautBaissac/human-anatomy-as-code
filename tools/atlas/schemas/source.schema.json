@@ -48,7 +48,8 @@
           "labels",
           "ids",
           "joints",
-          "actions"
+          "actions",
+          "relations"
         ]
       }
     },
