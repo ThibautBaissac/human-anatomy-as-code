@@ -33,7 +33,7 @@ Structure dont celle-ci fait partie (relation *part of*, un seul parent). Sert �
 _Avoid_ : catégorie, groupe, ancêtre
 
 **Relation** :
-Lien anatomique typé d'une structure vers une cible, dans un vocabulaire fermé : branche de, tributaire de, vascularisation artérielle, innervation. Elle est écrite dans un seul sens (le muscle est « innervé par » le nerf) ; le sens inverse (« innerve ») s'en déduit. Elle relie des structures : entre deux structures bilatérales elle vaut côté par côté, d'une structure médiane vers une bilatérale elle vaut pour les deux côtés. Quand les deux côtés diffèrent (la veine gonadique gauche se jette dans la veine rénale gauche, la droite dans la veine cave inférieure), elle est écrite au niveau de chaque côté. Elle porte sa source et son statut de revue. « Branche de » n'est pas Parent : l'artère tibiale antérieure fait partie du groupe de l'iliaque externe mais est une branche de la poplitée.
+Lien anatomique typé d'une structure vers une cible, dans un vocabulaire fermé : branche de, tributaire de, prolongement de (le même tronc qui change de nom : l'artère brachiale prolonge l'axillaire), vascularisation artérielle, innervation. Elle est écrite dans un seul sens (le muscle est « innervé par » le nerf) ; le sens inverse (« innerve ») s'en déduit. Elle relie des structures : entre deux structures bilatérales elle vaut côté par côté, d'une structure médiane vers une bilatérale elle vaut pour les deux côtés. Quand les deux côtés diffèrent (la veine gonadique gauche se jette dans la veine rénale gauche, la droite dans la veine cave inférieure), elle est écrite au niveau de chaque côté. Elle porte sa source et son statut de revue. « Branche de » n'est pas Parent : l'artère tibiale antérieure fait partie du groupe de l'iliaque externe mais est une branche de la poplitée.
 _Avoid_ : lien, association, connexion
 
 **Cible externe** :
@@ -125,7 +125,7 @@ Une structure (ou un côté) montrée seule et opaque, toutes les autres instanc
 _Avoid_ : focus, solo (réservé aux systèmes)
 
 **Réseau** :
-Un vaisseau ou un nerf montré avec tout ce qui en dépend : ses branches (ou, pour une veine, ses tributaires) de proche en proche, et les structures que chacun irrigue ou innerve. Comme l'isolement, il est opaque, le reste transparent, et il reste montré même si un filtre le cacherait ; réseau et isolement s'excluent. Dans l'URL : `net=`.
+Un vaisseau ou un nerf montré avec tout ce qui en dépend : ses branches (ou, pour une veine, ses tributaires) et ses prolongements de proche en proche, et les structures que chacun irrigue ou innerve. Comme l'isolement, il est opaque, le reste transparent, et il reste montré même si un filtre le cacherait ; réseau et isolement s'excluent. Dans l'URL : `net=`.
 _Avoid_ : arbre, trajet, isolement multiple
 
 **Solo** :
