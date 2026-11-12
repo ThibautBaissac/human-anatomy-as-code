@@ -30,8 +30,8 @@ export function sideShapeErrors(file: string, s: Structure): Diagnostic[] {
     diag(file, `/sides/${side}/relations`, 'relation-side-shape', `une structure ${s.laterality} n'a pas de relations par côté`, 'error'));
 }
 
-/** Kind rule of a relation: the problem as a message, or null. `targetKind` is undefined for an external target. */
-function kindProblem(type: RelationType, subject: Structure, targetKind: string | undefined): { on: 'subject' | 'target'; message: string } | null {
+/** Kind rule of a relation: the problem as a message, or null. `targetKind` is undefined for an external target. Shared with the import plan. */
+export function kindProblem(type: RelationType, subject: Structure, targetKind: string | undefined): { on: 'subject' | 'target'; message: string } | null {
   const wrongTarget = (expected: string) => ({ on: 'target' as const, message: `${type} attend une cible ${expected}, pas ${targetKind ?? 'une cible externe'}` });
   switch (type) {
     case 'branch-of':
