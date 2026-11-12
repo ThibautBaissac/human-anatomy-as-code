@@ -15,6 +15,7 @@
     "build": "node src/cli.ts build ../../data ../../build",
     "coverage": "node src/cli.ts coverage ../../data",
     "fetch-relations": "node src/cli.ts fetch-relations ../../data",
+    "import-relations": "node src/cli.ts import-relations ../../data",
     "import-bp3d": "node src/cli.ts import-bp3d ../../data/raw/bodyparts3d ../../data/import/wikidata-fma.csv ../../data",
     "import-hra": "node src/cli.ts import-hra ../../data/raw/hra ../../data/import/wikidata-fma.csv ../../data"
   },

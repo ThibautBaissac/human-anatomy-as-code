@@ -1,5 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { importRelations } from '../src/import-relations.ts';
+import { importBp3d } from '../src/import-bp3d.ts';
+import { sources, writeDataset } from './helpers.ts';
 import {
   CONTINUATION_DISTAL_IS_SUBJECT, parseRelationSnapshots, planRelations,
   type FmaRelRow, type RelationsPlan, type TargetRow, type WikidataRelRow,
@@ -321,4 +326,133 @@ test('planning again from its own output gives the same plan', () => {
     right: [rel('arterial-supply', 'femoral-artery', 'wikidata'), rel('arterial-supply', 'popliteal-artery')],
   }, 'the fixture goes through the fan-out to both sides');
   assert.deepEqual(first.relations.get('thigh-muscle'), { structure: [rel('innervation', 'wikidata:Q500', 'wikidata')] }, 'the stale draft is gone');
+});
+
+// ---------- the import command (files on disk) ----------
+
+const FMA_HEAD = 'subject_fma,relation,target_fma\n';
+const WD_HEAD = 'subject_qid,property,target_qid\n';
+const TARGETS_HEAD = 'qid,fma,en,fr,la\n';
+const SNAP = {
+  'import/relations-fma.csv': FMA_HEAD + '5,branch_of,2\n3,continuous_distally_with,4\n21,branch_of,11\n22,branch_of,3\n',
+  'import/relations-wikidata.csv': WD_HEAD,
+  'import/wikidata-targets.csv': TARGETS_HEAD,
+  'import/wikidata-fma.csv': 'item,fma,ta2,ta98,fr,la,en\n',
+};
+const ARTERY = (slug: string, extra: string) => `slug: ${slug}\nkind: artery\nlaterality: bilateral\nstatus: draft\nlabels:\n  en:\n    text: ${slug}\n    source: fma\n    status: draft\n${extra}`;
+const diskData = (files: Record<string, unknown> = {}) => writeDataset({
+  ...sources, ...SNAP,
+  'structures/artery/femoral-artery.yaml': ARTERY('femoral-artery', 'ids:\n  fma: 1\nsides:\n  left:\n    ids:\n      fma: 11\n  right:\n    ids:\n      fma: 12\n'),
+  'structures/artery/popliteal-artery.yaml': ARTERY('popliteal-artery', 'ids:\n  fma: 2\nsides:\n  left:\n    ids:\n      fma: 21\n    labels:\n      fr:\n        text: poplitée gauche\n        source: curated\n        status: reviewed\n  right:\n    ids:\n      fma: 22\n'),
+  'structures/artery/axillary-artery.yaml': ARTERY('axillary-artery', 'ids:\n  fma: 3\n'),
+  'structures/artery/brachial-artery.yaml': ARTERY('brachial-artery', 'ids:\n  fma: 4\n').replace('status: draft', 'status: reviewed'),
+  'structures/artery/anterior-tibial-artery.yaml': '# header comment\n' + ARTERY('anterior-tibial-artery', 'ids:\n  fma: 5\nmeshes:\n  - bp3d:FJ1 # mesh comment\n'),
+  ...files,
+});
+const text = (d: string, rel: string) => readFileSync(join(d, rel), 'utf8');
+
+test('a draft structure gets its relations key after meshes, comments elsewhere kept', () => {
+  const d = diskData();
+  const r = importRelations(d);
+  assert.equal(r.aborted, false);
+  const t = text(d, 'structures/artery/anterior-tibial-artery.yaml');
+  assert.match(t, /^# header comment\n/);
+  assert.match(t, /- bp3d:FJ1 # mesh comment\nrelations:\n {2}- type: branch-of\n {4}target: popliteal-artery\n {4}source: fma\n {4}status: draft\n$/);
+});
+
+test('a structure with status reviewed still gets its draft relations', () => {
+  const d = diskData();
+  importRelations(d);
+  const t = text(d, 'structures/artery/brachial-artery.yaml');
+  assert.match(t, /status: reviewed/);
+  assert.match(t, /relations:\n {2}- type: continuation-of\n {4}target: axillary-artery\n {4}source: fma\n {4}status: draft\n$/);
+});
+
+test('differing sides write sides.<side>.relations after labels in the side block', () => {
+  const d = diskData();
+  importRelations(d);
+  const t = text(d, 'structures/artery/popliteal-artery.yaml');
+  assert.doesNotMatch(t, /^relations:/m, 'nothing at structure level');
+  assert.match(t, /text: poplitée gauche\n {8}source: curated\n {8}status: reviewed\n {4}relations:\n {6}- type: branch-of\n {8}target: femoral-artery\n/);
+  assert.match(t, /fma: 22\n {4}relations:\n {6}- type: branch-of\n {8}target: axillary-artery\n/);
+});
+
+test('a structure with no planned relation loses its relations keys', () => {
+  const stale = 'relations:\n  - type: branch-of\n    target: popliteal-artery\n    source: fma\n    status: draft\n';
+  const d = diskData({ 'structures/artery/axillary-artery.yaml': ARTERY('axillary-artery', 'ids:\n  fma: 3\n' + stale) });
+  importRelations(d);
+  assert.doesNotMatch(text(d, 'structures/artery/axillary-artery.yaml'), /relations/);
+});
+
+test('a second run writes nothing', () => {
+  const d = diskData();
+  const first = importRelations(d);
+  assert.equal(first.updated, 3);
+  const before = ['anterior-tibial', 'brachial', 'popliteal'].map((n) => text(d, `structures/artery/${n}-artery.yaml`));
+  const second = importRelations(d);
+  assert.equal(second.updated, 0);
+  assert.equal(second.unchanged, 5);
+  assert.deepEqual(['anterior-tibial', 'brachial', 'popliteal'].map((n) => text(d, `structures/artery/${n}-artery.yaml`)), before);
+});
+
+test('external targets are written to external-targets.yaml sorted by key, only when they change', () => {
+  const muscle = ARTERY('long-muscle', 'ids:\n  fma: 30\n  wikidata: Q30\n').replace('kind: artery', 'kind: muscle');
+  const d = diskData({
+    'structures/muscle/long-muscle.yaml': muscle,
+    'import/relations-wikidata.csv': WD_HEAD + 'Q30,P3189,Q9\nQ30,P3189,Q10\n',
+    'import/wikidata-targets.csv': TARGETS_HEAD + 'Q9,,nine,,\nQ10,,ten,,\n',
+  });
+  importRelations(d);
+  const registry = text(d, 'external-targets.yaml');
+  assert.ok(registry.indexOf('Q10:') < registry.indexOf('Q9:'), 'byKey order');
+  assert.match(registry, /Q9:\n {2}labels:\n {4}en:\n {6}text: nine/);
+  importRelations(d);
+  assert.equal(text(d, 'external-targets.yaml'), registry);
+});
+
+test('a missing snapshot aborts and names the file, nothing written', () => {
+  const d = diskData();
+  rmSync(join(d, 'import/relations-fma.csv'));
+  const before = text(d, 'structures/artery/anterior-tibial-artery.yaml');
+  const r = importRelations(d);
+  assert.equal(r.aborted, true);
+  assert.deepEqual(r.missingFiles, ['import/relations-fma.csv']);
+  assert.equal(text(d, 'structures/artery/anterior-tibial-artery.yaml'), before);
+  assert.equal(existsSync(join(d, 'external-targets.yaml')), false);
+});
+
+test('an unreadable structure file aborts before any write', () => {
+  const d = diskData({ 'structures/artery/broken.yaml': 'slug: [\n' });
+  const before = text(d, 'structures/artery/anterior-tibial-artery.yaml');
+  const r = importRelations(d);
+  assert.equal(r.aborted, true);
+  assert.deepEqual(r.unreadableFiles, ['structures/artery/broken.yaml']);
+  assert.equal(text(d, 'structures/artery/anterior-tibial-artery.yaml'), before);
+});
+
+test('duplicate slugs abort before any write', () => {
+  const d = diskData({ 'structures/vein/femoral-artery.yaml': ARTERY('femoral-artery', '') });
+  const r = importRelations(d);
+  assert.equal(r.aborted, true);
+  assert.deepEqual(r.duplicateSlugs, ['femoral-artery']);
+  assert.doesNotMatch(text(d, 'structures/artery/anterior-tibial-artery.yaml'), /relations/);
+});
+
+test('a bp3d re-import keeps the relations and the side relations written by this import', () => {
+  const FIX = new URL('./fixtures/', import.meta.url).pathname;
+  const d = writeDataset({
+    ...sources,
+    'import/relations-fma.csv': FMA_HEAD + '3939,branch_of,70246\n',
+    'import/relations-wikidata.csv': WD_HEAD,
+    'import/wikidata-targets.csv': TARGETS_HEAD,
+    'import/wikidata-fma.csv': 'item,fma,ta2,ta98,fr,la,en\n',
+  });
+  const overrides = { noFold: ['atrium', 'ventricle', 'auricle', 'coronary artery'], ties: {}, slugs: {} };
+  const bp3d = () => importBp3d({ bp3dDir: join(FIX, 'bp3d'), wikidataCsv: join(FIX, 'wikidata.csv'), dataDir: d, overrides });
+  bp3d();
+  assert.equal(importRelations(d).updated, 1);
+  const carotid = text(d, 'structures/artery/common-carotid-artery.yaml');
+  assert.match(carotid, /relations:\n {2}- type: branch-of\n {4}target: femoral-artery/);
+  bp3d();
+  assert.equal(text(d, 'structures/artery/common-carotid-artery.yaml'), carotid);
 });

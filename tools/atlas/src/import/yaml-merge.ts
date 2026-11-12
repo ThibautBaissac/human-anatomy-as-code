@@ -9,7 +9,7 @@ const IDS_ORDER = ['fma', 'ta2', 'ta98', 'uberon', 'wikidata'];
 const COMPUTED_IDS = ['fma', 'ta2', 'ta98', 'wikidata'] as const;
 /** label keys the import always sets; gender and number are set only when the import knows them. */
 const COMPUTED_LABEL_KEYS = ['text', 'source', 'status'] as const;
-const SIDE_ORDER = ['ids', 'meshes', 'labels', 'relations'];
+export const SIDE_ORDER = ['ids', 'meshes', 'labels', 'relations'];
 const LANG_ORDER = ['en', 'fr', 'la'];
 const SIDES: Side[] = ['left', 'right'];
 

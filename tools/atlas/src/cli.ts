@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parse } from 'yaml';
 import { importBp3d, type ImportReport, type Overrides } from './import-bp3d.ts';
+import { importRelations } from './import-relations.ts';
 import { importHra, type HraOverrides } from './import-hra.ts';
 import { compileAtlas, type CompileResult, type Diagnostic } from './compile-atlas.ts';
 import { fetchRelations } from './fetch-relations.ts';
@@ -14,6 +15,7 @@ const USAGE = `usage (--verbose : chaque avertissement, et non leur compte par r
   atlas build <dataDir> <outDir>      (écrit atlas-male.json et atlas-female.json)
   atlas coverage <dataDir>
   atlas fetch-relations <dataDir>     (seul usage du réseau : écrit <dataDir>/import/relations-fma.csv, relations-wikidata.csv, wikidata-targets.csv)
+  atlas import-relations <dataDir>    (lit les trois relevés de <dataDir>/import, écrit les relations dans les structures et <dataDir>/external-targets.yaml)
   atlas import-bp3d <bp3dDir> <wikidata.csv> <dataDir>   (overrides : <dataDir>/import/bp3d-overrides.yaml)
   atlas import-hra <hraDir> <wikidata.csv> <dataDir>     (liste : <dataDir>/import/hra-files.yaml, overrides : <dataDir>/import/hra-overrides.yaml)`;
 
@@ -54,6 +56,23 @@ function printReport(r: ImportReport): void {
   if (r.aborted) console.log('IMPORT ANNULÉ : aucun fichier écrit. Corriger les fichiers illisibles ou en double, puis relancer.');
 }
 
+function printRelationsReport(r: ReturnType<typeof importRelations>): void {
+  const list = <T>(title: string, items: T[], fmt: (x: T) => string) => {
+    console.log(`${title} : ${items.length}`);
+    for (const x of items.slice(0, 50)) console.log(`  - ${fmt(x)}`);
+    if (items.length > 50) console.log(`  … ${items.length - 50} de plus`);
+  };
+  console.log(`mises à jour : ${r.updated} · inchangées : ${r.unchanged}`);
+  list('lignes ignorées', r.ignored, (i) => `${i.subject} [${i.reason}] ${i.detail}`);
+  console.log(`cibles hors de nos structures (abandonnées) : ${r.dropped}`);
+  list('conflits avec une relation relue (gardée)', r.conflicts, (c) => `${c.slug} ${c.type} : gardé ${c.kept}, prévu ${c.planned}`);
+  list('relations vers le côté opposé (ignorées)', r.oppositeSide, (s) => s);
+  list('relevés absents', r.missingFiles, (f) => f);
+  list('fichiers illisibles', r.unreadableFiles, (f) => f);
+  list('slugs ou alias en double', r.duplicateSlugs, (f) => f);
+  if (r.aborted) console.log('IMPORT ANNULÉ : aucun fichier écrit. Corriger les relevés absents, les fichiers illisibles ou en double, puis relancer.');
+}
+
 let verbose = false;
 
 async function main(argv: string[]): Promise<number> {
@@ -88,6 +107,14 @@ async function main(argv: string[]): Promise<number> {
     const r = await fetchRelations(args[0], { log: (m) => console.log(m) });
     console.log(`FMA interrogés : ${r.fmaIds} · QIDs : ${r.qids} · FMA absents : ${r.missingFma.length}`);
     return 0;
+  }
+  if (cmd === 'import-relations' && args.length === 1) {
+    const r = importRelations(args[0]);
+    printRelationsReport(r);
+    if (r.aborted) return 1;
+    const result = compileAtlas(args[0]);
+    report(result);
+    return result.errors.length ? 1 : 0;
   }
   if (cmd === 'import-bp3d' && args.length === 3) {
     const [bp3dDir, wikidataCsv, dataDir] = args;

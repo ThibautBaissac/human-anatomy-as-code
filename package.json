@@ -14,7 +14,7 @@
   "scripts": {
     "data": "npm run -w tools/atlas build",
     "assets": "npm run -w tools/assets build",
-    "import": "npm run -w tools/atlas import-bp3d && npm run -w tools/atlas import-hra",
+    "import": "npm run -w tools/atlas import-bp3d && npm run -w tools/atlas import-hra && npm run -w tools/atlas import-relations",
     "rebuild": "npm run import && npm run data && npm run assets",
     "dev": "npm run -w app dev",
     "test": "npm test --workspaces --if-present",
