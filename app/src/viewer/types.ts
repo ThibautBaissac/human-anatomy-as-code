@@ -23,6 +23,15 @@ export interface AtlasSide {
   labels: Partial<Record<Lang, string>>;
 }
 
+/** Relation types, in display order (same order as tools/atlas). */
+export const RELATION_TYPES = ['branch-of', 'tributary-of', 'continuation-of', 'arterial-supply', 'innervation'] as const;
+export type RelationType = (typeof RELATION_TYPES)[number];
+
+/** A relation of a structure: `target` is a slug or `wikidata:Q…`; `side` is the subject's side for a side-level relation. */
+export interface AtlasRelation { type: RelationType; target: string; source: string; status: 'draft' | 'reviewed'; side?: Side }
+/** The same relation seen from its target: `side` is the subject's side for a side-level relation. */
+export interface AtlasInverse { type: RelationType; subject: string; source: string; status: 'draft' | 'reviewed'; side?: Side }
+
 export interface AtlasStructure {
   slug: string;
   kind: string;
@@ -41,6 +50,8 @@ export interface AtlasStructure {
   sides?: Record<Side, AtlasSide>;
   sex?: Model;
   /** roles of a muscle in joint motions */
+  relations?: AtlasRelation[];
+  inverse?: AtlasInverse[];
   actions?: { joint: string; role: Role; source: string; status: 'draft' | 'reviewed' }[];
 }
 
@@ -77,6 +88,10 @@ export interface Atlas {
   meshIndex: Record<string, { slug: string; side: Side | null }>;
   attributions: { source: string; name: string; licence: string; attribution: string; url: string; dois?: { organ: string; doi: string }[]; notice?: string }[];
   joints?: AtlasJoint[];
+  /** external relation targets (not structures of the atlas), keyed wikidata:Q… */
+  externals?: Record<string, { fma?: number; labels: Partial<Record<Lang, AtlasLabel>> }>;
+  /** structures outside the model that relations point to, keyed by slug */
+  outside?: Record<string, { kind: string; labels: Partial<Record<Lang, AtlasLabel>> }>;
 }
 
 export interface Selection {

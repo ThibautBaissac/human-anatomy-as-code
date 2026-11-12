@@ -1,5 +1,7 @@
 // Index over a model's atlas and the loaded instances: who is what, who contains whom. Pure.
-import { SYSTEMS, type Atlas, type AtlasStructure, type Selection, type Side } from './types.ts';
+import { SYSTEMS, type Atlas, type AtlasLabel, type AtlasStructure, type Lang, type Selection, type Side } from './types.ts';
+import { networkOf, relationItems, type RelationItem } from './relations.ts';
+export type { RelationItem } from './relations.ts';
 
 export const ROOT = 'human-body';
 /** Tree bucket for structures without a parent, other than the root. */
@@ -31,6 +33,12 @@ export interface Catalog {
   parentOf(id: string): string | null;
   /** From the root down to the direct parent. */
   ancestorsOf(id: string): string[];
+  /** Relations of a selection, forward then inverse per type, as the card lists them. */
+  relationsOf(sel: Selection): RelationItem[];
+  /** Labels of a relation end: a structure, an outside structure or an external target. */
+  labelsOf(ref: string): Partial<Record<Lang, AtlasLabel>> | undefined;
+  /** Selection keys of the network of a vessel (origin included), sorted. */
+  network(sel: Selection): string[];
   kinds: string[];
   /** systems of the shown instances, in vocabulary order */
   systems: string[];
@@ -111,6 +119,8 @@ export function buildCatalog(atlas: Atlas, loaded: (string | { name: string; mes
   const present = new Set(shown.flatMap((i) => i.systems));
   const systems = SYSTEMS.filter((x) => present.has(x));
 
+  const graph = { structure: (slug: string) => structures.get(slug), childrenOf: (id: string) => children.get(id) ?? [], isOutside: (ref: string) => !!atlas.outside && ref in atlas.outside, isExternal: (ref: string) => !!atlas.externals && ref in atlas.externals };
+
   return {
     structure: (slug) => structures.get(slug),
     instance: (index) => instances[index],
@@ -135,6 +145,9 @@ export function buildCatalog(atlas: Atlas, loaded: (string | { name: string; mes
       for (let p = parent.get(id); p; p = parent.get(p)) out.unshift(p);
       return out;
     },
+    relationsOf: (sel) => relationItems(graph, sel),
+    labelsOf: (ref) => structures.get(ref)?.labels ?? atlas.outside?.[ref]?.labels ?? atlas.externals?.[ref]?.labels,
+    network: (sel) => networkOf(graph, sel),
     kinds,
     systems,
     maxLayer,
