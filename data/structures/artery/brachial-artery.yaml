@@ -44,7 +44,7 @@ sides:
     meshes:
       - bp3d:FJ2271
 relations:
-  - type: branch-of
+  - type: continuation-of
     target: axillary-artery
-    source: wikidata
+    source: curated
     status: draft

@@ -40,7 +40,7 @@ sides:
     meshes:
       - bp3d:FJ2268
 relations:
-  - type: branch-of
+  - type: continuation-of
     target: subclavian-artery
-    source: wikidata
+    source: curated
     status: draft

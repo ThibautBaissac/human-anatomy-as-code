@@ -40,7 +40,7 @@ sides:
     meshes:
       - bp3d:FJ2269
 relations:
-  - type: tributary-of
+  - type: continuation-of
     target: subclavian-vein
-    source: fma
+    source: curated
     status: draft

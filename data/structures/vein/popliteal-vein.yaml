@@ -40,7 +40,7 @@ sides:
     meshes:
       - bp3d:FJ2171
 relations:
-  - type: tributary-of
-    target: deep-femoral-vein
-    source: fma
+  - type: continuation-of
+    target: femoral-vein
+    source: curated
     status: draft
