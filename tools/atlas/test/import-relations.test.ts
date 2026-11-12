@@ -42,7 +42,12 @@ const plan = (over: Partial<Input> = {}): RelationsPlan =>
   planRelations({ structures: structures(), fma: [], wikidata: [], targets: TARGETS, registry: {}, qidByFma: new Map(), ...over });
 
 /** The fixture structures with one of them replaced by a copy carrying extra fields. */
-const withStructure = (slug: string, extra: Partial<Structure>): Structure[] => structures().map((s) => (s.slug === slug ? { ...s, ...extra } : s));
+const withStructure = (slug: string, extra: Partial<Structure>): Structure[] => withStructures({ [slug]: extra });
+const withStructures = (extras: Record<string, Partial<Structure>>): Structure[] => structures().map((s) => (extras[s.slug] ? { ...s, ...extras[s.slug] } : s));
+/** The kidney with side ids 81/82 and, optionally, side-level relations. */
+const kidneySides = (left: Relation[] = [], right: Relation[] = []): Partial<Structure> => ({
+  sides: { left: { ids: { fma: 81 }, ...(left.length ? { relations: left } : {}) }, right: { ids: { fma: 82 }, ...(right.length ? { relations: right } : {}) } },
+});
 
 // ---------- snapshots ----------
 
@@ -79,11 +84,10 @@ test('Wikidata P3261 fills branch-of when the FMA gives none', () => {
 });
 
 test('continuous_distally_with gives continuation-of on the distal one: brachial-artery continues axillary-artery', () => {
+  assert.equal(CONTINUATION_DISTAL_IS_SUBJECT, false, 'this test pins the provisional reading; Task 7 flips both together if needed');
   const p = plan({ fma: fma('3,continuous_distally_with,4') });
-  const [distal, proximal] = CONTINUATION_DISTAL_IS_SUBJECT ? ['axillary-artery', 'brachial-artery'] : ['brachial-artery', 'axillary-artery'];
-  assert.deepEqual(p.relations.get(distal), { structure: [rel('continuation-of', proximal)] });
-  assert.equal(p.relations.has(proximal), false);
-  if (!CONTINUATION_DISTAL_IS_SUBJECT) assert.deepEqual(p.relations.get('brachial-artery'), { structure: [rel('continuation-of', 'axillary-artery')] });
+  assert.deepEqual(p.relations.get('brachial-artery'), { structure: [rel('continuation-of', 'axillary-artery')] });
+  assert.equal(p.relations.has('axillary-artery'), false);
 });
 
 test('Wikidata P3261 never yields continuation-of', () => {
@@ -169,6 +173,37 @@ test("a muscle part's own innervation wins over its whole's", () => {
   assert.deepEqual(p.relations.get('gastrocnemius-head'), { structure: [rel('innervation', 'wikidata:Q501', 'wikidata')] });
 });
 
+test('a muscle part takes the relations of a whole two part-of levels up', () => {
+  const p = plan({ fma: fma('9,regional_part_of,900', '900,constitutional_part_of,901'), qidByFma: new Map([[900, 'Q900'], [901, 'Q901']]), wikidata: wd('Q901,P3189,Q500') });
+  assert.deepEqual(p.relations.get('gastrocnemius-head'), { structure: [rel('innervation', 'wikidata:Q500', 'wikidata')] });
+});
+
+test('the nearest whole with relations of the type wins over a farther one', () => {
+  const p = plan({
+    fma: fma('9,regional_part_of,900', '900,constitutional_part_of,901', '900,arterial_supply,2', '901,arterial_supply,1'),
+    qidByFma: new Map([[900, 'Q900'], [901, 'Q901']]),
+    wikidata: wd('Q900,P3189,Q501', 'Q901,P3189,Q500'),
+  });
+  assert.deepEqual(p.relations.get('gastrocnemius-head'), {
+    structure: [rel('arterial-supply', 'popliteal-artery'), rel('innervation', 'wikidata:Q501', 'wikidata')],
+  });
+});
+
+test('a whole more than three part-of levels up is not followed', () => {
+  const p = plan({
+    fma: fma('9,regional_part_of,900', '900,regional_part_of,901', '901,regional_part_of,902', '902,regional_part_of,903'),
+    qidByFma: new Map([[902, 'Q902'], [903, 'Q903']]),
+    wikidata: wd('Q903,P3189,Q500'),
+  });
+  assert.equal(p.relations.has('gastrocnemius-head'), false);
+  const third = plan({
+    fma: fma('9,regional_part_of,900', '900,regional_part_of,901', '901,regional_part_of,902'),
+    qidByFma: new Map([[902, 'Q902']]),
+    wikidata: wd('Q902,P3189,Q500'),
+  });
+  assert.deepEqual(third.relations.get('gastrocnemius-head'), { structure: [rel('innervation', 'wikidata:Q500', 'wikidata')] }, 'the third level is');
+});
+
 // ---------- merge with existing relations ----------
 
 test('a reviewed tree relation blocks the import of its type and the differing plan is reported', () => {
@@ -200,6 +235,36 @@ test('a reviewed registry entry is never modified', () => {
   assert.deepEqual(p.relations.get('thigh-muscle'), { structure: [rel('innervation', 'wikidata:Q500', 'wikidata')] });
 });
 
+test('a reviewed tree relation equal to the plan is kept and no conflict is reported', () => {
+  const reviewed = rel('branch-of', 'femoral-artery', 'fma', 'reviewed');
+  const p = plan({ structures: withStructure('popliteal-artery', { relations: [reviewed] }), fma: fma('2,branch_of,1') });
+  assert.deepEqual(p.relations.get('popliteal-artery'), { structure: [reviewed] });
+  assert.deepEqual(p.report.conflicts, []);
+});
+
+test('a curated tree relation, even draft, blocks the import of its type', () => {
+  const curated = rel('branch-of', 'femoral-artery', 'curated', 'draft');
+  const p = plan({ structures: withStructure('popliteal-artery', { relations: [curated] }), fma: fma('2,branch_of,3') });
+  assert.deepEqual(p.relations.get('popliteal-artery'), { structure: [curated] });
+  assert.deepEqual(p.report.conflicts, [{ slug: 'popliteal-artery', type: 'branch-of', kept: 'femoral-artery', planned: 'axillary-artery' }]);
+});
+
+test('a planned side-level relation is ignored when its type is protected at structure level', () => {
+  const reviewed = rel('arterial-supply', 'femoral-artery', 'fma', 'reviewed');
+  const p = plan({ structures: withStructure('kidney', { ...kidneySides(), relations: [reviewed] }), fma: fma('81,arterial_supply,2') });
+  assert.deepEqual(p.relations.get('kidney'), { structure: [reviewed] });
+  assert.deepEqual(p.report.ignored.map(({ subject, reason }) => ({ subject, reason })), [{ subject: 'kidney', reason: 'side-mixed' }]);
+});
+
+test('a planned structure-level relation goes to both sides when its type is protected at side level', () => {
+  const curated = rel('arterial-supply', 'femoral-artery', 'curated', 'draft');
+  const p = plan({ structures: withStructure('kidney', kidneySides([curated])), fma: fma('8,arterial_supply,2') });
+  assert.deepEqual(p.relations.get('kidney'), {
+    left: [curated, rel('arterial-supply', 'popliteal-artery')],
+    right: [rel('arterial-supply', 'popliteal-artery')],
+  });
+});
+
 // ---------- rejections ----------
 
 test('a self-relation is ignored and reported', () => {
@@ -226,7 +291,13 @@ test('a second tree relation of one type is reported, the first by source priori
 
 test('planning again from its own output gives the same plan', () => {
   const input: Input = {
-    structures: withStructure('popliteal-artery', { relations: [rel('branch-of', 'femoral-artery', 'fma', 'reviewed')] }),
+    structures: withStructures({
+      'popliteal-artery': { relations: [rel('branch-of', 'femoral-artery', 'fma', 'reviewed')] },
+      // curated side-level relation: the planned structure-level arterial supply fans out to both sides
+      kidney: kidneySides([rel('arterial-supply', 'femoral-artery', 'curated', 'draft')]),
+      // a stale draft, removed by the first run
+      'thigh-muscle': { relations: [rel('arterial-supply', 'popliteal-artery')] },
+    }),
     fma: fma('2,branch_of,3', '3,continuous_distally_with,4', '8,arterial_supply,2', '71,tributary_of,51', '72,tributary_of,6', '51,tributary_of,6', '52,tributary_of,6', '9,regional_part_of,900'),
     wikidata: wd('Q8,P2286,Q11', 'Q10,P3189,Q500', 'Q900,P3189,Q501', 'Q6,P2286,Q1'),
     targets: TARGETS,
@@ -245,4 +316,9 @@ test('planning again from its own output gives the same plan', () => {
   const second = planRelations({ ...input, structures: updated, registry: first.registry });
   assert.deepEqual(second, first);
   assert.ok(first.relations.size >= 6, 'the fixture plans relations on several structures');
+  assert.deepEqual(first.relations.get('kidney'), {
+    left: [rel('arterial-supply', 'femoral-artery', 'curated', 'draft'), rel('arterial-supply', 'popliteal-artery')],
+    right: [rel('arterial-supply', 'femoral-artery', 'wikidata'), rel('arterial-supply', 'popliteal-artery')],
+  }, 'the fixture goes through the fan-out to both sides');
+  assert.deepEqual(first.relations.get('thigh-muscle'), { structure: [rel('innervation', 'wikidata:Q500', 'wikidata')] }, 'the stale draft is gone');
 });
