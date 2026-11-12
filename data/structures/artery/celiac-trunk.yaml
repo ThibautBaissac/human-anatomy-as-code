@@ -16,7 +16,7 @@ ids:
 meshes:
   - bp3d:FJ3421
 relations:
-  - type: continuation-of
-    target: aorta
-    source: fma
+  - type: branch-of
+    target: abdominal-aorta
+    source: curated
     status: draft

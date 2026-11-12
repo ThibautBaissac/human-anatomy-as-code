@@ -35,6 +35,11 @@ sides:
       wikidata: Q66509405
     meshes:
       - bp3d:FJ3533
+    relations:
+      - type: tributary-of
+        target: renal-vein
+        source: curated
+        status: draft
   right:
     ids:
       fma: 14341
@@ -43,8 +48,8 @@ sides:
       wikidata: Q66509399
     meshes:
       - bp3d:FJ3618
-relations:
-  - type: tributary-of
-    target: inferior-vena-cava
-    source: fma
-    status: draft
+    relations:
+      - type: tributary-of
+        target: inferior-vena-cava
+        source: curated
+        status: draft

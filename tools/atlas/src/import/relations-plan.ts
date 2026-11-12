@@ -18,7 +18,7 @@ export interface WikidataRelRow { subject: string; property: 'P3261' | 'P2286' |
 export interface TargetRow { qid: string; fma?: number; en?: string; fr?: string; la?: string }
 
 export interface RelationsReport {
-  /** rows not imported, with a short code: vein-p2286, wrong-kind, self, second-tree, side-mixed, no-label */
+  /** rows not imported, with a short code: vein-p2286, wrong-kind, self, second-tree, continuation-parent, side-mixed, no-label */
   ignored: { subject: string; reason: string; detail: string }[];
   /** rows whose target (not an innervation) maps to none of our structures */
   dropped: number;
@@ -99,6 +99,8 @@ const PART_OF = new Set(['regional_part_of', 'constitutional_part_of']);
 /** levels of FMA part-of followed from a muscle part to its whole (decision 8) */
 const WHOLE_LEVELS = 3;
 const MUSCLE_INHERITED: RelationType[] = ['arterial-supply', 'innervation'];
+/** tree types that give a vessel its parent; continuation-of is only planned where none is */
+const PARENT_TYPES: RelationType[] = ['branch-of', 'tributary-of'];
 
 interface Place { slug: string; side: Level }
 
@@ -299,7 +301,17 @@ export function planRelations(input: RelationsInput): RelationsPlan {
     }
 
     // one tree relation per type and level, then sides compared type by type
-    const planned = RELATION_TYPES.flatMap((type) => fold(cands.filter((c) => c.type === type), TREE_TYPES.includes(type) ? sink : undefined));
+    const folded = RELATION_TYPES.flatMap((type) => fold(cands.filter((c) => c.type === type), TREE_TYPES.includes(type) ? sink : undefined));
+
+    // one tree parent per vessel: continuation-of only on a level without branch-of or tributary-of
+    const parentAt = (side: Side) => folded.some((o) => PARENT_TYPES.includes(o.type) && (o.side === side || o.side === null));
+    const planned = folded.flatMap((c) => {
+      if (c.type !== 'continuation-of') return [c];
+      const free = c.side ? (parentAt(c.side) ? [] : [c.side]) : SIDES.filter((side) => !parentAt(side));
+      if (free.length < (c.side ? 1 : 2)) sink.ignore('continuation-parent', `continuation-of ${c.target} (${c.source}) : branch-of ou tributary-of déjà planifiée`);
+      if (!c.side && free.length === 2) return [c];
+      return free.map((side) => ({ ...c, side }));
+    });
 
     // merge with the protected relations (reviewed or curated)
     const protectedAt = new Map<string, Relation[]>([
@@ -312,10 +324,14 @@ export function planRelations(input: RelationsInput): RelationsPlan {
       const list = lists.get(key)!;
       if (!list.some((r) => r.type === c.type && r.target === c.target)) list.push({ type: c.type, target: c.target, source: c.source, status: 'draft' });
     };
+    // a protected tree relation, of any tree type, blocks every draft tree relation of the structure
+    const keptTree = allProtected.filter((r) => TREE_TYPES.includes(r.type));
     for (const c of planned) {
-      const kept = allProtected.filter((r) => r.type === c.type);
-      if (TREE_TYPES.includes(c.type) && kept.length) {
-        if (!kept.some((r) => r.target === c.target)) report.conflicts.push({ slug: s.slug, type: c.type, kept: kept[0].target, planned: c.target });
+      if (TREE_TYPES.includes(c.type) && keptTree.length) {
+        if (!keptTree.some((r) => r.type === c.type && r.target === c.target)) {
+          const sameType = keptTree.find((r) => r.type === c.type);
+          report.conflicts.push({ slug: s.slug, type: c.type, kept: sameType ? sameType.target : `${keptTree[0].type} ${keptTree[0].target}`, planned: c.target });
+        }
         continue;
       }
       const keptAtStructure = protectedAt.get('structure')!.some((r) => r.type === c.type);

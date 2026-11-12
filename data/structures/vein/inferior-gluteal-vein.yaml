@@ -30,7 +30,3 @@ relations:
     target: internal-iliac-vein
     source: fma
     status: draft
-  - type: continuation-of
-    target: internal-iliac-vein
-    source: fma
-    status: draft

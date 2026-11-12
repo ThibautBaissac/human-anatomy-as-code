@@ -37,8 +37,8 @@ sides:
       - bp3d:FJ3479
     relations:
       - type: branch-of
-        target: systemic-arterial-tree
-        source: fma
+        target: arch-of-aorta
+        source: curated
         status: draft
   right:
     ids:
@@ -50,5 +50,5 @@ sides:
     relations:
       - type: branch-of
         target: brachiocephalic-artery
-        source: fma
+        source: curated
         status: draft

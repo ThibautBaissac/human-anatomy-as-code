@@ -16,7 +16,7 @@ ids:
 meshes:
   - bp3d:FJ2737
 relations:
-  - type: continuation-of
-    target: aorta
-    source: fma
+  - type: branch-of
+    target: ascending-aorta
+    source: curated
     status: draft

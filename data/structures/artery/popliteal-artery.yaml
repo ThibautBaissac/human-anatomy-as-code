@@ -41,7 +41,7 @@ sides:
     meshes:
       - bp3d:FJ2170
 relations:
-  - type: branch-of
-    target: external-iliac-artery
-    source: fma
+  - type: continuation-of
+    target: femoral-artery
+    source: curated
     status: draft

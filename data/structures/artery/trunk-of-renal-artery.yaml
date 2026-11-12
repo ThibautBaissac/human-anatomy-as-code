@@ -37,7 +37,7 @@ sides:
         source: fma
         status: draft
 relations:
-  - type: continuation-of
-    target: aorta
-    source: fma
+  - type: branch-of
+    target: abdominal-aorta
+    source: curated
     status: draft

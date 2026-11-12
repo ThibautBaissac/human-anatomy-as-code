@@ -33,7 +33,3 @@ relations:
     target: common-iliac-vein
     source: fma
     status: draft
-  - type: continuation-of
-    target: common-iliac-vein
-    source: fma
-    status: draft

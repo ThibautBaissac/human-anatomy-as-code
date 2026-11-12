@@ -42,6 +42,6 @@ sides:
       - bp3d:FJ2172
 relations:
   - type: branch-of
-    target: external-iliac-artery
-    source: fma
+    target: popliteal-artery
+    source: curated
     status: draft

@@ -109,6 +109,23 @@ test('the real FMA 5.1.0 row 14333 continuous_distally_with 18883 gives external
   assert.equal(p.relations.has('common-iliac-vein'), false);
 });
 
+test('continuation-of is not planned on a structure that has a tributary-of: the real lateral sacral vein', () => {
+  const p = planRelations({
+    structures: [
+      structure('internal-iliac-vein', 'vein', 'bilateral', { fma: 18884 }),
+      structure('lateral-sacral-vein', 'vein', 'bilateral', { fma: 18905 }),
+    ],
+    fma: fma('18884,continuous_distally_with,18905', '18905,tributary_of,18884'), wikidata: [], targets: [], registry: {}, qidByFma: new Map(),
+  });
+  assert.deepEqual(p.relations.get('lateral-sacral-vein'), { structure: [rel('tributary-of', 'internal-iliac-vein')] });
+  assert.deepEqual(p.report.ignored.map(({ subject, reason }) => ({ subject, reason })), [{ subject: 'lateral-sacral-vein', reason: 'continuation-parent' }]);
+});
+
+test('a structure-level continuation-of is kept on the side that has no branch-of', () => {
+  const p = plan({ fma: fma('3,continuous_distally_with,2', '21,branch_of,1') });
+  assert.deepEqual(p.relations.get('popliteal-artery'), { left: [rel('branch-of', 'femoral-artery')], right: [rel('continuation-of', 'axillary-artery')] });
+});
+
 test('Wikidata P3261 never yields continuation-of', () => {
   const p = plan({ wikidata: wd('Q4,P3261,Q3') });
   assert.deepEqual(p.relations.get('brachial-artery'), { structure: [rel('branch-of', 'axillary-artery', 'wikidata')] });
@@ -266,6 +283,23 @@ test('a curated tree relation, even draft, blocks the import of its type', () =>
   const p = plan({ structures: withStructure('popliteal-artery', { relations: [curated] }), fma: fma('2,branch_of,3') });
   assert.deepEqual(p.relations.get('popliteal-artery'), { structure: [curated] });
   assert.deepEqual(p.report.conflicts, [{ slug: 'popliteal-artery', type: 'branch-of', kept: 'femoral-artery', planned: 'axillary-artery' }]);
+});
+
+test('a curated continuation-of blocks a draft branch-of: one tree parent per vessel', () => {
+  // the real popliteal artery: curated continuation of the femoral artery, FMA branch_of the external iliac artery
+  const curated = rel('continuation-of', 'femoral-artery', 'curated', 'draft');
+  const p = plan({ structures: withStructure('popliteal-artery', { relations: [curated] }), fma: fma('2,branch_of,3') });
+  assert.deepEqual(p.relations.get('popliteal-artery'), { structure: [curated] });
+  assert.deepEqual(p.report.conflicts, [{ slug: 'popliteal-artery', type: 'branch-of', kept: 'continuation-of femoral-artery', planned: 'axillary-artery' }]);
+});
+
+test('a curated side-level tree relation blocks the draft tree relations of the other side too', () => {
+  const curated = rel('branch-of', 'femoral-artery', 'curated', 'draft');
+  const p = plan({
+    structures: withStructure('popliteal-artery', { sides: { left: { ids: { fma: 21 }, relations: [curated] }, right: { ids: { fma: 22 } } } }),
+    fma: fma('22,branch_of,3'),
+  });
+  assert.deepEqual(p.relations.get('popliteal-artery'), { left: [curated] });
 });
 
 test('a planned side-level relation is ignored when its type is protected at structure level', () => {
