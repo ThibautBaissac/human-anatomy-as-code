@@ -476,16 +476,16 @@ App (`app`):
 
 **Risk:** normal
 
-- [ ] **Step 1: Write the scenario**
+- [x] **Step 1: Write the scenario**
   1. open with hash `sel=popliteal-artery@left`
   2. the card has a heading `Branches` and, under it, a button whose name matches `/tibiale antérieure/`
   3. click it → `location.hash` contains `sel=anterior-tibial-artery@left`
   4. go back to `sel=popliteal-artery@left`, click `Montrer le réseau` → button `aria-pressed="true"`, hash contains `net=popliteal-artery@left`, `alpha('anterior-tibial-artery@left')` = 1 while the cardiovascular system is hidden by default, `alpha('femur@left')` < 1, a status banner contains `Réseau`
   5. click `Montrer le réseau` again → `aria-pressed="false"`, hash has no `net=`
   6. no console error
-- [ ] **Step 2: Run** — `npm run rebuild` if the build is stale, then `npm run e2e -- relations`. Expected: PASS on every project (desktop and mobile).
-- [ ] **Step 3: Full check** — `npm test && npm run typecheck && npm run e2e`. Expected: all green, the aorta performance test from Task 8 not skipped.
-- [ ] **Step 4: Commit**
+- [x] **Step 2: Run** — `npm run rebuild` if the build is stale, then `npm run e2e -- relations`. Expected: PASS on every project (desktop and mobile).
+- [x] **Step 3: Full check** — `npm test && npm run typecheck && npm run e2e`. Expected: all green, the aorta performance test from Task 8 not skipped.
+- [x] **Step 4: Commit**
 
   ```bash
   git add app/e2e/relations.spec.ts
