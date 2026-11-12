@@ -322,7 +322,7 @@ App (`app`):
 
 **Risk:** normal
 
-- [ ] **Step 1: Write the failing tests** (temp data dir via `writeDataset`, snapshots written as strings)
+- [x] **Step 1: Write the failing tests** (temp data dir via `writeDataset`, snapshots written as strings)
   - a draft structure gets its `relations` key after `actions`/`variants` in `KEY_ORDER` position; comments elsewhere in the file are preserved
   - a structure with `status: reviewed` still gets its draft relations (labels precedent)
   - a side-level plan writes `sides.left.relations` after `labels` in the side block
@@ -330,10 +330,10 @@ App (`app`):
   - a missing `relations-fma.csv` → `aborted: true`, no file written
   - a bp3d re-import (`importBp3d` on the fixture) after relations were written keeps `relations` and `sides.*.relations` untouched
 
-- [ ] **Step 2: Run the tests and watch them fail** — `npm test -w tools/atlas`, FAIL.
-- [ ] **Step 3: Implement** — same file loading and abort rules as `applyPlan` (unreadable files, duplicate slugs abort); CLI prints counts and the report lists like `printReport`, then runs `compileAtlas` and its report.
-- [ ] **Step 4: Run the tests and watch them pass** — `npm test -w tools/atlas && npm run typecheck -w tools/atlas`, PASS.
-- [ ] **Step 5: Commit**
+- [x] **Step 2: Run the tests and watch them fail** — `npm test -w tools/atlas`, FAIL.
+- [x] **Step 3: Implement** — same file loading and abort rules as `applyPlan` (unreadable files, duplicate slugs abort); CLI prints counts and the report lists like `printReport`, then runs `compileAtlas` and its report.
+- [x] **Step 4: Run the tests and watch them pass** — `npm test -w tools/atlas && npm run typecheck -w tools/atlas`, PASS.
+- [x] **Step 5: Commit**
 
   ```bash
   git add tools/atlas package.json
