@@ -1,6 +1,6 @@
 slug: set-of-posterior-temporal-branches-of-lateral-occipital-artery
 kind: artery
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -19,6 +19,10 @@ ids:
   fma: 71502
   ta98: A12.2.07.097
   wikidata: Q66569245
-meshes:
-  - bp3d:FJ1719
-  - bp3d:FJ1719M
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1719M
+  right:
+    meshes:
+      - bp3d:FJ1719

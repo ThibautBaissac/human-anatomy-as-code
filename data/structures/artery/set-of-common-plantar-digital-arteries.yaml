@@ -1,6 +1,6 @@
 slug: set-of-common-plantar-digital-arteries
 kind: artery
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -26,6 +26,10 @@ ids:
   ta2: 4741
   ta98: A12.2.16.068
   wikidata: Q5153594
-meshes:
-  - bp3d:FJ2092
-  - bp3d:FJ2196
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2092
+  right:
+    meshes:
+      - bp3d:FJ2196

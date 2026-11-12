@@ -1,6 +1,6 @@
 slug: dorsal-metacarpal-vein
 kind: vein
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -12,6 +12,10 @@ labels:
 ids:
   fma: 22954
   wikidata: Q66514927
-meshes:
-  - bp3d:FJ2186
-  - bp3d:FJ2199
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2186
+  right:
+    meshes:
+      - bp3d:FJ2199

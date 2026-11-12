@@ -1,6 +1,6 @@
 slug: set-of-dorsal-digital-arteries
 kind: artery
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -26,8 +26,12 @@ ids:
   ta2: 4719
   ta98: A12.2.16.053
   wikidata: Q5298777
-meshes:
-  - bp3d:FJ2093
-  - bp3d:FJ2197
-  - bp3d:FJ2318
-  - bp3d:FJ2346
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2093
+      - bp3d:FJ2318
+  right:
+    meshes:
+      - bp3d:FJ2197
+      - bp3d:FJ2346

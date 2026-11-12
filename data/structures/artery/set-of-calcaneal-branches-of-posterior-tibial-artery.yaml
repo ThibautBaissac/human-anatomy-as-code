@@ -1,6 +1,6 @@
 slug: set-of-calcaneal-branches-of-posterior-tibial-artery
 kind: artery
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -20,6 +20,10 @@ ids:
   ta2: 4726
   ta98: A12.2.16.059
   wikidata: Q66569296
-meshes:
-  - bp3d:FJ2091
-  - bp3d:FJ2195
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2091
+  right:
+    meshes:
+      - bp3d:FJ2195

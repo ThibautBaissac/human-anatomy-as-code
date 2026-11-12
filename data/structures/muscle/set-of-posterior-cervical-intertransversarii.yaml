@@ -1,6 +1,6 @@
 slug: set-of-posterior-cervical-intertransversarii
 kind: muscle
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - muscular
@@ -20,6 +20,10 @@ ids:
   ta2: 2238
   ta98: A04.3.01.013
   wikidata: Q66515018
-meshes:
-  - bp3d:FJ1553
-  - bp3d:FJ1553M
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1553M
+  right:
+    meshes:
+      - bp3d:FJ1553

@@ -1,6 +1,6 @@
 slug: set-of-plantar-digital-veins
 kind: vein
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -26,6 +26,10 @@ ids:
   ta2: 5084
   ta98: A12.3.11.018
   wikidata: Q29405
-meshes:
-  - bp3d:FJ2120
-  - bp3d:FJ2175
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2120
+  right:
+    meshes:
+      - bp3d:FJ2175

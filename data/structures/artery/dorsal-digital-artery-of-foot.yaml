@@ -1,6 +1,6 @@
 slug: dorsal-digital-artery-of-foot
 kind: artery
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -12,6 +12,10 @@ labels:
 ids:
   fma: 44660
   wikidata: Q66534980
-meshes:
-  - bp3d:FJ2072
-  - bp3d:FJ2141
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2072
+  right:
+    meshes:
+      - bp3d:FJ2141

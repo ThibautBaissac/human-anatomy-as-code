@@ -1,6 +1,6 @@
 slug: artery-of-central-sulcus
 kind: artery
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -19,8 +19,12 @@ ids:
   fma: 77439
   ta98: A12.2.07.065
   wikidata: Q66575066
-meshes:
-  - bp3d:FJ1664
-  - bp3d:FJ1664M
-  - bp3d:FJ1665
-  - bp3d:FJ1665M
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1664M
+      - bp3d:FJ1665M
+  right:
+    meshes:
+      - bp3d:FJ1664
+      - bp3d:FJ1665

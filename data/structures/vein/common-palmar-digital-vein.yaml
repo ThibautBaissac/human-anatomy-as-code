@@ -1,6 +1,6 @@
 slug: common-palmar-digital-vein
 kind: vein
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -12,6 +12,10 @@ labels:
 ids:
   fma: 22923
   wikidata: Q66514903
-meshes:
-  - bp3d:FJ2322
-  - bp3d:FJ2352
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2322
+  right:
+    meshes:
+      - bp3d:FJ2352

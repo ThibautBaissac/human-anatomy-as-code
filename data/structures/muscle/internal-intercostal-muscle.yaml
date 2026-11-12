@@ -1,6 +1,6 @@
 slug: internal-intercostal-muscle
 kind: muscle
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - muscular
@@ -26,6 +26,10 @@ ids:
   ta2: 2312
   ta98: A04.4.01.013
   wikidata: Q1954132
-meshes:
-  - bp3d:FJ1455
-  - bp3d:FJ1455M
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1455M
+  right:
+    meshes:
+      - bp3d:FJ1455

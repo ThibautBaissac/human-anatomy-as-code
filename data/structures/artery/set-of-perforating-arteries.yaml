@@ -1,6 +1,6 @@
 slug: set-of-perforating-arteries
 kind: artery
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -12,8 +12,12 @@ labels:
 ids:
   fma: 70815
   wikidata: Q66568736
-meshes:
-  - bp3d:FJ2090
-  - bp3d:FJ2094
-  - bp3d:FJ2127
-  - bp3d:FJ2203
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2090
+      - bp3d:FJ2094
+  right:
+    meshes:
+      - bp3d:FJ2127
+      - bp3d:FJ2203

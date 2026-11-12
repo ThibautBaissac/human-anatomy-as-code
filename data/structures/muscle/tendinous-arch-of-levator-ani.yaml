@@ -1,6 +1,6 @@
 slug: tendinous-arch-of-levator-ani
 kind: muscle
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - muscular
@@ -20,8 +20,12 @@ ids:
   ta2: 2434
   ta98: A04.5.04.009
   wikidata: Q66536527
-meshes:
-  - bp3d:FJ1465
-  - bp3d:FJ1465M
-  - bp3d:FJ2552
-  - bp3d:FJ2553
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1465M
+      - bp3d:FJ2552
+  right:
+    meshes:
+      - bp3d:FJ1465
+      - bp3d:FJ2553

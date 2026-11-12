@@ -1,6 +1,6 @@
 slug: set-of-perforating-veins
 kind: vein
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -26,10 +26,14 @@ ids:
   ta2: 5071
   ta98: A12.3.11.027
   wikidata: Q2512709
-meshes:
-  - bp3d:FJ2100
-  - bp3d:FJ2119
-  - bp3d:FJ2138
-  - bp3d:FJ2174
-  - bp3d:FJ2190
-  - bp3d:FJ2192
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2100
+      - bp3d:FJ2119
+      - bp3d:FJ2190
+  right:
+    meshes:
+      - bp3d:FJ2138
+      - bp3d:FJ2174
+      - bp3d:FJ2192

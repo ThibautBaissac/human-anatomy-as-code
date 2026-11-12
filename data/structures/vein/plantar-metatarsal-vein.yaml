@@ -1,6 +1,6 @@
 slug: plantar-metatarsal-vein
 kind: vein
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -12,6 +12,10 @@ labels:
 ids:
   fma: 44504
   wikidata: Q66534644
-meshes:
-  - bp3d:FJ2191
-  - bp3d:FJ2207
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2191
+  right:
+    meshes:
+      - bp3d:FJ2207

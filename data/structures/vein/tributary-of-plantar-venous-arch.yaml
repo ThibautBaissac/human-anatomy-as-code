@@ -1,6 +1,6 @@
 slug: tributary-of-plantar-venous-arch
 kind: vein
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -12,8 +12,12 @@ labels:
 ids:
   fma: 44499
   wikidata: Q66534631
-meshes:
-  - bp3d:FJ2113
-  - bp3d:FJ2115
-  - bp3d:FJ2160
-  - bp3d:FJ2165
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2113
+      - bp3d:FJ2115
+  right:
+    meshes:
+      - bp3d:FJ2160
+      - bp3d:FJ2165

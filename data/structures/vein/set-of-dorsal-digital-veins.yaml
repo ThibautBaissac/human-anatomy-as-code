@@ -1,6 +1,6 @@
 slug: set-of-dorsal-digital-veins
 kind: vein
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -26,6 +26,10 @@ ids:
   ta2: 5090
   ta98: A12.3.11.014
   wikidata: Q5298783
-meshes:
-  - bp3d:FJ2185
-  - bp3d:FJ2198
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2185
+  right:
+    meshes:
+      - bp3d:FJ2198

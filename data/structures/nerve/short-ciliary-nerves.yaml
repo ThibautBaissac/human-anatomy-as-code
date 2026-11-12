@@ -1,6 +1,6 @@
 slug: short-ciliary-nerves
 kind: nerve
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - nervous
@@ -26,6 +26,10 @@ labels:
 ids:
   fma: 78590
   wikidata: Q66576455
-meshes:
-  - bp3d:FJ1319
-  - bp3d:FJ1370
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1319
+  right:
+    meshes:
+      - bp3d:FJ1370

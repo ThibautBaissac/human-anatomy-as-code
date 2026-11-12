@@ -1,6 +1,6 @@
 slug: set-of-anterior-intercostal-veins
 kind: vein
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -26,6 +26,10 @@ ids:
   ta2: 4790
   ta98: A12.3.04.022
   wikidata: Q4771354
-meshes:
-  - bp3d:FJ1985
-  - bp3d:FJ1994
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1985
+  right:
+    meshes:
+      - bp3d:FJ1994

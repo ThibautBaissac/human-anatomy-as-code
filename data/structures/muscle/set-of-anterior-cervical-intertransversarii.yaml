@@ -1,6 +1,6 @@
 slug: set-of-anterior-cervical-intertransversarii
 kind: muscle
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - muscular
@@ -20,6 +20,10 @@ ids:
   ta2: 2237
   ta98: A04.3.01.012
   wikidata: Q66515017
-meshes:
-  - bp3d:FJ1549
-  - bp3d:FJ1549M
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1549M
+  right:
+    meshes:
+      - bp3d:FJ1549

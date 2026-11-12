@@ -1,6 +1,6 @@
 slug: set-of-dorsal-metacarpal-arteries
 kind: artery
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -26,6 +26,10 @@ ids:
   ta2: 4648
   ta98: A12.2.09.034
   wikidata: Q3328736
-meshes:
-  - bp3d:FJ2347
-  - bp3d:FJ2348
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2348
+  right:
+    meshes:
+      - bp3d:FJ2347

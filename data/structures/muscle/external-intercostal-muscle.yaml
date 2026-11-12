@@ -1,6 +1,6 @@
 slug: external-intercostal-muscle
 kind: muscle
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - muscular
@@ -12,6 +12,10 @@ labels:
 ids:
   fma: 9756
   wikidata: Q66505071
-meshes:
-  - bp3d:FJ1451
-  - bp3d:FJ1451M
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1451M
+  right:
+    meshes:
+      - bp3d:FJ1451

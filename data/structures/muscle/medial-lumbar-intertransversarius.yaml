@@ -1,6 +1,6 @@
 slug: medial-lumbar-intertransversarius
 kind: muscle
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - muscular
@@ -12,6 +12,10 @@ labels:
 ids:
   fma: 22851
   wikidata: Q66514842
-meshes:
-  - bp3d:FJ1548
-  - bp3d:FJ1548M
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1548M
+  right:
+    meshes:
+      - bp3d:FJ1548

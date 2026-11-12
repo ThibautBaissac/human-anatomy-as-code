@@ -1,6 +1,6 @@
 slug: plantar-metatarsal-artery
 kind: artery
-laterality: midline
+laterality: bilateral
 status: draft
 parent: posterior-tibial-artery
 systems:
@@ -13,6 +13,10 @@ labels:
 ids:
   fma: 43956
   wikidata: Q66533861
-meshes:
-  - bp3d:FJ2096
-  - bp3d:FJ2206
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2096
+  right:
+    meshes:
+      - bp3d:FJ2206

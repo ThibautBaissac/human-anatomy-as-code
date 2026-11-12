@@ -1,6 +1,6 @@
 slug: lumbar-vein
 kind: vein
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - cardiovascular
@@ -12,6 +12,10 @@ labels:
 ids:
   fma: 15370
   wikidata: Q66511935
-meshes:
-  - bp3d:FJ3631
-  - bp3d:FJ3635
+sides:
+  left:
+    meshes:
+      - bp3d:FJ3631
+  right:
+    meshes:
+      - bp3d:FJ3635

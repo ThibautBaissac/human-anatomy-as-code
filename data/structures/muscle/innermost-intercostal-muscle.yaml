@@ -1,6 +1,6 @@
 slug: innermost-intercostal-muscle
 kind: muscle
-laterality: midline
+laterality: bilateral
 status: draft
 systems:
   - muscular
@@ -12,6 +12,10 @@ labels:
 ids:
   fma: 9758
   wikidata: Q66505073
-meshes:
-  - bp3d:FJ1454
-  - bp3d:FJ1454M
+sides:
+  left:
+    meshes:
+      - bp3d:FJ1454M
+  right:
+    meshes:
+      - bp3d:FJ1454

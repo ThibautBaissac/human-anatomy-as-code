@@ -1,6 +1,6 @@
 slug: distal-perforating-artery
 kind: artery
-laterality: midline
+laterality: bilateral
 status: draft
 parent: plantar-metatarsal-artery
 systems:
@@ -13,6 +13,10 @@ labels:
 ids:
   fma: 69517
   wikidata: Q66567385
-meshes:
-  - bp3d:FJ2058
-  - bp3d:FJ2064
+sides:
+  left:
+    meshes:
+      - bp3d:FJ2064
+  right:
+    meshes:
+      - bp3d:FJ2058
