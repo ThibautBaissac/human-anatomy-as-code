@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-import { Crosshair, EyeOff, Focus, Info, Play, X } from 'lucide-react';
-import { selectionKey, type Catalog } from '../viewer/catalog.ts';
+import { Crosshair, EyeOff, Focus, Info, Play, Waypoints, X } from 'lucide-react';
+import { selectionKey, type Catalog, type RelationItem } from '../viewer/catalog.ts';
 import { jointKey, jointsFor, lengthTrend, motionDirection, musclesOf, parseJointKey } from '../viewer/pose.ts';
 import { labelLang, labelText, structureName, structureNameLang } from '../viewer/search.ts';
 import type { Viewer } from '../viewer/viewer.ts';
@@ -46,6 +46,8 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
   if (!s) return null;
   const parent = s.parent ? catalog.structure(s.parent) : undefined;
   const isolated = !!view.isolated && selectionKey(view.isolated) === selectionKey(selection);
+  const networkable = ['artery', 'vein', 'nerve'].includes(s.kind) && catalog.network(selection).length > 1;
+  const networked = !!view.network && selectionKey(view.network) === selectionKey(selection);
   const draft = LANGS.some((l) => s.labels[l]?.status === 'draft');
   const subtitle = [selection.side ? S.sideOf(S.side[selection.side]) : null, S.kinds[s.kind] ?? s.kind].filter(Boolean).join(' · ');
   return (
@@ -78,6 +80,7 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
         <button type="button" className="btn action" onClick={() => viewer.focus(selection.slug, selection.side)}><Crosshair aria-hidden="true" size={18} />{S.centre}</button>
         <button type="button" className="btn action" aria-pressed={isolated} onClick={() => viewer.setIsolated(isolated ? null : selection)}><Focus aria-hidden="true" size={18} />{S.isolateStructure}</button>
         <button type="button" className="btn action" onClick={onHide}><EyeOff aria-hidden="true" size={18} />{S.hide}</button>
+        {networkable && <button type="button" className="btn action" aria-pressed={networked} onClick={() => viewer.setNetwork(networked ? null : selection)}><Waypoints aria-hidden="true" size={18} />{S.showNetwork}</button>}
         {animatable && <button type="button" className="btn action" onClick={onAnimate}><Play aria-hidden="true" size={18} />{S.animate}</button>}
       </div>
       <dl className="names">
@@ -89,6 +92,7 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
         ))}
       </dl>
       {draft && <p className="draft-note muted small"><Info aria-hidden="true" size={14} />{S.draftNote}</p>}
+      <Relations viewer={viewer} catalog={catalog} selection={selection} lang={lang} onSelect={onSelect} />
       <MotionInfo viewer={viewer} catalog={catalog} view={view} motionKey={motionKey} onSelect={onSelect} lang={lang} />
       {s.children.length > 0 && (
         <div className="card-section">
@@ -107,6 +111,42 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
           <div><dt>{S.status}</dt><dd>{S.statusValues[s.status] ?? s.status}</dd></div>
         </dl>
       </details>
+    </>
+  );
+}
+
+/** Relations of the selection, one section per type and direction, with one note when an imported one is not reviewed. */
+function Relations({ viewer, catalog, selection, lang, onSelect }: { viewer: Viewer; catalog: Catalog; selection: Selection; lang: Lang; onSelect: (sel: Selection) => void }) {
+  const items = catalog.relationsOf(selection);
+  if (!items.length) return null;
+  const groups = new Map<string, RelationItem[]>();
+  for (const i of items) groups.set(`${i.direction}:${i.type}`, [...(groups.get(`${i.direction}:${i.type}`) ?? []), i]);
+  return (
+    <>
+      {[...groups.entries()].map(([k, list]) => {
+        const title = S.relationTitles[list[0].direction][list[0].type] ?? list[0].type;
+        return (
+          <div className="card-section" key={k}>
+            <h3>{title}</h3>
+            <Folded key={`${selectionKey(selection)}-${k}`} className="relations" label={title} items={list} render={(i) => {
+              const target = catalog.structure(i.ref);
+              const labels = catalog.labelsOf(i.ref) ?? {};
+              const name = labelText({ slug: i.ref, labels }, lang);
+              const mark = i.mark ? ` — ${S.sideButton[i.mark]}` : '';
+              return (
+                <li key={`${i.ref}-${i.side ?? ''}-${i.mark ?? ''}`}>
+                  {i.presence === 'present' && target ? (
+                    <><button type="button" className="link" lang={labelLang({ labels }, lang)} {...previewProps(viewer, { slug: i.ref, side: i.side })} onClick={() => onSelect({ slug: i.ref, side: i.side })}>{name}</button>{mark}</>
+                  ) : (
+                    <span lang={labelLang({ labels }, lang)}>{name}<span className="muted"> ({i.presence === 'external' ? S.noModel : S.outsideModel})</span>{mark}</span>
+                  )}
+                </li>
+              );
+            }} />
+          </div>
+        );
+      })}
+      {items.some((i) => i.status === 'draft') && <p className="draft-note muted small"><Info aria-hidden="true" size={14} />{S.relationsDraftNote}</p>}
     </>
   );
 }

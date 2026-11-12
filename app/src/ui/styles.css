@@ -219,8 +219,8 @@ input[type='checkbox'] { accent-color: var(--control); width: 18px; height: 18px
 .card-section { border-top: 1px solid var(--line); padding-top: 12px; }
 .card-section h3 { font-size: .85rem; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
 /* links in a list are targets of their own: 24 px at least (WCAG 2.5.8) */
-.muscles button.link, .children button.link { min-height: 24px; }
-.roles, .muscles, .children { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: .93rem; }
+.muscles button.link, .children button.link, .relations button.link { min-height: 24px; }
+.roles, .muscles, .children, .relations { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: .93rem; }
 .roles li { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 32px; }
 .trend { color: var(--muted); font-size: .85em; }
 .draft-note { display: flex; align-items: center; gap: 6px; margin: -6px 0 0; }

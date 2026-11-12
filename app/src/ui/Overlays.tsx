@@ -55,14 +55,20 @@ export function HoverLabel({ canvas, hover, nameOf }: { canvas: HTMLCanvasElemen
 }
 
 /** Isolation and hidden structures, each with the way back. */
-export function Banners({ viewer, isolatedName, hiddenCount, onDone }: { viewer: Viewer; isolatedName: string | null; hiddenCount: number; onDone: () => void }) {
-  if (!isolatedName && !hiddenCount) return null;
+export function Banners({ viewer, isolatedName, networkName = null, hiddenCount, onDone }: { viewer: Viewer; isolatedName: string | null; networkName?: string | null; hiddenCount: number; onDone: () => void }) {
+  if (!isolatedName && !networkName && !hiddenCount) return null;
   return (
     <div className="banners">
       {isolatedName && (
         <div role="status" className="banner surface">
           <span>{S.isolation} : <strong>{isolatedName}</strong></span>
           <button type="button" className="btn small" onClick={() => { viewer.setIsolated(null); onDone(); }}>{S.leaveIsolation}</button>
+        </div>
+      )}
+      {networkName && (
+        <div role="status" className="banner surface">
+          <span>{S.network} : <strong>{networkName}</strong></span>
+          <button type="button" className="btn small" onClick={() => { viewer.setNetwork(null); onDone(); }}>{S.leaveNetwork}</button>
         </div>
       )}
       {hiddenCount > 0 && (

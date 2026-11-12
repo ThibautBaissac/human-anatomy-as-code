@@ -162,6 +162,7 @@ export function App() {
   ];
   const offlineTag = <span role="status" className={pwa.online ? 'visually-hidden' : 'offline-tag'}>{pwa.online ? '' : S.offlineTag}</span>;
   const isolatedName = view.isolated && catalog?.structure(view.isolated.slug) ? nameOf(view.isolated) : null;
+  const networkName = view.network && catalog?.structure(view.network.slug) ? nameOf(view.network) : null;
   const errors = [error, failedKinds.length ? (pwa.online ? S.failed : S.failedOffline)(failedKinds.join(', ')) : null].filter((x): x is string => !!x);
 
   return (
@@ -217,7 +218,7 @@ export function App() {
         {view.model === 'female' && <FemaleNotice atlas={atlas} onDone={focusHome} />}
         <Notifications loading={switchTarget ? S.switchingTo(switchTarget) : loading ? S.loading(loading.loaded, loading.total) : null}
           progress={loading && loading.total ? loading : null} errors={errors} onDone={focusHome} />
-        {viewer && <Banners viewer={viewer} isolatedName={isolatedName} hiddenCount={view.hidden.length} onDone={focusHome} />}
+        {viewer && <Banners viewer={viewer} isolatedName={isolatedName} networkName={networkName} hiddenCount={view.hidden.length} onDone={focusHome} />}
       </div>
 
       {!narrow && drawerOpen && (
