@@ -1,4 +1,5 @@
 // Interface strings (French only for the MVP; one module so they can be translated later).
+import type { RelationType } from '../viewer/types.ts';
 const S_MODEL: Record<string, string> = { male: 'modèle masculin', female: 'modèle féminin' };
 export const S = {
   appTitle: 'Human Anatomy As Code',
@@ -145,17 +146,17 @@ export const S = {
   zoomIn: 'Zoom avant',
   zoomOut: 'Zoom arrière',
   partOf: 'Partie de',
-  draftNote: 'Noms importés, pas encore relus',
+  /** the card's single note on what is not reviewed yet (names, relations or both; imported or curated) */
+  draftNote: (names: boolean, relations: boolean) => names && relations ? 'Noms et relations pas encore relus' : names ? 'Noms pas encore relus' : 'Relations pas encore relues',
   fewerItems: 'Réduire la liste',
   moreItems: (n: number) => `${n} autre${n > 1 ? 's' : ''}…`,
   details: 'Détails techniques',
   relationTitles: {
     forward: { 'branch-of': 'Branche de', 'tributary-of': 'Tributaire de', 'continuation-of': 'Prolongement de', 'arterial-supply': 'Vascularisation', innervation: 'Innervation' },
     inverse: { 'branch-of': 'Branches', 'tributary-of': 'Tributaires', 'continuation-of': 'Se prolonge par', 'arterial-supply': 'Irrigue', innervation: 'Innerve' },
-  } as Record<'forward' | 'inverse', Record<string, string>>,
+  } as Record<'forward' | 'inverse', Record<RelationType, string>>,
   noModel: 'sans modèle 3D',
   outsideModel: 'absent de ce modèle',
-  relationsDraftNote: 'Relations importées, pas encore relues',
   showNetwork: 'Montrer le réseau',
   network: 'Réseau',
   leaveNetwork: 'Quitter le réseau',

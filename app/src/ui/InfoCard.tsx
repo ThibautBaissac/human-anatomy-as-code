@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Crosshair, EyeOff, Focus, Info, Play, Waypoints, X } from 'lucide-react';
-import { selectionKey, type Catalog, type RelationItem } from '../viewer/catalog.ts';
+import { NETWORK_KINDS, selectionKey, type Catalog, type RelationItem } from '../viewer/catalog.ts';
 import { jointKey, jointsFor, lengthTrend, motionDirection, musclesOf, parseJointKey } from '../viewer/pose.ts';
 import { labelLang, labelText, structureName, structureNameLang } from '../viewer/search.ts';
 import type { Viewer } from '../viewer/viewer.ts';
@@ -46,9 +46,11 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
   if (!s) return null;
   const parent = s.parent ? catalog.structure(s.parent) : undefined;
   const isolated = !!view.isolated && selectionKey(view.isolated) === selectionKey(selection);
-  const networkable = ['artery', 'vein', 'nerve'].includes(s.kind) && catalog.network(selection).length > 1;
+  const networkable = NETWORK_KINDS.includes(s.kind) && catalog.network(selection).length > 1;
   const networked = !!view.network && selectionKey(view.network) === selectionKey(selection);
-  const draft = LANGS.some((l) => s.labels[l]?.status === 'draft');
+  const relations = catalog.relationsOf(selection);
+  const draftNames = LANGS.some((l) => s.labels[l]?.status === 'draft');
+  const draftRelations = relations.some((i) => i.status === 'draft');
   const subtitle = [selection.side ? S.sideOf(S.side[selection.side]) : null, S.kinds[s.kind] ?? s.kind].filter(Boolean).join(' · ');
   return (
     <>
@@ -91,8 +93,8 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
           </div>
         ))}
       </dl>
-      {draft && <p className="draft-note muted small"><Info aria-hidden="true" size={14} />{S.draftNote}</p>}
-      <Relations viewer={viewer} catalog={catalog} selection={selection} lang={lang} onSelect={onSelect} />
+      {(draftNames || draftRelations) && <p className="draft-note muted small"><Info aria-hidden="true" size={14} />{S.draftNote(draftNames, draftRelations)}</p>}
+      <Relations viewer={viewer} catalog={catalog} items={relations} selection={selection} lang={lang} onSelect={onSelect} />
       <MotionInfo viewer={viewer} catalog={catalog} view={view} motionKey={motionKey} onSelect={onSelect} lang={lang} />
       {s.children.length > 0 && (
         <div className="card-section">
@@ -115,16 +117,15 @@ export function InfoCard({ viewer, catalog, view, motionKey, onSelect, onClose, 
   );
 }
 
-/** Relations of the selection, one section per type and direction, with one note when an imported one is not reviewed. */
-function Relations({ viewer, catalog, selection, lang, onSelect }: { viewer: Viewer; catalog: Catalog; selection: Selection; lang: Lang; onSelect: (sel: Selection) => void }) {
-  const items = catalog.relationsOf(selection);
+/** Relations of the selection, one section per type and direction (their draft status is in the card's single note). */
+function Relations({ viewer, catalog, items, selection, lang, onSelect }: { viewer: Viewer; catalog: Catalog; items: RelationItem[]; selection: Selection; lang: Lang; onSelect: (sel: Selection) => void }) {
   if (!items.length) return null;
   const groups = new Map<string, RelationItem[]>();
   for (const i of items) groups.set(`${i.direction}:${i.type}`, [...(groups.get(`${i.direction}:${i.type}`) ?? []), i]);
   return (
     <>
       {[...groups.entries()].map(([k, list]) => {
-        const title = S.relationTitles[list[0].direction][list[0].type] ?? list[0].type;
+        const title = S.relationTitles[list[0].direction][list[0].type];
         return (
           <div className="card-section" key={k}>
             <h3>{title}</h3>
@@ -146,7 +147,6 @@ function Relations({ viewer, catalog, selection, lang, onSelect }: { viewer: Vie
           </div>
         );
       })}
-      {items.some((i) => i.status === 'draft') && <p className="draft-note muted small"><Info aria-hidden="true" size={14} />{S.relationsDraftNote}</p>}
     </>
   );
 }

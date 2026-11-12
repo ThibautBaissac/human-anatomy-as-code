@@ -2,6 +2,7 @@
 import { SYSTEMS, type Atlas, type AtlasLabel, type AtlasStructure, type Lang, type Selection, type Side } from './types.ts';
 import { networkOf, relationItems, type RelationItem } from './relations.ts';
 export type { RelationItem } from './relations.ts';
+export { NETWORK_KINDS } from './relations.ts';
 
 export const ROOT = 'human-body';
 /** Tree bucket for structures without a parent, other than the root. */

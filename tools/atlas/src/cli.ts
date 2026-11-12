@@ -63,6 +63,7 @@ function printRelationsReport(r: ReturnType<typeof importRelations>): void {
     if (items.length > 50) console.log(`  … ${items.length - 50} de plus`);
   };
   console.log(`mises à jour : ${r.updated} · inchangées : ${r.unchanged}`);
+  list('lignes malformées des relevés (ignorées)', r.malformed, (m) => `${m.file}:${m.line} ${m.detail}`);
   list('lignes ignorées', r.ignored, (i) => `${i.subject} [${i.reason}] ${i.detail}`);
   console.log(`cibles hors de nos structures (abandonnées) : ${r.dropped}`);
   list('conflits avec une relation relue (gardée)', r.conflicts, (c) => `${c.slug} ${c.type} : gardé ${c.kept}, prévu ${c.planned}`);

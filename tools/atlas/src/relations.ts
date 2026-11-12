@@ -52,7 +52,7 @@ export function kindProblem(type: RelationType, subject: Structure, targetKind: 
   }
 }
 
-/** Validates every relation: targets, registry, sources, kinds, tree uniqueness, side shape and tree cycles. Resolution of `wikidata:` targets is a warning. */
+/** Validates every relation: duplicates, targets, registry, sources, kinds, tree uniqueness, side mixing and tree cycles (side shape: sideShapeErrors, called by the compiler). Resolution of `wikidata:` targets is a warning. */
 export function validateRelations(structures: LoadedStructure[], registry: ExternalTargets, relationSources: Set<string>): Diagnostic[] {
   const out: Diagnostic[] = [];
   const bySlug = new Map(structures.map((x) => [x.data.slug, x]));
@@ -77,12 +77,16 @@ export function validateRelations(structures: LoadedStructure[], registry: Exter
 
   for (const x of structures) {
     const { file, data } = x;
-    out.push(...sideShapeErrors(file, data));
     const sideTypes = new Set(SIDES.flatMap((side) => (data.laterality === 'bilateral' ? data.sides?.[side]?.relations ?? [] : []).map((r) => r.type)));
     for (const { rels, prefix, side } of lists(x)) {
       const treeSeen = new Set<RelationType>();
+      const seen = new Set<string>();
       rels.forEach((r, i) => {
         const at = `${prefix}/${i}`;
+        // identity is (type, target): a second one is reported alone, the first carries the other checks
+        const identity = `${r.type} ${r.target}`;
+        if (seen.has(identity)) { out.push(diag(file, at, 'relation-duplicate', `${r.type} ${r.target} figure deux fois sur ${side ? `le côté ${side}` : 'la structure'}`, 'error')); return; }
+        seen.add(identity);
         if (r.source !== 'curated' && !relationSources.has(r.source)) out.push(diag(file, `${at}/source`, 'relation-source', `source « ${r.source} » absente du registre ou ne fournissant pas de relations`, 'error'));
         if (side === null && sideTypes.has(r.type)) out.push(diag(file, at, 'relation-side-mixed', `${r.type} est présent à la fois au niveau de la structure et au niveau d'un côté`, 'error'));
         if (TREE_TYPES.includes(r.type)) {

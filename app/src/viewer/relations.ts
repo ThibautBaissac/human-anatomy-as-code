@@ -56,7 +56,8 @@ export function relationItems(graph: RelationGraph, sel: Selection): RelationIte
 
 const TREE: readonly RelationType[] = ['branch-of', 'tributary-of', 'continuation-of'];
 const SUPPLY: readonly RelationType[] = ['arterial-supply', 'innervation'];
-const NETWORK_KINDS = ['artery', 'vein', 'nerve', 'lymphatic'];
+/** Kinds of structure that have a network (and a « Montrer le réseau » button). */
+export const NETWORK_KINDS: readonly string[] = ['artery', 'vein', 'nerve'];
 const key = (slug: string, side: Side | null) => (side ? `${slug}@${side}` : slug);
 
 /** Keys (slug or slug@side) of a vessel's network: branches, tributaries, continuations, parts, then what they supply. */

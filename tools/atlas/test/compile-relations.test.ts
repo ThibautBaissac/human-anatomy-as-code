@@ -34,6 +34,29 @@ test('two identical relations in one list are a schema error', () => {
   assert.ok(errors.some((e) => e.file === POP && e.rule === 'schema' && e.pointer === '/relations'));
 });
 
+test('two relations of one type and target with different sources are a relation-duplicate error', () => {
+  const { errors } = compile({ [MUSCLE]: { ...fixture()[MUSCLE], relations: [
+    rel('arterial-supply', 'femoral-artery', { source: 'fma' }),
+    rel('innervation', 'wikidata:Q1', { source: 'wikidata' }),
+    rel('arterial-supply', 'femoral-artery', { source: 'wikidata' }),
+  ] } });
+  assert.deepEqual(errors.map(pick), [{ file: MUSCLE, pointer: '/relations/2', rule: 'relation-duplicate' }]);
+});
+
+test('a duplicate inside one side list is a relation-duplicate error at its side pointer; the same pair on two sides is not', () => {
+  const gon = fixture()[GON];
+  const { errors } = compile({ [GON]: { ...gon, sides: {
+    left: { ...gon.sides.left, relations: [rel('arterial-supply', 'femoral-artery'), rel('arterial-supply', 'femoral-artery', { source: 'curated' })] },
+    right: { ...gon.sides.right, relations: [...gon.sides.right.relations, rel('arterial-supply', 'femoral-artery')] },
+  } } });
+  assert.deepEqual(errors.map(pick), [{ file: GON, pointer: '/sides/left/relations/1', rule: 'relation-duplicate' }]);
+});
+
+test('a duplicate tree relation is reported once, as relation-duplicate', () => {
+  const { errors } = compile(withPop([rel('branch-of', 'femoral-artery'), rel('branch-of', 'femoral-artery', { source: 'curated' })]));
+  assert.deepEqual(errors.map(pick), [{ file: POP, pointer: '/relations/1', rule: 'relation-duplicate' }]);
+});
+
 test('an unknown target slug is a relation-target error', () => {
   const { errors } = compile(withPop([rel('branch-of', 'no-such-artery')]));
   assert.deepEqual(errors.map(pick), [{ file: POP, pointer: '/relations/0/target', rule: 'relation-target' }]);

@@ -85,3 +85,15 @@ test('import-bp3d reports a missing input as a one-line error, without a stack t
   assert.doesNotMatch(r.stderr, /^\s+at /m);
   assert.match(r.stderr, /nonexistent/);
 });
+
+test('import-relations prints the malformed snapshot rows with their file and line', () => {
+  const dataDir = validDataset({
+    'import/relations-fma.csv': 'subject_fma,relation,target_fma\n2,branch_of\n',
+    'import/relations-wikidata.csv': 'subject_qid,property,target_qid\n',
+    'import/wikidata-targets.csv': 'qid,fma,en,fr,la\n',
+    'import/wikidata-fma.csv': 'item,fma,ta2,ta98,fr,la,en\n',
+  });
+  const r = run('import-relations', dataDir);
+  assert.match(r.stdout, /^lignes malformées des relevés \(ignorées\) : 1$/m);
+  assert.match(r.stdout, /^ {2}- relations-fma\.csv:2 /m);
+});

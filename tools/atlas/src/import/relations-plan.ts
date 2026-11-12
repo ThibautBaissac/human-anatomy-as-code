@@ -56,33 +56,51 @@ const WIKIDATA_HEADER = ['subject_qid', 'property', 'target_qid'];
 const TARGETS_HEADER = ['qid', 'fma', 'en', 'fr', 'la'];
 const PROPERTIES = new Set<string>(['P3261', 'P2286', 'P3189']);
 
-function table(text: string, header: string[], name: string): string[][] {
+/** A snapshot row that could not be read: its file, its line (header = 1) and why. */
+export interface MalformedRow { file: string; line: number; detail: string }
+
+/** The rows of a snapshot with their line; a row without the header's column count is malformed. */
+function table(text: string, header: string[], name: string, malformed: MalformedRow[]): { cells: string[]; line: number }[] {
   const [head, ...rows] = parseCsv(text);
   if (head?.join(',') !== header.join(',')) throw new Error(`${name} : en-tête attendu « ${header.join(',')} », trouvé « ${head?.join(',') ?? ''} »`);
-  return rows.filter((r) => r.length === header.length);
+  return rows.flatMap((cells, i) => {
+    const line = i + 2;
+    if (cells.length === header.length) return [{ cells, line }];
+    malformed.push({ file: name, line, detail: `${cells.length} colonne(s) au lieu de ${header.length}` });
+    return [];
+  });
 }
 
 const positiveInt = (cell: string): number | undefined => { const n = Number(cell); return cell && Number.isInteger(n) && n > 0 ? n : undefined; };
+const QID = /^Q\d+$/;
 
-/** Reads the three snapshots written by fetch-relations (exact headers, RFC 4180). Empty cells are absent fields. */
-export function parseRelationSnapshots(fmaCsv: string, wikidataCsv: string, targetsCsv: string): { fma: FmaRelRow[]; wikidata: WikidataRelRow[]; targets: TargetRow[] } {
-  const fma = table(fmaCsv, FMA_HEADER, 'relations-fma.csv').flatMap(([s, relation, t]) => {
+/** Reads the three snapshots written by fetch-relations (exact headers, RFC 4180). Empty cells are absent fields; unreadable rows are listed in `malformed`. */
+export function parseRelationSnapshots(fmaCsv: string, wikidataCsv: string, targetsCsv: string): { fma: FmaRelRow[]; wikidata: WikidataRelRow[]; targets: TargetRow[]; malformed: MalformedRow[] } {
+  const malformed: MalformedRow[] = [];
+  const bad = (file: string, line: number, detail: string): [] => { malformed.push({ file, line, detail }); return []; };
+  const FMA = 'relations-fma.csv', WD = 'relations-wikidata.csv', TARGETS = 'wikidata-targets.csv';
+  const fma = table(fmaCsv, FMA_HEADER, FMA, malformed).flatMap(({ cells: [s, relation, t], line }) => {
     const subject = positiveInt(s), target = positiveInt(t);
-    return subject && target ? [{ subject, relation, target }] : [];
+    return subject && target ? [{ subject, relation, target }] : bad(FMA, line, `identifiant FMA invalide (« ${s} », « ${t} »)`);
   });
-  const wikidata = table(wikidataCsv, WIKIDATA_HEADER, 'relations-wikidata.csv')
-    .filter(([, property]) => PROPERTIES.has(property))
-    .map(([subject, property, target]) => ({ subject, property: property as WikidataRelRow['property'], target }));
-  const targets = table(targetsCsv, TARGETS_HEADER, 'wikidata-targets.csv').map(([qid, f, en, fr, la]) => {
-    const row: TargetRow = { qid };
+  const wikidata = table(wikidataCsv, WIKIDATA_HEADER, WD, malformed).flatMap(({ cells: [subject, property, target], line }) => {
+    if (!QID.test(subject) || !QID.test(target)) return bad(WD, line, `QID invalide (« ${subject} », « ${target} »)`);
+    if (!PROPERTIES.has(property)) return bad(WD, line, `propriété « ${property} » hors de ${[...PROPERTIES].join(', ')}`);
+    return [{ subject, property: property as WikidataRelRow['property'], target }];
+  });
+  const targets = table(targetsCsv, TARGETS_HEADER, TARGETS, malformed).flatMap(({ cells: [qid, f, en, fr, la], line }) => {
+    if (!QID.test(qid)) return bad(TARGETS, line, `QID invalide (« ${qid} »)`);
     const fmaId = positiveInt(f);
+    if (f && !fmaId) return bad(TARGETS, line, `identifiant FMA invalide (« ${f} »)`);
+    const row: TargetRow = { qid };
     if (fmaId) row.fma = fmaId;
     if (en) row.en = en;
     if (fr) row.fr = fr;
     if (la) row.la = la;
-    return row;
+    return [row];
   });
-  return { fma, wikidata, targets };
+  malformed.sort((a, b) => byKey(a.file, b.file) || a.line - b.line);
+  return { fma, wikidata, targets, malformed };
 }
 
 // ---------- planning ----------
@@ -250,7 +268,7 @@ const sameTargets = (a: Candidate[], b: Candidate[]) => a.length === b.length &&
  * for both sides. For a tree type (`tree` given), each level keeps its first candidate by source priority then row order
  * before the sides are compared, the others reported as `second-tree`.
  */
-function fold(cands: Candidate[], tree?: Sink): Candidate[] {
+function collapseSides(cands: Candidate[], tree?: Sink): Candidate[] {
   const at = (side: Level) => cands.filter((c) => c.side === side);
   const [s, l, r] = [at(null), at('left'), at('right')];
   const rejected = new Set<string>();
@@ -322,11 +340,11 @@ export function planRelations(input: RelationsInput): RelationsPlan {
     }
 
     // one tree relation per type and level, then sides compared type by type
-    const folded = RELATION_TYPES.flatMap((type) => fold(cands.filter((c) => c.type === type), TREE_TYPES.includes(type) ? sink : undefined));
+    const collapsed = RELATION_TYPES.flatMap((type) => collapseSides(cands.filter((c) => c.type === type), TREE_TYPES.includes(type) ? sink : undefined));
 
     // one tree parent per vessel: continuation-of only on a level without branch-of or tributary-of
-    const parentAt = (side: Side) => folded.some((o) => PARENT_TYPES.includes(o.type) && (o.side === side || o.side === null));
-    const planned = folded.flatMap((c) => {
+    const parentAt = (side: Side) => collapsed.some((o) => PARENT_TYPES.includes(o.type) && (o.side === side || o.side === null));
+    const planned = collapsed.flatMap((c) => {
       if (c.type !== 'continuation-of') return [c];
       const free = c.side ? (parentAt(c.side) ? [] : [c.side]) : SIDES.filter((side) => !parentAt(side));
       if (free.length < (c.side ? 1 : 2)) sink.ignore('continuation-parent', `continuation-of ${c.target} (${c.source}) : branch-of ou tributary-of déjà planifiée`);

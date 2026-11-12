@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fetchRelations, batches, toCsv } from '../src/fetch-relations.ts';
 import { writeDataset } from './helpers.ts';
@@ -99,18 +99,47 @@ test('1441 QIDs are split into batches of at most 200', () => {
   assert.equal(parts.flat().length, 1441);
 });
 
-test('a 429 is retried after Retry-After, with the injected clock; 1 request per second otherwise', async () => {
-  const dir = dataset({ 'structures/artery/a.yaml': structure('a', 'artery', { fma: 22457 }) });
+test('a 429 is retried after Retry-After, with the injected clock; 1 request per second to each service otherwise', async () => {
+  const dir = dataset({
+    'structures/artery/a.yaml': structure('a', 'artery', { fma: 22457, wikidata: 'Q1' }),
+    'structures/artery/b.yaml': structure('b', 'artery', { fma: 22458 }),
+  });
   let n = 0;
-  const { fn } = router({});
+  const innervation = { item: { value: 'http://www.wikidata.org/entity/Q1' }, prop: { value: 'http://www.wikidata.org/prop/direct/P3189' }, target: { value: 'http://www.wikidata.org/entity/Q9' } };
+  let sparql = 0;
+  const { fn } = router({}, () => json({ results: { bindings: sparql++ === 0 ? [innervation] : [] } }));
   const wrapped = (async (url: string | URL | Request, init?: RequestInit) => {
     if (String(url).includes('/classes/') && n++ === 0) return new Response('slow down', { status: 429, headers: { 'Retry-After': '7' } });
     return String(url).includes('/classes/') ? new Response(olsClass([['branch_of', 3]])) : fn(url, init);
   }) as typeof fetch;
   const sleeps: number[] = [];
   await fetchRelations(dir, { fetch: wrapped, log: () => {}, sleep: async (ms) => { sleeps.push(ms); } });
-  assert.ok(sleeps.includes(7000));
-  assert.equal(read(dir, 'relations-fma.csv'), 'subject_fma,relation,target_fma\n22457,branch_of,3\n');
+  // OLS: first request free, Retry-After 7 s, 1 s before the retry, 1 s before the second id;
+  // Wikidata: its own first request free, 1 s before the targets query
+  assert.deepEqual(sleeps, [7000, 1000, 1000, 1000]);
+  assert.equal(read(dir, 'relations-fma.csv'), 'subject_fma,relation,target_fma\n22457,branch_of,3\n22458,branch_of,3\n');
+});
+
+test('a failure during the Wikidata phase writes no snapshot and leaves the existing ones as they were', async () => {
+  const old = { fma: 'subject_fma,relation,target_fma\n1,branch_of,2\n', wd: 'subject_qid,property,target_qid\nQ1,P3261,Q2\n', targets: 'qid,fma,en,fr,la\nQ2,,two,,\n' };
+  const dir = dataset({
+    'structures/artery/a.yaml': structure('a', 'artery', { fma: 22457, wikidata: 'Q10' }),
+    'import/relations-fma.csv': old.fma, 'import/relations-wikidata.csv': old.wd, 'import/wikidata-targets.csv': old.targets,
+  });
+  const { fn } = router({ 22457: olsClass([['branch_of', 3]]) }, () => new Response('bad gateway', { status: 502 }));
+  await assert.rejects(fetchRelations(dir, { fetch: fn, log: () => {}, sleep: noSleep }), /HTTP 502/);
+  assert.equal(read(dir, 'relations-fma.csv'), old.fma);
+  assert.equal(read(dir, 'relations-wikidata.csv'), old.wd);
+  assert.equal(read(dir, 'wikidata-targets.csv'), old.targets);
+});
+
+test('a failure during the Wikidata targets query writes no snapshot either', async () => {
+  const dir = dataset({ 'structures/artery/a.yaml': structure('a', 'artery', { fma: 22457, wikidata: 'Q10' }) });
+  const innervation = { item: { value: 'http://www.wikidata.org/entity/Q10' }, prop: { value: 'http://www.wikidata.org/prop/direct/P3189' }, target: { value: 'http://www.wikidata.org/entity/Q9' } };
+  let calls = 0;
+  const { fn } = router({ 22457: olsClass([['branch_of', 3]]) }, () => (calls++ === 0 ? json({ results: { bindings: [innervation] } }) : new Response('', { status: 500 })));
+  await assert.rejects(fetchRelations(dir, { fetch: fn, log: () => {}, sleep: noSleep }), /HTTP 500/);
+  for (const f of ['relations-fma.csv', 'relations-wikidata.csv', 'wikidata-targets.csv']) assert.equal(existsSync(join(dir, 'import', f)), false, f);
 });
 
 test('after 5 retries the failure names the batch', async () => {

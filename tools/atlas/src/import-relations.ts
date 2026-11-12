@@ -2,7 +2,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { Document, isMap, parse, parseDocument, type YAMLMap } from 'yaml';
-import { parseRelationSnapshots, planRelations, type RelationsReport } from './import/relations-plan.ts';
+import { parseRelationSnapshots, planRelations, type MalformedRow, type RelationsReport } from './import/relations-plan.ts';
 import { KEY_ORDER, SIDE_ORDER, setOrdered } from './import/yaml-merge.ts';
 import { readWikidata } from './import/wikidata.ts';
 import { byKey, listYaml } from './fs-util.ts';
@@ -19,6 +19,8 @@ export interface ImportRelationsReport extends RelationsReport {
   duplicateSlugs: string[];
   /** required snapshot files that do not exist, relative to the data directory (import aborted) */
   missingFiles: string[];
+  /** snapshot rows that could not be read (not imported: the drafts they gave are removed like any row no longer in the snapshots) */
+  malformed: MalformedRow[];
   /** a registry written to external-targets.yaml */
   registryWritten: boolean;
 }
@@ -32,7 +34,7 @@ interface ExistingFile { path: string; text: string; doc: Document; slug: string
 export function importRelations(dataDir: string): ImportRelationsReport {
   const report: ImportRelationsReport = {
     ignored: [], dropped: 0, conflicts: [], oppositeSide: [], lateralUnresolved: [],
-    aborted: false, updated: 0, unchanged: 0, unreadableFiles: [], duplicateSlugs: [], missingFiles: [], registryWritten: false,
+    aborted: false, updated: 0, unchanged: 0, unreadableFiles: [], duplicateSlugs: [], missingFiles: [], malformed: [], registryWritten: false,
   };
   const abort = () => { report.aborted = true; return report; };
   const rel = (p: string) => relative(dataDir, p).split(sep).join('/');
@@ -59,7 +61,8 @@ export function importRelations(dataDir: string): ImportRelationsReport {
   if (report.unreadableFiles.length || report.duplicateSlugs.length) return abort();
 
   const read = (f: string) => readFileSync(join(dataDir, f), 'utf8');
-  const snapshots = parseRelationSnapshots(read(SNAPSHOTS[0]), read(SNAPSHOTS[1]), read(SNAPSHOTS[2]));
+  const { malformed, ...snapshots } = parseRelationSnapshots(read(SNAPSHOTS[0]), read(SNAPSHOTS[1]), read(SNAPSHOTS[2]));
+  report.malformed = malformed;
   const qidByFma = new Map<number, string>();
   for (const [fma, row] of readWikidata(join(dataDir, SNAPSHOTS[3])).byFma) qidByFma.set(fma, row.qid);
   const registryPath = join(dataDir, 'external-targets.yaml');

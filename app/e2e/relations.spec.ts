@@ -19,6 +19,9 @@ test('relations: branches in the card, follow a link, show the network of the ar
   const errors = await open(page, q, 'sel=popliteal-artery@left');
   const card = page.locator('aside.card');
   await expect(card.getByRole('heading', { name: 'Branches' })).toBeVisible();
+  // draft names and draft relations (curated ones included): one note for the whole card
+  await expect(card.locator('.draft-note')).toHaveCount(1);
+  await expect(card.locator('.draft-note')).toHaveText('Noms et relations pas encore relus');
   await card.getByRole('list', { name: 'Branches' }).getByRole('button', { name: /tibiale antérieure/ }).first().click();
   await expect.poll(() => hash(page)).toContain('sel=anterior-tibial-artery@left');
 

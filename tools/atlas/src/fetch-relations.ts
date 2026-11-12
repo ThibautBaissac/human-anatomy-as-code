@@ -144,8 +144,6 @@ export async function fetchRelations(dataDir: string, opts: FetchOptions = {}): 
     level = [...new Set(next)].filter((i) => !done.has(i)).sort((a, b) => a - b);
     muscles = nextMuscles;
   }
-  mkdirSync(join(dataDir, 'import'), { recursive: true });
-  writeFileSync(join(dataDir, 'import', 'relations-fma.csv'), toCsv(['subject_fma', 'relation', 'target_fma'], fmaRows));
 
   // Wikidata: our QIDs plus the QIDs of the muscle wholes.
   const subjects = new Set(qids);
@@ -170,7 +168,6 @@ export async function fetchRelations(dataDir: string, opts: FetchOptions = {}): 
       if (prop === 'P3189') innervationTargets.add(qidOf(b.target.value));
     }
   }
-  writeFileSync(join(dataDir, 'import', 'relations-wikidata.csv'), toCsv(['subject_qid', 'property', 'target_qid'], wdRows));
 
   const labels = new Map<string, string[]>();
   const sortedTargets = [...innervationTargets].sort(byKey);
@@ -182,7 +179,15 @@ export async function fetchRelations(dataDir: string, opts: FetchOptions = {}): 
       labels.set(q, row);
     }
   }
-  writeFileSync(join(dataDir, 'import', 'wikidata-targets.csv'), toCsv(['qid', 'fma', 'en', 'fr', 'la'], sortedTargets.map((q) => [q, ...(labels.get(q) ?? ['', '', '', ''])])));
+
+  // the three snapshots describe one fetch: written together, only once every request has succeeded
+  const snapshots: [string, string][] = [
+    ['relations-fma.csv', toCsv(['subject_fma', 'relation', 'target_fma'], fmaRows)],
+    ['relations-wikidata.csv', toCsv(['subject_qid', 'property', 'target_qid'], wdRows)],
+    ['wikidata-targets.csv', toCsv(['qid', 'fma', 'en', 'fr', 'la'], sortedTargets.map((q) => [q, ...(labels.get(q) ?? ['', '', '', ''])]))],
+  ];
+  mkdirSync(join(dataDir, 'import'), { recursive: true });
+  for (const [name, csv] of snapshots) writeFileSync(join(dataDir, 'import', name), csv);
 
   const summary = { fmaIds: done.size, qids: subjects.size, missingFma: missingFma.sort((a, b) => a - b) };
   log(`FMA : ${summary.fmaIds} identifiants interrogés, ${summary.missingFma.length} absents${summary.missingFma.length ? ` (${summary.missingFma.join(', ')})` : ''}`);

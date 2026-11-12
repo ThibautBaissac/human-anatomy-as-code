@@ -70,6 +70,28 @@ test('parseRelationSnapshots reads the three snapshot files, empty cells absent'
   ]);
 });
 
+test('parseRelationSnapshots counts malformed rows with their file and line instead of dropping them silently', () => {
+  const parsed = parseRelationSnapshots(
+    'subject_fma,relation,target_fma\n2,branch_of,1\n3,branch_of\nx,branch_of,4\n5,branch_of,1.5\n6,branch_of,0\n',
+    'subject_qid,property,target_qid\nQ2,P3261,Q1\nQ2,P3261\nQ2,P999,Q1\nfoo,P3189,Q1\n',
+    'qid,fma,en,fr,la\nQ500,,tibial nerve,,\nQ501,x,nerve,,\nQ502,,a,b\n',
+  );
+  assert.deepEqual(parsed.fma, [{ subject: 2, relation: 'branch_of', target: 1 }]);
+  assert.deepEqual(parsed.wikidata, [{ subject: 'Q2', property: 'P3261', target: 'Q1' }]);
+  assert.deepEqual(parsed.targets, [{ qid: 'Q500', en: 'tibial nerve' }]);
+  assert.deepEqual(parsed.malformed.map((m) => `${m.file}:${m.line}`), [
+    'relations-fma.csv:3', 'relations-fma.csv:4', 'relations-fma.csv:5', 'relations-fma.csv:6',
+    'relations-wikidata.csv:3', 'relations-wikidata.csv:4', 'relations-wikidata.csv:5',
+    'wikidata-targets.csv:3', 'wikidata-targets.csv:4',
+  ]);
+  assert.ok(parsed.malformed.every((m) => m.detail.length > 0));
+});
+
+test('well-formed snapshots have no malformed row', () => {
+  const parsed = parseRelationSnapshots('subject_fma,relation,target_fma\n2,branch_of,1\n', 'subject_qid,property,target_qid\n', 'qid,fma,en,fr,la\n');
+  assert.deepEqual(parsed.malformed, []);
+});
+
 test('parseRelationSnapshots rejects a snapshot whose header is not the expected one', () => {
   assert.throws(() => parseRelationSnapshots('subject,relation,target\n', 'subject_qid,property,target_qid\n', 'qid,fma,en,fr,la\n'), /subject_fma,relation,target_fma/);
 });
@@ -202,7 +224,7 @@ const NERVES: TargetRow[] = [
 ];
 const sidedMuscle = () => [...structures(), structure('deltoid', 'muscle', 'bilateral', { fma: 100, wikidata: 'Q100' }, { left: { fma: 101, wikidata: 'Q101' }, right: { fma: 102, wikidata: 'Q102' } })];
 
-test('a lateralised nerve item on each side folds into one structure-level innervation of the unlateralised item', () => {
+test('a lateralised nerve item on each side collapses into one structure-level innervation of the unlateralised item', () => {
   const p = plan({ structures: sidedMuscle(), targets: NERVES, wikidata: wd('Q101,P3189,Q601', 'Q102,P3189,Q602') });
   assert.deepEqual(p.relations.get('deltoid'), { structure: [rel('innervation', 'wikidata:Q600', 'wikidata')] });
   assert.deepEqual(Object.keys(p.registry), ['Q600']);
@@ -506,6 +528,13 @@ test('external targets are written to external-targets.yaml sorted by key, only 
   assert.match(registry, /Q9:\n {2}labels:\n {4}en:\n {6}text: nine/);
   importRelations(d);
   assert.equal(text(d, 'external-targets.yaml'), registry);
+});
+
+test('malformed snapshot rows are counted in the import report with file and line', () => {
+  const d = diskData({ 'import/relations-fma.csv': SNAP['import/relations-fma.csv'] + '6,branch_of\n' });
+  const r = importRelations(d);
+  assert.equal(r.aborted, false);
+  assert.deepEqual(r.malformed.map((m) => `${m.file}:${m.line}`), ['relations-fma.csv:6']);
 });
 
 test('a missing snapshot aborts and names the file, nothing written', () => {

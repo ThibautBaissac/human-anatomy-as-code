@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { buildCatalog } from '../src/viewer/catalog.ts';
-import type { Atlas } from '../src/viewer/types.ts';
+import { NETWORK_KINDS, networkOf, type RelationGraph } from '../src/viewer/relations.ts';
+import type { Atlas, AtlasStructure } from '../src/viewer/types.ts';
 import { RELATIONS_ATLAS, RELATIONS_INSTANCES } from './fixture.ts';
 
 const catalog = buildCatalog(RELATIONS_ATLAS, RELATIONS_INSTANCES);
@@ -84,4 +85,16 @@ test('network of the aorta of the compiled atlas takes under 50 ms', (t) => {
   for (let i = 0; i < 5; i++) { const t0 = performance.now(); c.network({ slug: 'aorta', side: null }); times.push(performance.now() - t0); }
   times.sort((a, b) => a - b);
   assert.ok(times[2] < 50, `median ${times[2]} ms`);
+});
+
+test('networks are for arteries, veins and nerves only: lymphatics are out of scope', () => {
+  assert.deepEqual([...NETWORK_KINDS], ['artery', 'vein', 'nerve']);
+  const st = (slug: string, kind: string, inverse: AtlasStructure['inverse'] = []): AtlasStructure =>
+    ({ slug, kind, laterality: 'midline', status: 'draft', layer: null, children: [], labels: {}, inverse });
+  const all = new Map([
+    ['thoracic-duct', st('thoracic-duct', 'lymphatic', [{ type: 'branch-of', subject: 'lymph-trunk', source: 'curated', status: 'draft' }])],
+    ['lymph-trunk', st('lymph-trunk', 'lymphatic')],
+  ]);
+  const graph: RelationGraph = { structure: (s) => all.get(s), childrenOf: () => [], isOutside: () => false, isExternal: () => false };
+  assert.deepEqual(networkOf(graph, { slug: 'thoracic-duct', side: null }), ['thoracic-duct']);
 });
