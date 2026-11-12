@@ -220,6 +220,8 @@ input[type='checkbox'] { accent-color: var(--control); width: 18px; height: 18px
 .card-section h3 { font-size: .85rem; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
 /* links in a list are targets of their own: 24 px at least (WCAG 2.5.8) */
 .muscles button.link, .children button.link, .relations button.link { min-height: 24px; }
+/* on touch, the relation links reach the 44 px target */
+@media (pointer: coarse) { .relations button.link { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; } }
 .roles, .muscles, .children, .relations { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: .93rem; }
 .roles li { display: flex; justify-content: space-between; align-items: center; gap: 8px; min-height: 32px; }
 .trend { color: var(--muted); font-size: .85em; }
