@@ -1,6 +1,6 @@
 // Anatomical relations: validation (spec 2026-11-11-relations-anatomiques). Owns the kind rules of each type.
-import { TREE_TYPES, type ExternalTargets, type Relation, type RelationType, type Side, type Structure } from './types.ts';
-import type { Diagnostic } from './compile-atlas.ts';
+import { RELATION_TYPES, TREE_TYPES, type ExternalTargets, type Labels, type Relation, type RelationType, type Side, type Status, type Structure } from './types.ts';
+import { inModel, type CompiledRelation, type Diagnostic, type InverseRelation } from './compile-atlas.ts';
 import { byKey } from './fs-util.ts';
 
 export interface LoadedStructure {
@@ -10,6 +10,16 @@ export interface LoadedStructure {
 
 const SIDES: Side[] = ['left', 'right'];
 const WIKIDATA = /^wikidata:(Q\d+)$/;
+
+/** Registry QID (bare) → slug of the structure or side that carries it as `ids.wikidata`. */
+function qidOwners(structures: Structure[]): Map<string, string> {
+  const owners = new Map<string, string>();
+  for (const data of structures) {
+    if (data.ids?.wikidata) owners.set(data.ids.wikidata, data.slug);
+    for (const side of SIDES) { const q = data.sides?.[side]?.ids?.wikidata; if (q) owners.set(q, data.slug); }
+  }
+  return owners;
+}
 
 const diag = (file: string, pointer: string, rule: string, message: string, severity: 'error' | 'warning'): Diagnostic => ({ file, pointer, rule, message, severity });
 
@@ -46,11 +56,7 @@ function kindProblem(type: RelationType, subject: Structure, targetKind: string 
 export function validateRelations(structures: LoadedStructure[], registry: ExternalTargets, relationSources: Set<string>): Diagnostic[] {
   const out: Diagnostic[] = [];
   const bySlug = new Map(structures.map((x) => [x.data.slug, x]));
-  const qidOwner = new Map<string, string>();
-  for (const { data } of structures) {
-    if (data.ids?.wikidata) qidOwner.set(data.ids.wikidata, data.slug);
-    for (const side of SIDES) { const q = data.sides?.[side]?.ids?.wikidata; if (q) qidOwner.set(q, data.slug); }
-  }
+  const qidOwner = qidOwners(structures.map((x) => x.data));
 
   /** A relation list with its pointer prefix and the side it holds for (null: structure level). */
   const lists = (x: LoadedStructure): { rels: Relation[]; prefix: string; side: Side | null }[] => [
@@ -133,4 +139,66 @@ export function validateRelations(structures: LoadedStructure[], registry: Exter
   };
   for (const n of [...edges.keys()].sort(byKey)) if (!state.has(n)) visit(n);
   return out;
+}
+
+export interface ModelRelations {
+  /** per present structure: its own relations and the inverses pointing at it */
+  bySlug: Map<string, { relations?: CompiledRelation[]; inverse?: InverseRelation[] }>;
+  externals: Record<string, { fma?: number; labels: Labels }>;
+  outside: Record<string, { kind: string; labels: Labels }>;
+  /** sources of the relations shown in this model */
+  sources: Set<string>;
+}
+
+const SIDE_RANK = { none: 0, left: 1, right: 2 };
+const sideRank = (s?: Side) => SIDE_RANK[s ?? 'none'];
+const typeRank = (t: RelationType) => RELATION_TYPES.indexOf(t);
+
+/** Relations of one model: targets resolved, sides flattened, inverses, external targets used and labels of structures that are not in the model. */
+export function compileModelRelations(all: Structure[], model: Parameters<typeof inModel>[1], registry: ExternalTargets): ModelRelations {
+  const bySlugAll = new Map(all.map((s) => [s.slug, s]));
+  const present = new Set(all.filter((s) => inModel(s, model)).map((s) => s.slug));
+  const owners = qidOwners(all);
+  const resolve = (target: string): string => {
+    const qid = WIKIDATA.exec(target)?.[1];
+    return (qid && owners.get(qid)) || target;
+  };
+  const flat = (s: Structure): { type: RelationType; target: string; source: string; status: Status; side?: Side }[] => [
+    ...(s.relations ?? []).map((r) => ({ ...r, target: resolve(r.target) })),
+    ...(s.laterality === 'bilateral' ? SIDES.flatMap((side) => (s.sides?.[side]?.relations ?? []).map((r) => ({ ...r, target: resolve(r.target), side }))) : []),
+  ];
+
+  const bySlug: ModelRelations['bySlug'] = new Map();
+  const externals: ModelRelations['externals'] = {};
+  const outside: ModelRelations['outside'] = {};
+  const sources = new Set<string>();
+  const slot = (slug: string) => { const e = bySlug.get(slug) ?? {}; bySlug.set(slug, e); return e; };
+  const markOutside = (slug: string) => {
+    if (present.has(slug)) return;
+    const s = bySlugAll.get(slug)!;
+    outside[slug] = { kind: s.kind, labels: s.labels };
+  };
+
+  for (const s of all) {
+    for (const { type, target, source, status, side } of flat(s)) {
+      const rel = { type, target, source, status, ...(side ? { side } : {}) };
+      const external = WIKIDATA.exec(target)?.[1];
+      if (present.has(s.slug)) {
+        (slot(s.slug).relations ??= []).push(rel);
+        if (source !== 'curated') sources.add(source);
+        if (external) { const e = registry[external]; externals[target] = { ...(e.fma !== undefined ? { fma: e.fma } : {}), labels: e.labels }; }
+        else markOutside(target);
+      }
+      if (!external && present.has(target)) {
+        (slot(target).inverse ??= []).push({ type, subject: s.slug, source, status, ...(side ? { side } : {}) });
+        if (source !== 'curated') sources.add(source);
+        markOutside(s.slug);
+      }
+    }
+  }
+  for (const e of bySlug.values()) {
+    e.relations?.sort((a, b) => typeRank(a.type) - typeRank(b.type) || sideRank(a.side) - sideRank(b.side) || byKey(a.target, b.target));
+    e.inverse?.sort((a, b) => typeRank(a.type) - typeRank(b.type) || sideRank(a.side) - sideRank(b.side) || byKey(a.subject, b.subject));
+  }
+  return { bySlug, externals, outside, sources };
 }

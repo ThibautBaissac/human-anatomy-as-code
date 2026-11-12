@@ -143,3 +143,102 @@ test('a data directory without registry file has an empty registry', () => {
   const { errors } = compile({ [REGISTRY]: null, [MUSCLE]: validStructures()[MUSCLE] });
   assert.deepEqual(errors, []);
 });
+
+// ---- compiled atlas: relations, inverses, externals, outside ----
+
+const OVARY = 'structures/organ/ovary.yaml';
+const ovary = () => ({
+  slug: 'ovary', kind: 'organ', laterality: 'bilateral', status: 'draft', sex: 'female', parent: 'human-body', labels: { en: lbl('ovary') },
+  sides: { left: { meshes: ['bp3d:FJ40M'] }, right: { meshes: ['bp3d:FJ40'] } },
+  relations: [rel('arterial-supply', 'femoral-artery')],
+});
+const by = (a: any, slug: string) => a.structures.find((s: any) => s.slug === slug);
+
+test('compiled relations carry type, target slug, source and status', () => {
+  const { atlases, errors } = compile();
+  assert.deepEqual(errors, []);
+  assert.deepEqual(by(atlases!.male, 'popliteal-artery').relations, [{ type: 'branch-of', target: 'femoral-artery', source: 'fma', status: 'draft' }]);
+});
+
+test('an inverse names its subject', () => {
+  const { atlases } = compile();
+  assert.deepEqual(by(atlases!.male, 'femoral-artery').inverse, [{ type: 'branch-of', subject: 'popliteal-artery', source: 'fma', status: 'draft' }]);
+});
+
+test('side relations are flattened with their side and leave the side block', () => {
+  const g = by(compile().atlases!.male, 'gonadal-vein');
+  assert.deepEqual(g.relations.map((r: any) => [r.type, r.side, r.target]), [['tributary-of', 'left', 'renal-vein'], ['tributary-of', 'right', 'inferior-vena-cava']]);
+  assert.ok(!('relations' in g.sides.left));
+  assert.ok(!('relations' in g.sides.right));
+});
+
+test('inverses of side-level relations keep the subject side', () => {
+  const { atlases } = compile();
+  const inv = (slug: string) => by(atlases!.male, slug).inverse.map((i: any) => [i.subject, i.side]);
+  assert.deepEqual(inv('renal-vein'), [['gonadal-vein', 'left']]);
+  assert.deepEqual(inv('inferior-vena-cava'), [['renal-vein', undefined], ['gonadal-vein', 'right']]);
+});
+
+test('an external target stays wikidata:Q and its labels are emitted', () => {
+  const a = compile().atlases!.male;
+  assert.equal(by(a, 'biceps-brachii').relations[0].target, 'wikidata:Q1');
+  assert.equal(a.externals['wikidata:Q1'].labels.en?.text, 'tibial nerve');
+});
+
+test('a registry entry used by no relation is not emitted', () => {
+  const a = compile({ [MUSCLE]: validStructures()[MUSCLE] }).atlases!.male;
+  assert.deepEqual(a.externals, {});
+});
+
+test('a resolved wikidata target compiles to the slug and has an inverse', () => {
+  const { atlases } = compile({
+    ...withPop([rel('branch-of', 'wikidata:Q10')]),
+    [REGISTRY]: { Q1: fixture()[REGISTRY].Q1, Q10: fixture()[REGISTRY].Q1 },
+  });
+  const a = atlases!.male;
+  assert.equal(by(a, 'popliteal-artery').relations[0].target, 'femoral-artery');
+  assert.deepEqual(by(a, 'femoral-artery').inverse.map((i: any) => i.subject), ['popliteal-artery']);
+  assert.ok(!('wikidata:Q10' in a.externals));
+});
+
+test('a structure absent from a model is outside: its labels and its inverse reach the other model', () => {
+  const { atlases, errors } = compile({ [OVARY]: ovary() });
+  assert.deepEqual(errors, []);
+  const male = atlases!.male;
+  assert.deepEqual(male.outside.ovary, { kind: 'organ', labels: { en: lbl('ovary') } });
+  assert.ok(by(male, 'femoral-artery').inverse.some((i: any) => i.subject === 'ovary' && i.type === 'arterial-supply'));
+  assert.ok(!('outside' in atlases!.female) || !('ovary' in atlases!.female.outside));
+  assert.ok(by(atlases!.female, 'ovary'));
+});
+
+test('outside also names an absent relation target', () => {
+  const { atlases, errors } = compile({ [FEM]: { ...fixture()[FEM], sex: 'female' } });
+  assert.deepEqual(errors, []);
+  assert.deepEqual(atlases!.male.outside['femoral-artery'], { kind: 'artery', labels: { en: lbl('femoral artery') } });
+  assert.equal(atlases!.female.outside['femoral-artery'], undefined);
+});
+
+test('a source used only by relations is credited', () => {
+  const files: Record<string, any> = fixture();
+  for (const k of Object.keys(files)) if (k.startsWith('structures/')) {
+    const s = files[k];
+    const strip = (l: any) => l && Object.fromEntries(Object.entries(l).map(([lang, v]: any) => [lang, { ...v, source: 'curated' }]));
+    files[k] = { ...s, labels: strip(s.labels), sides: s.sides && Object.fromEntries(Object.entries(s.sides).map(([sd, b]: any) => [sd, { ...b, labels: strip(b.labels) }])) };
+  }
+  const a = compileAtlas(writeDataset(files)).atlases!.male;
+  assert.ok(a.attributions.some((x) => x.source === 'fma'));
+  const none = compile({ ...Object.fromEntries(Object.entries(files)), [POP]: { ...files[POP], relations: undefined }, [GON]: { ...files[GON], sides: { left: { meshes: ['bp3d:FJ22M'] }, right: { meshes: ['bp3d:FJ22'] } } }, 'structures/vein/renal-vein.yaml': { ...files['structures/vein/renal-vein.yaml'], relations: undefined }, [MUSCLE]: { ...files[MUSCLE], relations: undefined } }).atlases!.male;
+  assert.ok(!none.attributions.some((x) => x.source === 'fma'));
+});
+
+test('relation order follows the type vocabulary, then side, then target', () => {
+  const { atlases } = compile({ [MUSCLE]: { ...fixture()[MUSCLE], relations: [rel('innervation', 'wikidata:Q1', { source: 'wikidata' }), rel('arterial-supply', 'popliteal-artery'), rel('arterial-supply', 'femoral-artery')] } });
+  assert.deepEqual(by(atlases!.male, 'biceps-brachii').relations.map((r: any) => r.target), ['femoral-artery', 'popliteal-artery', 'wikidata:Q1']);
+});
+
+test('compiling twice gives byte-identical atlases', () => {
+  const files = { ...fixture(), [OVARY]: ovary() };
+  const a = compileAtlas(writeDataset(files)).atlases!;
+  const b = compileAtlas(writeDataset(files)).atlases!;
+  assert.equal(JSON.stringify(a), JSON.stringify(b));
+});

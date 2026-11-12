@@ -5,8 +5,8 @@ import { createRequire } from 'node:module';
 import { parse } from 'yaml';
 import { Ajv2020 } from 'ajv/dist/2020.js';
 import { composeSideLabel } from './compose-side-label.ts';
-import { sideShapeErrors, validateRelations } from './relations.ts';
-import { MODELS, ROLES_OF, SYSTEMS, type Joint, type Lang, type Model, type Side, type SideBlock, type ExternalTargets, type Source, type Structure } from './types.ts';
+import { compileModelRelations, sideShapeErrors, validateRelations, type ModelRelations } from './relations.ts';
+import { MODELS, ROLES_OF, SYSTEMS, type Joint, type Labels, type Lang, type Model, type RelationType, type Side, type SideBlock, type ExternalTargets, type Source, type Status, type Structure } from './types.ts';
 
 export interface Diagnostic {
   file: string;
@@ -16,11 +16,18 @@ export interface Diagnostic {
   severity: 'error' | 'warning';
 }
 
-export interface CompiledSide extends Omit<SideBlock, 'labels'> {
+/** A relation as the atlas carries it: `target` is a slug once resolved, else `wikidata:Q…`; `side` is the subject's side for a side-level relation. */
+export interface CompiledRelation { type: RelationType; target: string; source: string; status: Status; side?: Side }
+/** The same relation seen from its target; `side` is the subject's side when the relation is side-level. */
+export interface InverseRelation { type: RelationType; subject: string; source: string; status: Status; side?: Side }
+
+export interface CompiledSide extends Omit<SideBlock, 'labels' | 'relations'> {
   labels: Partial<Record<Lang, string>>;
 }
 
-export interface CompiledStructure extends Omit<Structure, 'layer' | 'sides' | 'variants'> {
+export interface CompiledStructure extends Omit<Structure, 'layer' | 'sides' | 'variants' | 'relations'> {
+  relations?: CompiledRelation[];
+  inverse?: InverseRelation[];
   layer: number | null;
   children: string[];
   sides?: Record<Side, CompiledSide>;
@@ -34,6 +41,10 @@ export interface Atlas {
   structures: CompiledStructure[];
   joints: CompiledJoint[];
   meshIndex: Record<string, { slug: string; side: Side | null }>;
+  /** external targets used by a relation of this model, keyed `wikidata:Q…` */
+  externals: Record<string, { fma?: number; labels: Labels }>;
+  /** structures absent from this model that are the target or the subject of a relation of a present one */
+  outside: Record<string, { kind: string; labels: Labels }>;
   attributions: { source: string; name: string; licence: string; attribution: string; url: string; dois?: { organ: string; doi: string }[]; notice?: string }[];
 }
 
@@ -115,9 +126,11 @@ function sortKeys<T>(v: T): T {
 
 const sorted = (xs: string[] | undefined) => (xs ? [...xs].sort(byKey) : xs);
 
-function compileStructure(s: Structure, children: string[]): CompiledStructure {
-  const { sides, layer, ...rest } = s;
+function compileStructure(s: Structure, children: string[], rel: ModelRelations['bySlug'] extends Map<string, infer V> ? V | undefined : never): CompiledStructure {
+  const { sides, layer, relations: _relations, ...rest } = s;
   const out: CompiledStructure = { ...rest, layer: layer ?? KIND_LAYER[s.kind] ?? null, children };
+  if (rel?.relations) out.relations = rel.relations;
+  if (rel?.inverse) out.inverse = rel.inverse;
   if (out.meshes) out.meshes = sorted(out.meshes);
   if (out.regions) out.regions = sorted(out.regions);
   if (out.systems) out.systems = SYSTEMS.filter((x) => out.systems!.includes(x));
@@ -133,7 +146,8 @@ function compileStructure(s: Structure, children: string[]): CompiledStructure {
         if (override) labels[lang] = override.text;
         else if (canonical) labels[lang] = composeSideLabel(canonical, lang, side);
       }
-      out.sides[side] = { ...block, meshes: sorted(block.meshes), labels };
+      const { relations: _sideRelations, ...blockRest } = block;
+      out.sides[side] = { ...blockRest, meshes: sorted(block.meshes), labels };
       if (!out.sides[side].meshes) delete out.sides[side].meshes;
     }
   }
@@ -424,12 +438,12 @@ export function compileAtlas(dataDir: string): CompileResult {
 
   const all = structureFiles.map((x) => x.data);
   const joints = jointFiles.map((x) => x.data);
-  const atlases = Object.fromEntries(MODELS.map((m) => [m, buildAtlas(all, joints, m, sources)])) as Record<Model, Atlas>;
+  const atlases = Object.fromEntries(MODELS.map((m) => [m, buildAtlas(all, joints, m, sources, registry)])) as Record<Model, Atlas>;
   return { atlas: atlases.male, atlases, errors, warnings };
 }
 
 /** The atlas of one model: its structures, parents reattached past absent ones, its meshes and its credits. */
-function buildAtlas(all: Structure[], joints: Joint[], model: Model, sources: Record<string, Source>): Atlas {
+function buildAtlas(all: Structure[], joints: Joint[], model: Model, sources: Record<string, Source>, registry: ExternalTargets): Atlas {
   const original = new Map(all.map((s) => [s.slug, s]));
   const present = new Set(all.filter((s) => inModel(s, model)).map((s) => s.slug));
   const structures = all.filter((s) => present.has(s.slug)).map((s) => {
@@ -458,6 +472,8 @@ function buildAtlas(all: Structure[], joints: Joint[], model: Model, sources: Re
     for (const set of labelSets) for (const l of Object.values(set)) if (l && l.source !== 'curated') used.add(l.source);
     for (const a of s.actions ?? []) if (a.source !== 'curated') used.add(a.source);
   }
+  const relations = compileModelRelations(all, model, registry);
+  for (const src of relations.sources) used.add(src);
   for (const j of joints) {
     for (const src of j.sources) used.add(src);
     for (const l of Object.values(j.labels)) if (l && l.source !== 'curated') used.add(l.source);
@@ -465,9 +481,11 @@ function buildAtlas(all: Structure[], joints: Joint[], model: Model, sources: Re
 
   return {
     sources: Object.fromEntries(Object.keys(sources).sort(byKey).map((k) => [k, sortKeys(sources[k])])),
-    structures: structures.map((s) => compileStructure(s, (children.get(s.slug) ?? []).sort(byKey))),
+    structures: structures.map((s) => compileStructure(s, (children.get(s.slug) ?? []).sort(byKey), relations.bySlug.get(s.slug))),
     joints: joints.map(({ fit: _, ...j }) => sortKeys(j)),
     meshIndex: Object.fromEntries(Object.keys(meshIndex).sort(byKey).map((k) => [k, sortKeys(meshIndex[k])])),
+    externals: sortKeys(relations.externals),
+    outside: sortKeys(relations.outside),
     attributions: [...used].sort(byKey).map((id) => {
       const { name, licence, attribution, url, dois, notice } = sources[id];
       const credited = dois ? [...(organs.get(id) ?? [])].filter((o) => dois[o]).sort(byKey).map((organ) => ({ doi: dois[organ], organ })) : [];
