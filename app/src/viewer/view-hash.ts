@@ -33,6 +33,7 @@ export function encodeView(v: ViewState): string {
   const pose = Object.keys(v.pose ?? {}).sort();
   if (pose.length) p.push(`p=${pose.map((k) => `${k}:${v.pose[k]}`).join(',')}`);
   if (v.isolated) p.push(`iso=${selectionKey(v.isolated)}`);
+  if (v.network) p.push(`net=${selectionKey(v.network)}`);
   if (v.hidden?.length) p.push(`hid=${v.hidden.join(',')}`);
   if (v.camera) p.push(`cam=${[...v.camera.position, ...v.camera.target].map(round).join(',')}`);
   return p.join('&');
@@ -56,6 +57,10 @@ export function decodeView(hash: string, ctx: DecodeContext): Partial<ViewState>
   const iso = params.get('iso');
   const isolated = iso ? structureSide(iso) : null;
   if (isolated) out.isolated = isolated;
+  // the isolation wins when both are given
+  const net = params.get('net');
+  const network = net && !isolated ? structureSide(net) : null;
+  if (network) out.network = network;
   const hid = params.get('hid');
   if (hid) {
     const hidden = [...new Set(hid.split(',').filter((k) => structureSide(k)))];

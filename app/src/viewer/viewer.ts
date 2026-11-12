@@ -379,7 +379,9 @@ export class Viewer {
   /** Hides every system but the skeleton, bones shown. */
   showSkeletonOnly(): void { this.setState(skeletonOnly(this.view, this.catalog?.systems ?? [])); }
   /** Shows one structure-side alone (every other instance ghosted), or ends the isolation. */
-  setIsolated(target: Selection | null): void { this.setState({ isolated: target }); }
+  setIsolated(target: Selection | null): void { this.setState(target ? { isolated: target, network: null } : { isolated: null }); }
+  /** Shows the network of a vessel alone (its instances render as the isolated set), or ends it. */
+  setNetwork(origin: Selection | null): void { this.setState(origin ? { network: origin, isolated: null } : { network: null }); }
   /** Hides the selected structure and clears the selection; hiding the isolated structure ends the isolation. */
   hideSelection(): void {
     const patch = hideSelection(this.view);
@@ -543,10 +545,10 @@ export class Viewer {
   private applyAppearance() {
     if (!this.catalog) return;
     this.dirty = true;
-    const sel = this.view.selection, iso = this.view.isolated, hov = this.hovered;
+    const sel = this.view.selection, iso = this.view.isolated, net = this.view.network, hov = this.hovered;
     const state: AppearanceState = {
       hidden: this.catalog.instancesOfKeys(this.view.hidden),
-      isolated: new Set(iso ? this.catalog.instancesOf(iso.slug, iso.side) : []),
+      isolated: net ? this.catalog.instancesOfKeys(this.catalog.network(net)) : new Set(iso ? this.catalog.instancesOf(iso.slug, iso.side) : []),
       hovered: new Set(hov ? this.catalog.instancesOf(hov.slug, hov.side) : []),
       hiddenKinds: new Set(this.view.hiddenKinds),
       hiddenSystems: new Set(this.view.hiddenSystems),

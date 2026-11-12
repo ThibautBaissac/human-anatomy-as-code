@@ -47,3 +47,18 @@ test('Tout masquer: every system of the model but the skeleton hidden, bones sho
   assert.equal(isSkeletonOnly({ ...v, ...skeletonOnly(v, systems) }, systems), true);
   assert.equal(isSkeletonOnly({ ...DEFAULT_VIEW, hiddenSystems: [] }, systems), false);
 });
+
+test('hiding the network origin ends the network; hiding another structure keeps it', () => {
+  const origin = { slug: 'femur', side: 'left' as const };
+  const v = { ...DEFAULT_VIEW, selection: origin, network: origin, hidden: [] };
+  assert.deepEqual(hideSelection(v), { hidden: ['femur@left'], selection: null, isolated: null, network: null });
+  assert.deepEqual(hideSelection({ ...v, selection: { slug: 'heart', side: null } }), { hidden: ['heart'], selection: null, isolated: null });
+  assert.deepEqual(setHidden(v, 'femur@left', true), { hidden: ['femur@left'], selection: null, network: null });
+  assert.deepEqual(setHidden(v, 'heart', true), { hidden: ['heart'] });
+});
+
+test('after a model switch, a network whose origin has no instance in the model is dropped', () => {
+  const cat = buildCatalog(ATLAS, ['femur@left', 'heart']);
+  assert.deepEqual(keepKnown({ ...DEFAULT_VIEW, network: { slug: 'femur', side: 'right' } }, cat), { network: null });
+  assert.deepEqual(keepKnown({ ...DEFAULT_VIEW, network: { slug: 'femur', side: 'left' } }, cat), {});
+});

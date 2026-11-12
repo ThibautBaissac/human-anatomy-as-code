@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { buildCatalog, parseSelectionKey, selectionKey, shownLayers, UNATTACHED } from '../src/viewer/catalog.ts';
-import { appearance } from '../src/viewer/appearance.ts';
+import { appearance, GHOST_ALPHA } from '../src/viewer/appearance.ts';
 import { ATLAS, INSTANCES } from './fixture.ts';
 
 const cat = buildCatalog(ATLAS, INSTANCES);
@@ -153,4 +153,20 @@ test('catalog: the key of a selection', () => {
   assert.deepEqual(parseSelectionKey('heart'), { slug: 'heart', side: null });
   assert.equal(parseSelectionKey('femur@middle'), null);
   assert.equal(parseSelectionKey('a@left@x'), null);
+});
+
+test('appearance of a network, passed as the isolated set (RELATIONS_ATLAS)', async () => {
+  const { RELATIONS_ATLAS, RELATIONS_INSTANCES } = await import('./fixture.ts');
+  const c = buildCatalog(RELATIONS_ATLAS, RELATIONS_INSTANCES);
+  const network = c.instancesOfKeys(c.network({ slug: 'renal-artery', side: 'left' }));
+  const at = (name: string) => c.instance(RELATIONS_INSTANCES.indexOf(name));
+  const kidney = at('kidney@left'), renal = at('renal-artery@left'), femur = at('femur@left'), heart = at('heart');
+  const s = { ...base, isolated: network };
+  // a member hidden by a system filter stays opaque
+  assert.deepEqual(appearance({ ...s, hiddenSystems: new Set(kidney.systems) }, kidney), { visible: true, alpha: 1, highlighted: false, hovered: false });
+  // a member the user hid is gone
+  assert.equal(appearance({ ...s, hidden: new Set([renal.index]) }, renal).visible, false);
+  // a selected non-member is highlighted, a non-member is ghosted
+  assert.deepEqual(appearance({ ...s, selected: new Set([femur.index]) }, femur), { visible: true, alpha: 1, highlighted: true, hovered: false });
+  assert.equal(appearance(s, heart).alpha, GHOST_ALPHA);
 });

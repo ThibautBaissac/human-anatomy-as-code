@@ -7,7 +7,9 @@ export function hideSelection(v: ViewState): Partial<ViewState> {
   if (!v.selection) return {};
   const key = selectionKey(v.selection);
   const isolated = v.isolated && selectionKey(v.isolated) === key ? null : v.isolated;
-  return { hidden: [...v.hidden.filter((k) => k !== key), key], selection: null, isolated };
+  const patch: Partial<ViewState> = { hidden: [...v.hidden.filter((k) => k !== key), key], selection: null, isolated };
+  if (v.network && selectionKey(v.network) === key) patch.network = null;
+  return patch;
 }
 
 /**
@@ -20,6 +22,7 @@ export function setHidden(v: ViewState, key: string, on: boolean): Partial<ViewS
   const patch: Partial<ViewState> = { hidden: [...shown, key] };
   if (v.selection && selectionKey(v.selection) === key) patch.selection = null;
   if (v.isolated && selectionKey(v.isolated) === key) patch.isolated = null;
+  if (v.network && selectionKey(v.network) === key) patch.network = null;
   return patch;
 }
 
@@ -46,6 +49,7 @@ export function undoHide(v: ViewState): Partial<ViewState> {
 export function keepKnown(v: ViewState, catalog: Pick<Catalog, 'instancesOf' | 'instancesOfKeys'>): Partial<ViewState> {
   const patch: Partial<ViewState> = {};
   if (v.isolated && !catalog.instancesOf(v.isolated.slug, v.isolated.side).length) patch.isolated = null;
+  if (v.network && !catalog.instancesOf(v.network.slug, v.network.side).length) patch.network = null;
   const hidden = v.hidden.filter((k) => catalog.instancesOfKeys([k]).size > 0);
   if (hidden.length !== v.hidden.length) patch.hidden = hidden;
   return patch;

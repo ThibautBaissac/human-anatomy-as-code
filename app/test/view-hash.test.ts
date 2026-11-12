@@ -13,12 +13,12 @@ test('every parameter round-trips', () => {
   const v: ViewState = {
     selection: { slug: 'femur', side: 'left' }, layerCut: 2, ghost: true, hiddenKinds: ['muscle', 'skin'],
     sections: { axial: 0.625, sagittal: 0.5 }, lang: 'la',
-    camera: { position: [100, -900, 1200], target: [0, 0, 1000] }, model: 'female', pose: {}, hiddenSystems: DEFAULT_VIEW.hiddenSystems, isolated: null, hidden: [],
+    camera: { position: [100, -900, 1200], target: [0, 0, 1000] }, model: 'female', pose: {}, hiddenSystems: DEFAULT_VIEW.hiddenSystems, isolated: null, network: null, hidden: [],
   };
   const hash = encodeView(v);
   assert.equal(hash, 'sex=f&sel=femur@left&layer=2&ghost=1&hide=muscle,skin&cut=axial:0.625,sagittal:0.500&lang=la&cam=100,-900,1200,0,0,1000');
   // the empty pose and the default hidden systems are defaults: not written, not read back
-  const { pose: _, hiddenSystems: __, isolated: ___, hidden: ____, ...encoded } = v;
+  const { pose: _, hiddenSystems: __, isolated: ___, hidden: ____, network: _____, ...encoded } = v;
   assert.deepEqual(decodeView(hash, ctx), encoded);
 });
 
@@ -82,4 +82,24 @@ test('unknown or invalid isolation and hidden keys are dropped one by one', () =
   const sided = { ...ctx, hasSides: (s: string) => s === 'femur' };
   assert.deepEqual(decodeView('iso=nope&hid=nope,heart@left,femur@left,heart,heart', sided), { hidden: ['femur@left', 'heart'] });
   assert.deepEqual(decodeView('iso=femur@middle', sided), {});
+});
+
+test('the network round-trips as net=, written right after iso=', () => {
+  const sided = { ...ctx, hasSlug: (s: string) => ['femur', 'heart', 'renal-artery'].includes(s), hasSides: (s: string) => s !== 'heart' };
+  const v: ViewState = { ...DEFAULT_VIEW, network: { slug: 'renal-artery', side: 'left' }, hidden: ['heart'] };
+  const hash = encodeView(v);
+  assert.equal(hash, 'net=renal-artery@left&hid=heart');
+  assert.deepEqual(decodeView(hash, sided), { network: { slug: 'renal-artery', side: 'left' }, hidden: ['heart'] });
+  assert.equal(encodeView({ ...DEFAULT_VIEW, isolated: { slug: 'heart', side: null }, network: { slug: 'renal-artery', side: null } }), 'iso=heart&net=renal-artery');
+});
+
+test('iso= wins over net=', () => {
+  assert.deepEqual(decodeView('iso=heart&net=femur', ctx), { isolated: { slug: 'heart', side: null } });
+});
+
+test('an unknown network origin, or a side on a structure without sides, is dropped', () => {
+  const sided = { ...ctx, hasSides: (s: string) => s === 'femur' };
+  assert.deepEqual(decodeView('net=no-such', sided), {});
+  assert.deepEqual(decodeView('net=heart@left', sided), {});
+  assert.deepEqual(decodeView('net=femur@left', sided), { network: { slug: 'femur', side: 'left' } });
 });

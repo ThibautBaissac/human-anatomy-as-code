@@ -120,6 +120,8 @@ export interface ViewState {
   pose: Record<string, number>;
   /** structure-side shown alone: opaque, every other instance ghosted */
   isolated: Selection | null;
+  /** vessel whose network is shown alone (its instances render as the isolated set); exclusive with `isolated` */
+  network: Selection | null;
   /** structures the user hid, keys slug or slug@side, in hiding order (the last one is undone first) */
   hidden: string[];
 }
@@ -131,5 +133,5 @@ export const DEFAULT_HIDDEN_SYSTEMS: readonly string[] = SYSTEMS.filter((x) => x
 export const sameSystems = (a: readonly string[], b: readonly string[]) => a.length === b.length && a.every((x) => b.includes(x));
 
 export const DEFAULT_VIEW: ViewState = {
-  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], hiddenSystems: [...DEFAULT_HIDDEN_SYSTEMS], sections: {}, lang: 'fr', camera: null, model: 'male', pose: {}, isolated: null, hidden: [],
+  selection: null, layerCut: 0, ghost: false, hiddenKinds: [], hiddenSystems: [...DEFAULT_HIDDEN_SYSTEMS], sections: {}, lang: 'fr', camera: null, model: 'male', pose: {}, isolated: null, network: null, hidden: [],
 };
