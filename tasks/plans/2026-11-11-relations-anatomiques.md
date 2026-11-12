@@ -274,7 +274,7 @@ App (`app`):
 
 **Risk:** high (decides every imported relation)
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
 
   Structures built in the test (minimal `Structure` objects): `femoral-artery` (bilateral, ids fma 1, sides fma 11/12, QIDs Q1/Q11/Q12), `popliteal-artery` (bilateral, fma 2, sides 21/22, Q2), `axillary-artery` (fma 3), `brachial-artery` (fma 4), `renal-vein` (bilateral, fma 5, sides 51/52, side QIDs Q51/Q52), `inferior-vena-cava` (midline, fma 6, Q6), `gonadal-vein` (bilateral, fma 7, sides 71/72), `kidney` (bilateral organ, fma 8, Q8), `gastrocnemius-head` (muscle, fma 9, Q9), `thigh-muscle` (muscle, fma 10, Q10). Cases:
   - FMA `2,branch_of,1` and Wikidata `Q2,P3261,Q99999` → popliteal `[branch-of femoral-artery source fma]` only (FMA priority)
@@ -296,13 +296,13 @@ App (`app`):
   - existing registry entry `Q500` with status `reviewed` and other labels → unchanged
   - running `planRelations` on its own output (structures updated with the planned lists, registry = planned registry) → same plan (idempotence)
 
-- [ ] **Step 2: Run the tests and watch them fail** — `npm test -w tools/atlas`, FAIL.
+- [x] **Step 2: Run the tests and watch them fail** — `npm test -w tools/atlas`, FAIL.
 
-- [ ] **Step 3: Implement** — pure functions only. Mapping FMA/QID → `(slug, side | null)` from structure and side ids. Type per source row: FMA `branch_of` → `branch-of` when both artery or both nerve; `tributary_of` → `tributary-of`; `continuous_distally_with` → `continuation-of` written on the distal one; `arterial_supply` → `arterial-supply`; Wikidata `P3261` → `branch-of` (artery/nerve subject) or `tributary-of` (vein subject), only when the FMA gives none of that type; `P2286` → `arterial-supply` unless the subject is a vein; `P3189` → `innervation`. Then the side comparison, kind checks (same rules as Task 1), protected-relation precedence and merge, as in the spec's Import section.
+- [x] **Step 3: Implement** — pure functions only. Mapping FMA/QID → `(slug, side | null)` from structure and side ids. Type per source row: FMA `branch_of` → `branch-of` when both artery or both nerve; `tributary_of` → `tributary-of`; `continuous_distally_with` → `continuation-of` written on the distal one; `arterial_supply` → `arterial-supply`; Wikidata `P3261` → `branch-of` (artery/nerve subject) or `tributary-of` (vein subject), only when the FMA gives none of that type; `P2286` → `arterial-supply` unless the subject is a vein; `P3189` → `innervation`. Then the side comparison, kind checks (same rules as Task 1), protected-relation precedence and merge, as in the spec's Import section.
 
-- [ ] **Step 4: Run the tests and watch them pass** — `npm test -w tools/atlas && npm run typecheck -w tools/atlas`, PASS.
+- [x] **Step 4: Run the tests and watch them pass** — `npm test -w tools/atlas && npm run typecheck -w tools/atlas`, PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
   ```bash
   git add tools/atlas
