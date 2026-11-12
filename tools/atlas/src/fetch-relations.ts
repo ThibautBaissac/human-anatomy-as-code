@@ -93,7 +93,7 @@ function readQueries(dataDir: string): [string, string] {
   return [relations, targets];
 }
 
-const fill = (query: string, qids: string[]) => query.replace('{}', `{ ${qids.map((q) => `wd:${q}`).join(' ')} }`);
+const fill = (query: string, qids: string[]) => query.replace(/^(\s*VALUES \?(?:item|qid) )\{\}/m, `$1{ ${qids.map((q) => `wd:${q}`).join(' ')} }`);
 
 // ---------- Subjects ----------
 

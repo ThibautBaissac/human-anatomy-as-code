@@ -1,5 +1,5 @@
 # Relations anatomiques de nos items Wikidata : P3261 (artère/veine/nerf : branche de), P2286 (apport artériel), P3189 (innervation).
-# fetch-relations.ts remplace `VALUES ?item {}` par un lot de 200 items au plus, interroge en POST, puis agrège les lots.
+# fetch-relations.ts remplace la clause VALUES vide (accolades vides) par un lot de 200 items au plus, interroge en POST, puis agrège les lots.
 SELECT ?item ?prop ?target WHERE {
   VALUES ?item {}
   VALUES ?prop { wdt:P3261 wdt:P2286 wdt:P3189 }

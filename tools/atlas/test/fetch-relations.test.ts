@@ -69,7 +69,7 @@ test('a muscle also fetches its regional/constitutional ancestors, up to 3 level
   const r = await fetchRelations(dir, { fetch: fn, log: () => {}, sleep: noSleep });
   assert.equal(calls.filter((c) => c.includes('/classes/')).length, 4); // 1,2,3,4 ; 5 is level 4
   assert.equal(r.fmaIds, 4);
-  const body = decodeURIComponent(sparql[0].replace(/\+/g, ' '));
+  const body = decodeURIComponent(sparql[0].replace(/\+/g, ' ')).split('\n').filter((l) => !l.trim().startsWith('#')).join('\n');
   for (const q of ['wd:Q1', 'wd:Q2', 'wd:Q3', 'wd:Q4']) assert.ok(body.includes(q), q);
   assert.ok(!body.includes('wd:Q5'));
 });
@@ -121,4 +121,20 @@ test('after 5 retries the failure names the batch', async () => {
 
 test('toCsv quotes fields, sorts rows by every column and drops duplicates', () => {
   assert.equal(toCsv(['a', 'b'], [['2', 'x'], ['1', 'y,z'], ['1', 'y,z'], ['1', 'a']]), 'a,b\n1,a\n1,"y,z"\n2,x\n');
+});
+
+test('the batch fills the real VALUES clauses, not comment text: no empty {} remains once comments are stripped', async () => {
+  const dir = dataset({ 'structures/artery/a.yaml': structure('a', 'artery', { wikidata: 'Q1' }), 'structures/artery/b.yaml': structure('b', 'artery', { wikidata: 'Q2' }) });
+  const queries: string[] = [];
+  const target = { item: { value: 'http://www.wikidata.org/entity/Q1' }, prop: { value: 'http://www.wikidata.org/prop/direct/P3189' }, target: { value: 'http://www.wikidata.org/entity/Q9' } };
+  const { fn } = router({}, (_u, init) => {
+    queries.push(decodeURIComponent(String(init!.body).replace(/^query=/, '').replace(/\+/g, ' ')));
+    return json({ results: { bindings: queries.length === 1 ? [target] : [] } });
+  });
+  await fetchRelations(dir, { fetch: fn, log: () => {}, sleep: noSleep });
+  const code = (q: string) => q.split('\n').filter((l) => !l.trim().startsWith('#')).join('\n');
+  assert.equal(queries.length, 2);
+  assert.ok(code(queries[0]).includes('VALUES ?item { wd:Q1 wd:Q2 }'));
+  assert.ok(code(queries[1]).includes('VALUES ?qid { wd:Q9 }'));
+  for (const q of queries) assert.ok(!/\{\s*\}/.test(code(q)));
 });
