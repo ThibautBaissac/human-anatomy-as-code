@@ -385,7 +385,7 @@ App (`app`):
 
 **Risk:** normal
 
-- [ ] **Step 1: Write the failing tests** — extend `ATLAS` in `app/test/fixture.ts` with compiled-shape structures: `aorta` (midline, no mesh, children `abdominal-aorta`), `abdominal-aorta` (midline, parent `aorta`, mesh `bp3d:FJ30`, inverse `branch-of renal-artery`), `renal-artery` (bilateral, sides `FJ31M`/`FJ31`, relation `branch-of abdominal-aorta`, inverse `arterial-supply kidney`), `kidney` (bilateral, `FJ32M`/`FJ32`, relation `arterial-supply renal-artery`), `femoral-artery` (bilateral `FJ33M`/`FJ33`, inverse `branch-of popliteal-artery`), `popliteal-artery` (bilateral `FJ34M`/`FJ34`, relation `branch-of femoral-artery`), `renal-vein` (bilateral `FJ35M`/`FJ35`, relation `tributary-of inferior-vena-cava`, inverse `tributary-of gonadal-vein side left`), `inferior-vena-cava` (midline `FJ36`, inverse `tributary-of renal-vein`, `tributary-of gonadal-vein side right`), `gonadal-vein` (bilateral `FJ37M`/`FJ37`, relations `tributary-of renal-vein side left`, `tributary-of inferior-vena-cava side right`); `thigh-muscle` gets `innervation wikidata:Q500`; `externals['wikidata:Q500']` labels fr `nerf tibial`; `outside.ovary` labels fr `ovaire`, and `femoral-artery` inverse `arterial-supply ovary`. Extend `INSTANCES` accordingly. Cases:
+- [x] **Step 1: Write the failing tests** — extend `ATLAS` in `app/test/fixture.ts` with compiled-shape structures: `aorta` (midline, no mesh, children `abdominal-aorta`), `abdominal-aorta` (midline, parent `aorta`, mesh `bp3d:FJ30`, inverse `branch-of renal-artery`), `renal-artery` (bilateral, sides `FJ31M`/`FJ31`, relation `branch-of abdominal-aorta`, inverse `arterial-supply kidney`), `kidney` (bilateral, `FJ32M`/`FJ32`, relation `arterial-supply renal-artery`), `femoral-artery` (bilateral `FJ33M`/`FJ33`, inverse `branch-of popliteal-artery`), `popliteal-artery` (bilateral `FJ34M`/`FJ34`, relation `branch-of femoral-artery`), `renal-vein` (bilateral `FJ35M`/`FJ35`, relation `tributary-of inferior-vena-cava`, inverse `tributary-of gonadal-vein side left`), `inferior-vena-cava` (midline `FJ36`, inverse `tributary-of renal-vein`, `tributary-of gonadal-vein side right`), `gonadal-vein` (bilateral `FJ37M`/`FJ37`, relations `tributary-of renal-vein side left`, `tributary-of inferior-vena-cava side right`); `thigh-muscle` gets `innervation wikidata:Q500`; `externals['wikidata:Q500']` labels fr `nerf tibial`; `outside.ovary` labels fr `ovaire`, and `femoral-artery` inverse `arterial-supply ovary`. Extend `INSTANCES` accordingly. Cases:
   - `relationsOf({ slug: 'popliteal-artery', side: 'left' })` → `[{ type: 'branch-of', direction: 'forward', ref: 'femoral-artery', side: 'left', mark: null, presence: 'present', status: 'draft' }]`
   - `relationsOf({ slug: 'renal-artery', side: null })` → forward `branch-of abdominal-aorta` side null; inverse `arterial-supply kidney` side null
   - `relationsOf({ slug: 'gonadal-vein', side: 'left' })` → only `tributary-of renal-vein` side `left`
@@ -401,10 +401,10 @@ App (`app`):
   - `network({ slug: 'kidney', side: null })` → `['kidney']` (an organ has no network)
   - performance: when `build/atlas-male.json` exists, `buildCatalog` on it and `network({ slug: 'aorta', side: null })` completes in < 50 ms (median of 5 runs); skipped with a message when the file is absent
 
-- [ ] **Step 2: Run the tests and watch them fail** — `npm test -w app`, FAIL.
-- [ ] **Step 3: Implement** — `app/src/viewer/relations.ts` holds the side derivation, item building and the network walk (inverse tree edges + same-kind parts via `childrenOf`, then inverse `arterial-supply` / `innervation` subjects of members); `catalog.ts` delegates to it. No three.js, no DOM.
-- [ ] **Step 4: Run the tests and watch them pass** — `npm test -w app && npm run typecheck -w app`, PASS.
-- [ ] **Step 5: Commit**
+- [x] **Step 2: Run the tests and watch them fail** — `npm test -w app`, FAIL.
+- [x] **Step 3: Implement** — `app/src/viewer/relations.ts` holds the side derivation, item building and the network walk (inverse tree edges + same-kind parts via `childrenOf`, then inverse `arterial-supply` / `innervation` subjects of members); `catalog.ts` delegates to it. No three.js, no DOM.
+- [x] **Step 4: Run the tests and watch them pass** — `npm test -w app && npm run typecheck -w app`, PASS.
+- [x] **Step 5: Commit**
 
   ```bash
   git add app/src/viewer app/test
@@ -423,7 +423,7 @@ App (`app`):
 
 **Risk:** normal
 
-- [ ] **Step 1: Write the failing tests**
+- [x] **Step 1: Write the failing tests**
   - `encodeView({ ...DEFAULT_VIEW, network: { slug: 'renal-artery', side: 'left' } })` contains `net=renal-artery@left`; decode with a context that knows the slug → `network` equal
   - hash `iso=heart&net=renal-artery` → decoded `isolated` heart, no `network` (decision 4)
   - `net=no-such` → no `network`; `net=heart@left` (heart not bilateral, `hasSides` given) → no `network`
@@ -431,10 +431,10 @@ App (`app`):
   - `keepKnown` with a network origin that has no instance in the model → `network: null`
   - appearance, with `isolated` = network instances {renal-artery@left, kidney@left}: kidney@left with `hiddenSystems` containing all its systems → alpha 1; renal-artery@left also in `hidden` → not visible; `femur@left` selected and not a member → highlighted; `heart` → alpha `GHOST_ALPHA`
 
-- [ ] **Step 2: Run the tests and watch them fail** — `npm test -w app`, FAIL.
-- [ ] **Step 3: Implement** — as in Interfaces; `net=` goes right after `iso=` in `encodeView`.
-- [ ] **Step 4: Run the tests and watch them pass** — `npm test -w app && npm run typecheck -w app`, PASS.
-- [ ] **Step 5: Commit**
+- [x] **Step 2: Run the tests and watch them fail** — `npm test -w app`, FAIL.
+- [x] **Step 3: Implement** — as in Interfaces; `net=` goes right after `iso=` in `encodeView`.
+- [x] **Step 4: Run the tests and watch them pass** — `npm test -w app && npm run typecheck -w app`, PASS.
+- [x] **Step 5: Commit**
 
   ```bash
   git add app/src/viewer app/test
@@ -456,10 +456,10 @@ App (`app`):
 
 **Risk:** normal
 
-- [ ] **Step 1: Implement the card sections** — one `card-section` per (type, direction) present, `<h3>` with the title, `Folded` list; `present` items are `button.link` with `previewProps` and `onSelect({ slug: ref, side })`; `external` items are text + ` (sans modèle 3D)`; `outside` items text + ` (absent de ce modèle)`; `mark` adds ` — Côté gauche|droit`; names through `labelText` on the structure or `labelsOf(ref)` with the card's language fallback. One draft note if any shown item is draft.
-- [ ] **Step 2: Implement the button and the banner** — "Montrer le réseau" button (`aria-pressed` = network origin equals the selection) shown when the structure's kind is `artery`, `vein` or `nerve` and `catalog.network(selection).length > 1`; toggles `viewer.setNetwork(selection | null)`. `Banners` gets `networkName` and shows `Réseau : <strong>name</strong>` with a `Quitter le réseau` button calling `viewer.setNetwork(null)`.
-- [ ] **Step 3: Check** — `npm run typecheck -w app && npm test -w app`, PASS; `npm run dev`, open `#sel=popliteal-artery@left&sys=none`, check by hand: sections present, a link selects the branch, the button shows the network and the banner, the 44 px targets on the phone layout (Playwright `mobile` project in Task 11 covers it).
-- [ ] **Step 4: Commit**
+- [x] **Step 1: Implement the card sections** — one `card-section` per (type, direction) present, `<h3>` with the title, `Folded` list; `present` items are `button.link` with `previewProps` and `onSelect({ slug: ref, side })`; `external` items are text + ` (sans modèle 3D)`; `outside` items text + ` (absent de ce modèle)`; `mark` adds ` — Côté gauche|droit`; names through `labelText` on the structure or `labelsOf(ref)` with the card's language fallback. One draft note if any shown item is draft.
+- [x] **Step 2: Implement the button and the banner** — "Montrer le réseau" button (`aria-pressed` = network origin equals the selection) shown when the structure's kind is `artery`, `vein` or `nerve` and `catalog.network(selection).length > 1`; toggles `viewer.setNetwork(selection | null)`. `Banners` gets `networkName` and shows `Réseau : <strong>name</strong>` with a `Quitter le réseau` button calling `viewer.setNetwork(null)`.
+- [x] **Step 3: Check** — `npm run typecheck -w app && npm test -w app`, PASS; `npm run dev`, open `#sel=popliteal-artery@left&sys=none`, check by hand: sections present, a link selects the branch, the button shows the network and the banner, the 44 px targets on the phone layout (Playwright `mobile` project in Task 11 covers it).
+- [x] **Step 4: Commit**
 
   ```bash
   git add app/src/ui
